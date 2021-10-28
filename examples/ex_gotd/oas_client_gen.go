@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res AddStickerToSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
 		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -97,6 +102,9 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -130,6 +138,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 }
 
 func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerCallbackQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -138,6 +147,9 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -171,6 +183,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 }
 
 func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerInlineQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerInlineQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -179,6 +192,9 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -212,6 +228,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 }
 
 func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res AnswerPreCheckoutQueryRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerPreCheckoutQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -220,6 +237,9 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -253,6 +273,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 }
 
 func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerShippingQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -261,6 +282,9 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -294,6 +318,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 }
 
 func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanChatMemberRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`banChatMember`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -302,6 +327,9 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -335,6 +363,7 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 }
 
 func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CopyMessage`,
 		trace.WithAttributes(otelogen.OperationID(`copyMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -343,6 +372,9 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -376,6 +408,7 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 }
 
 func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -384,6 +417,9 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -417,6 +453,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 }
 
 func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNewStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`createNewStickerSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -425,6 +462,9 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -458,6 +498,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 }
 
 func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res DeleteChatPhotoRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`deleteChatPhoto`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -466,6 +507,9 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -499,6 +543,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 }
 
 func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res DeleteChatStickerSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`deleteChatStickerSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -507,6 +552,9 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -540,6 +588,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 }
 
 func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res DeleteMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMessage`,
 		trace.WithAttributes(otelogen.OperationID(`deleteMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -548,6 +597,9 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -581,6 +633,7 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 }
 
 func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res DeleteMyCommandsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`deleteMyCommands`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -589,6 +642,9 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -622,6 +678,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 }
 
 func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res DeleteStickerFromSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSet`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStickerFromSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -630,6 +687,9 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -663,6 +723,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 }
 
 func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res DeleteWebhookRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`deleteWebhook`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -671,6 +732,9 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -704,6 +768,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 }
 
 func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -712,6 +777,9 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -745,6 +813,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 }
 
 func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res EditMessageCaptionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageCaption`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageCaption`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -753,6 +822,9 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -786,6 +858,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 }
 
 func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -794,6 +867,9 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -827,6 +903,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 }
 
 func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res EditMessageMediaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -835,6 +912,9 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -868,6 +948,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 }
 
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -876,6 +957,9 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -909,6 +993,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 }
 
 func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res EditMessageTextRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageText`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageText`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -917,6 +1002,9 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -950,6 +1038,7 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 }
 
 func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res ExportChatInviteLinkRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ExportChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`exportChatInviteLink`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -958,6 +1047,9 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -991,6 +1083,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 }
 
 func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res ForwardMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ForwardMessage`,
 		trace.WithAttributes(otelogen.OperationID(`forwardMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -999,6 +1092,9 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1032,6 +1128,7 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 }
 
 func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChat`,
 		trace.WithAttributes(otelogen.OperationID(`getChat`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1040,6 +1137,9 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1073,6 +1173,7 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 }
 
 func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res GetChatAdministratorsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatAdministrators`,
 		trace.WithAttributes(otelogen.OperationID(`getChatAdministrators`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1081,6 +1182,9 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1114,6 +1218,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 }
 
 func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetChatMemberRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`getChatMember`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1122,6 +1227,9 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1155,6 +1263,7 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 }
 
 func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res GetChatMemberCountRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMemberCount`,
 		trace.WithAttributes(otelogen.OperationID(`getChatMemberCount`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1163,6 +1272,9 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1196,6 +1308,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 }
 
 func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFile`,
 		trace.WithAttributes(otelogen.OperationID(`getFile`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1204,6 +1317,9 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1237,6 +1353,7 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 }
 
 func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res GetGameHighScoresRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScores`,
 		trace.WithAttributes(otelogen.OperationID(`getGameHighScores`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1245,6 +1362,9 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1278,6 +1398,7 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 }
 
 func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMe`,
 		trace.WithAttributes(otelogen.OperationID(`getMe`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1286,6 +1407,9 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1311,6 +1435,7 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 }
 
 func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetMyCommandsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`getMyCommands`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1319,6 +1444,9 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1352,6 +1480,7 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 }
 
 func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetStickerSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`getStickerSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1360,6 +1489,9 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1393,6 +1525,7 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 }
 
 func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdatesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdates`,
 		trace.WithAttributes(otelogen.OperationID(`getUpdates`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1401,6 +1534,9 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1434,6 +1570,7 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 }
 
 func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotos`,
 		trace.WithAttributes(otelogen.OperationID(`getUserProfilePhotos`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1442,6 +1579,9 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1475,6 +1615,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 }
 
 func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LeaveChat`,
 		trace.WithAttributes(otelogen.OperationID(`leaveChat`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1483,6 +1624,9 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1516,6 +1660,7 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 }
 
 func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res PinChatMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PinChatMessage`,
 		trace.WithAttributes(otelogen.OperationID(`pinChatMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1524,6 +1669,9 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1557,6 +1705,7 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 }
 
 func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res PromoteChatMemberRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PromoteChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`promoteChatMember`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1565,6 +1714,9 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1598,6 +1750,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 }
 
 func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res RestrictChatMemberRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RestrictChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`restrictChatMember`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1606,6 +1759,9 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1639,6 +1795,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 }
 
 func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res RevokeChatInviteLinkRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RevokeChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`revokeChatInviteLink`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1647,6 +1804,9 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1680,6 +1840,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 }
 
 func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res SendAnimationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAnimation`,
 		trace.WithAttributes(otelogen.OperationID(`sendAnimation`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1688,6 +1849,9 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1721,6 +1885,7 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 }
 
 func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAudio`,
 		trace.WithAttributes(otelogen.OperationID(`sendAudio`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1729,6 +1894,9 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1762,6 +1930,7 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 }
 
 func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res SendChatActionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendChatAction`,
 		trace.WithAttributes(otelogen.OperationID(`sendChatAction`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1770,6 +1939,9 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1803,6 +1975,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 }
 
 func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendContactRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
 		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1811,6 +1984,9 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1844,6 +2020,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 }
 
 func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
 		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1852,6 +2029,9 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1885,6 +2065,7 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 }
 
 func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDocumentRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDocument`,
 		trace.WithAttributes(otelogen.OperationID(`sendDocument`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1893,6 +2074,9 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1926,6 +2110,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 }
 
 func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
 		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1934,6 +2119,9 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1967,6 +2155,7 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 }
 
 func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvoiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoice`,
 		trace.WithAttributes(otelogen.OperationID(`sendInvoice`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1975,6 +2164,9 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2008,6 +2200,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 }
 
 func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLocationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
 		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2016,6 +2209,9 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2049,6 +2245,7 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 }
 
 func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res SendMediaGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMediaGroup`,
 		trace.WithAttributes(otelogen.OperationID(`sendMediaGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2057,6 +2254,9 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2090,6 +2290,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 }
 
 func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMessage`,
 		trace.WithAttributes(otelogen.OperationID(`sendMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2098,6 +2299,9 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2131,6 +2335,7 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 }
 
 func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`sendPhoto`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2139,6 +2344,9 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2172,6 +2380,7 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 }
 
 func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPoll`,
 		trace.WithAttributes(otelogen.OperationID(`sendPoll`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2180,6 +2389,9 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2213,6 +2425,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 }
 
 func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStickerRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
 		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2221,6 +2434,9 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2254,6 +2470,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 }
 
 func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
 		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2262,6 +2479,9 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2295,6 +2515,7 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 }
 
 func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideo`,
 		trace.WithAttributes(otelogen.OperationID(`sendVideo`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2303,6 +2524,9 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2336,6 +2560,7 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 }
 
 func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res SendVideoNoteRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideoNote`,
 		trace.WithAttributes(otelogen.OperationID(`sendVideoNote`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2344,6 +2569,9 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2377,6 +2605,7 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 }
 
 func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVoice`,
 		trace.WithAttributes(otelogen.OperationID(`sendVoice`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2385,6 +2614,9 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2418,6 +2650,7 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 }
 
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatAdministratorCustomTitle`,
 		trace.WithAttributes(otelogen.OperationID(`setChatAdministratorCustomTitle`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2426,6 +2659,9 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2459,6 +2695,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 }
 
 func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res SetChatDescriptionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatDescription`,
 		trace.WithAttributes(otelogen.OperationID(`setChatDescription`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2467,6 +2704,9 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2500,6 +2740,7 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 }
 
 func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res SetChatPermissionsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPermissions`,
 		trace.WithAttributes(otelogen.OperationID(`setChatPermissions`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2508,6 +2749,9 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2541,6 +2785,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 }
 
 func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetChatPhotoRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`setChatPhoto`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2549,6 +2794,9 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2582,6 +2830,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 }
 
 func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res SetChatStickerSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`setChatStickerSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2590,6 +2839,9 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2623,6 +2875,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 }
 
 func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetChatTitleRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatTitle`,
 		trace.WithAttributes(otelogen.OperationID(`setChatTitle`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2631,6 +2884,9 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2664,6 +2920,7 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 }
 
 func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGameScoreRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetGameScore`,
 		trace.WithAttributes(otelogen.OperationID(`setGameScore`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2672,6 +2929,9 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2705,6 +2965,7 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 }
 
 func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetMyCommandsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`setMyCommands`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2713,6 +2974,9 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2746,6 +3010,7 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 }
 
 func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetPassportDataErrors`,
 		trace.WithAttributes(otelogen.OperationID(`setPassportDataErrors`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2754,6 +3019,9 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2787,6 +3055,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 }
 
 func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res SetStickerPositionInSetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSet`,
 		trace.WithAttributes(otelogen.OperationID(`setStickerPositionInSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2795,6 +3064,9 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2828,6 +3100,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 }
 
 func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res SetStickerSetThumbRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerSetThumb`,
 		trace.WithAttributes(otelogen.OperationID(`setStickerSetThumb`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2836,6 +3109,9 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2869,6 +3145,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 }
 
 func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhookRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`setWebhook`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2877,6 +3154,9 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2910,6 +3190,7 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 }
 
 func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2918,6 +3199,9 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2951,6 +3235,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 }
 
 func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
 		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2959,6 +3244,9 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2992,6 +3280,7 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 }
 
 func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res UnbanChatMemberRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`unbanChatMember`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3000,6 +3289,9 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3033,6 +3325,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 }
 
 func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res UnpinAllChatMessagesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinAllChatMessages`,
 		trace.WithAttributes(otelogen.OperationID(`unpinAllChatMessages`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3041,6 +3334,9 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3074,6 +3370,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 }
 
 func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res UnpinChatMessageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinChatMessage`,
 		trace.WithAttributes(otelogen.OperationID(`unpinChatMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3082,6 +3379,9 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3115,6 +3415,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 }
 
 func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res UploadStickerFileRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFile`,
 		trace.WithAttributes(otelogen.OperationID(`uploadStickerFile`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3123,6 +3424,9 @@ func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

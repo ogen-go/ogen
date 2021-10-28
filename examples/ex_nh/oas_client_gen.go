@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBook`,
 		trace.WithAttributes(otelogen.OperationID(`getBook`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -97,6 +102,9 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -131,6 +139,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 }
 
 func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageCoverImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -139,6 +148,9 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -183,6 +195,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 }
 
 func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -191,6 +204,9 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -245,6 +261,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 }
 
 func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageThumbnailImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -253,6 +270,9 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -307,6 +327,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 }
 
 func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `Search`,
 		trace.WithAttributes(otelogen.OperationID(`search`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -315,6 +336,9 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -363,6 +387,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 }
 
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SearchByTagID`,
 		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -371,6 +396,9 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -97,6 +102,9 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -153,6 +161,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 }
 
 func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -161,6 +170,9 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -217,6 +229,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 }
 
 func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`createApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -225,6 +238,9 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -281,6 +297,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 }
 
 func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`createApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -289,6 +306,9 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -345,6 +365,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 }
 
 func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthenticationV1TokenReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthenticationV1TokenReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -353,6 +374,9 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -386,6 +410,7 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 }
 
 func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectAccessReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectAccessReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -394,6 +419,9 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -427,6 +455,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 }
 
 func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectRulesReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectRulesReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -435,6 +464,9 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -468,6 +500,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 }
 
 func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SubjectAccessReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SubjectAccessReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -476,6 +509,9 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -509,6 +545,7 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 }
 
 func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, req IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`createCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -517,6 +554,9 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -573,6 +613,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 }
 
 func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -581,6 +622,9 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -637,6 +681,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 }
 
 func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -645,6 +690,9 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -701,6 +749,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 }
 
 func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -709,6 +758,9 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -765,6 +817,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -773,6 +826,9 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -829,6 +885,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -837,6 +894,9 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -893,6 +953,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -901,6 +962,9 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -957,6 +1021,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -965,6 +1030,9 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1021,6 +1089,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 }
 
 func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, req IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`createInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1029,6 +1098,9 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1085,6 +1157,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 }
 
 func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1093,6 +1166,9 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1149,6 +1225,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 }
 
 func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1157,6 +1234,9 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1213,6 +1293,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 }
 
 func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1221,6 +1302,9 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1277,6 +1361,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 }
 
 func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1285,6 +1370,9 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1341,6 +1429,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 }
 
 func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`createPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1349,6 +1438,9 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1405,6 +1497,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 }
 
 func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1413,6 +1506,9 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1469,6 +1565,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 }
 
 func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1477,6 +1574,9 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1533,6 +1633,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 }
 
 func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`createSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1541,6 +1642,9 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1597,6 +1701,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 }
 
 func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1605,6 +1710,9 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1661,6 +1769,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 }
 
 func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1669,6 +1778,9 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1725,6 +1837,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 }
 
 func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1733,6 +1846,9 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1789,6 +1905,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 }
 
 func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1797,6 +1914,9 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1853,6 +1973,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 }
 
 func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1861,6 +1982,9 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2007,6 +2131,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 }
 
 func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2015,6 +2140,9 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2161,6 +2289,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 }
 
 func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiextensionsV1CollectionCustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiextensionsV1CollectionCustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2169,6 +2298,9 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2315,6 +2447,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 }
 
 func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiregistrationV1CollectionAPIService`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiregistrationV1CollectionAPIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2323,6 +2456,9 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2469,6 +2605,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 }
 
 func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCertificatesV1CollectionCertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCertificatesV1CollectionCertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2477,6 +2614,9 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2623,6 +2763,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 }
 
 func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionNode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionNode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2631,6 +2772,9 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2777,6 +2921,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 }
 
 func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionPersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionPersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2785,6 +2930,9 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -2931,6 +3079,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionFlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -2939,6 +3088,9 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3085,6 +3237,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3093,6 +3246,9 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3239,6 +3395,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionFlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3247,6 +3404,9 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3393,6 +3553,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3401,6 +3562,9 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3547,6 +3711,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 }
 
 func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteInternalApiserverV1alpha1CollectionStorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`deleteInternalApiserverV1alpha1CollectionStorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3555,6 +3720,9 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3701,6 +3869,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 }
 
 func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNetworkingV1CollectionIngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNetworkingV1CollectionIngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3709,6 +3878,9 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -3855,6 +4027,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 }
 
 func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -3863,6 +4036,9 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4009,6 +4185,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 }
 
 func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1alpha1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1alpha1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4017,6 +4194,9 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4163,6 +4343,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 }
 
 func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1beta1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1beta1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4171,6 +4352,9 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4317,6 +4501,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 }
 
 func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePolicyV1beta1CollectionPodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`deletePolicyV1beta1CollectionPodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4325,6 +4510,9 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4471,6 +4659,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 }
 
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4479,6 +4668,9 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4625,6 +4817,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 }
 
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4633,6 +4826,9 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4779,6 +4975,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 }
 
 func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteSchedulingV1CollectionPriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteSchedulingV1CollectionPriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4787,6 +4984,9 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -4933,6 +5133,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 }
 
 func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -4941,6 +5142,9 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5087,6 +5291,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 }
 
 func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSINode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5095,6 +5300,9 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5241,6 +5449,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 }
 
 func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionStorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionStorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5249,6 +5458,9 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5395,6 +5607,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 }
 
 func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionVolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionVolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5403,6 +5616,9 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5549,6 +5765,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 }
 
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAPIVersions`,
 		trace.WithAttributes(otelogen.OperationID(`getAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5557,6 +5774,9 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5582,6 +5802,7 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 }
 
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5590,6 +5811,9 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5615,6 +5839,7 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 }
 
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5623,6 +5848,9 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5648,6 +5876,7 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 }
 
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5656,6 +5885,9 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5681,6 +5913,7 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 }
 
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5689,6 +5922,9 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5714,6 +5950,7 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 }
 
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5722,6 +5959,9 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5747,6 +5987,7 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 }
 
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5755,6 +5996,9 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5780,6 +6024,7 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 }
 
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAppsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5788,6 +6033,9 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5813,6 +6061,7 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 }
 
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAppsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5821,6 +6070,9 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5846,6 +6098,7 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 }
 
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5854,6 +6107,9 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5879,6 +6135,7 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 }
 
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5887,6 +6144,9 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5912,6 +6172,7 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 }
 
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5920,6 +6181,9 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5945,6 +6209,7 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 }
 
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5953,6 +6218,9 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -5978,6 +6246,7 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 }
 
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -5986,6 +6255,9 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6011,6 +6283,7 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 }
 
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6019,6 +6292,9 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6044,6 +6320,7 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 }
 
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6052,6 +6329,9 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6077,6 +6357,7 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 }
 
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta2APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6085,6 +6366,9 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6110,6 +6394,7 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 }
 
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6118,6 +6403,9 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6143,6 +6431,7 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 }
 
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6151,6 +6440,9 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6176,6 +6468,7 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 }
 
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6184,6 +6477,9 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6209,6 +6505,7 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 }
 
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6217,6 +6514,9 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6242,6 +6542,7 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 }
 
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6250,6 +6551,9 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6275,6 +6579,7 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 }
 
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCodeVersion`,
 		trace.WithAttributes(otelogen.OperationID(`getCodeVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6283,6 +6588,9 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6308,6 +6616,7 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 }
 
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6316,6 +6625,9 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6341,6 +6653,7 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 }
 
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6349,6 +6662,9 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6374,6 +6690,7 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 }
 
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreAPIVersions`,
 		trace.WithAttributes(otelogen.OperationID(`getCoreAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6382,6 +6699,9 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6407,6 +6727,7 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 }
 
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCoreV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6415,6 +6736,9 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6440,6 +6764,7 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 }
 
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6448,6 +6773,9 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6473,6 +6801,7 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 }
 
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6481,6 +6810,9 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6506,6 +6838,7 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 }
 
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6514,6 +6847,9 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6539,6 +6875,7 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 }
 
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6547,6 +6884,9 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6572,6 +6912,7 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 }
 
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6580,6 +6921,9 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6605,6 +6949,7 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 }
 
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6613,6 +6958,9 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6638,6 +6986,7 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 }
 
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6646,6 +6995,9 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6671,6 +7023,7 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 }
 
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6679,6 +7032,9 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6704,6 +7060,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 }
 
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta2APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6712,6 +7069,9 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6737,6 +7097,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 }
 
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6745,6 +7106,9 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6770,6 +7134,7 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 }
 
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6778,6 +7143,9 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6803,6 +7171,7 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 }
 
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6811,6 +7180,9 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6836,6 +7208,7 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 }
 
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6844,6 +7217,9 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6869,6 +7245,7 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 }
 
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6877,6 +7254,9 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6902,6 +7282,7 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 }
 
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6910,6 +7291,9 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6935,6 +7319,7 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 }
 
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6943,6 +7328,9 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -6968,6 +7356,7 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 }
 
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -6976,6 +7365,9 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7001,6 +7393,7 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 }
 
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7009,6 +7402,9 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7034,6 +7430,7 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 }
 
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7042,6 +7439,9 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7067,6 +7467,7 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 }
 
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7075,6 +7476,9 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7100,6 +7504,7 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 }
 
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7108,6 +7513,9 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7133,6 +7541,7 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 }
 
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7141,6 +7550,9 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7166,6 +7578,7 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 }
 
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7174,6 +7587,9 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7199,6 +7615,7 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 }
 
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7207,6 +7624,9 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7232,6 +7652,7 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 }
 
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetServiceAccountIssuerOpenIDConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`getServiceAccountIssuerOpenIDConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7240,6 +7661,9 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7265,6 +7689,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 }
 
 func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetServiceAccountIssuerOpenIDKeyset`,
 		trace.WithAttributes(otelogen.OperationID(`getServiceAccountIssuerOpenIDKeyset`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7273,6 +7698,9 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7298,6 +7726,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 }
 
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7306,6 +7735,9 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7331,6 +7763,7 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 }
 
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7339,6 +7772,9 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7364,6 +7800,7 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 }
 
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7372,6 +7809,9 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7397,6 +7837,7 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 }
 
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7405,6 +7846,9 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7430,6 +7874,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 }
 
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7438,6 +7883,9 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7556,6 +8004,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 }
 
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7564,6 +8013,9 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7682,6 +8134,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 }
 
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`listApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7690,6 +8143,9 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7808,6 +8264,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 }
 
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`listApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7816,6 +8273,9 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7934,6 +8394,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 }
 
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ControllerRevisionForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ControllerRevisionForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7942,6 +8403,9 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -7967,6 +8431,7 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DaemonSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DaemonSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -7975,6 +8440,9 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8000,6 +8468,7 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DeploymentForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DeploymentForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8008,6 +8477,9 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8033,6 +8505,7 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ReplicaSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ReplicaSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8041,6 +8514,9 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8066,6 +8542,7 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1StatefulSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1StatefulSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8074,6 +8551,9 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8099,6 +8579,7 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8107,6 +8588,9 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8132,6 +8616,7 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 }
 
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8140,6 +8625,9 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8165,6 +8653,7 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8173,6 +8662,9 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8198,6 +8690,7 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1CronJobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8206,6 +8699,9 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8231,6 +8727,7 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 }
 
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBatchV1JobForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1JobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1JobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8239,6 +8736,9 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8264,6 +8764,7 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 }
 
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1beta1CronJobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1beta1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8272,6 +8773,9 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8297,6 +8801,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`listCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8305,6 +8810,9 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8423,6 +8931,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 }
 
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoordinationV1LeaseForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoordinationV1LeaseForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8431,6 +8940,9 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8456,6 +8968,7 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1ComponentStatusRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ComponentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ComponentStatus`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8464,6 +8977,9 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8489,6 +9005,7 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 }
 
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ConfigMapForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ConfigMapForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8497,6 +9014,9 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8522,6 +9042,7 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EndpointsForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EndpointsForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8530,6 +9051,9 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8555,6 +9079,7 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListCoreV1EventForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8563,6 +9088,9 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8588,6 +9116,7 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 }
 
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1LimitRangeForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1LimitRangeForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8596,6 +9125,9 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8621,6 +9153,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8629,6 +9162,9 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8747,6 +9283,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 }
 
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8755,6 +9292,9 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8873,6 +9413,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 }
 
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -8881,6 +9422,9 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -8999,6 +9543,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 }
 
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolumeClaimForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolumeClaimForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9007,6 +9552,9 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9032,6 +9580,7 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCoreV1PodForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9040,6 +9589,9 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9065,6 +9617,7 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 }
 
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodTemplateForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodTemplateForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9073,6 +9626,9 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9098,6 +9654,7 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ReplicationControllerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ReplicationControllerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9106,6 +9663,9 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9131,6 +9691,7 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ResourceQuotaForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ResourceQuotaForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9139,6 +9700,9 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9164,6 +9728,7 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res ListCoreV1SecretForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1SecretForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1SecretForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9172,6 +9737,9 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9197,6 +9765,7 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 }
 
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceAccountForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceAccountForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9205,6 +9774,9 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9230,6 +9802,7 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9238,6 +9811,9 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9263,6 +9839,7 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 }
 
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1EndpointSliceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9271,6 +9848,9 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9296,6 +9876,7 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1beta1EndpointSliceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1beta1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9304,6 +9885,9 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9329,6 +9913,7 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 }
 
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res ListEventsV1EventForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9337,6 +9922,9 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9362,6 +9950,7 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 }
 
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1beta1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1beta1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9370,6 +9959,9 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9395,6 +9987,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9403,6 +9996,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9521,6 +10117,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9529,6 +10126,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9647,6 +10247,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9655,6 +10256,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9773,6 +10377,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9781,6 +10386,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -9899,6 +10507,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 }
 
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`listInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -9907,6 +10516,9 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10025,6 +10637,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 }
 
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10033,6 +10646,9 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10151,6 +10767,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 }
 
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10159,6 +10776,9 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10184,6 +10804,7 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1NetworkPolicyForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1NetworkPolicyForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10192,6 +10813,9 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10217,6 +10841,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 }
 
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10225,6 +10850,9 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10343,6 +10971,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 }
 
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10351,6 +10980,9 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10469,6 +11101,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 }
 
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10477,6 +11110,9 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10595,6 +11231,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 }
 
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1PodDisruptionBudgetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10603,6 +11240,9 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10628,6 +11268,7 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10636,6 +11277,9 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10661,6 +11305,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 }
 
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10669,6 +11314,9 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10787,6 +11435,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 }
 
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10795,6 +11444,9 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -10913,6 +11565,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 }
 
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -10921,6 +11574,9 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11039,6 +11695,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 }
 
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleBindingForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleBindingForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11047,6 +11704,9 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11072,6 +11732,7 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 }
 
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11080,6 +11741,9 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11105,6 +11769,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 }
 
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`listSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11113,6 +11778,9 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11231,6 +11899,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 }
 
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11239,6 +11908,9 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11357,6 +12029,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 }
 
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11365,6 +12038,9 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11483,6 +12159,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 }
 
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11491,6 +12168,9 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11609,6 +12289,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 }
 
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11617,6 +12298,9 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11735,6 +12419,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 }
 
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1alpha1CSIStorageCapacityForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1alpha1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11743,6 +12428,9 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11768,6 +12456,7 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 }
 
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1beta1CSIStorageCapacityForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1beta1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11776,6 +12465,9 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11801,6 +12493,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 }
 
 func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerResUnauthorized, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogFileListHandler`,
 		trace.WithAttributes(otelogen.OperationID(`logFileListHandler`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11809,6 +12502,9 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11834,6 +12530,7 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 }
 
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1MutatingWebhookConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1MutatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11842,6 +12539,9 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11867,6 +12567,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 }
 
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1ValidatingWebhookConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1ValidatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11875,6 +12576,9 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11900,6 +12604,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 }
 
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiextensionsV1CustomResourceDefinitionList`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiextensionsV1CustomResourceDefinitionList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11908,6 +12613,9 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11933,6 +12641,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 }
 
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res WatchApiregistrationV1APIServiceListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiregistrationV1APIServiceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiregistrationV1APIServiceList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11941,6 +12650,9 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11966,6 +12678,7 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 }
 
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ControllerRevisionListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ControllerRevisionListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -11974,6 +12687,9 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -11999,6 +12715,7 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 }
 
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DaemonSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DaemonSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12007,6 +12724,9 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12032,6 +12752,7 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DeploymentListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DeploymentListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12040,6 +12761,9 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12065,6 +12789,7 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ReplicaSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ReplicaSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12073,6 +12798,9 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12098,6 +12826,7 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1StatefulSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1StatefulSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12106,6 +12835,9 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12131,6 +12863,7 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 }
 
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12139,6 +12872,9 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12164,6 +12900,7 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 }
 
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12172,6 +12909,9 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12197,6 +12937,7 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 }
 
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12205,6 +12946,9 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12230,6 +12974,7 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 }
 
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1CronJobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12238,6 +12983,9 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12263,6 +13011,7 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1JobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1JobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12271,6 +13020,9 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12296,6 +13048,7 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 }
 
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1beta1CronJobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1beta1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12304,6 +13057,9 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12329,6 +13085,7 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCertificatesV1CertificateSigningRequestList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCertificatesV1CertificateSigningRequestList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12337,6 +13094,9 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12362,6 +13122,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 }
 
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoordinationV1LeaseListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoordinationV1LeaseListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12370,6 +13131,9 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12395,6 +13159,7 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ConfigMapListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ConfigMapListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12403,6 +13168,9 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12428,6 +13196,7 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EndpointsListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EndpointsListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12436,6 +13205,9 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12461,6 +13233,7 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12469,6 +13242,9 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12494,6 +13270,7 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1LimitRangeListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1LimitRangeListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12502,6 +13279,9 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12527,6 +13307,7 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1NamespaceListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespaceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespaceList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12535,6 +13316,9 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12560,6 +13344,7 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 }
 
 func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NodeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NodeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12568,6 +13353,9 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12593,6 +13381,7 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 }
 
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeClaimListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeClaimListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12601,6 +13390,9 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12626,6 +13418,7 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res WatchCoreV1PersistentVolumeListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12634,6 +13427,9 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12659,6 +13455,7 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 }
 
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12667,6 +13464,9 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12692,6 +13492,7 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 }
 
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodTemplateListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodTemplateListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12700,6 +13501,9 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12725,6 +13529,7 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 }
 
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ReplicationControllerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ReplicationControllerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12733,6 +13538,9 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12758,6 +13566,7 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ResourceQuotaListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ResourceQuotaListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12766,6 +13575,9 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12791,6 +13603,7 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1SecretListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1SecretListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12799,6 +13612,9 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12824,6 +13640,7 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceAccountListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceAccountListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12832,6 +13649,9 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12857,6 +13677,7 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 }
 
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12865,6 +13686,9 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12890,6 +13714,7 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1EndpointSliceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12898,6 +13723,9 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12923,6 +13751,7 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 }
 
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1beta1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12931,6 +13760,9 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12956,6 +13788,7 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 }
 
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12964,6 +13797,9 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -12989,6 +13825,7 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1beta1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1beta1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -12997,6 +13834,9 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13022,6 +13862,7 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1FlowSchemaList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13030,6 +13871,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13055,6 +13899,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13063,6 +13908,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13088,6 +13936,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2FlowSchemaList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13096,6 +13945,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13121,6 +13973,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13129,6 +13982,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13154,6 +14010,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 }
 
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchInternalApiserverV1alpha1StorageVersionList`,
 		trace.WithAttributes(otelogen.OperationID(`watchInternalApiserverV1alpha1StorageVersionList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13162,6 +14019,9 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13187,6 +14047,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 }
 
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res WatchNetworkingV1IngressClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13195,6 +14056,9 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13220,6 +14084,7 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 }
 
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13228,6 +14093,9 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13253,6 +14121,7 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NetworkPolicyListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NetworkPolicyListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13261,6 +14130,9 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13286,6 +14158,7 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 }
 
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNodeV1RuntimeClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13294,6 +14167,9 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13319,6 +14195,7 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 }
 
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1alpha1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1alpha1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13327,6 +14204,9 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13352,6 +14232,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 }
 
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1beta1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1beta1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13360,6 +14241,9 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13385,6 +14269,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 }
 
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1PodDisruptionBudgetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13393,6 +14278,9 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13418,6 +14306,7 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13426,6 +14315,9 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13451,6 +14343,7 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 }
 
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodSecurityPolicyList`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodSecurityPolicyList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13459,6 +14352,9 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13484,6 +14380,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 }
 
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleBindingList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleBindingList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13492,6 +14389,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13517,6 +14417,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 }
 
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13525,6 +14426,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13550,6 +14454,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 }
 
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleBindingListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleBindingListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13558,6 +14463,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13583,6 +14491,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 }
 
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13591,6 +14500,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13616,6 +14528,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 }
 
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res WatchSchedulingV1PriorityClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchSchedulingV1PriorityClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchSchedulingV1PriorityClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13624,6 +14537,9 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13649,6 +14565,7 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 }
 
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStorageV1CSIDriverListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSIDriverList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSIDriverList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13657,6 +14574,9 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13682,6 +14602,7 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 }
 
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorageV1CSINodeListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSINodeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSINodeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13690,6 +14611,9 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13715,6 +14639,7 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 }
 
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchStorageV1StorageClassListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1StorageClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1StorageClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13723,6 +14648,9 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13748,6 +14676,7 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 }
 
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res WatchStorageV1VolumeAttachmentListRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1VolumeAttachmentList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1VolumeAttachmentList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13756,6 +14685,9 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13781,6 +14713,7 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 }
 
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13789,6 +14722,9 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -13814,6 +14750,7 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 }
 
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1beta1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -13822,6 +14759,9 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

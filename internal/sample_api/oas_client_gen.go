@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarGet`,
 		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -97,6 +102,9 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -145,6 +153,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 }
 
 func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPost`,
 		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -153,6 +162,9 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -186,6 +198,7 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 }
 
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -193,6 +206,9 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -218,6 +234,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 }
 
 func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetCreate`,
 		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -226,6 +243,9 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -259,6 +279,7 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 }
 
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetFriendsNamesByID`,
 		trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -267,6 +288,9 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -301,6 +325,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 }
 
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGet`,
 		trace.WithAttributes(otelogen.OperationID(`petGet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -309,6 +334,9 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -369,6 +397,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 }
 
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -377,6 +406,9 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -411,6 +443,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 }
 
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetNameByID`,
 		trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -419,6 +452,9 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -453,6 +489,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 }
 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNameAliasPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -460,6 +497,9 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -493,6 +533,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 }
 
 func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpdateNamePostDefStatusCode, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -500,6 +541,9 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpda
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

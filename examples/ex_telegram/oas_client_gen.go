@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -96,6 +101,9 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -129,6 +137,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 }
 
 func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -136,6 +145,9 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -169,6 +181,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 }
 
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -176,6 +189,9 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -209,6 +225,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 }
 
 func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ClosePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -216,6 +233,9 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -241,6 +261,7 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 }
 
 func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -248,6 +269,9 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -281,6 +305,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 }
 
 func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -288,6 +313,9 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -321,6 +349,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 }
 
 func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFilePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -328,6 +357,9 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -361,6 +393,7 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 }
 
 func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -368,6 +401,9 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -401,6 +437,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 }
 
 func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -408,6 +445,9 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -433,6 +473,7 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 }
 
 func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -440,6 +481,9 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -465,6 +509,7 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 }
 
 func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -472,6 +517,9 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -505,6 +553,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 }
 
 func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -512,6 +561,9 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -545,6 +597,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 }
 
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -552,6 +605,9 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -585,6 +641,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 }
 
 func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfoPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -592,6 +649,9 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -617,6 +677,7 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 }
 
 func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogOutPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -624,6 +685,9 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -649,6 +713,7 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 }
 
 func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res SendGamePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -656,6 +721,9 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -689,6 +757,7 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 }
 
 func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (res SendInvoicePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -696,6 +765,9 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -729,6 +801,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 }
 
 func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -736,6 +809,9 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -769,6 +845,7 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 }
 
 func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -776,6 +853,9 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -809,6 +889,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 }
 
 func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res SetWebhookPostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -816,6 +897,9 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -849,6 +933,7 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 }
 
 func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostReq) (res UploadStickerFilePostRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -856,6 +941,9 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

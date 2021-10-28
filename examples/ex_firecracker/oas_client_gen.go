@@ -67,6 +67,7 @@ type Client struct {
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -79,16 +80,20 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
 }
 
 func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -97,6 +102,9 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -130,6 +138,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 }
 
 func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSyncAction`,
 		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -138,6 +147,9 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -171,6 +183,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 }
 
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonConfig`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -179,6 +192,9 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -204,6 +220,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 }
 
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonStats`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -212,6 +229,9 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -237,6 +257,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 }
 
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeInstance`,
 		trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -245,6 +266,9 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -270,6 +294,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 }
 
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetExportVmConfig`,
 		trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -278,6 +303,9 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -303,6 +331,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 }
 
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -311,6 +340,9 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -336,6 +368,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 }
 
 func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LoadSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -344,6 +377,9 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -377,6 +413,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 }
 
 func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsConfigPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -384,6 +421,9 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -417,6 +457,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 }
 
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsGet`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -424,6 +465,9 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -449,6 +493,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 }
 
 func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatchRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -456,6 +501,9 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -489,6 +537,7 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 }
 
 func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -496,6 +545,9 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -529,6 +581,7 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 }
 
 func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -537,6 +590,9 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -570,6 +626,7 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 }
 
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloonStatsInterval`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -578,6 +635,9 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -611,6 +671,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 }
 
 func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -619,6 +680,9 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -661,6 +725,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 }
 
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -669,6 +734,9 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -711,6 +779,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 }
 
 func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -719,6 +788,9 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -752,6 +824,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 }
 
 func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchVm`,
 		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -760,6 +833,9 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -793,6 +869,7 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 }
 
 func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -801,6 +878,9 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -834,6 +914,7 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 }
 
 func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestBootSource`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -842,6 +923,9 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -875,6 +959,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 }
 
 func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -883,6 +968,9 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -925,6 +1013,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 }
 
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -933,6 +1022,9 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -975,6 +1067,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 }
 
 func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestVsock`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -983,6 +1076,9 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1016,6 +1112,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 }
 
 func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutLogger`,
 		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1024,6 +1121,9 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1057,6 +1157,7 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 }
 
 func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PutMachineConfigurationRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1065,6 +1166,9 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()
@@ -1098,6 +1202,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 }
 
 func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes, err error) {
+	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -1106,6 +1211,9 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 		if err != nil {
 			span.RecordError(err)
 			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
 		}
 		span.End()
 	}()

@@ -13,6 +13,7 @@ type Client struct {
     cfg       config
     requests  metric.Int64Counter
     errors    metric.Int64Counter
+    duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -25,10 +26,13 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
         cfg:       newConfig(opts...),
         serverURL: u,
     }
-    if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+    if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
         return nil, err
     }
-    if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+    if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+        return nil, err
+    }
+    if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
         return nil, err
     }
     return c, nil
@@ -36,6 +40,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 {{ range $op := $.Operations }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
+    startTime := time.Now()
     ctx, span := c.cfg.Tracer.Start(ctx, `{{ $op.Name }}`,
         {{- if $op.Spec.OperationID }}
         trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),
@@ -46,6 +51,9 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{
         if err != nil {
             span.RecordError(err)
             c.errors.Add(ctx, 1)
+        } else {
+            elapsedDuration := time.Since(startTime)
+            c.duration.Record(ctx, elapsedDuration.Microseconds())
         }
         span.End()
     }()
