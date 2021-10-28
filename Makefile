@@ -7,11 +7,11 @@ coverage:
 .PHONY: coverage
 
 generate:
-	go generate ./...
+	go generate ./... && go mod tidy
 .PHONY: generate
 
 examples:
-	cd examples && go generate
+	cd examples && go generate && go mod tidy
 .PHONY: examples
 
 test_examples:
@@ -30,4 +30,4 @@ tidy:
 tidy_examples:
 	cd examples && go mod tidy
 
-clean: tidy generate tidy_examples examples tidy_examples
+clean: tidy generate tidy_examples examples

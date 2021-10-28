@@ -1,0 +1,61 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ define "cfg" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+type config struct {
+  TracerProvider trace.TracerProvider
+  Tracer         trace.Tracer
+  MeterProvider  metric.MeterProvider
+  Meter          metric.Meter
+  Client         HTTPClient
+}
+
+func newConfig(opts ...Option) config {
+  cfg := config{
+    TracerProvider: otel.GetTracerProvider(),
+    MeterProvider: metric.NewNoopMeterProvider(),
+    Client: &http.Client{
+      Timeout: time.Second * 15,
+    },
+}
+  for _, opt := range opts {
+    opt.apply(&cfg)
+  }
+  cfg.Tracer = cfg.TracerProvider.Tracer(otelogen.Name,
+    trace.WithInstrumentationVersion(otelogen.SemVersion()),
+  )
+  cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
+  return cfg
+}
+
+type Option interface {
+  apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+  o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+  return optionFunc(func(cfg *config) {
+    if provider != nil {
+      cfg.TracerProvider = provider
+    }
+  })
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+  return optionFunc(func(cfg *config) {
+    if client != nil {
+      cfg.Client = client
+    }
+  })
+}
+
+{{ end }}

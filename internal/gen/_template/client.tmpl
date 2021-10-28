@@ -8,59 +8,6 @@ type HTTPClient interface {
     Do(req *http.Request) (*http.Response, error)
 }
 
-type config struct {
-    TracerProvider trace.TracerProvider
-    Tracer         trace.Tracer
-    Client         HTTPClient
-}
-
-const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
-
-func newConfig(opts ...Option) config {
-    cfg := config{
-        TracerProvider: otel.GetTracerProvider(),
-        Client: &http.Client{
-            Timeout: time.Second * 15,
-        },
-    }
-    for _, opt := range opts {
-        opt.apply(&cfg)
-    }
-    cfg.Tracer = cfg.TracerProvider.Tracer(
-        defaultTracerName,
-        trace.WithInstrumentationVersion(otelogen.SemVersion()),
-    )
-    return cfg
-}
-
-type Option interface {
-    apply(*config)
-}
-
-type optionFunc func(*config)
-
-func (o optionFunc) apply(c *config) {
-    o(c)
-}
-
-// WithTracerProvider specifies a tracer provider to use for creating a tracer.
-// If none is specified, the global provider is used.
-func WithTracerProvider(provider trace.TracerProvider) Option {
-    return optionFunc(func(cfg *config) {
-        if provider != nil {
-            cfg.TracerProvider = provider
-        }
-    })
-}
-
-func WithHTTPClient(client HTTPClient) Option {
-    return optionFunc(func(cfg *config) {
-        if client != nil {
-            cfg.Client = client
-        }
-    })
-}
-
 type Client struct {
     serverURL *url.URL
     cfg       config

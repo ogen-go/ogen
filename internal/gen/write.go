@@ -79,6 +79,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"validators",
 		"server",
 		"client",
+		"cfg",
 	} {
 		fileName := fmt.Sprintf("oas_%s_gen.go", name)
 		if err := w.Generate(name, fileName, cfg); err != nil {
