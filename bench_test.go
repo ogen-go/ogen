@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -34,6 +35,27 @@ func newLocalListener() net.Listener {
 		}
 	}
 	return l
+}
+
+type RPS struct {
+	start time.Time
+	count int64
+}
+
+func (r *RPS) Inc() {
+	atomic.AddInt64(&r.count, 1)
+}
+
+func (r *RPS) Report(b *testing.B) {
+	sec := time.Since(r.start).Seconds()
+	perSec := float64(atomic.LoadInt64(&r.count)) / sec
+	b.ReportMetric(perSec, "req/s")
+}
+
+func newRPS() *RPS {
+	return &RPS{
+		start: time.Now(),
+	}
 }
 
 func BenchmarkValidation(b *testing.B) {
@@ -113,6 +135,8 @@ func BenchmarkIntegration(b *testing.B) {
 			b.ResetTimer()
 			b.ReportAllocs()
 			b.SetBytes(int64(len("Hello, world!")))
+			rps := newRPS()
+			defer rps.Report(b)
 			b.RunParallel(func(pb *testing.PB) {
 				var dst []byte
 				for pb.Next() {
@@ -128,6 +152,7 @@ func BenchmarkIntegration(b *testing.B) {
 
 					// Reusing buffer.
 					dst = result[:0]
+					rps.Inc()
 				}
 			})
 		})
@@ -158,6 +183,8 @@ func BenchmarkIntegration(b *testing.B) {
 			b.ResetTimer()
 			u, err := url.Parse(s.URL)
 			require.NoError(b, err)
+			rps := newRPS()
+			defer rps.Report(b)
 
 			b.RunParallel(func(pb *testing.PB) {
 				for pb.Next() {
@@ -174,6 +201,7 @@ func BenchmarkIntegration(b *testing.B) {
 						b.Error(res.StatusCode)
 						break
 					}
+					rps.Inc()
 				}
 			})
 		})
@@ -213,6 +241,8 @@ func BenchmarkIntegration(b *testing.B) {
 		b.Run("JSON", func(b *testing.B) {
 			b.ReportAllocs()
 			b.ResetTimer()
+			rps := newRPS()
+			defer rps.Report(b)
 			b.RunParallel(func(pb *testing.PB) {
 				for pb.Next() {
 					hw, err := client.JSON(ctx)
@@ -223,6 +253,7 @@ func BenchmarkIntegration(b *testing.B) {
 					if hw.Message != "Hello, world!" {
 						b.Error("mismatch")
 					}
+					rps.Inc()
 				}
 			})
 		})
