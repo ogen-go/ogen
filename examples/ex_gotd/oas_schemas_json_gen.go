@@ -93,16 +93,16 @@ func (s AddStickerToSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads AddStickerToSet from json stream.
-func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
+func (s *AddStickerToSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AddStickerToSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "emojis":
 			if err := func() error {
-				s.Emojis = string(i.ReadString())
+				s.Emojis = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -123,7 +123,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
-				s.Name = string(i.ReadString())
+				s.Name = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -156,7 +156,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -218,16 +218,16 @@ func (s Animation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Animation from json stream.
-func (s *Animation) ReadJSON(i *json.Iterator) error {
+func (s *Animation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Animation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -236,7 +236,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -269,7 +269,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -278,7 +278,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
-				s.Height = int(i.ReadInt())
+				s.Height = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -311,7 +311,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
-				s.Width = int(i.ReadInt())
+				s.Width = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -361,12 +361,12 @@ func (s AnswerCallbackQuery) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads AnswerCallbackQuery from json stream.
-func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
+func (s *AnswerCallbackQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AnswerCallbackQuery to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "cache_time":
 			if err := func() error {
@@ -382,7 +382,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "callback_query_id":
 			if err := func() error {
-				s.CallbackQueryID = string(i.ReadString())
+				s.CallbackQueryID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -482,12 +482,12 @@ func (s AnswerInlineQuery) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads AnswerInlineQuery from json stream.
-func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
+func (s *AnswerInlineQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AnswerInlineQuery to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "cache_time":
 			if err := func() error {
@@ -503,7 +503,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_query_id":
 			if err := func() error {
-				s.InlineQueryID = string(i.ReadString())
+				s.InlineQueryID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -538,7 +538,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Results = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem InlineQueryResult
 					if err := func() error {
 						if err := fmt.Errorf(`decoding of "InlineQueryResult" (alias) is not implemented`); err != nil {
@@ -616,12 +616,12 @@ func (s AnswerPreCheckoutQuery) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads AnswerPreCheckoutQuery from json stream.
-func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
+func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQuery to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "error_message":
 			if err := func() error {
@@ -637,7 +637,7 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -646,7 +646,7 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pre_checkout_query_id":
 			if err := func() error {
-				s.PreCheckoutQueryID = string(i.ReadString())
+				s.PreCheckoutQueryID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -696,12 +696,12 @@ func (s AnswerShippingQuery) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads AnswerShippingQuery from json stream.
-func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
+func (s *AnswerShippingQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AnswerShippingQuery to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "error_message":
 			if err := func() error {
@@ -717,7 +717,7 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -728,7 +728,7 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.ShippingOptions = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem ShippingOption
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -753,7 +753,7 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "shipping_query_id":
 			if err := func() error {
-				s.ShippingQueryID = string(i.ReadString())
+				s.ShippingQueryID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -819,16 +819,16 @@ func (s Audio) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Audio from json stream.
-func (s *Audio) ReadJSON(i *json.Iterator) error {
+func (s *Audio) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Audio to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -837,7 +837,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -870,7 +870,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -961,12 +961,12 @@ func (s BanChatMember) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads BanChatMember from json stream.
-func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
+func (s *BanChatMember) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode BanChatMember to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -1005,7 +1005,7 @@ func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1038,16 +1038,16 @@ func (s BotCommand) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads BotCommand from json stream.
-func (s *BotCommand) ReadJSON(i *json.Iterator) error {
+func (s *BotCommand) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode BotCommand to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "command":
 			if err := func() error {
-				s.Command = string(i.ReadString())
+				s.Command = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1056,7 +1056,7 @@ func (s *BotCommand) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
-				s.Description = string(i.ReadString())
+				s.Description = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1083,12 +1083,12 @@ func (s BotCommandScope) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads BotCommandScope from json stream.
-func (s *BotCommandScope) ReadJSON(i *json.Iterator) error {
+func (s *BotCommandScope) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode BotCommandScope to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -1196,12 +1196,12 @@ func (s Chat) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Chat from json stream.
-func (s *Chat) ReadJSON(i *json.Iterator) error {
+func (s *Chat) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Chat to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "bio":
 			if err := func() error {
@@ -1253,7 +1253,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
-				s.ID = int(i.ReadInt())
+				s.ID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1394,7 +1394,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = string(i.ReadString())
+				s.Type = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1439,16 +1439,16 @@ func (s ChatLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ChatLocation from json stream.
-func (s *ChatLocation) ReadJSON(i *json.Iterator) error {
+func (s *ChatLocation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ChatLocation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "address":
 			if err := func() error {
-				s.Address = string(i.ReadString())
+				s.Address = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1526,12 +1526,12 @@ func (s ChatPermissions) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ChatPermissions from json stream.
-func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
+func (s *ChatPermissions) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ChatPermissions to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "can_add_web_page_previews":
 			if err := func() error {
@@ -1661,16 +1661,16 @@ func (s ChatPhoto) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ChatPhoto from json stream.
-func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
+func (s *ChatPhoto) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ChatPhoto to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "big_file_id":
 			if err := func() error {
-				s.BigFileID = string(i.ReadString())
+				s.BigFileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1679,7 +1679,7 @@ func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "big_file_unique_id":
 			if err := func() error {
-				s.BigFileUniqueID = string(i.ReadString())
+				s.BigFileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1688,7 +1688,7 @@ func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "small_file_id":
 			if err := func() error {
-				s.SmallFileID = string(i.ReadString())
+				s.SmallFileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1697,7 +1697,7 @@ func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "small_file_unique_id":
 			if err := func() error {
-				s.SmallFileUniqueID = string(i.ReadString())
+				s.SmallFileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1745,16 +1745,16 @@ func (s Contact) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Contact from json stream.
-func (s *Contact) ReadJSON(i *json.Iterator) error {
+func (s *Contact) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Contact to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "first_name":
 			if err := func() error {
-				s.FirstName = string(i.ReadString())
+				s.FirstName = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1775,7 +1775,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phone_number":
 			if err := func() error {
-				s.PhoneNumber = string(i.ReadString())
+				s.PhoneNumber = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1872,12 +1872,12 @@ func (s CopyMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads CopyMessage from json stream.
-func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
+func (s *CopyMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode CopyMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -1907,7 +1907,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -1966,7 +1966,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2030,12 +2030,12 @@ func (s CreateChatInviteLink) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads CreateChatInviteLink from json stream.
-func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
+func (s *CreateChatInviteLink) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode CreateChatInviteLink to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -2124,12 +2124,12 @@ func (s CreateNewStickerSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads CreateNewStickerSet from json stream.
-func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
+func (s *CreateNewStickerSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode CreateNewStickerSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "contains_masks":
 			if err := func() error {
@@ -2145,7 +2145,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emojis":
 			if err := func() error {
-				s.Emojis = string(i.ReadString())
+				s.Emojis = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2166,7 +2166,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
-				s.Name = string(i.ReadString())
+				s.Name = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2199,7 +2199,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2208,7 +2208,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2238,12 +2238,12 @@ func (s DeleteChatPhoto) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteChatPhoto from json stream.
-func (s *DeleteChatPhoto) ReadJSON(i *json.Iterator) error {
+func (s *DeleteChatPhoto) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteChatPhoto to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -2279,12 +2279,12 @@ func (s DeleteChatStickerSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteChatStickerSet from json stream.
-func (s *DeleteChatStickerSet) ReadJSON(i *json.Iterator) error {
+func (s *DeleteChatStickerSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteChatStickerSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -2323,12 +2323,12 @@ func (s DeleteMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteMessage from json stream.
-func (s *DeleteMessage) ReadJSON(i *json.Iterator) error {
+func (s *DeleteMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -2343,7 +2343,7 @@ func (s *DeleteMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2380,12 +2380,12 @@ func (s DeleteMyCommands) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteMyCommands from json stream.
-func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
+func (s *DeleteMyCommands) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteMyCommands to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "language_code":
 			if err := func() error {
@@ -2441,16 +2441,16 @@ func (s DeleteStickerFromSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteStickerFromSet from json stream.
-func (s *DeleteStickerFromSet) ReadJSON(i *json.Iterator) error {
+func (s *DeleteStickerFromSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "sticker":
 			if err := func() error {
-				s.Sticker = string(i.ReadString())
+				s.Sticker = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2482,12 +2482,12 @@ func (s DeleteWebhook) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads DeleteWebhook from json stream.
-func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
+func (s *DeleteWebhook) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode DeleteWebhook to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "drop_pending_updates":
 			if err := func() error {
@@ -2527,16 +2527,16 @@ func (s Dice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Dice from json stream.
-func (s *Dice) ReadJSON(i *json.Iterator) error {
+func (s *Dice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Dice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "emoji":
 			if err := func() error {
-				s.Emoji = string(i.ReadString())
+				s.Emoji = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2545,7 +2545,7 @@ func (s *Dice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
-				s.Value = int(i.ReadInt())
+				s.Value = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2598,16 +2598,16 @@ func (s Document) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Document from json stream.
-func (s *Document) ReadJSON(i *json.Iterator) error {
+func (s *Document) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Document to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2640,7 +2640,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2707,12 +2707,12 @@ func (s EditChatInviteLink) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditChatInviteLink from json stream.
-func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
+func (s *EditChatInviteLink) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditChatInviteLink to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -2739,7 +2739,7 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		case "invite_link":
 			if err := func() error {
-				s.InviteLink = string(i.ReadString())
+				s.InviteLink = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2820,12 +2820,12 @@ func (s EditMessageCaption) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditMessageCaption from json stream.
-func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
+func (s *EditMessageCaption) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditMessageCaption to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "caption":
 			if err := func() error {
@@ -2843,7 +2843,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -2994,12 +2994,12 @@ func (s EditMessageLiveLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditMessageLiveLocation from json stream.
-func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
+func (s *EditMessageLiveLocation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditMessageLiveLocation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -3058,7 +3058,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "latitude":
 			if err := func() error {
-				s.Latitude = float64(i.ReadFloat64())
+				s.Latitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3067,7 +3067,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "longitude":
 			if err := func() error {
-				s.Longitude = float64(i.ReadFloat64())
+				s.Longitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3153,12 +3153,12 @@ func (s EditMessageMedia) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditMessageMedia from json stream.
-func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
+func (s *EditMessageMedia) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditMessageMedia to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -3266,12 +3266,12 @@ func (s EditMessageReplyMarkup) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditMessageReplyMarkup from json stream.
-func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
+func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditMessageReplyMarkup to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -3393,12 +3393,12 @@ func (s EditMessageText) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EditMessageText from json stream.
-func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
+func (s *EditMessageText) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EditMessageText to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -3435,7 +3435,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Entities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -3508,7 +3508,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text":
 			if err := func() error {
-				s.Text = string(i.ReadString())
+				s.Text = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3544,16 +3544,16 @@ func (s EncryptedCredentials) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EncryptedCredentials from json stream.
-func (s *EncryptedCredentials) ReadJSON(i *json.Iterator) error {
+func (s *EncryptedCredentials) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EncryptedCredentials to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "data":
 			if err := func() error {
-				s.Data = string(i.ReadString())
+				s.Data = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3562,7 +3562,7 @@ func (s *EncryptedCredentials) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hash":
 			if err := func() error {
-				s.Hash = string(i.ReadString())
+				s.Hash = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3571,7 +3571,7 @@ func (s *EncryptedCredentials) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret":
 			if err := func() error {
-				s.Secret = string(i.ReadString())
+				s.Secret = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3658,12 +3658,12 @@ func (s EncryptedPassportElement) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads EncryptedPassportElement from json stream.
-func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
+func (s *EncryptedPassportElement) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode EncryptedPassportElement to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "data":
 			if err := func() error {
@@ -3693,7 +3693,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Files = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PassportFile
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -3730,7 +3730,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hash":
 			if err := func() error {
-				s.Hash = string(i.ReadString())
+				s.Hash = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3777,7 +3777,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Translation = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PassportFile
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -3802,7 +3802,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = string(i.ReadString())
+				s.Type = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3843,16 +3843,16 @@ func (s Error) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(i *json.Iterator) error {
+func (s *Error) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Error to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "description":
 			if err := func() error {
-				s.Description = string(i.ReadString())
+				s.Description = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3861,7 +3861,7 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 			return true
 		case "error_code":
 			if err := func() error {
-				s.ErrorCode = int(i.ReadInt())
+				s.ErrorCode = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3870,7 +3870,7 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3909,12 +3909,12 @@ func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ErrorStatusCode from json stream.
-func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+func (s *ErrorStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -3939,12 +3939,12 @@ func (s ExportChatInviteLink) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ExportChatInviteLink from json stream.
-func (s *ExportChatInviteLink) ReadJSON(i *json.Iterator) error {
+func (s *ExportChatInviteLink) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ExportChatInviteLink to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -3991,12 +3991,12 @@ func (s ForwardMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ForwardMessage from json stream.
-func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
+func (s *ForwardMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ForwardMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4034,7 +4034,7 @@ func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4099,12 +4099,12 @@ func (s Game) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Game from json stream.
-func (s *Game) ReadJSON(i *json.Iterator) error {
+func (s *Game) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Game to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "animation":
 			if err := func() error {
@@ -4120,7 +4120,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
-				s.Description = string(i.ReadString())
+				s.Description = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4131,7 +4131,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Photo = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PhotoSize
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -4170,7 +4170,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.TextEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -4195,7 +4195,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4225,12 +4225,12 @@ func (s GetChat) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetChat from json stream.
-func (s *GetChat) ReadJSON(i *json.Iterator) error {
+func (s *GetChat) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetChat to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4266,12 +4266,12 @@ func (s GetChatAdministrators) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetChatAdministrators from json stream.
-func (s *GetChatAdministrators) ReadJSON(i *json.Iterator) error {
+func (s *GetChatAdministrators) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetChatAdministrators to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4310,12 +4310,12 @@ func (s GetChatMember) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetChatMember from json stream.
-func (s *GetChatMember) ReadJSON(i *json.Iterator) error {
+func (s *GetChatMember) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetChatMember to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4330,7 +4330,7 @@ func (s *GetChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4360,12 +4360,12 @@ func (s GetChatMemberCount) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetChatMemberCount from json stream.
-func (s *GetChatMemberCount) ReadJSON(i *json.Iterator) error {
+func (s *GetChatMemberCount) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetChatMemberCount to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4401,16 +4401,16 @@ func (s GetFile) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetFile from json stream.
-func (s *GetFile) ReadJSON(i *json.Iterator) error {
+func (s *GetFile) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetFile to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4455,12 +4455,12 @@ func (s GetGameHighScores) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetGameHighScores from json stream.
-func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
+func (s *GetGameHighScores) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetGameHighScores to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -4500,7 +4500,7 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4537,12 +4537,12 @@ func (s GetMyCommands) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetMyCommands from json stream.
-func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
+func (s *GetMyCommands) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetMyCommands to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "language_code":
 			if err := func() error {
@@ -4598,16 +4598,16 @@ func (s GetStickerSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetStickerSet from json stream.
-func (s *GetStickerSet) ReadJSON(i *json.Iterator) error {
+func (s *GetStickerSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetStickerSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "name":
 			if err := func() error {
-				s.Name = string(i.ReadString())
+				s.Name = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4661,21 +4661,21 @@ func (s GetUpdates) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetUpdates from json stream.
-func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
+func (s *GetUpdates) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetUpdates to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
 				s.AllowedUpdates = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem string
 					if err := func() error {
-						elem = string(i.ReadString())
+						elem = string(i.Str())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -4762,12 +4762,12 @@ func (s GetUserProfilePhotos) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads GetUserProfilePhotos from json stream.
-func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
+func (s *GetUserProfilePhotos) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotos to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "limit":
 			if err := func() error {
@@ -4795,7 +4795,7 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4824,38 +4824,38 @@ func (s ID) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads value from json stream.
-func (s *ID) ReadJSON(i *json.Iterator) error {
+func (s *ID) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ID to nil`)
 	}
 	switch t := i.WhatIsNext(); t {
-	case json.StringValue:
+	case json.String:
 		if err := func() error {
-			s.String = string(i.ReadString())
+			s.String = string(i.Str())
 			return i.Error
 		}(); err != nil {
 			return err
 		}
 		s.Type = StringID
-	case json.NumberValue:
+	case json.Number:
 		if err := func() error {
-			s.Int = int(i.ReadInt())
+			s.Int = int(i.Int())
 			return i.Error
 		}(); err != nil {
 			return err
 		}
 		s.Type = IntID
 	default:
-		return fmt.Errorf("unexpected json type %q", json.TypeStr(t))
+		return fmt.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
 
-func (InlineKeyboardMarkup) WriteJSON(j *json.Stream)        {}
-func (InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error { return nil }
+func (InlineKeyboardMarkup) WriteJSON(j *json.Stream)    {}
+func (InlineKeyboardMarkup) ReadJSON(i *json.Iter) error { return nil }
 
-func (InlineQueryResult) WriteJSON(j *json.Stream)        {}
-func (InlineQueryResult) ReadJSON(i *json.Iterator) error { return nil }
+func (InlineQueryResult) WriteJSON(j *json.Stream)    {}
+func (InlineQueryResult) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s InputMedia) WriteJSON(j *json.Stream) {
@@ -4866,12 +4866,12 @@ func (s InputMedia) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads InputMedia from json stream.
-func (s *InputMedia) ReadJSON(i *json.Iterator) error {
+func (s *InputMedia) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode InputMedia to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -4908,16 +4908,16 @@ func (s Invoice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Invoice from json stream.
-func (s *Invoice) ReadJSON(i *json.Iterator) error {
+func (s *Invoice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Invoice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "currency":
 			if err := func() error {
-				s.Currency = string(i.ReadString())
+				s.Currency = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4926,7 +4926,7 @@ func (s *Invoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
-				s.Description = string(i.ReadString())
+				s.Description = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4935,7 +4935,7 @@ func (s *Invoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_parameter":
 			if err := func() error {
-				s.StartParameter = string(i.ReadString())
+				s.StartParameter = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4944,7 +4944,7 @@ func (s *Invoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4953,7 +4953,7 @@ func (s *Invoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total_amount":
 			if err := func() error {
-				s.TotalAmount = int(i.ReadInt())
+				s.TotalAmount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -4986,16 +4986,16 @@ func (s LabeledPrice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads LabeledPrice from json stream.
-func (s *LabeledPrice) ReadJSON(i *json.Iterator) error {
+func (s *LabeledPrice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode LabeledPrice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "amount":
 			if err := func() error {
-				s.Amount = int(i.ReadInt())
+				s.Amount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5004,7 +5004,7 @@ func (s *LabeledPrice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "label":
 			if err := func() error {
-				s.Label = string(i.ReadString())
+				s.Label = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5034,12 +5034,12 @@ func (s LeaveChat) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads LeaveChat from json stream.
-func (s *LeaveChat) ReadJSON(i *json.Iterator) error {
+func (s *LeaveChat) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode LeaveChat to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -5098,12 +5098,12 @@ func (s Location) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Location from json stream.
-func (s *Location) ReadJSON(i *json.Iterator) error {
+func (s *Location) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Location to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "heading":
 			if err := func() error {
@@ -5131,7 +5131,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		case "latitude":
 			if err := func() error {
-				s.Latitude = float64(i.ReadFloat64())
+				s.Latitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5152,7 +5152,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		case "longitude":
 			if err := func() error {
-				s.Longitude = float64(i.ReadFloat64())
+				s.Longitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5203,16 +5203,16 @@ func (s MaskPosition) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads MaskPosition from json stream.
-func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
+func (s *MaskPosition) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode MaskPosition to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "point":
 			if err := func() error {
-				s.Point = string(i.ReadString())
+				s.Point = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5221,7 +5221,7 @@ func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scale":
 			if err := func() error {
-				s.Scale = float64(i.ReadFloat64())
+				s.Scale = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5230,7 +5230,7 @@ func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "x_shift":
 			if err := func() error {
-				s.XShift = float64(i.ReadFloat64())
+				s.XShift = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5239,7 +5239,7 @@ func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "y_shift":
 			if err := func() error {
-				s.YShift = float64(i.ReadFloat64())
+				s.YShift = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5577,12 +5577,12 @@ func (s Message) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Message from json stream.
-func (s *Message) ReadJSON(i *json.Iterator) error {
+func (s *Message) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Message to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "animation":
 			if err := func() error {
@@ -5636,7 +5636,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -5716,7 +5716,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "date":
 			if err := func() error {
-				s.Date = int(i.ReadInt())
+				s.Date = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -5775,7 +5775,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Entities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -5975,7 +5975,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6010,7 +6010,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.NewChatMembers = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem User
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -6037,7 +6037,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.NewChatPhoto = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PhotoSize
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -6088,7 +6088,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Photo = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PhotoSize
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -6390,16 +6390,16 @@ func (s MessageAutoDeleteTimerChanged) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads MessageAutoDeleteTimerChanged from json stream.
-func (s *MessageAutoDeleteTimerChanged) ReadJSON(i *json.Iterator) error {
+func (s *MessageAutoDeleteTimerChanged) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode MessageAutoDeleteTimerChanged to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "message_auto_delete_time":
 			if err := func() error {
-				s.MessageAutoDeleteTime = int(i.ReadInt())
+				s.MessageAutoDeleteTime = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6450,12 +6450,12 @@ func (s MessageEntity) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads MessageEntity from json stream.
-func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
+func (s *MessageEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode MessageEntity to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "language":
 			if err := func() error {
@@ -6471,7 +6471,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "length":
 			if err := func() error {
-				s.Length = int(i.ReadInt())
+				s.Length = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6480,7 +6480,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "offset":
 			if err := func() error {
-				s.Offset = int(i.ReadInt())
+				s.Offset = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6489,7 +6489,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = string(i.ReadString())
+				s.Type = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6537,19 +6537,19 @@ func (o OptAnimation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Animation from json iterator.
-func (o *OptAnimation) ReadJSON(i *json.Iterator) error {
+func (o *OptAnimation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptAnimation to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAnimation", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptAnimation", i.WhatIsNext())
 	}
 }
 
@@ -6559,19 +6559,19 @@ func (o OptAudio) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Audio from json iterator.
-func (o *OptAudio) ReadJSON(i *json.Iterator) error {
+func (o *OptAudio) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptAudio to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAudio", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptAudio", i.WhatIsNext())
 	}
 }
 
@@ -6581,17 +6581,17 @@ func (o OptBool) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of bool from json iterator.
-func (o *OptBool) ReadJSON(i *json.Iterator) error {
+func (o *OptBool) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptBool to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.BoolValue:
+	case json.Bool:
 		o.Set = true
-		o.Value = bool(i.ReadBool())
+		o.Value = bool(i.Bool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBool", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptBool", i.WhatIsNext())
 	}
 }
 
@@ -6601,19 +6601,19 @@ func (o OptChatLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ChatLocation from json iterator.
-func (o *OptChatLocation) ReadJSON(i *json.Iterator) error {
+func (o *OptChatLocation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptChatLocation to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatLocation", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptChatLocation", i.WhatIsNext())
 	}
 }
 
@@ -6623,19 +6623,19 @@ func (o OptChatPermissions) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ChatPermissions from json iterator.
-func (o *OptChatPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptChatPermissions) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptChatPermissions to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatPermissions", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptChatPermissions", i.WhatIsNext())
 	}
 }
 
@@ -6645,19 +6645,19 @@ func (o OptChatPhoto) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ChatPhoto from json iterator.
-func (o *OptChatPhoto) ReadJSON(i *json.Iterator) error {
+func (o *OptChatPhoto) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptChatPhoto to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatPhoto", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptChatPhoto", i.WhatIsNext())
 	}
 }
 
@@ -6667,19 +6667,19 @@ func (o OptContact) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Contact from json iterator.
-func (o *OptContact) ReadJSON(i *json.Iterator) error {
+func (o *OptContact) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptContact to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptContact", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptContact", i.WhatIsNext())
 	}
 }
 
@@ -6689,19 +6689,19 @@ func (o OptDice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Dice from json iterator.
-func (o *OptDice) ReadJSON(i *json.Iterator) error {
+func (o *OptDice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptDice to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDice", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptDice", i.WhatIsNext())
 	}
 }
 
@@ -6711,19 +6711,19 @@ func (o OptDocument) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Document from json iterator.
-func (o *OptDocument) ReadJSON(i *json.Iterator) error {
+func (o *OptDocument) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptDocument to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDocument", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptDocument", i.WhatIsNext())
 	}
 }
 
@@ -6733,17 +6733,17 @@ func (o OptFloat64) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of float64 from json iterator.
-func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
+func (o *OptFloat64) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.NumberValue:
+	case json.Number:
 		o.Set = true
-		o.Value = float64(i.ReadFloat64())
+		o.Value = float64(i.Float64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFloat64", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptFloat64", i.WhatIsNext())
 	}
 }
 
@@ -6753,19 +6753,19 @@ func (o OptGame) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Game from json iterator.
-func (o *OptGame) ReadJSON(i *json.Iterator) error {
+func (o *OptGame) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptGame to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGame", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptGame", i.WhatIsNext())
 	}
 }
 
@@ -6774,16 +6774,16 @@ func (o OptInlineKeyboardMarkup) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of InlineKeyboardMarkup from json iterator.
-func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
+func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptInlineKeyboardMarkup to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.StringValue:
+	case json.String:
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInlineKeyboardMarkup", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptInlineKeyboardMarkup", i.WhatIsNext())
 	}
 }
 
@@ -6793,17 +6793,17 @@ func (o OptInt) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of int from json iterator.
-func (o *OptInt) ReadJSON(i *json.Iterator) error {
+func (o *OptInt) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptInt to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.NumberValue:
+	case json.Number:
 		o.Set = true
-		o.Value = int(i.ReadInt())
+		o.Value = int(i.Int())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptInt", i.WhatIsNext())
 	}
 }
 
@@ -6813,17 +6813,17 @@ func (o OptInt64) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of int64 from json iterator.
-func (o *OptInt64) ReadJSON(i *json.Iterator) error {
+func (o *OptInt64) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptInt64 to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.NumberValue:
+	case json.Number:
 		o.Set = true
-		o.Value = int64(i.ReadInt64())
+		o.Value = int64(i.Int64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt64", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptInt64", i.WhatIsNext())
 	}
 }
 
@@ -6833,19 +6833,19 @@ func (o OptInvoice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Invoice from json iterator.
-func (o *OptInvoice) ReadJSON(i *json.Iterator) error {
+func (o *OptInvoice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptInvoice to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInvoice", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptInvoice", i.WhatIsNext())
 	}
 }
 
@@ -6855,19 +6855,19 @@ func (o OptLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Location from json iterator.
-func (o *OptLocation) ReadJSON(i *json.Iterator) error {
+func (o *OptLocation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptLocation to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptLocation", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptLocation", i.WhatIsNext())
 	}
 }
 
@@ -6877,19 +6877,19 @@ func (o OptMaskPosition) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of MaskPosition from json iterator.
-func (o *OptMaskPosition) ReadJSON(i *json.Iterator) error {
+func (o *OptMaskPosition) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptMaskPosition to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMaskPosition", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptMaskPosition", i.WhatIsNext())
 	}
 }
 
@@ -6899,19 +6899,19 @@ func (o OptMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Message from json iterator.
-func (o *OptMessage) ReadJSON(i *json.Iterator) error {
+func (o *OptMessage) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptMessage to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMessage", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptMessage", i.WhatIsNext())
 	}
 }
 
@@ -6921,19 +6921,19 @@ func (o OptMessageAutoDeleteTimerChanged) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of MessageAutoDeleteTimerChanged from json iterator.
-func (o *OptMessageAutoDeleteTimerChanged) ReadJSON(i *json.Iterator) error {
+func (o *OptMessageAutoDeleteTimerChanged) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptMessageAutoDeleteTimerChanged to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMessageAutoDeleteTimerChanged", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptMessageAutoDeleteTimerChanged", i.WhatIsNext())
 	}
 }
 
@@ -6943,19 +6943,19 @@ func (o OptOrderInfo) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of OrderInfo from json iterator.
-func (o *OptOrderInfo) ReadJSON(i *json.Iterator) error {
+func (o *OptOrderInfo) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptOrderInfo to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrderInfo", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptOrderInfo", i.WhatIsNext())
 	}
 }
 
@@ -6965,19 +6965,19 @@ func (o OptPassportData) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of PassportData from json iterator.
-func (o *OptPassportData) ReadJSON(i *json.Iterator) error {
+func (o *OptPassportData) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptPassportData to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPassportData", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptPassportData", i.WhatIsNext())
 	}
 }
 
@@ -6987,19 +6987,19 @@ func (o OptPassportFile) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of PassportFile from json iterator.
-func (o *OptPassportFile) ReadJSON(i *json.Iterator) error {
+func (o *OptPassportFile) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptPassportFile to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPassportFile", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptPassportFile", i.WhatIsNext())
 	}
 }
 
@@ -7009,19 +7009,19 @@ func (o OptPhotoSize) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of PhotoSize from json iterator.
-func (o *OptPhotoSize) ReadJSON(i *json.Iterator) error {
+func (o *OptPhotoSize) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptPhotoSize to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPhotoSize", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptPhotoSize", i.WhatIsNext())
 	}
 }
 
@@ -7031,19 +7031,19 @@ func (o OptPoll) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Poll from json iterator.
-func (o *OptPoll) ReadJSON(i *json.Iterator) error {
+func (o *OptPoll) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptPoll to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPoll", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptPoll", i.WhatIsNext())
 	}
 }
 
@@ -7053,19 +7053,19 @@ func (o OptProximityAlertTriggered) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ProximityAlertTriggered from json iterator.
-func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
+func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptProximityAlertTriggered to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProximityAlertTriggered", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptProximityAlertTriggered", i.WhatIsNext())
 	}
 }
 
@@ -7075,19 +7075,19 @@ func (o OptResponse) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Response from json iterator.
-func (o *OptResponse) ReadJSON(i *json.Iterator) error {
+func (o *OptResponse) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptResponse to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptResponse", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptResponse", i.WhatIsNext())
 	}
 }
 
@@ -7097,19 +7097,19 @@ func (o OptShippingAddress) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ShippingAddress from json iterator.
-func (o *OptShippingAddress) ReadJSON(i *json.Iterator) error {
+func (o *OptShippingAddress) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptShippingAddress to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptShippingAddress", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptShippingAddress", i.WhatIsNext())
 	}
 }
 
@@ -7119,19 +7119,19 @@ func (o OptSticker) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Sticker from json iterator.
-func (o *OptSticker) ReadJSON(i *json.Iterator) error {
+func (o *OptSticker) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptSticker to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSticker", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptSticker", i.WhatIsNext())
 	}
 }
 
@@ -7141,17 +7141,17 @@ func (o OptString) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptString) ReadJSON(i *json.Iterator) error {
+func (o *OptString) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.StringValue:
+	case json.String:
 		o.Set = true
-		o.Value = string(i.ReadString())
+		o.Value = string(i.Str())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptString", i.WhatIsNext())
 	}
 }
 
@@ -7161,19 +7161,19 @@ func (o OptSuccessfulPayment) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of SuccessfulPayment from json iterator.
-func (o *OptSuccessfulPayment) ReadJSON(i *json.Iterator) error {
+func (o *OptSuccessfulPayment) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptSuccessfulPayment to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSuccessfulPayment", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptSuccessfulPayment", i.WhatIsNext())
 	}
 }
 
@@ -7183,12 +7183,12 @@ func (o OptURL) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of url.URL from json iterator.
-func (o *OptURL) ReadJSON(i *json.Iterator) error {
+func (o *OptURL) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptURL to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.StringValue:
+	case json.String:
 		o.Set = true
 		v, err := json.ReadURI(i)
 		if err != nil {
@@ -7197,7 +7197,7 @@ func (o *OptURL) ReadJSON(i *json.Iterator) error {
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptURL", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptURL", i.WhatIsNext())
 	}
 }
 
@@ -7207,19 +7207,19 @@ func (o OptUser) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of User from json iterator.
-func (o *OptUser) ReadJSON(i *json.Iterator) error {
+func (o *OptUser) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptUser to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptUser", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptUser", i.WhatIsNext())
 	}
 }
 
@@ -7229,19 +7229,19 @@ func (o OptVenue) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Venue from json iterator.
-func (o *OptVenue) ReadJSON(i *json.Iterator) error {
+func (o *OptVenue) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVenue to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVenue", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVenue", i.WhatIsNext())
 	}
 }
 
@@ -7251,19 +7251,19 @@ func (o OptVideo) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Video from json iterator.
-func (o *OptVideo) ReadJSON(i *json.Iterator) error {
+func (o *OptVideo) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVideo to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVideo", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVideo", i.WhatIsNext())
 	}
 }
 
@@ -7273,19 +7273,19 @@ func (o OptVideoNote) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of VideoNote from json iterator.
-func (o *OptVideoNote) ReadJSON(i *json.Iterator) error {
+func (o *OptVideoNote) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVideoNote to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVideoNote", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVideoNote", i.WhatIsNext())
 	}
 }
 
@@ -7295,19 +7295,19 @@ func (o OptVoice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of Voice from json iterator.
-func (o *OptVoice) ReadJSON(i *json.Iterator) error {
+func (o *OptVoice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVoice to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVoice", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVoice", i.WhatIsNext())
 	}
 }
 
@@ -7317,19 +7317,19 @@ func (o OptVoiceChatEnded) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of VoiceChatEnded from json iterator.
-func (o *OptVoiceChatEnded) ReadJSON(i *json.Iterator) error {
+func (o *OptVoiceChatEnded) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVoiceChatEnded to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVoiceChatEnded", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatEnded", i.WhatIsNext())
 	}
 }
 
@@ -7339,19 +7339,19 @@ func (o OptVoiceChatParticipantsInvited) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of VoiceChatParticipantsInvited from json iterator.
-func (o *OptVoiceChatParticipantsInvited) ReadJSON(i *json.Iterator) error {
+func (o *OptVoiceChatParticipantsInvited) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVoiceChatParticipantsInvited to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVoiceChatParticipantsInvited", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatParticipantsInvited", i.WhatIsNext())
 	}
 }
 
@@ -7361,19 +7361,19 @@ func (o OptVoiceChatScheduled) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of VoiceChatScheduled from json iterator.
-func (o *OptVoiceChatScheduled) ReadJSON(i *json.Iterator) error {
+func (o *OptVoiceChatScheduled) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		fmt.Errorf(`invalid: unable to decode OptVoiceChatScheduled to nil`)
 	}
 	switch i.WhatIsNext() {
-	case json.ObjectValue:
+	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVoiceChatScheduled", json.TypeStr(i.WhatIsNext()))
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatScheduled", i.WhatIsNext())
 	}
 }
 
@@ -7406,12 +7406,12 @@ func (s OrderInfo) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads OrderInfo from json stream.
-func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
+func (s *OrderInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode OrderInfo to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "email":
 			if err := func() error {
@@ -7494,12 +7494,12 @@ func (s PassportData) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PassportData from json stream.
-func (s *PassportData) ReadJSON(i *json.Iterator) error {
+func (s *PassportData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PassportData to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "credentials":
 			if err := func() error {
@@ -7516,7 +7516,7 @@ func (s *PassportData) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Data = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem EncryptedPassportElement
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -7559,12 +7559,12 @@ func (s PassportElementError) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PassportElementError from json stream.
-func (s *PassportElementError) ReadJSON(i *json.Iterator) error {
+func (s *PassportElementError) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PassportElementError to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -7598,16 +7598,16 @@ func (s PassportFile) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PassportFile from json stream.
-func (s *PassportFile) ReadJSON(i *json.Iterator) error {
+func (s *PassportFile) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PassportFile to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "file_date":
 			if err := func() error {
-				s.FileDate = int(i.ReadInt())
+				s.FileDate = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7616,7 +7616,7 @@ func (s *PassportFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7625,7 +7625,7 @@ func (s *PassportFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
-				s.FileSize = int(i.ReadInt())
+				s.FileSize = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7634,7 +7634,7 @@ func (s *PassportFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7678,16 +7678,16 @@ func (s PhotoSize) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PhotoSize from json stream.
-func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
+func (s *PhotoSize) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PhotoSize to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7708,7 +7708,7 @@ func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7717,7 +7717,7 @@ func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
-				s.Height = int(i.ReadInt())
+				s.Height = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7726,7 +7726,7 @@ func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
-				s.Width = int(i.ReadInt())
+				s.Width = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7764,12 +7764,12 @@ func (s PinChatMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PinChatMessage from json stream.
-func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
+func (s *PinChatMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PinChatMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -7796,7 +7796,7 @@ func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7886,16 +7886,16 @@ func (s Poll) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Poll from json stream.
-func (s *Poll) ReadJSON(i *json.Iterator) error {
+func (s *Poll) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Poll to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allows_multiple_answers":
 			if err := func() error {
-				s.AllowsMultipleAnswers = bool(i.ReadBool())
+				s.AllowsMultipleAnswers = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7942,7 +7942,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.ExplanationEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -7967,7 +7967,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
-				s.ID = string(i.ReadString())
+				s.ID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7976,7 +7976,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_anonymous":
 			if err := func() error {
-				s.IsAnonymous = bool(i.ReadBool())
+				s.IsAnonymous = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7985,7 +7985,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_closed":
 			if err := func() error {
-				s.IsClosed = bool(i.ReadBool())
+				s.IsClosed = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8008,7 +8008,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Options = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PollOption
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -8033,7 +8033,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "question":
 			if err := func() error {
-				s.Question = string(i.ReadString())
+				s.Question = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8042,7 +8042,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total_voter_count":
 			if err := func() error {
-				s.TotalVoterCount = int(i.ReadInt())
+				s.TotalVoterCount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8051,7 +8051,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = string(i.ReadString())
+				s.Type = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8084,16 +8084,16 @@ func (s PollOption) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PollOption from json stream.
-func (s *PollOption) ReadJSON(i *json.Iterator) error {
+func (s *PollOption) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PollOption to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "text":
 			if err := func() error {
-				s.Text = string(i.ReadString())
+				s.Text = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8102,7 +8102,7 @@ func (s *PollOption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "voter_count":
 			if err := func() error {
-				s.VoterCount = int(i.ReadInt())
+				s.VoterCount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8190,12 +8190,12 @@ func (s PromoteChatMember) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads PromoteChatMember from json stream.
-func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
+func (s *PromoteChatMember) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode PromoteChatMember to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "can_change_info":
 			if err := func() error {
@@ -8342,7 +8342,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8378,16 +8378,16 @@ func (s ProximityAlertTriggered) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ProximityAlertTriggered from json stream.
-func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
+func (s *ProximityAlertTriggered) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ProximityAlertTriggered to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "distance":
 			if err := func() error {
-				s.Distance = int(i.ReadInt())
+				s.Distance = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8446,12 +8446,12 @@ func (s Response) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Response from json stream.
-func (s *Response) ReadJSON(i *json.Iterator) error {
+func (s *Response) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Response to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "migrate_to_chat_id":
 			if err := func() error {
@@ -8511,12 +8511,12 @@ func (s RestrictChatMember) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads RestrictChatMember from json stream.
-func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
+func (s *RestrictChatMember) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode RestrictChatMember to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -8554,7 +8554,7 @@ func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8589,16 +8589,16 @@ func (s Result) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Result from json stream.
-func (s *Result) ReadJSON(i *json.Iterator) error {
+func (s *Result) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Result to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8645,16 +8645,16 @@ func (s ResultMsg) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ResultMsg from json stream.
-func (s *ResultMsg) ReadJSON(i *json.Iterator) error {
+func (s *ResultMsg) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ResultMsg to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8701,16 +8701,16 @@ func (s ResultUsr) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ResultUsr from json stream.
-func (s *ResultUsr) ReadJSON(i *json.Iterator) error {
+func (s *ResultUsr) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ResultUsr to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "ok":
 			if err := func() error {
-				s.Ok = bool(i.ReadBool())
+				s.Ok = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8755,12 +8755,12 @@ func (s RevokeChatInviteLink) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads RevokeChatInviteLink from json stream.
-func (s *RevokeChatInviteLink) ReadJSON(i *json.Iterator) error {
+func (s *RevokeChatInviteLink) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode RevokeChatInviteLink to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -8775,7 +8775,7 @@ func (s *RevokeChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		case "invite_link":
 			if err := func() error {
-				s.InviteLink = string(i.ReadString())
+				s.InviteLink = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8865,12 +8865,12 @@ func (s SendAnimation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendAnimation from json stream.
-func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
+func (s *SendAnimation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendAnimation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -8886,7 +8886,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "animation":
 			if err := func() error {
-				s.Animation = string(i.ReadString())
+				s.Animation = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -8909,7 +8909,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -9110,12 +9110,12 @@ func (s SendAudio) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendAudio from json stream.
-func (s *SendAudio) ReadJSON(i *json.Iterator) error {
+func (s *SendAudio) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendAudio to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -9131,7 +9131,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "audio":
 			if err := func() error {
-				s.Audio = string(i.ReadString())
+				s.Audio = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9154,7 +9154,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -9298,16 +9298,16 @@ func (s SendChatAction) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendChatAction from json stream.
-func (s *SendChatAction) ReadJSON(i *json.Iterator) error {
+func (s *SendChatAction) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendChatAction to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "action":
 			if err := func() error {
-				s.Action = string(i.ReadString())
+				s.Action = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9379,12 +9379,12 @@ func (s SendContact) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendContact from json stream.
-func (s *SendContact) ReadJSON(i *json.Iterator) error {
+func (s *SendContact) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendContact to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -9423,7 +9423,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "first_name":
 			if err := func() error {
-				s.FirstName = string(i.ReadString())
+				s.FirstName = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9444,7 +9444,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phone_number":
 			if err := func() error {
-				s.PhoneNumber = string(i.ReadString())
+				s.PhoneNumber = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9518,12 +9518,12 @@ func (s SendDice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendDice from json stream.
-func (s *SendDice) ReadJSON(i *json.Iterator) error {
+func (s *SendDice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendDice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -9657,12 +9657,12 @@ func (s SendDocument) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendDocument from json stream.
-func (s *SendDocument) ReadJSON(i *json.Iterator) error {
+func (s *SendDocument) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendDocument to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -9692,7 +9692,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -9752,7 +9752,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "document":
 			if err := func() error {
-				s.Document = string(i.ReadString())
+				s.Document = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9841,12 +9841,12 @@ func (s SendGame) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendGame from json stream.
-func (s *SendGame) ReadJSON(i *json.Iterator) error {
+func (s *SendGame) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendGame to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -9862,7 +9862,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		case "chat_id":
 			if err := func() error {
-				s.ChatID = int(i.ReadInt())
+				s.ChatID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9883,7 +9883,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		case "game_short_name":
 			if err := func() error {
-				s.GameShortName = string(i.ReadString())
+				s.GameShortName = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10064,12 +10064,12 @@ func (s SendInvoice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendInvoice from json stream.
-func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
+func (s *SendInvoice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendInvoice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -10096,7 +10096,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "currency":
 			if err := func() error {
-				s.Currency = string(i.ReadString())
+				s.Currency = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10105,7 +10105,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
-				s.Description = string(i.ReadString())
+				s.Description = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10198,7 +10198,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "payload":
 			if err := func() error {
-				s.Payload = string(i.ReadString())
+				s.Payload = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10257,7 +10257,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Prices = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem LabeledPrice
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -10294,7 +10294,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "provider_token":
 			if err := func() error {
-				s.ProviderToken = string(i.ReadString())
+				s.ProviderToken = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10365,10 +10365,10 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.SuggestedTipAmounts = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem int
 					if err := func() error {
-						elem = int(i.ReadInt())
+						elem = int(i.Int())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -10388,7 +10388,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10459,12 +10459,12 @@ func (s SendLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendLocation from json stream.
-func (s *SendLocation) ReadJSON(i *json.Iterator) error {
+func (s *SendLocation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendLocation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -10527,7 +10527,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "latitude":
 			if err := func() error {
-				s.Latitude = float64(i.ReadFloat64())
+				s.Latitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10548,7 +10548,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "longitude":
 			if err := func() error {
-				s.Longitude = float64(i.ReadFloat64())
+				s.Longitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10627,12 +10627,12 @@ func (s SendMediaGroup) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendMediaGroup from json stream.
-func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
+func (s *SendMediaGroup) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendMediaGroup to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -10673,10 +10673,10 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Media = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem string
 					if err := func() error {
-						elem = string(i.ReadString())
+						elem = string(i.Str())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -10769,12 +10769,12 @@ func (s SendMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendMessage from json stream.
-func (s *SendMessage) ReadJSON(i *json.Iterator) error {
+func (s *SendMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -10827,7 +10827,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Entities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -10876,7 +10876,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text":
 			if err := func() error {
-				s.Text = string(i.ReadString())
+				s.Text = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10946,12 +10946,12 @@ func (s SendPhoto) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendPhoto from json stream.
-func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
+func (s *SendPhoto) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendPhoto to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -10981,7 +10981,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -11041,7 +11041,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo":
 			if err := func() error {
-				s.Photo = string(i.ReadString())
+				s.Photo = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11168,12 +11168,12 @@ func (s SendPoll) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendPoll from json stream.
-func (s *SendPoll) ReadJSON(i *json.Iterator) error {
+func (s *SendPoll) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendPoll to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -11262,7 +11262,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.ExplanationEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -11337,10 +11337,10 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Options = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem string
 					if err := func() error {
-						elem = string(i.ReadString())
+						elem = string(i.Str())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -11360,7 +11360,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "question":
 			if err := func() error {
-				s.Question = string(i.ReadString())
+				s.Question = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11432,12 +11432,12 @@ func (s SendSticker) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendSticker from json stream.
-func (s *SendSticker) ReadJSON(i *json.Iterator) error {
+func (s *SendSticker) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendSticker to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -11488,7 +11488,7 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sticker":
 			if err := func() error {
-				s.Sticker = string(i.ReadString())
+				s.Sticker = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11565,16 +11565,16 @@ func (s SendVenue) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendVenue from json stream.
-func (s *SendVenue) ReadJSON(i *json.Iterator) error {
+func (s *SendVenue) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendVenue to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "address":
 			if err := func() error {
-				s.Address = string(i.ReadString())
+				s.Address = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11666,7 +11666,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "latitude":
 			if err := func() error {
-				s.Latitude = float64(i.ReadFloat64())
+				s.Latitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11675,7 +11675,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "longitude":
 			if err := func() error {
-				s.Longitude = float64(i.ReadFloat64())
+				s.Longitude = float64(i.Float64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11696,7 +11696,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11791,12 +11791,12 @@ func (s SendVideo) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendVideo from json stream.
-func (s *SendVideo) ReadJSON(i *json.Iterator) error {
+func (s *SendVideo) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendVideo to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -11826,7 +11826,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -11946,7 +11946,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "video":
 			if err := func() error {
-				s.Video = string(i.ReadString())
+				s.Video = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12021,12 +12021,12 @@ func (s SendVideoNote) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendVideoNote from json stream.
-func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
+func (s *SendVideoNote) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendVideoNote to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -12113,7 +12113,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "video_note":
 			if err := func() error {
-				s.VideoNote = string(i.ReadString())
+				s.VideoNote = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12188,12 +12188,12 @@ func (s SendVoice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SendVoice from json stream.
-func (s *SendVoice) ReadJSON(i *json.Iterator) error {
+func (s *SendVoice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SendVoice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
@@ -12223,7 +12223,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.CaptionEntities = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem MessageEntity
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -12307,7 +12307,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "voice":
 			if err := func() error {
-				s.Voice = string(i.ReadString())
+				s.Voice = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12343,12 +12343,12 @@ func (s SetChatAdministratorCustomTitle) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatAdministratorCustomTitle from json stream.
-func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iterator) error {
+func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatAdministratorCustomTitle to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12363,7 +12363,7 @@ func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iterator) error {
 			return true
 		case "custom_title":
 			if err := func() error {
-				s.CustomTitle = string(i.ReadString())
+				s.CustomTitle = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12372,7 +12372,7 @@ func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12407,12 +12407,12 @@ func (s SetChatDescription) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatDescription from json stream.
-func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
+func (s *SetChatDescription) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatDescription to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12463,12 +12463,12 @@ func (s SetChatPermissions) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatPermissions from json stream.
-func (s *SetChatPermissions) ReadJSON(i *json.Iterator) error {
+func (s *SetChatPermissions) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatPermissions to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12518,12 +12518,12 @@ func (s SetChatPhoto) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatPhoto from json stream.
-func (s *SetChatPhoto) ReadJSON(i *json.Iterator) error {
+func (s *SetChatPhoto) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatPhoto to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12538,7 +12538,7 @@ func (s *SetChatPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo":
 			if err := func() error {
-				s.Photo = string(i.ReadString())
+				s.Photo = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12571,12 +12571,12 @@ func (s SetChatStickerSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatStickerSet from json stream.
-func (s *SetChatStickerSet) ReadJSON(i *json.Iterator) error {
+func (s *SetChatStickerSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatStickerSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12591,7 +12591,7 @@ func (s *SetChatStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sticker_set_name":
 			if err := func() error {
-				s.StickerSetName = string(i.ReadString())
+				s.StickerSetName = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12624,12 +12624,12 @@ func (s SetChatTitle) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetChatTitle from json stream.
-func (s *SetChatTitle) ReadJSON(i *json.Iterator) error {
+func (s *SetChatTitle) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetChatTitle to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12644,7 +12644,7 @@ func (s *SetChatTitle) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12702,12 +12702,12 @@ func (s SetGameScore) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetGameScore from json stream.
-func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
+func (s *SetGameScore) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetGameScore to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -12771,7 +12771,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "score":
 			if err := func() error {
-				s.Score = int(i.ReadInt())
+				s.Score = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12780,7 +12780,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12827,18 +12827,18 @@ func (s SetMyCommands) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetMyCommands from json stream.
-func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
+func (s *SetMyCommands) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetMyCommands to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "commands":
 			if err := func() error {
 				s.Commands = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem BotCommand
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -12925,18 +12925,18 @@ func (s SetPassportDataErrors) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetPassportDataErrors from json stream.
-func (s *SetPassportDataErrors) ReadJSON(i *json.Iterator) error {
+func (s *SetPassportDataErrors) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetPassportDataErrors to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "errors":
 			if err := func() error {
 				s.Errors = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem PassportElementError
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -12961,7 +12961,7 @@ func (s *SetPassportDataErrors) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12994,16 +12994,16 @@ func (s SetStickerPositionInSet) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetStickerPositionInSet from json stream.
-func (s *SetStickerPositionInSet) ReadJSON(i *json.Iterator) error {
+func (s *SetStickerPositionInSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSet to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "position":
 			if err := func() error {
-				s.Position = int(i.ReadInt())
+				s.Position = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13012,7 +13012,7 @@ func (s *SetStickerPositionInSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sticker":
 			if err := func() error {
-				s.Sticker = string(i.ReadString())
+				s.Sticker = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13050,16 +13050,16 @@ func (s SetStickerSetThumb) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetStickerSetThumb from json stream.
-func (s *SetStickerSetThumb) ReadJSON(i *json.Iterator) error {
+func (s *SetStickerSetThumb) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetStickerSetThumb to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "name":
 			if err := func() error {
-				s.Name = string(i.ReadString())
+				s.Name = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13080,7 +13080,7 @@ func (s *SetStickerSetThumb) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13142,21 +13142,21 @@ func (s SetWebhook) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SetWebhook from json stream.
-func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
+func (s *SetWebhook) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SetWebhook to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
 				s.AllowedUpdates = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem string
 					if err := func() error {
-						elem = string(i.ReadString())
+						elem = string(i.Str())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -13273,16 +13273,16 @@ func (s ShippingAddress) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ShippingAddress from json stream.
-func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
+func (s *ShippingAddress) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ShippingAddress to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "city":
 			if err := func() error {
-				s.City = string(i.ReadString())
+				s.City = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13291,7 +13291,7 @@ func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "country_code":
 			if err := func() error {
-				s.CountryCode = string(i.ReadString())
+				s.CountryCode = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13300,7 +13300,7 @@ func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "post_code":
 			if err := func() error {
-				s.PostCode = string(i.ReadString())
+				s.PostCode = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13309,7 +13309,7 @@ func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
-				s.State = string(i.ReadString())
+				s.State = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13318,7 +13318,7 @@ func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "street_line1":
 			if err := func() error {
-				s.StreetLine1 = string(i.ReadString())
+				s.StreetLine1 = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13327,7 +13327,7 @@ func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "street_line2":
 			if err := func() error {
-				s.StreetLine2 = string(i.ReadString())
+				s.StreetLine2 = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13370,16 +13370,16 @@ func (s ShippingOption) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads ShippingOption from json stream.
-func (s *ShippingOption) ReadJSON(i *json.Iterator) error {
+func (s *ShippingOption) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ShippingOption to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "id":
 			if err := func() error {
-				s.ID = string(i.ReadString())
+				s.ID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13390,7 +13390,7 @@ func (s *ShippingOption) ReadJSON(i *json.Iterator) error {
 			if err := func() error {
 				s.Prices = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem LabeledPrice
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -13415,7 +13415,7 @@ func (s *ShippingOption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13482,12 +13482,12 @@ func (s Sticker) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Sticker from json stream.
-func (s *Sticker) ReadJSON(i *json.Iterator) error {
+func (s *Sticker) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Sticker to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "emoji":
 			if err := func() error {
@@ -13503,7 +13503,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13524,7 +13524,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13533,7 +13533,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
-				s.Height = int(i.ReadInt())
+				s.Height = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13542,7 +13542,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_animated":
 			if err := func() error {
-				s.IsAnimated = bool(i.ReadBool())
+				s.IsAnimated = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13587,7 +13587,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
-				s.Width = int(i.ReadInt())
+				s.Width = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13634,12 +13634,12 @@ func (s StopMessageLiveLocation) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads StopMessageLiveLocation from json stream.
-func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
+func (s *StopMessageLiveLocation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode StopMessageLiveLocation to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -13727,12 +13727,12 @@ func (s StopPoll) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads StopPoll from json stream.
-func (s *StopPoll) ReadJSON(i *json.Iterator) error {
+func (s *StopPoll) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode StopPoll to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -13747,7 +13747,7 @@ func (s *StopPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
-				s.MessageID = int(i.ReadInt())
+				s.MessageID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13811,16 +13811,16 @@ func (s SuccessfulPayment) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads SuccessfulPayment from json stream.
-func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
+func (s *SuccessfulPayment) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode SuccessfulPayment to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "currency":
 			if err := func() error {
-				s.Currency = string(i.ReadString())
+				s.Currency = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13829,7 +13829,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "invoice_payload":
 			if err := func() error {
-				s.InvoicePayload = string(i.ReadString())
+				s.InvoicePayload = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13850,7 +13850,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "provider_payment_charge_id":
 			if err := func() error {
-				s.ProviderPaymentChargeID = string(i.ReadString())
+				s.ProviderPaymentChargeID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13871,7 +13871,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "telegram_payment_charge_id":
 			if err := func() error {
-				s.TelegramPaymentChargeID = string(i.ReadString())
+				s.TelegramPaymentChargeID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13880,7 +13880,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total_amount":
 			if err := func() error {
-				s.TotalAmount = int(i.ReadInt())
+				s.TotalAmount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13918,12 +13918,12 @@ func (s UnbanChatMember) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads UnbanChatMember from json stream.
-func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
+func (s *UnbanChatMember) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode UnbanChatMember to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -13950,7 +13950,7 @@ func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -13980,12 +13980,12 @@ func (s UnpinAllChatMessages) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads UnpinAllChatMessages from json stream.
-func (s *UnpinAllChatMessages) ReadJSON(i *json.Iterator) error {
+func (s *UnpinAllChatMessages) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode UnpinAllChatMessages to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -14026,12 +14026,12 @@ func (s UnpinChatMessage) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads UnpinChatMessage from json stream.
-func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
+func (s *UnpinChatMessage) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode UnpinChatMessage to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "chat_id":
 			if err := func() error {
@@ -14082,16 +14082,16 @@ func (s UploadStickerFile) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads UploadStickerFile from json stream.
-func (s *UploadStickerFile) ReadJSON(i *json.Iterator) error {
+func (s *UploadStickerFile) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode UploadStickerFile to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "png_sticker":
 			if err := func() error {
-				s.PNGSticker = string(i.ReadString())
+				s.PNGSticker = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14100,7 +14100,7 @@ func (s *UploadStickerFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
-				s.UserID = int(i.ReadInt())
+				s.UserID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14166,12 +14166,12 @@ func (s User) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads User from json stream.
-func (s *User) ReadJSON(i *json.Iterator) error {
+func (s *User) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode User to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "can_join_groups":
 			if err := func() error {
@@ -14199,7 +14199,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "first_name":
 			if err := func() error {
-				s.FirstName = string(i.ReadString())
+				s.FirstName = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14208,7 +14208,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
-				s.ID = int(i.ReadInt())
+				s.ID = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14217,7 +14217,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_bot":
 			if err := func() error {
-				s.IsBot = bool(i.ReadBool())
+				s.IsBot = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14321,16 +14321,16 @@ func (s Venue) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Venue from json stream.
-func (s *Venue) ReadJSON(i *json.Iterator) error {
+func (s *Venue) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Venue to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "address":
 			if err := func() error {
-				s.Address = string(i.ReadString())
+				s.Address = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14398,7 +14398,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
-				s.Title = string(i.ReadString())
+				s.Title = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14460,16 +14460,16 @@ func (s Video) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Video from json stream.
-func (s *Video) ReadJSON(i *json.Iterator) error {
+func (s *Video) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Video to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14478,7 +14478,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14511,7 +14511,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14520,7 +14520,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
-				s.Height = int(i.ReadInt())
+				s.Height = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14553,7 +14553,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
-				s.Width = int(i.ReadInt())
+				s.Width = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14602,16 +14602,16 @@ func (s VideoNote) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads VideoNote from json stream.
-func (s *VideoNote) ReadJSON(i *json.Iterator) error {
+func (s *VideoNote) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode VideoNote to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14620,7 +14620,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14641,7 +14641,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14650,7 +14650,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "length":
 			if err := func() error {
-				s.Length = int(i.ReadInt())
+				s.Length = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14708,16 +14708,16 @@ func (s Voice) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads Voice from json stream.
-func (s *Voice) ReadJSON(i *json.Iterator) error {
+func (s *Voice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode Voice to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14726,7 +14726,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_id":
 			if err := func() error {
-				s.FileID = string(i.ReadString())
+				s.FileID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14747,7 +14747,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_unique_id":
 			if err := func() error {
-				s.FileUniqueID = string(i.ReadString())
+				s.FileUniqueID = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14789,16 +14789,16 @@ func (s VoiceChatEnded) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads VoiceChatEnded from json stream.
-func (s *VoiceChatEnded) ReadJSON(i *json.Iterator) error {
+func (s *VoiceChatEnded) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode VoiceChatEnded to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "duration":
 			if err := func() error {
-				s.Duration = int(i.ReadInt())
+				s.Duration = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14837,18 +14837,18 @@ func (s VoiceChatParticipantsInvited) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads VoiceChatParticipantsInvited from json stream.
-func (s *VoiceChatParticipantsInvited) ReadJSON(i *json.Iterator) error {
+func (s *VoiceChatParticipantsInvited) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode VoiceChatParticipantsInvited to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "users":
 			if err := func() error {
 				s.Users = nil
 				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
+				i.Array(func(i *json.Iter) bool {
 					var elem User
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
@@ -14894,16 +14894,16 @@ func (s VoiceChatScheduled) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads VoiceChatScheduled from json stream.
-func (s *VoiceChatScheduled) ReadJSON(i *json.Iterator) error {
+func (s *VoiceChatScheduled) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode VoiceChatScheduled to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "start_date":
 			if err := func() error {
-				s.StartDate = int(i.ReadInt())
+				s.StartDate = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -14930,12 +14930,12 @@ func (s VoiceChatStarted) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads VoiceChatStarted from json stream.
-func (s *VoiceChatStarted) ReadJSON(i *json.Iterator) error {
+func (s *VoiceChatStarted) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode VoiceChatStarted to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		default:
 			i.Skip()

@@ -62,19 +62,19 @@ func (j JSON) Format() string {
 // Blank string is returned if there is no appropriate json type.
 func (j JSON) Type() string {
 	if j.t.IsNumeric() {
-		return "NumberValue"
+		return "Number"
 	}
 	if j.t.Is(KindArray) {
-		return "ArrayValue"
+		return "Array"
 	}
 	if j.t.Is(KindStruct) {
-		return "ObjectValue"
+		return "Object"
 	}
 	switch j.t.Primitive {
 	case Bool:
-		return "BoolValue"
+		return "Bool"
 	case String, Time, Duration, UUID, IP, URL:
-		return "StringValue"
+		return "String"
 	default:
 		return ""
 	}
@@ -126,5 +126,8 @@ func (j JSON) Read() string {
 	if j.f() == "" {
 		return ""
 	}
-	return "Read" + j.f()
+	if j.t.Primitive == String {
+		return "Str"
+	}
+	return j.f()
 }

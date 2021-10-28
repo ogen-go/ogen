@@ -1,14 +1,12 @@
 package json
 
 import (
-	"github.com/ogen-go/json"
+	"github.com/ogen-go/jir"
 )
 
-type Config = json.Config
-
-type API = json.API
+type API = jir.API
 
 var (
-	ConfigDefault = json.ConfigDefault
-	ConfigFastest = json.ConfigFastest
+	ConfigDefault = jir.Default
+	ConfigFastest = jir.Fastest
 )

@@ -4,17 +4,17 @@ import (
 	"io"
 	"sync"
 
-	"github.com/ogen-go/json"
+	"github.com/ogen-go/jir"
 )
 
-type Stream = json.Stream
+type Stream = jir.Stream
 
 func NewStream(w io.Writer) *Stream {
-	return json.NewStream(ConfigDefault, w, 1024)
+	return jir.NewStream(ConfigDefault, w, 1024)
 }
 
 func NewCustomStream(cfg API, out io.Writer, bufSize int) *Stream {
-	return json.NewStream(cfg, out, bufSize)
+	return jir.NewStream(cfg, out, bufSize)
 }
 
 var streamPool = sync.Pool{

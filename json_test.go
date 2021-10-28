@@ -17,12 +17,13 @@ import (
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	i := json.NewIterator()
+	i := json.GetIter()
 	i.ResetBytes(data)
+	defer json.PutIter(i)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	i.ReadMapCB(func(iterator *json.Iterator, s string) bool {
+	i.Object(func(iterator *json.Iter, s string) bool {
 		require.NoError(t, v.ReadJSON(i))
 		return true
 	})

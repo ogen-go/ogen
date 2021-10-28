@@ -15,7 +15,7 @@ if err := func() error {
 {{- $t := $.Type -}}
 {{ $.Var }} = nil
 var retErr error
-i.ReadArrayCB(func(i *json.Iterator) bool {
+i.Array(func(i *json.Iter) bool {
   var {{ $.NextVar }} {{ $t.Item.Go }}
   if err := func() error {
     {{- template "dec_json" sub_array_elem $ $t.Item }}

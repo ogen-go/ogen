@@ -304,7 +304,7 @@ func BenchmarkJSON(b *testing.B) {
 				var v techempower.HelloWorld
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.NewIterator()
+				j := json.GetIter()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
@@ -340,7 +340,7 @@ func BenchmarkJSON(b *testing.B) {
 				var v techempower.WorldObject
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.NewIterator()
+				j := json.GetIter()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)

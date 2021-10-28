@@ -3,26 +3,29 @@ package json
 import (
 	"sync"
 
-	"github.com/ogen-go/json"
+	"github.com/ogen-go/jir"
 )
 
-type Iterator = json.Iterator
+// Iter is jir.Iterator alias.
+type Iter = jir.Iterator
 
-func NewIterator() *Iterator {
-	return json.NewIterator(ConfigDefault)
+func newIter() *Iter {
+	return jir.NewIterator(ConfigDefault)
 }
 
 var iterPool = sync.Pool{
 	New: func() interface{} {
-		return NewIterator()
+		return newIter()
 	},
 }
 
-func GetIterator() *Iterator {
-	return iterPool.Get().(*Iterator)
+// GetIter gets iterator from pool.
+func GetIter() *Iter {
+	return iterPool.Get().(*Iter)
 }
 
-func PutIterator(i *Iterator) {
+// PutIter puts iterator to pool.
+func PutIter(i *Iter) {
 	i.Reset(nil)
 	i.ResetBytes(nil)
 	i.Error = nil

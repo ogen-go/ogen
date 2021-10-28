@@ -3,8 +3,6 @@ package json
 import (
 	"bytes"
 	std "encoding/json"
-
-	"github.com/ogen-go/json"
 )
 
 type RawMessage = std.RawMessage
@@ -21,12 +19,12 @@ func Unmarshal(data []byte, val interface{}) error {
 
 // Unmarshaler implements json reading.
 type Unmarshaler interface {
-	ReadJSON(i *json.Iterator) error
+	ReadJSON(i *Iter) error
 }
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	WriteJSON(s *json.Stream)
+	WriteJSON(s *Stream)
 }
 
 // Value represents a json value.

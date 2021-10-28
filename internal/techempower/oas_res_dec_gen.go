@@ -71,8 +71,8 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
@@ -105,8 +105,8 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WorldObject
@@ -139,8 +139,8 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response HelloWorld
@@ -173,8 +173,8 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
@@ -207,8 +207,8 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WorldObjects

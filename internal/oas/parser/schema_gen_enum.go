@@ -3,7 +3,7 @@ package parser
 import (
 	"encoding/json"
 
-	j "github.com/ogen-go/json"
+	"github.com/ogen-go/jir"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/oas"
@@ -38,73 +38,39 @@ var errNullValue = xerrors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
-		iter = j.ParseBytes(j.ConfigDefault, v)
+		iter = jir.ParseBytes(jir.Default, v)
 		next = iter.WhatIsNext()
 	)
-
-	if next == j.NilValue {
+	if next == jir.Nil {
 		return nil, errNullValue
 	}
-
-	str := func(t j.ValueType) string {
-		switch t {
-		case j.InvalidValue:
-			return "invalid"
-		case j.StringValue:
-			return "string"
-		case j.NumberValue:
-			return "number"
-		case j.NilValue:
-			return "null"
-		case j.BoolValue:
-			return "bool"
-		case j.ArrayValue:
-			return "array"
-		case j.ObjectValue:
-			return "object"
-		default:
-			return "unknown"
-		}
-	}
-
 	switch typ {
 	case oas.String:
-		if next != j.StringValue {
-			expect, actual := typ, str(next)
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+		if next != jir.String {
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.ReadString(), nil
+		return iter.Str(), nil
 	case oas.Integer:
-		if next != j.NumberValue {
-			expect, actual := typ, str(next)
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+		if next != jir.Number {
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-
 		if _, err := iter.ReadNumber().Float64(); err == nil {
-			expect, actual := typ, "float"
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-
 		return iter.ReadNumber().Int64()
 	case oas.Number:
-		if next != j.NumberValue {
-			expect, actual := typ, str(next)
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+		if next != jir.Number {
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-
 		if _, err := iter.ReadNumber().Int64(); err == nil {
-			expect, actual := typ, "int"
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-
 		return iter.ReadNumber().Float64()
 	case oas.Boolean:
-		if next != j.BoolValue {
-			expect, actual := typ, str(next)
-			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
+		if next != jir.Bool {
+			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-
-		return iter.ReadBool(), nil
+		return iter.Bool(), nil
 	default:
 		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
 	}

@@ -5,8 +5,8 @@ import (
 	"net"
 )
 
-func ReadIP(i *Iterator) (v net.IP, err error) {
-	v = net.ParseIP(i.ReadString())
+func ReadIP(i *Iter) (v net.IP, err error) {
+	v = net.ParseIP(i.Str())
 	if len(v) == 0 {
 		return nil, errors.New("bad ip format")
 	}

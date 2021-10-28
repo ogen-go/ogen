@@ -146,21 +146,21 @@ func BenchmarkUnmarshal(b *testing.B) {
 		b.Run("jsoniter", func(b *testing.B) {
 			d.Setup(b)
 
-			iter := NewIterator()
+			iter := newIter()
 			data := d.Bytes()
 
 			for i := 0; i < b.N; i++ {
 				iter.ResetBytes(data)
 
 				var v World
-				iter.ReadObjectCB(func(iter *Iterator, k string) bool {
+				iter.Object(func(iter *Iter, k string) bool {
 					switch k {
 					case "id":
-						v.ID = iter.ReadInt64()
+						v.ID = iter.Int64()
 					case "randomNumber":
-						v.RandomNumber = iter.ReadInt64()
+						v.RandomNumber = iter.Int64()
 					case "message":
-						v.Message = iter.ReadString()
+						v.Message = iter.Str()
 					default:
 						b.Errorf("unexpected key %s", k)
 						return false

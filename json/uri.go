@@ -4,8 +4,8 @@ import (
 	"net/url"
 )
 
-func ReadURI(i *Iterator) (v url.URL, err error) {
-	u, err := url.ParseRequestURI(i.ReadString())
+func ReadURI(i *Iter) (v url.URL, err error) {
+	u, err := url.ParseRequestURI(i.Str())
 	if err != nil {
 		return url.URL{}, err
 	}

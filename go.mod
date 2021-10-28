@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/go-chi/chi/v5 v5.0.5
 	github.com/google/uuid v1.3.0
+	github.com/ogen-go/jir v0.2.1-0.20211028212240-56b9c2fcc714
 	github.com/ogen-go/json v0.0.0-20211028115912-1018eae39492
 	github.com/stretchr/testify v1.7.0
 	github.com/valyala/fasthttp v1.31.0

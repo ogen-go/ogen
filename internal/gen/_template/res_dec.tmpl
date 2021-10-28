@@ -1,7 +1,7 @@
 {{ define "res_dec_json" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-i := json.GetIterator()
-defer json.PutIterator(i)
+i := json.GetIter()
+defer json.PutIter(i)
 i.ResetBytes(buf.Bytes())
 
 var response {{ $.Go }}

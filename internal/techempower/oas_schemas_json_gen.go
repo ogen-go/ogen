@@ -72,16 +72,16 @@ func (s HelloWorld) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads HelloWorld from json stream.
-func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
+func (s *HelloWorld) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode HelloWorld to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "message":
 			if err := func() error {
-				s.Message = string(i.ReadString())
+				s.Message = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -114,16 +114,16 @@ func (s WorldObject) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads WorldObject from json stream.
-func (s *WorldObject) ReadJSON(i *json.Iterator) error {
+func (s *WorldObject) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode WorldObject to nil`)
 	}
 	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
 		case "id":
 			if err := func() error {
-				s.ID = int64(i.ReadInt64())
+				s.ID = int64(i.Int64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -132,7 +132,7 @@ func (s *WorldObject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "randomNumber":
 			if err := func() error {
-				s.RandomNumber = int64(i.ReadInt64())
+				s.RandomNumber = int64(i.Int64())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -150,5 +150,5 @@ func (s *WorldObject) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (WorldObjects) WriteJSON(j *json.Stream)        {}
-func (WorldObjects) ReadJSON(i *json.Iterator) error { return nil }
+func (WorldObjects) WriteJSON(j *json.Stream)    {}
+func (WorldObjects) ReadJSON(i *json.Iter) error { return nil }

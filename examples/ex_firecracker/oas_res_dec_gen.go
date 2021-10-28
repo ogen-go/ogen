@@ -73,8 +73,8 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -94,8 +94,8 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -129,8 +129,8 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -150,8 +150,8 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -183,8 +183,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Balloon
@@ -204,8 +204,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -225,8 +225,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -258,8 +258,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response BalloonStats
@@ -279,8 +279,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -300,8 +300,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -333,8 +333,8 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response InstanceInfo
@@ -354,8 +354,8 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -387,8 +387,8 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response FullVmConfiguration
@@ -408,8 +408,8 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -441,8 +441,8 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response MachineConfiguration
@@ -462,8 +462,8 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -497,8 +497,8 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -518,8 +518,8 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -553,8 +553,8 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -574,8 +574,8 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -607,8 +607,8 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response MmdsGetResOK
@@ -628,8 +628,8 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -649,8 +649,8 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -684,8 +684,8 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -705,8 +705,8 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -740,8 +740,8 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -761,8 +761,8 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -796,8 +796,8 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -817,8 +817,8 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -852,8 +852,8 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -873,8 +873,8 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -908,8 +908,8 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -929,8 +929,8 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -964,8 +964,8 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -985,8 +985,8 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1020,8 +1020,8 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1041,8 +1041,8 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1076,8 +1076,8 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1097,8 +1097,8 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1132,8 +1132,8 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1153,8 +1153,8 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1188,8 +1188,8 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1209,8 +1209,8 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1244,8 +1244,8 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1265,8 +1265,8 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1300,8 +1300,8 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1321,8 +1321,8 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1356,8 +1356,8 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1377,8 +1377,8 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1412,8 +1412,8 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1433,8 +1433,8 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1468,8 +1468,8 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1489,8 +1489,8 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
@@ -1524,8 +1524,8 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response Error
@@ -1545,8 +1545,8 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode

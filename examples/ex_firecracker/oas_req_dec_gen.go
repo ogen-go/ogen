@@ -70,8 +70,8 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SnapshotCreateParams
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -105,8 +105,8 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request InstanceActionInfo
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -140,8 +140,8 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SnapshotLoadParams
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -167,8 +167,8 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsConfig
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -194,8 +194,8 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req MmdsPatchReq,
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsPatchReq
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -221,8 +221,8 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req MmdsPutReq, err
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsPutReq
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -248,8 +248,8 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BalloonUpdate
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -275,8 +275,8 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BalloonStatsUpdate
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -302,8 +302,8 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PartialDrive
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -337,8 +337,8 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PartialNetworkInterface
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -372,8 +372,8 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MachineConfiguration
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -407,8 +407,8 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request VM
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -442,8 +442,8 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Balloon
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -469,8 +469,8 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BootSource
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -496,8 +496,8 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Drive
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -531,8 +531,8 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request NetworkInterface
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -566,8 +566,8 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Vsock
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -601,8 +601,8 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Logger
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -636,8 +636,8 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MachineConfiguration
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {
@@ -671,8 +671,8 @@ func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Metrics
-		i := json.GetIterator()
-		defer json.PutIterator(i)
+		i := json.GetIter()
+		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.ReadJSON(i); err != nil {

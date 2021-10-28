@@ -71,8 +71,8 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
@@ -96,8 +96,8 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated
@@ -121,8 +121,8 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted
@@ -161,8 +161,8 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
@@ -186,8 +186,8 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated
@@ -211,8 +211,8 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted
@@ -251,8 +251,8 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK
@@ -276,8 +276,8 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated
@@ -301,8 +301,8 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted
@@ -341,8 +341,8 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONOK
@@ -366,8 +366,8 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONCreated
@@ -391,8 +391,8 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONAccepted
@@ -431,8 +431,8 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONOK
@@ -456,8 +456,8 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONCreated
@@ -481,8 +481,8 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONAccepted
@@ -521,8 +521,8 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK
@@ -546,8 +546,8 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated
@@ -571,8 +571,8 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted
@@ -611,8 +611,8 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK
@@ -636,8 +636,8 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated
@@ -661,8 +661,8 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted
@@ -701,8 +701,8 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK
@@ -726,8 +726,8 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated
@@ -751,8 +751,8 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted
@@ -791,8 +791,8 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONOK
@@ -816,8 +816,8 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated
@@ -841,8 +841,8 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted
@@ -881,8 +881,8 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NamespaceApplicationJSONOK
@@ -906,8 +906,8 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NamespaceApplicationJSONCreated
@@ -931,8 +931,8 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NamespaceApplicationJSONAccepted
@@ -971,8 +971,8 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NodeApplicationJSONOK
@@ -996,8 +996,8 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NodeApplicationJSONCreated
@@ -1021,8 +1021,8 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1NodeApplicationJSONAccepted
@@ -1061,8 +1061,8 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONOK
@@ -1086,8 +1086,8 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONCreated
@@ -1111,8 +1111,8 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONAccepted
@@ -1151,8 +1151,8 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
@@ -1176,8 +1176,8 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated
@@ -1201,8 +1201,8 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted
@@ -1241,8 +1241,8 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
@@ -1266,8 +1266,8 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated
@@ -1291,8 +1291,8 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted
@@ -1331,8 +1331,8 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
@@ -1356,8 +1356,8 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated
@@ -1381,8 +1381,8 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted
@@ -1421,8 +1421,8 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
@@ -1446,8 +1446,8 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated
@@ -1471,8 +1471,8 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted
@@ -1511,8 +1511,8 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK
@@ -1536,8 +1536,8 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated
@@ -1561,8 +1561,8 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted
@@ -1601,8 +1601,8 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNetworkingV1IngressClassApplicationJSONOK
@@ -1626,8 +1626,8 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNetworkingV1IngressClassApplicationJSONCreated
@@ -1651,8 +1651,8 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNetworkingV1IngressClassApplicationJSONAccepted
@@ -1691,8 +1691,8 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1RuntimeClassApplicationJSONOK
@@ -1716,8 +1716,8 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1RuntimeClassApplicationJSONCreated
@@ -1741,8 +1741,8 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1RuntimeClassApplicationJSONAccepted
@@ -1781,8 +1781,8 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONOK
@@ -1806,8 +1806,8 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONCreated
@@ -1831,8 +1831,8 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted
@@ -1871,8 +1871,8 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONOK
@@ -1896,8 +1896,8 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONCreated
@@ -1921,8 +1921,8 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONAccepted
@@ -1961,8 +1961,8 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK
@@ -1986,8 +1986,8 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated
@@ -2011,8 +2011,8 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted
@@ -2051,8 +2051,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK
@@ -2076,8 +2076,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated
@@ -2101,8 +2101,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted
@@ -2141,8 +2141,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
@@ -2166,8 +2166,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated
@@ -2191,8 +2191,8 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted
@@ -2231,8 +2231,8 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONOK
@@ -2256,8 +2256,8 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONCreated
@@ -2281,8 +2281,8 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONAccepted
@@ -2321,8 +2321,8 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSIDriverApplicationJSONOK
@@ -2346,8 +2346,8 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSIDriverApplicationJSONCreated
@@ -2371,8 +2371,8 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSIDriverApplicationJSONAccepted
@@ -2411,8 +2411,8 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSINodeApplicationJSONOK
@@ -2436,8 +2436,8 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSINodeApplicationJSONCreated
@@ -2461,8 +2461,8 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1CSINodeApplicationJSONAccepted
@@ -2501,8 +2501,8 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1StorageClassApplicationJSONOK
@@ -2526,8 +2526,8 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1StorageClassApplicationJSONCreated
@@ -2551,8 +2551,8 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1StorageClassApplicationJSONAccepted
@@ -2591,8 +2591,8 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONOK
@@ -2616,8 +2616,8 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONCreated
@@ -2641,8 +2641,8 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONAccepted
@@ -2681,8 +2681,8 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK
@@ -2721,8 +2721,8 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK
@@ -2761,8 +2761,8 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK
@@ -2801,8 +2801,8 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK
@@ -2841,8 +2841,8 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK
@@ -2881,8 +2881,8 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteCoreV1CollectionNodeApplicationJSONOK
@@ -2921,8 +2921,8 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK
@@ -2961,8 +2961,8 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK
@@ -3001,8 +3001,8 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK
@@ -3041,8 +3041,8 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK
@@ -3081,8 +3081,8 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK
@@ -3121,8 +3121,8 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK
@@ -3161,8 +3161,8 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteNetworkingV1CollectionIngressClassApplicationJSONOK
@@ -3201,8 +3201,8 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteNodeV1CollectionRuntimeClassApplicationJSONOK
@@ -3241,8 +3241,8 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK
@@ -3281,8 +3281,8 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK
@@ -3321,8 +3321,8 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK
@@ -3361,8 +3361,8 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK
@@ -3401,8 +3401,8 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK
@@ -3441,8 +3441,8 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK
@@ -3481,8 +3481,8 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteStorageV1CollectionCSIDriverApplicationJSONOK
@@ -3521,8 +3521,8 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteStorageV1CollectionCSINodeApplicationJSONOK
@@ -3561,8 +3561,8 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteStorageV1CollectionStorageClassApplicationJSONOK
@@ -3601,8 +3601,8 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK
@@ -3641,8 +3641,8 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAPIVersionsApplicationJSONOK
@@ -3681,8 +3681,8 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAdmissionregistrationAPIGroupApplicationJSONOK
@@ -3721,8 +3721,8 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAdmissionregistrationV1APIResourcesApplicationJSONOK
@@ -3761,8 +3761,8 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetApiextensionsAPIGroupApplicationJSONOK
@@ -3801,8 +3801,8 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetApiextensionsV1APIResourcesApplicationJSONOK
@@ -3841,8 +3841,8 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetApiregistrationAPIGroupApplicationJSONOK
@@ -3881,8 +3881,8 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetApiregistrationV1APIResourcesApplicationJSONOK
@@ -3921,8 +3921,8 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAppsAPIGroupApplicationJSONOK
@@ -3961,8 +3961,8 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAppsV1APIResourcesApplicationJSONOK
@@ -4001,8 +4001,8 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAuthenticationAPIGroupApplicationJSONOK
@@ -4041,8 +4041,8 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAuthenticationV1APIResourcesApplicationJSONOK
@@ -4081,8 +4081,8 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAuthorizationAPIGroupApplicationJSONOK
@@ -4121,8 +4121,8 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAuthorizationV1APIResourcesApplicationJSONOK
@@ -4161,8 +4161,8 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAutoscalingAPIGroupApplicationJSONOK
@@ -4201,8 +4201,8 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAutoscalingV1APIResourcesApplicationJSONOK
@@ -4241,8 +4241,8 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAutoscalingV2beta1APIResourcesApplicationJSONOK
@@ -4281,8 +4281,8 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetAutoscalingV2beta2APIResourcesApplicationJSONOK
@@ -4321,8 +4321,8 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetBatchAPIGroupApplicationJSONOK
@@ -4361,8 +4361,8 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetBatchV1APIResourcesApplicationJSONOK
@@ -4401,8 +4401,8 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetBatchV1beta1APIResourcesApplicationJSONOK
@@ -4441,8 +4441,8 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCertificatesAPIGroupApplicationJSONOK
@@ -4481,8 +4481,8 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCertificatesV1APIResourcesApplicationJSONOK
@@ -4521,8 +4521,8 @@ func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response IoK8sApimachineryPkgVersionInfo
@@ -4557,8 +4557,8 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCoordinationAPIGroupApplicationJSONOK
@@ -4597,8 +4597,8 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCoordinationV1APIResourcesApplicationJSONOK
@@ -4637,8 +4637,8 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCoreAPIVersionsApplicationJSONOK
@@ -4677,8 +4677,8 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetCoreV1APIResourcesApplicationJSONOK
@@ -4717,8 +4717,8 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetDiscoveryAPIGroupApplicationJSONOK
@@ -4757,8 +4757,8 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetDiscoveryV1APIResourcesApplicationJSONOK
@@ -4797,8 +4797,8 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetDiscoveryV1beta1APIResourcesApplicationJSONOK
@@ -4837,8 +4837,8 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetEventsAPIGroupApplicationJSONOK
@@ -4877,8 +4877,8 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetEventsV1APIResourcesApplicationJSONOK
@@ -4917,8 +4917,8 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetEventsV1beta1APIResourcesApplicationJSONOK
@@ -4957,8 +4957,8 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetFlowcontrolApiserverAPIGroupApplicationJSONOK
@@ -4997,8 +4997,8 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK
@@ -5037,8 +5037,8 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK
@@ -5077,8 +5077,8 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetInternalApiserverAPIGroupApplicationJSONOK
@@ -5117,8 +5117,8 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK
@@ -5157,8 +5157,8 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNetworkingAPIGroupApplicationJSONOK
@@ -5197,8 +5197,8 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNetworkingV1APIResourcesApplicationJSONOK
@@ -5237,8 +5237,8 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNodeAPIGroupApplicationJSONOK
@@ -5277,8 +5277,8 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNodeV1APIResourcesApplicationJSONOK
@@ -5317,8 +5317,8 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNodeV1alpha1APIResourcesApplicationJSONOK
@@ -5357,8 +5357,8 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetNodeV1beta1APIResourcesApplicationJSONOK
@@ -5397,8 +5397,8 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetPolicyAPIGroupApplicationJSONOK
@@ -5437,8 +5437,8 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetPolicyV1APIResourcesApplicationJSONOK
@@ -5477,8 +5477,8 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetPolicyV1beta1APIResourcesApplicationJSONOK
@@ -5517,8 +5517,8 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetRbacAuthorizationAPIGroupApplicationJSONOK
@@ -5557,8 +5557,8 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetRbacAuthorizationV1APIResourcesApplicationJSONOK
@@ -5597,8 +5597,8 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetSchedulingAPIGroupApplicationJSONOK
@@ -5637,8 +5637,8 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetSchedulingV1APIResourcesApplicationJSONOK
@@ -5677,8 +5677,8 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
@@ -5735,8 +5735,8 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetStorageAPIGroupApplicationJSONOK
@@ -5775,8 +5775,8 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetStorageV1APIResourcesApplicationJSONOK
@@ -5815,8 +5815,8 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetStorageV1alpha1APIResourcesApplicationJSONOK
@@ -5855,8 +5855,8 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response GetStorageV1beta1APIResourcesApplicationJSONOK
@@ -5895,8 +5895,8 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
@@ -5939,8 +5939,8 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
@@ -5983,8 +5983,8 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK
@@ -6027,8 +6027,8 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListApiregistrationV1APIServiceApplicationJSONOK
@@ -6071,8 +6071,8 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK
@@ -6115,8 +6115,8 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK
@@ -6159,8 +6159,8 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAppsV1DeploymentForAllNamespacesApplicationJSONOK
@@ -6203,8 +6203,8 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK
@@ -6247,8 +6247,8 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK
@@ -6291,8 +6291,8 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
@@ -6335,8 +6335,8 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
@@ -6379,8 +6379,8 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
@@ -6423,8 +6423,8 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListBatchV1CronJobForAllNamespacesApplicationJSONOK
@@ -6467,8 +6467,8 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListBatchV1JobForAllNamespacesApplicationJSONOK
@@ -6511,8 +6511,8 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK
@@ -6555,8 +6555,8 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCertificatesV1CertificateSigningRequestApplicationJSONOK
@@ -6599,8 +6599,8 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK
@@ -6643,8 +6643,8 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ComponentStatusApplicationJSONOK
@@ -6687,8 +6687,8 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK
@@ -6731,8 +6731,8 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1EndpointsForAllNamespacesApplicationJSONOK
@@ -6775,8 +6775,8 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1EventForAllNamespacesApplicationJSONOK
@@ -6819,8 +6819,8 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK
@@ -6863,8 +6863,8 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1NamespaceApplicationJSONOK
@@ -6907,8 +6907,8 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1NodeApplicationJSONOK
@@ -6951,8 +6951,8 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1PersistentVolumeApplicationJSONOK
@@ -6995,8 +6995,8 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK
@@ -7039,8 +7039,8 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1PodForAllNamespacesApplicationJSONOK
@@ -7083,8 +7083,8 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK
@@ -7127,8 +7127,8 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK
@@ -7171,8 +7171,8 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK
@@ -7215,8 +7215,8 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1SecretForAllNamespacesApplicationJSONOK
@@ -7259,8 +7259,8 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK
@@ -7303,8 +7303,8 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListCoreV1ServiceForAllNamespacesApplicationJSONOK
@@ -7347,8 +7347,8 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK
@@ -7391,8 +7391,8 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK
@@ -7435,8 +7435,8 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListEventsV1EventForAllNamespacesApplicationJSONOK
@@ -7479,8 +7479,8 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListEventsV1beta1EventForAllNamespacesApplicationJSONOK
@@ -7523,8 +7523,8 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
@@ -7567,8 +7567,8 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
@@ -7611,8 +7611,8 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
@@ -7655,8 +7655,8 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
@@ -7699,8 +7699,8 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK
@@ -7743,8 +7743,8 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNetworkingV1IngressClassApplicationJSONOK
@@ -7787,8 +7787,8 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNetworkingV1IngressForAllNamespacesApplicationJSONOK
@@ -7831,8 +7831,8 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK
@@ -7875,8 +7875,8 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNodeV1RuntimeClassApplicationJSONOK
@@ -7919,8 +7919,8 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNodeV1alpha1RuntimeClassApplicationJSONOK
@@ -7963,8 +7963,8 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListNodeV1beta1RuntimeClassApplicationJSONOK
@@ -8007,8 +8007,8 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
@@ -8051,8 +8051,8 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
@@ -8095,8 +8095,8 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK
@@ -8139,8 +8139,8 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListRbacAuthorizationV1ClusterRoleApplicationJSONOK
@@ -8183,8 +8183,8 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
@@ -8227,8 +8227,8 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK
@@ -8271,8 +8271,8 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK
@@ -8315,8 +8315,8 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListSchedulingV1PriorityClassApplicationJSONOK
@@ -8359,8 +8359,8 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1CSIDriverApplicationJSONOK
@@ -8403,8 +8403,8 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1CSINodeApplicationJSONOK
@@ -8447,8 +8447,8 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1StorageClassApplicationJSONOK
@@ -8491,8 +8491,8 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1VolumeAttachmentApplicationJSONOK
@@ -8535,8 +8535,8 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK
@@ -8579,8 +8579,8 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK
@@ -8638,8 +8638,8 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK
@@ -8682,8 +8682,8 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK
@@ -8726,8 +8726,8 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK
@@ -8770,8 +8770,8 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchApiregistrationV1APIServiceListApplicationJSONOK
@@ -8814,8 +8814,8 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK
@@ -8858,8 +8858,8 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK
@@ -8902,8 +8902,8 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK
@@ -8946,8 +8946,8 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK
@@ -8990,8 +8990,8 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK
@@ -9034,8 +9034,8 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
@@ -9078,8 +9078,8 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
@@ -9122,8 +9122,8 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
@@ -9166,8 +9166,8 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK
@@ -9210,8 +9210,8 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchBatchV1JobListForAllNamespacesApplicationJSONOK
@@ -9254,8 +9254,8 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK
@@ -9298,8 +9298,8 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK
@@ -9342,8 +9342,8 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK
@@ -9386,8 +9386,8 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK
@@ -9430,8 +9430,8 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK
@@ -9474,8 +9474,8 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1EventListForAllNamespacesApplicationJSONOK
@@ -9518,8 +9518,8 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK
@@ -9562,8 +9562,8 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1NamespaceListApplicationJSONOK
@@ -9606,8 +9606,8 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1NodeListApplicationJSONOK
@@ -9650,8 +9650,8 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK
@@ -9694,8 +9694,8 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1PersistentVolumeListApplicationJSONOK
@@ -9738,8 +9738,8 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1PodListForAllNamespacesApplicationJSONOK
@@ -9782,8 +9782,8 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK
@@ -9826,8 +9826,8 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK
@@ -9870,8 +9870,8 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK
@@ -9914,8 +9914,8 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1SecretListForAllNamespacesApplicationJSONOK
@@ -9958,8 +9958,8 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK
@@ -10002,8 +10002,8 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK
@@ -10046,8 +10046,8 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK
@@ -10090,8 +10090,8 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK
@@ -10134,8 +10134,8 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchEventsV1EventListForAllNamespacesApplicationJSONOK
@@ -10178,8 +10178,8 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK
@@ -10222,8 +10222,8 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK
@@ -10266,8 +10266,8 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK
@@ -10310,8 +10310,8 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK
@@ -10354,8 +10354,8 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK
@@ -10398,8 +10398,8 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK
@@ -10442,8 +10442,8 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNetworkingV1IngressClassListApplicationJSONOK
@@ -10486,8 +10486,8 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK
@@ -10530,8 +10530,8 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK
@@ -10574,8 +10574,8 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNodeV1RuntimeClassListApplicationJSONOK
@@ -10618,8 +10618,8 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNodeV1alpha1RuntimeClassListApplicationJSONOK
@@ -10662,8 +10662,8 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchNodeV1beta1RuntimeClassListApplicationJSONOK
@@ -10706,8 +10706,8 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
@@ -10750,8 +10750,8 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
@@ -10794,8 +10794,8 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK
@@ -10838,8 +10838,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK
@@ -10882,8 +10882,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK
@@ -10926,8 +10926,8 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK
@@ -10970,8 +10970,8 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK
@@ -11014,8 +11014,8 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchSchedulingV1PriorityClassListApplicationJSONOK
@@ -11058,8 +11058,8 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1CSIDriverListApplicationJSONOK
@@ -11102,8 +11102,8 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1CSINodeListApplicationJSONOK
@@ -11146,8 +11146,8 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1StorageClassListApplicationJSONOK
@@ -11190,8 +11190,8 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1VolumeAttachmentListApplicationJSONOK
@@ -11234,8 +11234,8 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
@@ -11278,8 +11278,8 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
+			i := json.GetIter()
+			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
 			var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
