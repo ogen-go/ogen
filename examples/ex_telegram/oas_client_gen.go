@@ -65,17 +65,27 @@ type HTTPClient interface {
 type Client struct {
 	serverURL *url.URL
 	cfg       config
+	requests  metric.Int64Counter
+	errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
-		panic(err) // TODO: fix
+		return nil, err
 	}
-	return &Client{
+	c := &Client{
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
@@ -85,9 +95,11 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -123,9 +135,11 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -161,9 +175,11 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -199,9 +215,11 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/close"
 
@@ -229,9 +247,11 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -267,9 +287,11 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteWebhookPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -305,9 +327,11 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetFilePostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -343,9 +367,11 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetGameHighScoresPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -381,9 +407,11 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
@@ -411,9 +439,11 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
 
@@ -441,9 +471,11 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetStickerSetPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -479,9 +511,11 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetUpdatesPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -517,9 +551,11 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -555,9 +591,11 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getWebhookInfo"
 
@@ -585,9 +623,11 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logOut"
 
@@ -615,9 +655,11 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendGamePostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -653,9 +695,11 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendInvoicePostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -691,9 +735,11 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetMyCommandsPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -729,9 +775,11 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -767,9 +815,11 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetWebhookPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -805,9 +855,11 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeUploadStickerFilePostRequest(req, span)
 	if err != nil {
 		return res, err

@@ -232,10 +232,11 @@ func BenchmarkIntegration(b *testing.B) {
 				ExpectContinueTimeout: 1 * time.Second,
 			},
 		}
-		client := techempower.NewClient(s.URL,
+		client, err := techempower.NewClient(s.URL,
 			techempower.WithHTTPClient(httpClient),
 			techempower.WithTracerProvider(trace.NewNoopTracerProvider()),
 		)
+		require.NoError(b, err)
 		ctx := context.Background()
 
 		b.Run("JSON", func(b *testing.B) {

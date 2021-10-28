@@ -11,17 +11,27 @@ type HTTPClient interface {
 type Client struct {
     serverURL *url.URL
     cfg       config
+    requests  metric.Int64Counter
+    errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
     u, err := url.Parse(serverURL)
     if err != nil {
-        panic(err) // TODO: fix
+        return nil, err
     }
-    return &Client{
+    c := &Client{
         cfg:       newConfig(opts...),
         serverURL: u,
     }
+    if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+        return nil, err
+    }
+    if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+        return nil, err
+    }
+    return c, nil
 }
 
 {{ range $op := $.Operations }}
@@ -35,9 +45,11 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{
     defer func() {
         if err != nil {
             span.RecordError(err)
+            c.errors.Add(ctx, 1)
         }
         span.End()
     }()
+    c.requests.Add(ctx, 1)
 
     {{- if $op.Request }}
     buf, contentType, err := encode{{ $op.Name }}Request(req, span)

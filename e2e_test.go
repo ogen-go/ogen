@@ -133,7 +133,8 @@ func TestIntegration(t *testing.T) {
 		s := httptest.NewServer(mux)
 		defer s.Close()
 
-		client := api.NewClient(s.URL)
+		client, err := api.NewClient(s.URL)
+		require.NoError(t, err)
 		ctx := context.Background()
 
 		date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
@@ -264,7 +265,8 @@ func TestIntegration(t *testing.T) {
 		s := httptest.NewServer(mux)
 		defer s.Close()
 
-		client := techempower.NewClient(s.URL)
+		client, err := techempower.NewClient(s.URL)
+		require.NoError(t, err)
 		ctx := context.Background()
 
 		t.Run("JSON", func(t *testing.T) {

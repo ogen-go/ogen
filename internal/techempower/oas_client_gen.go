@@ -65,17 +65,27 @@ type HTTPClient interface {
 type Client struct {
 	serverURL *url.URL
 	cfg       config
+	requests  metric.Int64Counter
+	errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
-		panic(err) // TODO: fix
+		return nil, err
 	}
-	return &Client{
+	c := &Client{
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
@@ -86,9 +96,11 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
@@ -130,9 +142,11 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/db"
 
@@ -161,9 +175,11 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/json"
 
@@ -192,9 +208,11 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
@@ -236,9 +254,11 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 

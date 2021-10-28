@@ -65,17 +65,27 @@ type HTTPClient interface {
 type Client struct {
 	serverURL *url.URL
 	cfg       config
+	requests  metric.Int64Counter
+	errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
-		panic(err) // TODO: fix
+		return nil, err
 	}
-	return &Client{
+	c := &Client{
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
@@ -86,9 +96,11 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -140,9 +152,11 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeFoobarPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -178,9 +192,11 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -209,9 +225,11 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePetCreateRequest(req, span)
 	if err != nil {
 		return res, err
@@ -248,9 +266,11 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/friendNames/"
 	{
@@ -288,9 +308,11 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
@@ -354,9 +376,11 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{
@@ -394,9 +418,11 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/name/"
 	{
@@ -433,9 +459,11 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePetUpdateNameAliasPostRequest(req, span)
 	if err != nil {
 		return res, err
@@ -471,9 +499,11 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpda
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePetUpdateNamePostRequest(req, span)
 	if err != nil {
 		return res, err

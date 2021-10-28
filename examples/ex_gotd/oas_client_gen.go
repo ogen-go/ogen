@@ -65,17 +65,27 @@ type HTTPClient interface {
 type Client struct {
 	serverURL *url.URL
 	cfg       config
+	requests  metric.Int64Counter
+	errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
-		panic(err) // TODO: fix
+		return nil, err
 	}
-	return &Client{
+	c := &Client{
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res AddStickerToSetRes, err error) {
@@ -86,9 +96,11 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAddStickerToSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -125,9 +137,11 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerCallbackQueryRequest(req, span)
 	if err != nil {
 		return res, err
@@ -164,9 +178,11 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerInlineQueryRequest(req, span)
 	if err != nil {
 		return res, err
@@ -203,9 +219,11 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerPreCheckoutQueryRequest(req, span)
 	if err != nil {
 		return res, err
@@ -242,9 +260,11 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeAnswerShippingQueryRequest(req, span)
 	if err != nil {
 		return res, err
@@ -281,9 +301,11 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeBanChatMemberRequest(req, span)
 	if err != nil {
 		return res, err
@@ -320,9 +342,11 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeCopyMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -359,9 +383,11 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeCreateChatInviteLinkRequest(req, span)
 	if err != nil {
 		return res, err
@@ -398,9 +424,11 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeCreateNewStickerSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -437,9 +465,11 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteChatPhotoRequest(req, span)
 	if err != nil {
 		return res, err
@@ -476,9 +506,11 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteChatStickerSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -515,9 +547,11 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -554,9 +588,11 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteMyCommandsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -593,9 +629,11 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteStickerFromSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -632,9 +670,11 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeDeleteWebhookRequest(req, span)
 	if err != nil {
 		return res, err
@@ -671,9 +711,11 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditChatInviteLinkRequest(req, span)
 	if err != nil {
 		return res, err
@@ -710,9 +752,11 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditMessageCaptionRequest(req, span)
 	if err != nil {
 		return res, err
@@ -749,9 +793,11 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditMessageLiveLocationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -788,9 +834,11 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditMessageMediaRequest(req, span)
 	if err != nil {
 		return res, err
@@ -827,9 +875,11 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditMessageReplyMarkupRequest(req, span)
 	if err != nil {
 		return res, err
@@ -866,9 +916,11 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeEditMessageTextRequest(req, span)
 	if err != nil {
 		return res, err
@@ -905,9 +957,11 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeExportChatInviteLinkRequest(req, span)
 	if err != nil {
 		return res, err
@@ -944,9 +998,11 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeForwardMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -983,9 +1039,11 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetChatRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1022,9 +1080,11 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetChatAdministratorsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1061,9 +1121,11 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetChatMemberRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1100,9 +1162,11 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetChatMemberCountRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1139,9 +1203,11 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetFileRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1178,9 +1244,11 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetGameHighScoresRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1217,9 +1285,11 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
@@ -1248,9 +1318,11 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetMyCommandsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1287,9 +1359,11 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetStickerSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1326,9 +1400,11 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetUpdatesRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1365,9 +1441,11 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeGetUserProfilePhotosRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1404,9 +1482,11 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeLeaveChatRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1443,9 +1523,11 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePinChatMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1482,9 +1564,11 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePromoteChatMemberRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1521,9 +1605,11 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeRestrictChatMemberRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1560,9 +1646,11 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeRevokeChatInviteLinkRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1599,9 +1687,11 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendAnimationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1638,9 +1728,11 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendAudioRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1677,9 +1769,11 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendChatActionRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1716,9 +1810,11 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendContactRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1755,9 +1851,11 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendDiceRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1794,9 +1892,11 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendDocumentRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1833,9 +1933,11 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendGameRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1872,9 +1974,11 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendInvoiceRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1911,9 +2015,11 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendLocationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1950,9 +2056,11 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendMediaGroupRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1989,9 +2097,11 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2028,9 +2138,11 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendPhotoRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2067,9 +2179,11 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendPollRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2106,9 +2220,11 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendStickerRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2145,9 +2261,11 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendVenueRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2184,9 +2302,11 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendVideoRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2223,9 +2343,11 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendVideoNoteRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2262,9 +2384,11 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSendVoiceRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2301,9 +2425,11 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatAdministratorCustomTitleRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2340,9 +2466,11 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatDescriptionRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2379,9 +2507,11 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatPermissionsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2418,9 +2548,11 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatPhotoRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2457,9 +2589,11 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatStickerSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2496,9 +2630,11 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetChatTitleRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2535,9 +2671,11 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetGameScoreRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2574,9 +2712,11 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetMyCommandsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2613,9 +2753,11 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetPassportDataErrorsRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2652,9 +2794,11 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetStickerPositionInSetRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2691,9 +2835,11 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetStickerSetThumbRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2730,9 +2876,11 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeSetWebhookRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2769,9 +2917,11 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeStopMessageLiveLocationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2808,9 +2958,11 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeStopPollRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2847,9 +2999,11 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeUnbanChatMemberRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2886,9 +3040,11 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeUnpinAllChatMessagesRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2925,9 +3081,11 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeUnpinChatMessageRequest(req, span)
 	if err != nil {
 		return res, err
@@ -2964,9 +3122,11 @@ func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeUploadStickerFileRequest(req, span)
 	if err != nil {
 		return res, err

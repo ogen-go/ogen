@@ -65,17 +65,27 @@ type HTTPClient interface {
 type Client struct {
 	serverURL *url.URL
 	cfg       config
+	requests  metric.Int64Counter
+	errors    metric.Int64Counter
 }
 
-func NewClient(serverURL string, opts ...Option) *Client {
+// NewClient initializes new Client defined by OAS.
+func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
-		panic(err) // TODO: fix
+		return nil, err
 	}
-	return &Client{
+	c := &Client{
 		cfg:       newConfig(opts...),
 		serverURL: u,
 	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter("requests"); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter("errors"); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
@@ -86,9 +96,11 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeCreateSnapshotRequest(req, span)
 	if err != nil {
 		return res, err
@@ -125,9 +137,11 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeCreateSyncActionRequest(req, span)
 	if err != nil {
 		return res, err
@@ -164,9 +178,11 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
@@ -195,9 +211,11 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
@@ -226,9 +244,11 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
@@ -257,9 +277,11 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm/config"
 
@@ -288,9 +310,11 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
@@ -319,9 +343,11 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeLoadSnapshotRequest(req, span)
 	if err != nil {
 		return res, err
@@ -357,9 +383,11 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeMmdsConfigPutRequest(req, span)
 	if err != nil {
 		return res, err
@@ -395,9 +423,11 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
@@ -425,9 +455,11 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeMmdsPatchRequest(req, span)
 	if err != nil {
 		return res, err
@@ -463,9 +495,11 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodeMmdsPutRequest(req, span)
 	if err != nil {
 		return res, err
@@ -502,9 +536,11 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchBalloonRequest(req, span)
 	if err != nil {
 		return res, err
@@ -541,9 +577,11 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req, span)
 	if err != nil {
 		return res, err
@@ -580,9 +618,11 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchGuestDriveByIDRequest(req, span)
 	if err != nil {
 		return res, err
@@ -628,9 +668,11 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req, span)
 	if err != nil {
 		return res, err
@@ -676,9 +718,11 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchMachineConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -715,9 +759,11 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePatchVmRequest(req, span)
 	if err != nil {
 		return res, err
@@ -754,9 +800,11 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutBalloonRequest(req, span)
 	if err != nil {
 		return res, err
@@ -793,9 +841,11 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutGuestBootSourceRequest(req, span)
 	if err != nil {
 		return res, err
@@ -832,9 +882,11 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutGuestDriveByIDRequest(req, span)
 	if err != nil {
 		return res, err
@@ -880,9 +932,11 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req, span)
 	if err != nil {
 		return res, err
@@ -928,9 +982,11 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutGuestVsockRequest(req, span)
 	if err != nil {
 		return res, err
@@ -967,9 +1023,11 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutLoggerRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1006,9 +1064,11 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutMachineConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
@@ -1045,9 +1105,11 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			c.errors.Add(ctx, 1)
 		}
 		span.End()
 	}()
+	c.requests.Add(ctx, 1)
 	buf, contentType, err := encodePutMetricsRequest(req, span)
 	if err != nil {
 		return res, err
