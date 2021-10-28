@@ -25,7 +25,6 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
-	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -55,7 +54,6 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
-	_ = fasthttp.Client{}
 )
 
 func NewCreateAdmissionregistrationV1MutatingWebhookConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -1911,20 +1909,6 @@ func NewGetAPIVersionsHandler(s Server, opts ...Option) func(w http.ResponseWrit
 		}
 	}
 }
-func NewGetAPIVersionsFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAPIVersions(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAPIVersionsResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAdmissionregistrationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -1944,20 +1928,6 @@ func NewGetAdmissionregistrationAPIGroupHandler(s Server, opts ...Option) func(w
 
 		if err := encodeGetAdmissionregistrationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAdmissionregistrationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAdmissionregistrationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAdmissionregistrationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -1985,20 +1955,6 @@ func NewGetAdmissionregistrationV1APIResourcesHandler(s Server, opts ...Option) 
 		}
 	}
 }
-func NewGetAdmissionregistrationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAdmissionregistrationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAdmissionregistrationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetApiextensionsAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2018,20 +1974,6 @@ func NewGetApiextensionsAPIGroupHandler(s Server, opts ...Option) func(w http.Re
 
 		if err := encodeGetApiextensionsAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetApiextensionsAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetApiextensionsAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetApiextensionsAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2059,20 +2001,6 @@ func NewGetApiextensionsV1APIResourcesHandler(s Server, opts ...Option) func(w h
 		}
 	}
 }
-func NewGetApiextensionsV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetApiextensionsV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetApiextensionsV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetApiregistrationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2092,20 +2020,6 @@ func NewGetApiregistrationAPIGroupHandler(s Server, opts ...Option) func(w http.
 
 		if err := encodeGetApiregistrationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetApiregistrationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetApiregistrationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetApiregistrationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2133,20 +2047,6 @@ func NewGetApiregistrationV1APIResourcesHandler(s Server, opts ...Option) func(w
 		}
 	}
 }
-func NewGetApiregistrationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetApiregistrationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetApiregistrationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAppsAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2166,20 +2066,6 @@ func NewGetAppsAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWri
 
 		if err := encodeGetAppsAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAppsAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAppsAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAppsAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2207,20 +2093,6 @@ func NewGetAppsV1APIResourcesHandler(s Server, opts ...Option) func(w http.Respo
 		}
 	}
 }
-func NewGetAppsV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAppsV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAppsV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAuthenticationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2240,20 +2112,6 @@ func NewGetAuthenticationAPIGroupHandler(s Server, opts ...Option) func(w http.R
 
 		if err := encodeGetAuthenticationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAuthenticationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAuthenticationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAuthenticationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2281,20 +2139,6 @@ func NewGetAuthenticationV1APIResourcesHandler(s Server, opts ...Option) func(w 
 		}
 	}
 }
-func NewGetAuthenticationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAuthenticationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAuthenticationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAuthorizationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2314,20 +2158,6 @@ func NewGetAuthorizationAPIGroupHandler(s Server, opts ...Option) func(w http.Re
 
 		if err := encodeGetAuthorizationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAuthorizationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAuthorizationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAuthorizationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2355,20 +2185,6 @@ func NewGetAuthorizationV1APIResourcesHandler(s Server, opts ...Option) func(w h
 		}
 	}
 }
-func NewGetAuthorizationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAuthorizationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAuthorizationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAutoscalingAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2388,20 +2204,6 @@ func NewGetAutoscalingAPIGroupHandler(s Server, opts ...Option) func(w http.Resp
 
 		if err := encodeGetAutoscalingAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAutoscalingAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAutoscalingAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAutoscalingAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2429,20 +2231,6 @@ func NewGetAutoscalingV1APIResourcesHandler(s Server, opts ...Option) func(w htt
 		}
 	}
 }
-func NewGetAutoscalingV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAutoscalingV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAutoscalingV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetAutoscalingV2beta1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2462,20 +2250,6 @@ func NewGetAutoscalingV2beta1APIResourcesHandler(s Server, opts ...Option) func(
 
 		if err := encodeGetAutoscalingV2beta1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetAutoscalingV2beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAutoscalingV2beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAutoscalingV2beta1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2503,20 +2277,6 @@ func NewGetAutoscalingV2beta2APIResourcesHandler(s Server, opts ...Option) func(
 		}
 	}
 }
-func NewGetAutoscalingV2beta2APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetAutoscalingV2beta2APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetAutoscalingV2beta2APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetBatchAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2536,20 +2296,6 @@ func NewGetBatchAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWr
 
 		if err := encodeGetBatchAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetBatchAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetBatchAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetBatchAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2577,20 +2323,6 @@ func NewGetBatchV1APIResourcesHandler(s Server, opts ...Option) func(w http.Resp
 		}
 	}
 }
-func NewGetBatchV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetBatchV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetBatchV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetBatchV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2610,20 +2342,6 @@ func NewGetBatchV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http
 
 		if err := encodeGetBatchV1beta1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetBatchV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetBatchV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetBatchV1beta1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2651,20 +2369,6 @@ func NewGetCertificatesAPIGroupHandler(s Server, opts ...Option) func(w http.Res
 		}
 	}
 }
-func NewGetCertificatesAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCertificatesAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCertificatesAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetCertificatesV1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2684,20 +2388,6 @@ func NewGetCertificatesV1APIResourcesHandler(s Server, opts ...Option) func(w ht
 
 		if err := encodeGetCertificatesV1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetCertificatesV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCertificatesV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCertificatesV1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2725,20 +2415,6 @@ func NewGetCodeVersionHandler(s Server, opts ...Option) func(w http.ResponseWrit
 		}
 	}
 }
-func NewGetCodeVersionFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCodeVersion(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCodeVersionResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetCoordinationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2758,20 +2434,6 @@ func NewGetCoordinationAPIGroupHandler(s Server, opts ...Option) func(w http.Res
 
 		if err := encodeGetCoordinationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetCoordinationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCoordinationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCoordinationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2799,20 +2461,6 @@ func NewGetCoordinationV1APIResourcesHandler(s Server, opts ...Option) func(w ht
 		}
 	}
 }
-func NewGetCoordinationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCoordinationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCoordinationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetCoreAPIVersionsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2832,20 +2480,6 @@ func NewGetCoreAPIVersionsHandler(s Server, opts ...Option) func(w http.Response
 
 		if err := encodeGetCoreAPIVersionsResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetCoreAPIVersionsFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCoreAPIVersions(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCoreAPIVersionsResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2873,20 +2507,6 @@ func NewGetCoreV1APIResourcesHandler(s Server, opts ...Option) func(w http.Respo
 		}
 	}
 }
-func NewGetCoreV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetCoreV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetCoreV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetDiscoveryAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2906,20 +2526,6 @@ func NewGetDiscoveryAPIGroupHandler(s Server, opts ...Option) func(w http.Respon
 
 		if err := encodeGetDiscoveryAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetDiscoveryAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetDiscoveryAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetDiscoveryAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -2947,20 +2553,6 @@ func NewGetDiscoveryV1APIResourcesHandler(s Server, opts ...Option) func(w http.
 		}
 	}
 }
-func NewGetDiscoveryV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetDiscoveryV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetDiscoveryV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetDiscoveryV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -2980,20 +2572,6 @@ func NewGetDiscoveryV1beta1APIResourcesHandler(s Server, opts ...Option) func(w 
 
 		if err := encodeGetDiscoveryV1beta1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetDiscoveryV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetDiscoveryV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetDiscoveryV1beta1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3021,20 +2599,6 @@ func NewGetEventsAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseW
 		}
 	}
 }
-func NewGetEventsAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetEventsAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetEventsAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetEventsV1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3054,20 +2618,6 @@ func NewGetEventsV1APIResourcesHandler(s Server, opts ...Option) func(w http.Res
 
 		if err := encodeGetEventsV1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetEventsV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetEventsV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetEventsV1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3095,20 +2645,6 @@ func NewGetEventsV1beta1APIResourcesHandler(s Server, opts ...Option) func(w htt
 		}
 	}
 }
-func NewGetEventsV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetEventsV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetEventsV1beta1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetFlowcontrolApiserverAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3128,20 +2664,6 @@ func NewGetFlowcontrolApiserverAPIGroupHandler(s Server, opts ...Option) func(w 
 
 		if err := encodeGetFlowcontrolApiserverAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetFlowcontrolApiserverAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetFlowcontrolApiserverAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetFlowcontrolApiserverAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3169,20 +2691,6 @@ func NewGetFlowcontrolApiserverV1beta1APIResourcesHandler(s Server, opts ...Opti
 		}
 	}
 }
-func NewGetFlowcontrolApiserverV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetFlowcontrolApiserverV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetFlowcontrolApiserverV1beta2APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3202,20 +2710,6 @@ func NewGetFlowcontrolApiserverV1beta2APIResourcesHandler(s Server, opts ...Opti
 
 		if err := encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetFlowcontrolApiserverV1beta2APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetFlowcontrolApiserverV1beta2APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3243,20 +2737,6 @@ func NewGetInternalApiserverAPIGroupHandler(s Server, opts ...Option) func(w htt
 		}
 	}
 }
-func NewGetInternalApiserverAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetInternalApiserverAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetInternalApiserverAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetInternalApiserverV1alpha1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3276,20 +2756,6 @@ func NewGetInternalApiserverV1alpha1APIResourcesHandler(s Server, opts ...Option
 
 		if err := encodeGetInternalApiserverV1alpha1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetInternalApiserverV1alpha1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetInternalApiserverV1alpha1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetInternalApiserverV1alpha1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3317,20 +2783,6 @@ func NewGetNetworkingAPIGroupHandler(s Server, opts ...Option) func(w http.Respo
 		}
 	}
 }
-func NewGetNetworkingAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNetworkingAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNetworkingAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetNetworkingV1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3350,20 +2802,6 @@ func NewGetNetworkingV1APIResourcesHandler(s Server, opts ...Option) func(w http
 
 		if err := encodeGetNetworkingV1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetNetworkingV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNetworkingV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNetworkingV1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3391,20 +2829,6 @@ func NewGetNodeAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWri
 		}
 	}
 }
-func NewGetNodeAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNodeAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNodeAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetNodeV1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3424,20 +2848,6 @@ func NewGetNodeV1APIResourcesHandler(s Server, opts ...Option) func(w http.Respo
 
 		if err := encodeGetNodeV1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetNodeV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNodeV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNodeV1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3465,20 +2875,6 @@ func NewGetNodeV1alpha1APIResourcesHandler(s Server, opts ...Option) func(w http
 		}
 	}
 }
-func NewGetNodeV1alpha1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNodeV1alpha1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNodeV1alpha1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetNodeV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3498,20 +2894,6 @@ func NewGetNodeV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http.
 
 		if err := encodeGetNodeV1beta1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetNodeV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetNodeV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetNodeV1beta1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3539,20 +2921,6 @@ func NewGetPolicyAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseW
 		}
 	}
 }
-func NewGetPolicyAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetPolicyAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetPolicyAPIGroupResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetPolicyV1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3572,20 +2940,6 @@ func NewGetPolicyV1APIResourcesHandler(s Server, opts ...Option) func(w http.Res
 
 		if err := encodeGetPolicyV1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetPolicyV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetPolicyV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetPolicyV1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3613,20 +2967,6 @@ func NewGetPolicyV1beta1APIResourcesHandler(s Server, opts ...Option) func(w htt
 		}
 	}
 }
-func NewGetPolicyV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetPolicyV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetPolicyV1beta1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetRbacAuthorizationAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3646,20 +2986,6 @@ func NewGetRbacAuthorizationAPIGroupHandler(s Server, opts ...Option) func(w htt
 
 		if err := encodeGetRbacAuthorizationAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetRbacAuthorizationAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetRbacAuthorizationAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetRbacAuthorizationAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3687,20 +3013,6 @@ func NewGetRbacAuthorizationV1APIResourcesHandler(s Server, opts ...Option) func
 		}
 	}
 }
-func NewGetRbacAuthorizationV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetRbacAuthorizationV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetRbacAuthorizationV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetSchedulingAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3720,20 +3032,6 @@ func NewGetSchedulingAPIGroupHandler(s Server, opts ...Option) func(w http.Respo
 
 		if err := encodeGetSchedulingAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetSchedulingAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetSchedulingAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetSchedulingAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3761,20 +3059,6 @@ func NewGetSchedulingV1APIResourcesHandler(s Server, opts ...Option) func(w http
 		}
 	}
 }
-func NewGetSchedulingV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetSchedulingV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetSchedulingV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetServiceAccountIssuerOpenIDConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3794,20 +3078,6 @@ func NewGetServiceAccountIssuerOpenIDConfigurationHandler(s Server, opts ...Opti
 
 		if err := encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetServiceAccountIssuerOpenIDConfigurationFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetServiceAccountIssuerOpenIDConfiguration(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3835,20 +3105,6 @@ func NewGetServiceAccountIssuerOpenIDKeysetHandler(s Server, opts ...Option) fun
 		}
 	}
 }
-func NewGetServiceAccountIssuerOpenIDKeysetFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetServiceAccountIssuerOpenIDKeyset(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetServiceAccountIssuerOpenIDKeysetResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetStorageAPIGroupHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3868,20 +3124,6 @@ func NewGetStorageAPIGroupHandler(s Server, opts ...Option) func(w http.Response
 
 		if err := encodeGetStorageAPIGroupResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetStorageAPIGroupFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetStorageAPIGroup(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetStorageAPIGroupResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -3909,20 +3151,6 @@ func NewGetStorageV1APIResourcesHandler(s Server, opts ...Option) func(w http.Re
 		}
 	}
 }
-func NewGetStorageV1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetStorageV1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetStorageV1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetStorageV1alpha1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3946,20 +3174,6 @@ func NewGetStorageV1alpha1APIResourcesHandler(s Server, opts ...Option) func(w h
 		}
 	}
 }
-func NewGetStorageV1alpha1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetStorageV1alpha1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetStorageV1alpha1APIResourcesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewGetStorageV1beta1APIResourcesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -3979,20 +3193,6 @@ func NewGetStorageV1beta1APIResourcesHandler(s Server, opts ...Option) func(w ht
 
 		if err := encodeGetStorageV1beta1APIResourcesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewGetStorageV1beta1APIResourcesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.GetStorageV1beta1APIResources(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeGetStorageV1beta1APIResourcesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4136,20 +3336,6 @@ func NewListAppsV1ControllerRevisionForAllNamespacesHandler(s Server, opts ...Op
 		}
 	}
 }
-func NewListAppsV1ControllerRevisionForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAppsV1ControllerRevisionForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListAppsV1DaemonSetForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4169,20 +3355,6 @@ func NewListAppsV1DaemonSetForAllNamespacesHandler(s Server, opts ...Option) fun
 
 		if err := encodeListAppsV1DaemonSetForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListAppsV1DaemonSetForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAppsV1DaemonSetForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAppsV1DaemonSetForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4210,20 +3382,6 @@ func NewListAppsV1DeploymentForAllNamespacesHandler(s Server, opts ...Option) fu
 		}
 	}
 }
-func NewListAppsV1DeploymentForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAppsV1DeploymentForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAppsV1DeploymentForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListAppsV1ReplicaSetForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4243,20 +3401,6 @@ func NewListAppsV1ReplicaSetForAllNamespacesHandler(s Server, opts ...Option) fu
 
 		if err := encodeListAppsV1ReplicaSetForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListAppsV1ReplicaSetForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAppsV1ReplicaSetForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAppsV1ReplicaSetForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4284,20 +3428,6 @@ func NewListAppsV1StatefulSetForAllNamespacesHandler(s Server, opts ...Option) f
 		}
 	}
 }
-func NewListAppsV1StatefulSetForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAppsV1StatefulSetForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAppsV1StatefulSetForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4317,20 +3447,6 @@ func NewListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesHandler(s Server
 
 		if err := encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4358,20 +3474,6 @@ func NewListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesHandler(s S
 		}
 	}
 }
-func NewListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4391,20 +3493,6 @@ func NewListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesHandler(s S
 
 		if err := encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4432,20 +3520,6 @@ func NewListBatchV1CronJobForAllNamespacesHandler(s Server, opts ...Option) func
 		}
 	}
 }
-func NewListBatchV1CronJobForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListBatchV1CronJobForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListBatchV1CronJobForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListBatchV1JobForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4469,20 +3543,6 @@ func NewListBatchV1JobForAllNamespacesHandler(s Server, opts ...Option) func(w h
 		}
 	}
 }
-func NewListBatchV1JobForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListBatchV1JobForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListBatchV1JobForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListBatchV1beta1CronJobForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4502,20 +3562,6 @@ func NewListBatchV1beta1CronJobForAllNamespacesHandler(s Server, opts ...Option)
 
 		if err := encodeListBatchV1beta1CronJobForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListBatchV1beta1CronJobForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListBatchV1beta1CronJobForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListBatchV1beta1CronJobForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4572,20 +3618,6 @@ func NewListCoordinationV1LeaseForAllNamespacesHandler(s Server, opts ...Option)
 		}
 	}
 }
-func NewListCoordinationV1LeaseForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoordinationV1LeaseForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoordinationV1LeaseForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1ComponentStatusHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4605,20 +3637,6 @@ func NewListCoreV1ComponentStatusHandler(s Server, opts ...Option) func(w http.R
 
 		if err := encodeListCoreV1ComponentStatusResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1ComponentStatusFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ComponentStatus(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ComponentStatusResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4646,20 +3664,6 @@ func NewListCoreV1ConfigMapForAllNamespacesHandler(s Server, opts ...Option) fun
 		}
 	}
 }
-func NewListCoreV1ConfigMapForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ConfigMapForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ConfigMapForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1EndpointsForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4679,20 +3683,6 @@ func NewListCoreV1EndpointsForAllNamespacesHandler(s Server, opts ...Option) fun
 
 		if err := encodeListCoreV1EndpointsForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1EndpointsForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1EndpointsForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1EndpointsForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4720,20 +3710,6 @@ func NewListCoreV1EventForAllNamespacesHandler(s Server, opts ...Option) func(w 
 		}
 	}
 }
-func NewListCoreV1EventForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1EventForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1EventForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1LimitRangeForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4753,20 +3729,6 @@ func NewListCoreV1LimitRangeForAllNamespacesHandler(s Server, opts ...Option) fu
 
 		if err := encodeListCoreV1LimitRangeForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1LimitRangeForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1LimitRangeForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1LimitRangeForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4881,20 +3843,6 @@ func NewListCoreV1PersistentVolumeClaimForAllNamespacesHandler(s Server, opts ..
 		}
 	}
 }
-func NewListCoreV1PersistentVolumeClaimForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1PersistentVolumeClaimForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1PodForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4914,20 +3862,6 @@ func NewListCoreV1PodForAllNamespacesHandler(s Server, opts ...Option) func(w ht
 
 		if err := encodeListCoreV1PodForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1PodForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1PodForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1PodForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -4955,20 +3889,6 @@ func NewListCoreV1PodTemplateForAllNamespacesHandler(s Server, opts ...Option) f
 		}
 	}
 }
-func NewListCoreV1PodTemplateForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1PodTemplateForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1PodTemplateForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1ReplicationControllerForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -4988,20 +3908,6 @@ func NewListCoreV1ReplicationControllerForAllNamespacesHandler(s Server, opts ..
 
 		if err := encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1ReplicationControllerForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ReplicationControllerForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5029,20 +3935,6 @@ func NewListCoreV1ResourceQuotaForAllNamespacesHandler(s Server, opts ...Option)
 		}
 	}
 }
-func NewListCoreV1ResourceQuotaForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ResourceQuotaForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1SecretForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5062,20 +3954,6 @@ func NewListCoreV1SecretForAllNamespacesHandler(s Server, opts ...Option) func(w
 
 		if err := encodeListCoreV1SecretForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1SecretForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1SecretForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1SecretForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5103,20 +3981,6 @@ func NewListCoreV1ServiceAccountForAllNamespacesHandler(s Server, opts ...Option
 		}
 	}
 }
-func NewListCoreV1ServiceAccountForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ServiceAccountForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ServiceAccountForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListCoreV1ServiceForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5136,20 +4000,6 @@ func NewListCoreV1ServiceForAllNamespacesHandler(s Server, opts ...Option) func(
 
 		if err := encodeListCoreV1ServiceForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListCoreV1ServiceForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListCoreV1ServiceForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListCoreV1ServiceForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5177,20 +4027,6 @@ func NewListDiscoveryV1EndpointSliceForAllNamespacesHandler(s Server, opts ...Op
 		}
 	}
 }
-func NewListDiscoveryV1EndpointSliceForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListDiscoveryV1EndpointSliceForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListDiscoveryV1beta1EndpointSliceForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5210,20 +4046,6 @@ func NewListDiscoveryV1beta1EndpointSliceForAllNamespacesHandler(s Server, opts 
 
 		if err := encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListDiscoveryV1beta1EndpointSliceForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5251,20 +4073,6 @@ func NewListEventsV1EventForAllNamespacesHandler(s Server, opts ...Option) func(
 		}
 	}
 }
-func NewListEventsV1EventForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListEventsV1EventForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListEventsV1EventForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListEventsV1beta1EventForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5284,20 +4092,6 @@ func NewListEventsV1beta1EventForAllNamespacesHandler(s Server, opts ...Option) 
 
 		if err := encodeListEventsV1beta1EventForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListEventsV1beta1EventForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListEventsV1beta1EventForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListEventsV1beta1EventForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5499,20 +4293,6 @@ func NewListNetworkingV1IngressForAllNamespacesHandler(s Server, opts ...Option)
 		}
 	}
 }
-func NewListNetworkingV1IngressForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListNetworkingV1IngressForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListNetworkingV1IngressForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListNetworkingV1NetworkPolicyForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5532,20 +4312,6 @@ func NewListNetworkingV1NetworkPolicyForAllNamespacesHandler(s Server, opts ...O
 
 		if err := encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListNetworkingV1NetworkPolicyForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListNetworkingV1NetworkPolicyForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5660,20 +4426,6 @@ func NewListPolicyV1PodDisruptionBudgetForAllNamespacesHandler(s Server, opts ..
 		}
 	}
 }
-func NewListPolicyV1PodDisruptionBudgetForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListPolicyV1PodDisruptionBudgetForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListPolicyV1beta1PodDisruptionBudgetForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5693,20 +4445,6 @@ func NewListPolicyV1beta1PodDisruptionBudgetForAllNamespacesHandler(s Server, op
 
 		if err := encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListPolicyV1beta1PodDisruptionBudgetForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -5821,20 +4559,6 @@ func NewListRbacAuthorizationV1RoleBindingForAllNamespacesHandler(s Server, opts
 		}
 	}
 }
-func NewListRbacAuthorizationV1RoleBindingForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListRbacAuthorizationV1RoleBindingForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListRbacAuthorizationV1RoleForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -5854,20 +4578,6 @@ func NewListRbacAuthorizationV1RoleForAllNamespacesHandler(s Server, opts ...Opt
 
 		if err := encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListRbacAuthorizationV1RoleForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListRbacAuthorizationV1RoleForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6040,20 +4750,6 @@ func NewListStorageV1alpha1CSIStorageCapacityForAllNamespacesHandler(s Server, o
 		}
 	}
 }
-func NewListStorageV1alpha1CSIStorageCapacityForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewListStorageV1beta1CSIStorageCapacityForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6073,20 +4769,6 @@ func NewListStorageV1beta1CSIStorageCapacityForAllNamespacesHandler(s Server, op
 
 		if err := encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewListStorageV1beta1CSIStorageCapacityForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6114,20 +4796,6 @@ func NewLogFileListHandlerHandler(s Server, opts ...Option) func(w http.Response
 		}
 	}
 }
-func NewLogFileListHandlerFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.LogFileListHandler(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeLogFileListHandlerResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchAdmissionregistrationV1MutatingWebhookConfigurationListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6147,20 +4815,6 @@ func NewWatchAdmissionregistrationV1MutatingWebhookConfigurationListHandler(s Se
 
 		if err := encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchAdmissionregistrationV1MutatingWebhookConfigurationListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6188,20 +4842,6 @@ func NewWatchAdmissionregistrationV1ValidatingWebhookConfigurationListHandler(s 
 		}
 	}
 }
-func NewWatchAdmissionregistrationV1ValidatingWebhookConfigurationListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchApiextensionsV1CustomResourceDefinitionListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6221,20 +4861,6 @@ func NewWatchApiextensionsV1CustomResourceDefinitionListHandler(s Server, opts .
 
 		if err := encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchApiextensionsV1CustomResourceDefinitionListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchApiextensionsV1CustomResourceDefinitionList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6262,20 +4888,6 @@ func NewWatchApiregistrationV1APIServiceListHandler(s Server, opts ...Option) fu
 		}
 	}
 }
-func NewWatchApiregistrationV1APIServiceListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchApiregistrationV1APIServiceList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchApiregistrationV1APIServiceListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchAppsV1ControllerRevisionListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6295,20 +4907,6 @@ func NewWatchAppsV1ControllerRevisionListForAllNamespacesHandler(s Server, opts 
 
 		if err := encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchAppsV1ControllerRevisionListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAppsV1ControllerRevisionListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6336,20 +4934,6 @@ func NewWatchAppsV1DaemonSetListForAllNamespacesHandler(s Server, opts ...Option
 		}
 	}
 }
-func NewWatchAppsV1DaemonSetListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAppsV1DaemonSetListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchAppsV1DeploymentListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6369,20 +4953,6 @@ func NewWatchAppsV1DeploymentListForAllNamespacesHandler(s Server, opts ...Optio
 
 		if err := encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchAppsV1DeploymentListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAppsV1DeploymentListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6410,20 +4980,6 @@ func NewWatchAppsV1ReplicaSetListForAllNamespacesHandler(s Server, opts ...Optio
 		}
 	}
 }
-func NewWatchAppsV1ReplicaSetListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAppsV1ReplicaSetListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchAppsV1StatefulSetListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6443,20 +4999,6 @@ func NewWatchAppsV1StatefulSetListForAllNamespacesHandler(s Server, opts ...Opti
 
 		if err := encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchAppsV1StatefulSetListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAppsV1StatefulSetListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6484,20 +5026,6 @@ func NewWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesHandler(s S
 		}
 	}
 }
-func NewWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6517,20 +5045,6 @@ func NewWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesHandle
 
 		if err := encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6558,20 +5072,6 @@ func NewWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesHandle
 		}
 	}
 }
-func NewWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchBatchV1CronJobListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6591,20 +5091,6 @@ func NewWatchBatchV1CronJobListForAllNamespacesHandler(s Server, opts ...Option)
 
 		if err := encodeWatchBatchV1CronJobListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchBatchV1CronJobListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchBatchV1CronJobListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchBatchV1CronJobListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6632,20 +5118,6 @@ func NewWatchBatchV1JobListForAllNamespacesHandler(s Server, opts ...Option) fun
 		}
 	}
 }
-func NewWatchBatchV1JobListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchBatchV1JobListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchBatchV1JobListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchBatchV1beta1CronJobListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6665,20 +5137,6 @@ func NewWatchBatchV1beta1CronJobListForAllNamespacesHandler(s Server, opts ...Op
 
 		if err := encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchBatchV1beta1CronJobListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchBatchV1beta1CronJobListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6706,20 +5164,6 @@ func NewWatchCertificatesV1CertificateSigningRequestListHandler(s Server, opts .
 		}
 	}
 }
-func NewWatchCertificatesV1CertificateSigningRequestListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCertificatesV1CertificateSigningRequestList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCertificatesV1CertificateSigningRequestListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoordinationV1LeaseListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6739,20 +5183,6 @@ func NewWatchCoordinationV1LeaseListForAllNamespacesHandler(s Server, opts ...Op
 
 		if err := encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoordinationV1LeaseListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoordinationV1LeaseListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6780,20 +5210,6 @@ func NewWatchCoreV1ConfigMapListForAllNamespacesHandler(s Server, opts ...Option
 		}
 	}
 }
-func NewWatchCoreV1ConfigMapListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1ConfigMapListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1EndpointsListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6813,20 +5229,6 @@ func NewWatchCoreV1EndpointsListForAllNamespacesHandler(s Server, opts ...Option
 
 		if err := encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1EndpointsListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1EndpointsListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6854,20 +5256,6 @@ func NewWatchCoreV1EventListForAllNamespacesHandler(s Server, opts ...Option) fu
 		}
 	}
 }
-func NewWatchCoreV1EventListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1EventListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1EventListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1LimitRangeListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6887,20 +5275,6 @@ func NewWatchCoreV1LimitRangeListForAllNamespacesHandler(s Server, opts ...Optio
 
 		if err := encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1LimitRangeListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1LimitRangeListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -6928,20 +5302,6 @@ func NewWatchCoreV1NamespaceListHandler(s Server, opts ...Option) func(w http.Re
 		}
 	}
 }
-func NewWatchCoreV1NamespaceListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1NamespaceList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1NamespaceListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1NodeListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -6961,20 +5321,6 @@ func NewWatchCoreV1NodeListHandler(s Server, opts ...Option) func(w http.Respons
 
 		if err := encodeWatchCoreV1NodeListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1NodeListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1NodeList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1NodeListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7002,20 +5348,6 @@ func NewWatchCoreV1PersistentVolumeClaimListForAllNamespacesHandler(s Server, op
 		}
 	}
 }
-func NewWatchCoreV1PersistentVolumeClaimListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1PersistentVolumeListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7035,20 +5367,6 @@ func NewWatchCoreV1PersistentVolumeListHandler(s Server, opts ...Option) func(w 
 
 		if err := encodeWatchCoreV1PersistentVolumeListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1PersistentVolumeListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1PersistentVolumeList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1PersistentVolumeListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7076,20 +5394,6 @@ func NewWatchCoreV1PodListForAllNamespacesHandler(s Server, opts ...Option) func
 		}
 	}
 }
-func NewWatchCoreV1PodListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1PodListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1PodListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1PodTemplateListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7109,20 +5413,6 @@ func NewWatchCoreV1PodTemplateListForAllNamespacesHandler(s Server, opts ...Opti
 
 		if err := encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1PodTemplateListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1PodTemplateListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7150,20 +5440,6 @@ func NewWatchCoreV1ReplicationControllerListForAllNamespacesHandler(s Server, op
 		}
 	}
 }
-func NewWatchCoreV1ReplicationControllerListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1ReplicationControllerListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1ResourceQuotaListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7183,20 +5459,6 @@ func NewWatchCoreV1ResourceQuotaListForAllNamespacesHandler(s Server, opts ...Op
 
 		if err := encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1ResourceQuotaListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1ResourceQuotaListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7224,20 +5486,6 @@ func NewWatchCoreV1SecretListForAllNamespacesHandler(s Server, opts ...Option) f
 		}
 	}
 }
-func NewWatchCoreV1SecretListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1SecretListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1SecretListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchCoreV1ServiceAccountListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7257,20 +5505,6 @@ func NewWatchCoreV1ServiceAccountListForAllNamespacesHandler(s Server, opts ...O
 
 		if err := encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchCoreV1ServiceAccountListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1ServiceAccountListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7298,20 +5532,6 @@ func NewWatchCoreV1ServiceListForAllNamespacesHandler(s Server, opts ...Option) 
 		}
 	}
 }
-func NewWatchCoreV1ServiceListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchCoreV1ServiceListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchCoreV1ServiceListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchDiscoveryV1EndpointSliceListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7331,20 +5551,6 @@ func NewWatchDiscoveryV1EndpointSliceListForAllNamespacesHandler(s Server, opts 
 
 		if err := encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchDiscoveryV1EndpointSliceListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchDiscoveryV1EndpointSliceListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7372,20 +5578,6 @@ func NewWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesHandler(s Server, 
 		}
 	}
 }
-func NewWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchEventsV1EventListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7405,20 +5597,6 @@ func NewWatchEventsV1EventListForAllNamespacesHandler(s Server, opts ...Option) 
 
 		if err := encodeWatchEventsV1EventListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchEventsV1EventListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchEventsV1EventListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchEventsV1EventListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7446,20 +5624,6 @@ func NewWatchEventsV1beta1EventListForAllNamespacesHandler(s Server, opts ...Opt
 		}
 	}
 }
-func NewWatchEventsV1beta1EventListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchEventsV1beta1EventListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchFlowcontrolApiserverV1beta1FlowSchemaListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7479,20 +5643,6 @@ func NewWatchFlowcontrolApiserverV1beta1FlowSchemaListHandler(s Server, opts ...
 
 		if err := encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchFlowcontrolApiserverV1beta1FlowSchemaListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchFlowcontrolApiserverV1beta1FlowSchemaList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7520,20 +5670,6 @@ func NewWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListHandler(s 
 		}
 	}
 }
-func NewWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchFlowcontrolApiserverV1beta2FlowSchemaListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7553,20 +5689,6 @@ func NewWatchFlowcontrolApiserverV1beta2FlowSchemaListHandler(s Server, opts ...
 
 		if err := encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchFlowcontrolApiserverV1beta2FlowSchemaListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchFlowcontrolApiserverV1beta2FlowSchemaList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7594,20 +5716,6 @@ func NewWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListHandler(s 
 		}
 	}
 }
-func NewWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchInternalApiserverV1alpha1StorageVersionListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7627,20 +5735,6 @@ func NewWatchInternalApiserverV1alpha1StorageVersionListHandler(s Server, opts .
 
 		if err := encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchInternalApiserverV1alpha1StorageVersionListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchInternalApiserverV1alpha1StorageVersionList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7668,20 +5762,6 @@ func NewWatchNetworkingV1IngressClassListHandler(s Server, opts ...Option) func(
 		}
 	}
 }
-func NewWatchNetworkingV1IngressClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNetworkingV1IngressClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNetworkingV1IngressClassListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchNetworkingV1IngressListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7701,20 +5781,6 @@ func NewWatchNetworkingV1IngressListForAllNamespacesHandler(s Server, opts ...Op
 
 		if err := encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchNetworkingV1IngressListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNetworkingV1IngressListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7742,20 +5808,6 @@ func NewWatchNetworkingV1NetworkPolicyListForAllNamespacesHandler(s Server, opts
 		}
 	}
 }
-func NewWatchNetworkingV1NetworkPolicyListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNetworkingV1NetworkPolicyListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchNodeV1RuntimeClassListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7775,20 +5827,6 @@ func NewWatchNodeV1RuntimeClassListHandler(s Server, opts ...Option) func(w http
 
 		if err := encodeWatchNodeV1RuntimeClassListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchNodeV1RuntimeClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNodeV1RuntimeClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNodeV1RuntimeClassListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7816,20 +5854,6 @@ func NewWatchNodeV1alpha1RuntimeClassListHandler(s Server, opts ...Option) func(
 		}
 	}
 }
-func NewWatchNodeV1alpha1RuntimeClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNodeV1alpha1RuntimeClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNodeV1alpha1RuntimeClassListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchNodeV1beta1RuntimeClassListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7849,20 +5873,6 @@ func NewWatchNodeV1beta1RuntimeClassListHandler(s Server, opts ...Option) func(w
 
 		if err := encodeWatchNodeV1beta1RuntimeClassListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchNodeV1beta1RuntimeClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchNodeV1beta1RuntimeClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchNodeV1beta1RuntimeClassListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7890,20 +5900,6 @@ func NewWatchPolicyV1PodDisruptionBudgetListForAllNamespacesHandler(s Server, op
 		}
 	}
 }
-func NewWatchPolicyV1PodDisruptionBudgetListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7923,20 +5919,6 @@ func NewWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesHandler(s Serve
 
 		if err := encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -7964,20 +5946,6 @@ func NewWatchPolicyV1beta1PodSecurityPolicyListHandler(s Server, opts ...Option)
 		}
 	}
 }
-func NewWatchPolicyV1beta1PodSecurityPolicyListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchPolicyV1beta1PodSecurityPolicyList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchRbacAuthorizationV1ClusterRoleBindingListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -7997,20 +5965,6 @@ func NewWatchRbacAuthorizationV1ClusterRoleBindingListHandler(s Server, opts ...
 
 		if err := encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchRbacAuthorizationV1ClusterRoleBindingListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchRbacAuthorizationV1ClusterRoleBindingList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -8038,20 +5992,6 @@ func NewWatchRbacAuthorizationV1ClusterRoleListHandler(s Server, opts ...Option)
 		}
 	}
 }
-func NewWatchRbacAuthorizationV1ClusterRoleListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchRbacAuthorizationV1ClusterRoleList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchRbacAuthorizationV1RoleBindingListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -8071,20 +6011,6 @@ func NewWatchRbacAuthorizationV1RoleBindingListForAllNamespacesHandler(s Server,
 
 		if err := encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchRbacAuthorizationV1RoleBindingListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -8112,20 +6038,6 @@ func NewWatchRbacAuthorizationV1RoleListForAllNamespacesHandler(s Server, opts .
 		}
 	}
 }
-func NewWatchRbacAuthorizationV1RoleListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchRbacAuthorizationV1RoleListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchSchedulingV1PriorityClassListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -8145,20 +6057,6 @@ func NewWatchSchedulingV1PriorityClassListHandler(s Server, opts ...Option) func
 
 		if err := encodeWatchSchedulingV1PriorityClassListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchSchedulingV1PriorityClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchSchedulingV1PriorityClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchSchedulingV1PriorityClassListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -8186,20 +6084,6 @@ func NewWatchStorageV1CSIDriverListHandler(s Server, opts ...Option) func(w http
 		}
 	}
 }
-func NewWatchStorageV1CSIDriverListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1CSIDriverList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1CSIDriverListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchStorageV1CSINodeListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -8219,20 +6103,6 @@ func NewWatchStorageV1CSINodeListHandler(s Server, opts ...Option) func(w http.R
 
 		if err := encodeWatchStorageV1CSINodeListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchStorageV1CSINodeListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1CSINodeList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1CSINodeListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -8260,20 +6130,6 @@ func NewWatchStorageV1StorageClassListHandler(s Server, opts ...Option) func(w h
 		}
 	}
 }
-func NewWatchStorageV1StorageClassListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1StorageClassList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1StorageClassListResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchStorageV1VolumeAttachmentListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -8293,20 +6149,6 @@ func NewWatchStorageV1VolumeAttachmentListHandler(s Server, opts ...Option) func
 
 		if err := encodeWatchStorageV1VolumeAttachmentListResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchStorageV1VolumeAttachmentListFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1VolumeAttachmentList(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1VolumeAttachmentListResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -8334,20 +6176,6 @@ func NewWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesHandler(s Serv
 		}
 	}
 }
-func NewWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response, w, nil); err != nil {
-			return
-		}
-	}
-}
 
 func NewWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -8367,20 +6195,6 @@ func NewWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesHandler(s Serve
 
 		if err := encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response, w, span); err != nil {
 			span.RecordError(err)
-			return
-		}
-	}
-}
-func NewWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-	return func(ctx *fasthttp.RequestCtx) {
-		response, err := s.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(context.Background())
-		if err != nil {
-			return
-		}
-		w := ht.Writer{
-			Context: ctx,
-		}
-		if err := encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response, w, nil); err != nil {
 			return
 		}
 	}

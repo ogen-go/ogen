@@ -25,7 +25,6 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
-	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -55,5 +54,4 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
-	_ = fasthttp.Client{}
 )

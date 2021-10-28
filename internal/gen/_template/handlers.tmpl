@@ -47,24 +47,6 @@ func New{{ $op.Name }}Handler(s Server, opts ...Option) func(w http.ResponseWrit
         }
 	}
 }
-
-{{- if not (or ($op.Params) ($op.Request)) }}
-func New{{ $op.Name }}FastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
-  return func(ctx *fasthttp.RequestCtx) {
-    response, err := s.{{$op.Name}}(context.Background())
-    if err != nil {
-      return
-    }
-    w := ht.Writer{
-      Context: ctx,
-    }
-    if err := encode{{ $op.Name }}Response(response, w, nil); err != nil {
-      return
-    }
-  }
-}
-{{ end }}
-
 {{ end }}
 
 func respondError(w http.ResponseWriter, code int, err error) {
