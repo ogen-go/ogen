@@ -1,12 +1,9 @@
 package json
 
 import (
-	"encoding/json"
 	"fmt"
 	"testing"
 
-	"github.com/minio/simdjson-go"
-	jsoniter "github.com/ogen-go/json"
 	"github.com/stretchr/testify/require"
 )
 
@@ -38,7 +35,7 @@ func (b *bufferWriter) Write(p []byte) (n int, err error) {
 
 type WorldData struct {
 	Value World
-	Raw   json.RawMessage
+	Raw   RawMessage
 	Len   int
 }
 
@@ -63,7 +60,7 @@ func testWorld(t testing.TB) WorldData {
 		Message:      "Hello, world!",
 	}
 
-	data, err := json.Marshal(v)
+	data, err := Marshal(v)
 	require.NoError(t, err)
 	require.NotEmpty(t, data)
 
@@ -86,7 +83,7 @@ func BenchmarkMarshal(b *testing.B) {
 			d.Setup(b)
 
 			for i := 0; i < b.N; i++ {
-				data, err := json.Marshal(d.Value)
+				data, err := Marshal(d.Value)
 				require.NoError(b, err)
 				require.NotEmpty(b, data)
 			}
@@ -96,7 +93,7 @@ func BenchmarkMarshal(b *testing.B) {
 				d.Setup(b)
 
 				var w bufferWriter
-				s := jsoniter.NewStream(jsoniter.ConfigFastest, &w, 1024)
+				s := NewStream(&w)
 
 				for i := 0; i < b.N; i++ {
 					s.WriteObjectStart()
@@ -141,7 +138,7 @@ func BenchmarkUnmarshal(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				var v World
 
-				if err := json.Unmarshal(data, &v); err != nil {
+				if err := Unmarshal(data, &v); err != nil {
 					b.Fatal(err)
 				}
 			}
@@ -149,14 +146,14 @@ func BenchmarkUnmarshal(b *testing.B) {
 		b.Run("jsoniter", func(b *testing.B) {
 			d.Setup(b)
 
-			iter := jsoniter.NewIterator(jsoniter.ConfigFastest)
+			iter := NewIterator()
 			data := d.Bytes()
 
 			for i := 0; i < b.N; i++ {
 				iter.ResetBytes(data)
 
 				var v World
-				iter.ReadObjectCB(func(iter *jsoniter.Iterator, k string) bool {
+				iter.ReadObjectCB(func(iter *Iterator, k string) bool {
 					switch k {
 					case "id":
 						v.ID = iter.ReadInt64()
@@ -173,55 +170,6 @@ func BenchmarkUnmarshal(b *testing.B) {
 
 				if v.Message == "" || v.ID == 0 || v.RandomNumber == 0 {
 					b.Errorf("bad read: %s", v)
-				}
-			}
-		})
-		b.Run("simd", func(b *testing.B) {
-			// https://github.com/minio/simdjson-go
-			// NB: SIMD is very slow for small json objects, slower than std.
-			d.Setup(b)
-			data := d.Bytes()
-
-			var (
-				err error
-
-				p    = &simdjson.ParsedJson{}
-				obj  = &simdjson.Object{}
-				tmp  = &simdjson.Iter{}
-				elem = &simdjson.Element{}
-			)
-
-			for i := 0; i < b.N; i++ {
-				var v World
-
-				if p, err = simdjson.Parse(data, p); err != nil {
-					b.Fatal(err)
-				}
-				iter := p.Iter()
-
-				switch t := iter.Advance(); t {
-				case simdjson.TypeRoot:
-					if t, tmp, err = iter.Root(tmp); err != nil {
-						b.Fatal(err)
-					}
-
-					if t == simdjson.TypeObject {
-						if obj, err = tmp.Object(obj); err != nil {
-							b.Fatal(err)
-						}
-
-						// Parsing id field.
-						if e := obj.FindKey("id", elem); e != nil && elem.Type == simdjson.TypeInt {
-							id, err := elem.Iter.Int()
-							if err != nil {
-								b.Fatal(err)
-							}
-
-							v.ID = id
-						}
-
-						// TODO(ernado): Parse more fields, I'm tired.
-					}
 				}
 			}
 		})

@@ -7,6 +7,8 @@ import (
 	"github.com/ogen-go/json"
 )
 
+type RawMessage = std.RawMessage
+
 // Marshal value to json.
 func Marshal(val interface{}) ([]byte, error) {
 	return std.Marshal(val)
