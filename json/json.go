@@ -2,18 +2,19 @@ package json
 
 import (
 	"bytes"
+	std "encoding/json"
 
-	json "github.com/json-iterator/go"
+	"github.com/ogen-go/json"
 )
 
 // Marshal value to json.
 func Marshal(val interface{}) ([]byte, error) {
-	return json.Marshal(val)
+	return std.Marshal(val)
 }
 
 // Unmarshal value from json.
 func Unmarshal(data []byte, val interface{}) error {
-	return json.Unmarshal(data, val)
+	return std.Unmarshal(data, val)
 }
 
 // Unmarshaler implements json reading.

@@ -11,7 +11,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
+	jsoniter "github.com/ogen-go/json"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 

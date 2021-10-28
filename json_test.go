@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
+	jsoniter "github.com/ogen-go/json"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/conv"

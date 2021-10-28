@@ -3,7 +3,7 @@ package parser
 import (
 	"encoding/json"
 
-	jsoniter "github.com/json-iterator/go"
+	jsoniter "github.com/ogen-go/json"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/oas"

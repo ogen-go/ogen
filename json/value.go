@@ -1,7 +1,7 @@
 package json
 
 import (
-	json "github.com/json-iterator/go"
+	json "github.com/ogen-go/json"
 )
 
 const (

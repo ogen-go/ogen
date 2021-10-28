@@ -4,7 +4,7 @@ import (
 	"io"
 	"sync"
 
-	json "github.com/json-iterator/go"
+	json "github.com/ogen-go/json"
 )
 
 type Stream = json.Stream

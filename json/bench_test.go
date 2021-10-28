@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	jsoniter "github.com/json-iterator/go"
 	"github.com/minio/simdjson-go"
+	jsoniter "github.com/ogen-go/json"
 	"github.com/stretchr/testify/require"
 )
 
@@ -92,16 +92,6 @@ func BenchmarkMarshal(b *testing.B) {
 			}
 		})
 		b.Run("jsoniter", func(b *testing.B) {
-			// https://github.com/json-iterator/go
-			b.Run("Generic", func(b *testing.B) {
-				d.Setup(b)
-
-				for i := 0; i < b.N; i++ {
-					data, err := jsoniter.Marshal(d.Value)
-					require.NoError(b, err)
-					require.NotEmpty(b, data)
-				}
-			})
 			b.Run("Stream", func(b *testing.B) {
 				d.Setup(b)
 
