@@ -4,16 +4,6 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 )
 
-type Tracer struct {
-	cfg config
-}
-
-func New(opts ...Option) *Tracer {
-	return &Tracer{
-		cfg: newConfig(opts...),
-	}
-}
-
 const (
 	// OperationIDKey by OpenAPI specification.
 	OperationIDKey = attribute.Key("oas.operation")
