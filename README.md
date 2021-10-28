@@ -39,7 +39,7 @@ go get github.com/ogen-go/ogen
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
 * Generated sum types for oneOf
-* OpenTelemetry tracing
+* OpenTelemetry tracing and metrics
 
 Example generated structure from schema:
 ```go
@@ -135,14 +135,6 @@ func NewIntID(v int) ID
 * Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
 * Separate JSON Schema generator
-* Framework/Router support
-  * stdlib
-  * gin
-  * echo
-  * fasthttp
-* Middlewares, logging (e.g. how to pass request id)
-* RED metrics for client and server
-* Tracing for client and server
 * Basic validation
   * String
     * Regex
@@ -164,7 +156,6 @@ func NewIntID(v int) ID
     * Line and column (optional)
 * Tool for OAS backward compatibility check
 * DSL-based ent-like code-first approach for writing schemas
-* Benchmarks
 * Generics
   * Target go1.18
   * Use Optional[T]
