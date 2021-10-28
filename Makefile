@@ -30,4 +30,4 @@ tidy:
 tidy_examples:
 	cd examples && go mod tidy
 
-clean: tidy generate examples tidy_examples
+clean: tidy generate tidy_examples examples tidy_examples
