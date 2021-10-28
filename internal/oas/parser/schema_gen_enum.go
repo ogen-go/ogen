@@ -3,7 +3,7 @@ package parser
 import (
 	"encoding/json"
 
-	jsoniter "github.com/ogen-go/json"
+	j "github.com/ogen-go/json"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/oas"
@@ -38,29 +38,29 @@ var errNullValue = xerrors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
-		iter = jsoniter.ParseBytes(jsoniter.ConfigDefault, v)
+		iter = j.ParseBytes(j.ConfigDefault, v)
 		next = iter.WhatIsNext()
 	)
 
-	if next == jsoniter.NilValue {
+	if next == j.NilValue {
 		return nil, errNullValue
 	}
 
-	str := func(t jsoniter.ValueType) string {
+	str := func(t j.ValueType) string {
 		switch t {
-		case jsoniter.InvalidValue:
+		case j.InvalidValue:
 			return "invalid"
-		case jsoniter.StringValue:
+		case j.StringValue:
 			return "string"
-		case jsoniter.NumberValue:
+		case j.NumberValue:
 			return "number"
-		case jsoniter.NilValue:
+		case j.NilValue:
 			return "null"
-		case jsoniter.BoolValue:
+		case j.BoolValue:
 			return "bool"
-		case jsoniter.ArrayValue:
+		case j.ArrayValue:
 			return "array"
-		case jsoniter.ObjectValue:
+		case j.ObjectValue:
 			return "object"
 		default:
 			return "unknown"
@@ -69,13 +69,13 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 
 	switch typ {
 	case oas.String:
-		if next != jsoniter.StringValue {
+		if next != j.StringValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}
 		return iter.ReadString(), nil
 	case oas.Integer:
-		if next != jsoniter.NumberValue {
+		if next != j.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}
@@ -87,7 +87,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 
 		return iter.ReadNumber().Int64()
 	case oas.Number:
-		if next != jsoniter.NumberValue {
+		if next != j.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}
@@ -99,7 +99,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 
 		return iter.ReadNumber().Float64()
 	case oas.Boolean:
-		if next != jsoniter.BoolValue {
+		if next != j.BoolValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}

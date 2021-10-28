@@ -1,2 +1,2 @@
-// Package uri implements OpenAPI path/query parameter encoding. 
+// Package uri implements OpenAPI path/query parameter encoding.
 package uri

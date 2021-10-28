@@ -3,7 +3,7 @@ package json
 import (
 	"sync"
 
-	json "github.com/ogen-go/json"
+	"github.com/ogen-go/json"
 )
 
 type Iterator = json.Iterator

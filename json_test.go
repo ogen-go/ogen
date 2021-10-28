@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	jsoniter "github.com/ogen-go/json"
+	j "github.com/ogen-go/json"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/conv"
@@ -119,5 +119,5 @@ func TestJSONExample(t *testing.T) {
 		}),
 	}
 	t.Logf("%s", json.Encode(pet))
-	require.True(t, jsoniter.Valid(json.Encode(pet)), "invalid json")
+	require.True(t, j.Valid(json.Encode(pet)), "invalid json")
 }

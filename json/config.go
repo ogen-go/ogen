@@ -1,7 +1,7 @@
 package json
 
 import (
-	json "github.com/ogen-go/json"
+	"github.com/ogen-go/json"
 )
 
 type Config = json.Config
