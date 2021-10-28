@@ -11,7 +11,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	j "github.com/ogen-go/json"
+	"github.com/ogen-go/jir"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -192,7 +192,7 @@ func TestIntegration(t *testing.T) {
 		t.Run("Valid", func(t *testing.T) {
 			data := json.Encode(pet)
 			t.Logf("%s", data)
-			require.True(t, j.Valid(data), "json should be valid")
+			require.True(t, jir.Valid(data), "json should be valid")
 			require.JSONEq(t, petTestData, string(data), "should be equal to golden json")
 		})
 
