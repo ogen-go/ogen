@@ -1,0 +1,30 @@
+// https://go.dev/blog/go-brand
+// https://storage.googleapis.com/golang-assets/Go-brand-book-v1.9.5.pdf
+// #00758D (darker)
+// #00ADD8 (gopher blue)
+// #5DC9E2 (light blue)
+// #555759 (black)
+:root {
+    --c-brand: #00758D;
+    --c-brand-light: #00ADD8;
+    --c-brand-bg: rgba(59, 130, 246, 0.1);
+
+    --c-border: #555759;
+    --c-border-dark: #555759;
+}
+
+html.dark {
+    --c-brand: #00758D;
+    --c-brand-light: #00ADD8;
+    --c-brand-bg: rgba(59, 130, 246, 0.1);
+
+    --c-bg: #000;
+
+    --c-text: #eee;
+    --c-text-light: #eee;
+    --c-text-lighter: #eee;
+    --c-text-lightest: #eee;
+
+    --c-border: #222;
+    --c-border-dark: #222;
+}
