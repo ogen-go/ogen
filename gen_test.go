@@ -64,9 +64,6 @@ func TestGenerate(t *testing.T) {
 		},
 		{
 			Name: "gotd_bot_api.json",
-			Options: gen.Options{
-				IgnoreNotImplemented: []string{"anyOf"},
-			},
 		},
 		{
 			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
