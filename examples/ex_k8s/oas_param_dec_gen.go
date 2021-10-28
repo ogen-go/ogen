@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http.Request) (CreateAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {

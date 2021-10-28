@@ -20,6 +20,8 @@ const (
 	FormatInt32    Format = "int32"
 	FormatFloat    Format = "float"
 	FormatDouble   Format = "double"
+	FormatEmail    Format = "email"
+	FormatHostname Format = "hostname"
 
 	// TODO(ernado): infer from OneOf(ipv4, ipv6) and remove
 

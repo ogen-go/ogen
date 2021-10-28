@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 // WriteJSON implements json.Marshaler.
@@ -68,6 +70,15 @@ func (s Data) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+	more.More()
+	j.WriteObjectField("email")
+	j.WriteString(s.Email)
+	more.More()
+	j.WriteObjectField("format")
+	j.WriteString(s.Format)
+	more.More()
+	j.WriteObjectField("hostname")
+	j.WriteString(s.Hostname)
 	more.More()
 	j.WriteObjectField("id")
 	s.ID.WriteJSON(j)
@@ -88,6 +99,33 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "email":
+			if err := func() error {
+				s.Email = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "format":
+			if err := func() error {
+				s.Format = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "hostname":
+			if err := func() error {
+				s.Hostname = string(i.ReadString())
 				return i.Error
 			}(); err != nil {
 				retErr = err

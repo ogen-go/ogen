@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 	"unicode"
 
@@ -43,6 +44,15 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		return nil, &ErrNotImplemented{"allOf"}
 	}
 
+	var reg *regexp.Regexp
+	if schema.Pattern != "" {
+		p, err := regexp.Compile(schema.Pattern)
+		if err != nil {
+			return nil, xerrors.Errorf("pattern: %w", err)
+		}
+		reg = p
+	}
+
 	side := func(t *ir.Type) *ir.Type {
 		// Set validation fields.
 		if schema.MultipleOf != nil {
@@ -67,11 +77,18 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			t.Validators.Array.SetMinLength(int(*schema.MinItems))
 		}
 
+		t.Validators.String.Regex = reg
 		if schema.MaxLength != nil {
 			t.Validators.String.SetMaxLength(int(*schema.MaxLength))
 		}
 		if schema.MinLength != nil {
 			t.Validators.String.SetMinLength(int(*schema.MinLength))
+		}
+		if t.Schema.Format == oas.FormatEmail {
+			t.Validators.String.Email = true
+		}
+		if t.Schema.Format == oas.FormatHostname {
+			t.Validators.String.Hostname = true
 		}
 
 		if ref := t.Schema.Ref; ref != "" {

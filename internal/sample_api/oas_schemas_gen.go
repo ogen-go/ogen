@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,11 +57,15 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 // Ref: #/components/schemas/Data
 type Data struct {
 	Description OptString `json:"description"`
+	Email       string    `json:"email"`
+	Format      string    `json:"format"`
+	Hostname    string    `json:"hostname"`
 	ID          ID        `json:"id"`
 }
 

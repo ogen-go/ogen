@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 type CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration

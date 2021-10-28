@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err error) {
@@ -162,6 +164,9 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 				MinLengthSet: true,
 				MaxLength:    0,
 				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     false,
+				Regex:        nil,
 			}).Validate(string(request)); err != nil {
 				return err
 			}
@@ -200,6 +205,9 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 				MinLengthSet: true,
 				MaxLength:    0,
 				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     false,
+				Regex:        nil,
 			}).Validate(string(request)); err != nil {
 				return err
 			}

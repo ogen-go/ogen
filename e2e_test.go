@@ -183,6 +183,9 @@ func TestIntegration(t *testing.T) {
 			Next: api.NewOptData(api.Data{
 				Description: api.NewOptString("Foo"),
 				ID:          api.NewIntID(10),
+				Email:       "foo@example.com",
+				Format:      "1-2",
+				Hostname:    "example.org",
 			}),
 		}
 

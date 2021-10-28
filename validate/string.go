@@ -14,6 +14,7 @@ type String struct {
 	MaxLengthSet bool
 	Email        bool
 	Regex        *regexp.Regexp
+	Hostname     bool
 }
 
 func (t *String) SetMaxLength(v int) {
@@ -27,7 +28,31 @@ func (t *String) SetMinLength(v int) {
 }
 
 func (t String) Set() bool {
-	return t.MaxLengthSet || t.MinLengthSet
+	return t.MaxLengthSet || t.MinLengthSet || t.Email || t.Regex != nil || t.Hostname
+}
+
+func (t String) checkHostname(v string) error {
+	if v == "" {
+		return errors.New("blank")
+	}
+	for i, r := range v {
+		if !unicode.IsPrint(r) {
+			return errors.New("not printable character")
+		}
+		if unicode.IsSpace(r) {
+			return errors.New("space character")
+		}
+		if i > 255 {
+			return errors.New("too long")
+		}
+		if r == '.' {
+			continue
+		}
+		if !(r >= 'a' && r <= 'z' || r >= '0' && r <= '9' || r == '-' || r >= 'A' && r <= 'Z') {
+			return errors.New("invalid character")
+		}
+	}
+	return nil
 }
 
 func (t String) checkEmail(v string) error {
@@ -79,6 +104,11 @@ func (t String) Validate(v string) error {
 	}
 	if t.Email {
 		if err := t.checkEmail(v); err != nil {
+			return err
+		}
+	}
+	if t.Hostname {
+		if err := t.checkHostname(v); err != nil {
 			return err
 		}
 	}

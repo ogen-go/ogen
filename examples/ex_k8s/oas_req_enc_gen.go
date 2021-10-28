@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, span trace.Span) (data *bytes.Buffer, contentType string, err error) {

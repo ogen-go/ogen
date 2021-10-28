@@ -334,7 +334,10 @@
       "Data": {
         "type": "object",
         "required": [
-          "id"
+          "id",
+          "email",
+          "format",
+          "hostname"
         ],
         "properties": {
           "id": {
@@ -342,6 +345,18 @@
           },
           "description": {
             "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "hostname": {
+            "type": "string",
+            "format": "hostname"
+          },
+          "format": {
+            "type": "string",
+            "pattern": "$\\d-\\d^"
           }
         }
       },

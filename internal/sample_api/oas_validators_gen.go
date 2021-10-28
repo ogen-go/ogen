@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,8 +57,73 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
+func (s Data) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        true,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Email)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        regexp.MustCompile(`$\d-\d^`),
+		}).Validate(string(s.Format)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "format",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     true,
+			Regex:        nil,
+		}).Validate(string(s.Hostname)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "hostname",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -126,6 +192,9 @@ func (s Pet) Validate() error {
 			MinLengthSet: true,
 			MaxLength:    24,
 			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
 		}).Validate(string(s.Name)); err != nil {
 			return err
 		}
@@ -133,6 +202,15 @@ func (s Pet) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Next // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "next",
 			Error: err,
 		})
 	}
@@ -168,6 +246,9 @@ func (s Pet) Validate() error {
 							MinLengthSet: false,
 							MaxLength:    255,
 							MaxLengthSet: true,
+							Email:        false,
+							Hostname:     false,
+							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
 							return err
 						}

@@ -135,15 +135,7 @@ func NewIntID(v int) ID
 * Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
 * Separate JSON Schema generator
-* Basic validation
-  * String
-    * Regex
-* OneOf/AnyOf
-* Format
-  * [String format](https://json-schema.org/understanding-json-schema/reference/string.html)
-    * Email
-    * Hostname
-    * Regular expression
+* AnyOf
 * Webhook support
 * Files support (with streaming, like io.Reader/Writer)
 * Client retries

@@ -288,7 +288,8 @@ func validateTypeFormat(typ, format string) error {
 		case "password", "":
 			return nil
 		default:
-			// return nil, xerrors.Errorf("unexpected string format: %q", format)
+			// Tools that do not recognize a specific format MAY default
+			// back to the type alone, as if the format is not specified.
 			return nil
 		}
 	case "boolean":

@@ -12,6 +12,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -56,6 +57,7 @@ var (
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
+	_ = regexp.MustCompile
 )
 
 func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) Validate() error {
@@ -1953,7 +1955,17 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		if s.Request == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		_ = s.Request // validation expected, but not supported
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+		}).Validate(string(s.Request)); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

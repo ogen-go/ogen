@@ -331,9 +331,8 @@ type Schema struct {
 	// expression dialect.
 	//
 	// A string instance is considered valid if the regular expression
-	// matches the instance successfully.  Recall: regular expressions are
+	// matches the instance successfully. Recall: regular expressions are
 	// not implicitly anchored.
-	// TODO: implement.
 	Pattern string `json:"pattern,omitempty"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be

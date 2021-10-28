@@ -28,6 +28,23 @@ func TestEmail(t *testing.T) {
 	}
 }
 
+func TestHostname(t *testing.T) {
+	v := String{Hostname: true}
+	for _, s := range []string{
+		"example.com",
+		"foo",
+		"bar-baz.ch",
+	} {
+		require.NoError(t, v.Validate(s))
+	}
+	for _, s := range []string{
+		"",
+		"@",
+	} {
+		require.Error(t, v.Validate(s), "%q should be invalid", s)
+	}
+}
+
 func TestRegex(t *testing.T) {
 	v := String{Regex: regexp.MustCompile(`^\d$`)}
 	for _, s := range []string{
