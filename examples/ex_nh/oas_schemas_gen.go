@@ -63,14 +63,14 @@ var (
 // Ref: #/components/schemas/Book
 type Book struct {
 	ID           OptInt    `json:"id"`
-	Images       OptImages `json:"images"`
 	MediaID      OptInt    `json:"media_id"`
-	NumFavorites OptInt    `json:"num_favorites"`
-	NumPages     OptInt    `json:"num_pages"`
-	Scanlator    OptString `json:"scanlator"`
-	Tags         []Tag     `json:"tags"`
+	Images       OptImages `json:"images"`
 	Title        OptTitle  `json:"title"`
+	Tags         []Tag     `json:"tags"`
+	Scanlator    OptString `json:"scanlator"`
 	UploadDate   OptInt    `json:"upload_date"`
+	NumPages     OptInt    `json:"num_pages"`
+	NumFavorites OptInt    `json:"num_favorites"`
 }
 
 func (*Book) getBookRes() {}
@@ -109,15 +109,15 @@ func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
 
 // Ref: #/components/schemas/Image
 type Image struct {
-	H OptInt    `json:"h"`
 	T OptString `json:"t"`
 	W OptInt    `json:"w"`
+	H OptInt    `json:"h"`
 }
 
 // Ref: #/components/schemas/Images
 type Images struct {
-	Cover     OptImage `json:"cover"`
 	Pages     []Image  `json:"pages"`
+	Cover     OptImage `json:"cover"`
 	Thumbnail OptImage `json:"thumbnail"`
 }
 
@@ -369,18 +369,18 @@ func (*SearchOKApplicationJSON) searchRes() {}
 
 // Ref: #/components/schemas/SearchResponse
 type SearchResponse struct {
+	Result   []Book `json:"result"`
 	NumPages OptInt `json:"num_pages"`
 	PerPage  OptInt `json:"per_page"`
-	Result   []Book `json:"result"`
 }
 
 // Ref: #/components/schemas/Tag
 type Tag struct {
-	Count OptInt     `json:"count"`
 	ID    OptInt     `json:"id"`
-	Name  OptString  `json:"name"`
 	Type  OptTagType `json:"type"`
+	Name  OptString  `json:"name"`
 	URL   OptString  `json:"url"`
+	Count OptInt     `json:"count"`
 }
 
 type TagType string

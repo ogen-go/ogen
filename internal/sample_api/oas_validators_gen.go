@@ -88,25 +88,6 @@ func (s Data) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
-			Hostname:     false,
-			Regex:        regexp.MustCompile(`$\d-\d^`),
-		}).Validate(string(s.Format)); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "format",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
 			Hostname:     true,
 			Regex:        nil,
 		}).Validate(string(s.Hostname)); err != nil {
@@ -119,6 +100,25 @@ func (s Data) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        regexp.MustCompile(`$\d-\d^`),
+		}).Validate(string(s.Format)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "format",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -126,6 +126,70 @@ func (s Data) Validate() error {
 }
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Primary // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "primary",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
+			MinSet:       true,
+			Min:          0,
+			MaxSet:       true,
+			Max:          100000,
+			MinExclusive: false,
+			MaxExclusive: false,
+		}).Validate(int64(s.ID)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "id",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    4,
+			MinLengthSet: true,
+			MaxLength:    24,
+			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Name)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "name",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Type // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Kind // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "kind",
+			Error: err,
+		})
+	}
 	if err := func() error {
 		if err := (validate.Array{
 			MinLength:    0,
@@ -160,52 +224,6 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       true,
-			Max:          100000,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}).Validate(int64(s.ID)); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "id",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Kind // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "kind",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    4,
-			MinLengthSet: true,
-			MaxLength:    24,
-			MaxLengthSet: true,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Name)); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "name",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Next // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -215,11 +233,20 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Primary // validation expected, but not supported
+		_ = s.TestInteger1 // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "primary",
+			Name:  "testInteger1",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TestFloat1 // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testFloat1",
 			Error: err,
 		})
 	}
@@ -278,33 +305,6 @@ func (s Pet) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testArray1",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.TestFloat1 // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "testFloat1",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.TestInteger1 // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "testInteger1",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Type // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "type",
 			Error: err,
 		})
 	}

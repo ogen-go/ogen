@@ -425,8 +425,8 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	*s = v
 
+	*s = v
 	if len(s.XPropertiesOrder) > 0 {
 		// Already explicitly set.
 		return nil

@@ -62,11 +62,11 @@ var (
 
 // Ref: #/components/schemas/Data
 type Data struct {
+	ID          ID        `json:"id"`
 	Description OptString `json:"description"`
 	Email       string    `json:"email"`
-	Format      string    `json:"format"`
 	Hostname    string    `json:"hostname"`
-	ID          ID        `json:"id"`
+	Format      string    `json:"format"`
 }
 
 type Error struct {
@@ -545,30 +545,30 @@ func (o OptUUID) Get() (v uuid.UUID, ok bool) {
 
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	Birthday     time.Time     `json:"birthday"`
-	Friends      []Pet         `json:"friends"`
+	Primary      *Pet          `json:"primary"`
 	ID           int64         `json:"id"`
+	UniqueID     uuid.UUID     `json:"unique_id"`
+	Name         string        `json:"name"`
+	Type         OptPetType    `json:"type"`
+	Kind         PetKind       `json:"kind"`
+	Tag          OptUUID       `json:"tag"`
 	IP           net.IP        `json:"ip"`
 	IPV4         net.IP        `json:"ip_v4"`
 	IPV6         net.IP        `json:"ip_v6"`
-	Kind         PetKind       `json:"kind"`
-	Name         string        `json:"name"`
-	Next         OptData       `json:"next"`
+	URI          url.URL       `json:"uri"`
+	Birthday     time.Time     `json:"birthday"`
+	Rate         time.Duration `json:"rate"`
 	Nickname     NilString     `json:"nickname"`
 	NullStr      OptNilString  `json:"nullStr"`
-	Primary      *Pet          `json:"primary"`
-	Rate         time.Duration `json:"rate"`
-	Tag          OptUUID       `json:"tag"`
+	Friends      []Pet         `json:"friends"`
+	Next         OptData       `json:"next"`
+	TestInteger1 OptInt        `json:"testInteger1"`
+	TestFloat1   OptFloat64    `json:"testFloat1"`
 	TestArray1   [][]string    `json:"testArray1"`
 	TestDate     OptTime       `json:"testDate"`
-	TestDateTime OptTime       `json:"testDateTime"`
 	TestDuration OptDuration   `json:"testDuration"`
-	TestFloat1   OptFloat64    `json:"testFloat1"`
-	TestInteger1 OptInt        `json:"testInteger1"`
 	TestTime     OptTime       `json:"testTime"`
-	Type         OptPetType    `json:"type"`
-	UniqueID     uuid.UUID     `json:"unique_id"`
-	URI          url.URL       `json:"uri"`
+	TestDateTime OptTime       `json:"testDateTime"`
 }
 
 func (*Pet) foobarGetRes()  {}

@@ -72,15 +72,6 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Images // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "images",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.MediaID // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -90,20 +81,11 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NumFavorites // validation expected, but not supported
+		_ = s.Images // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "num_favorites",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.NumPages // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "num_pages",
+			Name:  "images",
 			Error: err,
 		})
 	}
@@ -132,6 +114,24 @@ func (s Book) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		_ = s.NumPages // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "num_pages",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.NumFavorites // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "num_favorites",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -140,20 +140,20 @@ func (s Book) Validate() error {
 func (s Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.H // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "h",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.W // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "w",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.H // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "h",
 			Error: err,
 		})
 	}
@@ -164,15 +164,6 @@ func (s Image) Validate() error {
 }
 func (s Images) Validate() error {
 	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Cover // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "cover",
-			Error: err,
-		})
-	}
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Pages {
@@ -195,6 +186,15 @@ func (s Images) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "pages",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Cover // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "cover",
 			Error: err,
 		})
 	}

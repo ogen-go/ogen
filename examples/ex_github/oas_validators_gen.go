@@ -146,20 +146,20 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Validate() error {
 func (s ActionsEnterprisePermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AllowedActions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "allowed_actions",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.EnabledOrganizations // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enabled_organizations",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AllowedActions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "allowed_actions",
 			Error: err,
 		})
 	}
@@ -552,20 +552,20 @@ func (s ActionsListWorkflowRunsForRepoOK) Validate() error {
 func (s ActionsOrganizationPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AllowedActions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "allowed_actions",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.EnabledRepositories // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enabled_repositories",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AllowedActions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "allowed_actions",
 			Error: err,
 		})
 	}
@@ -621,20 +621,20 @@ func (s ActionsReviewPendingDeploymentsForRunReq) Validate() error {
 func (s ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AllowedActions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "allowed_actions",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.EnabledRepositories // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enabled_repositories",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AllowedActions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "allowed_actions",
 			Error: err,
 		})
 	}
@@ -841,92 +841,11 @@ func (s AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Members // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "members",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Metadata // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "metadata",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationAdministration // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_administration",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationHooks // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_hooks",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationPackages // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_packages",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationPlan // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_plan",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationProjects // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_projects",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationSecrets // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_secrets",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationSelfHostedRunners // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_self_hosted_runners",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.OrganizationUserBlocking // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "organization_user_blocking",
 			Error: err,
 		})
 	}
@@ -1021,15 +940,6 @@ func (s AppPermissions) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TeamDiscussions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "team_discussions",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.VulnerabilityAlerts // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1044,6 +954,96 @@ func (s AppPermissions) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "workflows",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Members // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "members",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationAdministration // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_administration",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationHooks // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_hooks",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationPlan // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_plan",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationProjects // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_projects",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationPackages // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_packages",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationSecrets // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_secrets",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationSelfHostedRunners // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_self_hosted_runners",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.OrganizationUserBlocking // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "organization_user_blocking",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TeamDiscussions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "team_discussions",
 			Error: err,
 		})
 	}
@@ -1077,25 +1077,6 @@ func (s AppsCreateContentAttachmentReq) Validate() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
-			MaxLength:    262144,
-			MaxLengthSet: true,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Body)); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "body",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
 			MaxLength:    1024,
 			MaxLengthSet: true,
 			Email:        false,
@@ -1108,6 +1089,25 @@ func (s AppsCreateContentAttachmentReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    262144,
+			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Body)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "body",
 			Error: err,
 		})
 	}
@@ -1252,20 +1252,20 @@ func (s AutoMerge) Validate() error {
 func (s BranchProtection) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RequiredPullRequestReviews // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "required_pull_request_reviews",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.RequiredStatusChecks // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_status_checks",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.RequiredPullRequestReviews // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_pull_request_reviews",
 			Error: err,
 		})
 	}
@@ -1305,14 +1305,14 @@ func (s BranchProtectionRequiredStatusChecks) Validate() error {
 func (s BranchRestrictionPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Apps == nil {
+		if s.Users == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		_ = s.Apps // validation expected, but not supported
+		_ = s.Users // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "apps",
+			Name:  "users",
 			Error: err,
 		})
 	}
@@ -1329,14 +1329,14 @@ func (s BranchRestrictionPolicy) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Users == nil {
+		if s.Apps == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		_ = s.Users // validation expected, but not supported
+		_ = s.Apps // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "users",
+			Name:  "apps",
 			Error: err,
 		})
 	}
@@ -1377,11 +1377,11 @@ func (s BranchWithProtection) Validate() error {
 func (s CheckRun) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.App // validation expected, but not supported
+		_ = s.Status // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "app",
+			Name:  "status",
 			Error: err,
 		})
 	}
@@ -1391,6 +1391,15 @@ func (s CheckRun) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conclusion",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.App // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "app",
 			Error: err,
 		})
 	}
@@ -1403,15 +1412,6 @@ func (s CheckRun) Validate() error {
 			Error: err,
 		})
 	}
-	if err := func() error {
-		_ = s.Status // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "status",
-			Error: err,
-		})
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -1420,11 +1420,11 @@ func (s CheckRun) Validate() error {
 func (s CheckSuite) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.App // validation expected, but not supported
+		_ = s.Status // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "app",
+			Name:  "status",
 			Error: err,
 		})
 	}
@@ -1438,11 +1438,11 @@ func (s CheckSuite) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Status // validation expected, but not supported
+		_ = s.App // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "status",
+			Name:  "app",
 			Error: err,
 		})
 	}
@@ -1587,22 +1587,20 @@ func (s CodeFrequencyStat) Validate() error {
 func (s CodeScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.State // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.DismissedReason // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "dismissed_reason",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := s.MostRecentInstance.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "most_recent_instance",
 			Error: err,
 		})
 	}
@@ -1618,11 +1616,13 @@ func (s CodeScanningAlert) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.State // validation expected, but not supported
+		if err := s.MostRecentInstance.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "state",
+			Name:  "most_recent_instance",
 			Error: err,
 		})
 	}
@@ -1633,6 +1633,15 @@ func (s CodeScanningAlert) Validate() error {
 }
 func (s CodeScanningAlertInstance) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.State // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Classifications {
@@ -1656,6 +1665,13 @@ func (s CodeScanningAlertInstance) Validate() error {
 			Error: err,
 		})
 	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s CodeScanningAlertItems) Validate() error {
+	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
@@ -1665,30 +1681,12 @@ func (s CodeScanningAlertInstance) Validate() error {
 			Error: err,
 		})
 	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s CodeScanningAlertItems) Validate() error {
-	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.DismissedReason // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "dismissed_reason",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := s.MostRecentInstance.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "most_recent_instance",
 			Error: err,
 		})
 	}
@@ -1704,11 +1702,13 @@ func (s CodeScanningAlertItems) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.State // validation expected, but not supported
+		if err := s.MostRecentInstance.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "state",
+			Name:  "most_recent_instance",
 			Error: err,
 		})
 	}
@@ -1720,20 +1720,20 @@ func (s CodeScanningAlertItems) Validate() error {
 func (s CodeScanningAlertRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.SecuritySeverityLevel // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "security_severity_level",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Severity // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "severity",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.SecuritySeverityLevel // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "security_severity_level",
 			Error: err,
 		})
 	}
@@ -1827,20 +1827,20 @@ func (s CodeScanningSarifsStatus) Validate() error {
 func (s CodeScanningUpdateAlertReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.DismissedReason // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "dismissed_reason",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.DismissedReason // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "dismissed_reason",
 			Error: err,
 		})
 	}
@@ -1984,6 +1984,26 @@ func (s CommitComparison) Validate() error {
 		})
 	}
 	if err := func() error {
+		if err := s.MergeBaseCommit.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "merge_base_commit",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Status // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "status",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Commits == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -2036,26 +2056,6 @@ func (s CommitComparison) Validate() error {
 			Error: err,
 		})
 	}
-	if err := func() error {
-		if err := s.MergeBaseCommit.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "merge_base_commit",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Status // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "status",
-			Error: err,
-		})
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -2095,25 +2095,6 @@ func (s ContentReferenceAttachment) Validate() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
-			MaxLength:    262144,
-			MaxLengthSet: true,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Body)); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "body",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
 			MaxLength:    1024,
 			MaxLengthSet: true,
 			Email:        false,
@@ -2126,6 +2107,25 @@ func (s ContentReferenceAttachment) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    262144,
+			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Body)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "body",
 			Error: err,
 		})
 	}
@@ -2172,6 +2172,15 @@ func (s DeploymentSimple) Validate() error {
 func (s DeploymentStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.State // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -2196,15 +2205,6 @@ func (s DeploymentStatus) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "performed_via_github_app",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.State // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "state",
 			Error: err,
 		})
 	}
@@ -2417,18 +2417,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Emails // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "emails",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Schemas == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -2440,6 +2428,18 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		if s.Emails == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Emails // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "emails",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -2448,20 +2448,20 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AllowedActions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "allowed_actions",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.EnabledOrganizations // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enabled_organizations",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AllowedActions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "allowed_actions",
 			Error: err,
 		})
 	}
@@ -2492,18 +2492,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate(
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Emails // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "emails",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Schemas == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -2512,6 +2500,18 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate()
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Emails == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Emails // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "emails",
 			Error: err,
 		})
 	}
@@ -2580,18 +2580,6 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() e
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Operations == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Operations // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Operations",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Schemas == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -2600,6 +2588,18 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Operations == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Operations // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Operations",
 			Error: err,
 		})
 	}
@@ -2673,20 +2673,20 @@ func (s Event) Validate() error {
 func (s EventPayload) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Comment // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "comment",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Issue // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "issue",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Comment // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "comment",
 			Error: err,
 		})
 	}
@@ -2771,15 +2771,6 @@ func (s FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 func (s GistComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AuthorAssociation // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "author_association",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -2795,6 +2786,15 @@ func (s GistComment) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "body",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AuthorAssociation // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
 			Error: err,
 		})
 	}
@@ -3204,20 +3204,20 @@ func (s Integration) Validate() error {
 func (s InteractionLimit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Expiry // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "expiry",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limit",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Expiry // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "expiry",
 			Error: err,
 		})
 	}
@@ -3270,20 +3270,20 @@ func (s IssueComment) Validate() error {
 func (s IssueEvent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.AuthorAssociation // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "author_association",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Issue // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "issue",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AuthorAssociation // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
 			Error: err,
 		})
 	}
@@ -3313,15 +3313,6 @@ func (s IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.AuthorAssociation // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "author_association",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Labels == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -3339,15 +3330,6 @@ func (s IssueSearchResultItem) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "milestone",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.PerformedViaGithubApp // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "performed_via_github_app",
 			Error: err,
 		})
 	}
@@ -3360,22 +3342,6 @@ func (s IssueSearchResultItem) Validate() error {
 			Error: err,
 		})
 	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s IssueSimple) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Assignees // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "assignees",
-			Error: err,
-		})
-	}
 	if err := func() error {
 		_ = s.AuthorAssociation // validation expected, but not supported
 		return nil
@@ -3385,6 +3351,22 @@ func (s IssueSimple) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		_ = s.PerformedViaGithubApp // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "performed_via_github_app",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s IssueSimple) Validate() error {
+	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
 			return fmt.Errorf("required, can't be nil")
@@ -3398,11 +3380,29 @@ func (s IssueSimple) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Assignees // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "assignees",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.Milestone // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "milestone",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AuthorAssociation // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
 			Error: err,
 		})
 	}
@@ -3562,6 +3562,18 @@ func (s LabelSearchResultItem) Validate() error {
 func (s License) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Permissions == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Permissions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "permissions",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Conditions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -3582,18 +3594,6 @@ func (s License) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limitations",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Permissions == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Permissions // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "permissions",
 			Error: err,
 		})
 	}
@@ -3832,6 +3832,18 @@ func (s MigrationsStartForAuthenticatedUserReq) Validate() error {
 func (s MigrationsStartForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Repositories == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Repositories // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "repositories",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Exclude {
 			if err := func() error {
@@ -3851,18 +3863,6 @@ func (s MigrationsStartForOrgReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "exclude",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Repositories // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "repositories",
 			Error: err,
 		})
 	}
@@ -3968,6 +3968,15 @@ func (s NullableScopedInstallation) Validate() error {
 func (s OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.Scopes // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "scopes",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.ClientID // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3982,15 +3991,6 @@ func (s OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "client_secret",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Scopes // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "scopes",
 			Error: err,
 		})
 	}
@@ -4113,20 +4113,20 @@ func (s OrgHook) Validate() error {
 func (s OrgMembership) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Role // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "role",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Role // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "role",
 			Error: err,
 		})
 	}
@@ -4154,20 +4154,20 @@ func (s OrganizationActionsSecret) Validate() error {
 func (s OrganizationFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.BillingEmail // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "billing_email",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Email // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.BillingEmail // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "billing_email",
 			Error: err,
 		})
 	}
@@ -4179,20 +4179,20 @@ func (s OrganizationFull) Validate() error {
 func (s OrganizationSecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Resolution // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "resolution",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Resolution // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "resolution",
 			Error: err,
 		})
 	}
@@ -4339,20 +4339,20 @@ func (s PackageVersion) Validate() error {
 func (s PackageVersionMetadata) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Container // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "container",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.PackageType // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "package_type",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Container // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "container",
 			Error: err,
 		})
 	}
@@ -4398,11 +4398,11 @@ func (s PackagesListPackagesForUserOKApplicationJSON) Validate() error {
 func (s Page) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.HTTPSCertificate // validation expected, but not supported
+		_ = s.Status // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "https_certificate",
+			Name:  "status",
 			Error: err,
 		})
 	}
@@ -4416,11 +4416,11 @@ func (s Page) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Status // validation expected, but not supported
+		_ = s.HTTPSCertificate // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "status",
+			Name:  "https_certificate",
 			Error: err,
 		})
 	}
@@ -4432,6 +4432,15 @@ func (s Page) Validate() error {
 func (s PagesHTTPSCertificate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.State // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Domains == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -4440,15 +4449,6 @@ func (s PagesHTTPSCertificate) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "domains",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.State // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "state",
 			Error: err,
 		})
 	}
@@ -4619,20 +4619,20 @@ func (s ProjectsUpdateReq) Validate() error {
 func (s ProtectedBranch) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RequiredPullRequestReviews // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "required_pull_request_reviews",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.RequiredStatusChecks // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_status_checks",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.RequiredPullRequestReviews // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_pull_request_reviews",
 			Error: err,
 		})
 	}
@@ -4685,18 +4685,6 @@ func (s ProtectedBranchRequiredPullRequestReviews) Validate() error {
 func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Teams // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "teams",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Users == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -4705,6 +4693,18 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "users",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Teams == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Teams // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
 			Error: err,
 		})
 	}
@@ -4732,29 +4732,11 @@ func (s PublicUser) Validate() error {
 func (s PullRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Assignees // validation expected, but not supported
+		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "assignees",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.AuthorAssociation // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "author_association",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.AutoMerge // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "auto_merge",
+			Name:  "state",
 			Error: err,
 		})
 	}
@@ -4780,6 +4762,15 @@ func (s PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Assignees // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "assignees",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.RequestedReviewers // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4798,11 +4789,20 @@ func (s PullRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.State // validation expected, but not supported
+		_ = s.AuthorAssociation // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "state",
+			Name:  "author_association",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AutoMerge // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "auto_merge",
 			Error: err,
 		})
 	}
@@ -4839,20 +4839,20 @@ func (s PullRequestReviewComment) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Side // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "side",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.StartSide // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "start_side",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Side // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "side",
 			Error: err,
 		})
 	}
@@ -4863,18 +4863,6 @@ func (s PullRequestReviewComment) Validate() error {
 }
 func (s PullRequestReviewRequest) Validate() error {
 	var failures []validate.FieldError
-	if err := func() error {
-		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Teams // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "teams",
-			Error: err,
-		})
-	}
 	if err := func() error {
 		if s.Users == nil {
 			return fmt.Errorf("required, can't be nil")
@@ -4887,6 +4875,18 @@ func (s PullRequestReviewRequest) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		if s.Teams == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Teams // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -4894,33 +4894,6 @@ func (s PullRequestReviewRequest) Validate() error {
 }
 func (s PullRequestSimple) Validate() error {
 	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Assignees // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "assignees",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.AuthorAssociation // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "author_association",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.AutoMerge // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "auto_merge",
-			Error: err,
-		})
-	}
 	if err := func() error {
 		if s.Labels == nil {
 			return fmt.Errorf("required, can't be nil")
@@ -4943,6 +4916,15 @@ func (s PullRequestSimple) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Assignees // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "assignees",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.RequestedReviewers // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4957,6 +4939,24 @@ func (s PullRequestSimple) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requested_teams",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AuthorAssociation // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AutoMerge // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "auto_merge",
 			Error: err,
 		})
 	}
@@ -5362,20 +5362,20 @@ func (s ReposCreateCommitStatusReq) Validate() error {
 func (s ReposCreateDeploymentStatusReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Environment // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "environment",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Environment // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "environment",
 			Error: err,
 		})
 	}
@@ -5618,18 +5618,6 @@ func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
 func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Teams // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "teams",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		if s.Users == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -5638,6 +5626,18 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "users",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Teams == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Teams // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
 			Error: err,
 		})
 	}
@@ -5820,6 +5820,18 @@ func (s ScimEnterpriseUser) Validate() error {
 func (s ScimGroupListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Schemas == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Schemas // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -5844,18 +5856,6 @@ func (s ScimGroupListEnterprise) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "Resources",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Schemas // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "schemas",
 			Error: err,
 		})
 	}
@@ -5938,6 +5938,18 @@ func (s ScimSetInformationForProvisionedUserReq) Validate() error {
 func (s ScimUserListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Schemas == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Schemas // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
@@ -5962,18 +5974,6 @@ func (s ScimUserListEnterprise) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "Resources",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Schemas // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "schemas",
 			Error: err,
 		})
 	}
@@ -6252,20 +6252,20 @@ func (s SearchUsersOK) Validate() error {
 func (s SecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Resolution // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "resolution",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Resolution // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "resolution",
 			Error: err,
 		})
 	}
@@ -6283,20 +6283,20 @@ func (s SecretScanningListAlertsForRepoOKApplicationJSON) Validate() error {
 func (s SecretScanningUpdateAlertReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Resolution // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "resolution",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.State // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Resolution // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "resolution",
 			Error: err,
 		})
 	}
@@ -6343,6 +6343,15 @@ func (s StatusCheckPolicy) Validate() error {
 func (s TeamFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.Privacy // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "privacy",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := s.Organization.Validate(); err != nil {
 			return err
 		}
@@ -6350,15 +6359,6 @@ func (s TeamFull) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "organization",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Privacy // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "privacy",
 			Error: err,
 		})
 	}
@@ -6510,20 +6510,20 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 func (s TeamsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Permission // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "permission",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Privacy // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "privacy",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Permission // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "permission",
 			Error: err,
 		})
 	}
@@ -6550,20 +6550,20 @@ func (s TeamsListReposLegacyOKApplicationJSON) Validate() error {
 func (s TeamsUpdateInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Permission // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "permission",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Privacy // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "privacy",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Permission // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "permission",
 			Error: err,
 		})
 	}
@@ -6575,20 +6575,20 @@ func (s TeamsUpdateInOrgReq) Validate() error {
 func (s TeamsUpdateLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Permission // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "permission",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Privacy // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "privacy",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Permission // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "permission",
 			Error: err,
 		})
 	}
@@ -6619,11 +6619,11 @@ func (s Topic) Validate() error {
 func (s TopicSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Aliases // validation expected, but not supported
+		_ = s.TextMatches // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "aliases",
+			Name:  "text_matches",
 			Error: err,
 		})
 	}
@@ -6637,11 +6637,11 @@ func (s TopicSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TextMatches // validation expected, but not supported
+		_ = s.Aliases // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "text_matches",
+			Name:  "aliases",
 			Error: err,
 		})
 	}

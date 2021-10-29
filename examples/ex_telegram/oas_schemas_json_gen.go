@@ -66,40 +66,40 @@ func (s Animation) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("duration")
-	w.Int(s.Duration)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("width")
+	w.Int(s.Width)
+	more.More()
+	w.ObjField("height")
+	w.Int(s.Height)
+	more.More()
+	w.ObjField("duration")
+	w.Int(s.Duration)
+	if s.Thumb.Set {
+		more.More()
+		w.ObjField("thumb")
+		s.Thumb.WriteJSON(w)
+	}
 	if s.FileName.Set {
 		more.More()
 		w.ObjField("file_name")
 		s.FileName.WriteJSON(w)
+	}
+	if s.MimeType.Set {
+		more.More()
+		w.ObjField("mime_type")
+		s.MimeType.WriteJSON(w)
 	}
 	if s.FileSize.Set {
 		more.More()
 		w.ObjField("file_size")
 		s.FileSize.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
-	more.More()
-	w.ObjField("height")
-	w.Int(s.Height)
-	if s.MimeType.Set {
-		more.More()
-		w.ObjField("mime_type")
-		s.MimeType.WriteJSON(w)
-	}
-	if s.Thumb.Set {
-		more.More()
-		w.ObjField("thumb")
-		s.Thumb.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("width")
-	w.Int(s.Width)
 	w.ObjEnd()
 }
 
@@ -110,31 +110,21 @@ func (s *Animation) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := r.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := r.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := r.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -144,9 +134,10 @@ func (s *Animation) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(r); err != nil {
+		case "duration":
+			v, err := r.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "thumb":
@@ -154,10 +145,19 @@ func (s *Animation) ReadJSON(r *json.Reader) error {
 			if err := s.Thumb.ReadJSON(r); err != nil {
 				return err
 			}
-		case "width":
-			v, err := r.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -212,28 +212,28 @@ func (s AnswerCallbackQueryPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.CacheTime.Set {
-		more.More()
-		w.ObjField("cache_time")
-		s.CacheTime.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("callback_query_id")
 	w.Str(s.CallbackQueryID)
-	if s.ShowAlert.Set {
-		more.More()
-		w.ObjField("show_alert")
-		s.ShowAlert.WriteJSON(w)
-	}
 	if s.Text.Set {
 		more.More()
 		w.ObjField("text")
 		s.Text.WriteJSON(w)
 	}
+	if s.ShowAlert.Set {
+		more.More()
+		w.ObjField("show_alert")
+		s.ShowAlert.WriteJSON(w)
+	}
 	if s.URL.Set {
 		more.More()
 		w.ObjField("url")
 		s.URL.WriteJSON(w)
+	}
+	if s.CacheTime.Set {
+		more.More()
+		w.ObjField("cache_time")
+		s.CacheTime.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -245,20 +245,10 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) err
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.ReadJSON(r); err != nil {
-				return err
-			}
 		case "callback_query_id":
 			v, err := r.Str()
 			s.CallbackQueryID = string(v)
 			if err != nil {
-				return err
-			}
-		case "show_alert":
-			s.ShowAlert.Reset()
-			if err := s.ShowAlert.ReadJSON(r); err != nil {
 				return err
 			}
 		case "text":
@@ -266,9 +256,19 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) err
 			if err := s.Text.ReadJSON(r); err != nil {
 				return err
 			}
+		case "show_alert":
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(r); err != nil {
+				return err
+			}
 		case "url":
 			s.URL.Reset()
 			if err := s.URL.ReadJSON(r); err != nil {
+				return err
+			}
+		case "cache_time":
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -283,28 +283,28 @@ func (s AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *js
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.CacheTime.Set {
-		more.More()
-		w.ObjField("cache_time")
-		s.CacheTime.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("callback_query_id")
 	w.Str(s.CallbackQueryID)
-	if s.ShowAlert.Set {
-		more.More()
-		w.ObjField("show_alert")
-		s.ShowAlert.WriteJSON(w)
-	}
 	if s.Text.Set {
 		more.More()
 		w.ObjField("text")
 		s.Text.WriteJSON(w)
 	}
+	if s.ShowAlert.Set {
+		more.More()
+		w.ObjField("show_alert")
+		s.ShowAlert.WriteJSON(w)
+	}
 	if s.URL.Set {
 		more.More()
 		w.ObjField("url")
 		s.URL.WriteJSON(w)
+	}
+	if s.CacheTime.Set {
+		more.More()
+		w.ObjField("cache_time")
+		s.CacheTime.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -316,20 +316,10 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *js
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.ReadJSON(r); err != nil {
-				return err
-			}
 		case "callback_query_id":
 			v, err := r.Str()
 			s.CallbackQueryID = string(v)
 			if err != nil {
-				return err
-			}
-		case "show_alert":
-			s.ShowAlert.Reset()
-			if err := s.ShowAlert.ReadJSON(r); err != nil {
 				return err
 			}
 		case "text":
@@ -337,9 +327,19 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *js
 			if err := s.Text.ReadJSON(r); err != nil {
 				return err
 			}
+		case "show_alert":
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(r); err != nil {
+				return err
+			}
 		case "url":
 			s.URL.Reset()
 			if err := s.URL.ReadJSON(r); err != nil {
+				return err
+			}
+		case "cache_time":
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -354,28 +354,28 @@ func (s AnswerCallbackQueryPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.CacheTime.Set {
-		more.More()
-		w.ObjField("cache_time")
-		s.CacheTime.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("callback_query_id")
 	w.Str(s.CallbackQueryID)
-	if s.ShowAlert.Set {
-		more.More()
-		w.ObjField("show_alert")
-		s.ShowAlert.WriteJSON(w)
-	}
 	if s.Text.Set {
 		more.More()
 		w.ObjField("text")
 		s.Text.WriteJSON(w)
 	}
+	if s.ShowAlert.Set {
+		more.More()
+		w.ObjField("show_alert")
+		s.ShowAlert.WriteJSON(w)
+	}
 	if s.URL.Set {
 		more.More()
 		w.ObjField("url")
 		s.URL.WriteJSON(w)
+	}
+	if s.CacheTime.Set {
+		more.More()
+		w.ObjField("cache_time")
+		s.CacheTime.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -387,20 +387,10 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(r *json.Reader) e
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.ReadJSON(r); err != nil {
-				return err
-			}
 		case "callback_query_id":
 			v, err := r.Str()
 			s.CallbackQueryID = string(v)
 			if err != nil {
-				return err
-			}
-		case "show_alert":
-			s.ShowAlert.Reset()
-			if err := s.ShowAlert.ReadJSON(r); err != nil {
 				return err
 			}
 		case "text":
@@ -408,9 +398,19 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(r *json.Reader) e
 			if err := s.Text.ReadJSON(r); err != nil {
 				return err
 			}
+		case "show_alert":
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(r); err != nil {
+				return err
+			}
 		case "url":
 			s.URL.Reset()
 			if err := s.URL.ReadJSON(r); err != nil {
+				return err
+			}
+		case "cache_time":
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -465,17 +465,17 @@ func (s AnswerPreCheckoutQueryPostReqApplicationJSON) WriteJSON(w *json.Writer) 
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("pre_checkout_query_id")
+	w.Str(s.PreCheckoutQueryID)
+	more.More()
+	w.ObjField("ok")
+	w.Bool(s.Ok)
 	if s.ErrorMessage.Set {
 		more.More()
 		w.ObjField("error_message")
 		s.ErrorMessage.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("ok")
-	w.Bool(s.Ok)
-	more.More()
-	w.ObjField("pre_checkout_query_id")
-	w.Str(s.PreCheckoutQueryID)
 	w.ObjEnd()
 }
 
@@ -486,9 +486,10 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) 
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "pre_checkout_query_id":
+			v, err := r.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -497,10 +498,9 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) 
 			if err != nil {
 				return err
 			}
-		case "pre_checkout_query_id":
-			v, err := r.Str()
-			s.PreCheckoutQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -515,17 +515,17 @@ func (s AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(w 
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("pre_checkout_query_id")
+	w.Str(s.PreCheckoutQueryID)
+	more.More()
+	w.ObjField("ok")
+	w.Bool(s.Ok)
 	if s.ErrorMessage.Set {
 		more.More()
 		w.ObjField("error_message")
 		s.ErrorMessage.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("ok")
-	w.Bool(s.Ok)
-	more.More()
-	w.ObjField("pre_checkout_query_id")
-	w.Str(s.PreCheckoutQueryID)
 	w.ObjEnd()
 }
 
@@ -536,9 +536,10 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r 
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "pre_checkout_query_id":
+			v, err := r.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -547,10 +548,9 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r 
 			if err != nil {
 				return err
 			}
-		case "pre_checkout_query_id":
-			v, err := r.Str()
-			s.PreCheckoutQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -565,17 +565,17 @@ func (s AnswerPreCheckoutQueryPostReqMultipartFormData) WriteJSON(w *json.Writer
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("pre_checkout_query_id")
+	w.Str(s.PreCheckoutQueryID)
+	more.More()
+	w.ObjField("ok")
+	w.Bool(s.Ok)
 	if s.ErrorMessage.Set {
 		more.More()
 		w.ObjField("error_message")
 		s.ErrorMessage.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("ok")
-	w.Bool(s.Ok)
-	more.More()
-	w.ObjField("pre_checkout_query_id")
-	w.Str(s.PreCheckoutQueryID)
 	w.ObjEnd()
 }
 
@@ -586,9 +586,10 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(r *json.Reader
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "pre_checkout_query_id":
+			v, err := r.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -597,10 +598,9 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(r *json.Reader
 			if err != nil {
 				return err
 			}
-		case "pre_checkout_query_id":
-			v, err := r.Str()
-			s.PreCheckoutQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -655,11 +655,9 @@ func (s AnswerShippingQueryPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ErrorMessage.Set {
-		more.More()
-		w.ObjField("error_message")
-		s.ErrorMessage.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("shipping_query_id")
+	w.Str(s.ShippingQueryID)
 	more.More()
 	w.ObjField("ok")
 	w.Bool(s.Ok)
@@ -675,9 +673,11 @@ func (s AnswerShippingQueryPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("shipping_query_id")
-	w.Str(s.ShippingQueryID)
+	if s.ErrorMessage.Set {
+		more.More()
+		w.ObjField("error_message")
+		s.ErrorMessage.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -688,9 +688,10 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) err
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "shipping_query_id":
+			v, err := r.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -711,10 +712,9 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(r *json.Reader) err
 			}); err != nil {
 				return err
 			}
-		case "shipping_query_id":
-			v, err := r.Str()
-			s.ShippingQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -729,11 +729,9 @@ func (s AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *js
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ErrorMessage.Set {
-		more.More()
-		w.ObjField("error_message")
-		s.ErrorMessage.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("shipping_query_id")
+	w.Str(s.ShippingQueryID)
 	more.More()
 	w.ObjField("ok")
 	w.Bool(s.Ok)
@@ -749,9 +747,11 @@ func (s AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *js
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("shipping_query_id")
-	w.Str(s.ShippingQueryID)
+	if s.ErrorMessage.Set {
+		more.More()
+		w.ObjField("error_message")
+		s.ErrorMessage.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -762,9 +762,10 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *js
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "shipping_query_id":
+			v, err := r.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -785,10 +786,9 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *js
 			}); err != nil {
 				return err
 			}
-		case "shipping_query_id":
-			v, err := r.Str()
-			s.ShippingQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -803,11 +803,9 @@ func (s AnswerShippingQueryPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ErrorMessage.Set {
-		more.More()
-		w.ObjField("error_message")
-		s.ErrorMessage.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("shipping_query_id")
+	w.Str(s.ShippingQueryID)
 	more.More()
 	w.ObjField("ok")
 	w.Bool(s.Ok)
@@ -823,9 +821,11 @@ func (s AnswerShippingQueryPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("shipping_query_id")
-	w.Str(s.ShippingQueryID)
+	if s.ErrorMessage.Set {
+		more.More()
+		w.ObjField("error_message")
+		s.ErrorMessage.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -836,9 +836,10 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(r *json.Reader) e
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(r); err != nil {
+		case "shipping_query_id":
+			v, err := r.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -859,10 +860,9 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(r *json.Reader) e
 			}); err != nil {
 				return err
 			}
-		case "shipping_query_id":
-			v, err := r.Str()
-			s.ShippingQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -878,43 +878,43 @@ func (s Audio) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("duration")
-	w.Int(s.Duration)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("duration")
+	w.Int(s.Duration)
+	if s.Performer.Set {
+		more.More()
+		w.ObjField("performer")
+		s.Performer.WriteJSON(w)
+	}
+	if s.Title.Set {
+		more.More()
+		w.ObjField("title")
+		s.Title.WriteJSON(w)
+	}
 	if s.FileName.Set {
 		more.More()
 		w.ObjField("file_name")
 		s.FileName.WriteJSON(w)
+	}
+	if s.MimeType.Set {
+		more.More()
+		w.ObjField("mime_type")
+		s.MimeType.WriteJSON(w)
 	}
 	if s.FileSize.Set {
 		more.More()
 		w.ObjField("file_size")
 		s.FileSize.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
-	if s.MimeType.Set {
-		more.More()
-		w.ObjField("mime_type")
-		s.MimeType.WriteJSON(w)
-	}
-	if s.Performer.Set {
-		more.More()
-		w.ObjField("performer")
-		s.Performer.WriteJSON(w)
-	}
 	if s.Thumb.Set {
 		more.More()
 		w.ObjField("thumb")
 		s.Thumb.WriteJSON(w)
-	}
-	if s.Title.Set {
-		more.More()
-		w.ObjField("title")
-		s.Title.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -926,26 +926,10 @@ func (s *Audio) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := r.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -954,9 +938,10 @@ func (s *Audio) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(r); err != nil {
+		case "duration":
+			v, err := r.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "performer":
@@ -964,14 +949,29 @@ func (s *Audio) ReadJSON(r *json.Reader) error {
 			if err := s.Performer.ReadJSON(r); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(r); err != nil {
-				return err
-			}
 		case "title":
 			s.Title.Reset()
 			if err := s.Title.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -1030,6 +1030,22 @@ func (s CallbackQuery) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
+	w.ObjField("id")
+	w.Str(s.ID)
+	more.More()
+	w.ObjField("from")
+	s.From.WriteJSON(w)
+	if s.Message.Set {
+		more.More()
+		w.ObjField("message")
+		s.Message.WriteJSON(w)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
+	more.More()
 	w.ObjField("chat_instance")
 	w.Str(s.ChatInstance)
 	if s.Data.Set {
@@ -1037,26 +1053,10 @@ func (s CallbackQuery) WriteJSON(w *json.Writer) {
 		w.ObjField("data")
 		s.Data.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("from")
-	s.From.WriteJSON(w)
 	if s.GameShortName.Set {
 		more.More()
 		w.ObjField("game_short_name")
 		s.GameShortName.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("id")
-	w.Str(s.ID)
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
-	}
-	if s.Message.Set {
-		more.More()
-		w.ObjField("message")
-		s.Message.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -1068,6 +1068,26 @@ func (s *CallbackQuery) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "id":
+			v, err := r.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
+			}
+		case "from":
+			if err := s.From.ReadJSON(r); err != nil {
+				return err
+			}
+		case "message":
+			s.Message.Reset()
+			if err := s.Message.ReadJSON(r); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
+				return err
+			}
 		case "chat_instance":
 			v, err := r.Str()
 			s.ChatInstance = string(v)
@@ -1079,29 +1099,9 @@ func (s *CallbackQuery) ReadJSON(r *json.Reader) error {
 			if err := s.Data.ReadJSON(r); err != nil {
 				return err
 			}
-		case "from":
-			if err := s.From.ReadJSON(r); err != nil {
-				return err
-			}
 		case "game_short_name":
 			s.GameShortName.Reset()
 			if err := s.GameShortName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "id":
-			v, err := r.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "message":
-			s.Message.Reset()
-			if err := s.Message.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -1116,63 +1116,61 @@ func (s Chat) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Bio.Set {
+	more.More()
+	w.ObjField("id")
+	w.Int(s.ID)
+	more.More()
+	w.ObjField("type")
+	s.Type.WriteJSON(w)
+	if s.Title.Set {
 		more.More()
-		w.ObjField("bio")
-		s.Bio.WriteJSON(w)
+		w.ObjField("title")
+		s.Title.WriteJSON(w)
 	}
-	if s.CanSetStickerSet.Set {
+	if s.Username.Set {
 		more.More()
-		w.ObjField("can_set_sticker_set")
-		s.CanSetStickerSet.WriteJSON(w)
-	}
-	if s.Description.Set {
-		more.More()
-		w.ObjField("description")
-		s.Description.WriteJSON(w)
+		w.ObjField("username")
+		s.Username.WriteJSON(w)
 	}
 	if s.FirstName.Set {
 		more.More()
 		w.ObjField("first_name")
 		s.FirstName.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("id")
-	w.Int(s.ID)
-	if s.InviteLink.Set {
-		more.More()
-		w.ObjField("invite_link")
-		s.InviteLink.WriteJSON(w)
-	}
 	if s.LastName.Set {
 		more.More()
 		w.ObjField("last_name")
 		s.LastName.WriteJSON(w)
-	}
-	if s.LinkedChatID.Set {
-		more.More()
-		w.ObjField("linked_chat_id")
-		s.LinkedChatID.WriteJSON(w)
-	}
-	if s.Location.Set {
-		more.More()
-		w.ObjField("location")
-		s.Location.WriteJSON(w)
-	}
-	if s.Permissions.Set {
-		more.More()
-		w.ObjField("permissions")
-		s.Permissions.WriteJSON(w)
 	}
 	if s.Photo.Set {
 		more.More()
 		w.ObjField("photo")
 		s.Photo.WriteJSON(w)
 	}
+	if s.Bio.Set {
+		more.More()
+		w.ObjField("bio")
+		s.Bio.WriteJSON(w)
+	}
+	if s.Description.Set {
+		more.More()
+		w.ObjField("description")
+		s.Description.WriteJSON(w)
+	}
+	if s.InviteLink.Set {
+		more.More()
+		w.ObjField("invite_link")
+		s.InviteLink.WriteJSON(w)
+	}
 	if s.PinnedMessage.Set {
 		more.More()
 		w.ObjField("pinned_message")
 		s.PinnedMessage.WriteJSON(w)
+	}
+	if s.Permissions.Set {
+		more.More()
+		w.ObjField("permissions")
+		s.Permissions.WriteJSON(w)
 	}
 	if s.SlowModeDelay.Set {
 		more.More()
@@ -1184,18 +1182,20 @@ func (s Chat) WriteJSON(w *json.Writer) {
 		w.ObjField("sticker_set_name")
 		s.StickerSetName.WriteJSON(w)
 	}
-	if s.Title.Set {
+	if s.CanSetStickerSet.Set {
 		more.More()
-		w.ObjField("title")
-		s.Title.WriteJSON(w)
+		w.ObjField("can_set_sticker_set")
+		s.CanSetStickerSet.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("type")
-	s.Type.WriteJSON(w)
-	if s.Username.Set {
+	if s.LinkedChatID.Set {
 		more.More()
-		w.ObjField("username")
-		s.Username.WriteJSON(w)
+		w.ObjField("linked_chat_id")
+		s.LinkedChatID.WriteJSON(w)
+	}
+	if s.Location.Set {
+		more.More()
+		w.ObjField("location")
+		s.Location.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -1207,19 +1207,24 @@ func (s *Chat) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "bio":
-			s.Bio.Reset()
-			if err := s.Bio.ReadJSON(r); err != nil {
+		case "id":
+			v, err := r.Int()
+			s.ID = int(v)
+			if err != nil {
 				return err
 			}
-		case "can_set_sticker_set":
-			s.CanSetStickerSet.Reset()
-			if err := s.CanSetStickerSet.ReadJSON(r); err != nil {
+		case "type":
+			if err := s.Type.ReadJSON(r); err != nil {
 				return err
 			}
-		case "description":
-			s.Description.Reset()
-			if err := s.Description.ReadJSON(r); err != nil {
+		case "title":
+			s.Title.Reset()
+			if err := s.Title.ReadJSON(r); err != nil {
+				return err
+			}
+		case "username":
+			s.Username.Reset()
+			if err := s.Username.ReadJSON(r); err != nil {
 				return err
 			}
 		case "first_name":
@@ -1227,35 +1232,9 @@ func (s *Chat) ReadJSON(r *json.Reader) error {
 			if err := s.FirstName.ReadJSON(r); err != nil {
 				return err
 			}
-		case "id":
-			v, err := r.Int()
-			s.ID = int(v)
-			if err != nil {
-				return err
-			}
-		case "invite_link":
-			s.InviteLink.Reset()
-			if err := s.InviteLink.ReadJSON(r); err != nil {
-				return err
-			}
 		case "last_name":
 			s.LastName.Reset()
 			if err := s.LastName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "linked_chat_id":
-			s.LinkedChatID.Reset()
-			if err := s.LinkedChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "location":
-			s.Location.Reset()
-			if err := s.Location.ReadJSON(r); err != nil {
-				return err
-			}
-		case "permissions":
-			s.Permissions.Reset()
-			if err := s.Permissions.ReadJSON(r); err != nil {
 				return err
 			}
 		case "photo":
@@ -1263,9 +1242,29 @@ func (s *Chat) ReadJSON(r *json.Reader) error {
 			if err := s.Photo.ReadJSON(r); err != nil {
 				return err
 			}
+		case "bio":
+			s.Bio.Reset()
+			if err := s.Bio.ReadJSON(r); err != nil {
+				return err
+			}
+		case "description":
+			s.Description.Reset()
+			if err := s.Description.ReadJSON(r); err != nil {
+				return err
+			}
+		case "invite_link":
+			s.InviteLink.Reset()
+			if err := s.InviteLink.ReadJSON(r); err != nil {
+				return err
+			}
 		case "pinned_message":
 			s.PinnedMessage.Reset()
 			if err := s.PinnedMessage.ReadJSON(r); err != nil {
+				return err
+			}
+		case "permissions":
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(r); err != nil {
 				return err
 			}
 		case "slow_mode_delay":
@@ -1278,18 +1277,19 @@ func (s *Chat) ReadJSON(r *json.Reader) error {
 			if err := s.StickerSetName.ReadJSON(r); err != nil {
 				return err
 			}
-		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(r); err != nil {
+		case "can_set_sticker_set":
+			s.CanSetStickerSet.Reset()
+			if err := s.CanSetStickerSet.ReadJSON(r); err != nil {
 				return err
 			}
-		case "type":
-			if err := s.Type.ReadJSON(r); err != nil {
+		case "linked_chat_id":
+			s.LinkedChatID.Reset()
+			if err := s.LinkedChatID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "username":
-			s.Username.Reset()
-			if err := s.Username.ReadJSON(r); err != nil {
+		case "location":
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -1305,11 +1305,11 @@ func (s ChatLocation) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("address")
-	w.Str(s.Address)
-	more.More()
 	w.ObjField("location")
 	s.Location.WriteJSON(w)
+	more.More()
+	w.ObjField("address")
+	w.Str(s.Address)
 	w.ObjEnd()
 }
 
@@ -1320,14 +1320,14 @@ func (s *ChatLocation) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "location":
+			if err := s.Location.ReadJSON(r); err != nil {
+				return err
+			}
 		case "address":
 			v, err := r.Str()
 			s.Address = string(v)
 			if err != nil {
-				return err
-			}
-		case "location":
-			if err := s.Location.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -1342,6 +1342,26 @@ func (s ChatPermissions) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	if s.CanSendMessages.Set {
+		more.More()
+		w.ObjField("can_send_messages")
+		s.CanSendMessages.WriteJSON(w)
+	}
+	if s.CanSendMediaMessages.Set {
+		more.More()
+		w.ObjField("can_send_media_messages")
+		s.CanSendMediaMessages.WriteJSON(w)
+	}
+	if s.CanSendPolls.Set {
+		more.More()
+		w.ObjField("can_send_polls")
+		s.CanSendPolls.WriteJSON(w)
+	}
+	if s.CanSendOtherMessages.Set {
+		more.More()
+		w.ObjField("can_send_other_messages")
+		s.CanSendOtherMessages.WriteJSON(w)
+	}
 	if s.CanAddWebPagePreviews.Set {
 		more.More()
 		w.ObjField("can_add_web_page_previews")
@@ -1362,26 +1382,6 @@ func (s ChatPermissions) WriteJSON(w *json.Writer) {
 		w.ObjField("can_pin_messages")
 		s.CanPinMessages.WriteJSON(w)
 	}
-	if s.CanSendMediaMessages.Set {
-		more.More()
-		w.ObjField("can_send_media_messages")
-		s.CanSendMediaMessages.WriteJSON(w)
-	}
-	if s.CanSendMessages.Set {
-		more.More()
-		w.ObjField("can_send_messages")
-		s.CanSendMessages.WriteJSON(w)
-	}
-	if s.CanSendOtherMessages.Set {
-		more.More()
-		w.ObjField("can_send_other_messages")
-		s.CanSendOtherMessages.WriteJSON(w)
-	}
-	if s.CanSendPolls.Set {
-		more.More()
-		w.ObjField("can_send_polls")
-		s.CanSendPolls.WriteJSON(w)
-	}
 	w.ObjEnd()
 }
 
@@ -1392,6 +1392,26 @@ func (s *ChatPermissions) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "can_send_messages":
+			s.CanSendMessages.Reset()
+			if err := s.CanSendMessages.ReadJSON(r); err != nil {
+				return err
+			}
+		case "can_send_media_messages":
+			s.CanSendMediaMessages.Reset()
+			if err := s.CanSendMediaMessages.ReadJSON(r); err != nil {
+				return err
+			}
+		case "can_send_polls":
+			s.CanSendPolls.Reset()
+			if err := s.CanSendPolls.ReadJSON(r); err != nil {
+				return err
+			}
+		case "can_send_other_messages":
+			s.CanSendOtherMessages.Reset()
+			if err := s.CanSendOtherMessages.ReadJSON(r); err != nil {
+				return err
+			}
 		case "can_add_web_page_previews":
 			s.CanAddWebPagePreviews.Reset()
 			if err := s.CanAddWebPagePreviews.ReadJSON(r); err != nil {
@@ -1412,26 +1432,6 @@ func (s *ChatPermissions) ReadJSON(r *json.Reader) error {
 			if err := s.CanPinMessages.ReadJSON(r); err != nil {
 				return err
 			}
-		case "can_send_media_messages":
-			s.CanSendMediaMessages.Reset()
-			if err := s.CanSendMediaMessages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "can_send_messages":
-			s.CanSendMessages.Reset()
-			if err := s.CanSendMessages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "can_send_other_messages":
-			s.CanSendOtherMessages.Reset()
-			if err := s.CanSendOtherMessages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "can_send_polls":
-			s.CanSendPolls.Reset()
-			if err := s.CanSendPolls.ReadJSON(r); err != nil {
-				return err
-			}
 		default:
 			return r.Skip()
 		}
@@ -1445,17 +1445,17 @@ func (s ChatPhoto) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("big_file_id")
-	w.Str(s.BigFileID)
-	more.More()
-	w.ObjField("big_file_unique_id")
-	w.Str(s.BigFileUniqueID)
-	more.More()
 	w.ObjField("small_file_id")
 	w.Str(s.SmallFileID)
 	more.More()
 	w.ObjField("small_file_unique_id")
 	w.Str(s.SmallFileUniqueID)
+	more.More()
+	w.ObjField("big_file_id")
+	w.Str(s.BigFileID)
+	more.More()
+	w.ObjField("big_file_unique_id")
+	w.Str(s.BigFileUniqueID)
 	w.ObjEnd()
 }
 
@@ -1466,18 +1466,6 @@ func (s *ChatPhoto) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "big_file_id":
-			v, err := r.Str()
-			s.BigFileID = string(v)
-			if err != nil {
-				return err
-			}
-		case "big_file_unique_id":
-			v, err := r.Str()
-			s.BigFileUniqueID = string(v)
-			if err != nil {
-				return err
-			}
 		case "small_file_id":
 			v, err := r.Str()
 			s.SmallFileID = string(v)
@@ -1487,6 +1475,18 @@ func (s *ChatPhoto) ReadJSON(r *json.Reader) error {
 		case "small_file_unique_id":
 			v, err := r.Str()
 			s.SmallFileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "big_file_id":
+			v, err := r.Str()
+			s.BigFileID = string(v)
+			if err != nil {
+				return err
+			}
+		case "big_file_unique_id":
+			v, err := r.Str()
+			s.BigFileUniqueID = string(v)
 			if err != nil {
 				return err
 			}
@@ -1521,24 +1521,24 @@ func (s ChosenInlineResult) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
+	w.ObjField("result_id")
+	w.Str(s.ResultID)
+	more.More()
 	w.ObjField("from")
 	s.From.WriteJSON(w)
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
-	}
 	if s.Location.Set {
 		more.More()
 		w.ObjField("location")
 		s.Location.WriteJSON(w)
 	}
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	more.More()
 	w.ObjField("query")
 	w.Str(s.Query)
-	more.More()
-	w.ObjField("result_id")
-	w.Str(s.ResultID)
 	w.ObjEnd()
 }
 
@@ -1549,13 +1549,14 @@ func (s *ChosenInlineResult) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "from":
-			if err := s.From.ReadJSON(r); err != nil {
+		case "result_id":
+			v, err := r.Str()
+			s.ResultID = string(v)
+			if err != nil {
 				return err
 			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
+		case "from":
+			if err := s.From.ReadJSON(r); err != nil {
 				return err
 			}
 		case "location":
@@ -1563,15 +1564,14 @@ func (s *ChosenInlineResult) ReadJSON(r *json.Reader) error {
 			if err := s.Location.ReadJSON(r); err != nil {
 				return err
 			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
+				return err
+			}
 		case "query":
 			v, err := r.Str()
 			s.Query = string(v)
-			if err != nil {
-				return err
-			}
-		case "result_id":
-			v, err := r.Str()
-			s.ResultID = string(v)
 			if err != nil {
 				return err
 			}
@@ -1628,6 +1628,9 @@ func (s Contact) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
+	w.ObjField("phone_number")
+	w.Str(s.PhoneNumber)
+	more.More()
 	w.ObjField("first_name")
 	w.Str(s.FirstName)
 	if s.LastName.Set {
@@ -1635,9 +1638,6 @@ func (s Contact) WriteJSON(w *json.Writer) {
 		w.ObjField("last_name")
 		s.LastName.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("phone_number")
-	w.Str(s.PhoneNumber)
 	if s.UserID.Set {
 		more.More()
 		w.ObjField("user_id")
@@ -1658,6 +1658,12 @@ func (s *Contact) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "phone_number":
+			v, err := r.Str()
+			s.PhoneNumber = string(v)
+			if err != nil {
+				return err
+			}
 		case "first_name":
 			v, err := r.Str()
 			s.FirstName = string(v)
@@ -1667,12 +1673,6 @@ func (s *Contact) ReadJSON(r *json.Reader) error {
 		case "last_name":
 			s.LastName.Reset()
 			if err := s.LastName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "phone_number":
-			v, err := r.Str()
-			s.PhoneNumber = string(v)
-			if err != nil {
 				return err
 			}
 		case "user_id":
@@ -2009,28 +2009,28 @@ func (s Document) WriteJSON(w *json.Writer) {
 	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
+	if s.Thumb.Set {
+		more.More()
+		w.ObjField("thumb")
+		s.Thumb.WriteJSON(w)
+	}
 	if s.FileName.Set {
 		more.More()
 		w.ObjField("file_name")
 		s.FileName.WriteJSON(w)
 	}
-	if s.FileSize.Set {
-		more.More()
-		w.ObjField("file_size")
-		s.FileSize.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
 	if s.MimeType.Set {
 		more.More()
 		w.ObjField("mime_type")
 		s.MimeType.WriteJSON(w)
 	}
-	if s.Thumb.Set {
+	if s.FileSize.Set {
 		more.More()
-		w.ObjField("thumb")
-		s.Thumb.WriteJSON(w)
+		w.ObjField("file_size")
+		s.FileSize.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -2048,20 +2048,20 @@ func (s *Document) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := r.Str()
 			s.FileUniqueID = string(v)
 			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(r); err != nil {
 				return err
 			}
 		case "mime_type":
@@ -2069,9 +2069,9 @@ func (s *Document) ReadJSON(r *json.Reader) error {
 			if err := s.MimeType.ReadJSON(r); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(r); err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2135,10 +2135,18 @@ func (s EncryptedPassportElement) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("type")
+	s.Type.WriteJSON(w)
 	if s.Data.Set {
 		more.More()
 		w.ObjField("data")
 		s.Data.WriteJSON(w)
+	}
+	if s.PhoneNumber.Set {
+		more.More()
+		w.ObjField("phone_number")
+		s.PhoneNumber.WriteJSON(w)
 	}
 	if s.Email.Set {
 		more.More()
@@ -2161,14 +2169,6 @@ func (s EncryptedPassportElement) WriteJSON(w *json.Writer) {
 		more.More()
 		w.ObjField("front_side")
 		s.FrontSide.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("hash")
-	w.Str(s.Hash)
-	if s.PhoneNumber.Set {
-		more.More()
-		w.ObjField("phone_number")
-		s.PhoneNumber.WriteJSON(w)
 	}
 	if s.ReverseSide.Set {
 		more.More()
@@ -2193,8 +2193,8 @@ func (s EncryptedPassportElement) WriteJSON(w *json.Writer) {
 		more.Up()
 	}
 	more.More()
-	w.ObjField("type")
-	s.Type.WriteJSON(w)
+	w.ObjField("hash")
+	w.Str(s.Hash)
 	w.ObjEnd()
 }
 
@@ -2205,9 +2205,18 @@ func (s *EncryptedPassportElement) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "type":
+			if err := s.Type.ReadJSON(r); err != nil {
+				return err
+			}
 		case "data":
 			s.Data.Reset()
 			if err := s.Data.ReadJSON(r); err != nil {
+				return err
+			}
+		case "phone_number":
+			s.PhoneNumber.Reset()
+			if err := s.PhoneNumber.ReadJSON(r); err != nil {
 				return err
 			}
 		case "email":
@@ -2232,17 +2241,6 @@ func (s *EncryptedPassportElement) ReadJSON(r *json.Reader) error {
 			if err := s.FrontSide.ReadJSON(r); err != nil {
 				return err
 			}
-		case "hash":
-			v, err := r.Str()
-			s.Hash = string(v)
-			if err != nil {
-				return err
-			}
-		case "phone_number":
-			s.PhoneNumber.Reset()
-			if err := s.PhoneNumber.ReadJSON(r); err != nil {
-				return err
-			}
 		case "reverse_side":
 			s.ReverseSide.Reset()
 			if err := s.ReverseSide.ReadJSON(r); err != nil {
@@ -2265,8 +2263,10 @@ func (s *EncryptedPassportElement) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "type":
-			if err := s.Type.ReadJSON(r); err != nil {
+		case "hash":
+			v, err := r.Str()
+			s.Hash = string(v)
+			if err != nil {
 				return err
 			}
 		default:
@@ -2300,14 +2300,14 @@ func (s Error) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("description")
-	w.Str(s.Description)
+	w.ObjField("ok")
+	w.Bool(s.Ok)
 	more.More()
 	w.ObjField("error_code")
 	w.Int(s.ErrorCode)
 	more.More()
-	w.ObjField("ok")
-	w.Bool(s.Ok)
+	w.ObjField("description")
+	w.Str(s.Description)
 	if s.Parameters.Set {
 		more.More()
 		w.ObjField("parameters")
@@ -2323,9 +2323,9 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "description":
-			v, err := r.Str()
-			s.Description = string(v)
+		case "ok":
+			v, err := r.Bool()
+			s.Ok = bool(v)
 			if err != nil {
 				return err
 			}
@@ -2335,9 +2335,9 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "ok":
-			v, err := r.Bool()
-			s.Ok = bool(v)
+		case "description":
+			v, err := r.Str()
+			s.Description = string(v)
 			if err != nil {
 				return err
 			}
@@ -2383,19 +2383,19 @@ func (s File) WriteJSON(w *json.Writer) {
 	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
-	if s.FilePath.Set {
-		more.More()
-		w.ObjField("file_path")
-		s.FilePath.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
 	if s.FileSize.Set {
 		more.More()
 		w.ObjField("file_size")
 		s.FileSize.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
+	if s.FilePath.Set {
+		more.More()
+		w.ObjField("file_path")
+		s.FilePath.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -2412,9 +2412,10 @@ func (s *File) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "file_path":
-			s.FilePath.Reset()
-			if err := s.FilePath.ReadJSON(r); err != nil {
+		case "file_unique_id":
+			v, err := r.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
 				return err
 			}
 		case "file_size":
@@ -2422,10 +2423,9 @@ func (s *File) ReadJSON(r *json.Reader) error {
 			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
-		case "file_unique_id":
-			v, err := r.Str()
-			s.FileUniqueID = string(v)
-			if err != nil {
+		case "file_path":
+			s.FilePath.Reset()
+			if err := s.FilePath.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2440,11 +2440,9 @@ func (s Game) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Animation.Set {
-		more.More()
-		w.ObjField("animation")
-		s.Animation.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("description")
 	w.Str(s.Description)
@@ -2475,9 +2473,11 @@ func (s Game) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
+	if s.Animation.Set {
+		more.More()
+		w.ObjField("animation")
+		s.Animation.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -2488,9 +2488,10 @@ func (s *Game) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "animation":
-			s.Animation.Reset()
-			if err := s.Animation.ReadJSON(r); err != nil {
+		case "title":
+			v, err := r.Str()
+			s.Title = string(v)
+			if err != nil {
 				return err
 			}
 		case "description":
@@ -2528,10 +2529,9 @@ func (s *Game) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "animation":
+			s.Animation.Reset()
+			if err := s.Animation.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2550,11 +2550,11 @@ func (s GameHighScore) WriteJSON(w *json.Writer) {
 	w.ObjField("position")
 	w.Int(s.Position)
 	more.More()
-	w.ObjField("score")
-	w.Int(s.Score)
-	more.More()
 	w.ObjField("user")
 	s.User.WriteJSON(w)
+	more.More()
+	w.ObjField("score")
+	w.Int(s.Score)
 	w.ObjEnd()
 }
 
@@ -2571,14 +2571,14 @@ func (s *GameHighScore) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
+		case "user":
+			if err := s.User.ReadJSON(r); err != nil {
+				return err
+			}
 		case "score":
 			v, err := r.Int()
 			s.Score = int(v)
 			if err != nil {
-				return err
-			}
-		case "user":
-			if err := s.User.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2777,24 +2777,24 @@ func (s GetGameHighScoresPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.ChatID.Set {
 		more.More()
 		w.ObjField("chat_id")
 		s.ChatID.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -2805,14 +2805,15 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(r *json.Reader) error
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "chat_id":
 			s.ChatID.Reset()
 			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		case "message_id":
@@ -2820,10 +2821,9 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(r *json.Reader) error
 			if err := s.MessageID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2838,24 +2838,24 @@ func (s GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.ChatID.Set {
 		more.More()
 		w.ObjField("chat_id")
 		s.ChatID.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -2866,14 +2866,15 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "chat_id":
 			s.ChatID.Reset()
 			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		case "message_id":
@@ -2881,10 +2882,9 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json
 			if err := s.MessageID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -2899,24 +2899,24 @@ func (s GetGameHighScoresPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.ChatID.Set {
 		more.More()
 		w.ObjField("chat_id")
 		s.ChatID.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -2927,14 +2927,15 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(r *json.Reader) err
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "chat_id":
 			s.ChatID.Reset()
 			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		case "message_id":
@@ -2942,10 +2943,9 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(r *json.Reader) err
 			if err := s.MessageID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3235,6 +3235,21 @@ func (s GetUpdatesPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	if s.Offset.Set {
+		more.More()
+		w.ObjField("offset")
+		s.Offset.WriteJSON(w)
+	}
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
+	if s.Timeout.Set {
+		more.More()
+		w.ObjField("timeout")
+		s.Timeout.WriteJSON(w)
+	}
 	if s.AllowedUpdates != nil {
 		more.More()
 		w.ObjField("allowed_updates")
@@ -3247,21 +3262,6 @@ func (s GetUpdatesPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
-	if s.Offset.Set {
-		more.More()
-		w.ObjField("offset")
-		s.Offset.WriteJSON(w)
-	}
-	if s.Timeout.Set {
-		more.More()
-		w.ObjField("timeout")
-		s.Timeout.WriteJSON(w)
-	}
 	w.ObjEnd()
 }
 
@@ -3272,6 +3272,21 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "offset":
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(r); err != nil {
+				return err
+			}
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
+				return err
+			}
+		case "timeout":
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(r); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -3284,21 +3299,6 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
-				return err
-			}
-		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.ReadJSON(r); err != nil {
-				return err
-			}
-		case "timeout":
-			s.Timeout.Reset()
-			if err := s.Timeout.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3313,6 +3313,21 @@ func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Writer
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	if s.Offset.Set {
+		more.More()
+		w.ObjField("offset")
+		s.Offset.WriteJSON(w)
+	}
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
+	if s.Timeout.Set {
+		more.More()
+		w.ObjField("timeout")
+		s.Timeout.WriteJSON(w)
+	}
 	if s.AllowedUpdates != nil {
 		more.More()
 		w.ObjField("allowed_updates")
@@ -3325,21 +3340,6 @@ func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Writer
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
-	if s.Offset.Set {
-		more.More()
-		w.ObjField("offset")
-		s.Offset.WriteJSON(w)
-	}
-	if s.Timeout.Set {
-		more.More()
-		w.ObjField("timeout")
-		s.Timeout.WriteJSON(w)
-	}
 	w.ObjEnd()
 }
 
@@ -3350,6 +3350,21 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reader
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "offset":
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(r); err != nil {
+				return err
+			}
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
+				return err
+			}
+		case "timeout":
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(r); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -3362,21 +3377,6 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reader
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
-				return err
-			}
-		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.ReadJSON(r); err != nil {
-				return err
-			}
-		case "timeout":
-			s.Timeout.Reset()
-			if err := s.Timeout.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3391,6 +3391,21 @@ func (s GetUpdatesPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	if s.Offset.Set {
+		more.More()
+		w.ObjField("offset")
+		s.Offset.WriteJSON(w)
+	}
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
+	if s.Timeout.Set {
+		more.More()
+		w.ObjField("timeout")
+		s.Timeout.WriteJSON(w)
+	}
 	if s.AllowedUpdates != nil {
 		more.More()
 		w.ObjField("allowed_updates")
@@ -3403,21 +3418,6 @@ func (s GetUpdatesPostReqMultipartFormData) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
-	if s.Offset.Set {
-		more.More()
-		w.ObjField("offset")
-		s.Offset.WriteJSON(w)
-	}
-	if s.Timeout.Set {
-		more.More()
-		w.ObjField("timeout")
-		s.Timeout.WriteJSON(w)
-	}
 	w.ObjEnd()
 }
 
@@ -3428,6 +3428,21 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "offset":
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(r); err != nil {
+				return err
+			}
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
+				return err
+			}
+		case "timeout":
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(r); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -3440,21 +3455,6 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
-				return err
-			}
-		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.ReadJSON(r); err != nil {
-				return err
-			}
-		case "timeout":
-			s.Timeout.Reset()
-			if err := s.Timeout.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3507,19 +3507,19 @@ func (s GetUserProfilePhotosPostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.Offset.Set {
 		more.More()
 		w.ObjField("offset")
 		s.Offset.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -3530,9 +3530,10 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(r *json.Reader) er
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "offset":
@@ -3540,10 +3541,9 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(r *json.Reader) er
 			if err := s.Offset.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3558,19 +3558,19 @@ func (s GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) WriteJSON(w *j
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.Offset.Set {
 		more.More()
 		w.ObjField("offset")
 		s.Offset.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -3581,9 +3581,10 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *j
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "offset":
@@ -3591,10 +3592,9 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(r *j
 			if err := s.Offset.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3609,19 +3609,19 @@ func (s GetUserProfilePhotosPostReqMultipartFormData) WriteJSON(w *json.Writer) 
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Limit.Set {
-		more.More()
-		w.ObjField("limit")
-		s.Limit.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
 	if s.Offset.Set {
 		more.More()
 		w.ObjField("offset")
 		s.Offset.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.Limit.Set {
+		more.More()
+		w.ObjField("limit")
+		s.Limit.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -3632,9 +3632,10 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(r *json.Reader) 
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "offset":
@@ -3642,10 +3643,9 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(r *json.Reader) 
 			if err := s.Offset.ReadJSON(r); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3698,25 +3698,23 @@ func (s InlineKeyboardButton) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.CallbackData.Set {
+	more.More()
+	w.ObjField("text")
+	w.Str(s.Text)
+	if s.URL.Set {
 		more.More()
-		w.ObjField("callback_data")
-		s.CallbackData.WriteJSON(w)
-	}
-	if s.CallbackGame.Set {
-		more.More()
-		w.ObjField("callback_game")
-		s.CallbackGame.WriteJSON(w)
+		w.ObjField("url")
+		s.URL.WriteJSON(w)
 	}
 	if s.LoginURL.Set {
 		more.More()
 		w.ObjField("login_url")
 		s.LoginURL.WriteJSON(w)
 	}
-	if s.Pay.Set {
+	if s.CallbackData.Set {
 		more.More()
-		w.ObjField("pay")
-		s.Pay.WriteJSON(w)
+		w.ObjField("callback_data")
+		s.CallbackData.WriteJSON(w)
 	}
 	if s.SwitchInlineQuery.Set {
 		more.More()
@@ -3728,13 +3726,15 @@ func (s InlineKeyboardButton) WriteJSON(w *json.Writer) {
 		w.ObjField("switch_inline_query_current_chat")
 		s.SwitchInlineQueryCurrentChat.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("text")
-	w.Str(s.Text)
-	if s.URL.Set {
+	if s.CallbackGame.Set {
 		more.More()
-		w.ObjField("url")
-		s.URL.WriteJSON(w)
+		w.ObjField("callback_game")
+		s.CallbackGame.WriteJSON(w)
+	}
+	if s.Pay.Set {
+		more.More()
+		w.ObjField("pay")
+		s.Pay.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -3746,14 +3746,15 @@ func (s *InlineKeyboardButton) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "callback_data":
-			s.CallbackData.Reset()
-			if err := s.CallbackData.ReadJSON(r); err != nil {
+		case "text":
+			v, err := r.Str()
+			s.Text = string(v)
+			if err != nil {
 				return err
 			}
-		case "callback_game":
-			s.CallbackGame.Reset()
-			if err := s.CallbackGame.ReadJSON(r); err != nil {
+		case "url":
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(r); err != nil {
 				return err
 			}
 		case "login_url":
@@ -3761,9 +3762,9 @@ func (s *InlineKeyboardButton) ReadJSON(r *json.Reader) error {
 			if err := s.LoginURL.ReadJSON(r); err != nil {
 				return err
 			}
-		case "pay":
-			s.Pay.Reset()
-			if err := s.Pay.ReadJSON(r); err != nil {
+		case "callback_data":
+			s.CallbackData.Reset()
+			if err := s.CallbackData.ReadJSON(r); err != nil {
 				return err
 			}
 		case "switch_inline_query":
@@ -3776,15 +3777,14 @@ func (s *InlineKeyboardButton) ReadJSON(r *json.Reader) error {
 			if err := s.SwitchInlineQueryCurrentChat.ReadJSON(r); err != nil {
 				return err
 			}
-		case "text":
-			v, err := r.Str()
-			s.Text = string(v)
-			if err != nil {
+		case "callback_game":
+			s.CallbackGame.Reset()
+			if err := s.CallbackGame.ReadJSON(r); err != nil {
 				return err
 			}
-		case "url":
-			s.URL.Reset()
-			if err := s.URL.ReadJSON(r); err != nil {
+		case "pay":
+			s.Pay.Reset()
+			if err := s.Pay.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -3859,22 +3859,22 @@ func (s InlineQuery) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("from")
-	s.From.WriteJSON(w)
-	more.More()
 	w.ObjField("id")
 	w.Str(s.ID)
+	more.More()
+	w.ObjField("from")
+	s.From.WriteJSON(w)
 	if s.Location.Set {
 		more.More()
 		w.ObjField("location")
 		s.Location.WriteJSON(w)
 	}
 	more.More()
-	w.ObjField("offset")
-	w.Str(s.Offset)
-	more.More()
 	w.ObjField("query")
 	w.Str(s.Query)
+	more.More()
+	w.ObjField("offset")
+	w.Str(s.Offset)
 	w.ObjEnd()
 }
 
@@ -3885,14 +3885,14 @@ func (s *InlineQuery) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "from":
-			if err := s.From.ReadJSON(r); err != nil {
-				return err
-			}
 		case "id":
 			v, err := r.Str()
 			s.ID = string(v)
 			if err != nil {
+				return err
+			}
+		case "from":
+			if err := s.From.ReadJSON(r); err != nil {
 				return err
 			}
 		case "location":
@@ -3900,15 +3900,15 @@ func (s *InlineQuery) ReadJSON(r *json.Reader) error {
 			if err := s.Location.ReadJSON(r); err != nil {
 				return err
 			}
-		case "offset":
-			v, err := r.Str()
-			s.Offset = string(v)
-			if err != nil {
-				return err
-			}
 		case "query":
 			v, err := r.Str()
 			s.Query = string(v)
+			if err != nil {
+				return err
+			}
+		case "offset":
+			v, err := r.Str()
+			s.Offset = string(v)
 			if err != nil {
 				return err
 			}
@@ -3928,8 +3928,8 @@ func (s Invoice) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("currency")
-	w.Str(s.Currency)
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("description")
 	w.Str(s.Description)
@@ -3937,8 +3937,8 @@ func (s Invoice) WriteJSON(w *json.Writer) {
 	w.ObjField("start_parameter")
 	w.Str(s.StartParameter)
 	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
+	w.ObjField("currency")
+	w.Str(s.Currency)
 	more.More()
 	w.ObjField("total_amount")
 	w.Int(s.TotalAmount)
@@ -3952,9 +3952,9 @@ func (s *Invoice) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "currency":
+		case "title":
 			v, err := r.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -3970,9 +3970,9 @@ func (s *Invoice) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "title":
+		case "currency":
 			v, err := r.Str()
-			s.Title = string(v)
+			s.Currency = string(v)
 			if err != nil {
 				return err
 			}
@@ -3995,11 +3995,11 @@ func (s LabeledPrice) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("amount")
-	w.Int(s.Amount)
-	more.More()
 	w.ObjField("label")
 	w.Str(s.Label)
+	more.More()
+	w.ObjField("amount")
+	w.Int(s.Amount)
 	w.ObjEnd()
 }
 
@@ -4010,15 +4010,15 @@ func (s *LabeledPrice) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "amount":
-			v, err := r.Int()
-			s.Amount = int(v)
-			if err != nil {
-				return err
-			}
 		case "label":
 			v, err := r.Str()
 			s.Label = string(v)
+			if err != nil {
+				return err
+			}
+		case "amount":
+			v, err := r.Int()
+			s.Amount = int(v)
 			if err != nil {
 				return err
 			}
@@ -4034,27 +4034,27 @@ func (s Location) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Heading.Set {
-		more.More()
-		w.ObjField("heading")
-		s.Heading.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("longitude")
+	w.Float64(s.Longitude)
+	more.More()
+	w.ObjField("latitude")
+	w.Float64(s.Latitude)
 	if s.HorizontalAccuracy.Set {
 		more.More()
 		w.ObjField("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("latitude")
-	w.Float64(s.Latitude)
 	if s.LivePeriod.Set {
 		more.More()
 		w.ObjField("live_period")
 		s.LivePeriod.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("longitude")
-	w.Float64(s.Longitude)
+	if s.Heading.Set {
+		more.More()
+		w.ObjField("heading")
+		s.Heading.WriteJSON(w)
+	}
 	if s.ProximityAlertRadius.Set {
 		more.More()
 		w.ObjField("proximity_alert_radius")
@@ -4070,14 +4070,10 @@ func (s *Location) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.ReadJSON(r); err != nil {
-				return err
-			}
-		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.ReadJSON(r); err != nil {
+		case "longitude":
+			v, err := r.Float64()
+			s.Longitude = float64(v)
+			if err != nil {
 				return err
 			}
 		case "latitude":
@@ -4086,15 +4082,19 @@ func (s *Location) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
+		case "horizontal_accuracy":
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.ReadJSON(r); err != nil {
+				return err
+			}
 		case "live_period":
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.ReadJSON(r); err != nil {
 				return err
 			}
-		case "longitude":
-			v, err := r.Float64()
-			s.Longitude = float64(v)
-			if err != nil {
+		case "heading":
+			s.Heading.Reset()
+			if err := s.Heading.ReadJSON(r); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
@@ -4154,24 +4154,24 @@ func (s LoginUrl) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.BotUsername.Set {
-		more.More()
-		w.ObjField("bot_username")
-		s.BotUsername.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("url")
+	w.Str(s.URL)
 	if s.ForwardText.Set {
 		more.More()
 		w.ObjField("forward_text")
 		s.ForwardText.WriteJSON(w)
+	}
+	if s.BotUsername.Set {
+		more.More()
+		w.ObjField("bot_username")
+		s.BotUsername.WriteJSON(w)
 	}
 	if s.RequestWriteAccess.Set {
 		more.More()
 		w.ObjField("request_write_access")
 		s.RequestWriteAccess.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("url")
-	w.Str(s.URL)
 	w.ObjEnd()
 }
 
@@ -4182,9 +4182,10 @@ func (s *LoginUrl) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "bot_username":
-			s.BotUsername.Reset()
-			if err := s.BotUsername.ReadJSON(r); err != nil {
+		case "url":
+			v, err := r.Str()
+			s.URL = string(v)
+			if err != nil {
 				return err
 			}
 		case "forward_text":
@@ -4192,15 +4193,14 @@ func (s *LoginUrl) ReadJSON(r *json.Reader) error {
 			if err := s.ForwardText.ReadJSON(r); err != nil {
 				return err
 			}
+		case "bot_username":
+			s.BotUsername.Reset()
+			if err := s.BotUsername.ReadJSON(r); err != nil {
+				return err
+			}
 		case "request_write_access":
 			s.RequestWriteAccess.Reset()
 			if err := s.RequestWriteAccess.ReadJSON(r); err != nil {
-				return err
-			}
-		case "url":
-			v, err := r.Str()
-			s.URL = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -4219,14 +4219,14 @@ func (s MaskPosition) WriteJSON(w *json.Writer) {
 	w.ObjField("point")
 	s.Point.WriteJSON(w)
 	more.More()
-	w.ObjField("scale")
-	w.Float64(s.Scale)
-	more.More()
 	w.ObjField("x_shift")
 	w.Float64(s.XShift)
 	more.More()
 	w.ObjField("y_shift")
 	w.Float64(s.YShift)
+	more.More()
+	w.ObjField("scale")
+	w.Float64(s.Scale)
 	w.ObjEnd()
 }
 
@@ -4241,12 +4241,6 @@ func (s *MaskPosition) ReadJSON(r *json.Reader) error {
 			if err := s.Point.ReadJSON(r); err != nil {
 				return err
 			}
-		case "scale":
-			v, err := r.Float64()
-			s.Scale = float64(v)
-			if err != nil {
-				return err
-			}
 		case "x_shift":
 			v, err := r.Float64()
 			s.XShift = float64(v)
@@ -4256,6 +4250,12 @@ func (s *MaskPosition) ReadJSON(r *json.Reader) error {
 		case "y_shift":
 			v, err := r.Float64()
 			s.YShift = float64(v)
+			if err != nil {
+				return err
+			}
+		case "scale":
+			v, err := r.Float64()
+			s.Scale = float64(v)
 			if err != nil {
 				return err
 			}
@@ -4289,6 +4289,99 @@ func (s Message) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("message_id")
+	w.Int(s.MessageID)
+	if s.From.Set {
+		more.More()
+		w.ObjField("from")
+		s.From.WriteJSON(w)
+	}
+	if s.SenderChat != nil {
+		more.More()
+		w.ObjField("sender_chat")
+		s.SenderChat.WriteJSON(w)
+	}
+	more.More()
+	w.ObjField("date")
+	w.Int(s.Date)
+	if s.Chat != nil {
+		more.More()
+		w.ObjField("chat")
+		s.Chat.WriteJSON(w)
+	}
+	if s.ForwardFrom.Set {
+		more.More()
+		w.ObjField("forward_from")
+		s.ForwardFrom.WriteJSON(w)
+	}
+	if s.ForwardFromChat != nil {
+		more.More()
+		w.ObjField("forward_from_chat")
+		s.ForwardFromChat.WriteJSON(w)
+	}
+	if s.ForwardFromMessageID.Set {
+		more.More()
+		w.ObjField("forward_from_message_id")
+		s.ForwardFromMessageID.WriteJSON(w)
+	}
+	if s.ForwardSignature.Set {
+		more.More()
+		w.ObjField("forward_signature")
+		s.ForwardSignature.WriteJSON(w)
+	}
+	if s.ForwardSenderName.Set {
+		more.More()
+		w.ObjField("forward_sender_name")
+		s.ForwardSenderName.WriteJSON(w)
+	}
+	if s.ForwardDate.Set {
+		more.More()
+		w.ObjField("forward_date")
+		s.ForwardDate.WriteJSON(w)
+	}
+	if s.ReplyToMessage != nil {
+		more.More()
+		w.ObjField("reply_to_message")
+		s.ReplyToMessage.WriteJSON(w)
+	}
+	if s.ViaBot.Set {
+		more.More()
+		w.ObjField("via_bot")
+		s.ViaBot.WriteJSON(w)
+	}
+	if s.EditDate.Set {
+		more.More()
+		w.ObjField("edit_date")
+		s.EditDate.WriteJSON(w)
+	}
+	if s.MediaGroupID.Set {
+		more.More()
+		w.ObjField("media_group_id")
+		s.MediaGroupID.WriteJSON(w)
+	}
+	if s.AuthorSignature.Set {
+		more.More()
+		w.ObjField("author_signature")
+		s.AuthorSignature.WriteJSON(w)
+	}
+	if s.Text.Set {
+		more.More()
+		w.ObjField("text")
+		s.Text.WriteJSON(w)
+	}
+	if s.Entities != nil {
+		more.More()
+		w.ObjField("entities")
+		more.Down()
+		w.ArrStart()
+		for _, elem := range s.Entities {
+			more.More()
+			elem.WriteJSON(w)
+		}
+		w.ArrEnd()
+		more.Up()
+	}
 	if s.Animation.Set {
 		more.More()
 		w.ObjField("animation")
@@ -4299,10 +4392,42 @@ func (s Message) WriteJSON(w *json.Writer) {
 		w.ObjField("audio")
 		s.Audio.WriteJSON(w)
 	}
-	if s.AuthorSignature.Set {
+	if s.Document.Set {
 		more.More()
-		w.ObjField("author_signature")
-		s.AuthorSignature.WriteJSON(w)
+		w.ObjField("document")
+		s.Document.WriteJSON(w)
+	}
+	if s.Photo != nil {
+		more.More()
+		w.ObjField("photo")
+		more.Down()
+		w.ArrStart()
+		for _, elem := range s.Photo {
+			more.More()
+			elem.WriteJSON(w)
+		}
+		w.ArrEnd()
+		more.Up()
+	}
+	if s.Sticker.Set {
+		more.More()
+		w.ObjField("sticker")
+		s.Sticker.WriteJSON(w)
+	}
+	if s.Video.Set {
+		more.More()
+		w.ObjField("video")
+		s.Video.WriteJSON(w)
+	}
+	if s.VideoNote.Set {
+		more.More()
+		w.ObjField("video_note")
+		s.VideoNote.WriteJSON(w)
+	}
+	if s.Voice.Set {
+		more.More()
+		w.ObjField("voice")
+		s.Voice.WriteJSON(w)
 	}
 	if s.Caption.Set {
 		more.More()
@@ -4321,138 +4446,35 @@ func (s Message) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.ChannelChatCreated.Set {
-		more.More()
-		w.ObjField("channel_chat_created")
-		s.ChannelChatCreated.WriteJSON(w)
-	}
-	if s.Chat != nil {
-		more.More()
-		w.ObjField("chat")
-		s.Chat.WriteJSON(w)
-	}
-	if s.ConnectedWebsite.Set {
-		more.More()
-		w.ObjField("connected_website")
-		s.ConnectedWebsite.WriteJSON(w)
-	}
 	if s.Contact.Set {
 		more.More()
 		w.ObjField("contact")
 		s.Contact.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("date")
-	w.Int(s.Date)
-	if s.DeleteChatPhoto.Set {
-		more.More()
-		w.ObjField("delete_chat_photo")
-		s.DeleteChatPhoto.WriteJSON(w)
 	}
 	if s.Dice.Set {
 		more.More()
 		w.ObjField("dice")
 		s.Dice.WriteJSON(w)
 	}
-	if s.Document.Set {
-		more.More()
-		w.ObjField("document")
-		s.Document.WriteJSON(w)
-	}
-	if s.EditDate.Set {
-		more.More()
-		w.ObjField("edit_date")
-		s.EditDate.WriteJSON(w)
-	}
-	if s.Entities != nil {
-		more.More()
-		w.ObjField("entities")
-		more.Down()
-		w.ArrStart()
-		for _, elem := range s.Entities {
-			more.More()
-			elem.WriteJSON(w)
-		}
-		w.ArrEnd()
-		more.Up()
-	}
-	if s.ForwardDate.Set {
-		more.More()
-		w.ObjField("forward_date")
-		s.ForwardDate.WriteJSON(w)
-	}
-	if s.ForwardFrom.Set {
-		more.More()
-		w.ObjField("forward_from")
-		s.ForwardFrom.WriteJSON(w)
-	}
-	if s.ForwardFromChat != nil {
-		more.More()
-		w.ObjField("forward_from_chat")
-		s.ForwardFromChat.WriteJSON(w)
-	}
-	if s.ForwardFromMessageID.Set {
-		more.More()
-		w.ObjField("forward_from_message_id")
-		s.ForwardFromMessageID.WriteJSON(w)
-	}
-	if s.ForwardSenderName.Set {
-		more.More()
-		w.ObjField("forward_sender_name")
-		s.ForwardSenderName.WriteJSON(w)
-	}
-	if s.ForwardSignature.Set {
-		more.More()
-		w.ObjField("forward_signature")
-		s.ForwardSignature.WriteJSON(w)
-	}
-	if s.From.Set {
-		more.More()
-		w.ObjField("from")
-		s.From.WriteJSON(w)
-	}
 	if s.Game.Set {
 		more.More()
 		w.ObjField("game")
 		s.Game.WriteJSON(w)
 	}
-	if s.GroupChatCreated.Set {
+	if s.Poll.Set {
 		more.More()
-		w.ObjField("group_chat_created")
-		s.GroupChatCreated.WriteJSON(w)
+		w.ObjField("poll")
+		s.Poll.WriteJSON(w)
 	}
-	if s.Invoice.Set {
+	if s.Venue.Set {
 		more.More()
-		w.ObjField("invoice")
-		s.Invoice.WriteJSON(w)
-	}
-	if s.LeftChatMember.Set {
-		more.More()
-		w.ObjField("left_chat_member")
-		s.LeftChatMember.WriteJSON(w)
+		w.ObjField("venue")
+		s.Venue.WriteJSON(w)
 	}
 	if s.Location.Set {
 		more.More()
 		w.ObjField("location")
 		s.Location.WriteJSON(w)
-	}
-	if s.MediaGroupID.Set {
-		more.More()
-		w.ObjField("media_group_id")
-		s.MediaGroupID.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("message_id")
-	w.Int(s.MessageID)
-	if s.MigrateFromChatID.Set {
-		more.More()
-		w.ObjField("migrate_from_chat_id")
-		s.MigrateFromChatID.WriteJSON(w)
-	}
-	if s.MigrateToChatID.Set {
-		more.More()
-		w.ObjField("migrate_to_chat_id")
-		s.MigrateToChatID.WriteJSON(w)
 	}
 	if s.NewChatMembers != nil {
 		more.More()
@@ -4466,6 +4488,16 @@ func (s Message) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
+	if s.LeftChatMember.Set {
+		more.More()
+		w.ObjField("left_chat_member")
+		s.LeftChatMember.WriteJSON(w)
+	}
+	if s.NewChatTitle.Set {
+		more.More()
+		w.ObjField("new_chat_title")
+		s.NewChatTitle.WriteJSON(w)
+	}
 	if s.NewChatPhoto != nil {
 		more.More()
 		w.ObjField("new_chat_photo")
@@ -4478,37 +4510,60 @@ func (s Message) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.NewChatTitle.Set {
+	if s.DeleteChatPhoto.Set {
 		more.More()
-		w.ObjField("new_chat_title")
-		s.NewChatTitle.WriteJSON(w)
+		w.ObjField("delete_chat_photo")
+		s.DeleteChatPhoto.WriteJSON(w)
 	}
-	if s.PassportData.Set {
+	if s.GroupChatCreated.Set {
 		more.More()
-		w.ObjField("passport_data")
-		s.PassportData.WriteJSON(w)
+		w.ObjField("group_chat_created")
+		s.GroupChatCreated.WriteJSON(w)
 	}
-	if s.Photo != nil {
+	if s.SupergroupChatCreated.Set {
 		more.More()
-		w.ObjField("photo")
-		more.Down()
-		w.ArrStart()
-		for _, elem := range s.Photo {
-			more.More()
-			elem.WriteJSON(w)
-		}
-		w.ArrEnd()
-		more.Up()
+		w.ObjField("supergroup_chat_created")
+		s.SupergroupChatCreated.WriteJSON(w)
+	}
+	if s.ChannelChatCreated.Set {
+		more.More()
+		w.ObjField("channel_chat_created")
+		s.ChannelChatCreated.WriteJSON(w)
+	}
+	if s.MigrateToChatID.Set {
+		more.More()
+		w.ObjField("migrate_to_chat_id")
+		s.MigrateToChatID.WriteJSON(w)
+	}
+	if s.MigrateFromChatID.Set {
+		more.More()
+		w.ObjField("migrate_from_chat_id")
+		s.MigrateFromChatID.WriteJSON(w)
 	}
 	if s.PinnedMessage != nil {
 		more.More()
 		w.ObjField("pinned_message")
 		s.PinnedMessage.WriteJSON(w)
 	}
-	if s.Poll.Set {
+	if s.Invoice.Set {
 		more.More()
-		w.ObjField("poll")
-		s.Poll.WriteJSON(w)
+		w.ObjField("invoice")
+		s.Invoice.WriteJSON(w)
+	}
+	if s.SuccessfulPayment.Set {
+		more.More()
+		w.ObjField("successful_payment")
+		s.SuccessfulPayment.WriteJSON(w)
+	}
+	if s.ConnectedWebsite.Set {
+		more.More()
+		w.ObjField("connected_website")
+		s.ConnectedWebsite.WriteJSON(w)
+	}
+	if s.PassportData.Set {
+		more.More()
+		w.ObjField("passport_data")
+		s.PassportData.WriteJSON(w)
 	}
 	if s.ProximityAlertTriggered.Set {
 		more.More()
@@ -4520,61 +4575,6 @@ func (s Message) WriteJSON(w *json.Writer) {
 		w.ObjField("reply_markup")
 		s.ReplyMarkup.WriteJSON(w)
 	}
-	if s.ReplyToMessage != nil {
-		more.More()
-		w.ObjField("reply_to_message")
-		s.ReplyToMessage.WriteJSON(w)
-	}
-	if s.SenderChat != nil {
-		more.More()
-		w.ObjField("sender_chat")
-		s.SenderChat.WriteJSON(w)
-	}
-	if s.Sticker.Set {
-		more.More()
-		w.ObjField("sticker")
-		s.Sticker.WriteJSON(w)
-	}
-	if s.SuccessfulPayment.Set {
-		more.More()
-		w.ObjField("successful_payment")
-		s.SuccessfulPayment.WriteJSON(w)
-	}
-	if s.SupergroupChatCreated.Set {
-		more.More()
-		w.ObjField("supergroup_chat_created")
-		s.SupergroupChatCreated.WriteJSON(w)
-	}
-	if s.Text.Set {
-		more.More()
-		w.ObjField("text")
-		s.Text.WriteJSON(w)
-	}
-	if s.Venue.Set {
-		more.More()
-		w.ObjField("venue")
-		s.Venue.WriteJSON(w)
-	}
-	if s.ViaBot.Set {
-		more.More()
-		w.ObjField("via_bot")
-		s.ViaBot.WriteJSON(w)
-	}
-	if s.Video.Set {
-		more.More()
-		w.ObjField("video")
-		s.Video.WriteJSON(w)
-	}
-	if s.VideoNote.Set {
-		more.More()
-		w.ObjField("video_note")
-		s.VideoNote.WriteJSON(w)
-	}
-	if s.Voice.Set {
-		more.More()
-		w.ObjField("voice")
-		s.Voice.WriteJSON(w)
-	}
 	w.ObjEnd()
 }
 
@@ -4585,6 +4585,113 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "message_id":
+			v, err := r.Int()
+			s.MessageID = int(v)
+			if err != nil {
+				return err
+			}
+		case "from":
+			s.From.Reset()
+			if err := s.From.ReadJSON(r); err != nil {
+				return err
+			}
+		case "sender_chat":
+			s.SenderChat = nil
+			var elem Chat
+			if err := elem.ReadJSON(r); err != nil {
+				return err
+			}
+			s.SenderChat = &elem
+		case "date":
+			v, err := r.Int()
+			s.Date = int(v)
+			if err != nil {
+				return err
+			}
+		case "chat":
+			s.Chat = nil
+			var elem Chat
+			if err := elem.ReadJSON(r); err != nil {
+				return err
+			}
+			s.Chat = &elem
+		case "forward_from":
+			s.ForwardFrom.Reset()
+			if err := s.ForwardFrom.ReadJSON(r); err != nil {
+				return err
+			}
+		case "forward_from_chat":
+			s.ForwardFromChat = nil
+			var elem Chat
+			if err := elem.ReadJSON(r); err != nil {
+				return err
+			}
+			s.ForwardFromChat = &elem
+		case "forward_from_message_id":
+			s.ForwardFromMessageID.Reset()
+			if err := s.ForwardFromMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "forward_signature":
+			s.ForwardSignature.Reset()
+			if err := s.ForwardSignature.ReadJSON(r); err != nil {
+				return err
+			}
+		case "forward_sender_name":
+			s.ForwardSenderName.Reset()
+			if err := s.ForwardSenderName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "forward_date":
+			s.ForwardDate.Reset()
+			if err := s.ForwardDate.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_to_message":
+			s.ReplyToMessage = nil
+			var elem Message
+			if err := elem.ReadJSON(r); err != nil {
+				return err
+			}
+			s.ReplyToMessage = &elem
+		case "via_bot":
+			s.ViaBot.Reset()
+			if err := s.ViaBot.ReadJSON(r); err != nil {
+				return err
+			}
+		case "edit_date":
+			s.EditDate.Reset()
+			if err := s.EditDate.ReadJSON(r); err != nil {
+				return err
+			}
+		case "media_group_id":
+			s.MediaGroupID.Reset()
+			if err := s.MediaGroupID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "author_signature":
+			s.AuthorSignature.Reset()
+			if err := s.AuthorSignature.ReadJSON(r); err != nil {
+				return err
+			}
+		case "text":
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(r); err != nil {
+				return err
+			}
+		case "entities":
+			s.Entities = nil
+			if err := r.Array(func(r *json.Reader) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(r); err != nil {
+					return err
+				}
+				s.Entities = append(s.Entities, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
 		case "animation":
 			s.Animation.Reset()
 			if err := s.Animation.ReadJSON(r); err != nil {
@@ -4595,9 +4702,41 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 			if err := s.Audio.ReadJSON(r); err != nil {
 				return err
 			}
-		case "author_signature":
-			s.AuthorSignature.Reset()
-			if err := s.AuthorSignature.ReadJSON(r); err != nil {
+		case "document":
+			s.Document.Reset()
+			if err := s.Document.ReadJSON(r); err != nil {
+				return err
+			}
+		case "photo":
+			s.Photo = nil
+			if err := r.Array(func(r *json.Reader) error {
+				var elem PhotoSize
+				if err := elem.ReadJSON(r); err != nil {
+					return err
+				}
+				s.Photo = append(s.Photo, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "sticker":
+			s.Sticker.Reset()
+			if err := s.Sticker.ReadJSON(r); err != nil {
+				return err
+			}
+		case "video":
+			s.Video.Reset()
+			if err := s.Video.ReadJSON(r); err != nil {
+				return err
+			}
+		case "video_note":
+			s.VideoNote.Reset()
+			if err := s.VideoNote.ReadJSON(r); err != nil {
+				return err
+			}
+		case "voice":
+			s.Voice.Reset()
+			if err := s.Voice.ReadJSON(r); err != nil {
 				return err
 			}
 		case "caption":
@@ -4617,37 +4756,9 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "channel_chat_created":
-			s.ChannelChatCreated.Reset()
-			if err := s.ChannelChatCreated.ReadJSON(r); err != nil {
-				return err
-			}
-		case "chat":
-			s.Chat = nil
-			var elem Chat
-			if err := elem.ReadJSON(r); err != nil {
-				return err
-			}
-			s.Chat = &elem
-		case "connected_website":
-			s.ConnectedWebsite.Reset()
-			if err := s.ConnectedWebsite.ReadJSON(r); err != nil {
-				return err
-			}
 		case "contact":
 			s.Contact.Reset()
 			if err := s.Contact.ReadJSON(r); err != nil {
-				return err
-			}
-		case "date":
-			v, err := r.Int()
-			s.Date = int(v)
-			if err != nil {
-				return err
-			}
-		case "delete_chat_photo":
-			s.DeleteChatPhoto.Reset()
-			if err := s.DeleteChatPhoto.ReadJSON(r); err != nil {
 				return err
 			}
 		case "dice":
@@ -4655,109 +4766,24 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 			if err := s.Dice.ReadJSON(r); err != nil {
 				return err
 			}
-		case "document":
-			s.Document.Reset()
-			if err := s.Document.ReadJSON(r); err != nil {
-				return err
-			}
-		case "edit_date":
-			s.EditDate.Reset()
-			if err := s.EditDate.ReadJSON(r); err != nil {
-				return err
-			}
-		case "entities":
-			s.Entities = nil
-			if err := r.Array(func(r *json.Reader) error {
-				var elem MessageEntity
-				if err := elem.ReadJSON(r); err != nil {
-					return err
-				}
-				s.Entities = append(s.Entities, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "forward_date":
-			s.ForwardDate.Reset()
-			if err := s.ForwardDate.ReadJSON(r); err != nil {
-				return err
-			}
-		case "forward_from":
-			s.ForwardFrom.Reset()
-			if err := s.ForwardFrom.ReadJSON(r); err != nil {
-				return err
-			}
-		case "forward_from_chat":
-			s.ForwardFromChat = nil
-			var elem Chat
-			if err := elem.ReadJSON(r); err != nil {
-				return err
-			}
-			s.ForwardFromChat = &elem
-		case "forward_from_message_id":
-			s.ForwardFromMessageID.Reset()
-			if err := s.ForwardFromMessageID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "forward_sender_name":
-			s.ForwardSenderName.Reset()
-			if err := s.ForwardSenderName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "forward_signature":
-			s.ForwardSignature.Reset()
-			if err := s.ForwardSignature.ReadJSON(r); err != nil {
-				return err
-			}
-		case "from":
-			s.From.Reset()
-			if err := s.From.ReadJSON(r); err != nil {
-				return err
-			}
 		case "game":
 			s.Game.Reset()
 			if err := s.Game.ReadJSON(r); err != nil {
 				return err
 			}
-		case "group_chat_created":
-			s.GroupChatCreated.Reset()
-			if err := s.GroupChatCreated.ReadJSON(r); err != nil {
+		case "poll":
+			s.Poll.Reset()
+			if err := s.Poll.ReadJSON(r); err != nil {
 				return err
 			}
-		case "invoice":
-			s.Invoice.Reset()
-			if err := s.Invoice.ReadJSON(r); err != nil {
-				return err
-			}
-		case "left_chat_member":
-			s.LeftChatMember.Reset()
-			if err := s.LeftChatMember.ReadJSON(r); err != nil {
+		case "venue":
+			s.Venue.Reset()
+			if err := s.Venue.ReadJSON(r); err != nil {
 				return err
 			}
 		case "location":
 			s.Location.Reset()
 			if err := s.Location.ReadJSON(r); err != nil {
-				return err
-			}
-		case "media_group_id":
-			s.MediaGroupID.Reset()
-			if err := s.MediaGroupID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "message_id":
-			v, err := r.Int()
-			s.MessageID = int(v)
-			if err != nil {
-				return err
-			}
-		case "migrate_from_chat_id":
-			s.MigrateFromChatID.Reset()
-			if err := s.MigrateFromChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "migrate_to_chat_id":
-			s.MigrateToChatID.Reset()
-			if err := s.MigrateToChatID.ReadJSON(r); err != nil {
 				return err
 			}
 		case "new_chat_members":
@@ -4772,6 +4798,16 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
+		case "left_chat_member":
+			s.LeftChatMember.Reset()
+			if err := s.LeftChatMember.ReadJSON(r); err != nil {
+				return err
+			}
+		case "new_chat_title":
+			s.NewChatTitle.Reset()
+			if err := s.NewChatTitle.ReadJSON(r); err != nil {
+				return err
+			}
 		case "new_chat_photo":
 			s.NewChatPhoto = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -4784,26 +4820,34 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "new_chat_title":
-			s.NewChatTitle.Reset()
-			if err := s.NewChatTitle.ReadJSON(r); err != nil {
+		case "delete_chat_photo":
+			s.DeleteChatPhoto.Reset()
+			if err := s.DeleteChatPhoto.ReadJSON(r); err != nil {
 				return err
 			}
-		case "passport_data":
-			s.PassportData.Reset()
-			if err := s.PassportData.ReadJSON(r); err != nil {
+		case "group_chat_created":
+			s.GroupChatCreated.Reset()
+			if err := s.GroupChatCreated.ReadJSON(r); err != nil {
 				return err
 			}
-		case "photo":
-			s.Photo = nil
-			if err := r.Array(func(r *json.Reader) error {
-				var elem PhotoSize
-				if err := elem.ReadJSON(r); err != nil {
-					return err
-				}
-				s.Photo = append(s.Photo, elem)
-				return nil
-			}); err != nil {
+		case "supergroup_chat_created":
+			s.SupergroupChatCreated.Reset()
+			if err := s.SupergroupChatCreated.ReadJSON(r); err != nil {
+				return err
+			}
+		case "channel_chat_created":
+			s.ChannelChatCreated.Reset()
+			if err := s.ChannelChatCreated.ReadJSON(r); err != nil {
+				return err
+			}
+		case "migrate_to_chat_id":
+			s.MigrateToChatID.Reset()
+			if err := s.MigrateToChatID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "migrate_from_chat_id":
+			s.MigrateFromChatID.Reset()
+			if err := s.MigrateFromChatID.ReadJSON(r); err != nil {
 				return err
 			}
 		case "pinned_message":
@@ -4813,9 +4857,24 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 				return err
 			}
 			s.PinnedMessage = &elem
-		case "poll":
-			s.Poll.Reset()
-			if err := s.Poll.ReadJSON(r); err != nil {
+		case "invoice":
+			s.Invoice.Reset()
+			if err := s.Invoice.ReadJSON(r); err != nil {
+				return err
+			}
+		case "successful_payment":
+			s.SuccessfulPayment.Reset()
+			if err := s.SuccessfulPayment.ReadJSON(r); err != nil {
+				return err
+			}
+		case "connected_website":
+			s.ConnectedWebsite.Reset()
+			if err := s.ConnectedWebsite.ReadJSON(r); err != nil {
+				return err
+			}
+		case "passport_data":
+			s.PassportData.Reset()
+			if err := s.PassportData.ReadJSON(r); err != nil {
 				return err
 			}
 		case "proximity_alert_triggered":
@@ -4826,65 +4885,6 @@ func (s *Message) ReadJSON(r *json.Reader) error {
 		case "reply_markup":
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
-				return err
-			}
-		case "reply_to_message":
-			s.ReplyToMessage = nil
-			var elem Message
-			if err := elem.ReadJSON(r); err != nil {
-				return err
-			}
-			s.ReplyToMessage = &elem
-		case "sender_chat":
-			s.SenderChat = nil
-			var elem Chat
-			if err := elem.ReadJSON(r); err != nil {
-				return err
-			}
-			s.SenderChat = &elem
-		case "sticker":
-			s.Sticker.Reset()
-			if err := s.Sticker.ReadJSON(r); err != nil {
-				return err
-			}
-		case "successful_payment":
-			s.SuccessfulPayment.Reset()
-			if err := s.SuccessfulPayment.ReadJSON(r); err != nil {
-				return err
-			}
-		case "supergroup_chat_created":
-			s.SupergroupChatCreated.Reset()
-			if err := s.SupergroupChatCreated.ReadJSON(r); err != nil {
-				return err
-			}
-		case "text":
-			s.Text.Reset()
-			if err := s.Text.ReadJSON(r); err != nil {
-				return err
-			}
-		case "venue":
-			s.Venue.Reset()
-			if err := s.Venue.ReadJSON(r); err != nil {
-				return err
-			}
-		case "via_bot":
-			s.ViaBot.Reset()
-			if err := s.ViaBot.ReadJSON(r); err != nil {
-				return err
-			}
-		case "video":
-			s.Video.Reset()
-			if err := s.Video.ReadJSON(r); err != nil {
-				return err
-			}
-		case "video_note":
-			s.VideoNote.Reset()
-			if err := s.VideoNote.ReadJSON(r); err != nil {
-				return err
-			}
-		case "voice":
-			s.Voice.Reset()
-			if err := s.Voice.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -4899,20 +4899,15 @@ func (s MessageEntity) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Language.Set {
-		more.More()
-		w.ObjField("language")
-		s.Language.WriteJSON(w)
-	}
 	more.More()
-	w.ObjField("length")
-	w.Int(s.Length)
+	w.ObjField("type")
+	s.Type.WriteJSON(w)
 	more.More()
 	w.ObjField("offset")
 	w.Int(s.Offset)
 	more.More()
-	w.ObjField("type")
-	s.Type.WriteJSON(w)
+	w.ObjField("length")
+	w.Int(s.Length)
 	if s.URL.Set {
 		more.More()
 		w.ObjField("url")
@@ -4922,6 +4917,11 @@ func (s MessageEntity) WriteJSON(w *json.Writer) {
 		more.More()
 		w.ObjField("user")
 		s.User.WriteJSON(w)
+	}
+	if s.Language.Set {
+		more.More()
+		w.ObjField("language")
+		s.Language.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -4933,15 +4933,8 @@ func (s *MessageEntity) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "language":
-			s.Language.Reset()
-			if err := s.Language.ReadJSON(r); err != nil {
-				return err
-			}
-		case "length":
-			v, err := r.Int()
-			s.Length = int(v)
-			if err != nil {
+		case "type":
+			if err := s.Type.ReadJSON(r); err != nil {
 				return err
 			}
 		case "offset":
@@ -4950,8 +4943,10 @@ func (s *MessageEntity) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "type":
-			if err := s.Type.ReadJSON(r); err != nil {
+		case "length":
+			v, err := r.Int()
+			s.Length = int(v)
+			if err != nil {
 				return err
 			}
 		case "url":
@@ -4962,6 +4957,11 @@ func (s *MessageEntity) ReadJSON(r *json.Reader) error {
 		case "user":
 			s.User.Reset()
 			if err := s.User.ReadJSON(r); err != nil {
+				return err
+			}
+		case "language":
+			s.Language.Reset()
+			if err := s.Language.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -5918,11 +5918,6 @@ func (s OrderInfo) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Email.Set {
-		more.More()
-		w.ObjField("email")
-		s.Email.WriteJSON(w)
-	}
 	if s.Name.Set {
 		more.More()
 		w.ObjField("name")
@@ -5932,6 +5927,11 @@ func (s OrderInfo) WriteJSON(w *json.Writer) {
 		more.More()
 		w.ObjField("phone_number")
 		s.PhoneNumber.WriteJSON(w)
+	}
+	if s.Email.Set {
+		more.More()
+		w.ObjField("email")
+		s.Email.WriteJSON(w)
 	}
 	if s.ShippingAddress.Set {
 		more.More()
@@ -5948,11 +5948,6 @@ func (s *OrderInfo) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "email":
-			s.Email.Reset()
-			if err := s.Email.ReadJSON(r); err != nil {
-				return err
-			}
 		case "name":
 			s.Name.Reset()
 			if err := s.Name.ReadJSON(r); err != nil {
@@ -5961,6 +5956,11 @@ func (s *OrderInfo) ReadJSON(r *json.Reader) error {
 		case "phone_number":
 			s.PhoneNumber.Reset()
 			if err := s.PhoneNumber.ReadJSON(r); err != nil {
+				return err
+			}
+		case "email":
+			s.Email.Reset()
+			if err := s.Email.ReadJSON(r); err != nil {
 				return err
 			}
 		case "shipping_address":
@@ -5981,9 +5981,6 @@ func (s PassportData) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("credentials")
-	s.Credentials.WriteJSON(w)
-	more.More()
 	w.ObjField("data")
 	more.Down()
 	w.ArrStart()
@@ -5993,6 +5990,9 @@ func (s PassportData) WriteJSON(w *json.Writer) {
 	}
 	w.ArrEnd()
 	more.Up()
+	more.More()
+	w.ObjField("credentials")
+	s.Credentials.WriteJSON(w)
 	w.ObjEnd()
 }
 
@@ -6003,10 +6003,6 @@ func (s *PassportData) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "credentials":
-			if err := s.Credentials.ReadJSON(r); err != nil {
-				return err
-			}
 		case "data":
 			s.Data = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -6017,6 +6013,10 @@ func (s *PassportData) ReadJSON(r *json.Reader) error {
 				s.Data = append(s.Data, elem)
 				return nil
 			}); err != nil {
+				return err
+			}
+		case "credentials":
+			if err := s.Credentials.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6032,17 +6032,17 @@ func (s PassportFile) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("file_date")
-	w.Int(s.FileDate)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
 	more.More()
 	w.ObjField("file_size")
 	w.Int(s.FileSize)
 	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
+	w.ObjField("file_date")
+	w.Int(s.FileDate)
 	w.ObjEnd()
 }
 
@@ -6053,15 +6053,15 @@ func (s *PassportFile) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "file_date":
-			v, err := r.Int()
-			s.FileDate = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_unique_id":
+			v, err := r.Str()
+			s.FileUniqueID = string(v)
 			if err != nil {
 				return err
 			}
@@ -6071,9 +6071,9 @@ func (s *PassportFile) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "file_unique_id":
-			v, err := r.Str()
-			s.FileUniqueID = string(v)
+		case "file_date":
+			v, err := r.Int()
+			s.FileDate = int(v)
 			if err != nil {
 				return err
 			}
@@ -6092,20 +6092,20 @@ func (s PhotoSize) WriteJSON(w *json.Writer) {
 	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("width")
+	w.Int(s.Width)
+	more.More()
+	w.ObjField("height")
+	w.Int(s.Height)
 	if s.FileSize.Set {
 		more.More()
 		w.ObjField("file_size")
 		s.FileSize.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
-	more.More()
-	w.ObjField("height")
-	w.Int(s.Height)
-	more.More()
-	w.ObjField("width")
-	w.Int(s.Width)
 	w.ObjEnd()
 }
 
@@ -6122,14 +6122,15 @@ func (s *PhotoSize) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := r.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := r.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -6139,10 +6140,9 @@ func (s *PhotoSize) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "width":
-			v, err := r.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6158,13 +6158,36 @@ func (s Poll) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
+	w.ObjField("id")
+	w.Str(s.ID)
+	more.More()
+	w.ObjField("question")
+	w.Str(s.Question)
+	more.More()
+	w.ObjField("options")
+	more.Down()
+	w.ArrStart()
+	for _, elem := range s.Options {
+		more.More()
+		elem.WriteJSON(w)
+	}
+	w.ArrEnd()
+	more.Up()
+	more.More()
+	w.ObjField("total_voter_count")
+	w.Int(s.TotalVoterCount)
+	more.More()
+	w.ObjField("is_closed")
+	w.Bool(s.IsClosed)
+	more.More()
+	w.ObjField("is_anonymous")
+	w.Bool(s.IsAnonymous)
+	more.More()
+	w.ObjField("type")
+	w.Str(s.Type)
+	more.More()
 	w.ObjField("allows_multiple_answers")
 	w.Bool(s.AllowsMultipleAnswers)
-	if s.CloseDate.Set {
-		more.More()
-		w.ObjField("close_date")
-		s.CloseDate.WriteJSON(w)
-	}
 	if s.CorrectOptionID.Set {
 		more.More()
 		w.ObjField("correct_option_id")
@@ -6187,39 +6210,16 @@ func (s Poll) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("id")
-	w.Str(s.ID)
-	more.More()
-	w.ObjField("is_anonymous")
-	w.Bool(s.IsAnonymous)
-	more.More()
-	w.ObjField("is_closed")
-	w.Bool(s.IsClosed)
 	if s.OpenPeriod.Set {
 		more.More()
 		w.ObjField("open_period")
 		s.OpenPeriod.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("options")
-	more.Down()
-	w.ArrStart()
-	for _, elem := range s.Options {
+	if s.CloseDate.Set {
 		more.More()
-		elem.WriteJSON(w)
+		w.ObjField("close_date")
+		s.CloseDate.WriteJSON(w)
 	}
-	w.ArrEnd()
-	more.Up()
-	more.More()
-	w.ObjField("question")
-	w.Str(s.Question)
-	more.More()
-	w.ObjField("total_voter_count")
-	w.Int(s.TotalVoterCount)
-	more.More()
-	w.ObjField("type")
-	w.Str(s.Type)
 	w.ObjEnd()
 }
 
@@ -6230,15 +6230,58 @@ func (s *Poll) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "id":
+			v, err := r.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
+			}
+		case "question":
+			v, err := r.Str()
+			s.Question = string(v)
+			if err != nil {
+				return err
+			}
+		case "options":
+			s.Options = nil
+			if err := r.Array(func(r *json.Reader) error {
+				var elem PollOption
+				if err := elem.ReadJSON(r); err != nil {
+					return err
+				}
+				s.Options = append(s.Options, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "total_voter_count":
+			v, err := r.Int()
+			s.TotalVoterCount = int(v)
+			if err != nil {
+				return err
+			}
+		case "is_closed":
+			v, err := r.Bool()
+			s.IsClosed = bool(v)
+			if err != nil {
+				return err
+			}
+		case "is_anonymous":
+			v, err := r.Bool()
+			s.IsAnonymous = bool(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := r.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		case "allows_multiple_answers":
 			v, err := r.Bool()
 			s.AllowsMultipleAnswers = bool(v)
 			if err != nil {
-				return err
-			}
-		case "close_date":
-			s.CloseDate.Reset()
-			if err := s.CloseDate.ReadJSON(r); err != nil {
 				return err
 			}
 		case "correct_option_id":
@@ -6263,57 +6306,14 @@ func (s *Poll) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "id":
-			v, err := r.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
-			}
-		case "is_anonymous":
-			v, err := r.Bool()
-			s.IsAnonymous = bool(v)
-			if err != nil {
-				return err
-			}
-		case "is_closed":
-			v, err := r.Bool()
-			s.IsClosed = bool(v)
-			if err != nil {
-				return err
-			}
 		case "open_period":
 			s.OpenPeriod.Reset()
 			if err := s.OpenPeriod.ReadJSON(r); err != nil {
 				return err
 			}
-		case "options":
-			s.Options = nil
-			if err := r.Array(func(r *json.Reader) error {
-				var elem PollOption
-				if err := elem.ReadJSON(r); err != nil {
-					return err
-				}
-				s.Options = append(s.Options, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "question":
-			v, err := r.Str()
-			s.Question = string(v)
-			if err != nil {
-				return err
-			}
-		case "total_voter_count":
-			v, err := r.Int()
-			s.TotalVoterCount = int(v)
-			if err != nil {
-				return err
-			}
-		case "type":
-			v, err := r.Str()
-			s.Type = string(v)
-			if err != nil {
+		case "close_date":
+			s.CloseDate.Reset()
+			if err := s.CloseDate.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6329,6 +6329,12 @@ func (s PollAnswer) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
+	w.ObjField("poll_id")
+	w.Str(s.PollID)
+	more.More()
+	w.ObjField("user")
+	s.User.WriteJSON(w)
+	more.More()
 	w.ObjField("option_ids")
 	more.Down()
 	w.ArrStart()
@@ -6338,12 +6344,6 @@ func (s PollAnswer) WriteJSON(w *json.Writer) {
 	}
 	w.ArrEnd()
 	more.Up()
-	more.More()
-	w.ObjField("poll_id")
-	w.Str(s.PollID)
-	more.More()
-	w.ObjField("user")
-	s.User.WriteJSON(w)
 	w.ObjEnd()
 }
 
@@ -6354,6 +6354,16 @@ func (s *PollAnswer) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "poll_id":
+			v, err := r.Str()
+			s.PollID = string(v)
+			if err != nil {
+				return err
+			}
+		case "user":
+			if err := s.User.ReadJSON(r); err != nil {
+				return err
+			}
 		case "option_ids":
 			s.OptionIds = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -6366,16 +6376,6 @@ func (s *PollAnswer) ReadJSON(r *json.Reader) error {
 				s.OptionIds = append(s.OptionIds, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "poll_id":
-			v, err := r.Str()
-			s.PollID = string(v)
-			if err != nil {
-				return err
-			}
-		case "user":
-			if err := s.User.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6431,30 +6431,30 @@ func (s PreCheckoutQuery) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("currency")
-	w.Str(s.Currency)
+	w.ObjField("id")
+	w.Str(s.ID)
 	more.More()
 	w.ObjField("from")
 	s.From.WriteJSON(w)
 	more.More()
-	w.ObjField("id")
-	w.Str(s.ID)
+	w.ObjField("currency")
+	w.Str(s.Currency)
+	more.More()
+	w.ObjField("total_amount")
+	w.Int(s.TotalAmount)
 	more.More()
 	w.ObjField("invoice_payload")
 	w.Str(s.InvoicePayload)
-	if s.OrderInfo.Set {
-		more.More()
-		w.ObjField("order_info")
-		s.OrderInfo.WriteJSON(w)
-	}
 	if s.ShippingOptionID.Set {
 		more.More()
 		w.ObjField("shipping_option_id")
 		s.ShippingOptionID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("total_amount")
-	w.Int(s.TotalAmount)
+	if s.OrderInfo.Set {
+		more.More()
+		w.ObjField("order_info")
+		s.OrderInfo.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -6465,9 +6465,9 @@ func (s *PreCheckoutQuery) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "currency":
+		case "id":
 			v, err := r.Str()
-			s.Currency = string(v)
+			s.ID = string(v)
 			if err != nil {
 				return err
 			}
@@ -6475,9 +6475,15 @@ func (s *PreCheckoutQuery) ReadJSON(r *json.Reader) error {
 			if err := s.From.ReadJSON(r); err != nil {
 				return err
 			}
-		case "id":
+		case "currency":
 			v, err := r.Str()
-			s.ID = string(v)
+			s.Currency = string(v)
+			if err != nil {
+				return err
+			}
+		case "total_amount":
+			v, err := r.Int()
+			s.TotalAmount = int(v)
 			if err != nil {
 				return err
 			}
@@ -6487,20 +6493,14 @@ func (s *PreCheckoutQuery) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "order_info":
-			s.OrderInfo.Reset()
-			if err := s.OrderInfo.ReadJSON(r); err != nil {
-				return err
-			}
 		case "shipping_option_id":
 			s.ShippingOptionID.Reset()
 			if err := s.ShippingOptionID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "total_amount":
-			v, err := r.Int()
-			s.TotalAmount = int(v)
-			if err != nil {
+		case "order_info":
+			s.OrderInfo.Reset()
+			if err := s.OrderInfo.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6516,14 +6516,14 @@ func (s ProximityAlertTriggered) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("distance")
-	w.Int(s.Distance)
-	more.More()
 	w.ObjField("traveler")
 	s.Traveler.WriteJSON(w)
 	more.More()
 	w.ObjField("watcher")
 	s.Watcher.WriteJSON(w)
+	more.More()
+	w.ObjField("distance")
+	w.Int(s.Distance)
 	w.ObjEnd()
 }
 
@@ -6534,18 +6534,18 @@ func (s *ProximityAlertTriggered) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "distance":
-			v, err := r.Int()
-			s.Distance = int(v)
-			if err != nil {
-				return err
-			}
 		case "traveler":
 			if err := s.Traveler.ReadJSON(r); err != nil {
 				return err
 			}
 		case "watcher":
 			if err := s.Watcher.ReadJSON(r); err != nil {
+				return err
+			}
+		case "distance":
+			v, err := r.Int()
+			s.Distance = int(v)
+			if err != nil {
 				return err
 			}
 		default:
@@ -6640,31 +6640,31 @@ func (s SendGamePostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
+	more.More()
+	w.ObjField("game_short_name")
+	w.Str(s.GameShortName)
 	if s.DisableNotification.Set {
 		more.More()
 		w.ObjField("disable_notification")
 		s.DisableNotification.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("game_short_name")
-	w.Str(s.GameShortName)
-	if s.ReplyMarkup.Set {
-		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
-	}
 	if s.ReplyToMessageID.Set {
 		more.More()
 		w.ObjField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -6676,20 +6676,10 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "game_short_name":
@@ -6698,14 +6688,24 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6720,31 +6720,31 @@ func (s SendGamePostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Writer) 
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
+	more.More()
+	w.ObjField("game_short_name")
+	w.Str(s.GameShortName)
 	if s.DisableNotification.Set {
 		more.More()
 		w.ObjField("disable_notification")
 		s.DisableNotification.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("game_short_name")
-	w.Str(s.GameShortName)
-	if s.ReplyMarkup.Set {
-		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
-	}
 	if s.ReplyToMessageID.Set {
 		more.More()
 		w.ObjField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -6756,20 +6756,10 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reader) 
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "game_short_name":
@@ -6778,14 +6768,24 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reader) 
 			if err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6800,31 +6800,31 @@ func (s SendGamePostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
+	more.More()
+	w.ObjField("game_short_name")
+	w.Str(s.GameShortName)
 	if s.DisableNotification.Set {
 		more.More()
 		w.ObjField("disable_notification")
 		s.DisableNotification.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("game_short_name")
-	w.Str(s.GameShortName)
-	if s.ReplyMarkup.Set {
-		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
-	}
 	if s.ReplyToMessageID.Set {
 		more.More()
 		w.ObjField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -6836,20 +6836,10 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "game_short_name":
@@ -6858,14 +6848,24 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -6918,73 +6918,27 @@ func (s SendInvoicePostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
 	more.More()
-	w.ObjField("currency")
-	w.Str(s.Currency)
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("description")
 	w.Str(s.Description)
-	if s.DisableNotification.Set {
-		more.More()
-		w.ObjField("disable_notification")
-		s.DisableNotification.WriteJSON(w)
-	}
-	if s.IsFlexible.Set {
-		more.More()
-		w.ObjField("is_flexible")
-		s.IsFlexible.WriteJSON(w)
-	}
-	if s.NeedEmail.Set {
-		more.More()
-		w.ObjField("need_email")
-		s.NeedEmail.WriteJSON(w)
-	}
-	if s.NeedName.Set {
-		more.More()
-		w.ObjField("need_name")
-		s.NeedName.WriteJSON(w)
-	}
-	if s.NeedPhoneNumber.Set {
-		more.More()
-		w.ObjField("need_phone_number")
-		s.NeedPhoneNumber.WriteJSON(w)
-	}
-	if s.NeedShippingAddress.Set {
-		more.More()
-		w.ObjField("need_shipping_address")
-		s.NeedShippingAddress.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("payload")
 	w.Str(s.Payload)
-	if s.PhotoHeight.Set {
-		more.More()
-		w.ObjField("photo_height")
-		s.PhotoHeight.WriteJSON(w)
-	}
-	if s.PhotoSize.Set {
-		more.More()
-		w.ObjField("photo_size")
-		s.PhotoSize.WriteJSON(w)
-	}
-	if s.PhotoURL.Set {
-		more.More()
-		w.ObjField("photo_url")
-		s.PhotoURL.WriteJSON(w)
-	}
-	if s.PhotoWidth.Set {
-		more.More()
-		w.ObjField("photo_width")
-		s.PhotoWidth.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("provider_token")
+	w.Str(s.ProviderToken)
+	more.More()
+	w.ObjField("start_parameter")
+	w.Str(s.StartParameter)
+	more.More()
+	w.ObjField("currency")
+	w.Str(s.Currency)
 	more.More()
 	w.ObjField("prices")
 	more.Down()
@@ -7000,35 +6954,81 @@ func (s SendInvoicePostReqApplicationJSON) WriteJSON(w *json.Writer) {
 		w.ObjField("provider_data")
 		s.ProviderData.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("provider_token")
-	w.Str(s.ProviderToken)
-	if s.ReplyMarkup.Set {
+	if s.PhotoURL.Set {
 		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
+		w.ObjField("photo_url")
+		s.PhotoURL.WriteJSON(w)
 	}
-	if s.ReplyToMessageID.Set {
+	if s.PhotoSize.Set {
 		more.More()
-		w.ObjField("reply_to_message_id")
-		s.ReplyToMessageID.WriteJSON(w)
+		w.ObjField("photo_size")
+		s.PhotoSize.WriteJSON(w)
 	}
-	if s.SendEmailToProvider.Set {
+	if s.PhotoWidth.Set {
 		more.More()
-		w.ObjField("send_email_to_provider")
-		s.SendEmailToProvider.WriteJSON(w)
+		w.ObjField("photo_width")
+		s.PhotoWidth.WriteJSON(w)
+	}
+	if s.PhotoHeight.Set {
+		more.More()
+		w.ObjField("photo_height")
+		s.PhotoHeight.WriteJSON(w)
+	}
+	if s.NeedName.Set {
+		more.More()
+		w.ObjField("need_name")
+		s.NeedName.WriteJSON(w)
+	}
+	if s.NeedPhoneNumber.Set {
+		more.More()
+		w.ObjField("need_phone_number")
+		s.NeedPhoneNumber.WriteJSON(w)
+	}
+	if s.NeedEmail.Set {
+		more.More()
+		w.ObjField("need_email")
+		s.NeedEmail.WriteJSON(w)
+	}
+	if s.NeedShippingAddress.Set {
+		more.More()
+		w.ObjField("need_shipping_address")
+		s.NeedShippingAddress.WriteJSON(w)
 	}
 	if s.SendPhoneNumberToProvider.Set {
 		more.More()
 		w.ObjField("send_phone_number_to_provider")
 		s.SendPhoneNumberToProvider.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("start_parameter")
-	w.Str(s.StartParameter)
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
+	if s.SendEmailToProvider.Set {
+		more.More()
+		w.ObjField("send_email_to_provider")
+		s.SendEmailToProvider.WriteJSON(w)
+	}
+	if s.IsFlexible.Set {
+		more.More()
+		w.ObjField("is_flexible")
+		s.IsFlexible.WriteJSON(w)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		w.ObjField("disable_notification")
+		s.DisableNotification.WriteJSON(w)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		w.ObjField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7039,20 +7039,15 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
 				return err
 			}
-		case "currency":
+		case "title":
 			v, err := r.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -7062,60 +7057,28 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
-				return err
-			}
-		case "is_flexible":
-			s.IsFlexible.Reset()
-			if err := s.IsFlexible.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_email":
-			s.NeedEmail.Reset()
-			if err := s.NeedEmail.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_name":
-			s.NeedName.Reset()
-			if err := s.NeedName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_phone_number":
-			s.NeedPhoneNumber.Reset()
-			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_shipping_address":
-			s.NeedShippingAddress.Reset()
-			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
-				return err
-			}
 		case "payload":
 			v, err := r.Str()
 			s.Payload = string(v)
 			if err != nil {
 				return err
 			}
-		case "photo_height":
-			s.PhotoHeight.Reset()
-			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+		case "provider_token":
+			v, err := r.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_size":
-			s.PhotoSize.Reset()
-			if err := s.PhotoSize.ReadJSON(r); err != nil {
+		case "start_parameter":
+			v, err := r.Str()
+			s.StartParameter = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_url":
-			s.PhotoURL.Reset()
-			if err := s.PhotoURL.ReadJSON(r); err != nil {
-				return err
-			}
-		case "photo_width":
-			s.PhotoWidth.Reset()
-			if err := s.PhotoWidth.ReadJSON(r); err != nil {
+		case "currency":
+			v, err := r.Str()
+			s.Currency = string(v)
+			if err != nil {
 				return err
 			}
 		case "prices":
@@ -7135,25 +7098,44 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 			if err := s.ProviderData.ReadJSON(r); err != nil {
 				return err
 			}
-		case "provider_token":
-			v, err := r.Str()
-			s.ProviderToken = string(v)
-			if err != nil {
+		case "photo_url":
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "photo_size":
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+		case "photo_width":
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(r); err != nil {
 				return err
 			}
-		case "send_email_to_provider":
-			s.SendEmailToProvider.Reset()
-			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
+		case "photo_height":
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_name":
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_phone_number":
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_email":
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_shipping_address":
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
 				return err
 			}
 		case "send_phone_number_to_provider":
@@ -7161,16 +7143,34 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 			if err := s.SendPhoneNumberToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "start_parameter":
-			v, err := r.Str()
-			s.StartParameter = string(v)
-			if err != nil {
+		case "send_email_to_provider":
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "is_flexible":
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -7185,73 +7185,27 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Write
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
 	more.More()
-	w.ObjField("currency")
-	w.Str(s.Currency)
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("description")
 	w.Str(s.Description)
-	if s.DisableNotification.Set {
-		more.More()
-		w.ObjField("disable_notification")
-		s.DisableNotification.WriteJSON(w)
-	}
-	if s.IsFlexible.Set {
-		more.More()
-		w.ObjField("is_flexible")
-		s.IsFlexible.WriteJSON(w)
-	}
-	if s.NeedEmail.Set {
-		more.More()
-		w.ObjField("need_email")
-		s.NeedEmail.WriteJSON(w)
-	}
-	if s.NeedName.Set {
-		more.More()
-		w.ObjField("need_name")
-		s.NeedName.WriteJSON(w)
-	}
-	if s.NeedPhoneNumber.Set {
-		more.More()
-		w.ObjField("need_phone_number")
-		s.NeedPhoneNumber.WriteJSON(w)
-	}
-	if s.NeedShippingAddress.Set {
-		more.More()
-		w.ObjField("need_shipping_address")
-		s.NeedShippingAddress.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("payload")
 	w.Str(s.Payload)
-	if s.PhotoHeight.Set {
-		more.More()
-		w.ObjField("photo_height")
-		s.PhotoHeight.WriteJSON(w)
-	}
-	if s.PhotoSize.Set {
-		more.More()
-		w.ObjField("photo_size")
-		s.PhotoSize.WriteJSON(w)
-	}
-	if s.PhotoURL.Set {
-		more.More()
-		w.ObjField("photo_url")
-		s.PhotoURL.WriteJSON(w)
-	}
-	if s.PhotoWidth.Set {
-		more.More()
-		w.ObjField("photo_width")
-		s.PhotoWidth.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("provider_token")
+	w.Str(s.ProviderToken)
+	more.More()
+	w.ObjField("start_parameter")
+	w.Str(s.StartParameter)
+	more.More()
+	w.ObjField("currency")
+	w.Str(s.Currency)
 	more.More()
 	w.ObjField("prices")
 	more.Down()
@@ -7267,35 +7221,81 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Write
 		w.ObjField("provider_data")
 		s.ProviderData.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("provider_token")
-	w.Str(s.ProviderToken)
-	if s.ReplyMarkup.Set {
+	if s.PhotoURL.Set {
 		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
+		w.ObjField("photo_url")
+		s.PhotoURL.WriteJSON(w)
 	}
-	if s.ReplyToMessageID.Set {
+	if s.PhotoSize.Set {
 		more.More()
-		w.ObjField("reply_to_message_id")
-		s.ReplyToMessageID.WriteJSON(w)
+		w.ObjField("photo_size")
+		s.PhotoSize.WriteJSON(w)
 	}
-	if s.SendEmailToProvider.Set {
+	if s.PhotoWidth.Set {
 		more.More()
-		w.ObjField("send_email_to_provider")
-		s.SendEmailToProvider.WriteJSON(w)
+		w.ObjField("photo_width")
+		s.PhotoWidth.WriteJSON(w)
+	}
+	if s.PhotoHeight.Set {
+		more.More()
+		w.ObjField("photo_height")
+		s.PhotoHeight.WriteJSON(w)
+	}
+	if s.NeedName.Set {
+		more.More()
+		w.ObjField("need_name")
+		s.NeedName.WriteJSON(w)
+	}
+	if s.NeedPhoneNumber.Set {
+		more.More()
+		w.ObjField("need_phone_number")
+		s.NeedPhoneNumber.WriteJSON(w)
+	}
+	if s.NeedEmail.Set {
+		more.More()
+		w.ObjField("need_email")
+		s.NeedEmail.WriteJSON(w)
+	}
+	if s.NeedShippingAddress.Set {
+		more.More()
+		w.ObjField("need_shipping_address")
+		s.NeedShippingAddress.WriteJSON(w)
 	}
 	if s.SendPhoneNumberToProvider.Set {
 		more.More()
 		w.ObjField("send_phone_number_to_provider")
 		s.SendPhoneNumberToProvider.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("start_parameter")
-	w.Str(s.StartParameter)
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
+	if s.SendEmailToProvider.Set {
+		more.More()
+		w.ObjField("send_email_to_provider")
+		s.SendEmailToProvider.WriteJSON(w)
+	}
+	if s.IsFlexible.Set {
+		more.More()
+		w.ObjField("is_flexible")
+		s.IsFlexible.WriteJSON(w)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		w.ObjField("disable_notification")
+		s.DisableNotification.WriteJSON(w)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		w.ObjField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7306,20 +7306,15 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reade
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
 				return err
 			}
-		case "currency":
+		case "title":
 			v, err := r.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -7329,60 +7324,28 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reade
 			if err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
-				return err
-			}
-		case "is_flexible":
-			s.IsFlexible.Reset()
-			if err := s.IsFlexible.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_email":
-			s.NeedEmail.Reset()
-			if err := s.NeedEmail.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_name":
-			s.NeedName.Reset()
-			if err := s.NeedName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_phone_number":
-			s.NeedPhoneNumber.Reset()
-			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_shipping_address":
-			s.NeedShippingAddress.Reset()
-			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
-				return err
-			}
 		case "payload":
 			v, err := r.Str()
 			s.Payload = string(v)
 			if err != nil {
 				return err
 			}
-		case "photo_height":
-			s.PhotoHeight.Reset()
-			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+		case "provider_token":
+			v, err := r.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_size":
-			s.PhotoSize.Reset()
-			if err := s.PhotoSize.ReadJSON(r); err != nil {
+		case "start_parameter":
+			v, err := r.Str()
+			s.StartParameter = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_url":
-			s.PhotoURL.Reset()
-			if err := s.PhotoURL.ReadJSON(r); err != nil {
-				return err
-			}
-		case "photo_width":
-			s.PhotoWidth.Reset()
-			if err := s.PhotoWidth.ReadJSON(r); err != nil {
+		case "currency":
+			v, err := r.Str()
+			s.Currency = string(v)
+			if err != nil {
 				return err
 			}
 		case "prices":
@@ -7402,25 +7365,44 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reade
 			if err := s.ProviderData.ReadJSON(r); err != nil {
 				return err
 			}
-		case "provider_token":
-			v, err := r.Str()
-			s.ProviderToken = string(v)
-			if err != nil {
+		case "photo_url":
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "photo_size":
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+		case "photo_width":
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(r); err != nil {
 				return err
 			}
-		case "send_email_to_provider":
-			s.SendEmailToProvider.Reset()
-			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
+		case "photo_height":
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_name":
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_phone_number":
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_email":
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_shipping_address":
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
 				return err
 			}
 		case "send_phone_number_to_provider":
@@ -7428,16 +7410,34 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Reade
 			if err := s.SendPhoneNumberToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "start_parameter":
-			v, err := r.Str()
-			s.StartParameter = string(v)
-			if err != nil {
+		case "send_email_to_provider":
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "is_flexible":
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -7452,73 +7452,27 @@ func (s SendInvoicePostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		w.ObjField("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("chat_id")
 	w.Int(s.ChatID)
 	more.More()
-	w.ObjField("currency")
-	w.Str(s.Currency)
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("description")
 	w.Str(s.Description)
-	if s.DisableNotification.Set {
-		more.More()
-		w.ObjField("disable_notification")
-		s.DisableNotification.WriteJSON(w)
-	}
-	if s.IsFlexible.Set {
-		more.More()
-		w.ObjField("is_flexible")
-		s.IsFlexible.WriteJSON(w)
-	}
-	if s.NeedEmail.Set {
-		more.More()
-		w.ObjField("need_email")
-		s.NeedEmail.WriteJSON(w)
-	}
-	if s.NeedName.Set {
-		more.More()
-		w.ObjField("need_name")
-		s.NeedName.WriteJSON(w)
-	}
-	if s.NeedPhoneNumber.Set {
-		more.More()
-		w.ObjField("need_phone_number")
-		s.NeedPhoneNumber.WriteJSON(w)
-	}
-	if s.NeedShippingAddress.Set {
-		more.More()
-		w.ObjField("need_shipping_address")
-		s.NeedShippingAddress.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("payload")
 	w.Str(s.Payload)
-	if s.PhotoHeight.Set {
-		more.More()
-		w.ObjField("photo_height")
-		s.PhotoHeight.WriteJSON(w)
-	}
-	if s.PhotoSize.Set {
-		more.More()
-		w.ObjField("photo_size")
-		s.PhotoSize.WriteJSON(w)
-	}
-	if s.PhotoURL.Set {
-		more.More()
-		w.ObjField("photo_url")
-		s.PhotoURL.WriteJSON(w)
-	}
-	if s.PhotoWidth.Set {
-		more.More()
-		w.ObjField("photo_width")
-		s.PhotoWidth.WriteJSON(w)
-	}
+	more.More()
+	w.ObjField("provider_token")
+	w.Str(s.ProviderToken)
+	more.More()
+	w.ObjField("start_parameter")
+	w.Str(s.StartParameter)
+	more.More()
+	w.ObjField("currency")
+	w.Str(s.Currency)
 	more.More()
 	w.ObjField("prices")
 	more.Down()
@@ -7534,35 +7488,81 @@ func (s SendInvoicePostReqMultipartFormData) WriteJSON(w *json.Writer) {
 		w.ObjField("provider_data")
 		s.ProviderData.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("provider_token")
-	w.Str(s.ProviderToken)
-	if s.ReplyMarkup.Set {
+	if s.PhotoURL.Set {
 		more.More()
-		w.ObjField("reply_markup")
-		s.ReplyMarkup.WriteJSON(w)
+		w.ObjField("photo_url")
+		s.PhotoURL.WriteJSON(w)
 	}
-	if s.ReplyToMessageID.Set {
+	if s.PhotoSize.Set {
 		more.More()
-		w.ObjField("reply_to_message_id")
-		s.ReplyToMessageID.WriteJSON(w)
+		w.ObjField("photo_size")
+		s.PhotoSize.WriteJSON(w)
 	}
-	if s.SendEmailToProvider.Set {
+	if s.PhotoWidth.Set {
 		more.More()
-		w.ObjField("send_email_to_provider")
-		s.SendEmailToProvider.WriteJSON(w)
+		w.ObjField("photo_width")
+		s.PhotoWidth.WriteJSON(w)
+	}
+	if s.PhotoHeight.Set {
+		more.More()
+		w.ObjField("photo_height")
+		s.PhotoHeight.WriteJSON(w)
+	}
+	if s.NeedName.Set {
+		more.More()
+		w.ObjField("need_name")
+		s.NeedName.WriteJSON(w)
+	}
+	if s.NeedPhoneNumber.Set {
+		more.More()
+		w.ObjField("need_phone_number")
+		s.NeedPhoneNumber.WriteJSON(w)
+	}
+	if s.NeedEmail.Set {
+		more.More()
+		w.ObjField("need_email")
+		s.NeedEmail.WriteJSON(w)
+	}
+	if s.NeedShippingAddress.Set {
+		more.More()
+		w.ObjField("need_shipping_address")
+		s.NeedShippingAddress.WriteJSON(w)
 	}
 	if s.SendPhoneNumberToProvider.Set {
 		more.More()
 		w.ObjField("send_phone_number_to_provider")
 		s.SendPhoneNumberToProvider.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("start_parameter")
-	w.Str(s.StartParameter)
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
+	if s.SendEmailToProvider.Set {
+		more.More()
+		w.ObjField("send_email_to_provider")
+		s.SendEmailToProvider.WriteJSON(w)
+	}
+	if s.IsFlexible.Set {
+		more.More()
+		w.ObjField("is_flexible")
+		s.IsFlexible.WriteJSON(w)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		w.ObjField("disable_notification")
+		s.DisableNotification.WriteJSON(w)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		w.ObjField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(w)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		w.ObjField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(w)
+	}
+	if s.ReplyMarkup.Set {
+		more.More()
+		w.ObjField("reply_markup")
+		s.ReplyMarkup.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7573,20 +7573,15 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := r.Int()
 			s.ChatID = int(v)
 			if err != nil {
 				return err
 			}
-		case "currency":
+		case "title":
 			v, err := r.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -7596,60 +7591,28 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(r); err != nil {
-				return err
-			}
-		case "is_flexible":
-			s.IsFlexible.Reset()
-			if err := s.IsFlexible.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_email":
-			s.NeedEmail.Reset()
-			if err := s.NeedEmail.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_name":
-			s.NeedName.Reset()
-			if err := s.NeedName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_phone_number":
-			s.NeedPhoneNumber.Reset()
-			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
-				return err
-			}
-		case "need_shipping_address":
-			s.NeedShippingAddress.Reset()
-			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
-				return err
-			}
 		case "payload":
 			v, err := r.Str()
 			s.Payload = string(v)
 			if err != nil {
 				return err
 			}
-		case "photo_height":
-			s.PhotoHeight.Reset()
-			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+		case "provider_token":
+			v, err := r.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_size":
-			s.PhotoSize.Reset()
-			if err := s.PhotoSize.ReadJSON(r); err != nil {
+		case "start_parameter":
+			v, err := r.Str()
+			s.StartParameter = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_url":
-			s.PhotoURL.Reset()
-			if err := s.PhotoURL.ReadJSON(r); err != nil {
-				return err
-			}
-		case "photo_width":
-			s.PhotoWidth.Reset()
-			if err := s.PhotoWidth.ReadJSON(r); err != nil {
+		case "currency":
+			v, err := r.Str()
+			s.Currency = string(v)
+			if err != nil {
 				return err
 			}
 		case "prices":
@@ -7669,25 +7632,44 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 			if err := s.ProviderData.ReadJSON(r); err != nil {
 				return err
 			}
-		case "provider_token":
-			v, err := r.Str()
-			s.ProviderToken = string(v)
-			if err != nil {
+		case "photo_url":
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
+		case "photo_size":
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(r); err != nil {
 				return err
 			}
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+		case "photo_width":
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(r); err != nil {
 				return err
 			}
-		case "send_email_to_provider":
-			s.SendEmailToProvider.Reset()
-			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
+		case "photo_height":
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_name":
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_phone_number":
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_email":
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(r); err != nil {
+				return err
+			}
+		case "need_shipping_address":
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(r); err != nil {
 				return err
 			}
 		case "send_phone_number_to_provider":
@@ -7695,16 +7677,34 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 			if err := s.SendPhoneNumberToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "start_parameter":
-			v, err := r.Str()
-			s.StartParameter = string(v)
-			if err != nil {
+		case "send_email_to_provider":
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(r); err != nil {
 				return err
 			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "is_flexible":
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(r); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -7719,37 +7719,37 @@ func (s SetGameScorePostReqApplicationJSON) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ChatID.Set {
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
+	more.More()
+	w.ObjField("score")
+	w.Int(s.Score)
+	if s.Force.Set {
 		more.More()
-		w.ObjField("chat_id")
-		s.ChatID.WriteJSON(w)
+		w.ObjField("force")
+		s.Force.WriteJSON(w)
 	}
 	if s.DisableEditMessage.Set {
 		more.More()
 		w.ObjField("disable_edit_message")
 		s.DisableEditMessage.WriteJSON(w)
 	}
-	if s.Force.Set {
+	if s.ChatID.Set {
 		more.More()
-		w.ObjField("force")
-		s.Force.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
+		w.ObjField("chat_id")
+		s.ChatID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("score")
-	w.Int(s.Score)
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7760,29 +7760,10 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "disable_edit_message":
-			s.DisableEditMessage.Reset()
-			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
-				return err
-			}
-		case "force":
-			s.Force.Reset()
-			if err := s.Force.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "score":
@@ -7791,10 +7772,29 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "force":
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_edit_message":
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
+				return err
+			}
+		case "chat_id":
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -7809,37 +7809,37 @@ func (s SetGameScorePostReqApplicationXWwwFormUrlencoded) WriteJSON(w *json.Writ
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ChatID.Set {
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
+	more.More()
+	w.ObjField("score")
+	w.Int(s.Score)
+	if s.Force.Set {
 		more.More()
-		w.ObjField("chat_id")
-		s.ChatID.WriteJSON(w)
+		w.ObjField("force")
+		s.Force.WriteJSON(w)
 	}
 	if s.DisableEditMessage.Set {
 		more.More()
 		w.ObjField("disable_edit_message")
 		s.DisableEditMessage.WriteJSON(w)
 	}
-	if s.Force.Set {
+	if s.ChatID.Set {
 		more.More()
-		w.ObjField("force")
-		s.Force.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
+		w.ObjField("chat_id")
+		s.ChatID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("score")
-	w.Int(s.Score)
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7850,29 +7850,10 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Read
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "disable_edit_message":
-			s.DisableEditMessage.Reset()
-			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
-				return err
-			}
-		case "force":
-			s.Force.Reset()
-			if err := s.Force.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "score":
@@ -7881,10 +7862,29 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(r *json.Read
 			if err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "force":
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_edit_message":
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
+				return err
+			}
+		case "chat_id":
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -7899,37 +7899,37 @@ func (s SetGameScorePostReqMultipartFormData) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.ChatID.Set {
+	more.More()
+	w.ObjField("user_id")
+	w.Int(s.UserID)
+	more.More()
+	w.ObjField("score")
+	w.Int(s.Score)
+	if s.Force.Set {
 		more.More()
-		w.ObjField("chat_id")
-		s.ChatID.WriteJSON(w)
+		w.ObjField("force")
+		s.Force.WriteJSON(w)
 	}
 	if s.DisableEditMessage.Set {
 		more.More()
 		w.ObjField("disable_edit_message")
 		s.DisableEditMessage.WriteJSON(w)
 	}
-	if s.Force.Set {
+	if s.ChatID.Set {
 		more.More()
-		w.ObjField("force")
-		s.Force.WriteJSON(w)
-	}
-	if s.InlineMessageID.Set {
-		more.More()
-		w.ObjField("inline_message_id")
-		s.InlineMessageID.WriteJSON(w)
+		w.ObjField("chat_id")
+		s.ChatID.WriteJSON(w)
 	}
 	if s.MessageID.Set {
 		more.More()
 		w.ObjField("message_id")
 		s.MessageID.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("score")
-	w.Int(s.Score)
-	more.More()
-	w.ObjField("user_id")
-	w.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		more.More()
+		w.ObjField("inline_message_id")
+		s.InlineMessageID.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -7940,29 +7940,10 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "disable_edit_message":
-			s.DisableEditMessage.Reset()
-			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
-				return err
-			}
-		case "force":
-			s.Force.Reset()
-			if err := s.Force.ReadJSON(r); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(r); err != nil {
+		case "user_id":
+			v, err := r.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "score":
@@ -7971,10 +7952,29 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := r.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "force":
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disable_edit_message":
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(r); err != nil {
+				return err
+			}
+		case "chat_id":
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(r); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -8202,11 +8202,11 @@ func (s SetStickerPositionInSetPostReqApplicationJSON) WriteJSON(w *json.Writer)
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("position")
-	w.Int(s.Position)
-	more.More()
 	w.ObjField("sticker")
 	w.Str(s.Sticker)
+	more.More()
+	w.ObjField("position")
+	w.Int(s.Position)
 	w.ObjEnd()
 }
 
@@ -8217,15 +8217,15 @@ func (s *SetStickerPositionInSetPostReqApplicationJSON) ReadJSON(r *json.Reader)
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "position":
-			v, err := r.Int()
-			s.Position = int(v)
-			if err != nil {
-				return err
-			}
 		case "sticker":
 			v, err := r.Str()
 			s.Sticker = string(v)
+			if err != nil {
+				return err
+			}
+		case "position":
+			v, err := r.Int()
+			s.Position = int(v)
 			if err != nil {
 				return err
 			}
@@ -8242,11 +8242,11 @@ func (s SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) WriteJSON(w
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("position")
-	w.Int(s.Position)
-	more.More()
 	w.ObjField("sticker")
 	w.Str(s.Sticker)
+	more.More()
+	w.ObjField("position")
+	w.Int(s.Position)
 	w.ObjEnd()
 }
 
@@ -8257,15 +8257,15 @@ func (s *SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(r
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "position":
-			v, err := r.Int()
-			s.Position = int(v)
-			if err != nil {
-				return err
-			}
 		case "sticker":
 			v, err := r.Str()
 			s.Sticker = string(v)
+			if err != nil {
+				return err
+			}
+		case "position":
+			v, err := r.Int()
+			s.Position = int(v)
 			if err != nil {
 				return err
 			}
@@ -8282,11 +8282,11 @@ func (s SetStickerPositionInSetPostReqMultipartFormData) WriteJSON(w *json.Write
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("position")
-	w.Int(s.Position)
-	more.More()
 	w.ObjField("sticker")
 	w.Str(s.Sticker)
+	more.More()
+	w.ObjField("position")
+	w.Int(s.Position)
 	w.ObjEnd()
 }
 
@@ -8297,15 +8297,15 @@ func (s *SetStickerPositionInSetPostReqMultipartFormData) ReadJSON(r *json.Reade
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "position":
-			v, err := r.Int()
-			s.Position = int(v)
-			if err != nil {
-				return err
-			}
 		case "sticker":
 			v, err := r.Str()
 			s.Sticker = string(v)
+			if err != nil {
+				return err
+			}
+		case "position":
+			v, err := r.Int()
+			s.Position = int(v)
 			if err != nil {
 				return err
 			}
@@ -8361,6 +8361,24 @@ func (s SetWebhookPostReq) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("url")
+	w.Str(s.URL)
+	if s.Certificate.Set {
+		more.More()
+		w.ObjField("certificate")
+		s.Certificate.WriteJSON(w)
+	}
+	if s.IPAddress.Set {
+		more.More()
+		w.ObjField("ip_address")
+		s.IPAddress.WriteJSON(w)
+	}
+	if s.MaxConnections.Set {
+		more.More()
+		w.ObjField("max_connections")
+		s.MaxConnections.WriteJSON(w)
+	}
 	if s.AllowedUpdates != nil {
 		more.More()
 		w.ObjField("allowed_updates")
@@ -8373,29 +8391,11 @@ func (s SetWebhookPostReq) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.Certificate.Set {
-		more.More()
-		w.ObjField("certificate")
-		s.Certificate.WriteJSON(w)
-	}
 	if s.DropPendingUpdates.Set {
 		more.More()
 		w.ObjField("drop_pending_updates")
 		s.DropPendingUpdates.WriteJSON(w)
 	}
-	if s.IPAddress.Set {
-		more.More()
-		w.ObjField("ip_address")
-		s.IPAddress.WriteJSON(w)
-	}
-	if s.MaxConnections.Set {
-		more.More()
-		w.ObjField("max_connections")
-		s.MaxConnections.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("url")
-	w.Str(s.URL)
 	w.ObjEnd()
 }
 
@@ -8406,6 +8406,27 @@ func (s *SetWebhookPostReq) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "url":
+			v, err := r.Str()
+			s.URL = string(v)
+			if err != nil {
+				return err
+			}
+		case "certificate":
+			s.Certificate.Reset()
+			if err := s.Certificate.ReadJSON(r); err != nil {
+				return err
+			}
+		case "ip_address":
+			s.IPAddress.Reset()
+			if err := s.IPAddress.ReadJSON(r); err != nil {
+				return err
+			}
+		case "max_connections":
+			s.MaxConnections.Reset()
+			if err := s.MaxConnections.ReadJSON(r); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -8420,30 +8441,9 @@ func (s *SetWebhookPostReq) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "certificate":
-			s.Certificate.Reset()
-			if err := s.Certificate.ReadJSON(r); err != nil {
-				return err
-			}
 		case "drop_pending_updates":
 			s.DropPendingUpdates.Reset()
 			if err := s.DropPendingUpdates.ReadJSON(r); err != nil {
-				return err
-			}
-		case "ip_address":
-			s.IPAddress.Reset()
-			if err := s.IPAddress.ReadJSON(r); err != nil {
-				return err
-			}
-		case "max_connections":
-			s.MaxConnections.Reset()
-			if err := s.MaxConnections.ReadJSON(r); err != nil {
-				return err
-			}
-		case "url":
-			v, err := r.Str()
-			s.URL = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -8459,23 +8459,23 @@ func (s ShippingAddress) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("city")
-	w.Str(s.City)
-	more.More()
 	w.ObjField("country_code")
 	w.Str(s.CountryCode)
 	more.More()
-	w.ObjField("post_code")
-	w.Str(s.PostCode)
-	more.More()
 	w.ObjField("state")
 	w.Str(s.State)
+	more.More()
+	w.ObjField("city")
+	w.Str(s.City)
 	more.More()
 	w.ObjField("street_line1")
 	w.Str(s.StreetLine1)
 	more.More()
 	w.ObjField("street_line2")
 	w.Str(s.StreetLine2)
+	more.More()
+	w.ObjField("post_code")
+	w.Str(s.PostCode)
 	w.ObjEnd()
 }
 
@@ -8486,27 +8486,21 @@ func (s *ShippingAddress) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "city":
-			v, err := r.Str()
-			s.City = string(v)
-			if err != nil {
-				return err
-			}
 		case "country_code":
 			v, err := r.Str()
 			s.CountryCode = string(v)
 			if err != nil {
 				return err
 			}
-		case "post_code":
-			v, err := r.Str()
-			s.PostCode = string(v)
-			if err != nil {
-				return err
-			}
 		case "state":
 			v, err := r.Str()
 			s.State = string(v)
+			if err != nil {
+				return err
+			}
+		case "city":
+			v, err := r.Str()
+			s.City = string(v)
 			if err != nil {
 				return err
 			}
@@ -8519,6 +8513,12 @@ func (s *ShippingAddress) ReadJSON(r *json.Reader) error {
 		case "street_line2":
 			v, err := r.Str()
 			s.StreetLine2 = string(v)
+			if err != nil {
+				return err
+			}
+		case "post_code":
+			v, err := r.Str()
+			s.PostCode = string(v)
 			if err != nil {
 				return err
 			}
@@ -8538,6 +8538,9 @@ func (s ShippingOption) WriteJSON(w *json.Writer) {
 	w.ObjField("id")
 	w.Str(s.ID)
 	more.More()
+	w.ObjField("title")
+	w.Str(s.Title)
+	more.More()
 	w.ObjField("prices")
 	more.Down()
 	w.ArrStart()
@@ -8547,9 +8550,6 @@ func (s ShippingOption) WriteJSON(w *json.Writer) {
 	}
 	w.ArrEnd()
 	more.Up()
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
 	w.ObjEnd()
 }
 
@@ -8566,6 +8566,12 @@ func (s *ShippingOption) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
+		case "title":
+			v, err := r.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
+			}
 		case "prices":
 			s.Prices = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -8576,12 +8582,6 @@ func (s *ShippingOption) ReadJSON(r *json.Reader) error {
 				s.Prices = append(s.Prices, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -8597,11 +8597,11 @@ func (s ShippingQuery) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("from")
-	s.From.WriteJSON(w)
-	more.More()
 	w.ObjField("id")
 	w.Str(s.ID)
+	more.More()
+	w.ObjField("from")
+	s.From.WriteJSON(w)
 	more.More()
 	w.ObjField("invoice_payload")
 	w.Str(s.InvoicePayload)
@@ -8618,14 +8618,14 @@ func (s *ShippingQuery) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "from":
-			if err := s.From.ReadJSON(r); err != nil {
-				return err
-			}
 		case "id":
 			v, err := r.Str()
 			s.ID = string(v)
 			if err != nil {
+				return err
+			}
+		case "from":
+			if err := s.From.ReadJSON(r); err != nil {
 				return err
 			}
 		case "invoice_payload":
@@ -8650,46 +8650,46 @@ func (s Sticker) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Emoji.Set {
-		more.More()
-		w.ObjField("emoji")
-		s.Emoji.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
-	if s.FileSize.Set {
-		more.More()
-		w.ObjField("file_size")
-		s.FileSize.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("file_unique_id")
 	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("width")
+	w.Int(s.Width)
 	more.More()
 	w.ObjField("height")
 	w.Int(s.Height)
 	more.More()
 	w.ObjField("is_animated")
 	w.Bool(s.IsAnimated)
-	if s.MaskPosition.Set {
+	if s.Thumb.Set {
 		more.More()
-		w.ObjField("mask_position")
-		s.MaskPosition.WriteJSON(w)
+		w.ObjField("thumb")
+		s.Thumb.WriteJSON(w)
+	}
+	if s.Emoji.Set {
+		more.More()
+		w.ObjField("emoji")
+		s.Emoji.WriteJSON(w)
 	}
 	if s.SetName.Set {
 		more.More()
 		w.ObjField("set_name")
 		s.SetName.WriteJSON(w)
 	}
-	if s.Thumb.Set {
+	if s.MaskPosition.Set {
 		more.More()
-		w.ObjField("thumb")
-		s.Thumb.WriteJSON(w)
+		w.ObjField("mask_position")
+		s.MaskPosition.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("width")
-	w.Int(s.Width)
+	if s.FileSize.Set {
+		more.More()
+		w.ObjField("file_size")
+		s.FileSize.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -8700,25 +8700,21 @@ func (s *Sticker) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := r.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := r.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -8734,9 +8730,14 @@ func (s *Sticker) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.ReadJSON(r); err != nil {
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(r); err != nil {
+				return err
+			}
+		case "emoji":
+			s.Emoji.Reset()
+			if err := s.Emoji.ReadJSON(r); err != nil {
 				return err
 			}
 		case "set_name":
@@ -8744,15 +8745,14 @@ func (s *Sticker) ReadJSON(r *json.Reader) error {
 			if err := s.SetName.ReadJSON(r); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(r); err != nil {
+		case "mask_position":
+			s.MaskPosition.Reset()
+			if err := s.MaskPosition.ReadJSON(r); err != nil {
 				return err
 			}
-		case "width":
-			v, err := r.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -8768,14 +8768,17 @@ func (s StickerSet) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("contains_masks")
-	w.Bool(s.ContainsMasks)
+	w.ObjField("name")
+	w.Str(s.Name)
+	more.More()
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("is_animated")
 	w.Bool(s.IsAnimated)
 	more.More()
-	w.ObjField("name")
-	w.Str(s.Name)
+	w.ObjField("contains_masks")
+	w.Bool(s.ContainsMasks)
 	more.More()
 	w.ObjField("stickers")
 	more.Down()
@@ -8791,9 +8794,6 @@ func (s StickerSet) WriteJSON(w *json.Writer) {
 		w.ObjField("thumb")
 		s.Thumb.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
 	w.ObjEnd()
 }
 
@@ -8804,9 +8804,15 @@ func (s *StickerSet) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "contains_masks":
-			v, err := r.Bool()
-			s.ContainsMasks = bool(v)
+		case "name":
+			v, err := r.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
+			}
+		case "title":
+			v, err := r.Str()
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -8816,9 +8822,9 @@ func (s *StickerSet) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "name":
-			v, err := r.Str()
-			s.Name = string(v)
+		case "contains_masks":
+			v, err := r.Bool()
+			s.ContainsMasks = bool(v)
 			if err != nil {
 				return err
 			}
@@ -8839,12 +8845,6 @@ func (s *StickerSet) ReadJSON(r *json.Reader) error {
 			if err := s.Thumb.ReadJSON(r); err != nil {
 				return err
 			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return r.Skip()
 		}
@@ -8861,27 +8861,27 @@ func (s SuccessfulPayment) WriteJSON(w *json.Writer) {
 	w.ObjField("currency")
 	w.Str(s.Currency)
 	more.More()
+	w.ObjField("total_amount")
+	w.Int(s.TotalAmount)
+	more.More()
 	w.ObjField("invoice_payload")
 	w.Str(s.InvoicePayload)
+	if s.ShippingOptionID.Set {
+		more.More()
+		w.ObjField("shipping_option_id")
+		s.ShippingOptionID.WriteJSON(w)
+	}
 	if s.OrderInfo.Set {
 		more.More()
 		w.ObjField("order_info")
 		s.OrderInfo.WriteJSON(w)
 	}
 	more.More()
-	w.ObjField("provider_payment_charge_id")
-	w.Str(s.ProviderPaymentChargeID)
-	if s.ShippingOptionID.Set {
-		more.More()
-		w.ObjField("shipping_option_id")
-		s.ShippingOptionID.WriteJSON(w)
-	}
-	more.More()
 	w.ObjField("telegram_payment_charge_id")
 	w.Str(s.TelegramPaymentChargeID)
 	more.More()
-	w.ObjField("total_amount")
-	w.Int(s.TotalAmount)
+	w.ObjField("provider_payment_charge_id")
+	w.Str(s.ProviderPaymentChargeID)
 	w.ObjEnd()
 }
 
@@ -8898,20 +8898,15 @@ func (s *SuccessfulPayment) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "invoice_payload":
-			v, err := r.Str()
-			s.InvoicePayload = string(v)
+		case "total_amount":
+			v, err := r.Int()
+			s.TotalAmount = int(v)
 			if err != nil {
 				return err
 			}
-		case "order_info":
-			s.OrderInfo.Reset()
-			if err := s.OrderInfo.ReadJSON(r); err != nil {
-				return err
-			}
-		case "provider_payment_charge_id":
+		case "invoice_payload":
 			v, err := r.Str()
-			s.ProviderPaymentChargeID = string(v)
+			s.InvoicePayload = string(v)
 			if err != nil {
 				return err
 			}
@@ -8920,15 +8915,20 @@ func (s *SuccessfulPayment) ReadJSON(r *json.Reader) error {
 			if err := s.ShippingOptionID.ReadJSON(r); err != nil {
 				return err
 			}
+		case "order_info":
+			s.OrderInfo.Reset()
+			if err := s.OrderInfo.ReadJSON(r); err != nil {
+				return err
+			}
 		case "telegram_payment_charge_id":
 			v, err := r.Str()
 			s.TelegramPaymentChargeID = string(v)
 			if err != nil {
 				return err
 			}
-		case "total_amount":
-			v, err := r.Int()
-			s.TotalAmount = int(v)
+		case "provider_payment_charge_id":
+			v, err := r.Str()
+			s.ProviderPaymentChargeID = string(v)
 			if err != nil {
 				return err
 			}
@@ -8944,40 +8944,53 @@ func (s Update) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.CallbackQuery.Set {
+	more.More()
+	w.ObjField("update_id")
+	w.Int(s.UpdateID)
+	if s.Message.Set {
 		more.More()
-		w.ObjField("callback_query")
-		s.CallbackQuery.WriteJSON(w)
-	}
-	if s.ChannelPost.Set {
-		more.More()
-		w.ObjField("channel_post")
-		s.ChannelPost.WriteJSON(w)
-	}
-	if s.ChosenInlineResult.Set {
-		more.More()
-		w.ObjField("chosen_inline_result")
-		s.ChosenInlineResult.WriteJSON(w)
-	}
-	if s.EditedChannelPost.Set {
-		more.More()
-		w.ObjField("edited_channel_post")
-		s.EditedChannelPost.WriteJSON(w)
+		w.ObjField("message")
+		s.Message.WriteJSON(w)
 	}
 	if s.EditedMessage.Set {
 		more.More()
 		w.ObjField("edited_message")
 		s.EditedMessage.WriteJSON(w)
 	}
+	if s.ChannelPost.Set {
+		more.More()
+		w.ObjField("channel_post")
+		s.ChannelPost.WriteJSON(w)
+	}
+	if s.EditedChannelPost.Set {
+		more.More()
+		w.ObjField("edited_channel_post")
+		s.EditedChannelPost.WriteJSON(w)
+	}
 	if s.InlineQuery.Set {
 		more.More()
 		w.ObjField("inline_query")
 		s.InlineQuery.WriteJSON(w)
 	}
-	if s.Message.Set {
+	if s.ChosenInlineResult.Set {
 		more.More()
-		w.ObjField("message")
-		s.Message.WriteJSON(w)
+		w.ObjField("chosen_inline_result")
+		s.ChosenInlineResult.WriteJSON(w)
+	}
+	if s.CallbackQuery.Set {
+		more.More()
+		w.ObjField("callback_query")
+		s.CallbackQuery.WriteJSON(w)
+	}
+	if s.ShippingQuery.Set {
+		more.More()
+		w.ObjField("shipping_query")
+		s.ShippingQuery.WriteJSON(w)
+	}
+	if s.PreCheckoutQuery.Set {
+		more.More()
+		w.ObjField("pre_checkout_query")
+		s.PreCheckoutQuery.WriteJSON(w)
 	}
 	if s.Poll.Set {
 		more.More()
@@ -8989,19 +9002,6 @@ func (s Update) WriteJSON(w *json.Writer) {
 		w.ObjField("poll_answer")
 		s.PollAnswer.WriteJSON(w)
 	}
-	if s.PreCheckoutQuery.Set {
-		more.More()
-		w.ObjField("pre_checkout_query")
-		s.PreCheckoutQuery.WriteJSON(w)
-	}
-	if s.ShippingQuery.Set {
-		more.More()
-		w.ObjField("shipping_query")
-		s.ShippingQuery.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("update_id")
-	w.Int(s.UpdateID)
 	w.ObjEnd()
 }
 
@@ -9012,24 +9012,15 @@ func (s *Update) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "callback_query":
-			s.CallbackQuery.Reset()
-			if err := s.CallbackQuery.ReadJSON(r); err != nil {
+		case "update_id":
+			v, err := r.Int()
+			s.UpdateID = int(v)
+			if err != nil {
 				return err
 			}
-		case "channel_post":
-			s.ChannelPost.Reset()
-			if err := s.ChannelPost.ReadJSON(r); err != nil {
-				return err
-			}
-		case "chosen_inline_result":
-			s.ChosenInlineResult.Reset()
-			if err := s.ChosenInlineResult.ReadJSON(r); err != nil {
-				return err
-			}
-		case "edited_channel_post":
-			s.EditedChannelPost.Reset()
-			if err := s.EditedChannelPost.ReadJSON(r); err != nil {
+		case "message":
+			s.Message.Reset()
+			if err := s.Message.ReadJSON(r); err != nil {
 				return err
 			}
 		case "edited_message":
@@ -9037,14 +9028,39 @@ func (s *Update) ReadJSON(r *json.Reader) error {
 			if err := s.EditedMessage.ReadJSON(r); err != nil {
 				return err
 			}
+		case "channel_post":
+			s.ChannelPost.Reset()
+			if err := s.ChannelPost.ReadJSON(r); err != nil {
+				return err
+			}
+		case "edited_channel_post":
+			s.EditedChannelPost.Reset()
+			if err := s.EditedChannelPost.ReadJSON(r); err != nil {
+				return err
+			}
 		case "inline_query":
 			s.InlineQuery.Reset()
 			if err := s.InlineQuery.ReadJSON(r); err != nil {
 				return err
 			}
-		case "message":
-			s.Message.Reset()
-			if err := s.Message.ReadJSON(r); err != nil {
+		case "chosen_inline_result":
+			s.ChosenInlineResult.Reset()
+			if err := s.ChosenInlineResult.ReadJSON(r); err != nil {
+				return err
+			}
+		case "callback_query":
+			s.CallbackQuery.Reset()
+			if err := s.CallbackQuery.ReadJSON(r); err != nil {
+				return err
+			}
+		case "shipping_query":
+			s.ShippingQuery.Reset()
+			if err := s.ShippingQuery.ReadJSON(r); err != nil {
+				return err
+			}
+		case "pre_checkout_query":
+			s.PreCheckoutQuery.Reset()
+			if err := s.PreCheckoutQuery.ReadJSON(r); err != nil {
 				return err
 			}
 		case "poll":
@@ -9055,22 +9071,6 @@ func (s *Update) ReadJSON(r *json.Reader) error {
 		case "poll_answer":
 			s.PollAnswer.Reset()
 			if err := s.PollAnswer.ReadJSON(r); err != nil {
-				return err
-			}
-		case "pre_checkout_query":
-			s.PreCheckoutQuery.Reset()
-			if err := s.PreCheckoutQuery.ReadJSON(r); err != nil {
-				return err
-			}
-		case "shipping_query":
-			s.ShippingQuery.Reset()
-			if err := s.ShippingQuery.ReadJSON(r); err != nil {
-				return err
-			}
-		case "update_id":
-			v, err := r.Int()
-			s.UpdateID = int(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -9123,10 +9123,10 @@ func (s UploadStickerFilePostReq) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	// Unsupported kind "alias".
 	more.More()
 	w.ObjField("user_id")
 	w.Int(s.UserID)
+	// Unsupported kind "alias".
 	w.ObjEnd()
 }
 
@@ -9137,14 +9137,14 @@ func (s *UploadStickerFilePostReq) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "png_sticker":
-			if err := fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`); err != nil {
-				return err
-			}
 		case "user_id":
 			v, err := r.Int()
 			s.UserID = int(v)
 			if err != nil {
+				return err
+			}
+		case "png_sticker":
+			if err := fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`); err != nil {
 				return err
 			}
 		default:
@@ -9159,6 +9159,30 @@ func (s User) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("id")
+	w.Int(s.ID)
+	more.More()
+	w.ObjField("is_bot")
+	w.Bool(s.IsBot)
+	more.More()
+	w.ObjField("first_name")
+	w.Str(s.FirstName)
+	if s.LastName.Set {
+		more.More()
+		w.ObjField("last_name")
+		s.LastName.WriteJSON(w)
+	}
+	if s.Username.Set {
+		more.More()
+		w.ObjField("username")
+		s.Username.WriteJSON(w)
+	}
+	if s.LanguageCode.Set {
+		more.More()
+		w.ObjField("language_code")
+		s.LanguageCode.WriteJSON(w)
+	}
 	if s.CanJoinGroups.Set {
 		more.More()
 		w.ObjField("can_join_groups")
@@ -9169,34 +9193,10 @@ func (s User) WriteJSON(w *json.Writer) {
 		w.ObjField("can_read_all_group_messages")
 		s.CanReadAllGroupMessages.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("first_name")
-	w.Str(s.FirstName)
-	more.More()
-	w.ObjField("id")
-	w.Int(s.ID)
-	more.More()
-	w.ObjField("is_bot")
-	w.Bool(s.IsBot)
-	if s.LanguageCode.Set {
-		more.More()
-		w.ObjField("language_code")
-		s.LanguageCode.WriteJSON(w)
-	}
-	if s.LastName.Set {
-		more.More()
-		w.ObjField("last_name")
-		s.LastName.WriteJSON(w)
-	}
 	if s.SupportsInlineQueries.Set {
 		more.More()
 		w.ObjField("supports_inline_queries")
 		s.SupportsInlineQueries.WriteJSON(w)
-	}
-	if s.Username.Set {
-		more.More()
-		w.ObjField("username")
-		s.Username.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -9208,22 +9208,6 @@ func (s *User) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "can_join_groups":
-			s.CanJoinGroups.Reset()
-			if err := s.CanJoinGroups.ReadJSON(r); err != nil {
-				return err
-			}
-		case "can_read_all_group_messages":
-			s.CanReadAllGroupMessages.Reset()
-			if err := s.CanReadAllGroupMessages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "first_name":
-			v, err := r.Str()
-			s.FirstName = string(v)
-			if err != nil {
-				return err
-			}
 		case "id":
 			v, err := r.Int()
 			s.ID = int(v)
@@ -9236,9 +9220,10 @@ func (s *User) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.ReadJSON(r); err != nil {
+		case "first_name":
+			v, err := r.Str()
+			s.FirstName = string(v)
+			if err != nil {
 				return err
 			}
 		case "last_name":
@@ -9246,14 +9231,29 @@ func (s *User) ReadJSON(r *json.Reader) error {
 			if err := s.LastName.ReadJSON(r); err != nil {
 				return err
 			}
-		case "supports_inline_queries":
-			s.SupportsInlineQueries.Reset()
-			if err := s.SupportsInlineQueries.ReadJSON(r); err != nil {
-				return err
-			}
 		case "username":
 			s.Username.Reset()
 			if err := s.Username.ReadJSON(r); err != nil {
+				return err
+			}
+		case "language_code":
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.ReadJSON(r); err != nil {
+				return err
+			}
+		case "can_join_groups":
+			s.CanJoinGroups.Reset()
+			if err := s.CanJoinGroups.ReadJSON(r); err != nil {
+				return err
+			}
+		case "can_read_all_group_messages":
+			s.CanReadAllGroupMessages.Reset()
+			if err := s.CanReadAllGroupMessages.ReadJSON(r); err != nil {
+				return err
+			}
+		case "supports_inline_queries":
+			s.SupportsInlineQueries.Reset()
+			if err := s.SupportsInlineQueries.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -9268,6 +9268,9 @@ func (s UserProfilePhotos) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("total_count")
+	w.Int(s.TotalCount)
 	more.More()
 	w.ObjField("photos")
 	more.Down()
@@ -9285,9 +9288,6 @@ func (s UserProfilePhotos) WriteJSON(w *json.Writer) {
 	}
 	w.ArrEnd()
 	more.Up()
-	more.More()
-	w.ObjField("total_count")
-	w.Int(s.TotalCount)
 	w.ObjEnd()
 }
 
@@ -9298,6 +9298,12 @@ func (s *UserProfilePhotos) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "total_count":
+			v, err := r.Int()
+			s.TotalCount = int(v)
+			if err != nil {
+				return err
+			}
 		case "photos":
 			s.Photos = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -9318,12 +9324,6 @@ func (s *UserProfilePhotos) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "total_count":
-			v, err := r.Int()
-			s.TotalCount = int(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return r.Skip()
 		}
@@ -9336,6 +9336,12 @@ func (s Venue) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("location")
+	s.Location.WriteJSON(w)
+	more.More()
+	w.ObjField("title")
+	w.Str(s.Title)
 	more.More()
 	w.ObjField("address")
 	w.Str(s.Address)
@@ -9359,12 +9365,6 @@ func (s Venue) WriteJSON(w *json.Writer) {
 		w.ObjField("google_place_type")
 		s.GooglePlaceType.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("location")
-	s.Location.WriteJSON(w)
-	more.More()
-	w.ObjField("title")
-	w.Str(s.Title)
 	w.ObjEnd()
 }
 
@@ -9375,6 +9375,16 @@ func (s *Venue) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "location":
+			if err := s.Location.ReadJSON(r); err != nil {
+				return err
+			}
+		case "title":
+			v, err := r.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
+			}
 		case "address":
 			v, err := r.Str()
 			s.Address = string(v)
@@ -9401,16 +9411,6 @@ func (s *Venue) ReadJSON(r *json.Reader) error {
 			if err := s.GooglePlaceType.ReadJSON(r); err != nil {
 				return err
 			}
-		case "location":
-			if err := s.Location.ReadJSON(r); err != nil {
-				return err
-			}
-		case "title":
-			v, err := r.Str()
-			s.Title = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return r.Skip()
 		}
@@ -9424,40 +9424,40 @@ func (s Video) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("duration")
-	w.Int(s.Duration)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
+	more.More()
+	w.ObjField("file_unique_id")
+	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("width")
+	w.Int(s.Width)
+	more.More()
+	w.ObjField("height")
+	w.Int(s.Height)
+	more.More()
+	w.ObjField("duration")
+	w.Int(s.Duration)
+	if s.Thumb.Set {
+		more.More()
+		w.ObjField("thumb")
+		s.Thumb.WriteJSON(w)
+	}
 	if s.FileName.Set {
 		more.More()
 		w.ObjField("file_name")
 		s.FileName.WriteJSON(w)
+	}
+	if s.MimeType.Set {
+		more.More()
+		w.ObjField("mime_type")
+		s.MimeType.WriteJSON(w)
 	}
 	if s.FileSize.Set {
 		more.More()
 		w.ObjField("file_size")
 		s.FileSize.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("file_unique_id")
-	w.Str(s.FileUniqueID)
-	more.More()
-	w.ObjField("height")
-	w.Int(s.Height)
-	if s.MimeType.Set {
-		more.More()
-		w.ObjField("mime_type")
-		s.MimeType.WriteJSON(w)
-	}
-	if s.Thumb.Set {
-		more.More()
-		w.ObjField("thumb")
-		s.Thumb.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("width")
-	w.Int(s.Width)
 	w.ObjEnd()
 }
 
@@ -9468,31 +9468,21 @@ func (s *Video) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := r.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(r); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := r.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := r.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -9502,9 +9492,10 @@ func (s *Video) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(r); err != nil {
+		case "duration":
+			v, err := r.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "thumb":
@@ -9512,10 +9503,19 @@ func (s *Video) ReadJSON(r *json.Reader) error {
 			if err := s.Thumb.ReadJSON(r); err != nil {
 				return err
 			}
-		case "width":
-			v, err := r.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(r); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -9531,26 +9531,26 @@ func (s VideoNote) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("duration")
-	w.Int(s.Duration)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
-	if s.FileSize.Set {
-		more.More()
-		w.ObjField("file_size")
-		s.FileSize.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("file_unique_id")
 	w.Str(s.FileUniqueID)
 	more.More()
 	w.ObjField("length")
 	w.Int(s.Length)
+	more.More()
+	w.ObjField("duration")
+	w.Int(s.Duration)
 	if s.Thumb.Set {
 		more.More()
 		w.ObjField("thumb")
 		s.Thumb.WriteJSON(w)
+	}
+	if s.FileSize.Set {
+		more.More()
+		w.ObjField("file_size")
+		s.FileSize.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -9562,21 +9562,10 @@ func (s *VideoNote) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := r.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -9591,9 +9580,20 @@ func (s *VideoNote) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
+		case "duration":
+			v, err := r.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
+			}
 		case "thumb":
 			s.Thumb.Reset()
 			if err := s.Thumb.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -9609,23 +9609,23 @@ func (s Voice) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("duration")
-	w.Int(s.Duration)
-	more.More()
 	w.ObjField("file_id")
 	w.Str(s.FileID)
-	if s.FileSize.Set {
-		more.More()
-		w.ObjField("file_size")
-		s.FileSize.WriteJSON(w)
-	}
 	more.More()
 	w.ObjField("file_unique_id")
 	w.Str(s.FileUniqueID)
+	more.More()
+	w.ObjField("duration")
+	w.Int(s.Duration)
 	if s.MimeType.Set {
 		more.More()
 		w.ObjField("mime_type")
 		s.MimeType.WriteJSON(w)
+	}
+	if s.FileSize.Set {
+		more.More()
+		w.ObjField("file_size")
+		s.FileSize.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -9637,21 +9637,10 @@ func (s *Voice) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := r.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := r.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -9660,9 +9649,20 @@ func (s *Voice) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
+		case "duration":
+			v, err := r.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
+			}
 		case "mime_type":
 			s.MimeType.Reset()
 			if err := s.MimeType.ReadJSON(r); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -9677,21 +9677,15 @@ func (s WebhookInfo) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.AllowedUpdates != nil {
-		more.More()
-		w.ObjField("allowed_updates")
-		more.Down()
-		w.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			more.More()
-			w.Str(elem)
-		}
-		w.ArrEnd()
-		more.Up()
-	}
+	more.More()
+	w.ObjField("url")
+	w.Str(s.URL)
 	more.More()
 	w.ObjField("has_custom_certificate")
 	w.Bool(s.HasCustomCertificate)
+	more.More()
+	w.ObjField("pending_update_count")
+	w.Int(s.PendingUpdateCount)
 	if s.IPAddress.Set {
 		more.More()
 		w.ObjField("ip_address")
@@ -9712,12 +9706,18 @@ func (s WebhookInfo) WriteJSON(w *json.Writer) {
 		w.ObjField("max_connections")
 		s.MaxConnections.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("pending_update_count")
-	w.Int(s.PendingUpdateCount)
-	more.More()
-	w.ObjField("url")
-	w.Str(s.URL)
+	if s.AllowedUpdates != nil {
+		more.More()
+		w.ObjField("allowed_updates")
+		more.Down()
+		w.ArrStart()
+		for _, elem := range s.AllowedUpdates {
+			more.More()
+			w.Str(elem)
+		}
+		w.ArrEnd()
+		more.Up()
+	}
 	w.ObjEnd()
 }
 
@@ -9728,23 +9728,21 @@ func (s *WebhookInfo) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "allowed_updates":
-			s.AllowedUpdates = nil
-			if err := r.Array(func(r *json.Reader) error {
-				var elem string
-				v, err := r.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.AllowedUpdates = append(s.AllowedUpdates, elem)
-				return nil
-			}); err != nil {
+		case "url":
+			v, err := r.Str()
+			s.URL = string(v)
+			if err != nil {
 				return err
 			}
 		case "has_custom_certificate":
 			v, err := r.Bool()
 			s.HasCustomCertificate = bool(v)
+			if err != nil {
+				return err
+			}
+		case "pending_update_count":
+			v, err := r.Int()
+			s.PendingUpdateCount = int(v)
 			if err != nil {
 				return err
 			}
@@ -9768,16 +9766,18 @@ func (s *WebhookInfo) ReadJSON(r *json.Reader) error {
 			if err := s.MaxConnections.ReadJSON(r); err != nil {
 				return err
 			}
-		case "pending_update_count":
-			v, err := r.Int()
-			s.PendingUpdateCount = int(v)
-			if err != nil {
-				return err
-			}
-		case "url":
-			v, err := r.Str()
-			s.URL = string(v)
-			if err != nil {
+		case "allowed_updates":
+			s.AllowedUpdates = nil
+			if err := r.Array(func(r *json.Reader) error {
+				var elem string
+				v, err := r.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 		default:

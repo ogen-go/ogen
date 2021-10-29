@@ -65,6 +65,9 @@ func (s Data) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("id")
+	s.ID.WriteJSON(w)
 	if s.Description.Set {
 		more.More()
 		w.ObjField("description")
@@ -74,14 +77,11 @@ func (s Data) WriteJSON(w *json.Writer) {
 	w.ObjField("email")
 	w.Str(s.Email)
 	more.More()
-	w.ObjField("format")
-	w.Str(s.Format)
-	more.More()
 	w.ObjField("hostname")
 	w.Str(s.Hostname)
 	more.More()
-	w.ObjField("id")
-	s.ID.WriteJSON(w)
+	w.ObjField("format")
+	w.Str(s.Format)
 	w.ObjEnd()
 }
 
@@ -92,6 +92,10 @@ func (s *Data) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
+		case "id":
+			if err := s.ID.ReadJSON(r); err != nil {
+				return err
+			}
 		case "description":
 			s.Description.Reset()
 			if err := s.Description.ReadJSON(r); err != nil {
@@ -103,20 +107,16 @@ func (s *Data) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "format":
-			v, err := r.Str()
-			s.Format = string(v)
-			if err != nil {
-				return err
-			}
 		case "hostname":
 			v, err := r.Str()
 			s.Hostname = string(v)
 			if err != nil {
 				return err
 			}
-		case "id":
-			if err := s.ID.ReadJSON(r); err != nil {
+		case "format":
+			v, err := r.Str()
+			s.Format = string(v)
+			if err != nil {
 				return err
 			}
 		default:
@@ -559,9 +559,59 @@ func (s Pet) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	if s.Primary != nil {
+		more.More()
+		w.ObjField("primary")
+		s.Primary.WriteJSON(w)
+	}
+	more.More()
+	w.ObjField("id")
+	w.Int64(s.ID)
+	more.More()
+	w.ObjField("unique_id")
+	json.WriteUUID(w, s.UniqueID)
+	more.More()
+	w.ObjField("name")
+	w.Str(s.Name)
+	if s.Type.Set {
+		more.More()
+		w.ObjField("type")
+		s.Type.WriteJSON(w)
+	}
+	more.More()
+	w.ObjField("kind")
+	s.Kind.WriteJSON(w)
+	if s.Tag.Set {
+		more.More()
+		w.ObjField("tag")
+		s.Tag.WriteJSON(w)
+	}
+	more.More()
+	w.ObjField("ip")
+	json.WriteIP(w, s.IP)
+	more.More()
+	w.ObjField("ip_v4")
+	json.WriteIP(w, s.IPV4)
+	more.More()
+	w.ObjField("ip_v6")
+	json.WriteIP(w, s.IPV6)
+	more.More()
+	w.ObjField("uri")
+	json.WriteURI(w, s.URI)
 	more.More()
 	w.ObjField("birthday")
 	json.WriteDate(w, s.Birthday)
+	more.More()
+	w.ObjField("rate")
+	json.WriteDuration(w, s.Rate)
+	more.More()
+	w.ObjField("nickname")
+	s.Nickname.WriteJSON(w)
+	if s.NullStr.Set {
+		more.More()
+		w.ObjField("nullStr")
+		s.NullStr.WriteJSON(w)
+	}
 	if s.Friends != nil {
 		more.More()
 		w.ObjField("friends")
@@ -574,49 +624,20 @@ func (s Pet) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	more.More()
-	w.ObjField("id")
-	w.Int64(s.ID)
-	more.More()
-	w.ObjField("ip")
-	json.WriteIP(w, s.IP)
-	more.More()
-	w.ObjField("ip_v4")
-	json.WriteIP(w, s.IPV4)
-	more.More()
-	w.ObjField("ip_v6")
-	json.WriteIP(w, s.IPV6)
-	more.More()
-	w.ObjField("kind")
-	s.Kind.WriteJSON(w)
-	more.More()
-	w.ObjField("name")
-	w.Str(s.Name)
 	if s.Next.Set {
 		more.More()
 		w.ObjField("next")
 		s.Next.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("nickname")
-	s.Nickname.WriteJSON(w)
-	if s.NullStr.Set {
+	if s.TestInteger1.Set {
 		more.More()
-		w.ObjField("nullStr")
-		s.NullStr.WriteJSON(w)
+		w.ObjField("testInteger1")
+		s.TestInteger1.WriteJSON(w)
 	}
-	if s.Primary != nil {
+	if s.TestFloat1.Set {
 		more.More()
-		w.ObjField("primary")
-		s.Primary.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("rate")
-	json.WriteDuration(w, s.Rate)
-	if s.Tag.Set {
-		more.More()
-		w.ObjField("tag")
-		s.Tag.WriteJSON(w)
+		w.ObjField("testFloat1")
+		s.TestFloat1.WriteJSON(w)
 	}
 	if s.TestArray1 != nil {
 		more.More()
@@ -642,42 +663,21 @@ func (s Pet) WriteJSON(w *json.Writer) {
 		w.ObjField("testDate")
 		s.TestDate.WriteJSON(w, json.WriteDate)
 	}
-	if s.TestDateTime.Set {
-		more.More()
-		w.ObjField("testDateTime")
-		s.TestDateTime.WriteJSON(w, json.WriteDateTime)
-	}
 	if s.TestDuration.Set {
 		more.More()
 		w.ObjField("testDuration")
 		s.TestDuration.WriteJSON(w)
-	}
-	if s.TestFloat1.Set {
-		more.More()
-		w.ObjField("testFloat1")
-		s.TestFloat1.WriteJSON(w)
-	}
-	if s.TestInteger1.Set {
-		more.More()
-		w.ObjField("testInteger1")
-		s.TestInteger1.WriteJSON(w)
 	}
 	if s.TestTime.Set {
 		more.More()
 		w.ObjField("testTime")
 		s.TestTime.WriteJSON(w, json.WriteTime)
 	}
-	if s.Type.Set {
+	if s.TestDateTime.Set {
 		more.More()
-		w.ObjField("type")
-		s.Type.WriteJSON(w)
+		w.ObjField("testDateTime")
+		s.TestDateTime.WriteJSON(w, json.WriteDateTime)
 	}
-	more.More()
-	w.ObjField("unique_id")
-	json.WriteUUID(w, s.UniqueID)
-	more.More()
-	w.ObjField("uri")
-	json.WriteURI(w, s.URI)
 	w.ObjEnd()
 }
 
@@ -688,28 +688,43 @@ func (s *Pet) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "birthday":
-			v, err := json.ReadDate(r)
-			s.Birthday = v
-			if err != nil {
+		case "primary":
+			s.Primary = nil
+			var elem Pet
+			if err := elem.ReadJSON(r); err != nil {
 				return err
 			}
-		case "friends":
-			s.Friends = nil
-			if err := r.Array(func(r *json.Reader) error {
-				var elem Pet
-				if err := elem.ReadJSON(r); err != nil {
-					return err
-				}
-				s.Friends = append(s.Friends, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
+			s.Primary = &elem
 		case "id":
 			v, err := r.Int64()
 			s.ID = int64(v)
 			if err != nil {
+				return err
+			}
+		case "unique_id":
+			v, err := json.ReadUUID(r)
+			s.UniqueID = v
+			if err != nil {
+				return err
+			}
+		case "name":
+			v, err := r.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(r); err != nil {
+				return err
+			}
+		case "kind":
+			if err := s.Kind.ReadJSON(r); err != nil {
+				return err
+			}
+		case "tag":
+			s.Tag.Reset()
+			if err := s.Tag.ReadJSON(r); err != nil {
 				return err
 			}
 		case "ip":
@@ -730,19 +745,22 @@ func (s *Pet) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "kind":
-			if err := s.Kind.ReadJSON(r); err != nil {
-				return err
-			}
-		case "name":
-			v, err := r.Str()
-			s.Name = string(v)
+		case "uri":
+			v, err := json.ReadURI(r)
+			s.URI = v
 			if err != nil {
 				return err
 			}
-		case "next":
-			s.Next.Reset()
-			if err := s.Next.ReadJSON(r); err != nil {
+		case "birthday":
+			v, err := json.ReadDate(r)
+			s.Birthday = v
+			if err != nil {
+				return err
+			}
+		case "rate":
+			v, err := json.ReadDuration(r)
+			s.Rate = v
+			if err != nil {
 				return err
 			}
 		case "nickname":
@@ -754,22 +772,31 @@ func (s *Pet) ReadJSON(r *json.Reader) error {
 			if err := s.NullStr.ReadJSON(r); err != nil {
 				return err
 			}
-		case "primary":
-			s.Primary = nil
-			var elem Pet
-			if err := elem.ReadJSON(r); err != nil {
+		case "friends":
+			s.Friends = nil
+			if err := r.Array(func(r *json.Reader) error {
+				var elem Pet
+				if err := elem.ReadJSON(r); err != nil {
+					return err
+				}
+				s.Friends = append(s.Friends, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
-			s.Primary = &elem
-		case "rate":
-			v, err := json.ReadDuration(r)
-			s.Rate = v
-			if err != nil {
+		case "next":
+			s.Next.Reset()
+			if err := s.Next.ReadJSON(r); err != nil {
 				return err
 			}
-		case "tag":
-			s.Tag.Reset()
-			if err := s.Tag.ReadJSON(r); err != nil {
+		case "testInteger1":
+			s.TestInteger1.Reset()
+			if err := s.TestInteger1.ReadJSON(r); err != nil {
+				return err
+			}
+		case "testFloat1":
+			s.TestFloat1.Reset()
+			if err := s.TestFloat1.ReadJSON(r); err != nil {
 				return err
 			}
 		case "testArray1":
@@ -799,24 +826,9 @@ func (s *Pet) ReadJSON(r *json.Reader) error {
 			if err := s.TestDate.ReadJSON(r, json.ReadDate); err != nil {
 				return err
 			}
-		case "testDateTime":
-			s.TestDateTime.Reset()
-			if err := s.TestDateTime.ReadJSON(r, json.ReadDateTime); err != nil {
-				return err
-			}
 		case "testDuration":
 			s.TestDuration.Reset()
 			if err := s.TestDuration.ReadJSON(r); err != nil {
-				return err
-			}
-		case "testFloat1":
-			s.TestFloat1.Reset()
-			if err := s.TestFloat1.ReadJSON(r); err != nil {
-				return err
-			}
-		case "testInteger1":
-			s.TestInteger1.Reset()
-			if err := s.TestInteger1.ReadJSON(r); err != nil {
 				return err
 			}
 		case "testTime":
@@ -824,21 +836,9 @@ func (s *Pet) ReadJSON(r *json.Reader) error {
 			if err := s.TestTime.ReadJSON(r, json.ReadTime); err != nil {
 				return err
 			}
-		case "type":
-			s.Type.Reset()
-			if err := s.Type.ReadJSON(r); err != nil {
-				return err
-			}
-		case "unique_id":
-			v, err := json.ReadUUID(r)
-			s.UniqueID = v
-			if err != nil {
-				return err
-			}
-		case "uri":
-			v, err := json.ReadURI(r)
-			s.URI = v
-			if err != nil {
+		case "testDateTime":
+			s.TestDateTime.Reset()
+			if err := s.TestDateTime.ReadJSON(r, json.ReadDateTime); err != nil {
 				return err
 			}
 		default:

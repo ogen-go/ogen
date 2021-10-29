@@ -175,20 +175,20 @@ func (s CallbackQuery) Validate() error {
 func (s Chat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.PinnedMessage // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "pinned_message",
-			Error: err,
-		})
-	}
-	if err := func() error {
 		_ = s.Type // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.PinnedMessage // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "pinned_message",
 			Error: err,
 		})
 	}
@@ -517,27 +517,11 @@ func (s MaskPosition) Validate() error {
 func (s Message) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range s.CaptionEntities {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
+		_ = s.SenderChat // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "caption_entities",
+			Name:  "sender_chat",
 			Error: err,
 		})
 	}
@@ -550,6 +534,24 @@ func (s Message) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.ForwardFromChat // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "forward_from_chat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.ReplyToMessage // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "reply_to_message",
 			Error: err,
 		})
 	}
@@ -579,11 +581,36 @@ func (s Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ForwardFromChat // validation expected, but not supported
+		_ = s.Sticker // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "forward_from_chat",
+			Name:  "sticker",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.CaptionEntities {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption_entities",
 			Error: err,
 		})
 	}
@@ -597,11 +624,11 @@ func (s Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.PassportData // validation expected, but not supported
+		_ = s.Poll // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "passport_data",
+			Name:  "poll",
 			Error: err,
 		})
 	}
@@ -615,11 +642,11 @@ func (s Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Poll // validation expected, but not supported
+		_ = s.PassportData // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "poll",
+			Name:  "passport_data",
 			Error: err,
 		})
 	}
@@ -629,33 +656,6 @@ func (s Message) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.ReplyToMessage // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "reply_to_message",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.SenderChat // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "sender_chat",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Sticker // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "sticker",
 			Error: err,
 		})
 	}
@@ -718,6 +718,18 @@ func (s PassportData) Validate() error {
 func (s Poll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Options == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Options // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "options",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ExplanationEntities {
 			if err := func() error {
@@ -739,18 +751,6 @@ func (s Poll) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation_entities",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Options == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		_ = s.Options // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "options",
 			Error: err,
 		})
 	}
@@ -1076,11 +1076,20 @@ func (s StickerSet) Validate() error {
 func (s Update) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.CallbackQuery // validation expected, but not supported
+		_ = s.Message // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "callback_query",
+			Name:  "message",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.EditedMessage // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "edited_message",
 			Error: err,
 		})
 	}
@@ -1103,20 +1112,11 @@ func (s Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.EditedMessage // validation expected, but not supported
+		_ = s.CallbackQuery // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "edited_message",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.Message // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "message",
+			Name:  "callback_query",
 			Error: err,
 		})
 	}

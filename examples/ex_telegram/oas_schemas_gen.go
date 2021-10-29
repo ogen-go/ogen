@@ -62,15 +62,15 @@ var (
 
 // Ref: #/components/schemas/Animation
 type Animation struct {
-	Duration     int          `json:"duration"`
 	FileID       string       `json:"file_id"`
-	FileName     OptString    `json:"file_name"`
-	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
-	Height       int          `json:"height"`
-	MimeType     OptString    `json:"mime_type"`
-	Thumb        OptPhotoSize `json:"thumb"`
 	Width        int          `json:"width"`
+	Height       int          `json:"height"`
+	Duration     int          `json:"duration"`
+	Thumb        OptPhotoSize `json:"thumb"`
+	FileName     OptString    `json:"file_name"`
+	MimeType     OptString    `json:"mime_type"`
+	FileSize     OptInt       `json:"file_size"`
 }
 
 type AnswerCallbackQueryPostOK struct {
@@ -81,31 +81,31 @@ type AnswerCallbackQueryPostOK struct {
 func (*AnswerCallbackQueryPostOK) answerCallbackQueryPostRes() {}
 
 type AnswerCallbackQueryPostReqApplicationJSON struct {
-	CacheTime       OptInt    `json:"cache_time"`
 	CallbackQueryID string    `json:"callback_query_id"`
-	ShowAlert       OptBool   `json:"show_alert"`
 	Text            OptString `json:"text"`
+	ShowAlert       OptBool   `json:"show_alert"`
 	URL             OptString `json:"url"`
+	CacheTime       OptInt    `json:"cache_time"`
 }
 
 func (*AnswerCallbackQueryPostReqApplicationJSON) answerCallbackQueryPostReq() {}
 
 type AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded struct {
-	CacheTime       OptInt    `json:"cache_time"`
 	CallbackQueryID string    `json:"callback_query_id"`
-	ShowAlert       OptBool   `json:"show_alert"`
 	Text            OptString `json:"text"`
+	ShowAlert       OptBool   `json:"show_alert"`
 	URL             OptString `json:"url"`
+	CacheTime       OptInt    `json:"cache_time"`
 }
 
 func (*AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) answerCallbackQueryPostReq() {}
 
 type AnswerCallbackQueryPostReqMultipartFormData struct {
-	CacheTime       OptInt    `json:"cache_time"`
 	CallbackQueryID string    `json:"callback_query_id"`
-	ShowAlert       OptBool   `json:"show_alert"`
 	Text            OptString `json:"text"`
+	ShowAlert       OptBool   `json:"show_alert"`
 	URL             OptString `json:"url"`
+	CacheTime       OptInt    `json:"cache_time"`
 }
 
 func (*AnswerCallbackQueryPostReqMultipartFormData) answerCallbackQueryPostReq() {}
@@ -118,25 +118,25 @@ type AnswerPreCheckoutQueryPostOK struct {
 func (*AnswerPreCheckoutQueryPostOK) answerPreCheckoutQueryPostRes() {}
 
 type AnswerPreCheckoutQueryPostReqApplicationJSON struct {
-	ErrorMessage       OptString `json:"error_message"`
-	Ok                 bool      `json:"ok"`
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
+	Ok                 bool      `json:"ok"`
+	ErrorMessage       OptString `json:"error_message"`
 }
 
 func (*AnswerPreCheckoutQueryPostReqApplicationJSON) answerPreCheckoutQueryPostReq() {}
 
 type AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded struct {
-	ErrorMessage       OptString `json:"error_message"`
-	Ok                 bool      `json:"ok"`
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
+	Ok                 bool      `json:"ok"`
+	ErrorMessage       OptString `json:"error_message"`
 }
 
 func (*AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) answerPreCheckoutQueryPostReq() {}
 
 type AnswerPreCheckoutQueryPostReqMultipartFormData struct {
-	ErrorMessage       OptString `json:"error_message"`
-	Ok                 bool      `json:"ok"`
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
+	Ok                 bool      `json:"ok"`
+	ErrorMessage       OptString `json:"error_message"`
 }
 
 func (*AnswerPreCheckoutQueryPostReqMultipartFormData) answerPreCheckoutQueryPostReq() {}
@@ -149,43 +149,43 @@ type AnswerShippingQueryPostOK struct {
 func (*AnswerShippingQueryPostOK) answerShippingQueryPostRes() {}
 
 type AnswerShippingQueryPostReqApplicationJSON struct {
-	ErrorMessage    OptString        `json:"error_message"`
+	ShippingQueryID string           `json:"shipping_query_id"`
 	Ok              bool             `json:"ok"`
 	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ShippingQueryID string           `json:"shipping_query_id"`
+	ErrorMessage    OptString        `json:"error_message"`
 }
 
 func (*AnswerShippingQueryPostReqApplicationJSON) answerShippingQueryPostReq() {}
 
 type AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded struct {
-	ErrorMessage    OptString        `json:"error_message"`
+	ShippingQueryID string           `json:"shipping_query_id"`
 	Ok              bool             `json:"ok"`
 	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ShippingQueryID string           `json:"shipping_query_id"`
+	ErrorMessage    OptString        `json:"error_message"`
 }
 
 func (*AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) answerShippingQueryPostReq() {}
 
 type AnswerShippingQueryPostReqMultipartFormData struct {
-	ErrorMessage    OptString        `json:"error_message"`
+	ShippingQueryID string           `json:"shipping_query_id"`
 	Ok              bool             `json:"ok"`
 	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ShippingQueryID string           `json:"shipping_query_id"`
+	ErrorMessage    OptString        `json:"error_message"`
 }
 
 func (*AnswerShippingQueryPostReqMultipartFormData) answerShippingQueryPostReq() {}
 
 // Ref: #/components/schemas/Audio
 type Audio struct {
-	Duration     int          `json:"duration"`
 	FileID       string       `json:"file_id"`
-	FileName     OptString    `json:"file_name"`
-	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
-	MimeType     OptString    `json:"mime_type"`
+	Duration     int          `json:"duration"`
 	Performer    OptString    `json:"performer"`
-	Thumb        OptPhotoSize `json:"thumb"`
 	Title        OptString    `json:"title"`
+	FileName     OptString    `json:"file_name"`
+	MimeType     OptString    `json:"mime_type"`
+	FileSize     OptInt       `json:"file_size"`
+	Thumb        OptPhotoSize `json:"thumb"`
 }
 
 // Ref: #/components/schemas/BotCommand
@@ -198,60 +198,60 @@ type CallbackGame string
 
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
+	ID              string     `json:"id"`
+	From            User       `json:"from"`
+	Message         OptMessage `json:"message"`
+	InlineMessageID OptString  `json:"inline_message_id"`
 	ChatInstance    string     `json:"chat_instance"`
 	Data            OptString  `json:"data"`
-	From            User       `json:"from"`
 	GameShortName   OptString  `json:"game_short_name"`
-	ID              string     `json:"id"`
-	InlineMessageID OptString  `json:"inline_message_id"`
-	Message         OptMessage `json:"message"`
 }
 
 // Ref: #/components/schemas/Chat
 type Chat struct {
-	Bio              OptString          `json:"bio"`
-	CanSetStickerSet OptBool            `json:"can_set_sticker_set"`
-	Description      OptString          `json:"description"`
-	FirstName        OptString          `json:"first_name"`
 	ID               int                `json:"id"`
-	InviteLink       OptString          `json:"invite_link"`
+	Type             ChatType           `json:"type"`
+	Title            OptString          `json:"title"`
+	Username         OptString          `json:"username"`
+	FirstName        OptString          `json:"first_name"`
 	LastName         OptString          `json:"last_name"`
-	LinkedChatID     OptInt             `json:"linked_chat_id"`
-	Location         OptChatLocation    `json:"location"`
-	Permissions      OptChatPermissions `json:"permissions"`
 	Photo            OptChatPhoto       `json:"photo"`
+	Bio              OptString          `json:"bio"`
+	Description      OptString          `json:"description"`
+	InviteLink       OptString          `json:"invite_link"`
 	PinnedMessage    OptMessage         `json:"pinned_message"`
+	Permissions      OptChatPermissions `json:"permissions"`
 	SlowModeDelay    OptInt             `json:"slow_mode_delay"`
 	StickerSetName   OptString          `json:"sticker_set_name"`
-	Title            OptString          `json:"title"`
-	Type             ChatType           `json:"type"`
-	Username         OptString          `json:"username"`
+	CanSetStickerSet OptBool            `json:"can_set_sticker_set"`
+	LinkedChatID     OptInt             `json:"linked_chat_id"`
+	Location         OptChatLocation    `json:"location"`
 }
 
 // Ref: #/components/schemas/ChatLocation
 type ChatLocation struct {
-	Address  string   `json:"address"`
 	Location Location `json:"location"`
+	Address  string   `json:"address"`
 }
 
 // Ref: #/components/schemas/ChatPermissions
 type ChatPermissions struct {
+	CanSendMessages       OptBool `json:"can_send_messages"`
+	CanSendMediaMessages  OptBool `json:"can_send_media_messages"`
+	CanSendPolls          OptBool `json:"can_send_polls"`
+	CanSendOtherMessages  OptBool `json:"can_send_other_messages"`
 	CanAddWebPagePreviews OptBool `json:"can_add_web_page_previews"`
 	CanChangeInfo         OptBool `json:"can_change_info"`
 	CanInviteUsers        OptBool `json:"can_invite_users"`
 	CanPinMessages        OptBool `json:"can_pin_messages"`
-	CanSendMediaMessages  OptBool `json:"can_send_media_messages"`
-	CanSendMessages       OptBool `json:"can_send_messages"`
-	CanSendOtherMessages  OptBool `json:"can_send_other_messages"`
-	CanSendPolls          OptBool `json:"can_send_polls"`
 }
 
 // Ref: #/components/schemas/ChatPhoto
 type ChatPhoto struct {
-	BigFileID         string `json:"big_file_id"`
-	BigFileUniqueID   string `json:"big_file_unique_id"`
 	SmallFileID       string `json:"small_file_id"`
 	SmallFileUniqueID string `json:"small_file_unique_id"`
+	BigFileID         string `json:"big_file_id"`
+	BigFileUniqueID   string `json:"big_file_unique_id"`
 }
 
 type ChatType string
@@ -265,11 +265,11 @@ const (
 
 // Ref: #/components/schemas/ChosenInlineResult
 type ChosenInlineResult struct {
-	From            User        `json:"from"`
-	InlineMessageID OptString   `json:"inline_message_id"`
-	Location        OptLocation `json:"location"`
-	Query           string      `json:"query"`
 	ResultID        string      `json:"result_id"`
+	From            User        `json:"from"`
+	Location        OptLocation `json:"location"`
+	InlineMessageID OptString   `json:"inline_message_id"`
+	Query           string      `json:"query"`
 }
 
 type ClosePostOK struct {
@@ -281,9 +281,9 @@ func (*ClosePostOK) closePostRes() {}
 
 // Ref: #/components/schemas/Contact
 type Contact struct {
+	PhoneNumber string    `json:"phone_number"`
 	FirstName   string    `json:"first_name"`
 	LastName    OptString `json:"last_name"`
-	PhoneNumber string    `json:"phone_number"`
 	UserID      OptInt    `json:"user_id"`
 	Vcard       OptString `json:"vcard"`
 }
@@ -347,11 +347,11 @@ type Dice struct {
 // Ref: #/components/schemas/Document
 type Document struct {
 	FileID       string       `json:"file_id"`
-	FileName     OptString    `json:"file_name"`
-	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
-	MimeType     OptString    `json:"mime_type"`
 	Thumb        OptPhotoSize `json:"thumb"`
+	FileName     OptString    `json:"file_name"`
+	MimeType     OptString    `json:"mime_type"`
+	FileSize     OptInt       `json:"file_size"`
 }
 
 // Ref: #/components/schemas/EncryptedCredentials
@@ -363,16 +363,16 @@ type EncryptedCredentials struct {
 
 // Ref: #/components/schemas/EncryptedPassportElement
 type EncryptedPassportElement struct {
+	Type        EncryptedPassportElementType `json:"type"`
 	Data        OptString                    `json:"data"`
+	PhoneNumber OptString                    `json:"phone_number"`
 	Email       OptString                    `json:"email"`
 	Files       []PassportFile               `json:"files"`
 	FrontSide   OptPassportFile              `json:"front_side"`
-	Hash        string                       `json:"hash"`
-	PhoneNumber OptString                    `json:"phone_number"`
 	ReverseSide OptPassportFile              `json:"reverse_side"`
 	Selfie      OptPassportFile              `json:"selfie"`
 	Translation []PassportFile               `json:"translation"`
-	Type        EncryptedPassportElementType `json:"type"`
+	Hash        string                       `json:"hash"`
 }
 
 type EncryptedPassportElementType string
@@ -395,9 +395,9 @@ const (
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Description string                `json:"description"`
-	ErrorCode   int                   `json:"error_code"`
 	Ok          bool                  `json:"ok"`
+	ErrorCode   int                   `json:"error_code"`
+	Description string                `json:"description"`
 	Parameters  OptResponseParameters `json:"parameters"`
 }
 
@@ -432,26 +432,26 @@ func (*ErrorStatusCode) uploadStickerFilePostRes()       {}
 // Ref: #/components/schemas/File
 type File struct {
 	FileID       string    `json:"file_id"`
-	FilePath     OptString `json:"file_path"`
-	FileSize     OptInt    `json:"file_size"`
 	FileUniqueID string    `json:"file_unique_id"`
+	FileSize     OptInt    `json:"file_size"`
+	FilePath     OptString `json:"file_path"`
 }
 
 // Ref: #/components/schemas/Game
 type Game struct {
-	Animation    OptAnimation    `json:"animation"`
+	Title        string          `json:"title"`
 	Description  string          `json:"description"`
 	Photo        []PhotoSize     `json:"photo"`
 	Text         OptString       `json:"text"`
 	TextEntities []MessageEntity `json:"text_entities"`
-	Title        string          `json:"title"`
+	Animation    OptAnimation    `json:"animation"`
 }
 
 // Ref: #/components/schemas/GameHighScore
 type GameHighScore struct {
 	Position int  `json:"position"`
-	Score    int  `json:"score"`
 	User     User `json:"user"`
+	Score    int  `json:"score"`
 }
 
 type GetFilePostOK struct {
@@ -487,28 +487,28 @@ type GetGameHighScoresPostOK struct {
 func (*GetGameHighScoresPostOK) getGameHighScoresPostRes() {}
 
 type GetGameHighScoresPostReqApplicationJSON struct {
-	ChatID          OptInt    `json:"chat_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-	MessageID       OptInt    `json:"message_id"`
 	UserID          int       `json:"user_id"`
+	ChatID          OptInt    `json:"chat_id"`
+	MessageID       OptInt    `json:"message_id"`
+	InlineMessageID OptString `json:"inline_message_id"`
 }
 
 func (*GetGameHighScoresPostReqApplicationJSON) getGameHighScoresPostReq() {}
 
 type GetGameHighScoresPostReqApplicationXWwwFormUrlencoded struct {
-	ChatID          OptInt    `json:"chat_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-	MessageID       OptInt    `json:"message_id"`
 	UserID          int       `json:"user_id"`
+	ChatID          OptInt    `json:"chat_id"`
+	MessageID       OptInt    `json:"message_id"`
+	InlineMessageID OptString `json:"inline_message_id"`
 }
 
 func (*GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) getGameHighScoresPostReq() {}
 
 type GetGameHighScoresPostReqMultipartFormData struct {
-	ChatID          OptInt    `json:"chat_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-	MessageID       OptInt    `json:"message_id"`
 	UserID          int       `json:"user_id"`
+	ChatID          OptInt    `json:"chat_id"`
+	MessageID       OptInt    `json:"message_id"`
+	InlineMessageID OptString `json:"inline_message_id"`
 }
 
 func (*GetGameHighScoresPostReqMultipartFormData) getGameHighScoresPostReq() {}
@@ -560,28 +560,28 @@ type GetUpdatesPostOK struct {
 func (*GetUpdatesPostOK) getUpdatesPostRes() {}
 
 type GetUpdatesPostReqApplicationJSON struct {
-	AllowedUpdates []string `json:"allowed_updates"`
-	Limit          OptInt   `json:"limit"`
 	Offset         OptInt   `json:"offset"`
+	Limit          OptInt   `json:"limit"`
 	Timeout        OptInt   `json:"timeout"`
+	AllowedUpdates []string `json:"allowed_updates"`
 }
 
 func (*GetUpdatesPostReqApplicationJSON) getUpdatesPostReq() {}
 
 type GetUpdatesPostReqApplicationXWwwFormUrlencoded struct {
-	AllowedUpdates []string `json:"allowed_updates"`
-	Limit          OptInt   `json:"limit"`
 	Offset         OptInt   `json:"offset"`
+	Limit          OptInt   `json:"limit"`
 	Timeout        OptInt   `json:"timeout"`
+	AllowedUpdates []string `json:"allowed_updates"`
 }
 
 func (*GetUpdatesPostReqApplicationXWwwFormUrlencoded) getUpdatesPostReq() {}
 
 type GetUpdatesPostReqMultipartFormData struct {
-	AllowedUpdates []string `json:"allowed_updates"`
-	Limit          OptInt   `json:"limit"`
 	Offset         OptInt   `json:"offset"`
+	Limit          OptInt   `json:"limit"`
 	Timeout        OptInt   `json:"timeout"`
+	AllowedUpdates []string `json:"allowed_updates"`
 }
 
 func (*GetUpdatesPostReqMultipartFormData) getUpdatesPostReq() {}
@@ -594,25 +594,25 @@ type GetUserProfilePhotosPostOK struct {
 func (*GetUserProfilePhotosPostOK) getUserProfilePhotosPostRes() {}
 
 type GetUserProfilePhotosPostReqApplicationJSON struct {
-	Limit  OptInt `json:"limit"`
-	Offset OptInt `json:"offset"`
 	UserID int    `json:"user_id"`
+	Offset OptInt `json:"offset"`
+	Limit  OptInt `json:"limit"`
 }
 
 func (*GetUserProfilePhotosPostReqApplicationJSON) getUserProfilePhotosPostReq() {}
 
 type GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded struct {
-	Limit  OptInt `json:"limit"`
-	Offset OptInt `json:"offset"`
 	UserID int    `json:"user_id"`
+	Offset OptInt `json:"offset"`
+	Limit  OptInt `json:"limit"`
 }
 
 func (*GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) getUserProfilePhotosPostReq() {}
 
 type GetUserProfilePhotosPostReqMultipartFormData struct {
-	Limit  OptInt `json:"limit"`
-	Offset OptInt `json:"offset"`
 	UserID int    `json:"user_id"`
+	Offset OptInt `json:"offset"`
+	Limit  OptInt `json:"limit"`
 }
 
 func (*GetUserProfilePhotosPostReqMultipartFormData) getUserProfilePhotosPostReq() {}
@@ -626,14 +626,14 @@ func (*GetWebhookInfoPostOK) getWebhookInfoPostRes() {}
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
-	CallbackData                 OptString       `json:"callback_data"`
-	CallbackGame                 OptCallbackGame `json:"callback_game"`
-	LoginURL                     OptLoginUrl     `json:"login_url"`
-	Pay                          OptBool         `json:"pay"`
-	SwitchInlineQuery            OptString       `json:"switch_inline_query"`
-	SwitchInlineQueryCurrentChat OptString       `json:"switch_inline_query_current_chat"`
 	Text                         string          `json:"text"`
 	URL                          OptString       `json:"url"`
+	LoginURL                     OptLoginUrl     `json:"login_url"`
+	CallbackData                 OptString       `json:"callback_data"`
+	SwitchInlineQuery            OptString       `json:"switch_inline_query"`
+	SwitchInlineQueryCurrentChat OptString       `json:"switch_inline_query_current_chat"`
+	CallbackGame                 OptCallbackGame `json:"callback_game"`
+	Pay                          OptBool         `json:"pay"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -643,37 +643,37 @@ type InlineKeyboardMarkup struct {
 
 // Ref: #/components/schemas/InlineQuery
 type InlineQuery struct {
-	From     User        `json:"from"`
 	ID       string      `json:"id"`
+	From     User        `json:"from"`
 	Location OptLocation `json:"location"`
-	Offset   string      `json:"offset"`
 	Query    string      `json:"query"`
+	Offset   string      `json:"offset"`
 }
 
 type InputFile string
 
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
-	Currency       string `json:"currency"`
+	Title          string `json:"title"`
 	Description    string `json:"description"`
 	StartParameter string `json:"start_parameter"`
-	Title          string `json:"title"`
+	Currency       string `json:"currency"`
 	TotalAmount    int    `json:"total_amount"`
 }
 
 // Ref: #/components/schemas/LabeledPrice
 type LabeledPrice struct {
-	Amount int    `json:"amount"`
 	Label  string `json:"label"`
+	Amount int    `json:"amount"`
 }
 
 // Ref: #/components/schemas/Location
 type Location struct {
-	Heading              OptInt     `json:"heading"`
-	HorizontalAccuracy   OptFloat64 `json:"horizontal_accuracy"`
-	Latitude             float64    `json:"latitude"`
-	LivePeriod           OptInt     `json:"live_period"`
 	Longitude            float64    `json:"longitude"`
+	Latitude             float64    `json:"latitude"`
+	HorizontalAccuracy   OptFloat64 `json:"horizontal_accuracy"`
+	LivePeriod           OptInt     `json:"live_period"`
+	Heading              OptInt     `json:"heading"`
 	ProximityAlertRadius OptInt     `json:"proximity_alert_radius"`
 }
 
@@ -686,18 +686,18 @@ func (*LogOutPostOK) logOutPostRes() {}
 
 // Ref: #/components/schemas/LoginUrl
 type LoginUrl struct {
-	BotUsername        OptString `json:"bot_username"`
-	ForwardText        OptString `json:"forward_text"`
-	RequestWriteAccess OptBool   `json:"request_write_access"`
 	URL                string    `json:"url"`
+	ForwardText        OptString `json:"forward_text"`
+	BotUsername        OptString `json:"bot_username"`
+	RequestWriteAccess OptBool   `json:"request_write_access"`
 }
 
 // Ref: #/components/schemas/MaskPosition
 type MaskPosition struct {
 	Point  MaskPositionPoint `json:"point"`
-	Scale  float64           `json:"scale"`
 	XShift float64           `json:"x_shift"`
 	YShift float64           `json:"y_shift"`
+	Scale  float64           `json:"scale"`
 }
 
 type MaskPositionPoint string
@@ -711,67 +711,67 @@ const (
 
 // Ref: #/components/schemas/Message
 type Message struct {
-	Animation               OptAnimation               `json:"animation"`
-	Audio                   OptAudio                   `json:"audio"`
-	AuthorSignature         OptString                  `json:"author_signature"`
-	Caption                 OptString                  `json:"caption"`
-	CaptionEntities         []MessageEntity            `json:"caption_entities"`
-	ChannelChatCreated      OptBool                    `json:"channel_chat_created"`
-	Chat                    *Chat                      `json:"chat"`
-	ConnectedWebsite        OptString                  `json:"connected_website"`
-	Contact                 OptContact                 `json:"contact"`
+	MessageID               int                        `json:"message_id"`
+	From                    OptUser                    `json:"from"`
+	SenderChat              *Chat                      `json:"sender_chat"`
 	Date                    int                        `json:"date"`
-	DeleteChatPhoto         OptBool                    `json:"delete_chat_photo"`
-	Dice                    OptDice                    `json:"dice"`
-	Document                OptDocument                `json:"document"`
-	EditDate                OptInt                     `json:"edit_date"`
-	Entities                []MessageEntity            `json:"entities"`
-	ForwardDate             OptInt                     `json:"forward_date"`
+	Chat                    *Chat                      `json:"chat"`
 	ForwardFrom             OptUser                    `json:"forward_from"`
 	ForwardFromChat         *Chat                      `json:"forward_from_chat"`
 	ForwardFromMessageID    OptInt                     `json:"forward_from_message_id"`
-	ForwardSenderName       OptString                  `json:"forward_sender_name"`
 	ForwardSignature        OptString                  `json:"forward_signature"`
-	From                    OptUser                    `json:"from"`
-	Game                    OptGame                    `json:"game"`
-	GroupChatCreated        OptBool                    `json:"group_chat_created"`
-	Invoice                 OptInvoice                 `json:"invoice"`
-	LeftChatMember          OptUser                    `json:"left_chat_member"`
-	Location                OptLocation                `json:"location"`
-	MediaGroupID            OptString                  `json:"media_group_id"`
-	MessageID               int                        `json:"message_id"`
-	MigrateFromChatID       OptInt                     `json:"migrate_from_chat_id"`
-	MigrateToChatID         OptInt                     `json:"migrate_to_chat_id"`
-	NewChatMembers          []User                     `json:"new_chat_members"`
-	NewChatPhoto            []PhotoSize                `json:"new_chat_photo"`
-	NewChatTitle            OptString                  `json:"new_chat_title"`
-	PassportData            OptPassportData            `json:"passport_data"`
-	Photo                   []PhotoSize                `json:"photo"`
-	PinnedMessage           *Message                   `json:"pinned_message"`
-	Poll                    OptPoll                    `json:"poll"`
-	ProximityAlertTriggered OptProximityAlertTriggered `json:"proximity_alert_triggered"`
-	ReplyMarkup             OptInlineKeyboardMarkup    `json:"reply_markup"`
+	ForwardSenderName       OptString                  `json:"forward_sender_name"`
+	ForwardDate             OptInt                     `json:"forward_date"`
 	ReplyToMessage          *Message                   `json:"reply_to_message"`
-	SenderChat              *Chat                      `json:"sender_chat"`
-	Sticker                 OptSticker                 `json:"sticker"`
-	SuccessfulPayment       OptSuccessfulPayment       `json:"successful_payment"`
-	SupergroupChatCreated   OptBool                    `json:"supergroup_chat_created"`
-	Text                    OptString                  `json:"text"`
-	Venue                   OptVenue                   `json:"venue"`
 	ViaBot                  OptUser                    `json:"via_bot"`
+	EditDate                OptInt                     `json:"edit_date"`
+	MediaGroupID            OptString                  `json:"media_group_id"`
+	AuthorSignature         OptString                  `json:"author_signature"`
+	Text                    OptString                  `json:"text"`
+	Entities                []MessageEntity            `json:"entities"`
+	Animation               OptAnimation               `json:"animation"`
+	Audio                   OptAudio                   `json:"audio"`
+	Document                OptDocument                `json:"document"`
+	Photo                   []PhotoSize                `json:"photo"`
+	Sticker                 OptSticker                 `json:"sticker"`
 	Video                   OptVideo                   `json:"video"`
 	VideoNote               OptVideoNote               `json:"video_note"`
 	Voice                   OptVoice                   `json:"voice"`
+	Caption                 OptString                  `json:"caption"`
+	CaptionEntities         []MessageEntity            `json:"caption_entities"`
+	Contact                 OptContact                 `json:"contact"`
+	Dice                    OptDice                    `json:"dice"`
+	Game                    OptGame                    `json:"game"`
+	Poll                    OptPoll                    `json:"poll"`
+	Venue                   OptVenue                   `json:"venue"`
+	Location                OptLocation                `json:"location"`
+	NewChatMembers          []User                     `json:"new_chat_members"`
+	LeftChatMember          OptUser                    `json:"left_chat_member"`
+	NewChatTitle            OptString                  `json:"new_chat_title"`
+	NewChatPhoto            []PhotoSize                `json:"new_chat_photo"`
+	DeleteChatPhoto         OptBool                    `json:"delete_chat_photo"`
+	GroupChatCreated        OptBool                    `json:"group_chat_created"`
+	SupergroupChatCreated   OptBool                    `json:"supergroup_chat_created"`
+	ChannelChatCreated      OptBool                    `json:"channel_chat_created"`
+	MigrateToChatID         OptInt                     `json:"migrate_to_chat_id"`
+	MigrateFromChatID       OptInt                     `json:"migrate_from_chat_id"`
+	PinnedMessage           *Message                   `json:"pinned_message"`
+	Invoice                 OptInvoice                 `json:"invoice"`
+	SuccessfulPayment       OptSuccessfulPayment       `json:"successful_payment"`
+	ConnectedWebsite        OptString                  `json:"connected_website"`
+	PassportData            OptPassportData            `json:"passport_data"`
+	ProximityAlertTriggered OptProximityAlertTriggered `json:"proximity_alert_triggered"`
+	ReplyMarkup             OptInlineKeyboardMarkup    `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/MessageEntity
 type MessageEntity struct {
-	Language OptString         `json:"language"`
-	Length   int               `json:"length"`
-	Offset   int               `json:"offset"`
 	Type     MessageEntityType `json:"type"`
+	Offset   int               `json:"offset"`
+	Length   int               `json:"length"`
 	URL      OptString         `json:"url"`
 	User     OptUser           `json:"user"`
+	Language OptString         `json:"language"`
 }
 
 type MessageEntityType string
@@ -2392,57 +2392,57 @@ func (o OptVoice) Get() (v Voice, ok bool) {
 
 // Ref: #/components/schemas/OrderInfo
 type OrderInfo struct {
-	Email           OptString          `json:"email"`
 	Name            OptString          `json:"name"`
 	PhoneNumber     OptString          `json:"phone_number"`
+	Email           OptString          `json:"email"`
 	ShippingAddress OptShippingAddress `json:"shipping_address"`
 }
 
 // Ref: #/components/schemas/PassportData
 type PassportData struct {
-	Credentials EncryptedCredentials       `json:"credentials"`
 	Data        []EncryptedPassportElement `json:"data"`
+	Credentials EncryptedCredentials       `json:"credentials"`
 }
 
 // Ref: #/components/schemas/PassportFile
 type PassportFile struct {
-	FileDate     int    `json:"file_date"`
 	FileID       string `json:"file_id"`
-	FileSize     int    `json:"file_size"`
 	FileUniqueID string `json:"file_unique_id"`
+	FileSize     int    `json:"file_size"`
+	FileDate     int    `json:"file_date"`
 }
 
 // Ref: #/components/schemas/PhotoSize
 type PhotoSize struct {
 	FileID       string `json:"file_id"`
-	FileSize     OptInt `json:"file_size"`
 	FileUniqueID string `json:"file_unique_id"`
-	Height       int    `json:"height"`
 	Width        int    `json:"width"`
+	Height       int    `json:"height"`
+	FileSize     OptInt `json:"file_size"`
 }
 
 // Ref: #/components/schemas/Poll
 type Poll struct {
+	ID                    string          `json:"id"`
+	Question              string          `json:"question"`
+	Options               []PollOption    `json:"options"`
+	TotalVoterCount       int             `json:"total_voter_count"`
+	IsClosed              bool            `json:"is_closed"`
+	IsAnonymous           bool            `json:"is_anonymous"`
+	Type                  string          `json:"type"`
 	AllowsMultipleAnswers bool            `json:"allows_multiple_answers"`
-	CloseDate             OptInt          `json:"close_date"`
 	CorrectOptionID       OptInt          `json:"correct_option_id"`
 	Explanation           OptString       `json:"explanation"`
 	ExplanationEntities   []MessageEntity `json:"explanation_entities"`
-	ID                    string          `json:"id"`
-	IsAnonymous           bool            `json:"is_anonymous"`
-	IsClosed              bool            `json:"is_closed"`
 	OpenPeriod            OptInt          `json:"open_period"`
-	Options               []PollOption    `json:"options"`
-	Question              string          `json:"question"`
-	TotalVoterCount       int             `json:"total_voter_count"`
-	Type                  string          `json:"type"`
+	CloseDate             OptInt          `json:"close_date"`
 }
 
 // Ref: #/components/schemas/PollAnswer
 type PollAnswer struct {
-	OptionIds []int  `json:"option_ids"`
 	PollID    string `json:"poll_id"`
 	User      User   `json:"user"`
+	OptionIds []int  `json:"option_ids"`
 }
 
 // Ref: #/components/schemas/PollOption
@@ -2453,20 +2453,20 @@ type PollOption struct {
 
 // Ref: #/components/schemas/PreCheckoutQuery
 type PreCheckoutQuery struct {
-	Currency         string       `json:"currency"`
-	From             User         `json:"from"`
 	ID               string       `json:"id"`
-	InvoicePayload   string       `json:"invoice_payload"`
-	OrderInfo        OptOrderInfo `json:"order_info"`
-	ShippingOptionID OptString    `json:"shipping_option_id"`
+	From             User         `json:"from"`
+	Currency         string       `json:"currency"`
 	TotalAmount      int          `json:"total_amount"`
+	InvoicePayload   string       `json:"invoice_payload"`
+	ShippingOptionID OptString    `json:"shipping_option_id"`
+	OrderInfo        OptOrderInfo `json:"order_info"`
 }
 
 // Ref: #/components/schemas/ProximityAlertTriggered
 type ProximityAlertTriggered struct {
-	Distance int  `json:"distance"`
 	Traveler User `json:"traveler"`
 	Watcher  User `json:"watcher"`
+	Distance int  `json:"distance"`
 }
 
 // Ref: #/components/schemas/ResponseParameters
@@ -2483,34 +2483,34 @@ type SendGamePostOK struct {
 func (*SendGamePostOK) sendGamePostRes() {}
 
 type SendGamePostReqApplicationJSON struct {
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                   int                     `json:"chat_id"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
 	GameShortName            string                  `json:"game_short_name"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendGamePostReqApplicationJSON) sendGamePostReq() {}
 
 type SendGamePostReqApplicationXWwwFormUrlencoded struct {
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                   int                     `json:"chat_id"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
 	GameShortName            string                  `json:"game_short_name"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendGamePostReqApplicationXWwwFormUrlencoded) sendGamePostReq() {}
 
 type SendGamePostReqMultipartFormData struct {
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                   int                     `json:"chat_id"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
 	GameShortName            string                  `json:"game_short_name"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendGamePostReqMultipartFormData) sendGamePostReq() {}
@@ -2523,124 +2523,124 @@ type SendInvoicePostOK struct {
 func (*SendInvoicePostOK) sendInvoicePostRes() {}
 
 type SendInvoicePostReqApplicationJSON struct {
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                    int                     `json:"chat_id"`
-	Currency                  string                  `json:"currency"`
+	Title                     string                  `json:"title"`
 	Description               string                  `json:"description"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	NeedEmail                 OptBool                 `json:"need_email"`
-	NeedName                  OptBool                 `json:"need_name"`
-	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	Payload                   string                  `json:"payload"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoURL                  OptString               `json:"photo_url"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
+	ProviderToken             string                  `json:"provider_token"`
+	StartParameter            string                  `json:"start_parameter"`
+	Currency                  string                  `json:"currency"`
 	Prices                    []LabeledPrice          `json:"prices"`
 	ProviderData              OptString               `json:"provider_data"`
-	ProviderToken             string                  `json:"provider_token"`
-	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	PhotoURL                  OptString               `json:"photo_url"`
+	PhotoSize                 OptInt                  `json:"photo_size"`
+	PhotoWidth                OptInt                  `json:"photo_width"`
+	PhotoHeight               OptInt                  `json:"photo_height"`
+	NeedName                  OptBool                 `json:"need_name"`
+	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
+	NeedEmail                 OptBool                 `json:"need_email"`
+	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	StartParameter            string                  `json:"start_parameter"`
-	Title                     string                  `json:"title"`
+	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	IsFlexible                OptBool                 `json:"is_flexible"`
+	DisableNotification       OptBool                 `json:"disable_notification"`
+	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendInvoicePostReqApplicationJSON) sendInvoicePostReq() {}
 
 type SendInvoicePostReqApplicationXWwwFormUrlencoded struct {
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                    int                     `json:"chat_id"`
-	Currency                  string                  `json:"currency"`
+	Title                     string                  `json:"title"`
 	Description               string                  `json:"description"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	NeedEmail                 OptBool                 `json:"need_email"`
-	NeedName                  OptBool                 `json:"need_name"`
-	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	Payload                   string                  `json:"payload"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoURL                  OptString               `json:"photo_url"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
+	ProviderToken             string                  `json:"provider_token"`
+	StartParameter            string                  `json:"start_parameter"`
+	Currency                  string                  `json:"currency"`
 	Prices                    []LabeledPrice          `json:"prices"`
 	ProviderData              OptString               `json:"provider_data"`
-	ProviderToken             string                  `json:"provider_token"`
-	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	PhotoURL                  OptString               `json:"photo_url"`
+	PhotoSize                 OptInt                  `json:"photo_size"`
+	PhotoWidth                OptInt                  `json:"photo_width"`
+	PhotoHeight               OptInt                  `json:"photo_height"`
+	NeedName                  OptBool                 `json:"need_name"`
+	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
+	NeedEmail                 OptBool                 `json:"need_email"`
+	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	StartParameter            string                  `json:"start_parameter"`
-	Title                     string                  `json:"title"`
+	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	IsFlexible                OptBool                 `json:"is_flexible"`
+	DisableNotification       OptBool                 `json:"disable_notification"`
+	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendInvoicePostReqApplicationXWwwFormUrlencoded) sendInvoicePostReq() {}
 
 type SendInvoicePostReqMultipartFormData struct {
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                    int                     `json:"chat_id"`
-	Currency                  string                  `json:"currency"`
+	Title                     string                  `json:"title"`
 	Description               string                  `json:"description"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	NeedEmail                 OptBool                 `json:"need_email"`
-	NeedName                  OptBool                 `json:"need_name"`
-	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	Payload                   string                  `json:"payload"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoURL                  OptString               `json:"photo_url"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
+	ProviderToken             string                  `json:"provider_token"`
+	StartParameter            string                  `json:"start_parameter"`
+	Currency                  string                  `json:"currency"`
 	Prices                    []LabeledPrice          `json:"prices"`
 	ProviderData              OptString               `json:"provider_data"`
-	ProviderToken             string                  `json:"provider_token"`
-	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	PhotoURL                  OptString               `json:"photo_url"`
+	PhotoSize                 OptInt                  `json:"photo_size"`
+	PhotoWidth                OptInt                  `json:"photo_width"`
+	PhotoHeight               OptInt                  `json:"photo_height"`
+	NeedName                  OptBool                 `json:"need_name"`
+	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
+	NeedEmail                 OptBool                 `json:"need_email"`
+	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
 	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	StartParameter            string                  `json:"start_parameter"`
-	Title                     string                  `json:"title"`
+	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	IsFlexible                OptBool                 `json:"is_flexible"`
+	DisableNotification       OptBool                 `json:"disable_notification"`
+	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 func (*SendInvoicePostReqMultipartFormData) sendInvoicePostReq() {}
 
 type SetGameScorePostReqApplicationJSON struct {
-	ChatID             OptInt    `json:"chat_id"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	Force              OptBool   `json:"force"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-	MessageID          OptInt    `json:"message_id"`
-	Score              int       `json:"score"`
 	UserID             int       `json:"user_id"`
+	Score              int       `json:"score"`
+	Force              OptBool   `json:"force"`
+	DisableEditMessage OptBool   `json:"disable_edit_message"`
+	ChatID             OptInt    `json:"chat_id"`
+	MessageID          OptInt    `json:"message_id"`
+	InlineMessageID    OptString `json:"inline_message_id"`
 }
 
 func (*SetGameScorePostReqApplicationJSON) setGameScorePostReq() {}
 
 type SetGameScorePostReqApplicationXWwwFormUrlencoded struct {
-	ChatID             OptInt    `json:"chat_id"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	Force              OptBool   `json:"force"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-	MessageID          OptInt    `json:"message_id"`
-	Score              int       `json:"score"`
 	UserID             int       `json:"user_id"`
+	Score              int       `json:"score"`
+	Force              OptBool   `json:"force"`
+	DisableEditMessage OptBool   `json:"disable_edit_message"`
+	ChatID             OptInt    `json:"chat_id"`
+	MessageID          OptInt    `json:"message_id"`
+	InlineMessageID    OptString `json:"inline_message_id"`
 }
 
 func (*SetGameScorePostReqApplicationXWwwFormUrlencoded) setGameScorePostReq() {}
 
 type SetGameScorePostReqMultipartFormData struct {
-	ChatID             OptInt    `json:"chat_id"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	Force              OptBool   `json:"force"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-	MessageID          OptInt    `json:"message_id"`
-	Score              int       `json:"score"`
 	UserID             int       `json:"user_id"`
+	Score              int       `json:"score"`
+	Force              OptBool   `json:"force"`
+	DisableEditMessage OptBool   `json:"disable_edit_message"`
+	ChatID             OptInt    `json:"chat_id"`
+	MessageID          OptInt    `json:"message_id"`
+	InlineMessageID    OptString `json:"inline_message_id"`
 }
 
 func (*SetGameScorePostReqMultipartFormData) setGameScorePostReq() {}
@@ -2678,23 +2678,23 @@ type SetStickerPositionInSetPostOK struct {
 func (*SetStickerPositionInSetPostOK) setStickerPositionInSetPostRes() {}
 
 type SetStickerPositionInSetPostReqApplicationJSON struct {
-	Position int    `json:"position"`
 	Sticker  string `json:"sticker"`
+	Position int    `json:"position"`
 }
 
 func (*SetStickerPositionInSetPostReqApplicationJSON) setStickerPositionInSetPostReq() {}
 
 type SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded struct {
-	Position int    `json:"position"`
 	Sticker  string `json:"sticker"`
+	Position int    `json:"position"`
 }
 
 func (*SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) setStickerPositionInSetPostReq() {
 }
 
 type SetStickerPositionInSetPostReqMultipartFormData struct {
-	Position int    `json:"position"`
 	Sticker  string `json:"sticker"`
+	Position int    `json:"position"`
 }
 
 func (*SetStickerPositionInSetPostReqMultipartFormData) setStickerPositionInSetPostReq() {}
@@ -2707,88 +2707,88 @@ type SetWebhookPostOK struct {
 func (*SetWebhookPostOK) setWebhookPostRes() {}
 
 type SetWebhookPostReq struct {
-	AllowedUpdates     []string     `json:"allowed_updates"`
+	URL                string       `json:"url"`
 	Certificate        OptInputFile `json:"certificate"`
-	DropPendingUpdates OptBool      `json:"drop_pending_updates"`
 	IPAddress          OptString    `json:"ip_address"`
 	MaxConnections     OptInt       `json:"max_connections"`
-	URL                string       `json:"url"`
+	AllowedUpdates     []string     `json:"allowed_updates"`
+	DropPendingUpdates OptBool      `json:"drop_pending_updates"`
 }
 
 // Ref: #/components/schemas/ShippingAddress
 type ShippingAddress struct {
-	City        string `json:"city"`
 	CountryCode string `json:"country_code"`
-	PostCode    string `json:"post_code"`
 	State       string `json:"state"`
+	City        string `json:"city"`
 	StreetLine1 string `json:"street_line1"`
 	StreetLine2 string `json:"street_line2"`
+	PostCode    string `json:"post_code"`
 }
 
 // Ref: #/components/schemas/ShippingOption
 type ShippingOption struct {
 	ID     string         `json:"id"`
-	Prices []LabeledPrice `json:"prices"`
 	Title  string         `json:"title"`
+	Prices []LabeledPrice `json:"prices"`
 }
 
 // Ref: #/components/schemas/ShippingQuery
 type ShippingQuery struct {
-	From            User            `json:"from"`
 	ID              string          `json:"id"`
+	From            User            `json:"from"`
 	InvoicePayload  string          `json:"invoice_payload"`
 	ShippingAddress ShippingAddress `json:"shipping_address"`
 }
 
 // Ref: #/components/schemas/Sticker
 type Sticker struct {
-	Emoji        OptString       `json:"emoji"`
 	FileID       string          `json:"file_id"`
-	FileSize     OptInt          `json:"file_size"`
 	FileUniqueID string          `json:"file_unique_id"`
+	Width        int             `json:"width"`
 	Height       int             `json:"height"`
 	IsAnimated   bool            `json:"is_animated"`
-	MaskPosition OptMaskPosition `json:"mask_position"`
-	SetName      OptString       `json:"set_name"`
 	Thumb        OptPhotoSize    `json:"thumb"`
-	Width        int             `json:"width"`
+	Emoji        OptString       `json:"emoji"`
+	SetName      OptString       `json:"set_name"`
+	MaskPosition OptMaskPosition `json:"mask_position"`
+	FileSize     OptInt          `json:"file_size"`
 }
 
 // Ref: #/components/schemas/StickerSet
 type StickerSet struct {
-	ContainsMasks bool         `json:"contains_masks"`
-	IsAnimated    bool         `json:"is_animated"`
 	Name          string       `json:"name"`
+	Title         string       `json:"title"`
+	IsAnimated    bool         `json:"is_animated"`
+	ContainsMasks bool         `json:"contains_masks"`
 	Stickers      []Sticker    `json:"stickers"`
 	Thumb         OptPhotoSize `json:"thumb"`
-	Title         string       `json:"title"`
 }
 
 // Ref: #/components/schemas/SuccessfulPayment
 type SuccessfulPayment struct {
 	Currency                string       `json:"currency"`
-	InvoicePayload          string       `json:"invoice_payload"`
-	OrderInfo               OptOrderInfo `json:"order_info"`
-	ProviderPaymentChargeID string       `json:"provider_payment_charge_id"`
-	ShippingOptionID        OptString    `json:"shipping_option_id"`
-	TelegramPaymentChargeID string       `json:"telegram_payment_charge_id"`
 	TotalAmount             int          `json:"total_amount"`
+	InvoicePayload          string       `json:"invoice_payload"`
+	ShippingOptionID        OptString    `json:"shipping_option_id"`
+	OrderInfo               OptOrderInfo `json:"order_info"`
+	TelegramPaymentChargeID string       `json:"telegram_payment_charge_id"`
+	ProviderPaymentChargeID string       `json:"provider_payment_charge_id"`
 }
 
 // Ref: #/components/schemas/Update
 type Update struct {
-	CallbackQuery      OptCallbackQuery      `json:"callback_query"`
-	ChannelPost        OptMessage            `json:"channel_post"`
-	ChosenInlineResult OptChosenInlineResult `json:"chosen_inline_result"`
-	EditedChannelPost  OptMessage            `json:"edited_channel_post"`
-	EditedMessage      OptMessage            `json:"edited_message"`
-	InlineQuery        OptInlineQuery        `json:"inline_query"`
+	UpdateID           int                   `json:"update_id"`
 	Message            OptMessage            `json:"message"`
+	EditedMessage      OptMessage            `json:"edited_message"`
+	ChannelPost        OptMessage            `json:"channel_post"`
+	EditedChannelPost  OptMessage            `json:"edited_channel_post"`
+	InlineQuery        OptInlineQuery        `json:"inline_query"`
+	ChosenInlineResult OptChosenInlineResult `json:"chosen_inline_result"`
+	CallbackQuery      OptCallbackQuery      `json:"callback_query"`
+	ShippingQuery      OptShippingQuery      `json:"shipping_query"`
+	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
 	Poll               OptPoll               `json:"poll"`
 	PollAnswer         OptPollAnswer         `json:"poll_answer"`
-	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
-	ShippingQuery      OptShippingQuery      `json:"shipping_query"`
-	UpdateID           int                   `json:"update_id"`
 }
 
 type UploadStickerFilePostOK struct {
@@ -2799,80 +2799,80 @@ type UploadStickerFilePostOK struct {
 func (*UploadStickerFilePostOK) uploadStickerFilePostRes() {}
 
 type UploadStickerFilePostReq struct {
-	PNGSticker InputFile `json:"png_sticker"`
 	UserID     int       `json:"user_id"`
+	PNGSticker InputFile `json:"png_sticker"`
 }
 
 // Ref: #/components/schemas/User
 type User struct {
-	CanJoinGroups           OptBool   `json:"can_join_groups"`
-	CanReadAllGroupMessages OptBool   `json:"can_read_all_group_messages"`
-	FirstName               string    `json:"first_name"`
 	ID                      int       `json:"id"`
 	IsBot                   bool      `json:"is_bot"`
-	LanguageCode            OptString `json:"language_code"`
+	FirstName               string    `json:"first_name"`
 	LastName                OptString `json:"last_name"`
-	SupportsInlineQueries   OptBool   `json:"supports_inline_queries"`
 	Username                OptString `json:"username"`
+	LanguageCode            OptString `json:"language_code"`
+	CanJoinGroups           OptBool   `json:"can_join_groups"`
+	CanReadAllGroupMessages OptBool   `json:"can_read_all_group_messages"`
+	SupportsInlineQueries   OptBool   `json:"supports_inline_queries"`
 }
 
 // Ref: #/components/schemas/UserProfilePhotos
 type UserProfilePhotos struct {
-	Photos     [][]PhotoSize `json:"photos"`
 	TotalCount int           `json:"total_count"`
+	Photos     [][]PhotoSize `json:"photos"`
 }
 
 // Ref: #/components/schemas/Venue
 type Venue struct {
+	Location        Location  `json:"location"`
+	Title           string    `json:"title"`
 	Address         string    `json:"address"`
 	FoursquareID    OptString `json:"foursquare_id"`
 	FoursquareType  OptString `json:"foursquare_type"`
 	GooglePlaceID   OptString `json:"google_place_id"`
 	GooglePlaceType OptString `json:"google_place_type"`
-	Location        Location  `json:"location"`
-	Title           string    `json:"title"`
 }
 
 // Ref: #/components/schemas/Video
 type Video struct {
-	Duration     int          `json:"duration"`
 	FileID       string       `json:"file_id"`
-	FileName     OptString    `json:"file_name"`
-	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
-	Height       int          `json:"height"`
-	MimeType     OptString    `json:"mime_type"`
-	Thumb        OptPhotoSize `json:"thumb"`
 	Width        int          `json:"width"`
+	Height       int          `json:"height"`
+	Duration     int          `json:"duration"`
+	Thumb        OptPhotoSize `json:"thumb"`
+	FileName     OptString    `json:"file_name"`
+	MimeType     OptString    `json:"mime_type"`
+	FileSize     OptInt       `json:"file_size"`
 }
 
 // Ref: #/components/schemas/VideoNote
 type VideoNote struct {
-	Duration     int          `json:"duration"`
 	FileID       string       `json:"file_id"`
-	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
 	Length       int          `json:"length"`
+	Duration     int          `json:"duration"`
 	Thumb        OptPhotoSize `json:"thumb"`
+	FileSize     OptInt       `json:"file_size"`
 }
 
 // Ref: #/components/schemas/Voice
 type Voice struct {
-	Duration     int       `json:"duration"`
 	FileID       string    `json:"file_id"`
-	FileSize     OptInt    `json:"file_size"`
 	FileUniqueID string    `json:"file_unique_id"`
+	Duration     int       `json:"duration"`
 	MimeType     OptString `json:"mime_type"`
+	FileSize     OptInt    `json:"file_size"`
 }
 
 // Ref: #/components/schemas/WebhookInfo
 type WebhookInfo struct {
-	AllowedUpdates       []string  `json:"allowed_updates"`
+	URL                  string    `json:"url"`
 	HasCustomCertificate bool      `json:"has_custom_certificate"`
+	PendingUpdateCount   int       `json:"pending_update_count"`
 	IPAddress            OptString `json:"ip_address"`
 	LastErrorDate        OptInt    `json:"last_error_date"`
 	LastErrorMessage     OptString `json:"last_error_message"`
 	MaxConnections       OptInt    `json:"max_connections"`
-	PendingUpdateCount   int       `json:"pending_update_count"`
-	URL                  string    `json:"url"`
+	AllowedUpdates       []string  `json:"allowed_updates"`
 }

@@ -70,30 +70,20 @@ func (s Book) WriteJSON(w *json.Writer) {
 		w.ObjField("id")
 		s.ID.WriteJSON(w)
 	}
-	if s.Images.Set {
-		more.More()
-		w.ObjField("images")
-		s.Images.WriteJSON(w)
-	}
 	if s.MediaID.Set {
 		more.More()
 		w.ObjField("media_id")
 		s.MediaID.WriteJSON(w)
 	}
-	if s.NumFavorites.Set {
+	if s.Images.Set {
 		more.More()
-		w.ObjField("num_favorites")
-		s.NumFavorites.WriteJSON(w)
+		w.ObjField("images")
+		s.Images.WriteJSON(w)
 	}
-	if s.NumPages.Set {
+	if s.Title.Set {
 		more.More()
-		w.ObjField("num_pages")
-		s.NumPages.WriteJSON(w)
-	}
-	if s.Scanlator.Set {
-		more.More()
-		w.ObjField("scanlator")
-		s.Scanlator.WriteJSON(w)
+		w.ObjField("title")
+		s.Title.WriteJSON(w)
 	}
 	if s.Tags != nil {
 		more.More()
@@ -107,15 +97,25 @@ func (s Book) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
-	if s.Title.Set {
+	if s.Scanlator.Set {
 		more.More()
-		w.ObjField("title")
-		s.Title.WriteJSON(w)
+		w.ObjField("scanlator")
+		s.Scanlator.WriteJSON(w)
 	}
 	if s.UploadDate.Set {
 		more.More()
 		w.ObjField("upload_date")
 		s.UploadDate.WriteJSON(w)
+	}
+	if s.NumPages.Set {
+		more.More()
+		w.ObjField("num_pages")
+		s.NumPages.WriteJSON(w)
+	}
+	if s.NumFavorites.Set {
+		more.More()
+		w.ObjField("num_favorites")
+		s.NumFavorites.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -132,29 +132,19 @@ func (s *Book) ReadJSON(r *json.Reader) error {
 			if err := s.ID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "images":
-			s.Images.Reset()
-			if err := s.Images.ReadJSON(r); err != nil {
-				return err
-			}
 		case "media_id":
 			s.MediaID.Reset()
 			if err := s.MediaID.ReadJSON(r); err != nil {
 				return err
 			}
-		case "num_favorites":
-			s.NumFavorites.Reset()
-			if err := s.NumFavorites.ReadJSON(r); err != nil {
+		case "images":
+			s.Images.Reset()
+			if err := s.Images.ReadJSON(r); err != nil {
 				return err
 			}
-		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "scanlator":
-			s.Scanlator.Reset()
-			if err := s.Scanlator.ReadJSON(r); err != nil {
+		case "title":
+			s.Title.Reset()
+			if err := s.Title.ReadJSON(r); err != nil {
 				return err
 			}
 		case "tags":
@@ -169,14 +159,24 @@ func (s *Book) ReadJSON(r *json.Reader) error {
 			}); err != nil {
 				return err
 			}
-		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(r); err != nil {
+		case "scanlator":
+			s.Scanlator.Reset()
+			if err := s.Scanlator.ReadJSON(r); err != nil {
 				return err
 			}
 		case "upload_date":
 			s.UploadDate.Reset()
 			if err := s.UploadDate.ReadJSON(r); err != nil {
+				return err
+			}
+		case "num_pages":
+			s.NumPages.Reset()
+			if err := s.NumPages.ReadJSON(r); err != nil {
+				return err
+			}
+		case "num_favorites":
+			s.NumFavorites.Reset()
+			if err := s.NumFavorites.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -288,11 +288,6 @@ func (s Image) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.H.Set {
-		more.More()
-		w.ObjField("h")
-		s.H.WriteJSON(w)
-	}
 	if s.T.Set {
 		more.More()
 		w.ObjField("t")
@@ -302,6 +297,11 @@ func (s Image) WriteJSON(w *json.Writer) {
 		more.More()
 		w.ObjField("w")
 		s.W.WriteJSON(w)
+	}
+	if s.H.Set {
+		more.More()
+		w.ObjField("h")
+		s.H.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -313,11 +313,6 @@ func (s *Image) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "h":
-			s.H.Reset()
-			if err := s.H.ReadJSON(r); err != nil {
-				return err
-			}
 		case "t":
 			s.T.Reset()
 			if err := s.T.ReadJSON(r); err != nil {
@@ -326,6 +321,11 @@ func (s *Image) ReadJSON(r *json.Reader) error {
 		case "w":
 			s.W.Reset()
 			if err := s.W.ReadJSON(r); err != nil {
+				return err
+			}
+		case "h":
+			s.H.Reset()
+			if err := s.H.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -340,11 +340,6 @@ func (s Images) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Cover.Set {
-		more.More()
-		w.ObjField("cover")
-		s.Cover.WriteJSON(w)
-	}
 	if s.Pages != nil {
 		more.More()
 		w.ObjField("pages")
@@ -356,6 +351,11 @@ func (s Images) WriteJSON(w *json.Writer) {
 		}
 		w.ArrEnd()
 		more.Up()
+	}
+	if s.Cover.Set {
+		more.More()
+		w.ObjField("cover")
+		s.Cover.WriteJSON(w)
 	}
 	if s.Thumbnail.Set {
 		more.More()
@@ -372,11 +372,6 @@ func (s *Images) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "cover":
-			s.Cover.Reset()
-			if err := s.Cover.ReadJSON(r); err != nil {
-				return err
-			}
 		case "pages":
 			s.Pages = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -387,6 +382,11 @@ func (s *Images) ReadJSON(r *json.Reader) error {
 				s.Pages = append(s.Pages, elem)
 				return nil
 			}); err != nil {
+				return err
+			}
+		case "cover":
+			s.Cover.Reset()
+			if err := s.Cover.ReadJSON(r); err != nil {
 				return err
 			}
 		case "thumbnail":
@@ -594,16 +594,6 @@ func (s SearchResponse) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.NumPages.Set {
-		more.More()
-		w.ObjField("num_pages")
-		s.NumPages.WriteJSON(w)
-	}
-	if s.PerPage.Set {
-		more.More()
-		w.ObjField("per_page")
-		s.PerPage.WriteJSON(w)
-	}
 	if s.Result != nil {
 		more.More()
 		w.ObjField("result")
@@ -616,6 +606,16 @@ func (s SearchResponse) WriteJSON(w *json.Writer) {
 		w.ArrEnd()
 		more.Up()
 	}
+	if s.NumPages.Set {
+		more.More()
+		w.ObjField("num_pages")
+		s.NumPages.WriteJSON(w)
+	}
+	if s.PerPage.Set {
+		more.More()
+		w.ObjField("per_page")
+		s.PerPage.WriteJSON(w)
+	}
 	w.ObjEnd()
 }
 
@@ -626,16 +626,6 @@ func (s *SearchResponse) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(r); err != nil {
-				return err
-			}
-		case "per_page":
-			s.PerPage.Reset()
-			if err := s.PerPage.ReadJSON(r); err != nil {
-				return err
-			}
 		case "result":
 			s.Result = nil
 			if err := r.Array(func(r *json.Reader) error {
@@ -646,6 +636,16 @@ func (s *SearchResponse) ReadJSON(r *json.Reader) error {
 				s.Result = append(s.Result, elem)
 				return nil
 			}); err != nil {
+				return err
+			}
+		case "num_pages":
+			s.NumPages.Reset()
+			if err := s.NumPages.ReadJSON(r); err != nil {
+				return err
+			}
+		case "per_page":
+			s.PerPage.Reset()
+			if err := s.PerPage.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -660,30 +660,30 @@ func (s Tag) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
-	if s.Count.Set {
-		more.More()
-		w.ObjField("count")
-		s.Count.WriteJSON(w)
-	}
 	if s.ID.Set {
 		more.More()
 		w.ObjField("id")
 		s.ID.WriteJSON(w)
-	}
-	if s.Name.Set {
-		more.More()
-		w.ObjField("name")
-		s.Name.WriteJSON(w)
 	}
 	if s.Type.Set {
 		more.More()
 		w.ObjField("type")
 		s.Type.WriteJSON(w)
 	}
+	if s.Name.Set {
+		more.More()
+		w.ObjField("name")
+		s.Name.WriteJSON(w)
+	}
 	if s.URL.Set {
 		more.More()
 		w.ObjField("url")
 		s.URL.WriteJSON(w)
+	}
+	if s.Count.Set {
+		more.More()
+		w.ObjField("count")
+		s.Count.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -695,19 +695,9 @@ func (s *Tag) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "count":
-			s.Count.Reset()
-			if err := s.Count.ReadJSON(r); err != nil {
-				return err
-			}
 		case "id":
 			s.ID.Reset()
 			if err := s.ID.ReadJSON(r); err != nil {
-				return err
-			}
-		case "name":
-			s.Name.Reset()
-			if err := s.Name.ReadJSON(r); err != nil {
 				return err
 			}
 		case "type":
@@ -715,9 +705,19 @@ func (s *Tag) ReadJSON(r *json.Reader) error {
 			if err := s.Type.ReadJSON(r); err != nil {
 				return err
 			}
+		case "name":
+			s.Name.Reset()
+			if err := s.Name.ReadJSON(r); err != nil {
+				return err
+			}
 		case "url":
 			s.URL.Reset()
 			if err := s.URL.ReadJSON(r); err != nil {
+				return err
+			}
+		case "count":
+			s.Count.Reset()
+			if err := s.Count.ReadJSON(r); err != nil {
 				return err
 			}
 		default:

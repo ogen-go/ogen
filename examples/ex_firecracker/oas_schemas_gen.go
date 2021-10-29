@@ -71,20 +71,20 @@ func (*Balloon) describeBalloonConfigRes() {}
 
 // Ref: #/components/schemas/BalloonStats
 type BalloonStats struct {
-	ActualMib          int      `json:"actual_mib"`
+	TargetPages        int      `json:"target_pages"`
 	ActualPages        int      `json:"actual_pages"`
-	AvailableMemory    OptInt64 `json:"available_memory"`
-	DiskCaches         OptInt64 `json:"disk_caches"`
-	FreeMemory         OptInt64 `json:"free_memory"`
-	HugetlbAllocations OptInt64 `json:"hugetlb_allocations"`
-	HugetlbFailures    OptInt64 `json:"hugetlb_failures"`
-	MajorFaults        OptInt64 `json:"major_faults"`
-	MinorFaults        OptInt64 `json:"minor_faults"`
+	TargetMib          int      `json:"target_mib"`
+	ActualMib          int      `json:"actual_mib"`
 	SwapIn             OptInt64 `json:"swap_in"`
 	SwapOut            OptInt64 `json:"swap_out"`
-	TargetMib          int      `json:"target_mib"`
-	TargetPages        int      `json:"target_pages"`
+	MajorFaults        OptInt64 `json:"major_faults"`
+	MinorFaults        OptInt64 `json:"minor_faults"`
+	FreeMemory         OptInt64 `json:"free_memory"`
 	TotalMemory        OptInt64 `json:"total_memory"`
+	AvailableMemory    OptInt64 `json:"available_memory"`
+	DiskCaches         OptInt64 `json:"disk_caches"`
+	HugetlbAllocations OptInt64 `json:"hugetlb_allocations"`
+	HugetlbFailures    OptInt64 `json:"hugetlb_failures"`
 }
 
 func (*BalloonStats) describeBalloonStatsRes() {}
@@ -126,8 +126,8 @@ func (*CreateSyncActionNoContent) createSyncActionRes() {}
 
 // Ref: #/components/schemas/Drive
 type Drive struct {
-	CacheType    OptString      `json:"cache_type"`
 	DriveID      string         `json:"drive_id"`
+	CacheType    OptString      `json:"cache_type"`
 	IsReadOnly   bool           `json:"is_read_only"`
 	IsRootDevice bool           `json:"is_root_device"`
 	Partuuid     OptString      `json:"partuuid"`
@@ -1036,8 +1036,8 @@ const (
 type SnapshotLoadParams struct {
 	EnableDiffSnapshots OptBool `json:"enable_diff_snapshots"`
 	MemFilePath         string  `json:"mem_file_path"`
-	ResumeVM            OptBool `json:"resume_vm"`
 	SnapshotPath        string  `json:"snapshot_path"`
+	ResumeVM            OptBool `json:"resume_vm"`
 }
 
 // Ref: #/components/schemas/TokenBucket

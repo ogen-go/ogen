@@ -116,35 +116,26 @@ func (s BalloonStats) WriteJSON(w *json.Writer) {
 	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	w.ObjField("actual_mib")
-	w.Int(s.ActualMib)
+	w.ObjField("target_pages")
+	w.Int(s.TargetPages)
 	more.More()
 	w.ObjField("actual_pages")
 	w.Int(s.ActualPages)
-	if s.AvailableMemory.Set {
+	more.More()
+	w.ObjField("target_mib")
+	w.Int(s.TargetMib)
+	more.More()
+	w.ObjField("actual_mib")
+	w.Int(s.ActualMib)
+	if s.SwapIn.Set {
 		more.More()
-		w.ObjField("available_memory")
-		s.AvailableMemory.WriteJSON(w)
+		w.ObjField("swap_in")
+		s.SwapIn.WriteJSON(w)
 	}
-	if s.DiskCaches.Set {
+	if s.SwapOut.Set {
 		more.More()
-		w.ObjField("disk_caches")
-		s.DiskCaches.WriteJSON(w)
-	}
-	if s.FreeMemory.Set {
-		more.More()
-		w.ObjField("free_memory")
-		s.FreeMemory.WriteJSON(w)
-	}
-	if s.HugetlbAllocations.Set {
-		more.More()
-		w.ObjField("hugetlb_allocations")
-		s.HugetlbAllocations.WriteJSON(w)
-	}
-	if s.HugetlbFailures.Set {
-		more.More()
-		w.ObjField("hugetlb_failures")
-		s.HugetlbFailures.WriteJSON(w)
+		w.ObjField("swap_out")
+		s.SwapOut.WriteJSON(w)
 	}
 	if s.MajorFaults.Set {
 		more.More()
@@ -156,26 +147,35 @@ func (s BalloonStats) WriteJSON(w *json.Writer) {
 		w.ObjField("minor_faults")
 		s.MinorFaults.WriteJSON(w)
 	}
-	if s.SwapIn.Set {
+	if s.FreeMemory.Set {
 		more.More()
-		w.ObjField("swap_in")
-		s.SwapIn.WriteJSON(w)
+		w.ObjField("free_memory")
+		s.FreeMemory.WriteJSON(w)
 	}
-	if s.SwapOut.Set {
-		more.More()
-		w.ObjField("swap_out")
-		s.SwapOut.WriteJSON(w)
-	}
-	more.More()
-	w.ObjField("target_mib")
-	w.Int(s.TargetMib)
-	more.More()
-	w.ObjField("target_pages")
-	w.Int(s.TargetPages)
 	if s.TotalMemory.Set {
 		more.More()
 		w.ObjField("total_memory")
 		s.TotalMemory.WriteJSON(w)
+	}
+	if s.AvailableMemory.Set {
+		more.More()
+		w.ObjField("available_memory")
+		s.AvailableMemory.WriteJSON(w)
+	}
+	if s.DiskCaches.Set {
+		more.More()
+		w.ObjField("disk_caches")
+		s.DiskCaches.WriteJSON(w)
+	}
+	if s.HugetlbAllocations.Set {
+		more.More()
+		w.ObjField("hugetlb_allocations")
+		s.HugetlbAllocations.WriteJSON(w)
+	}
+	if s.HugetlbFailures.Set {
+		more.More()
+		w.ObjField("hugetlb_failures")
+		s.HugetlbFailures.WriteJSON(w)
 	}
 	w.ObjEnd()
 }
@@ -187,9 +187,9 @@ func (s *BalloonStats) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "actual_mib":
+		case "target_pages":
 			v, err := r.Int()
-			s.ActualMib = int(v)
+			s.TargetPages = int(v)
 			if err != nil {
 				return err
 			}
@@ -199,39 +199,16 @@ func (s *BalloonStats) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "available_memory":
-			s.AvailableMemory.Reset()
-			if err := s.AvailableMemory.ReadJSON(r); err != nil {
+		case "target_mib":
+			v, err := r.Int()
+			s.TargetMib = int(v)
+			if err != nil {
 				return err
 			}
-		case "disk_caches":
-			s.DiskCaches.Reset()
-			if err := s.DiskCaches.ReadJSON(r); err != nil {
-				return err
-			}
-		case "free_memory":
-			s.FreeMemory.Reset()
-			if err := s.FreeMemory.ReadJSON(r); err != nil {
-				return err
-			}
-		case "hugetlb_allocations":
-			s.HugetlbAllocations.Reset()
-			if err := s.HugetlbAllocations.ReadJSON(r); err != nil {
-				return err
-			}
-		case "hugetlb_failures":
-			s.HugetlbFailures.Reset()
-			if err := s.HugetlbFailures.ReadJSON(r); err != nil {
-				return err
-			}
-		case "major_faults":
-			s.MajorFaults.Reset()
-			if err := s.MajorFaults.ReadJSON(r); err != nil {
-				return err
-			}
-		case "minor_faults":
-			s.MinorFaults.Reset()
-			if err := s.MinorFaults.ReadJSON(r); err != nil {
+		case "actual_mib":
+			v, err := r.Int()
+			s.ActualMib = int(v)
+			if err != nil {
 				return err
 			}
 		case "swap_in":
@@ -244,21 +221,44 @@ func (s *BalloonStats) ReadJSON(r *json.Reader) error {
 			if err := s.SwapOut.ReadJSON(r); err != nil {
 				return err
 			}
-		case "target_mib":
-			v, err := r.Int()
-			s.TargetMib = int(v)
-			if err != nil {
+		case "major_faults":
+			s.MajorFaults.Reset()
+			if err := s.MajorFaults.ReadJSON(r); err != nil {
 				return err
 			}
-		case "target_pages":
-			v, err := r.Int()
-			s.TargetPages = int(v)
-			if err != nil {
+		case "minor_faults":
+			s.MinorFaults.Reset()
+			if err := s.MinorFaults.ReadJSON(r); err != nil {
+				return err
+			}
+		case "free_memory":
+			s.FreeMemory.Reset()
+			if err := s.FreeMemory.ReadJSON(r); err != nil {
 				return err
 			}
 		case "total_memory":
 			s.TotalMemory.Reset()
 			if err := s.TotalMemory.ReadJSON(r); err != nil {
+				return err
+			}
+		case "available_memory":
+			s.AvailableMemory.Reset()
+			if err := s.AvailableMemory.ReadJSON(r); err != nil {
+				return err
+			}
+		case "disk_caches":
+			s.DiskCaches.Reset()
+			if err := s.DiskCaches.ReadJSON(r); err != nil {
+				return err
+			}
+		case "hugetlb_allocations":
+			s.HugetlbAllocations.Reset()
+			if err := s.HugetlbAllocations.ReadJSON(r); err != nil {
+				return err
+			}
+		case "hugetlb_failures":
+			s.HugetlbFailures.Reset()
+			if err := s.HugetlbFailures.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
@@ -448,14 +448,14 @@ func (s Drive) WriteJSON(w *json.Writer) {
 	w.ObjStart()
 	more := json.NewMore(w)
 	defer more.Reset()
+	more.More()
+	w.ObjField("drive_id")
+	w.Str(s.DriveID)
 	if s.CacheType.Set {
 		more.More()
 		w.ObjField("cache_type")
 		s.CacheType.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("drive_id")
-	w.Str(s.DriveID)
 	more.More()
 	w.ObjField("is_read_only")
 	w.Bool(s.IsReadOnly)
@@ -485,15 +485,15 @@ func (s *Drive) ReadJSON(r *json.Reader) error {
 	}
 	return r.ObjBytes(func(r *json.Reader, k []byte) error {
 		switch string(k) {
-		case "cache_type":
-			s.CacheType.Reset()
-			if err := s.CacheType.ReadJSON(r); err != nil {
-				return err
-			}
 		case "drive_id":
 			v, err := r.Str()
 			s.DriveID = string(v)
 			if err != nil {
+				return err
+			}
+		case "cache_type":
+			s.CacheType.Reset()
+			if err := s.CacheType.ReadJSON(r); err != nil {
 				return err
 			}
 		case "is_read_only":
@@ -2200,14 +2200,14 @@ func (s SnapshotLoadParams) WriteJSON(w *json.Writer) {
 	more.More()
 	w.ObjField("mem_file_path")
 	w.Str(s.MemFilePath)
+	more.More()
+	w.ObjField("snapshot_path")
+	w.Str(s.SnapshotPath)
 	if s.ResumeVM.Set {
 		more.More()
 		w.ObjField("resume_vm")
 		s.ResumeVM.WriteJSON(w)
 	}
-	more.More()
-	w.ObjField("snapshot_path")
-	w.Str(s.SnapshotPath)
 	w.ObjEnd()
 }
 
@@ -2229,15 +2229,15 @@ func (s *SnapshotLoadParams) ReadJSON(r *json.Reader) error {
 			if err != nil {
 				return err
 			}
-		case "resume_vm":
-			s.ResumeVM.Reset()
-			if err := s.ResumeVM.ReadJSON(r); err != nil {
-				return err
-			}
 		case "snapshot_path":
 			v, err := r.Str()
 			s.SnapshotPath = string(v)
 			if err != nil {
+				return err
+			}
+		case "resume_vm":
+			s.ResumeVM.Reset()
+			if err := s.ResumeVM.ReadJSON(r); err != nil {
 				return err
 			}
 		default:
