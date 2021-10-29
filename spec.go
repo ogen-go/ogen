@@ -1,6 +1,10 @@
 package ogen
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/ogen-go/jx"
+)
 
 // Spec is the root document object of the OpenAPI document.
 type Spec struct {
@@ -381,4 +385,67 @@ type Schema struct {
 
 	// Default value.
 	Default json.RawMessage `json:"default,omitempty"` // TODO: support
+
+	// XPropertiesOrder is slice of keys for Properties ordering.
+	// Keeps ordering after marshal-unmarshal only in ogen.
+	XPropertiesOrder []string `json:"x-properties-order"`
+}
+
+func (s *Schema) UnmarshalJSON(data []byte) error {
+	// Hack for custom double-pass decoding.
+	v := struct {
+		Ref              string            `json:"$ref,omitempty"`
+		Description      string            `json:"description,omitempty"`
+		Type             string            `json:"type,omitempty"`
+		Format           string            `json:"format,omitempty"`
+		Properties       map[string]Schema `json:"properties,omitempty"`
+		Required         []string          `json:"required,omitempty"`
+		Items            *Schema           `json:"items,omitempty"`
+		Nullable         bool              `json:"nullable,omitempty"`
+		AllOf            []Schema          `json:"allOf,omitempty"`
+		OneOf            []Schema          `json:"oneOf,omitempty"`
+		AnyOf            []Schema          `json:"anyOf,omitempty"`
+		Enum             []json.RawMessage `json:"enum,omitempty"`
+		MultipleOf       *int              `json:"multipleOf,omitempty"`
+		Maximum          *int64            `json:"maximum,omitempty"`
+		ExclusiveMaximum bool              `json:"exclusiveMaximum,omitempty"`
+		Minimum          *int64            `json:"minimum,omitempty"`
+		ExclusiveMinimum bool              `json:"exclusiveMinimum,omitempty"`
+		MaxLength        *uint64           `json:"maxLength,omitempty"`
+		MinLength        *int64            `json:"minLength,omitempty"`
+		Pattern          string            `json:"pattern,omitempty"`
+		MaxItems         *uint64           `json:"maxItems,omitempty"`
+		MinItems         *uint64           `json:"minItems,omitempty"`
+		UniqueItems      bool              `json:"uniqueItems,omitempty"`
+		MaxProperties    *uint64           `json:"maxProperties,omitempty"`
+		MinProperties    *uint64           `json:"minProperties,omitempty"`
+		Default          json.RawMessage   `json:"default,omitempty"`
+		XPropertiesOrder []string          `json:"x-properties-order"`
+	}{}
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	*s = v
+
+	if len(s.XPropertiesOrder) > 0 {
+		// Already explicitly set.
+		return nil
+	}
+
+	// Saving properties ordering.
+	if err := jx.ReadBytes(data).Obj(func(r *jx.Reader, key string) error {
+		switch key {
+		case "properties":
+			return r.Obj(func(r *jx.Reader, key string) error {
+				s.XPropertiesOrder = append(s.XPropertiesOrder, key)
+				return r.Skip()
+			})
+		default:
+			return r.Skip()
+		}
+	}); err != nil {
+		return err
+	}
+
+	return nil
 }

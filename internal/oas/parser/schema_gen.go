@@ -131,7 +131,23 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			MaxProperties: schema.MaxProperties,
 		})
 
-		for propName, propSchema := range schema.Properties {
+		// Ensure that order is stable.
+		propKeys := schema.XPropertiesOrder
+		for _, k := range schema.XPropertiesOrder {
+			if _, ok := schema.Properties[k]; ok {
+				continue
+			}
+			return nil, xerrors.Errorf("invalid x-properties-order: missing %s", k)
+		}
+		if len(propKeys) == 0 {
+			for k := range schema.Properties {
+				propKeys = append(propKeys, k)
+			}
+			sort.Strings(propKeys)
+		}
+
+		for _, propName := range propKeys {
+			propSchema := schema.Properties[propName]
 			prop, err := g.generate(propSchema, "")
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
@@ -143,9 +159,6 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 				Required: required(propName),
 			})
 		}
-		sort.SliceStable(s.Properties, func(i, j int) bool {
-			return strings.Compare(s.Properties[i].Name, s.Properties[j].Name) < 0
-		})
 		return s, nil
 
 	case "array":
