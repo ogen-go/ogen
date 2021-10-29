@@ -326,8 +326,6 @@ type Server interface {
 	BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (CombinedBillingUsage, error)
 	// BillingGetSharedStorageBillingUser implements billing/get-shared-storage-billing-user operation.
 	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (CombinedBillingUsage, error)
-	// ChecksCreate implements checks/create operation.
-	ChecksCreate(ctx context.Context, req ChecksCreateReq, params ChecksCreateParams) (CheckRun, error)
 	// ChecksCreateSuite implements checks/create-suite operation.
 	ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error)
 	// ChecksGet implements checks/get operation.

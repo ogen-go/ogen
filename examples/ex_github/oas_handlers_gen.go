@@ -3960,41 +3960,6 @@ func NewBillingGetSharedStorageBillingUserHandler(s Server, opts ...Option) func
 	}
 }
 
-func NewChecksCreateHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `ChecksCreate`,
-			trace.WithAttributes(otelogen.OperationID(`checks/create`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeChecksCreateParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-		request, err := decodeChecksCreateRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.ChecksCreate(ctx, request, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeChecksCreateResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
 func NewChecksCreateSuiteHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {

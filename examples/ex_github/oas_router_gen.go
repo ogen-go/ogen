@@ -193,7 +193,6 @@ func Register(r chi.Router, s Server, opts ...Option) {
 	r.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/shared-storage", NewBillingGetSharedStorageBillingGheHandler(s, opts...))
 	r.MethodFunc("GET", "/orgs/{org}/settings/billing/shared-storage", NewBillingGetSharedStorageBillingOrgHandler(s, opts...))
 	r.MethodFunc("GET", "/users/{username}/settings/billing/shared-storage", NewBillingGetSharedStorageBillingUserHandler(s, opts...))
-	r.MethodFunc("POST", "/repos/{owner}/{repo}/check-runs", NewChecksCreateHandler(s, opts...))
 	r.MethodFunc("POST", "/repos/{owner}/{repo}/check-suites", NewChecksCreateSuiteHandler(s, opts...))
 	r.MethodFunc("GET", "/repos/{owner}/{repo}/check-runs/{check_run_id}", NewChecksGetHandler(s, opts...))
 	r.MethodFunc("GET", "/repos/{owner}/{repo}/check-suites/{check_suite_id}", NewChecksGetSuiteHandler(s, opts...))

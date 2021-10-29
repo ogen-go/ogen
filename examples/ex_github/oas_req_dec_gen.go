@@ -634,33 +634,6 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeChecksCreateRequest(r *http.Request, span trace.Span) (req ChecksCreateReq, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ChecksCreateReq
-		i := json.GetIter()
-		defer json.PutIter(i)
-		i.ResetBytes(buf.Bytes())
-		if err := func() error {
-			if err := request.ReadJSON(i); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, err
-		}
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
 func decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (req ChecksCreateSuiteReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)

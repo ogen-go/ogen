@@ -2674,21 +2674,6 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 	return nil
 }
 
-func encodeChecksCreateResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ChecksCreateSuiteApplicationJSONOK:

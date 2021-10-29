@@ -9914,42 +9914,6 @@ func (s *CheckSuiteStatus) ReadJSON(i *json.Iter) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ChecksCreateReq) WriteJSON(j *json.Stream) {
-	switch s.Type {
-	case StringChecksCreateReq:
-		j.WriteString(s.String)
-	case StringChecksCreateReq:
-		j.WriteString(s.String)
-	}
-}
-
-// ReadJSON reads value from json stream.
-func (s *ChecksCreateReq) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksCreateReq to nil`)
-	}
-	switch t := i.Next(); t {
-	case json.String:
-		v, err := i.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringChecksCreateReq
-	case json.String:
-		v, err := i.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringChecksCreateReq
-	default:
-		return fmt.Errorf("unexpected json type %q", t)
-	}
-	return nil
-}
-
 func (ChecksCreateSuiteApplicationJSONCreated) WriteJSON(j *json.Stream)    {}
 func (ChecksCreateSuiteApplicationJSONCreated) ReadJSON(i *json.Iter) error { return nil }
 

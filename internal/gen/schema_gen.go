@@ -204,6 +204,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			Kind:   ir.KindSum,
 			Schema: schema,
 		}
+		names := map[string]struct{}{}
 		for i, s := range schema.OneOf {
 			t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
 			if err != nil {
@@ -222,6 +223,12 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				result = append(result, c)
 			}
 			t.Name = string(result)
+			if _, ok := names[t.Name]; ok {
+				return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
+					Name: "sum types with same names",
+				})
+			}
+			names[t.Name] = struct{}{}
 			sum.SumOf = append(sum.SumOf, t)
 		}
 		return side(sum), nil

@@ -9652,69 +9652,6 @@ func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGet
 	return params, nil
 }
 
-func decodeChecksCreateParams(r *http.Request) (ChecksCreateParams, error) {
-	var params ChecksCreateParams
-	// Decode param "owner" located in "Path".
-	if err := func() error {
-		param := chi.URLParam(r, "owner")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'owner' not specified")
-		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "owner",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Owner = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	// Decode param "repo" located in "Path".
-	if err := func() error {
-		param := chi.URLParam(r, "repo")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'repo' not specified")
-		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "repo",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Repo = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	return params, nil
-}
-
 func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, error) {
 	var params ChecksCreateSuiteParams
 	// Decode param "owner" located in "Path".

@@ -348,22 +348,6 @@ func encodeAppsUpdateWebhookConfigForAppRequest(req AppsUpdateWebhookConfigForAp
 	return buf, "application/json", nil
 }
 
-func encodeChecksCreateRequest(req ChecksCreateReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	buf := json.GetBuffer()
-	j := json.GetStream(buf)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	req.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		json.PutBuffer(buf)
-		return nil, "", err
-	}
-
-	return buf, "application/json", nil
-}
-
 func encodeChecksCreateSuiteRequest(req ChecksCreateSuiteReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)

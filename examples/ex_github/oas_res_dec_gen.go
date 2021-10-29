@@ -5126,40 +5126,6 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response, span 
 	}
 }
 
-func decodeChecksCreateResponse(resp *http.Response, span trace.Span) (res CheckRun, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response CheckRun
-			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res ChecksCreateSuiteRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)

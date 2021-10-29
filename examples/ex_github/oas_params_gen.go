@@ -750,11 +750,6 @@ type BillingGetSharedStorageBillingUserParams struct {
 	Username string
 }
 
-type ChecksCreateParams struct {
-	Owner string
-	Repo  string
-}
-
 type ChecksCreateSuiteParams struct {
 	Owner string
 	Repo  string
