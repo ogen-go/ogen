@@ -94,6 +94,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+// CreateAdmissionregistrationV1MutatingWebhookConfiguration implements createAdmissionregistrationV1MutatingWebhookConfiguration operation.
 func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -167,6 +168,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
+// CreateAdmissionregistrationV1ValidatingWebhookConfiguration implements createAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -240,6 +242,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 	return result, nil
 }
 
+// CreateApiextensionsV1CustomResourceDefinition implements createApiextensionsV1CustomResourceDefinition operation.
 func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -313,6 +316,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 	return result, nil
 }
 
+// CreateApiregistrationV1APIService implements createApiregistrationV1APIService operation.
 func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiregistrationV1APIService`,
@@ -377,6 +381,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 	return result, nil
 }
 
+// CreateAuthenticationV1TokenReview implements createAuthenticationV1TokenReview operation.
 func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, request IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthenticationV1TokenReview`,
@@ -422,6 +427,7 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, request 
 	return result, nil
 }
 
+// CreateAuthorizationV1SelfSubjectAccessReview implements createAuthorizationV1SelfSubjectAccessReview operation.
 func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, request IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectAccessReview`,
@@ -467,6 +473,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 	return result, nil
 }
 
+// CreateAuthorizationV1SelfSubjectRulesReview implements createAuthorizationV1SelfSubjectRulesReview operation.
 func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, request IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -521,6 +528,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 	return result, nil
 }
 
+// CreateAuthorizationV1SubjectAccessReview implements createAuthorizationV1SubjectAccessReview operation.
 func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, request IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SubjectAccessReview`,
@@ -566,6 +574,7 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 	return result, nil
 }
 
+// CreateCertificatesV1CertificateSigningRequest implements createCertificatesV1CertificateSigningRequest operation.
 func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, request IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -639,6 +648,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 	return result, nil
 }
 
+// CreateCoreV1Namespace implements createCoreV1Namespace operation.
 func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Namespace`,
@@ -703,6 +713,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 	return result, nil
 }
 
+// CreateCoreV1Node implements createCoreV1Node operation.
 func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Node`,
@@ -767,6 +778,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 	return result, nil
 }
 
+// CreateCoreV1PersistentVolume implements createCoreV1PersistentVolume operation.
 func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -840,6 +852,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 	return result, nil
 }
 
+// CreateFlowcontrolApiserverV1beta1FlowSchema implements createFlowcontrolApiserverV1beta1FlowSchema operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -913,6 +926,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 	return result, nil
 }
 
+// CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements createFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
@@ -977,6 +991,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
+// CreateFlowcontrolApiserverV1beta2FlowSchema implements createFlowcontrolApiserverV1beta2FlowSchema operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1050,6 +1065,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 	return result, nil
 }
 
+// CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements createFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
@@ -1114,6 +1130,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
+// CreateInternalApiserverV1alpha1StorageVersion implements createInternalApiserverV1alpha1StorageVersion operation.
 func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, request IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateInternalApiserverV1alpha1StorageVersion`,
@@ -1178,6 +1195,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 	return result, nil
 }
 
+// CreateNetworkingV1IngressClass implements createNetworkingV1IngressClass operation.
 func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNetworkingV1IngressClass`,
@@ -1242,6 +1260,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 	return result, nil
 }
 
+// CreateNodeV1RuntimeClass implements createNodeV1RuntimeClass operation.
 func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1RuntimeClass`,
@@ -1306,6 +1325,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 	return result, nil
 }
 
+// CreateNodeV1alpha1RuntimeClass implements createNodeV1alpha1RuntimeClass operation.
 func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1alpha1RuntimeClass`,
@@ -1370,6 +1390,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 	return result, nil
 }
 
+// CreateNodeV1beta1RuntimeClass implements createNodeV1beta1RuntimeClass operation.
 func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1beta1RuntimeClass`,
@@ -1434,6 +1455,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 	return result, nil
 }
 
+// CreatePolicyV1beta1PodSecurityPolicy implements createPolicyV1beta1PodSecurityPolicy operation.
 func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, request IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1507,6 +1529,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 	return result, nil
 }
 
+// CreateRbacAuthorizationV1ClusterRole implements createRbacAuthorizationV1ClusterRole operation.
 func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, request IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1580,6 +1603,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 	return result, nil
 }
 
+// CreateRbacAuthorizationV1ClusterRoleBinding implements createRbacAuthorizationV1ClusterRoleBinding operation.
 func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, request IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRoleBinding`,
@@ -1644,6 +1668,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 	return result, nil
 }
 
+// CreateSchedulingV1PriorityClass implements createSchedulingV1PriorityClass operation.
 func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSchedulingV1PriorityClass`,
@@ -1708,6 +1733,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 	return result, nil
 }
 
+// CreateStorageV1CSIDriver implements createStorageV1CSIDriver operation.
 func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSIDriver`,
@@ -1772,6 +1798,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 	return result, nil
 }
 
+// CreateStorageV1CSINode implements createStorageV1CSINode operation.
 func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1845,6 +1872,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 	return result, nil
 }
 
+// CreateStorageV1StorageClass implements createStorageV1StorageClass operation.
 func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1918,6 +1946,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 	return result, nil
 }
 
+// CreateStorageV1VolumeAttachment implements createStorageV1VolumeAttachment operation.
 func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1991,6 +2020,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 	return result, nil
 }
 
+// DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration implements deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration operation.
 func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`,
@@ -2127,6 +2157,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 	return result, nil
 }
 
+// DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration implements deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration operation.
 func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`,
@@ -2263,6 +2294,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 	return result, nil
 }
 
+// DeleteApiextensionsV1CollectionCustomResourceDefinition implements deleteApiextensionsV1CollectionCustomResourceDefinition operation.
 func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiextensionsV1CollectionCustomResourceDefinition`,
@@ -2399,6 +2431,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 	return result, nil
 }
 
+// DeleteApiregistrationV1CollectionAPIService implements deleteApiregistrationV1CollectionAPIService operation.
 func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiregistrationV1CollectionAPIService`,
@@ -2535,6 +2568,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 	return result, nil
 }
 
+// DeleteCertificatesV1CollectionCertificateSigningRequest implements deleteCertificatesV1CollectionCertificateSigningRequest operation.
 func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCertificatesV1CollectionCertificateSigningRequest`,
@@ -2671,6 +2705,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 	return result, nil
 }
 
+// DeleteCoreV1CollectionNode implements deleteCoreV1CollectionNode operation.
 func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionNode`,
@@ -2807,6 +2842,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 	return result, nil
 }
 
+// DeleteCoreV1CollectionPersistentVolume implements deleteCoreV1CollectionPersistentVolume operation.
 func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionPersistentVolume`,
@@ -2943,6 +2979,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 	return result, nil
 }
 
+// DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema implements deleteFlowcontrolApiserverV1beta1CollectionFlowSchema operation.
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema`,
@@ -3079,6 +3116,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
+// DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration implements deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration operation.
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`,
@@ -3215,6 +3253,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 	return result, nil
 }
 
+// DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema implements deleteFlowcontrolApiserverV1beta2CollectionFlowSchema operation.
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema`,
@@ -3351,6 +3390,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
+// DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration implements deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration operation.
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`,
@@ -3487,6 +3527,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 	return result, nil
 }
 
+// DeleteInternalApiserverV1alpha1CollectionStorageVersion implements deleteInternalApiserverV1alpha1CollectionStorageVersion operation.
 func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteInternalApiserverV1alpha1CollectionStorageVersion`,
@@ -3623,6 +3664,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 	return result, nil
 }
 
+// DeleteNetworkingV1CollectionIngressClass implements deleteNetworkingV1CollectionIngressClass operation.
 func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNetworkingV1CollectionIngressClass`,
@@ -3759,6 +3801,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 	return result, nil
 }
 
+// DeleteNodeV1CollectionRuntimeClass implements deleteNodeV1CollectionRuntimeClass operation.
 func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1CollectionRuntimeClass`,
@@ -3895,6 +3938,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 	return result, nil
 }
 
+// DeleteNodeV1alpha1CollectionRuntimeClass implements deleteNodeV1alpha1CollectionRuntimeClass operation.
 func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1alpha1CollectionRuntimeClass`,
@@ -4031,6 +4075,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 	return result, nil
 }
 
+// DeleteNodeV1beta1CollectionRuntimeClass implements deleteNodeV1beta1CollectionRuntimeClass operation.
 func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1beta1CollectionRuntimeClass`,
@@ -4167,6 +4212,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 	return result, nil
 }
 
+// DeletePolicyV1beta1CollectionPodSecurityPolicy implements deletePolicyV1beta1CollectionPodSecurityPolicy operation.
 func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePolicyV1beta1CollectionPodSecurityPolicy`,
@@ -4303,6 +4349,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 	return result, nil
 }
 
+// DeleteRbacAuthorizationV1CollectionClusterRole implements deleteRbacAuthorizationV1CollectionClusterRole operation.
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRole`,
@@ -4439,6 +4486,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 	return result, nil
 }
 
+// DeleteRbacAuthorizationV1CollectionClusterRoleBinding implements deleteRbacAuthorizationV1CollectionClusterRoleBinding operation.
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRoleBinding`,
@@ -4575,6 +4623,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 	return result, nil
 }
 
+// DeleteSchedulingV1CollectionPriorityClass implements deleteSchedulingV1CollectionPriorityClass operation.
 func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteSchedulingV1CollectionPriorityClass`,
@@ -4711,6 +4760,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 	return result, nil
 }
 
+// DeleteStorageV1CollectionCSIDriver implements deleteStorageV1CollectionCSIDriver operation.
 func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSIDriver`,
@@ -4847,6 +4897,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 	return result, nil
 }
 
+// DeleteStorageV1CollectionCSINode implements deleteStorageV1CollectionCSINode operation.
 func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSINode`,
@@ -4983,6 +5034,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 	return result, nil
 }
 
+// DeleteStorageV1CollectionStorageClass implements deleteStorageV1CollectionStorageClass operation.
 func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionStorageClass`,
@@ -5119,6 +5171,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 	return result, nil
 }
 
+// DeleteStorageV1CollectionVolumeAttachment implements deleteStorageV1CollectionVolumeAttachment operation.
 func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionVolumeAttachment`,
@@ -5255,6 +5308,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 	return result, nil
 }
 
+// GetAPIVersions implements getAPIVersions operation.
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAPIVersions`,
@@ -5292,6 +5346,7 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 	return result, nil
 }
 
+// GetAdmissionregistrationAPIGroup implements getAdmissionregistrationAPIGroup operation.
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationAPIGroup`,
@@ -5329,6 +5384,7 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	return result, nil
 }
 
+// GetAdmissionregistrationV1APIResources implements getAdmissionregistrationV1APIResources operation.
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationV1APIResources`,
@@ -5366,6 +5422,7 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 	return result, nil
 }
 
+// GetApiextensionsAPIGroup implements getApiextensionsAPIGroup operation.
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsAPIGroup`,
@@ -5403,6 +5460,7 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	return result, nil
 }
 
+// GetApiextensionsV1APIResources implements getApiextensionsV1APIResources operation.
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsV1APIResources`,
@@ -5440,6 +5498,7 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 	return result, nil
 }
 
+// GetApiregistrationAPIGroup implements getApiregistrationAPIGroup operation.
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationAPIGroup`,
@@ -5477,6 +5536,7 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	return result, nil
 }
 
+// GetApiregistrationV1APIResources implements getApiregistrationV1APIResources operation.
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationV1APIResources`,
@@ -5514,6 +5574,7 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 	return result, nil
 }
 
+// GetAppsAPIGroup implements getAppsAPIGroup operation.
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsAPIGroup`,
@@ -5551,6 +5612,7 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 	return result, nil
 }
 
+// GetAppsV1APIResources implements getAppsV1APIResources operation.
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsV1APIResources`,
@@ -5588,6 +5650,7 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 	return result, nil
 }
 
+// GetAuthenticationAPIGroup implements getAuthenticationAPIGroup operation.
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationAPIGroup`,
@@ -5625,6 +5688,7 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	return result, nil
 }
 
+// GetAuthenticationV1APIResources implements getAuthenticationV1APIResources operation.
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationV1APIResources`,
@@ -5662,6 +5726,7 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 	return result, nil
 }
 
+// GetAuthorizationAPIGroup implements getAuthorizationAPIGroup operation.
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationAPIGroup`,
@@ -5699,6 +5764,7 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	return result, nil
 }
 
+// GetAuthorizationV1APIResources implements getAuthorizationV1APIResources operation.
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationV1APIResources`,
@@ -5736,6 +5802,7 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 	return result, nil
 }
 
+// GetAutoscalingAPIGroup implements getAutoscalingAPIGroup operation.
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingAPIGroup`,
@@ -5773,6 +5840,7 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	return result, nil
 }
 
+// GetAutoscalingV1APIResources implements getAutoscalingV1APIResources operation.
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV1APIResources`,
@@ -5810,6 +5878,7 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 	return result, nil
 }
 
+// GetAutoscalingV2beta1APIResources implements getAutoscalingV2beta1APIResources operation.
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta1APIResources`,
@@ -5847,6 +5916,7 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
+// GetAutoscalingV2beta2APIResources implements getAutoscalingV2beta2APIResources operation.
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta2APIResources`,
@@ -5884,6 +5954,7 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
+// GetBatchAPIGroup implements getBatchAPIGroup operation.
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchAPIGroup`,
@@ -5921,6 +5992,7 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 	return result, nil
 }
 
+// GetBatchV1APIResources implements getBatchV1APIResources operation.
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1APIResources`,
@@ -5958,6 +6030,7 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 	return result, nil
 }
 
+// GetBatchV1beta1APIResources implements getBatchV1beta1APIResources operation.
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1beta1APIResources`,
@@ -5995,6 +6068,7 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	return result, nil
 }
 
+// GetCertificatesAPIGroup implements getCertificatesAPIGroup operation.
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesAPIGroup`,
@@ -6032,6 +6106,7 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 	return result, nil
 }
 
+// GetCertificatesV1APIResources implements getCertificatesV1APIResources operation.
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesV1APIResources`,
@@ -6069,6 +6144,7 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	return result, nil
 }
 
+// GetCodeVersion implements getCodeVersion operation.
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCodeVersion`,
@@ -6106,6 +6182,7 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 	return result, nil
 }
 
+// GetCoordinationAPIGroup implements getCoordinationAPIGroup operation.
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationAPIGroup`,
@@ -6143,6 +6220,7 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	return result, nil
 }
 
+// GetCoordinationV1APIResources implements getCoordinationV1APIResources operation.
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationV1APIResources`,
@@ -6180,6 +6258,7 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 	return result, nil
 }
 
+// GetCoreAPIVersions implements getCoreAPIVersions operation.
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreAPIVersions`,
@@ -6217,6 +6296,7 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	return result, nil
 }
 
+// GetCoreV1APIResources implements getCoreV1APIResources operation.
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreV1APIResources`,
@@ -6254,6 +6334,7 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 	return result, nil
 }
 
+// GetDiscoveryAPIGroup implements getDiscoveryAPIGroup operation.
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryAPIGroup`,
@@ -6291,6 +6372,7 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	return result, nil
 }
 
+// GetDiscoveryV1APIResources implements getDiscoveryV1APIResources operation.
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1APIResources`,
@@ -6328,6 +6410,7 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 	return result, nil
 }
 
+// GetDiscoveryV1beta1APIResources implements getDiscoveryV1beta1APIResources operation.
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1beta1APIResources`,
@@ -6365,6 +6448,7 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	return result, nil
 }
 
+// GetEventsAPIGroup implements getEventsAPIGroup operation.
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsAPIGroup`,
@@ -6402,6 +6486,7 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 	return result, nil
 }
 
+// GetEventsV1APIResources implements getEventsV1APIResources operation.
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1APIResources`,
@@ -6439,6 +6524,7 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	return result, nil
 }
 
+// GetEventsV1beta1APIResources implements getEventsV1beta1APIResources operation.
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1beta1APIResources`,
@@ -6476,6 +6562,7 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 	return result, nil
 }
 
+// GetFlowcontrolApiserverAPIGroup implements getFlowcontrolApiserverAPIGroup operation.
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverAPIGroup`,
@@ -6513,6 +6600,7 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	return result, nil
 }
 
+// GetFlowcontrolApiserverV1beta1APIResources implements getFlowcontrolApiserverV1beta1APIResources operation.
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta1APIResources`,
@@ -6550,6 +6638,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 	return result, nil
 }
 
+// GetFlowcontrolApiserverV1beta2APIResources implements getFlowcontrolApiserverV1beta2APIResources operation.
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta2APIResources`,
@@ -6587,6 +6676,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	return result, nil
 }
 
+// GetInternalApiserverAPIGroup implements getInternalApiserverAPIGroup operation.
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverAPIGroup`,
@@ -6624,6 +6714,7 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 	return result, nil
 }
 
+// GetInternalApiserverV1alpha1APIResources implements getInternalApiserverV1alpha1APIResources operation.
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverV1alpha1APIResources`,
@@ -6661,6 +6752,7 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	return result, nil
 }
 
+// GetNetworkingAPIGroup implements getNetworkingAPIGroup operation.
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingAPIGroup`,
@@ -6698,6 +6790,7 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 	return result, nil
 }
 
+// GetNetworkingV1APIResources implements getNetworkingV1APIResources operation.
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingV1APIResources`,
@@ -6735,6 +6828,7 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	return result, nil
 }
 
+// GetNodeAPIGroup implements getNodeAPIGroup operation.
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeAPIGroup`,
@@ -6772,6 +6866,7 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 	return result, nil
 }
 
+// GetNodeV1APIResources implements getNodeV1APIResources operation.
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1APIResources`,
@@ -6809,6 +6904,7 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	return result, nil
 }
 
+// GetNodeV1alpha1APIResources implements getNodeV1alpha1APIResources operation.
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1alpha1APIResources`,
@@ -6846,6 +6942,7 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 	return result, nil
 }
 
+// GetNodeV1beta1APIResources implements getNodeV1beta1APIResources operation.
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1beta1APIResources`,
@@ -6883,6 +6980,7 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	return result, nil
 }
 
+// GetPolicyAPIGroup implements getPolicyAPIGroup operation.
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyAPIGroup`,
@@ -6920,6 +7018,7 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 	return result, nil
 }
 
+// GetPolicyV1APIResources implements getPolicyV1APIResources operation.
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1APIResources`,
@@ -6957,6 +7056,7 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	return result, nil
 }
 
+// GetPolicyV1beta1APIResources implements getPolicyV1beta1APIResources operation.
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1beta1APIResources`,
@@ -6994,6 +7094,7 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 	return result, nil
 }
 
+// GetRbacAuthorizationAPIGroup implements getRbacAuthorizationAPIGroup operation.
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationAPIGroup`,
@@ -7031,6 +7132,7 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	return result, nil
 }
 
+// GetRbacAuthorizationV1APIResources implements getRbacAuthorizationV1APIResources operation.
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationV1APIResources`,
@@ -7068,6 +7170,7 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 	return result, nil
 }
 
+// GetSchedulingAPIGroup implements getSchedulingAPIGroup operation.
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingAPIGroup`,
@@ -7105,6 +7208,7 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	return result, nil
 }
 
+// GetSchedulingV1APIResources implements getSchedulingV1APIResources operation.
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingV1APIResources`,
@@ -7142,6 +7246,7 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 	return result, nil
 }
 
+// GetServiceAccountIssuerOpenIDConfiguration implements getServiceAccountIssuerOpenIDConfiguration operation.
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetServiceAccountIssuerOpenIDConfiguration`,
@@ -7179,6 +7284,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 	return result, nil
 }
 
+// GetServiceAccountIssuerOpenIDKeyset implements getServiceAccountIssuerOpenIDKeyset operation.
 func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetServiceAccountIssuerOpenIDKeyset`,
@@ -7216,6 +7322,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 	return result, nil
 }
 
+// GetStorageAPIGroup implements getStorageAPIGroup operation.
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageAPIGroup`,
@@ -7253,6 +7360,7 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 	return result, nil
 }
 
+// GetStorageV1APIResources implements getStorageV1APIResources operation.
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1APIResources`,
@@ -7290,6 +7398,7 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	return result, nil
 }
 
+// GetStorageV1alpha1APIResources implements getStorageV1alpha1APIResources operation.
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1alpha1APIResources`,
@@ -7327,6 +7436,7 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	return result, nil
 }
 
+// GetStorageV1beta1APIResources implements getStorageV1beta1APIResources operation.
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1beta1APIResources`,
@@ -7364,6 +7474,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 	return result, nil
 }
 
+// ListAdmissionregistrationV1MutatingWebhookConfiguration implements listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1MutatingWebhookConfiguration`,
@@ -7476,6 +7587,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	return result, nil
 }
 
+// ListAdmissionregistrationV1ValidatingWebhookConfiguration implements listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1ValidatingWebhookConfiguration`,
@@ -7588,6 +7700,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
+// ListApiextensionsV1CustomResourceDefinition implements listApiextensionsV1CustomResourceDefinition operation.
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiextensionsV1CustomResourceDefinition`,
@@ -7700,6 +7813,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	return result, nil
 }
 
+// ListApiregistrationV1APIService implements listApiregistrationV1APIService operation.
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiregistrationV1APIService`,
@@ -7812,6 +7926,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	return result, nil
 }
 
+// ListAppsV1ControllerRevisionForAllNamespaces implements listAppsV1ControllerRevisionForAllNamespaces operation.
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ControllerRevisionForAllNamespaces`,
@@ -7849,6 +7964,7 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// ListAppsV1DaemonSetForAllNamespaces implements listAppsV1DaemonSetForAllNamespaces operation.
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DaemonSetForAllNamespaces`,
@@ -7886,6 +8002,7 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
+// ListAppsV1DeploymentForAllNamespaces implements listAppsV1DeploymentForAllNamespaces operation.
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DeploymentForAllNamespaces`,
@@ -7923,6 +8040,7 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
+// ListAppsV1ReplicaSetForAllNamespaces implements listAppsV1ReplicaSetForAllNamespaces operation.
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ReplicaSetForAllNamespaces`,
@@ -7960,6 +8078,7 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
+// ListAppsV1StatefulSetForAllNamespaces implements listAppsV1StatefulSetForAllNamespaces operation.
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1StatefulSetForAllNamespaces`,
@@ -7997,6 +8116,7 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
+// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`,
@@ -8034,6 +8154,7 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	return result, nil
 }
 
+// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`,
@@ -8071,6 +8192,7 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
+// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`,
@@ -8108,6 +8230,7 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
+// ListBatchV1CronJobForAllNamespaces implements listBatchV1CronJobForAllNamespaces operation.
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1CronJobForAllNamespaces`,
@@ -8145,6 +8268,7 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 	return result, nil
 }
 
+// ListBatchV1JobForAllNamespaces implements listBatchV1JobForAllNamespaces operation.
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1JobForAllNamespaces`,
@@ -8182,6 +8306,7 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 	return result, nil
 }
 
+// ListBatchV1beta1CronJobForAllNamespaces implements listBatchV1beta1CronJobForAllNamespaces operation.
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1beta1CronJobForAllNamespaces`,
@@ -8219,6 +8344,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
+// ListCertificatesV1CertificateSigningRequest implements listCertificatesV1CertificateSigningRequest operation.
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCertificatesV1CertificateSigningRequest`,
@@ -8331,6 +8457,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	return result, nil
 }
 
+// ListCoordinationV1LeaseForAllNamespaces implements listCoordinationV1LeaseForAllNamespaces operation.
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoordinationV1LeaseForAllNamespaces`,
@@ -8368,6 +8495,7 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
+// ListCoreV1ComponentStatus implements listCoreV1ComponentStatus operation.
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ComponentStatus`,
@@ -8405,6 +8533,7 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 	return result, nil
 }
 
+// ListCoreV1ConfigMapForAllNamespaces implements listCoreV1ConfigMapForAllNamespaces operation.
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ConfigMapForAllNamespaces`,
@@ -8442,6 +8571,7 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
+// ListCoreV1EndpointsForAllNamespaces implements listCoreV1EndpointsForAllNamespaces operation.
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EndpointsForAllNamespaces`,
@@ -8479,6 +8609,7 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
+// ListCoreV1EventForAllNamespaces implements listCoreV1EventForAllNamespaces operation.
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EventForAllNamespaces`,
@@ -8516,6 +8647,7 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 	return result, nil
 }
 
+// ListCoreV1LimitRangeForAllNamespaces implements listCoreV1LimitRangeForAllNamespaces operation.
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1LimitRangeForAllNamespaces`,
@@ -8553,6 +8685,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
+// ListCoreV1Namespace implements listCoreV1Namespace operation.
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Namespace`,
@@ -8665,6 +8798,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	return result, nil
 }
 
+// ListCoreV1Node implements listCoreV1Node operation.
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Node`,
@@ -8777,6 +8911,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	return result, nil
 }
 
+// ListCoreV1PersistentVolume implements listCoreV1PersistentVolume operation.
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolume`,
@@ -8889,6 +9024,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	return result, nil
 }
 
+// ListCoreV1PersistentVolumeClaimForAllNamespaces implements listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolumeClaimForAllNamespaces`,
@@ -8926,6 +9062,7 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
+// ListCoreV1PodForAllNamespaces implements listCoreV1PodForAllNamespaces operation.
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodForAllNamespaces`,
@@ -8963,6 +9100,7 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 	return result, nil
 }
 
+// ListCoreV1PodTemplateForAllNamespaces implements listCoreV1PodTemplateForAllNamespaces operation.
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodTemplateForAllNamespaces`,
@@ -9000,6 +9138,7 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
+// ListCoreV1ReplicationControllerForAllNamespaces implements listCoreV1ReplicationControllerForAllNamespaces operation.
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ReplicationControllerForAllNamespaces`,
@@ -9037,6 +9176,7 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
+// ListCoreV1ResourceQuotaForAllNamespaces implements listCoreV1ResourceQuotaForAllNamespaces operation.
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ResourceQuotaForAllNamespaces`,
@@ -9074,6 +9214,7 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
+// ListCoreV1SecretForAllNamespaces implements listCoreV1SecretForAllNamespaces operation.
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1SecretForAllNamespaces`,
@@ -9111,6 +9252,7 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 	return result, nil
 }
 
+// ListCoreV1ServiceAccountForAllNamespaces implements listCoreV1ServiceAccountForAllNamespaces operation.
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceAccountForAllNamespaces`,
@@ -9148,6 +9290,7 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
+// ListCoreV1ServiceForAllNamespaces implements listCoreV1ServiceForAllNamespaces operation.
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceForAllNamespaces`,
@@ -9185,6 +9328,7 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 	return result, nil
 }
 
+// ListDiscoveryV1EndpointSliceForAllNamespaces implements listDiscoveryV1EndpointSliceForAllNamespaces operation.
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1EndpointSliceForAllNamespaces`,
@@ -9222,6 +9366,7 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// ListDiscoveryV1beta1EndpointSliceForAllNamespaces implements listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1beta1EndpointSliceForAllNamespaces`,
@@ -9259,6 +9404,7 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	return result, nil
 }
 
+// ListEventsV1EventForAllNamespaces implements listEventsV1EventForAllNamespaces operation.
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1EventForAllNamespaces`,
@@ -9296,6 +9442,7 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 	return result, nil
 }
 
+// ListEventsV1beta1EventForAllNamespaces implements listEventsV1beta1EventForAllNamespaces operation.
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1beta1EventForAllNamespaces`,
@@ -9333,6 +9480,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
+// ListFlowcontrolApiserverV1beta1FlowSchema implements listFlowcontrolApiserverV1beta1FlowSchema operation.
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1FlowSchema`,
@@ -9445,6 +9593,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
+// ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
@@ -9557,6 +9706,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
+// ListFlowcontrolApiserverV1beta2FlowSchema implements listFlowcontrolApiserverV1beta2FlowSchema operation.
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2FlowSchema`,
@@ -9669,6 +9819,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
+// ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
@@ -9781,6 +9932,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
+// ListInternalApiserverV1alpha1StorageVersion implements listInternalApiserverV1alpha1StorageVersion operation.
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListInternalApiserverV1alpha1StorageVersion`,
@@ -9893,6 +10045,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	return result, nil
 }
 
+// ListNetworkingV1IngressClass implements listNetworkingV1IngressClass operation.
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressClass`,
@@ -10005,6 +10158,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	return result, nil
 }
 
+// ListNetworkingV1IngressForAllNamespaces implements listNetworkingV1IngressForAllNamespaces operation.
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressForAllNamespaces`,
@@ -10042,6 +10196,7 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
+// ListNetworkingV1NetworkPolicyForAllNamespaces implements listNetworkingV1NetworkPolicyForAllNamespaces operation.
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1NetworkPolicyForAllNamespaces`,
@@ -10079,6 +10234,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
+// ListNodeV1RuntimeClass implements listNodeV1RuntimeClass operation.
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1RuntimeClass`,
@@ -10191,6 +10347,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	return result, nil
 }
 
+// ListNodeV1alpha1RuntimeClass implements listNodeV1alpha1RuntimeClass operation.
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1alpha1RuntimeClass`,
@@ -10303,6 +10460,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	return result, nil
 }
 
+// ListNodeV1beta1RuntimeClass implements listNodeV1beta1RuntimeClass operation.
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1beta1RuntimeClass`,
@@ -10415,6 +10573,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	return result, nil
 }
 
+// ListPolicyV1PodDisruptionBudgetForAllNamespaces implements listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1PodDisruptionBudgetForAllNamespaces`,
@@ -10452,6 +10611,7 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
+// ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces implements listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces`,
@@ -10489,6 +10649,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	return result, nil
 }
 
+// ListPolicyV1beta1PodSecurityPolicy implements listPolicyV1beta1PodSecurityPolicy operation.
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodSecurityPolicy`,
@@ -10601,6 +10762,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	return result, nil
 }
 
+// ListRbacAuthorizationV1ClusterRole implements listRbacAuthorizationV1ClusterRole operation.
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRole`,
@@ -10713,6 +10875,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	return result, nil
 }
 
+// ListRbacAuthorizationV1ClusterRoleBinding implements listRbacAuthorizationV1ClusterRoleBinding operation.
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRoleBinding`,
@@ -10825,6 +10988,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	return result, nil
 }
 
+// ListRbacAuthorizationV1RoleBindingForAllNamespaces implements listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleBindingForAllNamespaces`,
@@ -10862,6 +11026,7 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	return result, nil
 }
 
+// ListRbacAuthorizationV1RoleForAllNamespaces implements listRbacAuthorizationV1RoleForAllNamespaces operation.
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleForAllNamespaces`,
@@ -10899,6 +11064,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
+// ListSchedulingV1PriorityClass implements listSchedulingV1PriorityClass operation.
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListSchedulingV1PriorityClass`,
@@ -11011,6 +11177,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	return result, nil
 }
 
+// ListStorageV1CSIDriver implements listStorageV1CSIDriver operation.
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSIDriver`,
@@ -11123,6 +11290,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	return result, nil
 }
 
+// ListStorageV1CSINode implements listStorageV1CSINode operation.
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSINode`,
@@ -11235,6 +11403,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	return result, nil
 }
 
+// ListStorageV1StorageClass implements listStorageV1StorageClass operation.
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1StorageClass`,
@@ -11347,6 +11516,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	return result, nil
 }
 
+// ListStorageV1VolumeAttachment implements listStorageV1VolumeAttachment operation.
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1VolumeAttachment`,
@@ -11459,6 +11629,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	return result, nil
 }
 
+// ListStorageV1alpha1CSIStorageCapacityForAllNamespaces implements listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1alpha1CSIStorageCapacityForAllNamespaces`,
@@ -11496,6 +11667,7 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	return result, nil
 }
 
+// ListStorageV1beta1CSIStorageCapacityForAllNamespaces implements listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1beta1CSIStorageCapacityForAllNamespaces`,
@@ -11533,6 +11705,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	return result, nil
 }
 
+// LogFileListHandler implements logFileListHandler operation.
 func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogFileListHandler`,
@@ -11570,6 +11743,7 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	return result, nil
 }
 
+// WatchAdmissionregistrationV1MutatingWebhookConfigurationList implements watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1MutatingWebhookConfigurationList`,
@@ -11607,6 +11781,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	return result, nil
 }
 
+// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList implements watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1ValidatingWebhookConfigurationList`,
@@ -11644,6 +11819,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	return result, nil
 }
 
+// WatchApiextensionsV1CustomResourceDefinitionList implements watchApiextensionsV1CustomResourceDefinitionList operation.
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiextensionsV1CustomResourceDefinitionList`,
@@ -11681,6 +11857,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	return result, nil
 }
 
+// WatchApiregistrationV1APIServiceList implements watchApiregistrationV1APIServiceList operation.
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiregistrationV1APIServiceList`,
@@ -11718,6 +11895,7 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 	return result, nil
 }
 
+// WatchAppsV1ControllerRevisionListForAllNamespaces implements watchAppsV1ControllerRevisionListForAllNamespaces operation.
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ControllerRevisionListForAllNamespaces`,
@@ -11755,6 +11933,7 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
+// WatchAppsV1DaemonSetListForAllNamespaces implements watchAppsV1DaemonSetListForAllNamespaces operation.
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DaemonSetListForAllNamespaces`,
@@ -11792,6 +11971,7 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
+// WatchAppsV1DeploymentListForAllNamespaces implements watchAppsV1DeploymentListForAllNamespaces operation.
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DeploymentListForAllNamespaces`,
@@ -11829,6 +12009,7 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
+// WatchAppsV1ReplicaSetListForAllNamespaces implements watchAppsV1ReplicaSetListForAllNamespaces operation.
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ReplicaSetListForAllNamespaces`,
@@ -11866,6 +12047,7 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
+// WatchAppsV1StatefulSetListForAllNamespaces implements watchAppsV1StatefulSetListForAllNamespaces operation.
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1StatefulSetListForAllNamespaces`,
@@ -11903,6 +12085,7 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 	return result, nil
 }
 
+// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`,
@@ -11940,6 +12123,7 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	return result, nil
 }
 
+// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`,
@@ -11977,6 +12161,7 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
+// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`,
@@ -12014,6 +12199,7 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
+// WatchBatchV1CronJobListForAllNamespaces implements watchBatchV1CronJobListForAllNamespaces operation.
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1CronJobListForAllNamespaces`,
@@ -12051,6 +12237,7 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
+// WatchBatchV1JobListForAllNamespaces implements watchBatchV1JobListForAllNamespaces operation.
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1JobListForAllNamespaces`,
@@ -12088,6 +12275,7 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 	return result, nil
 }
 
+// WatchBatchV1beta1CronJobListForAllNamespaces implements watchBatchV1beta1CronJobListForAllNamespaces operation.
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1beta1CronJobListForAllNamespaces`,
@@ -12125,6 +12313,7 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// WatchCertificatesV1CertificateSigningRequestList implements watchCertificatesV1CertificateSigningRequestList operation.
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCertificatesV1CertificateSigningRequestList`,
@@ -12162,6 +12351,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	return result, nil
 }
 
+// WatchCoordinationV1LeaseListForAllNamespaces implements watchCoordinationV1LeaseListForAllNamespaces operation.
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoordinationV1LeaseListForAllNamespaces`,
@@ -12199,6 +12389,7 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// WatchCoreV1ConfigMapListForAllNamespaces implements watchCoreV1ConfigMapListForAllNamespaces operation.
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ConfigMapListForAllNamespaces`,
@@ -12236,6 +12427,7 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
+// WatchCoreV1EndpointsListForAllNamespaces implements watchCoreV1EndpointsListForAllNamespaces operation.
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EndpointsListForAllNamespaces`,
@@ -12273,6 +12465,7 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
+// WatchCoreV1EventListForAllNamespaces implements watchCoreV1EventListForAllNamespaces operation.
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EventListForAllNamespaces`,
@@ -12310,6 +12503,7 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
+// WatchCoreV1LimitRangeListForAllNamespaces implements watchCoreV1LimitRangeListForAllNamespaces operation.
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1LimitRangeListForAllNamespaces`,
@@ -12347,6 +12541,7 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
+// WatchCoreV1NamespaceList implements watchCoreV1NamespaceList operation.
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1NamespaceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespaceList`,
@@ -12384,6 +12579,7 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 	return result, nil
 }
 
+// WatchCoreV1NodeList implements watchCoreV1NodeList operation.
 func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NodeList`,
@@ -12421,6 +12617,7 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 	return result, nil
 }
 
+// WatchCoreV1PersistentVolumeClaimListForAllNamespaces implements watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeClaimListForAllNamespaces`,
@@ -12458,6 +12655,7 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	return result, nil
 }
 
+// WatchCoreV1PersistentVolumeList implements watchCoreV1PersistentVolumeList operation.
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeList`,
@@ -12495,6 +12693,7 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 	return result, nil
 }
 
+// WatchCoreV1PodListForAllNamespaces implements watchCoreV1PodListForAllNamespaces operation.
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodListForAllNamespaces`,
@@ -12532,6 +12731,7 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 	return result, nil
 }
 
+// WatchCoreV1PodTemplateListForAllNamespaces implements watchCoreV1PodTemplateListForAllNamespaces operation.
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodTemplateListForAllNamespaces`,
@@ -12569,6 +12769,7 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 	return result, nil
 }
 
+// WatchCoreV1ReplicationControllerListForAllNamespaces implements watchCoreV1ReplicationControllerListForAllNamespaces operation.
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ReplicationControllerListForAllNamespaces`,
@@ -12606,6 +12807,7 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	return result, nil
 }
 
+// WatchCoreV1ResourceQuotaListForAllNamespaces implements watchCoreV1ResourceQuotaListForAllNamespaces operation.
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ResourceQuotaListForAllNamespaces`,
@@ -12643,6 +12845,7 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// WatchCoreV1SecretListForAllNamespaces implements watchCoreV1SecretListForAllNamespaces operation.
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1SecretListForAllNamespaces`,
@@ -12680,6 +12883,7 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
+// WatchCoreV1ServiceAccountListForAllNamespaces implements watchCoreV1ServiceAccountListForAllNamespaces operation.
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceAccountListForAllNamespaces`,
@@ -12717,6 +12921,7 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
+// WatchCoreV1ServiceListForAllNamespaces implements watchCoreV1ServiceListForAllNamespaces operation.
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceListForAllNamespaces`,
@@ -12754,6 +12959,7 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
+// WatchDiscoveryV1EndpointSliceListForAllNamespaces implements watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1EndpointSliceListForAllNamespaces`,
@@ -12791,6 +12997,7 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
+// WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces implements watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces`,
@@ -12828,6 +13035,7 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	return result, nil
 }
 
+// WatchEventsV1EventListForAllNamespaces implements watchEventsV1EventListForAllNamespaces operation.
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1EventListForAllNamespaces`,
@@ -12865,6 +13073,7 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
+// WatchEventsV1beta1EventListForAllNamespaces implements watchEventsV1beta1EventListForAllNamespaces operation.
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1beta1EventListForAllNamespaces`,
@@ -12902,6 +13111,7 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1FlowSchemaList implements watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1FlowSchemaList`,
@@ -12939,6 +13149,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`,
@@ -12976,6 +13187,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	return result, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2FlowSchemaList implements watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2FlowSchemaList`,
@@ -13013,6 +13225,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`,
@@ -13050,6 +13263,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	return result, nil
 }
 
+// WatchInternalApiserverV1alpha1StorageVersionList implements watchInternalApiserverV1alpha1StorageVersionList operation.
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchInternalApiserverV1alpha1StorageVersionList`,
@@ -13087,6 +13301,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	return result, nil
 }
 
+// WatchNetworkingV1IngressClassList implements watchNetworkingV1IngressClassList operation.
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res WatchNetworkingV1IngressClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressClassList`,
@@ -13124,6 +13339,7 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 	return result, nil
 }
 
+// WatchNetworkingV1IngressListForAllNamespaces implements watchNetworkingV1IngressListForAllNamespaces operation.
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressListForAllNamespaces`,
@@ -13161,6 +13377,7 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
+// WatchNetworkingV1NetworkPolicyListForAllNamespaces implements watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NetworkPolicyListForAllNamespaces`,
@@ -13198,6 +13415,7 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	return result, nil
 }
 
+// WatchNodeV1RuntimeClassList implements watchNodeV1RuntimeClassList operation.
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNodeV1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1RuntimeClassList`,
@@ -13235,6 +13453,7 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 	return result, nil
 }
 
+// WatchNodeV1alpha1RuntimeClassList implements watchNodeV1alpha1RuntimeClassList operation.
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1alpha1RuntimeClassList`,
@@ -13272,6 +13491,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 	return result, nil
 }
 
+// WatchNodeV1beta1RuntimeClassList implements watchNodeV1beta1RuntimeClassList operation.
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1beta1RuntimeClassList`,
@@ -13309,6 +13529,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 	return result, nil
 }
 
+// WatchPolicyV1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1PodDisruptionBudgetListForAllNamespaces`,
@@ -13346,6 +13567,7 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	return result, nil
 }
 
+// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`,
@@ -13383,6 +13605,7 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	return result, nil
 }
 
+// WatchPolicyV1beta1PodSecurityPolicyList implements watchPolicyV1beta1PodSecurityPolicyList operation.
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodSecurityPolicyList`,
@@ -13420,6 +13643,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 	return result, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleBindingList implements watchRbacAuthorizationV1ClusterRoleBindingList operation.
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleBindingList`,
@@ -13457,6 +13681,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	return result, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleList implements watchRbacAuthorizationV1ClusterRoleList operation.
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleList`,
@@ -13494,6 +13719,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 	return result, nil
 }
 
+// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces implements watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleBindingListForAllNamespaces`,
@@ -13531,6 +13757,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	return result, nil
 }
 
+// WatchRbacAuthorizationV1RoleListForAllNamespaces implements watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleListForAllNamespaces`,
@@ -13568,6 +13795,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	return result, nil
 }
 
+// WatchSchedulingV1PriorityClassList implements watchSchedulingV1PriorityClassList operation.
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchSchedulingV1PriorityClassList`,
@@ -13605,6 +13833,7 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 	return result, nil
 }
 
+// WatchStorageV1CSIDriverList implements watchStorageV1CSIDriverList operation.
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStorageV1CSIDriverListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSIDriverList`,
@@ -13642,6 +13871,7 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 	return result, nil
 }
 
+// WatchStorageV1CSINodeList implements watchStorageV1CSINodeList operation.
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorageV1CSINodeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSINodeList`,
@@ -13679,6 +13909,7 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 	return result, nil
 }
 
+// WatchStorageV1StorageClassList implements watchStorageV1StorageClassList operation.
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchStorageV1StorageClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1StorageClassList`,
@@ -13716,6 +13947,7 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 	return result, nil
 }
 
+// WatchStorageV1VolumeAttachmentList implements watchStorageV1VolumeAttachmentList operation.
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1VolumeAttachmentList`,
@@ -13753,6 +13985,7 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 	return result, nil
 }
 
+// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces implements watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`,
@@ -13790,6 +14023,7 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	return result, nil
 }
 
+// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces implements watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces`,

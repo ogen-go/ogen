@@ -39,6 +39,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 }
 
 {{ range $op := $.Operations }}
+{{- if $op.Spec.OperationID }}
+// {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
+{{- end }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
     {{- if $op.Request }}{{/* Request validation */}}
         {{- if eq $op.Request.Type.Kind "interface" }}

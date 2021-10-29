@@ -94,6 +94,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+// CreateSnapshot implements createSnapshot operation.
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -148,6 +149,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	return result, nil
 }
 
+// CreateSyncAction implements createSyncAction operation.
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -202,6 +204,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	return result, nil
 }
 
+// DescribeBalloonConfig implements describeBalloonConfig operation.
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonConfig`,
@@ -239,6 +242,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	return result, nil
 }
 
+// DescribeBalloonStats implements describeBalloonStats operation.
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonStats`,
@@ -276,6 +280,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	return result, nil
 }
 
+// DescribeInstance implements describeInstance operation.
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeInstance`,
@@ -313,6 +318,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	return result, nil
 }
 
+// GetExportVmConfig implements getExportVmConfig operation.
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetExportVmConfig`,
@@ -350,6 +356,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	return result, nil
 }
 
+// GetMachineConfiguration implements getMachineConfiguration operation.
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMachineConfiguration`,
@@ -387,6 +394,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	return result, nil
 }
 
+// LoadSnapshot implements loadSnapshot operation.
 func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (res LoadSnapshotRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LoadSnapshot`,
@@ -600,6 +608,7 @@ func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRe
 	return result, nil
 }
 
+// PatchBalloon implements patchBalloon operation.
 func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res PatchBalloonRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloon`,
@@ -645,6 +654,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	return result, nil
 }
 
+// PatchBalloonStatsInterval implements patchBalloonStatsInterval operation.
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloonStatsInterval`,
@@ -690,6 +700,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	return result, nil
 }
 
+// PatchGuestDriveByID implements patchGuestDriveByID operation.
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -753,6 +764,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	return result, nil
 }
 
+// PatchGuestNetworkInterfaceByID implements patchGuestNetworkInterfaceByID operation.
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -816,6 +828,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	return result, nil
 }
 
+// PatchMachineConfiguration implements patchMachineConfiguration operation.
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -870,6 +883,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 	return result, nil
 }
 
+// PatchVm implements patchVm operation.
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -924,6 +938,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	return result, nil
 }
 
+// PutBalloon implements putBalloon operation.
 func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloonRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutBalloon`,
@@ -969,6 +984,7 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	return result, nil
 }
 
+// PutGuestBootSource implements putGuestBootSource operation.
 func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (res PutGuestBootSourceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestBootSource`,
@@ -1014,6 +1030,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	return result, nil
 }
 
+// PutGuestDriveByID implements putGuestDriveByID operation.
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1077,6 +1094,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	return result, nil
 }
 
+// PutGuestNetworkInterfaceByID implements putGuestNetworkInterfaceByID operation.
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1140,6 +1158,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	return result, nil
 }
 
+// PutGuestVsock implements putGuestVsock operation.
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1194,6 +1213,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	return result, nil
 }
 
+// PutLogger implements putLogger operation.
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1248,6 +1268,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	return result, nil
 }
 
+// PutMachineConfiguration implements putMachineConfiguration operation.
 func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -1302,6 +1323,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineCon
 	return result, nil
 }
 
+// PutMetrics implements putMetrics operation.
 func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetricsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMetrics`,

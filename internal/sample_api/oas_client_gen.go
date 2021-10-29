@@ -94,6 +94,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+// FoobarGet implements foobarGet operation.
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarGet`,
@@ -150,6 +151,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	return result, nil
 }
 
+// FoobarPost implements foobarPost operation.
 func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
@@ -240,6 +242,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 	return result, nil
 }
 
+// PetCreate implements petCreate operation.
 func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, err error) {
 	switch request := request.(type) {
 	case *Pet:
@@ -302,6 +305,7 @@ func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, 
 	return result, nil
 }
 
+// PetFriendsNamesByID implements petFriendsNamesByID operation.
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetFriendsNamesByID`,
@@ -348,6 +352,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	return result, nil
 }
 
+// PetGet implements petGet operation.
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGet`,
@@ -418,6 +423,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
+// PetGetByName implements petGetByName operation.
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGetByName`,
@@ -464,6 +470,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	return result, nil
 }
 
+// PetNameByID implements petNameByID operation.
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetNameByID`,
