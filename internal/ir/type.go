@@ -3,6 +3,7 @@ package ir
 import (
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -158,5 +159,20 @@ func (t *Type) Methods() []string {
 		result = append(result, m)
 	}
 	sort.Strings(result)
+	return result
+}
+
+func (t *Type) ListImplementations() []*Type {
+	if !t.Is(KindInterface) {
+		panic("unreachable")
+	}
+
+	result := make([]*Type, 0, len(t.Implementations))
+	for impl := range t.Implementations {
+		result = append(result, impl)
+	}
+	sort.SliceStable(result, func(i, j int) bool {
+		return strings.Compare(result[i].Name, result[j].Name) < 0
+	})
 	return result
 }
