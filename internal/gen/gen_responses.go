@@ -27,7 +27,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 	for _, code := range statusCodes {
 		var (
 			resp     = responses.StatusCode[code]
-			respName = pascal(name, http.StatusText(code))
+			respName = pascal(opName, http.StatusText(code))
 			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
 		r, err := g.responseToIR(respName, doc, resp)
