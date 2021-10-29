@@ -39,7 +39,38 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 }
 
 {{ range $op := $.Operations }}
-func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
+func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
+    {{- if $op.Request }}{{/* Request validation */}}
+        {{- if eq $op.Request.Type.Kind "interface" }}
+            switch request := request.(type) {
+            {{- range $type, $_ := $op.Request.Type.Implementations }}
+            case *{{ $type.Go }}:
+                {{- if $type.NeedValidation }}
+                    if verr := func() error {
+                        {{- template "validate" req_dec_elem $type }}
+                    }(); verr != nil {
+                        err = fmt.Errorf("validate: %w", verr)
+                        return
+                    }
+                {{- else }}
+                // Validation is not required for this type.
+                {{- end }}
+            {{- end }}
+            default:
+                err = fmt.Errorf("unexpected request type: %T", request)
+                return
+            }
+        {{- else }}
+            {{- if $op.Request.Type.NeedValidation }}
+                if verr := func() error {
+                    {{- template "validate" req_dec_elem $op.Request.Type }}
+                }(); verr != nil {
+                    err = fmt.Errorf("validate: %w", verr)
+                    return
+                }
+            {{- end }}
+        {{- end }}
+    {{- end }}{{/* Request validation */}}
     startTime := time.Now()
     ctx, span := c.cfg.Tracer.Start(ctx, `{{ $op.Name }}`,
         {{- if $op.Spec.OperationID }}
@@ -60,7 +91,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{
     c.requests.Add(ctx, 1)
 
     {{- if $op.Request }}
-    buf, contentType, err := encode{{ $op.Name }}Request(req, span)
+    buf, contentType, err := encode{{ $op.Name }}Request(request, span)
     if err != nil {
         return res, err
     }
