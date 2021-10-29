@@ -388,7 +388,7 @@ type Schema struct {
 
 	// XPropertiesOrder is slice of keys for Properties ordering.
 	// Keeps ordering after marshal-unmarshal only in ogen.
-	XPropertiesOrder []string `json:"x-properties-order"`
+	XPropertiesOrder []string `json:"x-properties-order,omitempty"`
 }
 
 func (s *Schema) UnmarshalJSON(data []byte) error {
