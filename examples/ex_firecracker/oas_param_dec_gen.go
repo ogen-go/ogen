@@ -76,7 +76,12 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -105,7 +110,12 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -134,7 +144,12 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -163,7 +178,12 @@ func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkI
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}

@@ -76,7 +76,12 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -105,7 +110,12 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -129,7 +139,12 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -158,7 +173,12 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -182,7 +202,12 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -206,7 +231,12 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -235,7 +265,12 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -259,7 +294,12 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -283,7 +323,12 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -311,7 +356,12 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -334,7 +384,12 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -362,7 +417,12 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -385,7 +445,12 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}

@@ -75,7 +75,12 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt64()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt64(rawParam)
 		if err != nil {
 			return err
 		}
@@ -103,7 +108,12 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt64()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt64(rawParam)
 		if err != nil {
 			return err
 		}
@@ -131,7 +141,12 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt64()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt64(rawParam)
 		if err != nil {
 			return err
 		}

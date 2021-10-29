@@ -75,7 +75,12 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt64()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt64(rawParam)
 		if err != nil {
 			return err
 		}
@@ -98,7 +103,12 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt32()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt32(rawParam)
 		if err != nil {
 			return err
 		}
@@ -127,7 +137,12 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}
@@ -155,7 +170,12 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			Explode: true,
 		})
 
-		v, err := d.DecodeInt64()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt64(rawParam)
 		if err != nil {
 			return err
 		}
@@ -242,7 +262,12 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeString()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToString(rawParam)
 		if err != nil {
 			return err
 		}
@@ -271,7 +296,12 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 			Explode: false,
 		})
 
-		v, err := d.DecodeInt()
+		rawParam, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		v, err := conv.ToInt(rawParam)
 		if err != nil {
 			return err
 		}

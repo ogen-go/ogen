@@ -120,7 +120,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.BookID)
+		u.Path += e.EncodeString(conv.IntToString(params.BookID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -166,7 +166,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.MediaID)
+		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/cover."
 	{
@@ -176,7 +176,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(params.Format)
+		u.Path += e.EncodeString(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -222,7 +222,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.MediaID)
+		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/"
 	{
@@ -232,7 +232,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.Page)
+		u.Path += e.EncodeString(conv.IntToString(params.Page))
 	}
 	u.Path += "."
 	{
@@ -242,7 +242,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(params.Format)
+		u.Path += e.EncodeString(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -288,7 +288,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.MediaID)
+		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/"
 	{
@@ -298,7 +298,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeInt(params.Page)
+		u.Path += e.EncodeString(conv.IntToString(params.Page))
 	}
 	u.Path += "t."
 	{
@@ -308,7 +308,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(params.Format)
+		u.Path += e.EncodeString(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -355,9 +355,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		v := params.Query
-		param := e.EncodeString(v)
-		q.Set("query", param)
+		q.Set("query", e.EncodeString(conv.StringToString(params.Query)))
 	}
 	{
 		// Encode "page" parameter.
@@ -365,9 +363,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		v := params.Page
-		param := e.EncodeInt(v)
-		q.Set("page", param)
+		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -415,9 +411,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		v := params.TagID
-		param := e.EncodeInt(v)
-		q.Set("tag_id", param)
+		q.Set("tag_id", e.EncodeString(conv.IntToString(params.TagID)))
 	}
 	{
 		// Encode "page" parameter.
@@ -425,9 +419,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		v := params.Page
-		param := e.EncodeInt(v)
-		q.Set("page", param)
+		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
