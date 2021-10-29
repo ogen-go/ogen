@@ -13,7 +13,11 @@ u.Path += "{{ $part.Raw }}"
         Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
-    u.Path += e.Encode{{ $param.Type.EncodeFn }}(params.{{ $param.Name }})
+    {{- if eq $param.Type.Kind "array" }}
+    u.Path += e.EncodeStrings(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
+    {{- else }}
+    u.Path += e.EncodeString(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
+    {{- end }}
 }
 {{- end }}
 {{- end }}
@@ -30,12 +34,10 @@ q := u.Query()
         Style:uri.QueryStyle{{ pascalMP $param.Spec.Style }},
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
-    v := params.{{ $param.Name }}
-		param := e.Encode{{ $param.Type.EncodeFn }}(v)
     {{- if eq $param.Type.Kind "array" }}
-    q["{{ $param.Spec.Name }}"] = param
+    q["{{ $param.Spec.Name }}"] = e.EncodeStrings(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
     {{- else }}
-    q.Set("{{ $param.Spec.Name }}", param)
+    q.Set("{{ $param.Spec.Name }}", e.EncodeString(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})))
     {{- end }}
 }
 {{- end }}{{/* Range over params */}}

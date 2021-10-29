@@ -130,7 +130,7 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeStringArray()
+			}).DecodeStrings()
 
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))

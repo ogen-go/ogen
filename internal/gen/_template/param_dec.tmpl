@@ -112,7 +112,16 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 
 {{ define "decode_param" }}
 	{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-	v, err := d.Decode{{ .EncodeFn }}()
+	{{- if eq .Kind "array" }}
+	rawParam, err := d.DecodeStrings()
+	{{- else }}
+	rawParam, err := d.DecodeString()
+	{{- end }}
+	if err != nil {
+		return err
+	}
+
+	v, err := conv.{{ .FromString }}(rawParam)
 	if err != nil {
 		return err
 	}

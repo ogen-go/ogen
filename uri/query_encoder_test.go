@@ -87,7 +87,7 @@ func TestQueryEncoder(t *testing.T) {
 			result := NewQueryEncoder(QueryEncoderConfig{
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeStringArray(test.Input)
+			}).EncodeStrings(test.Input)
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})
