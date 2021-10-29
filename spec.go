@@ -420,7 +420,7 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 		MaxProperties    *uint64           `json:"maxProperties,omitempty"`
 		MinProperties    *uint64           `json:"minProperties,omitempty"`
 		Default          json.RawMessage   `json:"default,omitempty"`
-		XPropertiesOrder []string          `json:"x-properties-order"`
+		XPropertiesOrder []string          `json:"x-properties-order,omitempty"`
 	}{}
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
