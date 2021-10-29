@@ -407,7 +407,7 @@ type Server interface {
 	// ListStorageV1beta1CSIStorageCapacityForAllNamespaces implements listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 	ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, error)
 	// LogFileListHandler implements logFileListHandler operation.
-	LogFileListHandler(ctx context.Context) (LogFileListHandlerResUnauthorized, error)
+	LogFileListHandler(ctx context.Context) (LogFileListHandlerUnauthorized, error)
 	// WatchAdmissionregistrationV1MutatingWebhookConfigurationList implements watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 	WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, error)
 	// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList implements watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.

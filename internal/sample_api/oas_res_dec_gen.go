@@ -90,7 +90,7 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &FoobarGetResNotFound{}, nil
+		return &FoobarGetNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -126,7 +126,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &FoobarPostResNotFound{}, nil
+		return &FoobarPostNotFound{}, nil
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":

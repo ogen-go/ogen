@@ -75,37 +75,37 @@ type Book struct {
 
 func (*Book) getBookRes() {}
 
-// GetBookResForbidden is response for GetBook operation.
-type GetBookResForbidden struct{}
+// GetBookForbidden is response for GetBook operation.
+type GetBookForbidden struct{}
 
-func (*GetBookResForbidden) getBookRes() {}
+func (*GetBookForbidden) getBookRes() {}
+
+// GetPageCoverImageForbidden is response for GetPageCoverImage operation.
+type GetPageCoverImageForbidden struct{}
+
+func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
 
 type GetPageCoverImageOKImage string
 
 func (*GetPageCoverImageOKImage) getPageCoverImageRes() {}
 
-// GetPageCoverImageResForbidden is response for GetPageCoverImage operation.
-type GetPageCoverImageResForbidden struct{}
+// GetPageImageForbidden is response for GetPageImage operation.
+type GetPageImageForbidden struct{}
 
-func (*GetPageCoverImageResForbidden) getPageCoverImageRes() {}
+func (*GetPageImageForbidden) getPageImageRes() {}
 
 type GetPageImageOKImage string
 
 func (*GetPageImageOKImage) getPageImageRes() {}
 
-// GetPageImageResForbidden is response for GetPageImage operation.
-type GetPageImageResForbidden struct{}
+// GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
+type GetPageThumbnailImageForbidden struct{}
 
-func (*GetPageImageResForbidden) getPageImageRes() {}
+func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
 
 type GetPageThumbnailImageOKImage string
 
 func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
-
-// GetPageThumbnailImageResForbidden is response for GetPageThumbnailImage operation.
-type GetPageThumbnailImageResForbidden struct{}
-
-func (*GetPageThumbnailImageResForbidden) getPageThumbnailImageRes() {}
 
 // Ref: #/components/schemas/Image
 type Image struct {
@@ -349,23 +349,23 @@ func (o OptTitle) Get() (v Title, ok bool) {
 	return o.Value, true
 }
 
+// SearchByTagIDForbidden is response for SearchByTagID operation.
+type SearchByTagIDForbidden struct{}
+
+func (*SearchByTagIDForbidden) searchByTagIDRes() {}
+
 type SearchByTagIDOKApplicationJSON []SearchResponse
 
 func (*SearchByTagIDOKApplicationJSON) searchByTagIDRes() {}
 
-// SearchByTagIDResForbidden is response for SearchByTagID operation.
-type SearchByTagIDResForbidden struct{}
+// SearchForbidden is response for Search operation.
+type SearchForbidden struct{}
 
-func (*SearchByTagIDResForbidden) searchByTagIDRes() {}
+func (*SearchForbidden) searchRes() {}
 
 type SearchOKApplicationJSON []SearchResponse
 
 func (*SearchOKApplicationJSON) searchRes() {}
-
-// SearchResForbidden is response for Search operation.
-type SearchResForbidden struct{}
-
-func (*SearchResForbidden) searchRes() {}
 
 // Ref: #/components/schemas/SearchResponse
 type SearchResponse struct {

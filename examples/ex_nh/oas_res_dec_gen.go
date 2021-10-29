@@ -90,7 +90,7 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &GetBookResForbidden{}, nil
+		return &GetBookForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -112,7 +112,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &GetPageCoverImageResForbidden{}, nil
+		return &GetPageCoverImageForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -134,7 +134,7 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &GetPageImageResForbidden{}, nil
+		return &GetPageImageForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -156,7 +156,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &GetPageThumbnailImageResForbidden{}, nil
+		return &GetPageThumbnailImageForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -192,7 +192,7 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &SearchResForbidden{}, nil
+		return &SearchForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -228,7 +228,7 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &SearchByTagIDResForbidden{}, nil
+		return &SearchByTagIDForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}

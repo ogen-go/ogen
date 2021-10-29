@@ -144,7 +144,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized{}, nil
+		return &CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -234,7 +234,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized{}, nil
+		return &CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -324,7 +324,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateApiextensionsV1CustomResourceDefinitionResUnauthorized{}, nil
+		return &CreateApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -414,7 +414,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateApiregistrationV1APIServiceResUnauthorized{}, nil
+		return &CreateApiregistrationV1APIServiceUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -504,7 +504,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAuthenticationV1TokenReviewResUnauthorized{}, nil
+		return &CreateAuthenticationV1TokenReviewUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -594,7 +594,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized{}, nil
+		return &CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -684,7 +684,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized{}, nil
+		return &CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -774,7 +774,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateAuthorizationV1SubjectAccessReviewResUnauthorized{}, nil
+		return &CreateAuthorizationV1SubjectAccessReviewUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -864,7 +864,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateCertificatesV1CertificateSigningRequestResUnauthorized{}, nil
+		return &CreateCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -954,7 +954,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateCoreV1NamespaceResUnauthorized{}, nil
+		return &CreateCoreV1NamespaceUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1044,7 +1044,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateCoreV1NodeResUnauthorized{}, nil
+		return &CreateCoreV1NodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1134,7 +1134,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateCoreV1PersistentVolumeResUnauthorized{}, nil
+		return &CreateCoreV1PersistentVolumeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1224,7 +1224,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized{}, nil
+		return &CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1314,7 +1314,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized{}, nil
+		return &CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1404,7 +1404,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized{}, nil
+		return &CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1494,7 +1494,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized{}, nil
+		return &CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1584,7 +1584,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateInternalApiserverV1alpha1StorageVersionResUnauthorized{}, nil
+		return &CreateInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1674,7 +1674,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateNetworkingV1IngressClassResUnauthorized{}, nil
+		return &CreateNetworkingV1IngressClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1764,7 +1764,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateNodeV1RuntimeClassResUnauthorized{}, nil
+		return &CreateNodeV1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1854,7 +1854,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateNodeV1alpha1RuntimeClassResUnauthorized{}, nil
+		return &CreateNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1944,7 +1944,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateNodeV1beta1RuntimeClassResUnauthorized{}, nil
+		return &CreateNodeV1beta1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2034,7 +2034,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreatePolicyV1beta1PodSecurityPolicyResUnauthorized{}, nil
+		return &CreatePolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2124,7 +2124,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateRbacAuthorizationV1ClusterRoleResUnauthorized{}, nil
+		return &CreateRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2214,7 +2214,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized{}, nil
+		return &CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2304,7 +2304,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateSchedulingV1PriorityClassResUnauthorized{}, nil
+		return &CreateSchedulingV1PriorityClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2394,7 +2394,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateStorageV1CSIDriverResUnauthorized{}, nil
+		return &CreateStorageV1CSIDriverUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2484,7 +2484,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateStorageV1CSINodeResUnauthorized{}, nil
+		return &CreateStorageV1CSINodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2574,7 +2574,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateStorageV1StorageClassResUnauthorized{}, nil
+		return &CreateStorageV1StorageClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2664,7 +2664,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &CreateStorageV1VolumeAttachmentResUnauthorized{}, nil
+		return &CreateStorageV1VolumeAttachmentUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2704,7 +2704,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized{}, nil
+		return &DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2744,7 +2744,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized{}, nil
+		return &DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2784,7 +2784,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized{}, nil
+		return &DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2824,7 +2824,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteApiregistrationV1CollectionAPIServiceResUnauthorized{}, nil
+		return &DeleteApiregistrationV1CollectionAPIServiceUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2864,7 +2864,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized{}, nil
+		return &DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2904,7 +2904,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteCoreV1CollectionNodeResUnauthorized{}, nil
+		return &DeleteCoreV1CollectionNodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2944,7 +2944,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteCoreV1CollectionPersistentVolumeResUnauthorized{}, nil
+		return &DeleteCoreV1CollectionPersistentVolumeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2984,7 +2984,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized{}, nil
+		return &DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3024,7 +3024,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized{}, nil
+		return &DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3064,7 +3064,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized{}, nil
+		return &DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3104,7 +3104,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized{}, nil
+		return &DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3144,7 +3144,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized{}, nil
+		return &DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3184,7 +3184,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteNetworkingV1CollectionIngressClassResUnauthorized{}, nil
+		return &DeleteNetworkingV1CollectionIngressClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3224,7 +3224,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteNodeV1CollectionRuntimeClassResUnauthorized{}, nil
+		return &DeleteNodeV1CollectionRuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3264,7 +3264,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized{}, nil
+		return &DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3304,7 +3304,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized{}, nil
+		return &DeleteNodeV1beta1CollectionRuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3344,7 +3344,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized{}, nil
+		return &DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3384,7 +3384,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized{}, nil
+		return &DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3424,7 +3424,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized{}, nil
+		return &DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3464,7 +3464,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteSchedulingV1CollectionPriorityClassResUnauthorized{}, nil
+		return &DeleteSchedulingV1CollectionPriorityClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3504,7 +3504,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteStorageV1CollectionCSIDriverResUnauthorized{}, nil
+		return &DeleteStorageV1CollectionCSIDriverUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3544,7 +3544,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteStorageV1CollectionCSINodeResUnauthorized{}, nil
+		return &DeleteStorageV1CollectionCSINodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3584,7 +3584,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteStorageV1CollectionStorageClassResUnauthorized{}, nil
+		return &DeleteStorageV1CollectionStorageClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3624,7 +3624,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &DeleteStorageV1CollectionVolumeAttachmentResUnauthorized{}, nil
+		return &DeleteStorageV1CollectionVolumeAttachmentUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3664,7 +3664,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAPIVersionsResUnauthorized{}, nil
+		return &GetAPIVersionsUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3704,7 +3704,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAdmissionregistrationAPIGroupResUnauthorized{}, nil
+		return &GetAdmissionregistrationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3744,7 +3744,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAdmissionregistrationV1APIResourcesResUnauthorized{}, nil
+		return &GetAdmissionregistrationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3784,7 +3784,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetApiextensionsAPIGroupResUnauthorized{}, nil
+		return &GetApiextensionsAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3824,7 +3824,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetApiextensionsV1APIResourcesResUnauthorized{}, nil
+		return &GetApiextensionsV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3864,7 +3864,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetApiregistrationAPIGroupResUnauthorized{}, nil
+		return &GetApiregistrationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3904,7 +3904,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetApiregistrationV1APIResourcesResUnauthorized{}, nil
+		return &GetApiregistrationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3944,7 +3944,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAppsAPIGroupResUnauthorized{}, nil
+		return &GetAppsAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3984,7 +3984,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAppsV1APIResourcesResUnauthorized{}, nil
+		return &GetAppsV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4024,7 +4024,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAuthenticationAPIGroupResUnauthorized{}, nil
+		return &GetAuthenticationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4064,7 +4064,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAuthenticationV1APIResourcesResUnauthorized{}, nil
+		return &GetAuthenticationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4104,7 +4104,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAuthorizationAPIGroupResUnauthorized{}, nil
+		return &GetAuthorizationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4144,7 +4144,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAuthorizationV1APIResourcesResUnauthorized{}, nil
+		return &GetAuthorizationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4184,7 +4184,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAutoscalingAPIGroupResUnauthorized{}, nil
+		return &GetAutoscalingAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4224,7 +4224,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAutoscalingV1APIResourcesResUnauthorized{}, nil
+		return &GetAutoscalingV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4264,7 +4264,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAutoscalingV2beta1APIResourcesResUnauthorized{}, nil
+		return &GetAutoscalingV2beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4304,7 +4304,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetAutoscalingV2beta2APIResourcesResUnauthorized{}, nil
+		return &GetAutoscalingV2beta2APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4344,7 +4344,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetBatchAPIGroupResUnauthorized{}, nil
+		return &GetBatchAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4384,7 +4384,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetBatchV1APIResourcesResUnauthorized{}, nil
+		return &GetBatchV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4424,7 +4424,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetBatchV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetBatchV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4464,7 +4464,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCertificatesAPIGroupResUnauthorized{}, nil
+		return &GetCertificatesAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4504,7 +4504,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCertificatesV1APIResourcesResUnauthorized{}, nil
+		return &GetCertificatesV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4540,7 +4540,7 @@ func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res Get
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCodeVersionResUnauthorized{}, nil
+		return &GetCodeVersionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4580,7 +4580,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCoordinationAPIGroupResUnauthorized{}, nil
+		return &GetCoordinationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4620,7 +4620,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCoordinationV1APIResourcesResUnauthorized{}, nil
+		return &GetCoordinationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4660,7 +4660,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCoreAPIVersionsResUnauthorized{}, nil
+		return &GetCoreAPIVersionsUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4700,7 +4700,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetCoreV1APIResourcesResUnauthorized{}, nil
+		return &GetCoreV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4740,7 +4740,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetDiscoveryAPIGroupResUnauthorized{}, nil
+		return &GetDiscoveryAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4780,7 +4780,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetDiscoveryV1APIResourcesResUnauthorized{}, nil
+		return &GetDiscoveryV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4820,7 +4820,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetDiscoveryV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetDiscoveryV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4860,7 +4860,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetEventsAPIGroupResUnauthorized{}, nil
+		return &GetEventsAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4900,7 +4900,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetEventsV1APIResourcesResUnauthorized{}, nil
+		return &GetEventsV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4940,7 +4940,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetEventsV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetEventsV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4980,7 +4980,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetFlowcontrolApiserverAPIGroupResUnauthorized{}, nil
+		return &GetFlowcontrolApiserverAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5020,7 +5020,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5060,7 +5060,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized{}, nil
+		return &GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5100,7 +5100,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetInternalApiserverAPIGroupResUnauthorized{}, nil
+		return &GetInternalApiserverAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5140,7 +5140,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetInternalApiserverV1alpha1APIResourcesResUnauthorized{}, nil
+		return &GetInternalApiserverV1alpha1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5180,7 +5180,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNetworkingAPIGroupResUnauthorized{}, nil
+		return &GetNetworkingAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5220,7 +5220,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNetworkingV1APIResourcesResUnauthorized{}, nil
+		return &GetNetworkingV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5260,7 +5260,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNodeAPIGroupResUnauthorized{}, nil
+		return &GetNodeAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5300,7 +5300,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNodeV1APIResourcesResUnauthorized{}, nil
+		return &GetNodeV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5340,7 +5340,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNodeV1alpha1APIResourcesResUnauthorized{}, nil
+		return &GetNodeV1alpha1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5380,7 +5380,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetNodeV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetNodeV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5420,7 +5420,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetPolicyAPIGroupResUnauthorized{}, nil
+		return &GetPolicyAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5460,7 +5460,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetPolicyV1APIResourcesResUnauthorized{}, nil
+		return &GetPolicyV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5500,7 +5500,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetPolicyV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetPolicyV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5540,7 +5540,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetRbacAuthorizationAPIGroupResUnauthorized{}, nil
+		return &GetRbacAuthorizationAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5580,7 +5580,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetRbacAuthorizationV1APIResourcesResUnauthorized{}, nil
+		return &GetRbacAuthorizationV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5620,7 +5620,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetSchedulingAPIGroupResUnauthorized{}, nil
+		return &GetSchedulingAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5660,7 +5660,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetSchedulingV1APIResourcesResUnauthorized{}, nil
+		return &GetSchedulingV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5696,7 +5696,7 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetServiceAccountIssuerOpenIDConfigurationResUnauthorized{}, nil
+		return &GetServiceAccountIssuerOpenIDConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5718,7 +5718,7 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetServiceAccountIssuerOpenIDKeysetResUnauthorized{}, nil
+		return &GetServiceAccountIssuerOpenIDKeysetUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5758,7 +5758,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetStorageAPIGroupResUnauthorized{}, nil
+		return &GetStorageAPIGroupUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5798,7 +5798,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetStorageV1APIResourcesResUnauthorized{}, nil
+		return &GetStorageV1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5838,7 +5838,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetStorageV1alpha1APIResourcesResUnauthorized{}, nil
+		return &GetStorageV1alpha1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5878,7 +5878,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &GetStorageV1beta1APIResourcesResUnauthorized{}, nil
+		return &GetStorageV1beta1APIResourcesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5922,7 +5922,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized{}, nil
+		return &ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -5966,7 +5966,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized{}, nil
+		return &ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6010,7 +6010,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListApiextensionsV1CustomResourceDefinitionResUnauthorized{}, nil
+		return &ListApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6054,7 +6054,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListApiregistrationV1APIServiceResUnauthorized{}, nil
+		return &ListApiregistrationV1APIServiceUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6098,7 +6098,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized{}, nil
+		return &ListAppsV1ControllerRevisionForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6142,7 +6142,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAppsV1DaemonSetForAllNamespacesResUnauthorized{}, nil
+		return &ListAppsV1DaemonSetForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6186,7 +6186,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAppsV1DeploymentForAllNamespacesResUnauthorized{}, nil
+		return &ListAppsV1DeploymentForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6230,7 +6230,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAppsV1ReplicaSetForAllNamespacesResUnauthorized{}, nil
+		return &ListAppsV1ReplicaSetForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6274,7 +6274,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAppsV1StatefulSetForAllNamespacesResUnauthorized{}, nil
+		return &ListAppsV1StatefulSetForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6318,7 +6318,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized{}, nil
+		return &ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6362,7 +6362,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized{}, nil
+		return &ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6406,7 +6406,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized{}, nil
+		return &ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6450,7 +6450,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListBatchV1CronJobForAllNamespacesResUnauthorized{}, nil
+		return &ListBatchV1CronJobForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6494,7 +6494,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListBatchV1JobForAllNamespacesResUnauthorized{}, nil
+		return &ListBatchV1JobForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6538,7 +6538,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListBatchV1beta1CronJobForAllNamespacesResUnauthorized{}, nil
+		return &ListBatchV1beta1CronJobForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6582,7 +6582,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCertificatesV1CertificateSigningRequestResUnauthorized{}, nil
+		return &ListCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6626,7 +6626,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoordinationV1LeaseForAllNamespacesResUnauthorized{}, nil
+		return &ListCoordinationV1LeaseForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6670,7 +6670,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ComponentStatusResUnauthorized{}, nil
+		return &ListCoreV1ComponentStatusUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6714,7 +6714,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ConfigMapForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1ConfigMapForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6758,7 +6758,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1EndpointsForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1EndpointsForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6802,7 +6802,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1EventForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1EventForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6846,7 +6846,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1LimitRangeForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1LimitRangeForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6890,7 +6890,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1NamespaceResUnauthorized{}, nil
+		return &ListCoreV1NamespaceUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6934,7 +6934,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1NodeResUnauthorized{}, nil
+		return &ListCoreV1NodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6978,7 +6978,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1PersistentVolumeResUnauthorized{}, nil
+		return &ListCoreV1PersistentVolumeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7022,7 +7022,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7066,7 +7066,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1PodForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1PodForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7110,7 +7110,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1PodTemplateForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1PodTemplateForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7154,7 +7154,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1ReplicationControllerForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7198,7 +7198,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1ResourceQuotaForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7242,7 +7242,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1SecretForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1SecretForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7286,7 +7286,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ServiceAccountForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1ServiceAccountForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7330,7 +7330,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListCoreV1ServiceForAllNamespacesResUnauthorized{}, nil
+		return &ListCoreV1ServiceForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7374,7 +7374,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized{}, nil
+		return &ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7418,7 +7418,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized{}, nil
+		return &ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7462,7 +7462,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListEventsV1EventForAllNamespacesResUnauthorized{}, nil
+		return &ListEventsV1EventForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7506,7 +7506,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListEventsV1beta1EventForAllNamespacesResUnauthorized{}, nil
+		return &ListEventsV1beta1EventForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7550,7 +7550,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized{}, nil
+		return &ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7594,7 +7594,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized{}, nil
+		return &ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7638,7 +7638,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized{}, nil
+		return &ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7682,7 +7682,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized{}, nil
+		return &ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7726,7 +7726,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListInternalApiserverV1alpha1StorageVersionResUnauthorized{}, nil
+		return &ListInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7770,7 +7770,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNetworkingV1IngressClassResUnauthorized{}, nil
+		return &ListNetworkingV1IngressClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7814,7 +7814,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNetworkingV1IngressForAllNamespacesResUnauthorized{}, nil
+		return &ListNetworkingV1IngressForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7858,7 +7858,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized{}, nil
+		return &ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7902,7 +7902,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNodeV1RuntimeClassResUnauthorized{}, nil
+		return &ListNodeV1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7946,7 +7946,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNodeV1alpha1RuntimeClassResUnauthorized{}, nil
+		return &ListNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7990,7 +7990,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListNodeV1beta1RuntimeClassResUnauthorized{}, nil
+		return &ListNodeV1beta1RuntimeClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8034,7 +8034,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized{}, nil
+		return &ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8078,7 +8078,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized{}, nil
+		return &ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8122,7 +8122,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListPolicyV1beta1PodSecurityPolicyResUnauthorized{}, nil
+		return &ListPolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8166,7 +8166,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListRbacAuthorizationV1ClusterRoleResUnauthorized{}, nil
+		return &ListRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8210,7 +8210,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized{}, nil
+		return &ListRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8254,7 +8254,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized{}, nil
+		return &ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8298,7 +8298,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized{}, nil
+		return &ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8342,7 +8342,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListSchedulingV1PriorityClassResUnauthorized{}, nil
+		return &ListSchedulingV1PriorityClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8386,7 +8386,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1CSIDriverResUnauthorized{}, nil
+		return &ListStorageV1CSIDriverUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8430,7 +8430,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1CSINodeResUnauthorized{}, nil
+		return &ListStorageV1CSINodeUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8474,7 +8474,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1StorageClassResUnauthorized{}, nil
+		return &ListStorageV1StorageClassUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8518,7 +8518,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1VolumeAttachmentResUnauthorized{}, nil
+		return &ListStorageV1VolumeAttachmentUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8562,7 +8562,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized{}, nil
+		return &ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8606,13 +8606,13 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized{}, nil
+		return &ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res LogFileListHandlerResUnauthorized, err error) {
+func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res LogFileListHandlerUnauthorized, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8621,7 +8621,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 401:
-		return LogFileListHandlerResUnauthorized{}, nil
+		return LogFileListHandlerUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8665,7 +8665,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized{}, nil
+		return &WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8709,7 +8709,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized{}, nil
+		return &WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8753,7 +8753,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized{}, nil
+		return &WatchApiextensionsV1CustomResourceDefinitionListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8797,7 +8797,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchApiregistrationV1APIServiceListResUnauthorized{}, nil
+		return &WatchApiregistrationV1APIServiceListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8841,7 +8841,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8885,7 +8885,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAppsV1DaemonSetListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8929,7 +8929,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAppsV1DeploymentListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAppsV1DeploymentListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8973,7 +8973,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9017,7 +9017,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAppsV1StatefulSetListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9061,7 +9061,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9105,7 +9105,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9149,7 +9149,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized{}, nil
+		return &WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9193,7 +9193,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchBatchV1CronJobListForAllNamespacesResUnauthorized{}, nil
+		return &WatchBatchV1CronJobListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9237,7 +9237,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchBatchV1JobListForAllNamespacesResUnauthorized{}, nil
+		return &WatchBatchV1JobListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9281,7 +9281,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized{}, nil
+		return &WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9325,7 +9325,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCertificatesV1CertificateSigningRequestListResUnauthorized{}, nil
+		return &WatchCertificatesV1CertificateSigningRequestListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9369,7 +9369,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoordinationV1LeaseListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9413,7 +9413,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1ConfigMapListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9457,7 +9457,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1EndpointsListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1EndpointsListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9501,7 +9501,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1EventListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1EventListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9545,7 +9545,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1LimitRangeListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9589,7 +9589,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1NamespaceListResUnauthorized{}, nil
+		return &WatchCoreV1NamespaceListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9633,7 +9633,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1NodeListResUnauthorized{}, nil
+		return &WatchCoreV1NodeListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9677,7 +9677,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9721,7 +9721,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1PersistentVolumeListResUnauthorized{}, nil
+		return &WatchCoreV1PersistentVolumeListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9765,7 +9765,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1PodListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1PodListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9809,7 +9809,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1PodTemplateListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9853,7 +9853,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9897,7 +9897,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9941,7 +9941,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1SecretListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1SecretListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9985,7 +9985,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10029,7 +10029,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchCoreV1ServiceListForAllNamespacesResUnauthorized{}, nil
+		return &WatchCoreV1ServiceListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10073,7 +10073,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized{}, nil
+		return &WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10117,7 +10117,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized{}, nil
+		return &WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10161,7 +10161,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchEventsV1EventListForAllNamespacesResUnauthorized{}, nil
+		return &WatchEventsV1EventListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10205,7 +10205,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchEventsV1beta1EventListForAllNamespacesResUnauthorized{}, nil
+		return &WatchEventsV1beta1EventListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10249,7 +10249,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized{}, nil
+		return &WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10293,7 +10293,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized{}, nil
+		return &WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10337,7 +10337,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized{}, nil
+		return &WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10381,7 +10381,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized{}, nil
+		return &WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10425,7 +10425,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized{}, nil
+		return &WatchInternalApiserverV1alpha1StorageVersionListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10469,7 +10469,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNetworkingV1IngressClassListResUnauthorized{}, nil
+		return &WatchNetworkingV1IngressClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10513,7 +10513,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNetworkingV1IngressListForAllNamespacesResUnauthorized{}, nil
+		return &WatchNetworkingV1IngressListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10557,7 +10557,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized{}, nil
+		return &WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10601,7 +10601,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNodeV1RuntimeClassListResUnauthorized{}, nil
+		return &WatchNodeV1RuntimeClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10645,7 +10645,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNodeV1alpha1RuntimeClassListResUnauthorized{}, nil
+		return &WatchNodeV1alpha1RuntimeClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10689,7 +10689,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchNodeV1beta1RuntimeClassListResUnauthorized{}, nil
+		return &WatchNodeV1beta1RuntimeClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10733,7 +10733,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized{}, nil
+		return &WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10777,7 +10777,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized{}, nil
+		return &WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10821,7 +10821,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized{}, nil
+		return &WatchPolicyV1beta1PodSecurityPolicyListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10865,7 +10865,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized{}, nil
+		return &WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10909,7 +10909,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchRbacAuthorizationV1ClusterRoleListResUnauthorized{}, nil
+		return &WatchRbacAuthorizationV1ClusterRoleListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10953,7 +10953,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized{}, nil
+		return &WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10997,7 +10997,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized{}, nil
+		return &WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11041,7 +11041,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchSchedulingV1PriorityClassListResUnauthorized{}, nil
+		return &WatchSchedulingV1PriorityClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11085,7 +11085,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1CSIDriverListResUnauthorized{}, nil
+		return &WatchStorageV1CSIDriverListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11129,7 +11129,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1CSINodeListResUnauthorized{}, nil
+		return &WatchStorageV1CSINodeListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11173,7 +11173,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1StorageClassListResUnauthorized{}, nil
+		return &WatchStorageV1StorageClassListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11217,7 +11217,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1VolumeAttachmentListResUnauthorized{}, nil
+		return &WatchStorageV1VolumeAttachmentListUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11261,7 +11261,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized{}, nil
+		return &WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11305,7 +11305,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
-		return &WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized{}, nil
+		return &WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}

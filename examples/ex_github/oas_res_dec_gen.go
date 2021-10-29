@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -69,7 +69,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent{}, nil
+		return ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -84,15 +84,15 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response, span t
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActionsAddSelectedRepoToOrgSecretResNoContent{}, nil
+		return &ActionsAddSelectedRepoToOrgSecretNoContent{}, nil
 	case 409:
-		return &ActionsAddSelectedRepoToOrgSecretResConflict{}, nil
+		return &ActionsAddSelectedRepoToOrgSecretConflict{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddSelfHostedRunnerToGroupForOrgResNoContent, err error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -101,7 +101,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response, 
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsAddSelfHostedRunnerToGroupForOrgResNoContent{}, nil
+		return ActionsAddSelfHostedRunnerToGroupForOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -183,7 +183,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 	}
 }
 
-func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsCancelWorkflowRunResAccepted, err error) {
+func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsCancelWorkflowRunAccepted, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -198,7 +198,7 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsCancelWorkflowRunResAccepted
+			var response ActionsCancelWorkflowRunAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -247,7 +247,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ActionsCreateOrUpdateEnvironmentSecretResNoContent{}, nil
+		return &ActionsCreateOrUpdateEnvironmentSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -283,7 +283,7 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ActionsCreateOrUpdateOrgSecretResNoContent{}, nil
+		return &ActionsCreateOrUpdateOrgSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -304,7 +304,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsCreateOrUpdateRepoSecretResCreated
+			var response ActionsCreateOrUpdateRepoSecretCreated
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -319,7 +319,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ActionsCreateOrUpdateRepoSecretResNoContent{}, nil
+		return &ActionsCreateOrUpdateRepoSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -495,7 +495,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 	}
 }
 
-func decodeActionsDeleteArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDeleteArtifactResNoContent, err error) {
+func decodeActionsDeleteArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDeleteArtifactNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -504,13 +504,13 @@ func decodeActionsDeleteArtifactResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteArtifactResNoContent{}, nil
+		return ActionsDeleteArtifactNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteEnvironmentSecretResNoContent, err error) {
+func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -519,13 +519,13 @@ func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteEnvironmentSecretResNoContent{}, nil
+		return ActionsDeleteEnvironmentSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteOrgSecretResNoContent, err error) {
+func decodeActionsDeleteOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteOrgSecretNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -534,13 +534,13 @@ func decodeActionsDeleteOrgSecretResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteOrgSecretResNoContent{}, nil
+		return ActionsDeleteOrgSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteRepoSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteRepoSecretResNoContent, err error) {
+func decodeActionsDeleteRepoSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteRepoSecretNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -549,13 +549,13 @@ func decodeActionsDeleteRepoSecretResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteRepoSecretResNoContent{}, nil
+		return ActionsDeleteRepoSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromOrgResNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -564,13 +564,13 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerFromOrgResNoContent{}, nil
+		return ActionsDeleteSelfHostedRunnerFromOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromRepoResNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -579,13 +579,13 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response, sp
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerFromRepoResNoContent{}, nil
+		return ActionsDeleteSelfHostedRunnerFromRepoNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -594,13 +594,13 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent{}, nil
+		return ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunResNoContent, err error) {
+func decodeActionsDeleteWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -609,13 +609,13 @@ func decodeActionsDeleteWorkflowRunResponse(resp *http.Response, span trace.Span
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteWorkflowRunResNoContent{}, nil
+		return ActionsDeleteWorkflowRunNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunLogsResNoContent, err error) {
+func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -624,13 +624,13 @@ func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response, span trace.
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteWorkflowRunLogsResNoContent{}, nil
+		return ActionsDeleteWorkflowRunLogsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent, err error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -639,13 +639,13 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent{}, nil
+		return ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDownloadArtifactResFound, err error) {
+func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDownloadArtifactFound, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -654,13 +654,13 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 302:
-		return ActionsDownloadArtifactResFound{}, nil
+		return ActionsDownloadArtifactFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDownloadJobLogsForWorkflowRunResFound, err error) {
+func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -669,13 +669,13 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 302:
-		return ActionsDownloadJobLogsForWorkflowRunResFound{}, nil
+		return ActionsDownloadJobLogsForWorkflowRunFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDownloadWorkflowRunLogsResFound, err error) {
+func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDownloadWorkflowRunLogsFound, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -684,13 +684,13 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 302:
-		return ActionsDownloadWorkflowRunLogsResFound{}, nil
+		return ActionsDownloadWorkflowRunLogsFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent, err error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -699,7 +699,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent{}, nil
+		return ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -1333,7 +1333,7 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response, span trace.Sp
 	}
 }
 
-func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListArtifactsForRepoResOK, err error) {
+func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListArtifactsForRepoOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1348,7 +1348,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.S
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListArtifactsForRepoResOK
+			var response ActionsListArtifactsForRepoOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1367,7 +1367,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.S
 	}
 }
 
-func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListEnvironmentSecretsResOK, err error) {
+func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListEnvironmentSecretsOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1382,7 +1382,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListEnvironmentSecretsResOK
+			var response ActionsListEnvironmentSecretsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1401,7 +1401,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace
 	}
 }
 
-func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsListJobsForWorkflowRunResOK, err error) {
+func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsListJobsForWorkflowRunOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1416,7 +1416,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListJobsForWorkflowRunResOK
+			var response ActionsListJobsForWorkflowRunOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1435,7 +1435,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace
 	}
 }
 
-func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListOrgSecretsResOK, err error) {
+func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListOrgSecretsOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1450,7 +1450,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListOrgSecretsResOK
+			var response ActionsListOrgSecretsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1469,7 +1469,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK, err error) {
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1484,7 +1484,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK
+			var response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1503,7 +1503,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 	}
 }
 
-func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListRepoSecretsResOK, err error) {
+func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) (res ActionsListRepoSecretsOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1518,7 +1518,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListRepoSecretsResOK
+			var response ActionsListRepoSecretsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1537,7 +1537,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) 
 	}
 }
 
-func decodeActionsListRepoWorkflowsResponse(resp *http.Response, span trace.Span) (res ActionsListRepoWorkflowsResOK, err error) {
+func decodeActionsListRepoWorkflowsResponse(resp *http.Response, span trace.Span) (res ActionsListRepoWorkflowsOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1552,7 +1552,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListRepoWorkflowsResOK
+			var response ActionsListRepoWorkflowsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1671,7 +1671,7 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response, spa
 	}
 }
 
-func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsListSelectedReposForOrgSecretResOK, err error) {
+func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsListSelectedReposForOrgSecretOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1686,7 +1686,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, spa
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelectedReposForOrgSecretResOK
+			var response ActionsListSelectedReposForOrgSecretOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1705,7 +1705,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, spa
 	}
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK, err error) {
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1720,7 +1720,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK
+			var response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1739,7 +1739,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	}
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnerGroupsForOrgResOK, err error) {
+func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1754,7 +1754,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelfHostedRunnerGroupsForOrgResOK
+			var response ActionsListSelfHostedRunnerGroupsForOrgOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1773,7 +1773,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, 
 	}
 }
 
-func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersForOrgResOK, err error) {
+func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersForOrgOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1788,7 +1788,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelfHostedRunnersForOrgResOK
+			var response ActionsListSelfHostedRunnersForOrgOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1807,7 +1807,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span 
 	}
 }
 
-func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersForRepoResOK, err error) {
+func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersForRepoOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1822,7 +1822,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelfHostedRunnersForRepoResOK
+			var response ActionsListSelfHostedRunnersForRepoOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1841,7 +1841,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span
 	}
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersInGroupForOrgResOK, err error) {
+func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsListSelfHostedRunnersInGroupForOrgOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1856,7 +1856,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListSelfHostedRunnersInGroupForOrgResOK
+			var response ActionsListSelfHostedRunnersInGroupForOrgOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1875,7 +1875,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 	}
 }
 
-func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span trace.Span) (res ActionsListWorkflowRunArtifactsResOK, err error) {
+func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span trace.Span) (res ActionsListWorkflowRunArtifactsOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1890,7 +1890,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListWorkflowRunArtifactsResOK
+			var response ActionsListWorkflowRunArtifactsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1909,7 +1909,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span tra
 	}
 }
 
-func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListWorkflowRunsForRepoResOK, err error) {
+func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trace.Span) (res ActionsListWorkflowRunsForRepoOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1924,7 +1924,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsListWorkflowRunsForRepoResOK
+			var response ActionsListWorkflowRunsForRepoOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1943,7 +1943,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trac
 	}
 }
 
-func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (res ActionsReRunWorkflowResCreated, err error) {
+func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (res ActionsReRunWorkflowCreated, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1958,7 +1958,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsReRunWorkflowResCreated
+			var response ActionsReRunWorkflowCreated
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1977,7 +1977,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1986,7 +1986,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *htt
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent{}, nil
+		return ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2001,15 +2001,15 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response, s
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActionsRemoveSelectedRepoFromOrgSecretResNoContent{}, nil
+		return &ActionsRemoveSelectedRepoFromOrgSecretNoContent{}, nil
 	case 409:
-		return &ActionsRemoveSelectedRepoFromOrgSecretResConflict{}, nil
+		return &ActionsRemoveSelectedRepoFromOrgSecretConflict{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent, err error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2018,13 +2018,13 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Respo
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent{}, nil
+		return ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (res ActionsRetryWorkflowResCreated, err error) {
+func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (res ActionsRetryWorkflowCreated, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2039,7 +2039,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActionsRetryWorkflowResCreated
+			var response ActionsRetryWorkflowCreated
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -2058,7 +2058,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
-func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsOrganizationResNoContent, err error) {
+func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2067,13 +2067,13 @@ func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetAllowedActionsOrganizationResNoContent{}, nil
+		return ActionsSetAllowedActionsOrganizationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsRepositoryResNoContent, err error) {
+func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2082,13 +2082,13 @@ func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response, span 
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetAllowedActionsRepositoryResNoContent{}, nil
+		return ActionsSetAllowedActionsRepositoryNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsOrganizationResNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2097,13 +2097,13 @@ func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetGithubActionsPermissionsOrganizationResNoContent{}, nil
+		return ActionsSetGithubActionsPermissionsOrganizationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsRepositoryResNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2112,13 +2112,13 @@ func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetGithubActionsPermissionsRepositoryResNoContent{}, nil
+		return ActionsSetGithubActionsPermissionsRepositoryNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2127,13 +2127,13 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent{}, nil
+		return ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedReposForOrgSecretResNoContent, err error) {
+func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2142,13 +2142,13 @@ func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response, span
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelectedReposForOrgSecretResNoContent{}, nil
+		return ActionsSetSelectedReposForOrgSecretNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, err error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2157,13 +2157,13 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRespons
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent{}, nil
+		return ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, err error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2172,7 +2172,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response,
 
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelfHostedRunnersInGroupForOrgResNoContent{}, nil
+		return ActionsSetSelfHostedRunnersInGroupForOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2221,9 +2221,9 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent{}, nil
+		return &ActivityCheckRepoIsStarredByAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified{}, nil
+		return &ActivityCheckRepoIsStarredByAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2292,7 +2292,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	}
 }
 
-func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response, span trace.Span) (res ActivityDeleteRepoSubscriptionResNoContent, err error) {
+func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response, span trace.Span) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2301,7 +2301,7 @@ func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return ActivityDeleteRepoSubscriptionResNoContent{}, nil
+		return ActivityDeleteRepoSubscriptionNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2316,9 +2316,9 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActivityDeleteThreadSubscriptionResNoContent{}, nil
+		return &ActivityDeleteThreadSubscriptionNoContent{}, nil
 	case 304:
-		return &ActivityDeleteThreadSubscriptionResNotModified{}, nil
+		return &ActivityDeleteThreadSubscriptionNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2451,7 +2451,7 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &ActivityGetRepoSubscriptionResNotFound{}, nil
+		return &ActivityGetRepoSubscriptionNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2487,7 +2487,7 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityGetThreadResNotModified{}, nil
+		return &ActivityGetThreadNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2565,7 +2565,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified{}, nil
+		return &ActivityGetThreadSubscriptionForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2743,7 +2743,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListPublicEventsResNotModified{}, nil
+		return &ActivityListPublicEventsNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2772,7 +2772,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActivityListPublicEventsResServiceUnavailable
+			var response ActivityListPublicEventsServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -2842,7 +2842,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListPublicEventsForRepoNetworkResNotModified{}, nil
+		return &ActivityListPublicEventsForRepoNetworkNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3222,7 +3222,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListReposStarredByAuthenticatedUserResNotModified{}, nil
+		return &ActivityListReposStarredByAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3350,7 +3350,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListWatchedReposForAuthenticatedUserResNotModified{}, nil
+		return &ActivityListWatchedReposForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3463,7 +3463,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActivityMarkNotificationsAsReadResAccepted
+			var response ActivityMarkNotificationsAsReadAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -3478,9 +3478,9 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 205:
-		return &ActivityMarkNotificationsAsReadResResetContent{}, nil
+		return &ActivityMarkNotificationsAsReadResetContent{}, nil
 	case 304:
-		return &ActivityMarkNotificationsAsReadResNotModified{}, nil
+		return &ActivityMarkNotificationsAsReadNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3543,7 +3543,7 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response, span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActivityMarkRepoNotificationsAsReadResAccepted
+			var response ActivityMarkRepoNotificationsAsReadAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -3558,7 +3558,7 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 205:
-		return &ActivityMarkRepoNotificationsAsReadResResetContent{}, nil
+		return &ActivityMarkRepoNotificationsAsReadResetContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -3573,9 +3573,9 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response, span trace.Span
 
 	switch resp.StatusCode {
 	case 205:
-		return &ActivityMarkThreadAsReadResResetContent{}, nil
+		return &ActivityMarkThreadAsReadResetContent{}, nil
 	case 304:
-		return &ActivityMarkThreadAsReadResNotModified{}, nil
+		return &ActivityMarkThreadAsReadNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3666,7 +3666,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivitySetThreadSubscriptionResNotModified{}, nil
+		return &ActivitySetThreadSubscriptionNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3723,9 +3723,9 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActivityStarRepoForAuthenticatedUserResNoContent{}, nil
+		return &ActivityStarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityStarRepoForAuthenticatedUserResNotModified{}, nil
+		return &ActivityStarRepoForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3803,9 +3803,9 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 	switch resp.StatusCode {
 	case 204:
-		return &ActivityUnstarRepoForAuthenticatedUserResNoContent{}, nil
+		return &ActivityUnstarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityUnstarRepoForAuthenticatedUserResNotModified{}, nil
+		return &ActivityUnstarRepoForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3883,9 +3883,9 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &AppsAddRepoToInstallationResNoContent{}, nil
+		return &AppsAddRepoToInstallationNoContent{}, nil
 	case 304:
-		return &AppsAddRepoToInstallationResNotModified{}, nil
+		return &AppsAddRepoToInstallationNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3942,7 +3942,7 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return &AppsDeleteInstallationResNoContent{}, nil
+		return &AppsDeleteInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4081,7 +4081,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AppsGetBySlugResUnsupportedMediaType
+			var response AppsGetBySlugUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -4227,7 +4227,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &AppsGetSubscriptionPlanForAccountStubbedResNotFound{}, nil
+		return &AppsGetSubscriptionPlanForAccountStubbedNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4337,7 +4337,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AppsListInstallationReposForAuthenticatedUserResOK
+			var response AppsListInstallationReposForAuthenticatedUserOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -4352,7 +4352,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListInstallationReposForAuthenticatedUserResNotModified{}, nil
+		return &AppsListInstallationReposForAuthenticatedUserNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4546,7 +4546,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AppsListReposAccessibleToInstallationResOK
+			var response AppsListReposAccessibleToInstallationOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -4561,7 +4561,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListReposAccessibleToInstallationResNotModified{}, nil
+		return &AppsListReposAccessibleToInstallationNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4639,7 +4639,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListSubscriptionsForAuthenticatedUserResNotModified{}, nil
+		return &AppsListSubscriptionsForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4717,7 +4717,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified{}, nil
+		return &AppsListSubscriptionsForAuthenticatedUserStubbedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4753,9 +4753,9 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return &AppsRemoveRepoFromInstallationResNoContent{}, nil
+		return &AppsRemoveRepoFromInstallationNoContent{}, nil
 	case 304:
-		return &AppsRemoveRepoFromInstallationResNotModified{}, nil
+		return &AppsRemoveRepoFromInstallationNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4803,7 +4803,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 	}
 }
 
-func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (res AppsRevokeInstallationAccessTokenResNoContent, err error) {
+func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4812,7 +4812,7 @@ func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span t
 
 	switch resp.StatusCode {
 	case 204:
-		return AppsRevokeInstallationAccessTokenResNoContent{}, nil
+		return AppsRevokeInstallationAccessTokenNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -4827,7 +4827,7 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return &AppsSuspendInstallationResNoContent{}, nil
+		return &AppsSuspendInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4863,7 +4863,7 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response, span trace.Spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &AppsUnsuspendInstallationResNoContent{}, nil
+		return &AppsUnsuspendInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -5437,7 +5437,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
-func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res ChecksListForRefResOK, err error) {
+func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res ChecksListForRefOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5452,7 +5452,7 @@ func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res C
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ChecksListForRefResOK
+			var response ChecksListForRefOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5471,7 +5471,7 @@ func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res C
 	}
 }
 
-func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res ChecksListForSuiteResOK, err error) {
+func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res ChecksListForSuiteOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5486,7 +5486,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ChecksListForSuiteResOK
+			var response ChecksListForSuiteOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5505,7 +5505,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
-func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) (res ChecksListSuitesForRefResOK, err error) {
+func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) (res ChecksListSuitesForRefOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5520,7 +5520,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ChecksListSuitesForRefResOK
+			var response ChecksListSuitesForRefOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5539,7 +5539,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) 
 	}
 }
 
-func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (res ChecksRerequestSuiteResCreated, err error) {
+func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (res ChecksRerequestSuiteCreated, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5554,7 +5554,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ChecksRerequestSuiteResCreated
+			var response ChecksRerequestSuiteCreated
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5708,7 +5708,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningDeleteAnalysisResServiceUnavailable
+			var response CodeScanningDeleteAnalysisServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5805,7 +5805,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetAlertResServiceUnavailable
+			var response CodeScanningGetAlertServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5904,7 +5904,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetAnalysisResServiceUnavailable
+			var response CodeScanningGetAnalysisServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5974,7 +5974,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &CodeScanningGetSarifResNotFound{}, nil
+		return &CodeScanningGetSarifNotFound{}, nil
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -5982,7 +5982,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetSarifResServiceUnavailable
+			var response CodeScanningGetSarifServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6079,7 +6079,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListAlertInstancesResServiceUnavailable
+			var response CodeScanningListAlertInstancesServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6176,7 +6176,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListAlertsForRepoResServiceUnavailable
+			var response CodeScanningListAlertsForRepoServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6273,7 +6273,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListRecentAnalysesResServiceUnavailable
+			var response CodeScanningListRecentAnalysesServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6370,7 +6370,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningUpdateAlertResServiceUnavailable
+			var response CodeScanningUpdateAlertServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6419,7 +6419,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 400:
-		return &CodeScanningUploadSarifResBadRequest{}, nil
+		return &CodeScanningUploadSarifBadRequest{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -6463,7 +6463,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 413:
-		return &CodeScanningUploadSarifResRequestEntityTooLarge{}, nil
+		return &CodeScanningUploadSarifRequestEntityTooLarge{}, nil
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -6471,7 +6471,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningUploadSarifResServiceUnavailable
+			var response CodeScanningUploadSarifServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6520,7 +6520,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &CodesOfConductGetAllCodesOfConductResNotModified{}, nil
+		return &CodesOfConductGetAllCodesOfConductNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6556,7 +6556,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &CodesOfConductGetConductCodeResNotModified{}, nil
+		return &CodesOfConductGetConductCodeNotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -6598,7 +6598,7 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EmojisGetResOK
+			var response EmojisGetOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6613,13 +6613,13 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &EmojisGetResNotModified{}, nil
+		return &EmojisGetNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6628,13 +6628,13 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent{}, nil
+		return EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6643,7 +6643,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent{}, nil
+		return EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6751,7 +6751,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	}
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6760,13 +6760,13 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Respo
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent{}, nil
+		return EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6775,13 +6775,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *htt
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent{}, nil
+		return EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6790,13 +6790,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent{}, nil
+		return EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteUserFromEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6805,13 +6805,13 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response, 
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteUserFromEnterpriseResNoContent{}, nil
+		return EnterpriseAdminDeleteUserFromEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6820,13 +6820,13 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResp
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent{}, nil
+		return EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6835,7 +6835,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRespo
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent{}, nil
+		return EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7095,7 +7095,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 	}
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK, err error) {
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7110,7 +7110,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK
+			var response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7247,7 +7247,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 	}
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK, err error) {
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7262,7 +7262,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK
+			var response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7281,7 +7281,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	}
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7296,7 +7296,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK
+			var response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7315,7 +7315,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 	}
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7330,7 +7330,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK
+			var response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7349,7 +7349,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 	}
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7364,7 +7364,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK
+			var response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7451,7 +7451,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 	}
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7460,13 +7460,13 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResp
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent{}, nil
+		return EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7475,13 +7475,13 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(r
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent{}, nil
+		return EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7490,13 +7490,13 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Respons
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetAllowedActionsEnterpriseResNoContent{}, nil
+		return EnterpriseAdminSetAllowedActionsEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7505,7 +7505,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *ht
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent{}, nil
+		return EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7579,7 +7579,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	}
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7588,13 +7588,13 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent{}, nil
+		return EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7603,13 +7603,13 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent{}, nil
+		return EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, err error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7618,7 +7618,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp 
 
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent{}, nil
+		return EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7701,9 +7701,9 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 
 	switch resp.StatusCode {
 	case 204:
-		return &GistsCheckIsStarredResNoContent{}, nil
+		return &GistsCheckIsStarredNoContent{}, nil
 	case 304:
-		return &GistsCheckIsStarredResNotModified{}, nil
+		return &GistsCheckIsStarredNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7732,7 +7732,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GistsCheckIsStarredResNotFound
+			var response GistsCheckIsStarredNotFound
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -7781,7 +7781,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsCreateCommentResNotModified{}, nil
+		return &GistsCreateCommentNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7838,9 +7838,9 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 
 	switch resp.StatusCode {
 	case 204:
-		return &GistsDeleteResNoContent{}, nil
+		return &GistsDeleteNoContent{}, nil
 	case 304:
-		return &GistsDeleteResNotModified{}, nil
+		return &GistsDeleteNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7897,9 +7897,9 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return &GistsDeleteCommentResNoContent{}, nil
+		return &GistsDeleteCommentNoContent{}, nil
 	case 304:
-		return &GistsDeleteCommentResNotModified{}, nil
+		return &GistsDeleteCommentNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7977,7 +7977,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsGetResNotModified{}, nil
+		return &GistsGetNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7985,7 +7985,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GistsGetResForbidden
+			var response GistsGetForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -8055,7 +8055,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsGetCommentResNotModified{}, nil
+		return &GistsGetCommentNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8063,7 +8063,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GistsGetCommentResForbidden
+			var response GistsGetCommentForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -8133,7 +8133,7 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListResNotModified{}, nil
+		return &GistsListNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8190,7 +8190,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListCommentsResNotModified{}, nil
+		return &GistsListCommentsNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8268,7 +8268,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListCommitsResNotModified{}, nil
+		return &GistsListCommitsNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8346,7 +8346,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListForksResNotModified{}, nil
+		return &GistsListForksNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8424,7 +8424,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListStarredResNotModified{}, nil
+		return &GistsListStarredNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8481,9 +8481,9 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 
 	switch resp.StatusCode {
 	case 204:
-		return &GistsStarResNoContent{}, nil
+		return &GistsStarNoContent{}, nil
 	case 304:
-		return &GistsStarResNotModified{}, nil
+		return &GistsStarNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8540,9 +8540,9 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 
 	switch resp.StatusCode {
 	case 204:
-		return &GistsUnstarResNoContent{}, nil
+		return &GistsUnstarNoContent{}, nil
 	case 304:
-		return &GistsUnstarResNotModified{}, nil
+		return &GistsUnstarNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8890,7 +8890,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GitignoreGetAllTemplatesResNotModified{}, nil
+		return &GitignoreGetAllTemplatesNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8926,13 +8926,13 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GitignoreGetTemplateResNotModified{}, nil
+		return &GitignoreGetTemplateNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8941,13 +8941,13 @@ func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http
 
 	switch resp.StatusCode {
 	case 204:
-		return InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent{}, nil
+		return InteractionsRemoveRestrictionsForAuthenticatedUserNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForOrgResNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8956,7 +8956,7 @@ func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return InteractionsRemoveRestrictionsForOrgResNoContent{}, nil
+		return InteractionsRemoveRestrictionsForOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8971,9 +8971,9 @@ func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response, sp
 
 	switch resp.StatusCode {
 	case 204:
-		return &InteractionsRemoveRestrictionsForRepoResNoContent{}, nil
+		return &InteractionsRemoveRestrictionsForRepoNoContent{}, nil
 	case 409:
-		return &InteractionsRemoveRestrictionsForRepoResConflict{}, nil
+		return &InteractionsRemoveRestrictionsForRepoConflict{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9009,7 +9009,7 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 409:
-		return &InteractionsSetRestrictionsForRepoResConflict{}, nil
+		return &InteractionsSetRestrictionsForRepoConflict{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9058,7 +9058,7 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response, span trace.
 
 	switch resp.StatusCode {
 	case 204:
-		return &IssuesCheckUserCanBeAssignedResNoContent{}, nil
+		return &IssuesCheckUserCanBeAssignedNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -9085,7 +9085,7 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response, span trace.
 	}
 }
 
-func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (res IssuesDeleteCommentResNoContent, err error) {
+func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (res IssuesDeleteCommentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9094,13 +9094,13 @@ func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (re
 
 	switch resp.StatusCode {
 	case 204:
-		return IssuesDeleteCommentResNoContent{}, nil
+		return IssuesDeleteCommentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeIssuesDeleteLabelResponse(resp *http.Response, span trace.Span) (res IssuesDeleteLabelResNoContent, err error) {
+func decodeIssuesDeleteLabelResponse(resp *http.Response, span trace.Span) (res IssuesDeleteLabelNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9109,7 +9109,7 @@ func decodeIssuesDeleteLabelResponse(resp *http.Response, span trace.Span) (res 
 
 	switch resp.StatusCode {
 	case 204:
-		return IssuesDeleteLabelResNoContent{}, nil
+		return IssuesDeleteLabelNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9124,7 +9124,7 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &IssuesDeleteMilestoneResNoContent{}, nil
+		return &IssuesDeleteMilestoneNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -9768,7 +9768,7 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &IssuesRemoveAllLabelsResNoContent{}, nil
+		return &IssuesRemoveAllLabelsNoContent{}, nil
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -9914,7 +9914,7 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 
 	switch resp.StatusCode {
 	case 204:
-		return &IssuesUnlockResNoContent{}, nil
+		return &IssuesUnlockNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10060,7 +10060,7 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &LicensesGetResNotModified{}, nil
+		return &LicensesGetNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10138,7 +10138,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &LicensesGetAllCommonlyUsedResNotModified{}, nil
+		return &LicensesGetAllCommonlyUsedNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10194,7 +10194,7 @@ func decodeMarkdownRenderResponse(resp *http.Response, span trace.Span) (res Mar
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MarkdownRenderResNotModified{}, nil
+		return &MarkdownRenderNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10216,7 +10216,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MarkdownRenderRawResNotModified{}, nil
+		return &MarkdownRenderRawNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10252,7 +10252,7 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MetaGetResNotModified{}, nil
+		return &MetaGetNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10298,7 +10298,7 @@ func decodeMetaGetZenResponse(resp *http.Response, span trace.Span) (res string,
 	}
 }
 
-func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootResOK, err error) {
+func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootOK, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10313,7 +10313,7 @@ func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootR
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response MetaRootResOK
+			var response MetaRootOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -10332,7 +10332,7 @@ func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootR
 	}
 }
 
-func decodeMigrationsCancelImportResponse(resp *http.Response, span trace.Span) (res MigrationsCancelImportResNoContent, err error) {
+func decodeMigrationsCancelImportResponse(resp *http.Response, span trace.Span) (res MigrationsCancelImportNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10341,7 +10341,7 @@ func decodeMigrationsCancelImportResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return MigrationsCancelImportResNoContent{}, nil
+		return MigrationsCancelImportNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10356,9 +10356,9 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 	switch resp.StatusCode {
 	case 204:
-		return &MigrationsDeleteArchiveForAuthenticatedUserResNoContent{}, nil
+		return &MigrationsDeleteArchiveForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &MigrationsDeleteArchiveForAuthenticatedUserResNotModified{}, nil
+		return &MigrationsDeleteArchiveForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10436,7 +10436,7 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response, span trace
 
 	switch resp.StatusCode {
 	case 204:
-		return &MigrationsDeleteArchiveForOrgResNoContent{}, nil
+		return &MigrationsDeleteArchiveForOrgNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10472,7 +10472,7 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response, span tra
 
 	switch resp.StatusCode {
 	case 302:
-		return &MigrationsDownloadArchiveForOrgResFound{}, nil
+		return &MigrationsDownloadArchiveForOrgFound{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10508,9 +10508,9 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 
 	switch resp.StatusCode {
 	case 302:
-		return &MigrationsGetArchiveForAuthenticatedUserResFound{}, nil
+		return &MigrationsGetArchiveForAuthenticatedUserFound{}, nil
 	case 304:
-		return &MigrationsGetArchiveForAuthenticatedUserResNotModified{}, nil
+		return &MigrationsGetArchiveForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10748,7 +10748,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MigrationsGetStatusForAuthenticatedUserResNotModified{}, nil
+		return &MigrationsGetStatusForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10902,7 +10902,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MigrationsListForAuthenticatedUserResNotModified{}, nil
+		return &MigrationsListForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11119,9 +11119,9 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 	switch resp.StatusCode {
 	case 204:
-		return &MigrationsUnlockRepoForAuthenticatedUserResNoContent{}, nil
+		return &MigrationsUnlockRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &MigrationsUnlockRepoForAuthenticatedUserResNotModified{}, nil
+		return &MigrationsUnlockRepoForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11199,7 +11199,7 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response, span trace.Sp
 
 	switch resp.StatusCode {
 	case 204:
-		return &MigrationsUnlockRepoForOrgResNoContent{}, nil
+		return &MigrationsUnlockRepoForOrgNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11269,9 +11269,9 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 
 	switch resp.StatusCode {
 	case 204:
-		return &OAuthAuthorizationsDeleteAuthorizationResNoContent{}, nil
+		return &OAuthAuthorizationsDeleteAuthorizationNoContent{}, nil
 	case 304:
-		return &OAuthAuthorizationsDeleteAuthorizationResNotModified{}, nil
+		return &OAuthAuthorizationsDeleteAuthorizationNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11328,9 +11328,9 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return &OAuthAuthorizationsDeleteGrantResNoContent{}, nil
+		return &OAuthAuthorizationsDeleteGrantNoContent{}, nil
 	case 304:
-		return &OAuthAuthorizationsDeleteGrantResNotModified{}, nil
+		return &OAuthAuthorizationsDeleteGrantNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11408,7 +11408,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsGetAuthorizationResNotModified{}, nil
+		return &OAuthAuthorizationsGetAuthorizationNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11486,7 +11486,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsGetGrantResNotModified{}, nil
+		return &OAuthAuthorizationsGetGrantNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11564,7 +11564,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsListAuthorizationsResNotModified{}, nil
+		return &OAuthAuthorizationsListAuthorizationsNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11663,7 +11663,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsListGrantsResNotModified{}, nil
+		return &OAuthAuthorizationsListGrantsNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11741,7 +11741,7 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsCheckBlockedUserResNoContent{}, nil
+		return &OrgsCheckBlockedUserNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11777,11 +11777,11 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response, span trace.Sp
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsCheckMembershipForUserResNoContent{}, nil
+		return &OrgsCheckMembershipForUserNoContent{}, nil
 	case 302:
-		return &OrgsCheckMembershipForUserResFound{}, nil
+		return &OrgsCheckMembershipForUserFound{}, nil
 	case 404:
-		return &OrgsCheckMembershipForUserResNotFound{}, nil
+		return &OrgsCheckMembershipForUserNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11796,9 +11796,9 @@ func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response, span tr
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsCheckPublicMembershipForUserResNoContent{}, nil
+		return &OrgsCheckPublicMembershipForUserNoContent{}, nil
 	case 404:
-		return &OrgsCheckPublicMembershipForUserResNotFound{}, nil
+		return &OrgsCheckPublicMembershipForUserNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -11819,7 +11819,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response OrgsConvertMemberToOutsideCollaboratorResAccepted
+			var response OrgsConvertMemberToOutsideCollaboratorAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -11834,9 +11834,9 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &OrgsConvertMemberToOutsideCollaboratorResNoContent{}, nil
+		return &OrgsConvertMemberToOutsideCollaboratorNoContent{}, nil
 	case 403:
-		return &OrgsConvertMemberToOutsideCollaboratorResForbidden{}, nil
+		return &OrgsConvertMemberToOutsideCollaboratorForbidden{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11872,7 +11872,7 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response, span trace.Span) (res 
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsDeleteWebhookResNoContent{}, nil
+		return &OrgsDeleteWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12275,7 +12275,7 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OrgsListResNotModified{}, nil
+		return &OrgsListNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -12317,7 +12317,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response OrgsListBlockedUsersResUnsupportedMediaType
+			var response OrgsListBlockedUsersUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -12421,7 +12421,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OrgsListForAuthenticatedUserResNotModified{}, nil
+		return &OrgsListForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12843,7 +12843,7 @@ func decodeOrgsPingWebhookResponse(resp *http.Response, span trace.Span) (res Or
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsPingWebhookResNoContent{}, nil
+		return &OrgsPingWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12879,7 +12879,7 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response, span trace.Span) (res O
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsRemoveMemberResNoContent{}, nil
+		return &OrgsRemoveMemberNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12915,7 +12915,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsRemoveMembershipForUserResNoContent{}, nil
+		return &OrgsRemoveMembershipForUserNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12972,7 +12972,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsRemoveOutsideCollaboratorResNoContent{}, nil
+		return &OrgsRemoveOutsideCollaboratorNoContent{}, nil
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12980,7 +12980,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response OrgsRemoveOutsideCollaboratorResUnprocessableEntity
+			var response OrgsRemoveOutsideCollaboratorUnprocessableEntity
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -12999,7 +12999,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 	}
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsRemovePublicMembershipForAuthenticatedUserResNoContent, err error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -13008,7 +13008,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Res
 
 	switch resp.StatusCode {
 	case 204:
-		return OrgsRemovePublicMembershipForAuthenticatedUserResNoContent{}, nil
+		return OrgsRemovePublicMembershipForAuthenticatedUserNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -13023,7 +13023,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsRemoveSamlSSOAuthorizationResNoContent{}, nil
+		return &OrgsRemoveSamlSSOAuthorizationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13059,7 +13059,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 
 	switch resp.StatusCode {
 	case 204:
-		return &OrgsSetPublicMembershipForAuthenticatedUserResNoContent{}, nil
+		return &OrgsSetPublicMembershipForAuthenticatedUserNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13086,7 +13086,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 	}
 }
 
-func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (res OrgsUnblockUserResNoContent, err error) {
+func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (res OrgsUnblockUserNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -13095,7 +13095,7 @@ func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (res Or
 
 	switch resp.StatusCode {
 	case 204:
-		return OrgsUnblockUserResNoContent{}, nil
+		return OrgsUnblockUserNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -13144,7 +13144,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageForAuthenticatedUserResNoContent{}, nil
+		return &PackagesDeletePackageForAuthenticatedUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13222,7 +13222,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageForOrgResNoContent{}, nil
+		return &PackagesDeletePackageForOrgNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13300,7 +13300,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageForUserResNoContent{}, nil
+		return &PackagesDeletePackageForUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13378,7 +13378,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageVersionForAuthenticatedUserResNoContent{}, nil
+		return &PackagesDeletePackageVersionForAuthenticatedUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13456,7 +13456,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageVersionForOrgResNoContent{}, nil
+		return &PackagesDeletePackageVersionForOrgNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -13534,7 +13534,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesDeletePackageVersionForUserResNoContent{}, nil
+		return &PackagesDeletePackageVersionForUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14309,7 +14309,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageForAuthenticatedUserResNoContent{}, nil
+		return &PackagesRestorePackageForAuthenticatedUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14387,7 +14387,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageForOrgResNoContent{}, nil
+		return &PackagesRestorePackageForOrgNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14465,7 +14465,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageForUserResNoContent{}, nil
+		return &PackagesRestorePackageForUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14543,7 +14543,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageVersionForAuthenticatedUserResNoContent{}, nil
+		return &PackagesRestorePackageVersionForAuthenticatedUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14621,7 +14621,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageVersionForOrgResNoContent{}, nil
+		return &PackagesRestorePackageVersionForOrgNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14699,7 +14699,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &PackagesRestorePackageVersionForUserResNoContent{}, nil
+		return &PackagesRestorePackageVersionForUserNoContent{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14798,7 +14798,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsCreateColumnResNotModified{}, nil
+		return &ProjectsCreateColumnNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14897,7 +14897,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsCreateForAuthenticatedUserResNotModified{}, nil
+		return &ProjectsCreateForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14947,7 +14947,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsCreateForAuthenticatedUserResUnsupportedMediaType
+			var response ProjectsCreateForAuthenticatedUserUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -15274,9 +15274,9 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 	switch resp.StatusCode {
 	case 204:
-		return &ProjectsDeleteResNoContent{}, nil
+		return &ProjectsDeleteNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteResNotModified{}, nil
+		return &ProjectsDeleteNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15305,7 +15305,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsDeleteResForbidden
+			var response ProjectsDeleteForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -15375,9 +15375,9 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return &ProjectsDeleteCardResNoContent{}, nil
+		return &ProjectsDeleteCardNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteCardResNotModified{}, nil
+		return &ProjectsDeleteCardNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15406,7 +15406,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsDeleteCardResForbidden
+			var response ProjectsDeleteCardForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -15455,9 +15455,9 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return &ProjectsDeleteColumnResNoContent{}, nil
+		return &ProjectsDeleteColumnNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteColumnResNotModified{}, nil
+		return &ProjectsDeleteColumnNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15535,7 +15535,7 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetResNotModified{}, nil
+		return &ProjectsGetNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15613,7 +15613,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetCardResNotModified{}, nil
+		return &ProjectsGetCardNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15712,7 +15712,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetColumnResNotModified{}, nil
+		return &ProjectsGetColumnNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15811,7 +15811,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsListCardsResNotModified{}, nil
+		return &ProjectsListCardsNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15889,7 +15889,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsListColumnsResNotModified{}, nil
+		return &ProjectsListColumnsNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16146,7 +16146,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsMoveColumnResCreated
+			var response ProjectsMoveColumnCreated
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -16161,7 +16161,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsMoveColumnResNotModified{}, nil
+		return &ProjectsMoveColumnNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16260,7 +16260,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateResNotModified{}, nil
+		return &ProjectsUpdateNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16289,7 +16289,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsUpdateResForbidden
+			var response ProjectsUpdateForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -16304,7 +16304,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &ProjectsUpdateResNotFound{}, nil
+		return &ProjectsUpdateNotFound{}, nil
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16382,7 +16382,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateCardResNotModified{}, nil
+		return &ProjectsUpdateCardNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16502,7 +16502,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateColumnResNotModified{}, nil
+		return &ProjectsUpdateColumnNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16559,9 +16559,9 @@ func decodePullsCheckIfMergedResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return &PullsCheckIfMergedResNoContent{}, nil
+		return &PullsCheckIfMergedNoContent{}, nil
 	case 404:
-		return &PullsCheckIfMergedResNotFound{}, nil
+		return &PullsCheckIfMergedNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -16783,7 +16783,7 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response, span trace.Span
 
 	switch resp.StatusCode {
 	case 204:
-		return &PullsDeleteReviewCommentResNoContent{}, nil
+		return &PullsDeleteReviewCommentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16916,7 +16916,7 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &PullsGetResNotModified{}, nil
+		return &PullsGetNotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17579,7 +17579,7 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &RateLimitGetResNotModified{}, nil
+		return &RateLimitGetNotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17784,7 +17784,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response, s
 	}
 }
 
-func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForCommitCommentResNoContent, err error) {
+func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForCommitCommentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17793,13 +17793,13 @@ func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response, span tra
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForCommitCommentResNoContent{}, nil
+		return ReactionsDeleteForCommitCommentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReactionsDeleteForIssueResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueResNoContent, err error) {
+func decodeReactionsDeleteForIssueResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17808,13 +17808,13 @@ func decodeReactionsDeleteForIssueResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForIssueResNoContent{}, nil
+		return ReactionsDeleteForIssueNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueCommentResNoContent, err error) {
+func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueCommentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17823,13 +17823,13 @@ func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForIssueCommentResNoContent{}, nil
+		return ReactionsDeleteForIssueCommentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForPullRequestCommentResNoContent, err error) {
+func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17838,13 +17838,13 @@ func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForPullRequestCommentResNoContent{}, nil
+		return ReactionsDeleteForPullRequestCommentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionResNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17853,13 +17853,13 @@ func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response, span tr
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForTeamDiscussionResNoContent{}, nil
+		return ReactionsDeleteForTeamDiscussionNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionCommentResNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -17868,7 +17868,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response, 
 
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForTeamDiscussionCommentResNoContent{}, nil
+		return ReactionsDeleteForTeamDiscussionCommentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -17883,9 +17883,9 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReactionsDeleteLegacyResNoContent{}, nil
+		return &ReactionsDeleteLegacyNoContent{}, nil
 	case 304:
-		return &ReactionsDeleteLegacyResNotModified{}, nil
+		return &ReactionsDeleteLegacyNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17956,7 +17956,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsDeleteLegacyResUnsupportedMediaType
+			var response ReactionsDeleteLegacyUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18032,7 +18032,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForCommitCommentResUnsupportedMediaType
+			var response ReactionsListForCommitCommentUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18129,7 +18129,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForIssueResUnsupportedMediaType
+			var response ReactionsListForIssueUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18205,7 +18205,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForIssueCommentResUnsupportedMediaType
+			var response ReactionsListForIssueCommentUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18281,7 +18281,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForPullRequestReviewCommentResUnsupportedMediaType
+			var response ReactionsListForPullRequestReviewCommentUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18509,9 +18509,9 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposAcceptInvitationResNoContent{}, nil
+		return &ReposAcceptInvitationNoContent{}, nil
 	case 304:
-		return &ReposAcceptInvitationResNotModified{}, nil
+		return &ReposAcceptInvitationNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -18589,9 +18589,9 @@ func decodeReposCheckCollaboratorResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposCheckCollaboratorResNoContent{}, nil
+		return &ReposCheckCollaboratorNoContent{}, nil
 	case 404:
-		return &ReposCheckCollaboratorResNotFound{}, nil
+		return &ReposCheckCollaboratorNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -18606,9 +18606,9 @@ func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response, span trace
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposCheckVulnerabilityAlertsResNoContent{}, nil
+		return &ReposCheckVulnerabilityAlertsNoContent{}, nil
 	case 404:
-		return &ReposCheckVulnerabilityAlertsResNotFound{}, nil
+		return &ReposCheckVulnerabilityAlertsNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -18822,9 +18822,9 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeclineInvitationResNoContent{}, nil
+		return &ReposDeclineInvitationNoContent{}, nil
 	case 304:
-		return &ReposDeclineInvitationResNotModified{}, nil
+		return &ReposDeclineInvitationNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -18902,7 +18902,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteResNoContent{}, nil
+		return &ReposDeleteNoContent{}, nil
 	case 307:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -18931,7 +18931,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposDeleteResForbidden
+			var response ReposDeleteForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18971,7 +18971,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 	}
 }
 
-func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposDeleteAccessRestrictionsResNoContent, err error) {
+func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposDeleteAccessRestrictionsNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -18980,7 +18980,7 @@ func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response, span trace
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteAccessRestrictionsResNoContent{}, nil
+		return ReposDeleteAccessRestrictionsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -18995,7 +18995,7 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span tr
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteAdminBranchProtectionResNoContent{}, nil
+		return &ReposDeleteAdminBranchProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19022,7 +19022,7 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeReposDeleteAnEnvironmentResponse(resp *http.Response, span trace.Span) (res ReposDeleteAnEnvironmentResNoContent, err error) {
+func decodeReposDeleteAnEnvironmentResponse(resp *http.Response, span trace.Span) (res ReposDeleteAnEnvironmentNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19031,7 +19031,7 @@ func decodeReposDeleteAnEnvironmentResponse(resp *http.Response, span trace.Span
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteAnEnvironmentResNoContent{}, nil
+		return ReposDeleteAnEnvironmentNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19046,7 +19046,7 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response, span trace.Span) (re
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteAutolinkResNoContent{}, nil
+		return &ReposDeleteAutolinkNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19082,7 +19082,7 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteBranchProtectionResNoContent{}, nil
+		return &ReposDeleteBranchProtectionNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19118,7 +19118,7 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response, span trace.Span
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteCommitCommentResNoContent{}, nil
+		return &ReposDeleteCommitCommentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19154,7 +19154,7 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteCommitSignatureProtectionResNoContent{}, nil
+		return &ReposDeleteCommitSignatureProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19181,7 +19181,7 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response, spa
 	}
 }
 
-func decodeReposDeleteDeployKeyResponse(resp *http.Response, span trace.Span) (res ReposDeleteDeployKeyResNoContent, err error) {
+func decodeReposDeleteDeployKeyResponse(resp *http.Response, span trace.Span) (res ReposDeleteDeployKeyNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19190,7 +19190,7 @@ func decodeReposDeleteDeployKeyResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteDeployKeyResNoContent{}, nil
+		return ReposDeleteDeployKeyNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19205,7 +19205,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteDeploymentResNoContent{}, nil
+		return &ReposDeleteDeploymentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19253,7 +19253,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
-func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (res ReposDeleteInvitationResNoContent, err error) {
+func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (res ReposDeleteInvitationNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19262,7 +19262,7 @@ func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteInvitationResNoContent{}, nil
+		return ReposDeleteInvitationNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19277,7 +19277,7 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response, s
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeletePullRequestReviewProtectionResNoContent{}, nil
+		return &ReposDeletePullRequestReviewProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19304,7 +19304,7 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response, s
 	}
 }
 
-func decodeReposDeleteReleaseResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseResNoContent, err error) {
+func decodeReposDeleteReleaseResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19313,13 +19313,13 @@ func decodeReposDeleteReleaseResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteReleaseResNoContent{}, nil
+		return ReposDeleteReleaseNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposDeleteReleaseAssetResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseAssetResNoContent, err error) {
+func decodeReposDeleteReleaseAssetResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseAssetNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19328,7 +19328,7 @@ func decodeReposDeleteReleaseAssetResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteReleaseAssetResNoContent{}, nil
+		return ReposDeleteReleaseAssetNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19343,7 +19343,7 @@ func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposDeleteWebhookResNoContent{}, nil
+		return &ReposDeleteWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19370,7 +19370,7 @@ func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
-func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposDisableAutomatedSecurityFixesResNoContent, err error) {
+func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19379,13 +19379,13 @@ func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response, span 
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableAutomatedSecurityFixesResNoContent{}, nil
+		return ReposDisableAutomatedSecurityFixesNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposDisableLfsForRepoResponse(resp *http.Response, span trace.Span) (res ReposDisableLfsForRepoResNoContent, err error) {
+func decodeReposDisableLfsForRepoResponse(resp *http.Response, span trace.Span) (res ReposDisableLfsForRepoNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19394,13 +19394,13 @@ func decodeReposDisableLfsForRepoResponse(resp *http.Response, span trace.Span) 
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableLfsForRepoResNoContent{}, nil
+		return ReposDisableLfsForRepoNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposDisableVulnerabilityAlertsResNoContent, err error) {
+func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19409,13 +19409,13 @@ func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span tra
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableVulnerabilityAlertsResNoContent{}, nil
+		return ReposDisableVulnerabilityAlertsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadTarballArchiveResFound, err error) {
+func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadTarballArchiveFound, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19424,13 +19424,13 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 302:
-		return ReposDownloadTarballArchiveResFound{}, nil
+		return ReposDownloadTarballArchiveFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadZipballArchiveResFound, err error) {
+func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadZipballArchiveFound, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19439,13 +19439,13 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 302:
-		return ReposDownloadZipballArchiveResFound{}, nil
+		return ReposDownloadZipballArchiveFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposEnableAutomatedSecurityFixesResNoContent, err error) {
+func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19454,7 +19454,7 @@ func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response, span t
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposEnableAutomatedSecurityFixesResNoContent{}, nil
+		return ReposEnableAutomatedSecurityFixesNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19475,7 +19475,7 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposEnableLfsForRepoResAccepted
+			var response ReposEnableLfsForRepoAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -19490,13 +19490,13 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &ReposEnableLfsForRepoResForbidden{}, nil
+		return &ReposEnableLfsForRepoForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposEnableVulnerabilityAlertsResNoContent, err error) {
+func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -19505,7 +19505,7 @@ func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposEnableVulnerabilityAlertsResNoContent{}, nil
+		return ReposEnableVulnerabilityAlertsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -19809,7 +19809,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetAllTopicsResUnsupportedMediaType
+			var response ReposGetAllTopicsUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20016,7 +20016,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetBranchResUnsupportedMediaType
+			var response ReposGetBranchUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20181,7 +20181,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetCodeFrequencyStatsResAccepted
+			var response ReposGetCodeFrequencyStatsAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20196,7 +20196,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetCodeFrequencyStatsResNoContent{}, nil
+		return &ReposGetCodeFrequencyStatsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20348,7 +20348,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetCommitActivityStatsResAccepted
+			var response ReposGetCommitActivityStatsAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20363,7 +20363,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetCommitActivityStatsResNoContent{}, nil
+		return &ReposGetCommitActivityStatsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20549,7 +20549,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetContributorsStatsResAccepted
+			var response ReposGetContributorsStatsAccepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20564,7 +20564,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetContributorsStatsResNoContent{}, nil
+		return &ReposGetContributorsStatsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20682,7 +20682,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetDeploymentStatusResUnsupportedMediaType
+			var response ReposGetDeploymentStatusUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20909,7 +20909,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 400:
-		return &ReposGetPagesHealthCheckResBadRequest{}, nil
+		return &ReposGetPagesHealthCheckBadRequest{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -20932,7 +20932,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 422:
-		return &ReposGetPagesHealthCheckResUnprocessableEntity{}, nil
+		return &ReposGetPagesHealthCheckUnprocessableEntity{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -21057,7 +21057,7 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetPunchCardStatsResNoContent{}, nil
+		return &ReposGetPunchCardStatsNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -21148,7 +21148,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 302:
-		return &ReposGetReleaseAssetResFound{}, nil
+		return &ReposGetReleaseAssetFound{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -21177,7 +21177,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetReleaseAssetResUnsupportedMediaType
+			var response ReposGetReleaseAssetUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -22135,7 +22135,7 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposListContributorsResNoContent{}, nil
+		return &ReposListContributorsNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -22525,7 +22525,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ReposListInvitationsForAuthenticatedUserResNotModified{}, nil
+		return &ReposListInvitationsForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23018,9 +23018,9 @@ func decodeReposMergeUpstreamResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 409:
-		return &ReposMergeUpstreamResConflict{}, nil
+		return &ReposMergeUpstreamConflict{}, nil
 	case 422:
-		return &ReposMergeUpstreamResUnprocessableEntity{}, nil
+		return &ReposMergeUpstreamUnprocessableEntity{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -23035,7 +23035,7 @@ func decodeReposPingWebhookResponse(resp *http.Response, span trace.Span) (res R
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposPingWebhookResNoContent{}, nil
+		return &ReposPingWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23062,7 +23062,7 @@ func decodeReposPingWebhookResponse(resp *http.Response, span trace.Span) (res R
 	}
 }
 
-func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposRemoveCollaboratorResNoContent, err error) {
+func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposRemoveCollaboratorNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -23071,13 +23071,13 @@ func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposRemoveCollaboratorResNoContent{}, nil
+		return ReposRemoveCollaboratorNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckProtectionResNoContent, err error) {
+func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -23086,7 +23086,7 @@ func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span tr
 
 	switch resp.StatusCode {
 	case 204:
-		return ReposRemoveStatusCheckProtectionResNoContent{}, nil
+		return ReposRemoveStatusCheckProtectionNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -23149,7 +23149,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposReplaceAllTopicsResUnsupportedMediaType
+			var response ReposReplaceAllTopicsUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23266,7 +23266,7 @@ func decodeReposTestPushWebhookResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return &ReposTestPushWebhookResNoContent{}, nil
+		return &ReposTestPushWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23679,9 +23679,9 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return &ScimDeleteUserFromOrgResNoContent{}, nil
+		return &ScimDeleteUserFromOrgNoContent{}, nil
 	case 304:
-		return &ScimDeleteUserFromOrgResNotModified{}, nil
+		return &ScimDeleteUserFromOrgNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23748,7 +23748,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchCommitsResOK
+			var response SearchCommitsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23763,7 +23763,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &SearchCommitsResNotModified{}, nil
+		return &SearchCommitsNotModified{}, nil
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23771,7 +23771,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchCommitsResUnsupportedMediaType
+			var response SearchCommitsUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23805,7 +23805,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchTopicsResOK
+			var response SearchTopicsOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23820,7 +23820,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &SearchTopicsResNotModified{}, nil
+		return &SearchTopicsNotModified{}, nil
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23828,7 +23828,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchTopicsResUnsupportedMediaType
+			var response SearchTopicsUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23877,7 +23877,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &SecretScanningGetAlertResNotFound{}, nil
+		return &SecretScanningGetAlertNotFound{}, nil
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23885,7 +23885,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningGetAlertResServiceUnavailable
+			var response SecretScanningGetAlertServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23961,7 +23961,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningListAlertsForOrgResServiceUnavailable
+			var response SecretScanningListAlertsForOrgServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24010,7 +24010,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &SecretScanningListAlertsForRepoResNotFound{}, nil
+		return &SecretScanningListAlertsForRepoNotFound{}, nil
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -24018,7 +24018,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningListAlertsForRepoResServiceUnavailable
+			var response SecretScanningListAlertsForRepoServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24067,9 +24067,9 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &SecretScanningUpdateAlertResNotFound{}, nil
+		return &SecretScanningUpdateAlertNotFound{}, nil
 	case 422:
-		return &SecretScanningUpdateAlertResUnprocessableEntity{}, nil
+		return &SecretScanningUpdateAlertUnprocessableEntity{}, nil
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -24077,7 +24077,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningUpdateAlertResServiceUnavailable
+			var response SecretScanningUpdateAlertServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24105,7 +24105,7 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsAddMemberLegacyResNoContent{}, nil
+		return &TeamsAddMemberLegacyNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -24128,9 +24128,9 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &TeamsAddMemberLegacyResNotFound{}, nil
+		return &TeamsAddMemberLegacyNotFound{}, nil
 	case 422:
-		return &TeamsAddMemberLegacyResUnprocessableEntity{}, nil
+		return &TeamsAddMemberLegacyUnprocessableEntity{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24166,9 +24166,9 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &TeamsAddOrUpdateMembershipForUserInOrgResForbidden{}, nil
+		return &TeamsAddOrUpdateMembershipForUserInOrgForbidden{}, nil
 	case 422:
-		return &TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity{}, nil
+		return &TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24204,7 +24204,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
-		return &TeamsAddOrUpdateMembershipForUserLegacyResForbidden{}, nil
+		return &TeamsAddOrUpdateMembershipForUserLegacyForbidden{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -24227,7 +24227,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 422:
-		return &TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity{}, nil
+		return &TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24242,7 +24242,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsAddOrUpdateProjectPermissionsInOrgResNoContent{}, nil
+		return &TeamsAddOrUpdateProjectPermissionsInOrgNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -24250,7 +24250,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response TeamsAddOrUpdateProjectPermissionsInOrgResForbidden
+			var response TeamsAddOrUpdateProjectPermissionsInOrgForbidden
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24269,7 +24269,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 	}
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24278,7 +24278,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, spa
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsAddOrUpdateRepoPermissionsInOrgResNoContent{}, nil
+		return TeamsAddOrUpdateRepoPermissionsInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24314,7 +24314,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &TeamsCheckPermissionsForProjectInOrgResNotFound{}, nil
+		return &TeamsCheckPermissionsForProjectInOrgNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24350,7 +24350,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &TeamsCheckPermissionsForProjectLegacyResNotFound{}, nil
+		return &TeamsCheckPermissionsForProjectLegacyNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24386,9 +24386,9 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response, span t
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &TeamsCheckPermissionsForRepoInOrgResNoContent{}, nil
+		return &TeamsCheckPermissionsForRepoInOrgNoContent{}, nil
 	case 404:
-		return &TeamsCheckPermissionsForRepoInOrgResNotFound{}, nil
+		return &TeamsCheckPermissionsForRepoInOrgNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24424,9 +24424,9 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &TeamsCheckPermissionsForRepoLegacyResNoContent{}, nil
+		return &TeamsCheckPermissionsForRepoLegacyNoContent{}, nil
 	case 404:
-		return &TeamsCheckPermissionsForRepoLegacyResNotFound{}, nil
+		return &TeamsCheckPermissionsForRepoLegacyNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24602,7 +24602,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 	}
 }
 
-func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentInOrgResNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24611,13 +24611,13 @@ func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span t
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionCommentInOrgResNoContent{}, nil
+		return TeamsDeleteDiscussionCommentInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentLegacyResNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24626,13 +24626,13 @@ func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response, span 
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionCommentLegacyResNoContent{}, nil
+		return TeamsDeleteDiscussionCommentLegacyNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionInOrgResNoContent, err error) {
+func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24641,13 +24641,13 @@ func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response, span trace.Sp
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionInOrgResNoContent{}, nil
+		return TeamsDeleteDiscussionInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionLegacyResNoContent, err error) {
+func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24656,13 +24656,13 @@ func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response, span trace.S
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionLegacyResNoContent{}, nil
+		return TeamsDeleteDiscussionLegacyNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteInOrgResNoContent, err error) {
+func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -24671,7 +24671,7 @@ func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (res T
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteInOrgResNoContent{}, nil
+		return TeamsDeleteInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24932,9 +24932,9 @@ func decodeTeamsGetMemberLegacyResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsGetMemberLegacyResNoContent{}, nil
+		return &TeamsGetMemberLegacyNoContent{}, nil
 	case 404:
-		return &TeamsGetMemberLegacyResNotFound{}, nil
+		return &TeamsGetMemberLegacyNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24970,7 +24970,7 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &TeamsGetMembershipForUserInOrgResNotFound{}, nil
+		return &TeamsGetMembershipForUserInOrgNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -25366,7 +25366,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &TeamsListForAuthenticatedUserResNotModified{}, nil
+		return &TeamsListForAuthenticatedUserNotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -25982,9 +25982,9 @@ func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsRemoveMemberLegacyResNoContent{}, nil
+		return &TeamsRemoveMemberLegacyNoContent{}, nil
 	case 404:
-		return &TeamsRemoveMemberLegacyResNotFound{}, nil
+		return &TeamsRemoveMemberLegacyNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -25999,9 +25999,9 @@ func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response, span t
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsRemoveMembershipForUserInOrgResNoContent{}, nil
+		return &TeamsRemoveMembershipForUserInOrgNoContent{}, nil
 	case 403:
-		return &TeamsRemoveMembershipForUserInOrgResForbidden{}, nil
+		return &TeamsRemoveMembershipForUserInOrgForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26016,15 +26016,15 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response, span 
 
 	switch resp.StatusCode {
 	case 204:
-		return &TeamsRemoveMembershipForUserLegacyResNoContent{}, nil
+		return &TeamsRemoveMembershipForUserLegacyNoContent{}, nil
 	case 403:
-		return &TeamsRemoveMembershipForUserLegacyResForbidden{}, nil
+		return &TeamsRemoveMembershipForUserLegacyForbidden{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveProjectInOrgResNoContent, err error) {
+func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveProjectInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -26033,13 +26033,13 @@ func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveProjectInOrgResNoContent{}, nil
+		return TeamsRemoveProjectInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoInOrgResNoContent, err error) {
+func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoInOrgNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -26048,13 +26048,13 @@ func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (r
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveRepoInOrgResNoContent{}, nil
+		return TeamsRemoveRepoInOrgNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoLegacyResNoContent, err error) {
+func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoLegacyNoContent, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -26063,7 +26063,7 @@ func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response, span trace.Span) (
 
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveRepoLegacyResNoContent{}, nil
+		return TeamsRemoveRepoLegacyNoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26248,9 +26248,9 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersCheckBlockedResNoContent{}, nil
+		return &UsersCheckBlockedNoContent{}, nil
 	case 304:
-		return &UsersCheckBlockedResNotModified{}, nil
+		return &UsersCheckBlockedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26328,9 +26328,9 @@ func decodeUsersCheckFollowingForUserResponse(resp *http.Response, span trace.Sp
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersCheckFollowingForUserResNoContent{}, nil
+		return &UsersCheckFollowingForUserNoContent{}, nil
 	case 404:
-		return &UsersCheckFollowingForUserResNotFound{}, nil
+		return &UsersCheckFollowingForUserNotFound{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26345,9 +26345,9 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersCheckPersonIsFollowedByAuthenticatedResNoContent{}, nil
+		return &UsersCheckPersonIsFollowedByAuthenticatedNoContent{}, nil
 	case 304:
-		return &UsersCheckPersonIsFollowedByAuthenticatedResNotModified{}, nil
+		return &UsersCheckPersonIsFollowedByAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26425,9 +26425,9 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersDeletePublicSSHKeyForAuthenticatedResNoContent{}, nil
+		return &UsersDeletePublicSSHKeyForAuthenticatedNoContent{}, nil
 	case 304:
-		return &UsersDeletePublicSSHKeyForAuthenticatedResNotModified{}, nil
+		return &UsersDeletePublicSSHKeyForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26505,9 +26505,9 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersFollowResNoContent{}, nil
+		return &UsersFollowNoContent{}, nil
 	case 304:
-		return &UsersFollowResNotModified{}, nil
+		return &UsersFollowNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26606,7 +26606,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersGetGpgKeyForAuthenticatedResNotModified{}, nil
+		return &UsersGetGpgKeyForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26705,7 +26705,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersGetPublicSSHKeyForAuthenticatedResNotModified{}, nil
+		return &UsersGetPublicSSHKeyForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26804,7 +26804,7 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListResNotModified{}, nil
+		return &UsersListNotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26840,7 +26840,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListBlockedByAuthenticatedResNotModified{}, nil
+		return &UsersListBlockedByAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26911,7 +26911,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response UsersListBlockedByAuthenticatedResUnsupportedMediaType
+			var response UsersListBlockedByAuthenticatedUnsupportedMediaType
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -26960,7 +26960,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListEmailsForAuthenticatedResNotModified{}, nil
+		return &UsersListEmailsForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27059,7 +27059,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListFollowedByAuthenticatedResNotModified{}, nil
+		return &UsersListFollowedByAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27137,7 +27137,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListFollowersForAuthenticatedUserResNotModified{}, nil
+		return &UsersListFollowersForAuthenticatedUserNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27315,7 +27315,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListGpgKeysForAuthenticatedResNotModified{}, nil
+		return &UsersListGpgKeysForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27464,7 +27464,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListPublicEmailsForAuthenticatedResNotModified{}, nil
+		return &UsersListPublicEmailsForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27613,7 +27613,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListPublicSSHKeysForAuthenticatedResNotModified{}, nil
+		return &UsersListPublicSSHKeysForAuthenticatedNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27691,9 +27691,9 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersUnblockResNoContent{}, nil
+		return &UsersUnblockNoContent{}, nil
 	case 304:
-		return &UsersUnblockResNotModified{}, nil
+		return &UsersUnblockNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27771,9 +27771,9 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 	switch resp.StatusCode {
 	case 204:
-		return &UsersUnfollowResNoContent{}, nil
+		return &UsersUnfollowNoContent{}, nil
 	case 304:
-		return &UsersUnfollowResNotModified{}, nil
+		return &UsersUnfollowNotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":

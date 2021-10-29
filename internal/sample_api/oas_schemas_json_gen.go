@@ -155,17 +155,17 @@ func (s *Data) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarGetResNotFound) WriteJSON(j *json.Stream) {
+func (s FoobarGetNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarGetResNotFound from json stream.
-func (s *FoobarGetResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads FoobarGetNotFound from json stream.
+func (s *FoobarGetNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarGetResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode FoobarGetNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -260,17 +260,17 @@ func (s *FoobarPostDefStatusCode) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostResNotFound) WriteJSON(j *json.Stream) {
+func (s FoobarPostNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarPostResNotFound from json stream.
-func (s *FoobarPostResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads FoobarPostNotFound from json stream.
+func (s *FoobarPostNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPostResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode FoobarPostNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {

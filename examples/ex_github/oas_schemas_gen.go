@@ -84,21 +84,21 @@ type APIOverviewSSHKeyFingerprints struct {
 	SHA256RSA     OptString `json:"SHA256_RSA"`
 }
 
-// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
-type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent struct{}
+// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
+type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
-// ActionsAddSelectedRepoToOrgSecretResConflict is response for ActionsAddSelectedRepoToOrgSecret operation.
-type ActionsAddSelectedRepoToOrgSecretResConflict struct{}
+// ActionsAddSelectedRepoToOrgSecretConflict is response for ActionsAddSelectedRepoToOrgSecret operation.
+type ActionsAddSelectedRepoToOrgSecretConflict struct{}
 
-func (*ActionsAddSelectedRepoToOrgSecretResConflict) actionsAddSelectedRepoToOrgSecretRes() {}
+func (*ActionsAddSelectedRepoToOrgSecretConflict) actionsAddSelectedRepoToOrgSecretRes() {}
 
-// ActionsAddSelectedRepoToOrgSecretResNoContent is response for ActionsAddSelectedRepoToOrgSecret operation.
-type ActionsAddSelectedRepoToOrgSecretResNoContent struct{}
+// ActionsAddSelectedRepoToOrgSecretNoContent is response for ActionsAddSelectedRepoToOrgSecret operation.
+type ActionsAddSelectedRepoToOrgSecretNoContent struct{}
 
-func (*ActionsAddSelectedRepoToOrgSecretResNoContent) actionsAddSelectedRepoToOrgSecretRes() {}
+func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSecretRes() {}
 
-// ActionsAddSelfHostedRunnerToGroupForOrgResNoContent is response for ActionsAddSelfHostedRunnerToGroupForOrg operation.
-type ActionsAddSelfHostedRunnerToGroupForOrgResNoContent struct{}
+// ActionsAddSelfHostedRunnerToGroupForOrgNoContent is response for ActionsAddSelfHostedRunnerToGroupForOrg operation.
+type ActionsAddSelfHostedRunnerToGroupForOrgNoContent struct{}
 
 type ActionsApproveWorkflowRunApplicationJSONForbidden BasicError
 
@@ -122,18 +122,22 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 	WINDOWS OptInt `json:"WINDOWS"`
 }
 
-type ActionsCancelWorkflowRunResAccepted struct{}
+type ActionsCancelWorkflowRunAccepted struct{}
+
+// ActionsCreateOrUpdateEnvironmentSecretNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
+type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
+
+func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnvironmentSecretRes() {}
 
 type ActionsCreateOrUpdateEnvironmentSecretReq struct {
 	EncryptedValue string `json:"encrypted_value"`
 	KeyID          string `json:"key_id"`
 }
 
-// ActionsCreateOrUpdateEnvironmentSecretResNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
-type ActionsCreateOrUpdateEnvironmentSecretResNoContent struct{}
+// ActionsCreateOrUpdateOrgSecretNoContent is response for ActionsCreateOrUpdateOrgSecret operation.
+type ActionsCreateOrUpdateOrgSecretNoContent struct{}
 
-func (*ActionsCreateOrUpdateEnvironmentSecretResNoContent) actionsCreateOrUpdateEnvironmentSecretRes() {
-}
+func (*ActionsCreateOrUpdateOrgSecretNoContent) actionsCreateOrUpdateOrgSecretRes() {}
 
 type ActionsCreateOrUpdateOrgSecretReq struct {
 	EncryptedValue        OptString                                   `json:"encrypted_value"`
@@ -150,24 +154,19 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
 
-// ActionsCreateOrUpdateOrgSecretResNoContent is response for ActionsCreateOrUpdateOrgSecret operation.
-type ActionsCreateOrUpdateOrgSecretResNoContent struct{}
+type ActionsCreateOrUpdateRepoSecretCreated struct{}
 
-func (*ActionsCreateOrUpdateOrgSecretResNoContent) actionsCreateOrUpdateOrgSecretRes() {}
+func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
+
+// ActionsCreateOrUpdateRepoSecretNoContent is response for ActionsCreateOrUpdateRepoSecret operation.
+type ActionsCreateOrUpdateRepoSecretNoContent struct{}
+
+func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretRes() {}
 
 type ActionsCreateOrUpdateRepoSecretReq struct {
 	EncryptedValue OptString `json:"encrypted_value"`
 	KeyID          OptString `json:"key_id"`
 }
-
-type ActionsCreateOrUpdateRepoSecretResCreated struct{}
-
-func (*ActionsCreateOrUpdateRepoSecretResCreated) actionsCreateOrUpdateRepoSecretRes() {}
-
-// ActionsCreateOrUpdateRepoSecretResNoContent is response for ActionsCreateOrUpdateRepoSecret operation.
-type ActionsCreateOrUpdateRepoSecretResNoContent struct{}
-
-func (*ActionsCreateOrUpdateRepoSecretResNoContent) actionsCreateOrUpdateRepoSecretRes() {}
 
 type ActionsCreateSelfHostedRunnerGroupForOrgReq struct {
 	Name                  string                                                   `json:"name"`
@@ -252,35 +251,35 @@ func NewStringActionsCreateWorkflowDispatchWorkflowID(v string) ActionsCreateWor
 	return s
 }
 
-// ActionsDeleteArtifactResNoContent is response for ActionsDeleteArtifact operation.
-type ActionsDeleteArtifactResNoContent struct{}
+// ActionsDeleteArtifactNoContent is response for ActionsDeleteArtifact operation.
+type ActionsDeleteArtifactNoContent struct{}
 
-// ActionsDeleteEnvironmentSecretResNoContent is response for ActionsDeleteEnvironmentSecret operation.
-type ActionsDeleteEnvironmentSecretResNoContent struct{}
+// ActionsDeleteEnvironmentSecretNoContent is response for ActionsDeleteEnvironmentSecret operation.
+type ActionsDeleteEnvironmentSecretNoContent struct{}
 
-// ActionsDeleteOrgSecretResNoContent is response for ActionsDeleteOrgSecret operation.
-type ActionsDeleteOrgSecretResNoContent struct{}
+// ActionsDeleteOrgSecretNoContent is response for ActionsDeleteOrgSecret operation.
+type ActionsDeleteOrgSecretNoContent struct{}
 
-// ActionsDeleteRepoSecretResNoContent is response for ActionsDeleteRepoSecret operation.
-type ActionsDeleteRepoSecretResNoContent struct{}
+// ActionsDeleteRepoSecretNoContent is response for ActionsDeleteRepoSecret operation.
+type ActionsDeleteRepoSecretNoContent struct{}
 
-// ActionsDeleteSelfHostedRunnerFromOrgResNoContent is response for ActionsDeleteSelfHostedRunnerFromOrg operation.
-type ActionsDeleteSelfHostedRunnerFromOrgResNoContent struct{}
+// ActionsDeleteSelfHostedRunnerFromOrgNoContent is response for ActionsDeleteSelfHostedRunnerFromOrg operation.
+type ActionsDeleteSelfHostedRunnerFromOrgNoContent struct{}
 
-// ActionsDeleteSelfHostedRunnerFromRepoResNoContent is response for ActionsDeleteSelfHostedRunnerFromRepo operation.
-type ActionsDeleteSelfHostedRunnerFromRepoResNoContent struct{}
+// ActionsDeleteSelfHostedRunnerFromRepoNoContent is response for ActionsDeleteSelfHostedRunnerFromRepo operation.
+type ActionsDeleteSelfHostedRunnerFromRepoNoContent struct{}
 
-// ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent is response for ActionsDeleteSelfHostedRunnerGroupFromOrg operation.
-type ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent struct{}
+// ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent is response for ActionsDeleteSelfHostedRunnerGroupFromOrg operation.
+type ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent struct{}
 
-// ActionsDeleteWorkflowRunLogsResNoContent is response for ActionsDeleteWorkflowRunLogs operation.
-type ActionsDeleteWorkflowRunLogsResNoContent struct{}
+// ActionsDeleteWorkflowRunLogsNoContent is response for ActionsDeleteWorkflowRunLogs operation.
+type ActionsDeleteWorkflowRunLogsNoContent struct{}
 
-// ActionsDeleteWorkflowRunResNoContent is response for ActionsDeleteWorkflowRun operation.
-type ActionsDeleteWorkflowRunResNoContent struct{}
+// ActionsDeleteWorkflowRunNoContent is response for ActionsDeleteWorkflowRun operation.
+type ActionsDeleteWorkflowRunNoContent struct{}
 
-// ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent is response for ActionsDisableSelectedRepositoryGithubActionsOrganization operation.
-type ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent struct{}
+// ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsDisableSelectedRepositoryGithubActionsOrganization operation.
+type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
 // ActionsDisableWorkflowWorkflowID represents sum type.
 type ActionsDisableWorkflowWorkflowID struct {
@@ -350,17 +349,17 @@ func NewStringActionsDisableWorkflowWorkflowID(v string) ActionsDisableWorkflowW
 	return s
 }
 
-// ActionsDownloadArtifactResFound is response for ActionsDownloadArtifact operation.
-type ActionsDownloadArtifactResFound struct{}
+// ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
+type ActionsDownloadArtifactFound struct{}
 
-// ActionsDownloadJobLogsForWorkflowRunResFound is response for ActionsDownloadJobLogsForWorkflowRun operation.
-type ActionsDownloadJobLogsForWorkflowRunResFound struct{}
+// ActionsDownloadJobLogsForWorkflowRunFound is response for ActionsDownloadJobLogsForWorkflowRun operation.
+type ActionsDownloadJobLogsForWorkflowRunFound struct{}
 
-// ActionsDownloadWorkflowRunLogsResFound is response for ActionsDownloadWorkflowRunLogs operation.
-type ActionsDownloadWorkflowRunLogsResFound struct{}
+// ActionsDownloadWorkflowRunLogsFound is response for ActionsDownloadWorkflowRunLogs operation.
+type ActionsDownloadWorkflowRunLogsFound struct{}
 
-// ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
-type ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent struct{}
+// ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
+type ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
 // ActionsEnableWorkflowWorkflowID represents sum type.
 type ActionsEnableWorkflowWorkflowID struct {
@@ -574,12 +573,12 @@ func NewStringActionsGetWorkflowWorkflowID(v string) ActionsGetWorkflowWorkflowI
 	return s
 }
 
-type ActionsListArtifactsForRepoResOK struct {
+type ActionsListArtifactsForRepoOK struct {
 	Artifacts  []Artifact `json:"artifacts"`
 	TotalCount int        `json:"total_count"`
 }
 
-type ActionsListEnvironmentSecretsResOK struct {
+type ActionsListEnvironmentSecretsOK struct {
 	Secrets    []ActionsSecret `json:"secrets"`
 	TotalCount int             `json:"total_count"`
 }
@@ -591,67 +590,67 @@ const (
 	ActionsListJobsForWorkflowRunFilterAll    ActionsListJobsForWorkflowRunFilter = "all"
 )
 
-type ActionsListJobsForWorkflowRunResOK struct {
+type ActionsListJobsForWorkflowRunOK struct {
 	Jobs       []Job `json:"jobs"`
 	TotalCount int   `json:"total_count"`
 }
 
-type ActionsListOrgSecretsResOK struct {
+type ActionsListOrgSecretsOK struct {
 	Secrets    []OrganizationActionsSecret `json:"secrets"`
 	TotalCount int                         `json:"total_count"`
 }
 
-type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK struct {
+type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK struct {
 	Repositories []MinimalRepository `json:"repositories"`
 	TotalCount   float64             `json:"total_count"`
 }
 
-type ActionsListRepoSecretsResOK struct {
+type ActionsListRepoSecretsOK struct {
 	Secrets    []ActionsSecret `json:"secrets"`
 	TotalCount int             `json:"total_count"`
 }
 
-type ActionsListRepoWorkflowsResOK struct {
+type ActionsListRepoWorkflowsOK struct {
 	TotalCount int        `json:"total_count"`
 	Workflows  []Workflow `json:"workflows"`
 }
 
-type ActionsListSelectedReposForOrgSecretResOK struct {
+type ActionsListSelectedReposForOrgSecretOK struct {
 	Repositories []MinimalRepository `json:"repositories"`
 	TotalCount   int                 `json:"total_count"`
 }
 
-type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK struct {
+type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK struct {
 	Repositories []Repository `json:"repositories"`
 	TotalCount   float64      `json:"total_count"`
 }
 
-type ActionsListSelfHostedRunnerGroupsForOrgResOK struct {
+type ActionsListSelfHostedRunnerGroupsForOrgOK struct {
 	RunnerGroups []RunnerGroupsOrg `json:"runner_groups"`
 	TotalCount   float64           `json:"total_count"`
 }
 
-type ActionsListSelfHostedRunnersForOrgResOK struct {
+type ActionsListSelfHostedRunnersForOrgOK struct {
 	Runners    []Runner `json:"runners"`
 	TotalCount int      `json:"total_count"`
 }
 
-type ActionsListSelfHostedRunnersForRepoResOK struct {
+type ActionsListSelfHostedRunnersForRepoOK struct {
 	Runners    []Runner `json:"runners"`
 	TotalCount int      `json:"total_count"`
 }
 
-type ActionsListSelfHostedRunnersInGroupForOrgResOK struct {
+type ActionsListSelfHostedRunnersInGroupForOrgOK struct {
 	Runners    []Runner `json:"runners"`
 	TotalCount float64  `json:"total_count"`
 }
 
-type ActionsListWorkflowRunArtifactsResOK struct {
+type ActionsListWorkflowRunArtifactsOK struct {
 	Artifacts  []Artifact `json:"artifacts"`
 	TotalCount int        `json:"total_count"`
 }
 
-type ActionsListWorkflowRunsForRepoResOK struct {
+type ActionsListWorkflowRunsForRepoOK struct {
 	TotalCount   int           `json:"total_count"`
 	WorkflowRuns []WorkflowRun `json:"workflow_runs"`
 }
@@ -760,25 +759,23 @@ type ActionsPublicKey struct {
 	URL       OptString `json:"url"`
 }
 
-type ActionsReRunWorkflowResCreated struct{}
+type ActionsReRunWorkflowCreated struct{}
 
-// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
-type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent struct{}
+// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
+type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
-// ActionsRemoveSelectedRepoFromOrgSecretResConflict is response for ActionsRemoveSelectedRepoFromOrgSecret operation.
-type ActionsRemoveSelectedRepoFromOrgSecretResConflict struct{}
+// ActionsRemoveSelectedRepoFromOrgSecretConflict is response for ActionsRemoveSelectedRepoFromOrgSecret operation.
+type ActionsRemoveSelectedRepoFromOrgSecretConflict struct{}
 
-func (*ActionsRemoveSelectedRepoFromOrgSecretResConflict) actionsRemoveSelectedRepoFromOrgSecretRes() {
-}
+func (*ActionsRemoveSelectedRepoFromOrgSecretConflict) actionsRemoveSelectedRepoFromOrgSecretRes() {}
 
-// ActionsRemoveSelectedRepoFromOrgSecretResNoContent is response for ActionsRemoveSelectedRepoFromOrgSecret operation.
-type ActionsRemoveSelectedRepoFromOrgSecretResNoContent struct{}
+// ActionsRemoveSelectedRepoFromOrgSecretNoContent is response for ActionsRemoveSelectedRepoFromOrgSecret operation.
+type ActionsRemoveSelectedRepoFromOrgSecretNoContent struct{}
 
-func (*ActionsRemoveSelectedRepoFromOrgSecretResNoContent) actionsRemoveSelectedRepoFromOrgSecretRes() {
-}
+func (*ActionsRemoveSelectedRepoFromOrgSecretNoContent) actionsRemoveSelectedRepoFromOrgSecretRes() {}
 
-// ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent is response for ActionsRemoveSelfHostedRunnerFromGroupForOrg operation.
-type ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent struct{}
+// ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent is response for ActionsRemoveSelfHostedRunnerFromGroupForOrg operation.
+type ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent struct{}
 
 // Ref: #/components/schemas/actions-repository-permissions
 type ActionsRepositoryPermissions struct {
@@ -787,7 +784,7 @@ type ActionsRepositoryPermissions struct {
 	SelectedActionsURL OptSelectedActionsURL `json:"selected_actions_url"`
 }
 
-type ActionsRetryWorkflowResCreated struct{}
+type ActionsRetryWorkflowCreated struct{}
 
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	Comment        string                                        `json:"comment"`
@@ -809,55 +806,55 @@ type ActionsSecret struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-// ActionsSetAllowedActionsOrganizationResNoContent is response for ActionsSetAllowedActionsOrganization operation.
-type ActionsSetAllowedActionsOrganizationResNoContent struct{}
+// ActionsSetAllowedActionsOrganizationNoContent is response for ActionsSetAllowedActionsOrganization operation.
+type ActionsSetAllowedActionsOrganizationNoContent struct{}
 
-// ActionsSetAllowedActionsRepositoryResNoContent is response for ActionsSetAllowedActionsRepository operation.
-type ActionsSetAllowedActionsRepositoryResNoContent struct{}
+// ActionsSetAllowedActionsRepositoryNoContent is response for ActionsSetAllowedActionsRepository operation.
+type ActionsSetAllowedActionsRepositoryNoContent struct{}
+
+// ActionsSetGithubActionsPermissionsOrganizationNoContent is response for ActionsSetGithubActionsPermissionsOrganization operation.
+type ActionsSetGithubActionsPermissionsOrganizationNoContent struct{}
 
 type ActionsSetGithubActionsPermissionsOrganizationReq struct {
 	AllowedActions      OptAllowedActions   `json:"allowed_actions"`
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
 }
 
-// ActionsSetGithubActionsPermissionsOrganizationResNoContent is response for ActionsSetGithubActionsPermissionsOrganization operation.
-type ActionsSetGithubActionsPermissionsOrganizationResNoContent struct{}
+// ActionsSetGithubActionsPermissionsRepositoryNoContent is response for ActionsSetGithubActionsPermissionsRepository operation.
+type ActionsSetGithubActionsPermissionsRepositoryNoContent struct{}
 
 type ActionsSetGithubActionsPermissionsRepositoryReq struct {
 	AllowedActions OptAllowedActions `json:"allowed_actions"`
 	Enabled        ActionsEnabled    `json:"enabled"`
 }
 
-// ActionsSetGithubActionsPermissionsRepositoryResNoContent is response for ActionsSetGithubActionsPermissionsRepository operation.
-type ActionsSetGithubActionsPermissionsRepositoryResNoContent struct{}
+// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg operation.
+type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
-// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent is response for ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg operation.
-type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent struct{}
+// ActionsSetSelectedReposForOrgSecretNoContent is response for ActionsSetSelectedReposForOrgSecret operation.
+type ActionsSetSelectedReposForOrgSecretNoContent struct{}
 
 type ActionsSetSelectedReposForOrgSecretReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
-// ActionsSetSelectedReposForOrgSecretResNoContent is response for ActionsSetSelectedReposForOrgSecret operation.
-type ActionsSetSelectedReposForOrgSecretResNoContent struct{}
+// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent is response for ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization operation.
+type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent struct{}
 
 type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
-// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent is response for ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization operation.
-type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent struct{}
+// ActionsSetSelfHostedRunnersInGroupForOrgNoContent is response for ActionsSetSelfHostedRunnersInGroupForOrg operation.
+type ActionsSetSelfHostedRunnersInGroupForOrgNoContent struct{}
 
 type ActionsSetSelfHostedRunnersInGroupForOrgReq struct {
 	Runners []int `json:"runners"`
 }
-
-// ActionsSetSelfHostedRunnersInGroupForOrgResNoContent is response for ActionsSetSelfHostedRunnersInGroupForOrg operation.
-type ActionsSetSelfHostedRunnersInGroupForOrgResNoContent struct{}
 
 type ActionsUpdateSelfHostedRunnerGroupForOrgReq struct {
 	Name       string                                                   `json:"name"`
@@ -887,20 +884,20 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized Ba
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-// ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
-type ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent struct{}
+// ActivityCheckRepoIsStarredByAuthenticatedUserNoContent is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
+type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-// ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
-type ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified struct{}
+// ActivityCheckRepoIsStarredByAuthenticatedUserNotModified is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
+type ActivityCheckRepoIsStarredByAuthenticatedUserNotModified struct{}
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified) activityCheckRepoIsStarredByAuthenticatedUserRes() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserNotModified) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-// ActivityDeleteRepoSubscriptionResNoContent is response for ActivityDeleteRepoSubscription operation.
-type ActivityDeleteRepoSubscriptionResNoContent struct{}
+// ActivityDeleteRepoSubscriptionNoContent is response for ActivityDeleteRepoSubscription operation.
+type ActivityDeleteRepoSubscriptionNoContent struct{}
 
 type ActivityDeleteThreadSubscriptionApplicationJSONForbidden BasicError
 
@@ -912,20 +909,20 @@ type ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized BasicError
 func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionRes() {
 }
 
-// ActivityDeleteThreadSubscriptionResNoContent is response for ActivityDeleteThreadSubscription operation.
-type ActivityDeleteThreadSubscriptionResNoContent struct{}
+// ActivityDeleteThreadSubscriptionNoContent is response for ActivityDeleteThreadSubscription operation.
+type ActivityDeleteThreadSubscriptionNoContent struct{}
 
-func (*ActivityDeleteThreadSubscriptionResNoContent) activityDeleteThreadSubscriptionRes() {}
+func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionRes() {}
 
-// ActivityDeleteThreadSubscriptionResNotModified is response for ActivityDeleteThreadSubscription operation.
-type ActivityDeleteThreadSubscriptionResNotModified struct{}
+// ActivityDeleteThreadSubscriptionNotModified is response for ActivityDeleteThreadSubscription operation.
+type ActivityDeleteThreadSubscriptionNotModified struct{}
 
-func (*ActivityDeleteThreadSubscriptionResNotModified) activityDeleteThreadSubscriptionRes() {}
+func (*ActivityDeleteThreadSubscriptionNotModified) activityDeleteThreadSubscriptionRes() {}
 
-// ActivityGetRepoSubscriptionResNotFound is response for ActivityGetRepoSubscription operation.
-type ActivityGetRepoSubscriptionResNotFound struct{}
+// ActivityGetRepoSubscriptionNotFound is response for ActivityGetRepoSubscription operation.
+type ActivityGetRepoSubscriptionNotFound struct{}
 
-func (*ActivityGetRepoSubscriptionResNotFound) activityGetRepoSubscriptionRes() {}
+func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionRes() {}
 
 type ActivityGetThreadApplicationJSONForbidden BasicError
 
@@ -935,10 +932,10 @@ type ActivityGetThreadApplicationJSONUnauthorized BasicError
 
 func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadRes() {}
 
-// ActivityGetThreadResNotModified is response for ActivityGetThread operation.
-type ActivityGetThreadResNotModified struct{}
+// ActivityGetThreadNotModified is response for ActivityGetThread operation.
+type ActivityGetThreadNotModified struct{}
 
-func (*ActivityGetThreadResNotModified) activityGetThreadRes() {}
+func (*ActivityGetThreadNotModified) activityGetThreadRes() {}
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -950,14 +947,14 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorize
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-// ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified is response for ActivityGetThreadSubscriptionForAuthenticatedUser operation.
-type ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified struct{}
+// ActivityGetThreadSubscriptionForAuthenticatedUserNotModified is response for ActivityGetThreadSubscriptionForAuthenticatedUser operation.
+type ActivityGetThreadSubscriptionForAuthenticatedUserNotModified struct{}
 
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserNotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-// ActivityListNotificationsForAuthenticatedUserResNotModified is response for ActivityListNotificationsForAuthenticatedUser operation.
-type ActivityListNotificationsForAuthenticatedUserResNotModified struct{}
+// ActivityListNotificationsForAuthenticatedUserNotModified is response for ActivityListNotificationsForAuthenticatedUser operation.
+type ActivityListNotificationsForAuthenticatedUserNotModified struct{}
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
 
@@ -974,33 +971,33 @@ type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkRes() {
 }
 
+// ActivityListPublicEventsForRepoNetworkNotModified is response for ActivityListPublicEventsForRepoNetwork operation.
+type ActivityListPublicEventsForRepoNetworkNotModified struct{}
+
+func (*ActivityListPublicEventsForRepoNetworkNotModified) activityListPublicEventsForRepoNetworkRes() {
+}
+
 type ActivityListPublicEventsForRepoNetworkOKApplicationJSON []Event
 
 func (*ActivityListPublicEventsForRepoNetworkOKApplicationJSON) activityListPublicEventsForRepoNetworkRes() {
 }
 
-// ActivityListPublicEventsForRepoNetworkResNotModified is response for ActivityListPublicEventsForRepoNetwork operation.
-type ActivityListPublicEventsForRepoNetworkResNotModified struct{}
+// ActivityListPublicEventsNotModified is response for ActivityListPublicEvents operation.
+type ActivityListPublicEventsNotModified struct{}
 
-func (*ActivityListPublicEventsForRepoNetworkResNotModified) activityListPublicEventsForRepoNetworkRes() {
-}
+func (*ActivityListPublicEventsNotModified) activityListPublicEventsRes() {}
 
 type ActivityListPublicEventsOKApplicationJSON []Event
 
 func (*ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
 
-// ActivityListPublicEventsResNotModified is response for ActivityListPublicEvents operation.
-type ActivityListPublicEventsResNotModified struct{}
-
-func (*ActivityListPublicEventsResNotModified) activityListPublicEventsRes() {}
-
-type ActivityListPublicEventsResServiceUnavailable struct {
+type ActivityListPublicEventsServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*ActivityListPublicEventsResServiceUnavailable) activityListPublicEventsRes() {}
+func (*ActivityListPublicEventsServiceUnavailable) activityListPublicEventsRes() {}
 
 type ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1019,6 +1016,12 @@ const (
 	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
 )
 
+// ActivityListReposStarredByAuthenticatedUserNotModified is response for ActivityListReposStarredByAuthenticatedUser operation.
+type ActivityListReposStarredByAuthenticatedUserNotModified struct{}
+
+func (*ActivityListReposStarredByAuthenticatedUserNotModified) activityListReposStarredByAuthenticatedUserRes() {
+}
+
 type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityListReposStarredByAuthenticatedUserRes() {
@@ -1027,12 +1030,6 @@ func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityLis
 type ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON []StarredRepository
 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserRes() {
-}
-
-// ActivityListReposStarredByAuthenticatedUserResNotModified is response for ActivityListReposStarredByAuthenticatedUser operation.
-type ActivityListReposStarredByAuthenticatedUserResNotModified struct{}
-
-func (*ActivityListReposStarredByAuthenticatedUserResNotModified) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 type ActivityListReposStarredByAuthenticatedUserSort string
@@ -1066,16 +1063,22 @@ type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized Bas
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
+// ActivityListWatchedReposForAuthenticatedUserNotModified is response for ActivityListWatchedReposForAuthenticatedUser operation.
+type ActivityListWatchedReposForAuthenticatedUserNotModified struct{}
+
+func (*ActivityListWatchedReposForAuthenticatedUserNotModified) activityListWatchedReposForAuthenticatedUserRes() {
+}
+
 type ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON []MinimalRepository
 
 func (*ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
-// ActivityListWatchedReposForAuthenticatedUserResNotModified is response for ActivityListWatchedReposForAuthenticatedUser operation.
-type ActivityListWatchedReposForAuthenticatedUserResNotModified struct{}
-
-func (*ActivityListWatchedReposForAuthenticatedUserResNotModified) activityListWatchedReposForAuthenticatedUserRes() {
+type ActivityMarkNotificationsAsReadAccepted struct {
+	Message OptString `json:"message"`
 }
+
+func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkNotificationsAsReadApplicationJSONForbidden BasicError
 
@@ -1087,52 +1090,46 @@ type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
 func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadRes() {
 }
 
+// ActivityMarkNotificationsAsReadNotModified is response for ActivityMarkNotificationsAsRead operation.
+type ActivityMarkNotificationsAsReadNotModified struct{}
+
+func (*ActivityMarkNotificationsAsReadNotModified) activityMarkNotificationsAsReadRes() {}
+
 type ActivityMarkNotificationsAsReadReq struct {
 	LastReadAt OptTime `json:"last_read_at"`
 	Read       OptBool `json:"read"`
 }
 
-type ActivityMarkNotificationsAsReadResAccepted struct {
+// ActivityMarkNotificationsAsReadResetContent is response for ActivityMarkNotificationsAsRead operation.
+type ActivityMarkNotificationsAsReadResetContent struct{}
+
+func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadRes() {}
+
+type ActivityMarkRepoNotificationsAsReadAccepted struct {
 	Message OptString `json:"message"`
+	URL     OptString `json:"url"`
 }
 
-func (*ActivityMarkNotificationsAsReadResAccepted) activityMarkNotificationsAsReadRes() {}
-
-// ActivityMarkNotificationsAsReadResNotModified is response for ActivityMarkNotificationsAsRead operation.
-type ActivityMarkNotificationsAsReadResNotModified struct{}
-
-func (*ActivityMarkNotificationsAsReadResNotModified) activityMarkNotificationsAsReadRes() {}
-
-// ActivityMarkNotificationsAsReadResResetContent is response for ActivityMarkNotificationsAsRead operation.
-type ActivityMarkNotificationsAsReadResResetContent struct{}
-
-func (*ActivityMarkNotificationsAsReadResResetContent) activityMarkNotificationsAsReadRes() {}
+func (*ActivityMarkRepoNotificationsAsReadAccepted) activityMarkRepoNotificationsAsReadRes() {}
 
 type ActivityMarkRepoNotificationsAsReadReq struct {
 	LastReadAt OptTime `json:"last_read_at"`
 }
 
-type ActivityMarkRepoNotificationsAsReadResAccepted struct {
-	Message OptString `json:"message"`
-	URL     OptString `json:"url"`
-}
+// ActivityMarkRepoNotificationsAsReadResetContent is response for ActivityMarkRepoNotificationsAsRead operation.
+type ActivityMarkRepoNotificationsAsReadResetContent struct{}
 
-func (*ActivityMarkRepoNotificationsAsReadResAccepted) activityMarkRepoNotificationsAsReadRes() {}
+func (*ActivityMarkRepoNotificationsAsReadResetContent) activityMarkRepoNotificationsAsReadRes() {}
 
-// ActivityMarkRepoNotificationsAsReadResResetContent is response for ActivityMarkRepoNotificationsAsRead operation.
-type ActivityMarkRepoNotificationsAsReadResResetContent struct{}
+// ActivityMarkThreadAsReadNotModified is response for ActivityMarkThreadAsRead operation.
+type ActivityMarkThreadAsReadNotModified struct{}
 
-func (*ActivityMarkRepoNotificationsAsReadResResetContent) activityMarkRepoNotificationsAsReadRes() {}
+func (*ActivityMarkThreadAsReadNotModified) activityMarkThreadAsReadRes() {}
 
-// ActivityMarkThreadAsReadResNotModified is response for ActivityMarkThreadAsRead operation.
-type ActivityMarkThreadAsReadResNotModified struct{}
+// ActivityMarkThreadAsReadResetContent is response for ActivityMarkThreadAsRead operation.
+type ActivityMarkThreadAsReadResetContent struct{}
 
-func (*ActivityMarkThreadAsReadResNotModified) activityMarkThreadAsReadRes() {}
-
-// ActivityMarkThreadAsReadResResetContent is response for ActivityMarkThreadAsRead operation.
-type ActivityMarkThreadAsReadResResetContent struct{}
-
-func (*ActivityMarkThreadAsReadResResetContent) activityMarkThreadAsReadRes() {}
+func (*ActivityMarkThreadAsReadResetContent) activityMarkThreadAsReadRes() {}
 
 type ActivitySetRepoSubscriptionReq struct {
 	Ignored    OptBool `json:"ignored"`
@@ -1147,14 +1144,14 @@ type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
 
 func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionRes() {}
 
+// ActivitySetThreadSubscriptionNotModified is response for ActivitySetThreadSubscription operation.
+type ActivitySetThreadSubscriptionNotModified struct{}
+
+func (*ActivitySetThreadSubscriptionNotModified) activitySetThreadSubscriptionRes() {}
+
 type ActivitySetThreadSubscriptionReq struct {
 	Ignored OptBool `json:"ignored"`
 }
-
-// ActivitySetThreadSubscriptionResNotModified is response for ActivitySetThreadSubscription operation.
-type ActivitySetThreadSubscriptionResNotModified struct{}
-
-func (*ActivitySetThreadSubscriptionResNotModified) activitySetThreadSubscriptionRes() {}
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1171,16 +1168,15 @@ type ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
 func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserRes() {
 }
 
-// ActivityStarRepoForAuthenticatedUserResNoContent is response for ActivityStarRepoForAuthenticatedUser operation.
-type ActivityStarRepoForAuthenticatedUserResNoContent struct{}
+// ActivityStarRepoForAuthenticatedUserNoContent is response for ActivityStarRepoForAuthenticatedUser operation.
+type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
-func (*ActivityStarRepoForAuthenticatedUserResNoContent) activityStarRepoForAuthenticatedUserRes() {}
+func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserRes() {}
 
-// ActivityStarRepoForAuthenticatedUserResNotModified is response for ActivityStarRepoForAuthenticatedUser operation.
-type ActivityStarRepoForAuthenticatedUserResNotModified struct{}
+// ActivityStarRepoForAuthenticatedUserNotModified is response for ActivityStarRepoForAuthenticatedUser operation.
+type ActivityStarRepoForAuthenticatedUserNotModified struct{}
 
-func (*ActivityStarRepoForAuthenticatedUserResNotModified) activityStarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityStarRepoForAuthenticatedUserNotModified) activityStarRepoForAuthenticatedUserRes() {}
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1197,16 +1193,15 @@ type ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicErro
 func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
-// ActivityUnstarRepoForAuthenticatedUserResNoContent is response for ActivityUnstarRepoForAuthenticatedUser operation.
-type ActivityUnstarRepoForAuthenticatedUserResNoContent struct{}
+// ActivityUnstarRepoForAuthenticatedUserNoContent is response for ActivityUnstarRepoForAuthenticatedUser operation.
+type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 
-func (*ActivityUnstarRepoForAuthenticatedUserResNoContent) activityUnstarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserRes() {}
 
-// ActivityUnstarRepoForAuthenticatedUserResNotModified is response for ActivityUnstarRepoForAuthenticatedUser operation.
-type ActivityUnstarRepoForAuthenticatedUserResNotModified struct{}
+// ActivityUnstarRepoForAuthenticatedUserNotModified is response for ActivityUnstarRepoForAuthenticatedUser operation.
+type ActivityUnstarRepoForAuthenticatedUserNotModified struct{}
 
-func (*ActivityUnstarRepoForAuthenticatedUserResNotModified) activityUnstarRepoForAuthenticatedUserRes() {
+func (*ActivityUnstarRepoForAuthenticatedUserNotModified) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 // Ref: #/components/schemas/actor
@@ -1516,29 +1511,29 @@ type AppsAddRepoToInstallationApplicationJSONNotFound BasicError
 
 func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationRes() {}
 
-// AppsAddRepoToInstallationResNoContent is response for AppsAddRepoToInstallation operation.
-type AppsAddRepoToInstallationResNoContent struct{}
+// AppsAddRepoToInstallationNoContent is response for AppsAddRepoToInstallation operation.
+type AppsAddRepoToInstallationNoContent struct{}
 
-func (*AppsAddRepoToInstallationResNoContent) appsAddRepoToInstallationRes() {}
+func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationRes() {}
 
-// AppsAddRepoToInstallationResNotModified is response for AppsAddRepoToInstallation operation.
-type AppsAddRepoToInstallationResNotModified struct{}
+// AppsAddRepoToInstallationNotModified is response for AppsAddRepoToInstallation operation.
+type AppsAddRepoToInstallationNotModified struct{}
 
-func (*AppsAddRepoToInstallationResNotModified) appsAddRepoToInstallationRes() {}
+func (*AppsAddRepoToInstallationNotModified) appsAddRepoToInstallationRes() {}
 
 type AppsCheckTokenReq struct {
 	AccessToken string `json:"access_token"`
 }
+
+// AppsCreateContentAttachmentNotModified is response for AppsCreateContentAttachment operation.
+type AppsCreateContentAttachmentNotModified struct{}
 
 type AppsCreateContentAttachmentReq struct {
 	Body  string `json:"body"`
 	Title string `json:"title"`
 }
 
-// AppsCreateContentAttachmentResNotModified is response for AppsCreateContentAttachment operation.
-type AppsCreateContentAttachmentResNotModified struct{}
-
-type AppsCreateContentAttachmentResUnsupportedMediaType struct {
+type AppsCreateContentAttachmentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -1551,29 +1546,29 @@ type AppsCreateInstallationAccessTokenReq struct {
 	RepositoryIds []int             `json:"repository_ids"`
 }
 
-type AppsCreateInstallationAccessTokenResUnsupportedMediaType struct {
+type AppsCreateInstallationAccessTokenUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
+
+// AppsDeleteAuthorizationNoContent is response for AppsDeleteAuthorization operation.
+type AppsDeleteAuthorizationNoContent struct{}
 
 type AppsDeleteAuthorizationReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-// AppsDeleteAuthorizationResNoContent is response for AppsDeleteAuthorization operation.
-type AppsDeleteAuthorizationResNoContent struct{}
+// AppsDeleteInstallationNoContent is response for AppsDeleteInstallation operation.
+type AppsDeleteInstallationNoContent struct{}
 
-// AppsDeleteInstallationResNoContent is response for AppsDeleteInstallation operation.
-type AppsDeleteInstallationResNoContent struct{}
+func (*AppsDeleteInstallationNoContent) appsDeleteInstallationRes() {}
 
-func (*AppsDeleteInstallationResNoContent) appsDeleteInstallationRes() {}
+// AppsDeleteTokenNoContent is response for AppsDeleteToken operation.
+type AppsDeleteTokenNoContent struct{}
 
 type AppsDeleteTokenReq struct {
 	AccessToken string `json:"access_token"`
 }
-
-// AppsDeleteTokenResNoContent is response for AppsDeleteToken operation.
-type AppsDeleteTokenResNoContent struct{}
 
 type AppsGetBySlugApplicationJSONForbidden BasicError
 
@@ -1583,12 +1578,12 @@ type AppsGetBySlugApplicationJSONNotFound BasicError
 
 func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugRes() {}
 
-type AppsGetBySlugResUnsupportedMediaType struct {
+type AppsGetBySlugUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*AppsGetBySlugResUnsupportedMediaType) appsGetBySlugRes() {}
+func (*AppsGetBySlugUnsupportedMediaType) appsGetBySlugRes() {}
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
 
@@ -1600,10 +1595,10 @@ type AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized BasicError
 func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountRes() {
 }
 
-// AppsGetSubscriptionPlanForAccountStubbedResNotFound is response for AppsGetSubscriptionPlanForAccountStubbed operation.
-type AppsGetSubscriptionPlanForAccountStubbedResNotFound struct{}
+// AppsGetSubscriptionPlanForAccountStubbedNotFound is response for AppsGetSubscriptionPlanForAccountStubbed operation.
+type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 
-func (*AppsGetSubscriptionPlanForAccountStubbedResNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
+func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
 type AppsListAccountsForPlanDirection string
@@ -1648,19 +1643,19 @@ type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicE
 func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-// AppsListInstallationReposForAuthenticatedUserResNotModified is response for AppsListInstallationReposForAuthenticatedUser operation.
-type AppsListInstallationReposForAuthenticatedUserResNotModified struct{}
+// AppsListInstallationReposForAuthenticatedUserNotModified is response for AppsListInstallationReposForAuthenticatedUser operation.
+type AppsListInstallationReposForAuthenticatedUserNotModified struct{}
 
-func (*AppsListInstallationReposForAuthenticatedUserResNotModified) appsListInstallationReposForAuthenticatedUserRes() {
+func (*AppsListInstallationReposForAuthenticatedUserNotModified) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-type AppsListInstallationReposForAuthenticatedUserResOK struct {
+type AppsListInstallationReposForAuthenticatedUserOK struct {
 	Repositories        []Repository `json:"repositories"`
 	RepositorySelection OptString    `json:"repository_selection"`
 	TotalCount          int          `json:"total_count"`
 }
 
-func (*AppsListInstallationReposForAuthenticatedUserResOK) appsListInstallationReposForAuthenticatedUserRes() {
+func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListPlansApplicationJSONNotFound BasicError
@@ -1689,19 +1684,18 @@ type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
 func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
 
-// AppsListReposAccessibleToInstallationResNotModified is response for AppsListReposAccessibleToInstallation operation.
-type AppsListReposAccessibleToInstallationResNotModified struct{}
+// AppsListReposAccessibleToInstallationNotModified is response for AppsListReposAccessibleToInstallation operation.
+type AppsListReposAccessibleToInstallationNotModified struct{}
 
-func (*AppsListReposAccessibleToInstallationResNotModified) appsListReposAccessibleToInstallationRes() {
-}
+func (*AppsListReposAccessibleToInstallationNotModified) appsListReposAccessibleToInstallationRes() {}
 
-type AppsListReposAccessibleToInstallationResOK struct {
+type AppsListReposAccessibleToInstallationOK struct {
 	Repositories        []Repository `json:"repositories"`
 	RepositorySelection OptString    `json:"repository_selection"`
 	TotalCount          int          `json:"total_count"`
 }
 
-func (*AppsListReposAccessibleToInstallationResOK) appsListReposAccessibleToInstallationRes() {}
+func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstallationRes() {}
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
 
@@ -1713,15 +1707,21 @@ type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicE
 func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
+// AppsListSubscriptionsForAuthenticatedUserNotModified is response for AppsListSubscriptionsForAuthenticatedUser operation.
+type AppsListSubscriptionsForAuthenticatedUserNotModified struct{}
+
+func (*AppsListSubscriptionsForAuthenticatedUserNotModified) appsListSubscriptionsForAuthenticatedUserRes() {
+}
+
 type AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON []UserMarketplacePurchase
 
 func (*AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
-// AppsListSubscriptionsForAuthenticatedUserResNotModified is response for AppsListSubscriptionsForAuthenticatedUser operation.
-type AppsListSubscriptionsForAuthenticatedUserResNotModified struct{}
+// AppsListSubscriptionsForAuthenticatedUserStubbedNotModified is response for AppsListSubscriptionsForAuthenticatedUserStubbed operation.
+type AppsListSubscriptionsForAuthenticatedUserStubbedNotModified struct{}
 
-func (*AppsListSubscriptionsForAuthenticatedUserResNotModified) appsListSubscriptionsForAuthenticatedUserRes() {
+func (*AppsListSubscriptionsForAuthenticatedUserStubbedNotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMarketplacePurchase
@@ -1729,13 +1729,7 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMar
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
-// AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified is response for AppsListSubscriptionsForAuthenticatedUserStubbed operation.
-type AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified struct{}
-
-func (*AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
-}
-
-type AppsRedeliverWebhookDeliveryResAccepted struct{}
+type AppsRedeliverWebhookDeliveryAccepted struct{}
 
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
@@ -1745,22 +1739,22 @@ type AppsRemoveRepoFromInstallationApplicationJSONNotFound BasicError
 
 func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationRes() {}
 
-// AppsRemoveRepoFromInstallationResNoContent is response for AppsRemoveRepoFromInstallation operation.
-type AppsRemoveRepoFromInstallationResNoContent struct{}
+// AppsRemoveRepoFromInstallationNoContent is response for AppsRemoveRepoFromInstallation operation.
+type AppsRemoveRepoFromInstallationNoContent struct{}
 
-func (*AppsRemoveRepoFromInstallationResNoContent) appsRemoveRepoFromInstallationRes() {}
+func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationRes() {}
 
-// AppsRemoveRepoFromInstallationResNotModified is response for AppsRemoveRepoFromInstallation operation.
-type AppsRemoveRepoFromInstallationResNotModified struct{}
+// AppsRemoveRepoFromInstallationNotModified is response for AppsRemoveRepoFromInstallation operation.
+type AppsRemoveRepoFromInstallationNotModified struct{}
 
-func (*AppsRemoveRepoFromInstallationResNotModified) appsRemoveRepoFromInstallationRes() {}
+func (*AppsRemoveRepoFromInstallationNotModified) appsRemoveRepoFromInstallationRes() {}
 
 type AppsResetTokenReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-// AppsRevokeInstallationAccessTokenResNoContent is response for AppsRevokeInstallationAccessToken operation.
-type AppsRevokeInstallationAccessTokenResNoContent struct{}
+// AppsRevokeInstallationAccessTokenNoContent is response for AppsRevokeInstallationAccessToken operation.
+type AppsRevokeInstallationAccessTokenNoContent struct{}
 
 type AppsScopeTokenReq struct {
 	AccessToken   string            `json:"access_token"`
@@ -1771,15 +1765,15 @@ type AppsScopeTokenReq struct {
 	TargetID      OptInt            `json:"target_id"`
 }
 
-// AppsSuspendInstallationResNoContent is response for AppsSuspendInstallation operation.
-type AppsSuspendInstallationResNoContent struct{}
+// AppsSuspendInstallationNoContent is response for AppsSuspendInstallation operation.
+type AppsSuspendInstallationNoContent struct{}
 
-func (*AppsSuspendInstallationResNoContent) appsSuspendInstallationRes() {}
+func (*AppsSuspendInstallationNoContent) appsSuspendInstallationRes() {}
 
-// AppsUnsuspendInstallationResNoContent is response for AppsUnsuspendInstallation operation.
-type AppsUnsuspendInstallationResNoContent struct{}
+// AppsUnsuspendInstallationNoContent is response for AppsUnsuspendInstallation operation.
+type AppsUnsuspendInstallationNoContent struct{}
 
-func (*AppsUnsuspendInstallationResNoContent) appsUnsuspendInstallationRes() {}
+func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationRes() {}
 
 type AppsUpdateWebhookConfigForAppReq struct {
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -2485,7 +2479,7 @@ const (
 	ChecksListForRefFilterAll    ChecksListForRefFilter = "all"
 )
 
-type ChecksListForRefResOK struct {
+type ChecksListForRefOK struct {
 	CheckRuns  []CheckRun `json:"check_runs"`
 	TotalCount int        `json:"total_count"`
 }
@@ -2505,7 +2499,7 @@ const (
 	ChecksListForSuiteFilterAll    ChecksListForSuiteFilter = "all"
 )
 
-type ChecksListForSuiteResOK struct {
+type ChecksListForSuiteOK struct {
 	CheckRuns  []CheckRun `json:"check_runs"`
 	TotalCount int        `json:"total_count"`
 }
@@ -2518,12 +2512,12 @@ const (
 	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
 )
 
-type ChecksListSuitesForRefResOK struct {
+type ChecksListSuitesForRefOK struct {
 	CheckSuites []CheckSuite `json:"check_suites"`
 	TotalCount  int          `json:"total_count"`
 }
 
-type ChecksRerequestSuiteResCreated struct{}
+type ChecksRerequestSuiteCreated struct{}
 
 type ChecksSetSuitesPreferencesReq struct {
 	AutoTriggerChecks []ChecksSetSuitesPreferencesReqAutoTriggerChecksItem `json:"auto_trigger_checks"`
@@ -2786,13 +2780,13 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisResServiceUnavailable struct {
+type CodeScanningDeleteAnalysisServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningDeleteAnalysisResServiceUnavailable) codeScanningDeleteAnalysisRes() {}
+func (*CodeScanningDeleteAnalysisServiceUnavailable) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningGetAlertApplicationJSONForbidden BasicError
 
@@ -2802,13 +2796,13 @@ type CodeScanningGetAlertApplicationJSONNotFound BasicError
 
 func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertRes() {}
 
-type CodeScanningGetAlertResServiceUnavailable struct {
+type CodeScanningGetAlertServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningGetAlertResServiceUnavailable) codeScanningGetAlertRes() {}
+func (*CodeScanningGetAlertServiceUnavailable) codeScanningGetAlertRes() {}
 
 type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
 
@@ -2822,26 +2816,26 @@ type CodeScanningGetAnalysisOKApplicationJSONSarif string
 
 func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
 
-type CodeScanningGetAnalysisResServiceUnavailable struct {
+type CodeScanningGetAnalysisServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningGetAnalysisResServiceUnavailable) codeScanningGetAnalysisRes() {}
+func (*CodeScanningGetAnalysisServiceUnavailable) codeScanningGetAnalysisRes() {}
 
-// CodeScanningGetSarifResNotFound is response for CodeScanningGetSarif operation.
-type CodeScanningGetSarifResNotFound struct{}
+// CodeScanningGetSarifNotFound is response for CodeScanningGetSarif operation.
+type CodeScanningGetSarifNotFound struct{}
 
-func (*CodeScanningGetSarifResNotFound) codeScanningGetSarifRes() {}
+func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
 
-type CodeScanningGetSarifResServiceUnavailable struct {
+type CodeScanningGetSarifServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningGetSarifResServiceUnavailable) codeScanningGetSarifRes() {}
+func (*CodeScanningGetSarifServiceUnavailable) codeScanningGetSarifRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
 
@@ -2855,13 +2849,13 @@ type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
 func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertInstancesResServiceUnavailable struct {
+type CodeScanningListAlertInstancesServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningListAlertInstancesResServiceUnavailable) codeScanningListAlertInstancesRes() {}
+func (*CodeScanningListAlertInstancesServiceUnavailable) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertsForRepoApplicationJSONForbidden BasicError
 
@@ -2875,13 +2869,13 @@ type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
 
 func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListAlertsForRepoResServiceUnavailable struct {
+type CodeScanningListAlertsForRepoServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningListAlertsForRepoResServiceUnavailable) codeScanningListAlertsForRepoRes() {}
+func (*CodeScanningListAlertsForRepoServiceUnavailable) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
@@ -2895,13 +2889,13 @@ type CodeScanningListRecentAnalysesOKApplicationJSON []CodeScanningAnalysis
 
 func (*CodeScanningListRecentAnalysesOKApplicationJSON) codeScanningListRecentAnalysesRes() {}
 
-type CodeScanningListRecentAnalysesResServiceUnavailable struct {
+type CodeScanningListRecentAnalysesServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningListRecentAnalysesResServiceUnavailable) codeScanningListRecentAnalysesRes() {}
+func (*CodeScanningListRecentAnalysesServiceUnavailable) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningRef string
 
@@ -2941,13 +2935,13 @@ type CodeScanningUpdateAlertReq struct {
 	State           CodeScanningAlertSetState              `json:"state"`
 }
 
-type CodeScanningUpdateAlertResServiceUnavailable struct {
+type CodeScanningUpdateAlertServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningUpdateAlertResServiceUnavailable) codeScanningUpdateAlertRes() {}
+func (*CodeScanningUpdateAlertServiceUnavailable) codeScanningUpdateAlertRes() {}
 
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
 
@@ -2956,6 +2950,11 @@ func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifR
 type CodeScanningUploadSarifApplicationJSONNotFound BasicError
 
 func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifRes() {}
+
+// CodeScanningUploadSarifBadRequest is response for CodeScanningUploadSarif operation.
+type CodeScanningUploadSarifBadRequest struct{}
+
+func (*CodeScanningUploadSarifBadRequest) codeScanningUploadSarifRes() {}
 
 type CodeScanningUploadSarifReq struct {
 	CheckoutURI OptURL                        `json:"checkout_uri"`
@@ -2966,23 +2965,18 @@ type CodeScanningUploadSarifReq struct {
 	ToolName    OptString                     `json:"tool_name"`
 }
 
-// CodeScanningUploadSarifResBadRequest is response for CodeScanningUploadSarif operation.
-type CodeScanningUploadSarifResBadRequest struct{}
+// CodeScanningUploadSarifRequestEntityTooLarge is response for CodeScanningUploadSarif operation.
+type CodeScanningUploadSarifRequestEntityTooLarge struct{}
 
-func (*CodeScanningUploadSarifResBadRequest) codeScanningUploadSarifRes() {}
+func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifRes() {}
 
-// CodeScanningUploadSarifResRequestEntityTooLarge is response for CodeScanningUploadSarif operation.
-type CodeScanningUploadSarifResRequestEntityTooLarge struct{}
-
-func (*CodeScanningUploadSarifResRequestEntityTooLarge) codeScanningUploadSarifRes() {}
-
-type CodeScanningUploadSarifResServiceUnavailable struct {
+type CodeScanningUploadSarifServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*CodeScanningUploadSarifResServiceUnavailable) codeScanningUploadSarifRes() {}
+func (*CodeScanningUploadSarifServiceUnavailable) codeScanningUploadSarifRes() {}
 
 // Ref: #/components/schemas/code-search-result-item
 type CodeSearchResultItem struct {
@@ -3001,19 +2995,19 @@ type CodeSearchResultItem struct {
 	URL            url.URL                  `json:"url"`
 }
 
+// CodesOfConductGetAllCodesOfConductNotModified is response for CodesOfConductGetAllCodesOfConduct operation.
+type CodesOfConductGetAllCodesOfConductNotModified struct{}
+
+func (*CodesOfConductGetAllCodesOfConductNotModified) codesOfConductGetAllCodesOfConductRes() {}
+
 type CodesOfConductGetAllCodesOfConductOKApplicationJSON []CodeOfConduct
 
 func (*CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllCodesOfConductRes() {}
 
-// CodesOfConductGetAllCodesOfConductResNotModified is response for CodesOfConductGetAllCodesOfConduct operation.
-type CodesOfConductGetAllCodesOfConductResNotModified struct{}
+// CodesOfConductGetConductCodeNotModified is response for CodesOfConductGetConductCode operation.
+type CodesOfConductGetConductCodeNotModified struct{}
 
-func (*CodesOfConductGetAllCodesOfConductResNotModified) codesOfConductGetAllCodesOfConductRes() {}
-
-// CodesOfConductGetConductCodeResNotModified is response for CodesOfConductGetConductCode operation.
-type CodesOfConductGetConductCodeResNotModified struct{}
-
-func (*CodesOfConductGetConductCodeResNotModified) codesOfConductGetConductCodeRes() {}
+func (*CodesOfConductGetConductCodeNotModified) codesOfConductGetConductCodeRes() {}
 
 // Ref: #/components/schemas/collaborator
 type Collaborator struct {
@@ -3450,14 +3444,14 @@ type Email struct {
 	Visibility NilString `json:"visibility"`
 }
 
-// EmojisGetResNotModified is response for EmojisGet operation.
-type EmojisGetResNotModified struct{}
+// EmojisGetNotModified is response for EmojisGet operation.
+type EmojisGetNotModified struct{}
 
-func (*EmojisGetResNotModified) emojisGetRes() {}
+func (*EmojisGetNotModified) emojisGetRes() {}
 
-type EmojisGetResOK struct{}
+type EmojisGetOK struct{}
 
-func (*EmojisGetResOK) emojisGetRes() {}
+func (*EmojisGetOK) emojisGetRes() {}
 
 // Ref: #/components/schemas/empty-object
 type EmptyObject struct{}
@@ -3485,11 +3479,11 @@ const (
 	EnabledRepositoriesSelected EnabledRepositories = "selected"
 )
 
-// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent is response for EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
-type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent struct{}
+// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent is response for EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
+type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent struct{}
 
-// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent is response for EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise operation.
-type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent struct{}
+// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent is response for EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise operation.
+type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent struct{}
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq struct {
 	Name                    string                                                                  `json:"name"`
@@ -3505,23 +3499,23 @@ const (
 	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility = "all"
 )
 
-// EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent is response for EnterpriseAdminDeleteScimGroupFromEnterprise operation.
-type EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent struct{}
+// EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent is response for EnterpriseAdminDeleteScimGroupFromEnterprise operation.
+type EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent struct{}
 
-// EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent is response for EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise operation.
-type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent struct{}
+// EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent is response for EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise operation.
+type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent struct{}
 
-// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent is response for EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise operation.
-type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent struct{}
+// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent is response for EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise operation.
+type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent struct{}
 
-// EnterpriseAdminDeleteUserFromEnterpriseResNoContent is response for EnterpriseAdminDeleteUserFromEnterprise operation.
-type EnterpriseAdminDeleteUserFromEnterpriseResNoContent struct{}
+// EnterpriseAdminDeleteUserFromEnterpriseNoContent is response for EnterpriseAdminDeleteUserFromEnterprise operation.
+type EnterpriseAdminDeleteUserFromEnterpriseNoContent struct{}
 
-// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent is response for EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise operation.
-type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent struct{}
+// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent is response for EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise operation.
+type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent struct{}
 
-// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent is response for EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise operation.
-type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent struct{}
+// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent is response for EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise operation.
+type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent struct{}
 
 type EnterpriseAdminGetAuditLogInclude string
 
@@ -3538,27 +3532,27 @@ const (
 	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
 )
 
-type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK struct {
+type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK struct {
 	Organizations []OrganizationSimple `json:"organizations"`
 	TotalCount    float64              `json:"total_count"`
 }
 
-type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK struct {
+type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK struct {
 	Organizations []OrganizationSimple `json:"organizations"`
 	TotalCount    float64              `json:"total_count"`
 }
 
-type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK struct {
+type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK struct {
 	RunnerGroups []RunnerGroupsEnterprise `json:"runner_groups"`
 	TotalCount   float64                  `json:"total_count"`
 }
 
-type EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK struct {
+type EnterpriseAdminListSelfHostedRunnersForEnterpriseOK struct {
 	Runners    []Runner   `json:"runners"`
 	TotalCount OptFloat64 `json:"total_count"`
 }
 
-type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK struct {
+type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK struct {
 	Runners    []Runner `json:"runners"`
 	TotalCount float64  `json:"total_count"`
 }
@@ -3596,22 +3590,22 @@ type EnterpriseAdminProvisionAndInviteEnterpriseUserReqName struct {
 	GivenName  string `json:"givenName"`
 }
 
-// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent is response for EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
-type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent struct{}
+// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent is response for EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
+type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent struct{}
 
-// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent is response for EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise operation.
-type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent struct{}
+// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent is response for EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise operation.
+type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent struct{}
 
-// EnterpriseAdminSetAllowedActionsEnterpriseResNoContent is response for EnterpriseAdminSetAllowedActionsEnterprise operation.
-type EnterpriseAdminSetAllowedActionsEnterpriseResNoContent struct{}
+// EnterpriseAdminSetAllowedActionsEnterpriseNoContent is response for EnterpriseAdminSetAllowedActionsEnterprise operation.
+type EnterpriseAdminSetAllowedActionsEnterpriseNoContent struct{}
+
+// EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent is response for EnterpriseAdminSetGithubActionsPermissionsEnterprise operation.
+type EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent struct{}
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq struct {
 	AllowedActions       OptAllowedActions    `json:"allowed_actions"`
 	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
 }
-
-// EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent is response for EnterpriseAdminSetGithubActionsPermissionsEnterprise operation.
-type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent struct{}
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq struct {
 	DisplayName string                                                                     `json:"displayName"`
@@ -3646,26 +3640,26 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName struct {
 	GivenName  string `json:"givenName"`
 }
 
+// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent is response for EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
+type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent struct{}
+
 type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq struct {
 	SelectedOrganizationIds []int `json:"selected_organization_ids"`
 }
 
-// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent is response for EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
-type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent struct{}
+// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent is response for EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise operation.
+type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent struct{}
 
 type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq struct {
 	SelectedOrganizationIds []int `json:"selected_organization_ids"`
 }
 
-// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent is response for EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise operation.
-type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent struct{}
+// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent is response for EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise operation.
+type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent struct{}
 
 type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq struct {
 	Runners []int `json:"runners"`
 }
-
-// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent is response for EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise operation.
-type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent struct{}
 
 type EnterpriseAdminUpdateAttributeForEnterpriseUserReq struct {
 	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem `json:"Operations"`
@@ -4080,19 +4074,19 @@ type GistSimpleForksItem struct {
 	User      OptPublicUser `json:"user"`
 }
 
-// GistsCheckIsStarredResNoContent is response for GistsCheckIsStarred operation.
-type GistsCheckIsStarredResNoContent struct{}
+// GistsCheckIsStarredNoContent is response for GistsCheckIsStarred operation.
+type GistsCheckIsStarredNoContent struct{}
 
-func (*GistsCheckIsStarredResNoContent) gistsCheckIsStarredRes() {}
+func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
 
-type GistsCheckIsStarredResNotFound struct{}
+type GistsCheckIsStarredNotFound struct{}
 
-func (*GistsCheckIsStarredResNotFound) gistsCheckIsStarredRes() {}
+func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
-// GistsCheckIsStarredResNotModified is response for GistsCheckIsStarred operation.
-type GistsCheckIsStarredResNotModified struct{}
+// GistsCheckIsStarredNotModified is response for GistsCheckIsStarred operation.
+type GistsCheckIsStarredNotModified struct{}
 
-func (*GistsCheckIsStarredResNotModified) gistsCheckIsStarredRes() {}
+func (*GistsCheckIsStarredNotModified) gistsCheckIsStarredRes() {}
 
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
@@ -4102,14 +4096,14 @@ type GistsCreateCommentApplicationJSONNotFound BasicError
 
 func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
 
+// GistsCreateCommentNotModified is response for GistsCreateComment operation.
+type GistsCreateCommentNotModified struct{}
+
+func (*GistsCreateCommentNotModified) gistsCreateCommentRes() {}
+
 type GistsCreateCommentReq struct {
 	Body string `json:"body"`
 }
-
-// GistsCreateCommentResNotModified is response for GistsCreateComment operation.
-type GistsCreateCommentResNotModified struct{}
-
-func (*GistsCreateCommentResNotModified) gistsCreateCommentRes() {}
 
 type GistsDeleteApplicationJSONForbidden BasicError
 
@@ -4127,66 +4121,66 @@ type GistsDeleteCommentApplicationJSONNotFound BasicError
 
 func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentRes() {}
 
-// GistsDeleteCommentResNoContent is response for GistsDeleteComment operation.
-type GistsDeleteCommentResNoContent struct{}
+// GistsDeleteCommentNoContent is response for GistsDeleteComment operation.
+type GistsDeleteCommentNoContent struct{}
 
-func (*GistsDeleteCommentResNoContent) gistsDeleteCommentRes() {}
+func (*GistsDeleteCommentNoContent) gistsDeleteCommentRes() {}
 
-// GistsDeleteCommentResNotModified is response for GistsDeleteComment operation.
-type GistsDeleteCommentResNotModified struct{}
+// GistsDeleteCommentNotModified is response for GistsDeleteComment operation.
+type GistsDeleteCommentNotModified struct{}
 
-func (*GistsDeleteCommentResNotModified) gistsDeleteCommentRes() {}
+func (*GistsDeleteCommentNotModified) gistsDeleteCommentRes() {}
 
-// GistsDeleteResNoContent is response for GistsDelete operation.
-type GistsDeleteResNoContent struct{}
+// GistsDeleteNoContent is response for GistsDelete operation.
+type GistsDeleteNoContent struct{}
 
-func (*GistsDeleteResNoContent) gistsDeleteRes() {}
+func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
-// GistsDeleteResNotModified is response for GistsDelete operation.
-type GistsDeleteResNotModified struct{}
+// GistsDeleteNotModified is response for GistsDelete operation.
+type GistsDeleteNotModified struct{}
 
-func (*GistsDeleteResNotModified) gistsDeleteRes() {}
+func (*GistsDeleteNotModified) gistsDeleteRes() {}
 
-// GistsForkResNotModified is response for GistsFork operation.
-type GistsForkResNotModified struct{}
+// GistsForkNotModified is response for GistsFork operation.
+type GistsForkNotModified struct{}
 
-type GistsGetCommentResForbidden struct {
-	Block            OptGistsGetCommentResForbiddenBlock `json:"block"`
-	DocumentationURL OptString                           `json:"documentation_url"`
-	Message          OptString                           `json:"message"`
+type GistsGetCommentForbidden struct {
+	Block            OptGistsGetCommentForbiddenBlock `json:"block"`
+	DocumentationURL OptString                        `json:"documentation_url"`
+	Message          OptString                        `json:"message"`
 }
 
-func (*GistsGetCommentResForbidden) gistsGetCommentRes() {}
+func (*GistsGetCommentForbidden) gistsGetCommentRes() {}
 
-type GistsGetCommentResForbiddenBlock struct {
+type GistsGetCommentForbiddenBlock struct {
 	CreatedAt OptString    `json:"created_at"`
 	HTMLURL   OptNilString `json:"html_url"`
 	Reason    OptString    `json:"reason"`
 }
 
-// GistsGetCommentResNotModified is response for GistsGetComment operation.
-type GistsGetCommentResNotModified struct{}
+// GistsGetCommentNotModified is response for GistsGetComment operation.
+type GistsGetCommentNotModified struct{}
 
-func (*GistsGetCommentResNotModified) gistsGetCommentRes() {}
+func (*GistsGetCommentNotModified) gistsGetCommentRes() {}
 
-type GistsGetResForbidden struct {
-	Block            OptGistsGetResForbiddenBlock `json:"block"`
-	DocumentationURL OptString                    `json:"documentation_url"`
-	Message          OptString                    `json:"message"`
+type GistsGetForbidden struct {
+	Block            OptGistsGetForbiddenBlock `json:"block"`
+	DocumentationURL OptString                 `json:"documentation_url"`
+	Message          OptString                 `json:"message"`
 }
 
-func (*GistsGetResForbidden) gistsGetRes() {}
+func (*GistsGetForbidden) gistsGetRes() {}
 
-type GistsGetResForbiddenBlock struct {
+type GistsGetForbiddenBlock struct {
 	CreatedAt OptString    `json:"created_at"`
 	HTMLURL   OptNilString `json:"html_url"`
 	Reason    OptString    `json:"reason"`
 }
 
-// GistsGetResNotModified is response for GistsGet operation.
-type GistsGetResNotModified struct{}
+// GistsGetNotModified is response for GistsGet operation.
+type GistsGetNotModified struct{}
 
-func (*GistsGetResNotModified) gistsGetRes() {}
+func (*GistsGetNotModified) gistsGetRes() {}
 
 type GistsListCommentsApplicationJSONForbidden BasicError
 
@@ -4196,14 +4190,14 @@ type GistsListCommentsApplicationJSONNotFound BasicError
 
 func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
 
+// GistsListCommentsNotModified is response for GistsListComments operation.
+type GistsListCommentsNotModified struct{}
+
+func (*GistsListCommentsNotModified) gistsListCommentsRes() {}
+
 type GistsListCommentsOKApplicationJSON []GistComment
 
 func (*GistsListCommentsOKApplicationJSON) gistsListCommentsRes() {}
-
-// GistsListCommentsResNotModified is response for GistsListComments operation.
-type GistsListCommentsResNotModified struct{}
-
-func (*GistsListCommentsResNotModified) gistsListCommentsRes() {}
 
 type GistsListCommitsApplicationJSONForbidden BasicError
 
@@ -4213,14 +4207,14 @@ type GistsListCommitsApplicationJSONNotFound BasicError
 
 func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
+// GistsListCommitsNotModified is response for GistsListCommits operation.
+type GistsListCommitsNotModified struct{}
+
+func (*GistsListCommitsNotModified) gistsListCommitsRes() {}
+
 type GistsListCommitsOKApplicationJSON []GistCommit
 
 func (*GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
-
-// GistsListCommitsResNotModified is response for GistsListCommits operation.
-type GistsListCommitsResNotModified struct{}
-
-func (*GistsListCommitsResNotModified) gistsListCommitsRes() {}
 
 type GistsListForksApplicationJSONForbidden BasicError
 
@@ -4230,26 +4224,26 @@ type GistsListForksApplicationJSONNotFound BasicError
 
 func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
 
+// GistsListForksNotModified is response for GistsListForks operation.
+type GistsListForksNotModified struct{}
+
+func (*GistsListForksNotModified) gistsListForksRes() {}
+
 type GistsListForksOKApplicationJSON []GistSimple
 
 func (*GistsListForksOKApplicationJSON) gistsListForksRes() {}
 
-// GistsListForksResNotModified is response for GistsListForks operation.
-type GistsListForksResNotModified struct{}
+// GistsListNotModified is response for GistsList operation.
+type GistsListNotModified struct{}
 
-func (*GistsListForksResNotModified) gistsListForksRes() {}
+func (*GistsListNotModified) gistsListRes() {}
 
 type GistsListOKApplicationJSON []BaseGist
 
 func (*GistsListOKApplicationJSON) gistsListRes() {}
 
-// GistsListPublicResNotModified is response for GistsListPublic operation.
-type GistsListPublicResNotModified struct{}
-
-// GistsListResNotModified is response for GistsList operation.
-type GistsListResNotModified struct{}
-
-func (*GistsListResNotModified) gistsListRes() {}
+// GistsListPublicNotModified is response for GistsListPublic operation.
+type GistsListPublicNotModified struct{}
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
@@ -4259,14 +4253,14 @@ type GistsListStarredApplicationJSONUnauthorized BasicError
 
 func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
 
+// GistsListStarredNotModified is response for GistsListStarred operation.
+type GistsListStarredNotModified struct{}
+
+func (*GistsListStarredNotModified) gistsListStarredRes() {}
+
 type GistsListStarredOKApplicationJSON []BaseGist
 
 func (*GistsListStarredOKApplicationJSON) gistsListStarredRes() {}
-
-// GistsListStarredResNotModified is response for GistsListStarred operation.
-type GistsListStarredResNotModified struct{}
-
-func (*GistsListStarredResNotModified) gistsListStarredRes() {}
 
 type GistsStarApplicationJSONForbidden BasicError
 
@@ -4276,15 +4270,15 @@ type GistsStarApplicationJSONNotFound BasicError
 
 func (*GistsStarApplicationJSONNotFound) gistsStarRes() {}
 
-// GistsStarResNoContent is response for GistsStar operation.
-type GistsStarResNoContent struct{}
+// GistsStarNoContent is response for GistsStar operation.
+type GistsStarNoContent struct{}
 
-func (*GistsStarResNoContent) gistsStarRes() {}
+func (*GistsStarNoContent) gistsStarRes() {}
 
-// GistsStarResNotModified is response for GistsStar operation.
-type GistsStarResNotModified struct{}
+// GistsStarNotModified is response for GistsStar operation.
+type GistsStarNotModified struct{}
 
-func (*GistsStarResNotModified) gistsStarRes() {}
+func (*GistsStarNotModified) gistsStarRes() {}
 
 type GistsUnstarApplicationJSONForbidden BasicError
 
@@ -4294,15 +4288,15 @@ type GistsUnstarApplicationJSONNotFound BasicError
 
 func (*GistsUnstarApplicationJSONNotFound) gistsUnstarRes() {}
 
-// GistsUnstarResNoContent is response for GistsUnstar operation.
-type GistsUnstarResNoContent struct{}
+// GistsUnstarNoContent is response for GistsUnstar operation.
+type GistsUnstarNoContent struct{}
 
-func (*GistsUnstarResNoContent) gistsUnstarRes() {}
+func (*GistsUnstarNoContent) gistsUnstarRes() {}
 
-// GistsUnstarResNotModified is response for GistsUnstar operation.
-type GistsUnstarResNotModified struct{}
+// GistsUnstarNotModified is response for GistsUnstar operation.
+type GistsUnstarNotModified struct{}
 
-func (*GistsUnstarResNotModified) gistsUnstarRes() {}
+func (*GistsUnstarNotModified) gistsUnstarRes() {}
 
 type GistsUpdateCommentReq struct {
 	Body string `json:"body"`
@@ -4439,8 +4433,8 @@ const (
 	GitCreateTreeReqTreeItemTypeCommit GitCreateTreeReqTreeItemType = "commit"
 )
 
-// GitDeleteRefResNoContent is response for GitDeleteRef operation.
-type GitDeleteRefResNoContent struct{}
+// GitDeleteRefNoContent is response for GitDeleteRef operation.
+type GitDeleteRefNoContent struct{}
 
 // Ref: #/components/schemas/git-ref
 type GitRef struct {
@@ -4506,19 +4500,19 @@ type GitUpdateRefReq struct {
 	Sha   string  `json:"sha"`
 }
 
+// GitignoreGetAllTemplatesNotModified is response for GitignoreGetAllTemplates operation.
+type GitignoreGetAllTemplatesNotModified struct{}
+
+func (*GitignoreGetAllTemplatesNotModified) gitignoreGetAllTemplatesRes() {}
+
 type GitignoreGetAllTemplatesOKApplicationJSON []string
 
 func (*GitignoreGetAllTemplatesOKApplicationJSON) gitignoreGetAllTemplatesRes() {}
 
-// GitignoreGetAllTemplatesResNotModified is response for GitignoreGetAllTemplates operation.
-type GitignoreGetAllTemplatesResNotModified struct{}
+// GitignoreGetTemplateNotModified is response for GitignoreGetTemplate operation.
+type GitignoreGetTemplateNotModified struct{}
 
-func (*GitignoreGetAllTemplatesResNotModified) gitignoreGetAllTemplatesRes() {}
-
-// GitignoreGetTemplateResNotModified is response for GitignoreGetTemplate operation.
-type GitignoreGetTemplateResNotModified struct{}
-
-func (*GitignoreGetTemplateResNotModified) gitignoreGetTemplateRes() {}
+func (*GitignoreGetTemplateNotModified) gitignoreGetTemplateRes() {}
 
 // Ref: #/components/schemas/gitignore-template
 type GitignoreTemplate struct {
@@ -4822,27 +4816,26 @@ type InteractionLimitResponse struct {
 
 func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes() {}
 
-// InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent is response for InteractionsRemoveRestrictionsForAuthenticatedUser operation.
-type InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent struct{}
+// InteractionsRemoveRestrictionsForAuthenticatedUserNoContent is response for InteractionsRemoveRestrictionsForAuthenticatedUser operation.
+type InteractionsRemoveRestrictionsForAuthenticatedUserNoContent struct{}
 
-// InteractionsRemoveRestrictionsForOrgResNoContent is response for InteractionsRemoveRestrictionsForOrg operation.
-type InteractionsRemoveRestrictionsForOrgResNoContent struct{}
+// InteractionsRemoveRestrictionsForOrgNoContent is response for InteractionsRemoveRestrictionsForOrg operation.
+type InteractionsRemoveRestrictionsForOrgNoContent struct{}
 
-// InteractionsRemoveRestrictionsForRepoResConflict is response for InteractionsRemoveRestrictionsForRepo operation.
-type InteractionsRemoveRestrictionsForRepoResConflict struct{}
+// InteractionsRemoveRestrictionsForRepoConflict is response for InteractionsRemoveRestrictionsForRepo operation.
+type InteractionsRemoveRestrictionsForRepoConflict struct{}
 
-func (*InteractionsRemoveRestrictionsForRepoResConflict) interactionsRemoveRestrictionsForRepoRes() {}
+func (*InteractionsRemoveRestrictionsForRepoConflict) interactionsRemoveRestrictionsForRepoRes() {}
 
-// InteractionsRemoveRestrictionsForRepoResNoContent is response for InteractionsRemoveRestrictionsForRepo operation.
-type InteractionsRemoveRestrictionsForRepoResNoContent struct{}
+// InteractionsRemoveRestrictionsForRepoNoContent is response for InteractionsRemoveRestrictionsForRepo operation.
+type InteractionsRemoveRestrictionsForRepoNoContent struct{}
 
-func (*InteractionsRemoveRestrictionsForRepoResNoContent) interactionsRemoveRestrictionsForRepoRes() {
-}
+func (*InteractionsRemoveRestrictionsForRepoNoContent) interactionsRemoveRestrictionsForRepoRes() {}
 
-// InteractionsSetRestrictionsForRepoResConflict is response for InteractionsSetRestrictionsForRepo operation.
-type InteractionsSetRestrictionsForRepoResConflict struct{}
+// InteractionsSetRestrictionsForRepoConflict is response for InteractionsSetRestrictionsForRepo operation.
+type InteractionsSetRestrictionsForRepoConflict struct{}
 
-func (*InteractionsSetRestrictionsForRepoResConflict) interactionsSetRestrictionsForRepoRes() {}
+func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsForRepoRes() {}
 
 // Ref: #/components/schemas/issue-comment
 type IssueComment struct {
@@ -5028,10 +5021,10 @@ type IssuesAddAssigneesReq struct {
 	Assignees []string `json:"assignees"`
 }
 
-// IssuesCheckUserCanBeAssignedResNoContent is response for IssuesCheckUserCanBeAssigned operation.
-type IssuesCheckUserCanBeAssignedResNoContent struct{}
+// IssuesCheckUserCanBeAssignedNoContent is response for IssuesCheckUserCanBeAssigned operation.
+type IssuesCheckUserCanBeAssignedNoContent struct{}
 
-func (*IssuesCheckUserCanBeAssignedResNoContent) issuesCheckUserCanBeAssignedRes() {}
+func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedRes() {}
 
 type IssuesCreateCommentReq struct {
 	Body string `json:"body"`
@@ -5057,16 +5050,16 @@ const (
 	IssuesCreateMilestoneReqStateClosed IssuesCreateMilestoneReqState = "closed"
 )
 
-// IssuesDeleteCommentResNoContent is response for IssuesDeleteComment operation.
-type IssuesDeleteCommentResNoContent struct{}
+// IssuesDeleteCommentNoContent is response for IssuesDeleteComment operation.
+type IssuesDeleteCommentNoContent struct{}
 
-// IssuesDeleteLabelResNoContent is response for IssuesDeleteLabel operation.
-type IssuesDeleteLabelResNoContent struct{}
+// IssuesDeleteLabelNoContent is response for IssuesDeleteLabel operation.
+type IssuesDeleteLabelNoContent struct{}
 
-// IssuesDeleteMilestoneResNoContent is response for IssuesDeleteMilestone operation.
-type IssuesDeleteMilestoneResNoContent struct{}
+// IssuesDeleteMilestoneNoContent is response for IssuesDeleteMilestone operation.
+type IssuesDeleteMilestoneNoContent struct{}
 
-func (*IssuesDeleteMilestoneResNoContent) issuesDeleteMilestoneRes() {}
+func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
 
 type IssuesGetEventApplicationJSONForbidden BasicError
 
@@ -5269,6 +5262,9 @@ const (
 	IssuesListStateAll    IssuesListState = "all"
 )
 
+// IssuesLockNoContent is response for IssuesLock operation.
+type IssuesLockNoContent struct{}
+
 type IssuesLockReq struct {
 	LockReason OptIssuesLockReqLockReason `json:"lock_reason"`
 }
@@ -5282,13 +5278,10 @@ const (
 	IssuesLockReqLockReasonSpam          IssuesLockReqLockReason = "spam"
 )
 
-// IssuesLockResNoContent is response for IssuesLock operation.
-type IssuesLockResNoContent struct{}
+// IssuesRemoveAllLabelsNoContent is response for IssuesRemoveAllLabels operation.
+type IssuesRemoveAllLabelsNoContent struct{}
 
-// IssuesRemoveAllLabelsResNoContent is response for IssuesRemoveAllLabels operation.
-type IssuesRemoveAllLabelsResNoContent struct{}
-
-func (*IssuesRemoveAllLabelsResNoContent) issuesRemoveAllLabelsRes() {}
+func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsRes() {}
 
 type IssuesRemoveAssigneesReq struct {
 	Assignees []string `json:"assignees"`
@@ -5314,10 +5307,10 @@ type IssuesUnlockApplicationJSONNotFound BasicError
 
 func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockRes() {}
 
-// IssuesUnlockResNoContent is response for IssuesUnlock operation.
-type IssuesUnlockResNoContent struct{}
+// IssuesUnlockNoContent is response for IssuesUnlock operation.
+type IssuesUnlockNoContent struct{}
 
-func (*IssuesUnlockResNoContent) issuesUnlockRes() {}
+func (*IssuesUnlockNoContent) issuesUnlockRes() {}
 
 type IssuesUpdateCommentReq struct {
 	Body string `json:"body"`
@@ -5486,14 +5479,14 @@ type LicenseSimple struct {
 	URL     NilURL    `json:"url"`
 }
 
+// LicensesGetAllCommonlyUsedNotModified is response for LicensesGetAllCommonlyUsed operation.
+type LicensesGetAllCommonlyUsedNotModified struct{}
+
+func (*LicensesGetAllCommonlyUsedNotModified) licensesGetAllCommonlyUsedRes() {}
+
 type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
 func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
-
-// LicensesGetAllCommonlyUsedResNotModified is response for LicensesGetAllCommonlyUsed operation.
-type LicensesGetAllCommonlyUsedResNotModified struct{}
-
-func (*LicensesGetAllCommonlyUsedResNotModified) licensesGetAllCommonlyUsedRes() {}
 
 type LicensesGetApplicationJSONForbidden BasicError
 
@@ -5503,10 +5496,10 @@ type LicensesGetApplicationJSONNotFound BasicError
 
 func (*LicensesGetApplicationJSONNotFound) licensesGetRes() {}
 
-// LicensesGetResNotModified is response for LicensesGet operation.
-type LicensesGetResNotModified struct{}
+// LicensesGetNotModified is response for LicensesGet operation.
+type LicensesGetNotModified struct{}
 
-func (*LicensesGetResNotModified) licensesGetRes() {}
+func (*LicensesGetNotModified) licensesGetRes() {}
 
 // Ref: #/components/schemas/link
 type Link struct {
@@ -5519,9 +5512,19 @@ type LinkWithType struct {
 	Type string `json:"type"`
 }
 
+// MarkdownRenderNotModified is response for MarkdownRender operation.
+type MarkdownRenderNotModified struct{}
+
+func (*MarkdownRenderNotModified) markdownRenderRes() {}
+
 type MarkdownRenderOKTextHTML string
 
 func (*MarkdownRenderOKTextHTML) markdownRenderRes() {}
+
+// MarkdownRenderRawNotModified is response for MarkdownRenderRaw operation.
+type MarkdownRenderRawNotModified struct{}
+
+func (*MarkdownRenderRawNotModified) markdownRenderRawRes() {}
 
 type MarkdownRenderRawOKTextHTML string
 
@@ -5535,11 +5538,6 @@ type MarkdownRenderRawReqTextXMarkdown string
 
 func (*MarkdownRenderRawReqTextXMarkdown) markdownRenderRawReq() {}
 
-// MarkdownRenderRawResNotModified is response for MarkdownRenderRaw operation.
-type MarkdownRenderRawResNotModified struct{}
-
-func (*MarkdownRenderRawResNotModified) markdownRenderRawRes() {}
-
 type MarkdownRenderReq struct {
 	Context OptString                `json:"context"`
 	Mode    OptMarkdownRenderReqMode `json:"mode"`
@@ -5552,11 +5550,6 @@ const (
 	MarkdownRenderReqModeMarkdown MarkdownRenderReqMode = "markdown"
 	MarkdownRenderReqModeGfm      MarkdownRenderReqMode = "gfm"
 )
-
-// MarkdownRenderResNotModified is response for MarkdownRender operation.
-type MarkdownRenderResNotModified struct{}
-
-func (*MarkdownRenderResNotModified) markdownRenderRes() {}
 
 // Ref: #/components/schemas/marketplace-account
 type MarketplaceAccount struct {
@@ -5637,12 +5630,12 @@ const (
 	MergedUpstreamMergeTypeNone             MergedUpstreamMergeType = "none"
 )
 
-// MetaGetResNotModified is response for MetaGet operation.
-type MetaGetResNotModified struct{}
+// MetaGetNotModified is response for MetaGet operation.
+type MetaGetNotModified struct{}
 
-func (*MetaGetResNotModified) metaGetRes() {}
+func (*MetaGetNotModified) metaGetRes() {}
 
-type MetaRootResOK struct {
+type MetaRootOK struct {
 	AuthorizationsURL                string    `json:"authorizations_url"`
 	CodeSearchURL                    string    `json:"code_search_url"`
 	CommitSearchURL                  string    `json:"commit_search_url"`
@@ -5702,8 +5695,8 @@ type Migration struct {
 func (*Migration) migrationsGetStatusForAuthenticatedUserRes() {}
 func (*Migration) migrationsGetStatusForOrgRes()               {}
 
-// MigrationsCancelImportResNoContent is response for MigrationsCancelImport operation.
-type MigrationsCancelImportResNoContent struct{}
+// MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
+type MigrationsCancelImportNoContent struct{}
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -5720,27 +5713,27 @@ type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized Basi
 func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-// MigrationsDeleteArchiveForAuthenticatedUserResNoContent is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
-type MigrationsDeleteArchiveForAuthenticatedUserResNoContent struct{}
+// MigrationsDeleteArchiveForAuthenticatedUserNoContent is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
+type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserResNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-// MigrationsDeleteArchiveForAuthenticatedUserResNotModified is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
-type MigrationsDeleteArchiveForAuthenticatedUserResNotModified struct{}
+// MigrationsDeleteArchiveForAuthenticatedUserNotModified is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
+type MigrationsDeleteArchiveForAuthenticatedUserNotModified struct{}
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserResNotModified) migrationsDeleteArchiveForAuthenticatedUserRes() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserNotModified) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-// MigrationsDeleteArchiveForOrgResNoContent is response for MigrationsDeleteArchiveForOrg operation.
-type MigrationsDeleteArchiveForOrgResNoContent struct{}
+// MigrationsDeleteArchiveForOrgNoContent is response for MigrationsDeleteArchiveForOrg operation.
+type MigrationsDeleteArchiveForOrgNoContent struct{}
 
-func (*MigrationsDeleteArchiveForOrgResNoContent) migrationsDeleteArchiveForOrgRes() {}
+func (*MigrationsDeleteArchiveForOrgNoContent) migrationsDeleteArchiveForOrgRes() {}
 
-// MigrationsDownloadArchiveForOrgResFound is response for MigrationsDownloadArchiveForOrg operation.
-type MigrationsDownloadArchiveForOrgResFound struct{}
+// MigrationsDownloadArchiveForOrgFound is response for MigrationsDownloadArchiveForOrg operation.
+type MigrationsDownloadArchiveForOrgFound struct{}
 
-func (*MigrationsDownloadArchiveForOrgResFound) migrationsDownloadArchiveForOrgRes() {}
+func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgRes() {}
 
 type MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -5752,16 +5745,15 @@ type MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicEr
 func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
-// MigrationsGetArchiveForAuthenticatedUserResFound is response for MigrationsGetArchiveForAuthenticatedUser operation.
-type MigrationsGetArchiveForAuthenticatedUserResFound struct{}
+// MigrationsGetArchiveForAuthenticatedUserFound is response for MigrationsGetArchiveForAuthenticatedUser operation.
+type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
-func (*MigrationsGetArchiveForAuthenticatedUserResFound) migrationsGetArchiveForAuthenticatedUserRes() {
-}
+func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserRes() {}
 
-// MigrationsGetArchiveForAuthenticatedUserResNotModified is response for MigrationsGetArchiveForAuthenticatedUser operation.
-type MigrationsGetArchiveForAuthenticatedUserResNotModified struct{}
+// MigrationsGetArchiveForAuthenticatedUserNotModified is response for MigrationsGetArchiveForAuthenticatedUser operation.
+type MigrationsGetArchiveForAuthenticatedUserNotModified struct{}
 
-func (*MigrationsGetArchiveForAuthenticatedUserResNotModified) migrationsGetArchiveForAuthenticatedUserRes() {
+func (*MigrationsGetArchiveForAuthenticatedUserNotModified) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
@@ -5783,10 +5775,10 @@ type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicErr
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-// MigrationsGetStatusForAuthenticatedUserResNotModified is response for MigrationsGetStatusForAuthenticatedUser operation.
-type MigrationsGetStatusForAuthenticatedUserResNotModified struct{}
+// MigrationsGetStatusForAuthenticatedUserNotModified is response for MigrationsGetStatusForAuthenticatedUser operation.
+type MigrationsGetStatusForAuthenticatedUserNotModified struct{}
 
-func (*MigrationsGetStatusForAuthenticatedUserResNotModified) migrationsGetStatusForAuthenticatedUserRes() {
+func (*MigrationsGetStatusForAuthenticatedUserNotModified) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForOrgExcludeItem string
@@ -5805,14 +5797,14 @@ type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
 }
 
+// MigrationsListForAuthenticatedUserNotModified is response for MigrationsListForAuthenticatedUser operation.
+type MigrationsListForAuthenticatedUserNotModified struct{}
+
+func (*MigrationsListForAuthenticatedUserNotModified) migrationsListForAuthenticatedUserRes() {}
+
 type MigrationsListForAuthenticatedUserOKApplicationJSON []Migration
 
 func (*MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
-
-// MigrationsListForAuthenticatedUserResNotModified is response for MigrationsListForAuthenticatedUser operation.
-type MigrationsListForAuthenticatedUserResNotModified struct{}
-
-func (*MigrationsListForAuthenticatedUserResNotModified) migrationsListForAuthenticatedUserRes() {}
 
 type MigrationsListForOrgExcludeItem string
 
@@ -5844,6 +5836,9 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
 
+// MigrationsStartForAuthenticatedUserNotModified is response for MigrationsStartForAuthenticatedUser operation.
+type MigrationsStartForAuthenticatedUserNotModified struct{}
+
 type MigrationsStartForAuthenticatedUserReq struct {
 	Exclude              []MigrationsStartForAuthenticatedUserReqExcludeItem `json:"exclude"`
 	ExcludeAttachments   OptBool                                             `json:"exclude_attachments"`
@@ -5858,9 +5853,6 @@ type MigrationsStartForAuthenticatedUserReqExcludeItem string
 const (
 	MigrationsStartForAuthenticatedUserReqExcludeItemRepositories MigrationsStartForAuthenticatedUserReqExcludeItem = "repositories"
 )
-
-// MigrationsStartForAuthenticatedUserResNotModified is response for MigrationsStartForAuthenticatedUser operation.
-type MigrationsStartForAuthenticatedUserResNotModified struct{}
 
 type MigrationsStartForOrgReq struct {
 	Exclude              []MigrationsStartForOrgReqExcludeItem `json:"exclude"`
@@ -5909,22 +5901,22 @@ type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized BasicEr
 func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
-// MigrationsUnlockRepoForAuthenticatedUserResNoContent is response for MigrationsUnlockRepoForAuthenticatedUser operation.
-type MigrationsUnlockRepoForAuthenticatedUserResNoContent struct{}
+// MigrationsUnlockRepoForAuthenticatedUserNoContent is response for MigrationsUnlockRepoForAuthenticatedUser operation.
+type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
 
-func (*MigrationsUnlockRepoForAuthenticatedUserResNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
+func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
-// MigrationsUnlockRepoForAuthenticatedUserResNotModified is response for MigrationsUnlockRepoForAuthenticatedUser operation.
-type MigrationsUnlockRepoForAuthenticatedUserResNotModified struct{}
+// MigrationsUnlockRepoForAuthenticatedUserNotModified is response for MigrationsUnlockRepoForAuthenticatedUser operation.
+type MigrationsUnlockRepoForAuthenticatedUserNotModified struct{}
 
-func (*MigrationsUnlockRepoForAuthenticatedUserResNotModified) migrationsUnlockRepoForAuthenticatedUserRes() {
+func (*MigrationsUnlockRepoForAuthenticatedUserNotModified) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
-// MigrationsUnlockRepoForOrgResNoContent is response for MigrationsUnlockRepoForOrg operation.
-type MigrationsUnlockRepoForOrgResNoContent struct{}
+// MigrationsUnlockRepoForOrgNoContent is response for MigrationsUnlockRepoForOrg operation.
+type MigrationsUnlockRepoForOrgNoContent struct{}
 
-func (*MigrationsUnlockRepoForOrgResNoContent) migrationsUnlockRepoForOrgRes() {}
+func (*MigrationsUnlockRepoForOrgNoContent) migrationsUnlockRepoForOrgRes() {}
 
 type MigrationsUpdateImportReq struct {
 	TfvcProject OptString `json:"tfvc_project"`
@@ -7511,6 +7503,9 @@ type NullableTeamSimple struct {
 	URL             url.URL   `json:"url"`
 }
 
+// OAuthAuthorizationsCreateAuthorizationNotModified is response for OAuthAuthorizationsCreateAuthorization operation.
+type OAuthAuthorizationsCreateAuthorizationNotModified struct{}
+
 type OAuthAuthorizationsCreateAuthorizationReq struct {
 	ClientID     OptString         `json:"client_id"`
 	ClientSecret OptString         `json:"client_secret"`
@@ -7519,9 +7514,6 @@ type OAuthAuthorizationsCreateAuthorizationReq struct {
 	NoteURL      OptString         `json:"note_url"`
 	Scopes       OptNilStringArray `json:"scopes"`
 }
-
-// OAuthAuthorizationsCreateAuthorizationResNotModified is response for OAuthAuthorizationsCreateAuthorization operation.
-type OAuthAuthorizationsCreateAuthorizationResNotModified struct{}
 
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
 
@@ -7533,16 +7525,15 @@ type OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized BasicErro
 func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
-// OAuthAuthorizationsDeleteAuthorizationResNoContent is response for OAuthAuthorizationsDeleteAuthorization operation.
-type OAuthAuthorizationsDeleteAuthorizationResNoContent struct{}
+// OAuthAuthorizationsDeleteAuthorizationNoContent is response for OAuthAuthorizationsDeleteAuthorization operation.
+type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 
-func (*OAuthAuthorizationsDeleteAuthorizationResNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {
-}
+func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
-// OAuthAuthorizationsDeleteAuthorizationResNotModified is response for OAuthAuthorizationsDeleteAuthorization operation.
-type OAuthAuthorizationsDeleteAuthorizationResNotModified struct{}
+// OAuthAuthorizationsDeleteAuthorizationNotModified is response for OAuthAuthorizationsDeleteAuthorization operation.
+type OAuthAuthorizationsDeleteAuthorizationNotModified struct{}
 
-func (*OAuthAuthorizationsDeleteAuthorizationResNotModified) oAuthAuthorizationsDeleteAuthorizationRes() {
+func (*OAuthAuthorizationsDeleteAuthorizationNotModified) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
 type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
@@ -7554,15 +7545,15 @@ type OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantRes() {
 }
 
-// OAuthAuthorizationsDeleteGrantResNoContent is response for OAuthAuthorizationsDeleteGrant operation.
-type OAuthAuthorizationsDeleteGrantResNoContent struct{}
+// OAuthAuthorizationsDeleteGrantNoContent is response for OAuthAuthorizationsDeleteGrant operation.
+type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
-func (*OAuthAuthorizationsDeleteGrantResNoContent) oAuthAuthorizationsDeleteGrantRes() {}
+func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRes() {}
 
-// OAuthAuthorizationsDeleteGrantResNotModified is response for OAuthAuthorizationsDeleteGrant operation.
-type OAuthAuthorizationsDeleteGrantResNotModified struct{}
+// OAuthAuthorizationsDeleteGrantNotModified is response for OAuthAuthorizationsDeleteGrant operation.
+type OAuthAuthorizationsDeleteGrantNotModified struct{}
 
-func (*OAuthAuthorizationsDeleteGrantResNotModified) oAuthAuthorizationsDeleteGrantRes() {}
+func (*OAuthAuthorizationsDeleteGrantNotModified) oAuthAuthorizationsDeleteGrantRes() {}
 
 type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
 
@@ -7574,10 +7565,10 @@ type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
-// OAuthAuthorizationsGetAuthorizationResNotModified is response for OAuthAuthorizationsGetAuthorization operation.
-type OAuthAuthorizationsGetAuthorizationResNotModified struct{}
+// OAuthAuthorizationsGetAuthorizationNotModified is response for OAuthAuthorizationsGetAuthorization operation.
+type OAuthAuthorizationsGetAuthorizationNotModified struct{}
 
-func (*OAuthAuthorizationsGetAuthorizationResNotModified) oAuthAuthorizationsGetAuthorizationRes() {}
+func (*OAuthAuthorizationsGetAuthorizationNotModified) oAuthAuthorizationsGetAuthorizationRes() {}
 
 type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
 
@@ -7587,10 +7578,10 @@ type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
-// OAuthAuthorizationsGetGrantResNotModified is response for OAuthAuthorizationsGetGrant operation.
-type OAuthAuthorizationsGetGrantResNotModified struct{}
+// OAuthAuthorizationsGetGrantNotModified is response for OAuthAuthorizationsGetGrant operation.
+type OAuthAuthorizationsGetGrantNotModified struct{}
 
-func (*OAuthAuthorizationsGetGrantResNotModified) oAuthAuthorizationsGetGrantRes() {}
+func (*OAuthAuthorizationsGetGrantNotModified) oAuthAuthorizationsGetGrantRes() {}
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	ClientSecret string            `json:"client_secret"`
@@ -7599,6 +7590,9 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	Scopes       OptNilStringArray `json:"scopes"`
 }
 
+// OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified is response for OAuthAuthorizationsGetOrCreateAuthorizationForApp operation.
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified struct{}
+
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	ClientSecret string            `json:"client_secret"`
 	Fingerprint  OptString         `json:"fingerprint"`
@@ -7606,9 +7600,6 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	NoteURL      OptString         `json:"note_url"`
 	Scopes       OptNilStringArray `json:"scopes"`
 }
-
-// OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified is response for OAuthAuthorizationsGetOrCreateAuthorizationForApp operation.
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified struct{}
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
 
@@ -7625,15 +7616,14 @@ type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
+// OAuthAuthorizationsListAuthorizationsNotModified is response for OAuthAuthorizationsListAuthorizations operation.
+type OAuthAuthorizationsListAuthorizationsNotModified struct{}
+
+func (*OAuthAuthorizationsListAuthorizationsNotModified) oAuthAuthorizationsListAuthorizationsRes() {}
+
 type OAuthAuthorizationsListAuthorizationsOKApplicationJSON []Authorization
 
 func (*OAuthAuthorizationsListAuthorizationsOKApplicationJSON) oAuthAuthorizationsListAuthorizationsRes() {
-}
-
-// OAuthAuthorizationsListAuthorizationsResNotModified is response for OAuthAuthorizationsListAuthorizations operation.
-type OAuthAuthorizationsListAuthorizationsResNotModified struct{}
-
-func (*OAuthAuthorizationsListAuthorizationsResNotModified) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
@@ -7648,14 +7638,14 @@ type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
+// OAuthAuthorizationsListGrantsNotModified is response for OAuthAuthorizationsListGrants operation.
+type OAuthAuthorizationsListGrantsNotModified struct{}
+
+func (*OAuthAuthorizationsListGrantsNotModified) oAuthAuthorizationsListGrantsRes() {}
+
 type OAuthAuthorizationsListGrantsOKApplicationJSON []ApplicationGrant
 
 func (*OAuthAuthorizationsListGrantsOKApplicationJSON) oAuthAuthorizationsListGrantsRes() {}
-
-// OAuthAuthorizationsListGrantsResNotModified is response for OAuthAuthorizationsListGrants operation.
-type OAuthAuthorizationsListGrantsResNotModified struct{}
-
-func (*OAuthAuthorizationsListGrantsResNotModified) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsUpdateAuthorizationReq struct {
 	AddScopes    []string          `json:"add_scopes"`
@@ -10900,76 +10890,76 @@ func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
 	return o.Value, true
 }
 
-// NewOptGistsGetCommentResForbiddenBlock returns new OptGistsGetCommentResForbiddenBlock with value set to v.
-func NewOptGistsGetCommentResForbiddenBlock(v GistsGetCommentResForbiddenBlock) OptGistsGetCommentResForbiddenBlock {
-	return OptGistsGetCommentResForbiddenBlock{
+// NewOptGistsGetCommentForbiddenBlock returns new OptGistsGetCommentForbiddenBlock with value set to v.
+func NewOptGistsGetCommentForbiddenBlock(v GistsGetCommentForbiddenBlock) OptGistsGetCommentForbiddenBlock {
+	return OptGistsGetCommentForbiddenBlock{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGistsGetCommentResForbiddenBlock is optional GistsGetCommentResForbiddenBlock.
-type OptGistsGetCommentResForbiddenBlock struct {
-	Value GistsGetCommentResForbiddenBlock
+// OptGistsGetCommentForbiddenBlock is optional GistsGetCommentForbiddenBlock.
+type OptGistsGetCommentForbiddenBlock struct {
+	Value GistsGetCommentForbiddenBlock
 	Set   bool
 }
 
-// IsSet returns true if OptGistsGetCommentResForbiddenBlock was set.
-func (o OptGistsGetCommentResForbiddenBlock) IsSet() bool { return o.Set }
+// IsSet returns true if OptGistsGetCommentForbiddenBlock was set.
+func (o OptGistsGetCommentForbiddenBlock) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGistsGetCommentResForbiddenBlock) Reset() {
-	var v GistsGetCommentResForbiddenBlock
+func (o *OptGistsGetCommentForbiddenBlock) Reset() {
+	var v GistsGetCommentForbiddenBlock
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGistsGetCommentResForbiddenBlock) SetTo(v GistsGetCommentResForbiddenBlock) {
+func (o *OptGistsGetCommentForbiddenBlock) SetTo(v GistsGetCommentForbiddenBlock) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGistsGetCommentResForbiddenBlock) Get() (v GistsGetCommentResForbiddenBlock, ok bool) {
+func (o OptGistsGetCommentForbiddenBlock) Get() (v GistsGetCommentForbiddenBlock, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptGistsGetResForbiddenBlock returns new OptGistsGetResForbiddenBlock with value set to v.
-func NewOptGistsGetResForbiddenBlock(v GistsGetResForbiddenBlock) OptGistsGetResForbiddenBlock {
-	return OptGistsGetResForbiddenBlock{
+// NewOptGistsGetForbiddenBlock returns new OptGistsGetForbiddenBlock with value set to v.
+func NewOptGistsGetForbiddenBlock(v GistsGetForbiddenBlock) OptGistsGetForbiddenBlock {
+	return OptGistsGetForbiddenBlock{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGistsGetResForbiddenBlock is optional GistsGetResForbiddenBlock.
-type OptGistsGetResForbiddenBlock struct {
-	Value GistsGetResForbiddenBlock
+// OptGistsGetForbiddenBlock is optional GistsGetForbiddenBlock.
+type OptGistsGetForbiddenBlock struct {
+	Value GistsGetForbiddenBlock
 	Set   bool
 }
 
-// IsSet returns true if OptGistsGetResForbiddenBlock was set.
-func (o OptGistsGetResForbiddenBlock) IsSet() bool { return o.Set }
+// IsSet returns true if OptGistsGetForbiddenBlock was set.
+func (o OptGistsGetForbiddenBlock) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGistsGetResForbiddenBlock) Reset() {
-	var v GistsGetResForbiddenBlock
+func (o *OptGistsGetForbiddenBlock) Reset() {
+	var v GistsGetForbiddenBlock
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGistsGetResForbiddenBlock) SetTo(v GistsGetResForbiddenBlock) {
+func (o *OptGistsGetForbiddenBlock) SetTo(v GistsGetForbiddenBlock) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGistsGetResForbiddenBlock) Get() (v GistsGetResForbiddenBlock, ok bool) {
+func (o OptGistsGetForbiddenBlock) Get() (v GistsGetForbiddenBlock, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18131,58 +18121,55 @@ type OrganizationSimple struct {
 	URL              url.URL   `json:"url"`
 }
 
-// OrgsBlockUserResNoContent is response for OrgsBlockUser operation.
-type OrgsBlockUserResNoContent struct{}
+// OrgsBlockUserNoContent is response for OrgsBlockUser operation.
+type OrgsBlockUserNoContent struct{}
 
-// OrgsCancelInvitationResNoContent is response for OrgsCancelInvitation operation.
-type OrgsCancelInvitationResNoContent struct{}
+// OrgsCancelInvitationNoContent is response for OrgsCancelInvitation operation.
+type OrgsCancelInvitationNoContent struct{}
 
-// OrgsCheckBlockedUserResNoContent is response for OrgsCheckBlockedUser operation.
-type OrgsCheckBlockedUserResNoContent struct{}
+// OrgsCheckBlockedUserNoContent is response for OrgsCheckBlockedUser operation.
+type OrgsCheckBlockedUserNoContent struct{}
 
-func (*OrgsCheckBlockedUserResNoContent) orgsCheckBlockedUserRes() {}
+func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserRes() {}
 
-// OrgsCheckMembershipForUserResFound is response for OrgsCheckMembershipForUser operation.
-type OrgsCheckMembershipForUserResFound struct{}
+// OrgsCheckMembershipForUserFound is response for OrgsCheckMembershipForUser operation.
+type OrgsCheckMembershipForUserFound struct{}
 
-func (*OrgsCheckMembershipForUserResFound) orgsCheckMembershipForUserRes() {}
+func (*OrgsCheckMembershipForUserFound) orgsCheckMembershipForUserRes() {}
 
-// OrgsCheckMembershipForUserResNoContent is response for OrgsCheckMembershipForUser operation.
-type OrgsCheckMembershipForUserResNoContent struct{}
+// OrgsCheckMembershipForUserNoContent is response for OrgsCheckMembershipForUser operation.
+type OrgsCheckMembershipForUserNoContent struct{}
 
-func (*OrgsCheckMembershipForUserResNoContent) orgsCheckMembershipForUserRes() {}
+func (*OrgsCheckMembershipForUserNoContent) orgsCheckMembershipForUserRes() {}
 
-// OrgsCheckMembershipForUserResNotFound is response for OrgsCheckMembershipForUser operation.
-type OrgsCheckMembershipForUserResNotFound struct{}
+// OrgsCheckMembershipForUserNotFound is response for OrgsCheckMembershipForUser operation.
+type OrgsCheckMembershipForUserNotFound struct{}
 
-func (*OrgsCheckMembershipForUserResNotFound) orgsCheckMembershipForUserRes() {}
+func (*OrgsCheckMembershipForUserNotFound) orgsCheckMembershipForUserRes() {}
 
-// OrgsCheckPublicMembershipForUserResNoContent is response for OrgsCheckPublicMembershipForUser operation.
-type OrgsCheckPublicMembershipForUserResNoContent struct{}
+// OrgsCheckPublicMembershipForUserNoContent is response for OrgsCheckPublicMembershipForUser operation.
+type OrgsCheckPublicMembershipForUserNoContent struct{}
 
-func (*OrgsCheckPublicMembershipForUserResNoContent) orgsCheckPublicMembershipForUserRes() {}
+func (*OrgsCheckPublicMembershipForUserNoContent) orgsCheckPublicMembershipForUserRes() {}
 
-// OrgsCheckPublicMembershipForUserResNotFound is response for OrgsCheckPublicMembershipForUser operation.
-type OrgsCheckPublicMembershipForUserResNotFound struct{}
+// OrgsCheckPublicMembershipForUserNotFound is response for OrgsCheckPublicMembershipForUser operation.
+type OrgsCheckPublicMembershipForUserNotFound struct{}
 
-func (*OrgsCheckPublicMembershipForUserResNotFound) orgsCheckPublicMembershipForUserRes() {}
+func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserRes() {}
 
-type OrgsConvertMemberToOutsideCollaboratorResAccepted struct{}
+type OrgsConvertMemberToOutsideCollaboratorAccepted struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorResAccepted) orgsConvertMemberToOutsideCollaboratorRes() {
-}
+func (*OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
 
-// OrgsConvertMemberToOutsideCollaboratorResForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
-type OrgsConvertMemberToOutsideCollaboratorResForbidden struct{}
+// OrgsConvertMemberToOutsideCollaboratorForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
+type OrgsConvertMemberToOutsideCollaboratorForbidden struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorResForbidden) orgsConvertMemberToOutsideCollaboratorRes() {
-}
+func (*OrgsConvertMemberToOutsideCollaboratorForbidden) orgsConvertMemberToOutsideCollaboratorRes() {}
 
-// OrgsConvertMemberToOutsideCollaboratorResNoContent is response for OrgsConvertMemberToOutsideCollaborator operation.
-type OrgsConvertMemberToOutsideCollaboratorResNoContent struct{}
+// OrgsConvertMemberToOutsideCollaboratorNoContent is response for OrgsConvertMemberToOutsideCollaborator operation.
+type OrgsConvertMemberToOutsideCollaboratorNoContent struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorResNoContent) orgsConvertMemberToOutsideCollaboratorRes() {
-}
+func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 type OrgsCreateInvitationReq struct {
 	Email     OptString                      `json:"email"`
@@ -18215,10 +18202,10 @@ type OrgsCreateWebhookReqConfig struct {
 	Username    OptString                   `json:"username"`
 }
 
-// OrgsDeleteWebhookResNoContent is response for OrgsDeleteWebhook operation.
-type OrgsDeleteWebhookResNoContent struct{}
+// OrgsDeleteWebhookNoContent is response for OrgsDeleteWebhook operation.
+type OrgsDeleteWebhookNoContent struct{}
 
-func (*OrgsDeleteWebhookResNoContent) orgsDeleteWebhookRes() {}
+func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
 type OrgsGetAuditLogInclude string
 
@@ -18257,12 +18244,12 @@ type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
 func (*OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
-type OrgsListBlockedUsersResUnsupportedMediaType struct {
+type OrgsListBlockedUsersUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*OrgsListBlockedUsersResUnsupportedMediaType) orgsListBlockedUsersRes() {}
+func (*OrgsListBlockedUsersUnsupportedMediaType) orgsListBlockedUsersRes() {}
 
 type OrgsListFailedInvitationsOKApplicationJSON []OrganizationInvitation
 
@@ -18276,14 +18263,14 @@ type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
 func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
 
+// OrgsListForAuthenticatedUserNotModified is response for OrgsListForAuthenticatedUser operation.
+type OrgsListForAuthenticatedUserNotModified struct{}
+
+func (*OrgsListForAuthenticatedUserNotModified) orgsListForAuthenticatedUserRes() {}
+
 type OrgsListForAuthenticatedUserOKApplicationJSON []OrganizationSimple
 
 func (*OrgsListForAuthenticatedUserOKApplicationJSON) orgsListForAuthenticatedUserRes() {}
-
-// OrgsListForAuthenticatedUserResNotModified is response for OrgsListForAuthenticatedUser operation.
-type OrgsListForAuthenticatedUserResNotModified struct{}
-
-func (*OrgsListForAuthenticatedUserResNotModified) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListInvitationTeamsOKApplicationJSON []Team
 
@@ -18296,8 +18283,8 @@ const (
 	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
 )
 
-// OrgsListMembersResFound is response for OrgsListMembers operation.
-type OrgsListMembersResFound struct{}
+// OrgsListMembersFound is response for OrgsListMembers operation.
+type OrgsListMembersFound struct{}
 
 type OrgsListMembersRole string
 
@@ -18307,8 +18294,8 @@ const (
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
 
-// OrgsListMembershipsForAuthenticatedUserResNotModified is response for OrgsListMembershipsForAuthenticatedUser operation.
-type OrgsListMembershipsForAuthenticatedUserResNotModified struct{}
+// OrgsListMembershipsForAuthenticatedUserNotModified is response for OrgsListMembershipsForAuthenticatedUser operation.
+type OrgsListMembershipsForAuthenticatedUserNotModified struct{}
 
 type OrgsListMembershipsForAuthenticatedUserState string
 
@@ -18316,6 +18303,11 @@ const (
 	OrgsListMembershipsForAuthenticatedUserStateActive  OrgsListMembershipsForAuthenticatedUserState = "active"
 	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
 )
+
+// OrgsListNotModified is response for OrgsList operation.
+type OrgsListNotModified struct{}
+
+func (*OrgsListNotModified) orgsListRes() {}
 
 type OrgsListOKApplicationJSON []OrganizationSimple
 
@@ -18332,26 +18324,21 @@ type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
 
 func (*OrgsListPendingInvitationsOKApplicationJSON) orgsListPendingInvitationsRes() {}
 
-// OrgsListResNotModified is response for OrgsList operation.
-type OrgsListResNotModified struct{}
-
-func (*OrgsListResNotModified) orgsListRes() {}
-
 type OrgsListWebhooksOKApplicationJSON []OrgHook
 
 func (*OrgsListWebhooksOKApplicationJSON) orgsListWebhooksRes() {}
 
-// OrgsPingWebhookResNoContent is response for OrgsPingWebhook operation.
-type OrgsPingWebhookResNoContent struct{}
+// OrgsPingWebhookNoContent is response for OrgsPingWebhook operation.
+type OrgsPingWebhookNoContent struct{}
 
-func (*OrgsPingWebhookResNoContent) orgsPingWebhookRes() {}
+func (*OrgsPingWebhookNoContent) orgsPingWebhookRes() {}
 
-type OrgsRedeliverWebhookDeliveryResAccepted struct{}
+type OrgsRedeliverWebhookDeliveryAccepted struct{}
 
-// OrgsRemoveMemberResNoContent is response for OrgsRemoveMember operation.
-type OrgsRemoveMemberResNoContent struct{}
+// OrgsRemoveMemberNoContent is response for OrgsRemoveMember operation.
+type OrgsRemoveMemberNoContent struct{}
 
-func (*OrgsRemoveMemberResNoContent) orgsRemoveMemberRes() {}
+func (*OrgsRemoveMemberNoContent) orgsRemoveMemberRes() {}
 
 type OrgsRemoveMembershipForUserApplicationJSONForbidden BasicError
 
@@ -18361,30 +18348,30 @@ type OrgsRemoveMembershipForUserApplicationJSONNotFound BasicError
 
 func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserRes() {}
 
-// OrgsRemoveMembershipForUserResNoContent is response for OrgsRemoveMembershipForUser operation.
-type OrgsRemoveMembershipForUserResNoContent struct{}
+// OrgsRemoveMembershipForUserNoContent is response for OrgsRemoveMembershipForUser operation.
+type OrgsRemoveMembershipForUserNoContent struct{}
 
-func (*OrgsRemoveMembershipForUserResNoContent) orgsRemoveMembershipForUserRes() {}
+func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserRes() {}
 
-// OrgsRemoveOutsideCollaboratorResNoContent is response for OrgsRemoveOutsideCollaborator operation.
-type OrgsRemoveOutsideCollaboratorResNoContent struct{}
+// OrgsRemoveOutsideCollaboratorNoContent is response for OrgsRemoveOutsideCollaborator operation.
+type OrgsRemoveOutsideCollaboratorNoContent struct{}
 
-func (*OrgsRemoveOutsideCollaboratorResNoContent) orgsRemoveOutsideCollaboratorRes() {}
+func (*OrgsRemoveOutsideCollaboratorNoContent) orgsRemoveOutsideCollaboratorRes() {}
 
-type OrgsRemoveOutsideCollaboratorResUnprocessableEntity struct {
+type OrgsRemoveOutsideCollaboratorUnprocessableEntity struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*OrgsRemoveOutsideCollaboratorResUnprocessableEntity) orgsRemoveOutsideCollaboratorRes() {}
+func (*OrgsRemoveOutsideCollaboratorUnprocessableEntity) orgsRemoveOutsideCollaboratorRes() {}
 
-// OrgsRemovePublicMembershipForAuthenticatedUserResNoContent is response for OrgsRemovePublicMembershipForAuthenticatedUser operation.
-type OrgsRemovePublicMembershipForAuthenticatedUserResNoContent struct{}
+// OrgsRemovePublicMembershipForAuthenticatedUserNoContent is response for OrgsRemovePublicMembershipForAuthenticatedUser operation.
+type OrgsRemovePublicMembershipForAuthenticatedUserNoContent struct{}
 
-// OrgsRemoveSamlSSOAuthorizationResNoContent is response for OrgsRemoveSamlSSOAuthorization operation.
-type OrgsRemoveSamlSSOAuthorizationResNoContent struct{}
+// OrgsRemoveSamlSSOAuthorizationNoContent is response for OrgsRemoveSamlSSOAuthorization operation.
+type OrgsRemoveSamlSSOAuthorizationNoContent struct{}
 
-func (*OrgsRemoveSamlSSOAuthorizationResNoContent) orgsRemoveSamlSSOAuthorizationRes() {}
+func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationRes() {}
 
 type OrgsSetMembershipForUserReq struct {
 	Role OptOrgsSetMembershipForUserReqRole `json:"role"`
@@ -18397,14 +18384,14 @@ const (
 	OrgsSetMembershipForUserReqRoleMember OrgsSetMembershipForUserReqRole = "member"
 )
 
-// OrgsSetPublicMembershipForAuthenticatedUserResNoContent is response for OrgsSetPublicMembershipForAuthenticatedUser operation.
-type OrgsSetPublicMembershipForAuthenticatedUserResNoContent struct{}
+// OrgsSetPublicMembershipForAuthenticatedUserNoContent is response for OrgsSetPublicMembershipForAuthenticatedUser operation.
+type OrgsSetPublicMembershipForAuthenticatedUserNoContent struct{}
 
-func (*OrgsSetPublicMembershipForAuthenticatedUserResNoContent) orgsSetPublicMembershipForAuthenticatedUserRes() {
+func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMembershipForAuthenticatedUserRes() {
 }
 
-// OrgsUnblockUserResNoContent is response for OrgsUnblockUser operation.
-type OrgsUnblockUserResNoContent struct{}
+// OrgsUnblockUserNoContent is response for OrgsUnblockUser operation.
+type OrgsUnblockUserNoContent struct{}
 
 type OrgsUpdateMembershipForAuthenticatedUserReq struct {
 	State OrgsUpdateMembershipForAuthenticatedUserReqState `json:"state"`
@@ -18455,7 +18442,7 @@ const (
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateReqMembersAllowedRepositoryCreationType = "none"
 )
 
-type OrgsUpdateResUnsupportedMediaType struct {
+type OrgsUpdateUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -18576,6 +18563,12 @@ type PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized BasicE
 func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
+// PackagesDeletePackageForAuthenticatedUserNoContent is response for PackagesDeletePackageForAuthenticatedUser operation.
+type PackagesDeletePackageForAuthenticatedUserNoContent struct{}
+
+func (*PackagesDeletePackageForAuthenticatedUserNoContent) packagesDeletePackageForAuthenticatedUserRes() {
+}
+
 type PackagesDeletePackageForAuthenticatedUserPackageType string
 
 const (
@@ -18586,12 +18579,6 @@ const (
 	PackagesDeletePackageForAuthenticatedUserPackageTypeNuget     PackagesDeletePackageForAuthenticatedUserPackageType = "nuget"
 	PackagesDeletePackageForAuthenticatedUserPackageTypeContainer PackagesDeletePackageForAuthenticatedUserPackageType = "container"
 )
-
-// PackagesDeletePackageForAuthenticatedUserResNoContent is response for PackagesDeletePackageForAuthenticatedUser operation.
-type PackagesDeletePackageForAuthenticatedUserResNoContent struct{}
-
-func (*PackagesDeletePackageForAuthenticatedUserResNoContent) packagesDeletePackageForAuthenticatedUserRes() {
-}
 
 type PackagesDeletePackageForOrgApplicationJSONForbidden BasicError
 
@@ -18605,6 +18592,11 @@ type PackagesDeletePackageForOrgApplicationJSONUnauthorized BasicError
 
 func (*PackagesDeletePackageForOrgApplicationJSONUnauthorized) packagesDeletePackageForOrgRes() {}
 
+// PackagesDeletePackageForOrgNoContent is response for PackagesDeletePackageForOrg operation.
+type PackagesDeletePackageForOrgNoContent struct{}
+
+func (*PackagesDeletePackageForOrgNoContent) packagesDeletePackageForOrgRes() {}
+
 type PackagesDeletePackageForOrgPackageType string
 
 const (
@@ -18615,11 +18607,6 @@ const (
 	PackagesDeletePackageForOrgPackageTypeNuget     PackagesDeletePackageForOrgPackageType = "nuget"
 	PackagesDeletePackageForOrgPackageTypeContainer PackagesDeletePackageForOrgPackageType = "container"
 )
-
-// PackagesDeletePackageForOrgResNoContent is response for PackagesDeletePackageForOrg operation.
-type PackagesDeletePackageForOrgResNoContent struct{}
-
-func (*PackagesDeletePackageForOrgResNoContent) packagesDeletePackageForOrgRes() {}
 
 type PackagesDeletePackageForUserApplicationJSONForbidden BasicError
 
@@ -18633,6 +18620,11 @@ type PackagesDeletePackageForUserApplicationJSONUnauthorized BasicError
 
 func (*PackagesDeletePackageForUserApplicationJSONUnauthorized) packagesDeletePackageForUserRes() {}
 
+// PackagesDeletePackageForUserNoContent is response for PackagesDeletePackageForUser operation.
+type PackagesDeletePackageForUserNoContent struct{}
+
+func (*PackagesDeletePackageForUserNoContent) packagesDeletePackageForUserRes() {}
+
 type PackagesDeletePackageForUserPackageType string
 
 const (
@@ -18643,11 +18635,6 @@ const (
 	PackagesDeletePackageForUserPackageTypeNuget     PackagesDeletePackageForUserPackageType = "nuget"
 	PackagesDeletePackageForUserPackageTypeContainer PackagesDeletePackageForUserPackageType = "container"
 )
-
-// PackagesDeletePackageForUserResNoContent is response for PackagesDeletePackageForUser operation.
-type PackagesDeletePackageForUserResNoContent struct{}
-
-func (*PackagesDeletePackageForUserResNoContent) packagesDeletePackageForUserRes() {}
 
 type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -18664,6 +18651,12 @@ type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
+// PackagesDeletePackageVersionForAuthenticatedUserNoContent is response for PackagesDeletePackageVersionForAuthenticatedUser operation.
+type PackagesDeletePackageVersionForAuthenticatedUserNoContent struct{}
+
+func (*PackagesDeletePackageVersionForAuthenticatedUserNoContent) packagesDeletePackageVersionForAuthenticatedUserRes() {
+}
+
 type PackagesDeletePackageVersionForAuthenticatedUserPackageType string
 
 const (
@@ -18674,12 +18667,6 @@ const (
 	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget     PackagesDeletePackageVersionForAuthenticatedUserPackageType = "nuget"
 	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer PackagesDeletePackageVersionForAuthenticatedUserPackageType = "container"
 )
-
-// PackagesDeletePackageVersionForAuthenticatedUserResNoContent is response for PackagesDeletePackageVersionForAuthenticatedUser operation.
-type PackagesDeletePackageVersionForAuthenticatedUserResNoContent struct{}
-
-func (*PackagesDeletePackageVersionForAuthenticatedUserResNoContent) packagesDeletePackageVersionForAuthenticatedUserRes() {
-}
 
 type PackagesDeletePackageVersionForOrgApplicationJSONForbidden BasicError
 
@@ -18696,6 +18683,11 @@ type PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized BasicError
 func (*PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) packagesDeletePackageVersionForOrgRes() {
 }
 
+// PackagesDeletePackageVersionForOrgNoContent is response for PackagesDeletePackageVersionForOrg operation.
+type PackagesDeletePackageVersionForOrgNoContent struct{}
+
+func (*PackagesDeletePackageVersionForOrgNoContent) packagesDeletePackageVersionForOrgRes() {}
+
 type PackagesDeletePackageVersionForOrgPackageType string
 
 const (
@@ -18706,11 +18698,6 @@ const (
 	PackagesDeletePackageVersionForOrgPackageTypeNuget     PackagesDeletePackageVersionForOrgPackageType = "nuget"
 	PackagesDeletePackageVersionForOrgPackageTypeContainer PackagesDeletePackageVersionForOrgPackageType = "container"
 )
-
-// PackagesDeletePackageVersionForOrgResNoContent is response for PackagesDeletePackageVersionForOrg operation.
-type PackagesDeletePackageVersionForOrgResNoContent struct{}
-
-func (*PackagesDeletePackageVersionForOrgResNoContent) packagesDeletePackageVersionForOrgRes() {}
 
 type PackagesDeletePackageVersionForUserApplicationJSONForbidden BasicError
 
@@ -18727,6 +18714,11 @@ type PackagesDeletePackageVersionForUserApplicationJSONUnauthorized BasicError
 func (*PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) packagesDeletePackageVersionForUserRes() {
 }
 
+// PackagesDeletePackageVersionForUserNoContent is response for PackagesDeletePackageVersionForUser operation.
+type PackagesDeletePackageVersionForUserNoContent struct{}
+
+func (*PackagesDeletePackageVersionForUserNoContent) packagesDeletePackageVersionForUserRes() {}
+
 type PackagesDeletePackageVersionForUserPackageType string
 
 const (
@@ -18737,11 +18729,6 @@ const (
 	PackagesDeletePackageVersionForUserPackageTypeNuget     PackagesDeletePackageVersionForUserPackageType = "nuget"
 	PackagesDeletePackageVersionForUserPackageTypeContainer PackagesDeletePackageVersionForUserPackageType = "container"
 )
-
-// PackagesDeletePackageVersionForUserResNoContent is response for PackagesDeletePackageVersionForUser operation.
-type PackagesDeletePackageVersionForUserResNoContent struct{}
-
-func (*PackagesDeletePackageVersionForUserResNoContent) packagesDeletePackageVersionForUserRes() {}
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -19015,6 +19002,12 @@ type PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized Basic
 func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
+// PackagesRestorePackageForAuthenticatedUserNoContent is response for PackagesRestorePackageForAuthenticatedUser operation.
+type PackagesRestorePackageForAuthenticatedUserNoContent struct{}
+
+func (*PackagesRestorePackageForAuthenticatedUserNoContent) packagesRestorePackageForAuthenticatedUserRes() {
+}
+
 type PackagesRestorePackageForAuthenticatedUserPackageType string
 
 const (
@@ -19025,12 +19018,6 @@ const (
 	PackagesRestorePackageForAuthenticatedUserPackageTypeNuget     PackagesRestorePackageForAuthenticatedUserPackageType = "nuget"
 	PackagesRestorePackageForAuthenticatedUserPackageTypeContainer PackagesRestorePackageForAuthenticatedUserPackageType = "container"
 )
-
-// PackagesRestorePackageForAuthenticatedUserResNoContent is response for PackagesRestorePackageForAuthenticatedUser operation.
-type PackagesRestorePackageForAuthenticatedUserResNoContent struct{}
-
-func (*PackagesRestorePackageForAuthenticatedUserResNoContent) packagesRestorePackageForAuthenticatedUserRes() {
-}
 
 type PackagesRestorePackageForOrgApplicationJSONForbidden BasicError
 
@@ -19044,6 +19031,11 @@ type PackagesRestorePackageForOrgApplicationJSONUnauthorized BasicError
 
 func (*PackagesRestorePackageForOrgApplicationJSONUnauthorized) packagesRestorePackageForOrgRes() {}
 
+// PackagesRestorePackageForOrgNoContent is response for PackagesRestorePackageForOrg operation.
+type PackagesRestorePackageForOrgNoContent struct{}
+
+func (*PackagesRestorePackageForOrgNoContent) packagesRestorePackageForOrgRes() {}
+
 type PackagesRestorePackageForOrgPackageType string
 
 const (
@@ -19054,11 +19046,6 @@ const (
 	PackagesRestorePackageForOrgPackageTypeNuget     PackagesRestorePackageForOrgPackageType = "nuget"
 	PackagesRestorePackageForOrgPackageTypeContainer PackagesRestorePackageForOrgPackageType = "container"
 )
-
-// PackagesRestorePackageForOrgResNoContent is response for PackagesRestorePackageForOrg operation.
-type PackagesRestorePackageForOrgResNoContent struct{}
-
-func (*PackagesRestorePackageForOrgResNoContent) packagesRestorePackageForOrgRes() {}
 
 type PackagesRestorePackageForUserApplicationJSONForbidden BasicError
 
@@ -19072,6 +19059,11 @@ type PackagesRestorePackageForUserApplicationJSONUnauthorized BasicError
 
 func (*PackagesRestorePackageForUserApplicationJSONUnauthorized) packagesRestorePackageForUserRes() {}
 
+// PackagesRestorePackageForUserNoContent is response for PackagesRestorePackageForUser operation.
+type PackagesRestorePackageForUserNoContent struct{}
+
+func (*PackagesRestorePackageForUserNoContent) packagesRestorePackageForUserRes() {}
+
 type PackagesRestorePackageForUserPackageType string
 
 const (
@@ -19082,11 +19074,6 @@ const (
 	PackagesRestorePackageForUserPackageTypeNuget     PackagesRestorePackageForUserPackageType = "nuget"
 	PackagesRestorePackageForUserPackageTypeContainer PackagesRestorePackageForUserPackageType = "container"
 )
-
-// PackagesRestorePackageForUserResNoContent is response for PackagesRestorePackageForUser operation.
-type PackagesRestorePackageForUserResNoContent struct{}
-
-func (*PackagesRestorePackageForUserResNoContent) packagesRestorePackageForUserRes() {}
 
 type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -19103,6 +19090,12 @@ type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorize
 func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
+// PackagesRestorePackageVersionForAuthenticatedUserNoContent is response for PackagesRestorePackageVersionForAuthenticatedUser operation.
+type PackagesRestorePackageVersionForAuthenticatedUserNoContent struct{}
+
+func (*PackagesRestorePackageVersionForAuthenticatedUserNoContent) packagesRestorePackageVersionForAuthenticatedUserRes() {
+}
+
 type PackagesRestorePackageVersionForAuthenticatedUserPackageType string
 
 const (
@@ -19113,12 +19106,6 @@ const (
 	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget     PackagesRestorePackageVersionForAuthenticatedUserPackageType = "nuget"
 	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer PackagesRestorePackageVersionForAuthenticatedUserPackageType = "container"
 )
-
-// PackagesRestorePackageVersionForAuthenticatedUserResNoContent is response for PackagesRestorePackageVersionForAuthenticatedUser operation.
-type PackagesRestorePackageVersionForAuthenticatedUserResNoContent struct{}
-
-func (*PackagesRestorePackageVersionForAuthenticatedUserResNoContent) packagesRestorePackageVersionForAuthenticatedUserRes() {
-}
 
 type PackagesRestorePackageVersionForOrgApplicationJSONForbidden BasicError
 
@@ -19135,6 +19122,11 @@ type PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized BasicError
 func (*PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) packagesRestorePackageVersionForOrgRes() {
 }
 
+// PackagesRestorePackageVersionForOrgNoContent is response for PackagesRestorePackageVersionForOrg operation.
+type PackagesRestorePackageVersionForOrgNoContent struct{}
+
+func (*PackagesRestorePackageVersionForOrgNoContent) packagesRestorePackageVersionForOrgRes() {}
+
 type PackagesRestorePackageVersionForOrgPackageType string
 
 const (
@@ -19145,11 +19137,6 @@ const (
 	PackagesRestorePackageVersionForOrgPackageTypeNuget     PackagesRestorePackageVersionForOrgPackageType = "nuget"
 	PackagesRestorePackageVersionForOrgPackageTypeContainer PackagesRestorePackageVersionForOrgPackageType = "container"
 )
-
-// PackagesRestorePackageVersionForOrgResNoContent is response for PackagesRestorePackageVersionForOrg operation.
-type PackagesRestorePackageVersionForOrgResNoContent struct{}
-
-func (*PackagesRestorePackageVersionForOrgResNoContent) packagesRestorePackageVersionForOrgRes() {}
 
 type PackagesRestorePackageVersionForUserApplicationJSONForbidden BasicError
 
@@ -19166,6 +19153,11 @@ type PackagesRestorePackageVersionForUserApplicationJSONUnauthorized BasicError
 func (*PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) packagesRestorePackageVersionForUserRes() {
 }
 
+// PackagesRestorePackageVersionForUserNoContent is response for PackagesRestorePackageVersionForUser operation.
+type PackagesRestorePackageVersionForUserNoContent struct{}
+
+func (*PackagesRestorePackageVersionForUserNoContent) packagesRestorePackageVersionForUserRes() {}
+
 type PackagesRestorePackageVersionForUserPackageType string
 
 const (
@@ -19176,11 +19168,6 @@ const (
 	PackagesRestorePackageVersionForUserPackageTypeNuget     PackagesRestorePackageVersionForUserPackageType = "nuget"
 	PackagesRestorePackageVersionForUserPackageTypeContainer PackagesRestorePackageVersionForUserPackageType = "container"
 )
-
-// PackagesRestorePackageVersionForUserResNoContent is response for PackagesRestorePackageVersionForUser operation.
-type PackagesRestorePackageVersionForUserResNoContent struct{}
-
-func (*PackagesRestorePackageVersionForUserResNoContent) packagesRestorePackageVersionForUserRes() {}
 
 // Ref: #/components/schemas/page
 type Page struct {
@@ -19488,6 +19475,12 @@ const (
 	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
 )
 
+// ProjectsAddCollaboratorNoContent is response for ProjectsAddCollaborator operation.
+type ProjectsAddCollaboratorNoContent struct{}
+
+// ProjectsAddCollaboratorNotModified is response for ProjectsAddCollaborator operation.
+type ProjectsAddCollaboratorNotModified struct{}
+
 type ProjectsAddCollaboratorReq struct {
 	Permission OptProjectsAddCollaboratorReqPermission `json:"permission"`
 }
@@ -19500,12 +19493,6 @@ const (
 	ProjectsAddCollaboratorReqPermissionAdmin ProjectsAddCollaboratorReqPermission = "admin"
 )
 
-// ProjectsAddCollaboratorResNoContent is response for ProjectsAddCollaborator operation.
-type ProjectsAddCollaboratorResNoContent struct{}
-
-// ProjectsAddCollaboratorResNotModified is response for ProjectsAddCollaborator operation.
-type ProjectsAddCollaboratorResNotModified struct{}
-
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
 func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnRes() {}
@@ -19514,14 +19501,14 @@ type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnRes() {}
 
+// ProjectsCreateColumnNotModified is response for ProjectsCreateColumn operation.
+type ProjectsCreateColumnNotModified struct{}
+
+func (*ProjectsCreateColumnNotModified) projectsCreateColumnRes() {}
+
 type ProjectsCreateColumnReq struct {
 	Name string `json:"name"`
 }
-
-// ProjectsCreateColumnResNotModified is response for ProjectsCreateColumn operation.
-type ProjectsCreateColumnResNotModified struct{}
-
-func (*ProjectsCreateColumnResNotModified) projectsCreateColumnRes() {}
 
 type ProjectsCreateForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -19533,22 +19520,22 @@ type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
 func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserRes() {
 }
 
+// ProjectsCreateForAuthenticatedUserNotModified is response for ProjectsCreateForAuthenticatedUser operation.
+type ProjectsCreateForAuthenticatedUserNotModified struct{}
+
+func (*ProjectsCreateForAuthenticatedUserNotModified) projectsCreateForAuthenticatedUserRes() {}
+
 type ProjectsCreateForAuthenticatedUserReq struct {
 	Body OptNilString `json:"body"`
 	Name string       `json:"name"`
 }
 
-// ProjectsCreateForAuthenticatedUserResNotModified is response for ProjectsCreateForAuthenticatedUser operation.
-type ProjectsCreateForAuthenticatedUserResNotModified struct{}
-
-func (*ProjectsCreateForAuthenticatedUserResNotModified) projectsCreateForAuthenticatedUserRes() {}
-
-type ProjectsCreateForAuthenticatedUserResUnsupportedMediaType struct {
+type ProjectsCreateForAuthenticatedUserUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ProjectsCreateForAuthenticatedUserResUnsupportedMediaType) projectsCreateForAuthenticatedUserRes() {
+func (*ProjectsCreateForAuthenticatedUserUnsupportedMediaType) projectsCreateForAuthenticatedUserRes() {
 }
 
 type ProjectsCreateForOrgApplicationJSONForbidden BasicError
@@ -19613,23 +19600,23 @@ type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
 
 func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardRes() {}
 
-type ProjectsDeleteCardResForbidden struct {
+type ProjectsDeleteCardForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Errors           []string  `json:"errors"`
 	Message          OptString `json:"message"`
 }
 
-func (*ProjectsDeleteCardResForbidden) projectsDeleteCardRes() {}
+func (*ProjectsDeleteCardForbidden) projectsDeleteCardRes() {}
 
-// ProjectsDeleteCardResNoContent is response for ProjectsDeleteCard operation.
-type ProjectsDeleteCardResNoContent struct{}
+// ProjectsDeleteCardNoContent is response for ProjectsDeleteCard operation.
+type ProjectsDeleteCardNoContent struct{}
 
-func (*ProjectsDeleteCardResNoContent) projectsDeleteCardRes() {}
+func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
-// ProjectsDeleteCardResNotModified is response for ProjectsDeleteCard operation.
-type ProjectsDeleteCardResNotModified struct{}
+// ProjectsDeleteCardNotModified is response for ProjectsDeleteCard operation.
+type ProjectsDeleteCardNotModified struct{}
 
-func (*ProjectsDeleteCardResNotModified) projectsDeleteCardRes() {}
+func (*ProjectsDeleteCardNotModified) projectsDeleteCardRes() {}
 
 type ProjectsDeleteColumnApplicationJSONForbidden BasicError
 
@@ -19639,33 +19626,33 @@ type ProjectsDeleteColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnRes() {}
 
-// ProjectsDeleteColumnResNoContent is response for ProjectsDeleteColumn operation.
-type ProjectsDeleteColumnResNoContent struct{}
+// ProjectsDeleteColumnNoContent is response for ProjectsDeleteColumn operation.
+type ProjectsDeleteColumnNoContent struct{}
 
-func (*ProjectsDeleteColumnResNoContent) projectsDeleteColumnRes() {}
+func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
 
-// ProjectsDeleteColumnResNotModified is response for ProjectsDeleteColumn operation.
-type ProjectsDeleteColumnResNotModified struct{}
+// ProjectsDeleteColumnNotModified is response for ProjectsDeleteColumn operation.
+type ProjectsDeleteColumnNotModified struct{}
 
-func (*ProjectsDeleteColumnResNotModified) projectsDeleteColumnRes() {}
+func (*ProjectsDeleteColumnNotModified) projectsDeleteColumnRes() {}
 
-type ProjectsDeleteResForbidden struct {
+type ProjectsDeleteForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Errors           []string  `json:"errors"`
 	Message          OptString `json:"message"`
 }
 
-func (*ProjectsDeleteResForbidden) projectsDeleteRes() {}
+func (*ProjectsDeleteForbidden) projectsDeleteRes() {}
 
-// ProjectsDeleteResNoContent is response for ProjectsDelete operation.
-type ProjectsDeleteResNoContent struct{}
+// ProjectsDeleteNoContent is response for ProjectsDelete operation.
+type ProjectsDeleteNoContent struct{}
 
-func (*ProjectsDeleteResNoContent) projectsDeleteRes() {}
+func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
 
-// ProjectsDeleteResNotModified is response for ProjectsDelete operation.
-type ProjectsDeleteResNotModified struct{}
+// ProjectsDeleteNotModified is response for ProjectsDelete operation.
+type ProjectsDeleteNotModified struct{}
 
-func (*ProjectsDeleteResNotModified) projectsDeleteRes() {}
+func (*ProjectsDeleteNotModified) projectsDeleteRes() {}
 
 type ProjectsGetApplicationJSONForbidden BasicError
 
@@ -19687,10 +19674,10 @@ type ProjectsGetCardApplicationJSONUnauthorized BasicError
 
 func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardRes() {}
 
-// ProjectsGetCardResNotModified is response for ProjectsGetCard operation.
-type ProjectsGetCardResNotModified struct{}
+// ProjectsGetCardNotModified is response for ProjectsGetCard operation.
+type ProjectsGetCardNotModified struct{}
 
-func (*ProjectsGetCardResNotModified) projectsGetCardRes() {}
+func (*ProjectsGetCardNotModified) projectsGetCardRes() {}
 
 type ProjectsGetColumnApplicationJSONForbidden BasicError
 
@@ -19704,18 +19691,18 @@ type ProjectsGetColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
 
-// ProjectsGetColumnResNotModified is response for ProjectsGetColumn operation.
-type ProjectsGetColumnResNotModified struct{}
+// ProjectsGetColumnNotModified is response for ProjectsGetColumn operation.
+type ProjectsGetColumnNotModified struct{}
 
-func (*ProjectsGetColumnResNotModified) projectsGetColumnRes() {}
+func (*ProjectsGetColumnNotModified) projectsGetColumnRes() {}
 
-// ProjectsGetPermissionForUserResNotModified is response for ProjectsGetPermissionForUser operation.
-type ProjectsGetPermissionForUserResNotModified struct{}
+// ProjectsGetNotModified is response for ProjectsGet operation.
+type ProjectsGetNotModified struct{}
 
-// ProjectsGetResNotModified is response for ProjectsGet operation.
-type ProjectsGetResNotModified struct{}
+func (*ProjectsGetNotModified) projectsGetRes() {}
 
-func (*ProjectsGetResNotModified) projectsGetRes() {}
+// ProjectsGetPermissionForUserNotModified is response for ProjectsGetPermissionForUser operation.
+type ProjectsGetPermissionForUserNotModified struct{}
 
 type ProjectsListCardsApplicationJSONForbidden BasicError
 
@@ -19733,14 +19720,14 @@ const (
 	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
 )
 
+// ProjectsListCardsNotModified is response for ProjectsListCards operation.
+type ProjectsListCardsNotModified struct{}
+
+func (*ProjectsListCardsNotModified) projectsListCardsRes() {}
+
 type ProjectsListCardsOKApplicationJSON []ProjectCard
 
 func (*ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
-
-// ProjectsListCardsResNotModified is response for ProjectsListCards operation.
-type ProjectsListCardsResNotModified struct{}
-
-func (*ProjectsListCardsResNotModified) projectsListCardsRes() {}
 
 type ProjectsListCollaboratorsAffiliation string
 
@@ -19750,8 +19737,8 @@ const (
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
 
-// ProjectsListCollaboratorsResNotModified is response for ProjectsListCollaborators operation.
-type ProjectsListCollaboratorsResNotModified struct{}
+// ProjectsListCollaboratorsNotModified is response for ProjectsListCollaborators operation.
+type ProjectsListCollaboratorsNotModified struct{}
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
@@ -19761,14 +19748,14 @@ type ProjectsListColumnsApplicationJSONUnauthorized BasicError
 
 func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
 
+// ProjectsListColumnsNotModified is response for ProjectsListColumns operation.
+type ProjectsListColumnsNotModified struct{}
+
+func (*ProjectsListColumnsNotModified) projectsListColumnsRes() {}
+
 type ProjectsListColumnsOKApplicationJSON []ProjectColumn
 
 func (*ProjectsListColumnsOKApplicationJSON) projectsListColumnsRes() {}
-
-// ProjectsListColumnsResNotModified is response for ProjectsListColumns operation.
-type ProjectsListColumnsResNotModified struct{}
-
-func (*ProjectsListColumnsResNotModified) projectsListColumnsRes() {}
 
 type ProjectsListForOrgOKApplicationJSON []Project
 
@@ -19818,28 +19805,28 @@ const (
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
 
-type ProjectsMoveCardReq struct {
-	ColumnID OptInt `json:"column_id"`
-	Position string `json:"position"`
+type ProjectsMoveCardCreated struct{}
+
+type ProjectsMoveCardForbidden struct {
+	DocumentationURL OptString                             `json:"documentation_url"`
+	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
+	Message          OptString                             `json:"message"`
 }
 
-type ProjectsMoveCardResCreated struct{}
-
-type ProjectsMoveCardResForbidden struct {
-	DocumentationURL OptString                                `json:"documentation_url"`
-	Errors           []ProjectsMoveCardResForbiddenErrorsItem `json:"errors"`
-	Message          OptString                                `json:"message"`
-}
-
-type ProjectsMoveCardResForbiddenErrorsItem struct {
+type ProjectsMoveCardForbiddenErrorsItem struct {
 	Code     OptString `json:"code"`
 	Field    OptString `json:"field"`
 	Message  OptString `json:"message"`
 	Resource OptString `json:"resource"`
 }
 
-// ProjectsMoveCardResNotModified is response for ProjectsMoveCard operation.
-type ProjectsMoveCardResNotModified struct{}
+// ProjectsMoveCardNotModified is response for ProjectsMoveCard operation.
+type ProjectsMoveCardNotModified struct{}
+
+type ProjectsMoveCardReq struct {
+	ColumnID OptInt `json:"column_id"`
+	Position string `json:"position"`
+}
 
 type ProjectsMoveColumnApplicationJSONForbidden BasicError
 
@@ -19849,24 +19836,24 @@ type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
+type ProjectsMoveColumnCreated struct{}
+
+func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
+
+// ProjectsMoveColumnNotModified is response for ProjectsMoveColumn operation.
+type ProjectsMoveColumnNotModified struct{}
+
+func (*ProjectsMoveColumnNotModified) projectsMoveColumnRes() {}
+
 type ProjectsMoveColumnReq struct {
 	Position string `json:"position"`
 }
 
-type ProjectsMoveColumnResCreated struct{}
+// ProjectsRemoveCollaboratorNoContent is response for ProjectsRemoveCollaborator operation.
+type ProjectsRemoveCollaboratorNoContent struct{}
 
-func (*ProjectsMoveColumnResCreated) projectsMoveColumnRes() {}
-
-// ProjectsMoveColumnResNotModified is response for ProjectsMoveColumn operation.
-type ProjectsMoveColumnResNotModified struct{}
-
-func (*ProjectsMoveColumnResNotModified) projectsMoveColumnRes() {}
-
-// ProjectsRemoveCollaboratorResNoContent is response for ProjectsRemoveCollaborator operation.
-type ProjectsRemoveCollaboratorResNoContent struct{}
-
-// ProjectsRemoveCollaboratorResNotModified is response for ProjectsRemoveCollaborator operation.
-type ProjectsRemoveCollaboratorResNotModified struct{}
+// ProjectsRemoveCollaboratorNotModified is response for ProjectsRemoveCollaborator operation.
+type ProjectsRemoveCollaboratorNotModified struct{}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
@@ -19888,15 +19875,15 @@ type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
 
 func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
 
+// ProjectsUpdateCardNotModified is response for ProjectsUpdateCard operation.
+type ProjectsUpdateCardNotModified struct{}
+
+func (*ProjectsUpdateCardNotModified) projectsUpdateCardRes() {}
+
 type ProjectsUpdateCardReq struct {
 	Archived OptBool      `json:"archived"`
 	Note     OptNilString `json:"note"`
 }
-
-// ProjectsUpdateCardResNotModified is response for ProjectsUpdateCard operation.
-type ProjectsUpdateCardResNotModified struct{}
-
-func (*ProjectsUpdateCardResNotModified) projectsUpdateCardRes() {}
 
 type ProjectsUpdateColumnApplicationJSONForbidden BasicError
 
@@ -19906,14 +19893,32 @@ type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnRes() {}
 
+// ProjectsUpdateColumnNotModified is response for ProjectsUpdateColumn operation.
+type ProjectsUpdateColumnNotModified struct{}
+
+func (*ProjectsUpdateColumnNotModified) projectsUpdateColumnRes() {}
+
 type ProjectsUpdateColumnReq struct {
 	Name string `json:"name"`
 }
 
-// ProjectsUpdateColumnResNotModified is response for ProjectsUpdateColumn operation.
-type ProjectsUpdateColumnResNotModified struct{}
+type ProjectsUpdateForbidden struct {
+	DocumentationURL OptString `json:"documentation_url"`
+	Errors           []string  `json:"errors"`
+	Message          OptString `json:"message"`
+}
 
-func (*ProjectsUpdateColumnResNotModified) projectsUpdateColumnRes() {}
+func (*ProjectsUpdateForbidden) projectsUpdateRes() {}
+
+// ProjectsUpdateNotFound is response for ProjectsUpdate operation.
+type ProjectsUpdateNotFound struct{}
+
+func (*ProjectsUpdateNotFound) projectsUpdateRes() {}
+
+// ProjectsUpdateNotModified is response for ProjectsUpdate operation.
+type ProjectsUpdateNotModified struct{}
+
+func (*ProjectsUpdateNotModified) projectsUpdateRes() {}
 
 type ProjectsUpdateReq struct {
 	Body                   OptNilString                               `json:"body"`
@@ -19931,24 +19936,6 @@ const (
 	ProjectsUpdateReqOrganizationPermissionAdmin ProjectsUpdateReqOrganizationPermission = "admin"
 	ProjectsUpdateReqOrganizationPermissionNone  ProjectsUpdateReqOrganizationPermission = "none"
 )
-
-type ProjectsUpdateResForbidden struct {
-	DocumentationURL OptString `json:"documentation_url"`
-	Errors           []string  `json:"errors"`
-	Message          OptString `json:"message"`
-}
-
-func (*ProjectsUpdateResForbidden) projectsUpdateRes() {}
-
-// ProjectsUpdateResNotFound is response for ProjectsUpdate operation.
-type ProjectsUpdateResNotFound struct{}
-
-func (*ProjectsUpdateResNotFound) projectsUpdateRes() {}
-
-// ProjectsUpdateResNotModified is response for ProjectsUpdate operation.
-type ProjectsUpdateResNotModified struct{}
-
-func (*ProjectsUpdateResNotModified) projectsUpdateRes() {}
 
 // Ref: #/components/schemas/protected-branch
 type ProtectedBranch struct {
@@ -20685,15 +20672,15 @@ const (
 	PullRequestStateClosed PullRequestState = "closed"
 )
 
-// PullsCheckIfMergedResNoContent is response for PullsCheckIfMerged operation.
-type PullsCheckIfMergedResNoContent struct{}
+// PullsCheckIfMergedNoContent is response for PullsCheckIfMerged operation.
+type PullsCheckIfMergedNoContent struct{}
 
-func (*PullsCheckIfMergedResNoContent) pullsCheckIfMergedRes() {}
+func (*PullsCheckIfMergedNoContent) pullsCheckIfMergedRes() {}
 
-// PullsCheckIfMergedResNotFound is response for PullsCheckIfMerged operation.
-type PullsCheckIfMergedResNotFound struct{}
+// PullsCheckIfMergedNotFound is response for PullsCheckIfMerged operation.
+type PullsCheckIfMergedNotFound struct{}
 
-func (*PullsCheckIfMergedResNotFound) pullsCheckIfMergedRes() {}
+func (*PullsCheckIfMergedNotFound) pullsCheckIfMergedRes() {}
 
 type PullsCreateReplyForReviewCommentReq struct {
 	Body string `json:"body"`
@@ -20761,10 +20748,10 @@ const (
 	PullsCreateReviewReqEventCOMMENT        PullsCreateReviewReqEvent = "COMMENT"
 )
 
-// PullsDeleteReviewCommentResNoContent is response for PullsDeleteReviewComment operation.
-type PullsDeleteReviewCommentResNoContent struct{}
+// PullsDeleteReviewCommentNoContent is response for PullsDeleteReviewComment operation.
+type PullsDeleteReviewCommentNoContent struct{}
 
-func (*PullsDeleteReviewCommentResNoContent) pullsDeleteReviewCommentRes() {}
+func (*PullsDeleteReviewCommentNoContent) pullsDeleteReviewCommentRes() {}
 
 type PullsDismissReviewReq struct {
 	Event   OptString `json:"event"`
@@ -20779,10 +20766,10 @@ type PullsGetApplicationJSONNotFound BasicError
 
 func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
 
-// PullsGetResNotModified is response for PullsGet operation.
-type PullsGetResNotModified struct{}
+// PullsGetNotModified is response for PullsGet operation.
+type PullsGetNotModified struct{}
 
-func (*PullsGetResNotModified) pullsGetRes() {}
+func (*PullsGetNotModified) pullsGetRes() {}
 
 type PullsListCommentsForReviewOKApplicationJSON []ReviewComment
 
@@ -20795,8 +20782,8 @@ const (
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
 
-// PullsListResNotModified is response for PullsList operation.
-type PullsListResNotModified struct{}
+// PullsListNotModified is response for PullsList operation.
+type PullsListNotModified struct{}
 
 type PullsListReviewCommentsDirection string
 
@@ -20844,6 +20831,16 @@ const (
 	PullsListStateAll    PullsListState = "all"
 )
 
+type PullsMergeConflict struct {
+	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message"`
+}
+
+type PullsMergeMethodNotAllowed struct {
+	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message"`
+}
+
 type PullsMergeReq struct {
 	CommitMessage OptString                   `json:"commit_message"`
 	CommitTitle   OptString                   `json:"commit_title"`
@@ -20858,16 +20855,6 @@ const (
 	PullsMergeReqMergeMethodSquash PullsMergeReqMergeMethod = "squash"
 	PullsMergeReqMergeMethodRebase PullsMergeReqMergeMethod = "rebase"
 )
-
-type PullsMergeResConflict struct {
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-type PullsMergeResMethodNotAllowed struct {
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
 
 type PullsRemoveRequestedReviewersReq struct {
 	Reviewers     []string `json:"reviewers"`
@@ -20895,13 +20882,13 @@ const (
 	PullsSubmitReviewReqEventCOMMENT        PullsSubmitReviewReqEvent = "COMMENT"
 )
 
-type PullsUpdateBranchReq struct {
-	ExpectedHeadSha OptString `json:"expected_head_sha"`
-}
-
-type PullsUpdateBranchResAccepted struct {
+type PullsUpdateBranchAccepted struct {
 	Message OptString `json:"message"`
 	URL     OptString `json:"url"`
+}
+
+type PullsUpdateBranchReq struct {
+	ExpectedHeadSha OptString `json:"expected_head_sha"`
 }
 
 type PullsUpdateReq struct {
@@ -20935,10 +20922,10 @@ type RateLimit struct {
 	Used      int `json:"used"`
 }
 
-// RateLimitGetResNotModified is response for RateLimitGet operation.
-type RateLimitGetResNotModified struct{}
+// RateLimitGetNotModified is response for RateLimitGet operation.
+type RateLimitGetNotModified struct{}
 
-func (*RateLimitGetResNotModified) rateLimitGetRes() {}
+func (*RateLimitGetNotModified) rateLimitGetRes() {}
 
 // Ref: #/components/schemas/rate-limit-overview
 type RateLimitOverview struct {
@@ -21011,7 +20998,7 @@ const (
 	ReactionsCreateForCommitCommentReqContentEyes     ReactionsCreateForCommitCommentReqContent = "eyes"
 )
 
-type ReactionsCreateForCommitCommentResUnsupportedMediaType struct {
+type ReactionsCreateForCommitCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21033,7 +21020,7 @@ const (
 	ReactionsCreateForIssueCommentReqContentEyes     ReactionsCreateForIssueCommentReqContent = "eyes"
 )
 
-type ReactionsCreateForIssueCommentResUnsupportedMediaType struct {
+type ReactionsCreateForIssueCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21055,7 +21042,7 @@ const (
 	ReactionsCreateForIssueReqContentEyes     ReactionsCreateForIssueReqContent = "eyes"
 )
 
-type ReactionsCreateForIssueResUnsupportedMediaType struct {
+type ReactionsCreateForIssueUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21077,7 +21064,7 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
 
-type ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType struct {
+type ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21097,7 +21084,7 @@ const (
 	ReactionsCreateForReleaseReqContentEyes   ReactionsCreateForReleaseReqContent = "eyes"
 )
 
-type ReactionsCreateForReleaseResUnsupportedMediaType struct {
+type ReactionsCreateForReleaseUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21190,23 +21177,23 @@ const (
 	ReactionsCreateForTeamDiscussionLegacyReqContentEyes     ReactionsCreateForTeamDiscussionLegacyReqContent = "eyes"
 )
 
-// ReactionsDeleteForCommitCommentResNoContent is response for ReactionsDeleteForCommitComment operation.
-type ReactionsDeleteForCommitCommentResNoContent struct{}
+// ReactionsDeleteForCommitCommentNoContent is response for ReactionsDeleteForCommitComment operation.
+type ReactionsDeleteForCommitCommentNoContent struct{}
 
-// ReactionsDeleteForIssueCommentResNoContent is response for ReactionsDeleteForIssueComment operation.
-type ReactionsDeleteForIssueCommentResNoContent struct{}
+// ReactionsDeleteForIssueCommentNoContent is response for ReactionsDeleteForIssueComment operation.
+type ReactionsDeleteForIssueCommentNoContent struct{}
 
-// ReactionsDeleteForIssueResNoContent is response for ReactionsDeleteForIssue operation.
-type ReactionsDeleteForIssueResNoContent struct{}
+// ReactionsDeleteForIssueNoContent is response for ReactionsDeleteForIssue operation.
+type ReactionsDeleteForIssueNoContent struct{}
 
-// ReactionsDeleteForPullRequestCommentResNoContent is response for ReactionsDeleteForPullRequestComment operation.
-type ReactionsDeleteForPullRequestCommentResNoContent struct{}
+// ReactionsDeleteForPullRequestCommentNoContent is response for ReactionsDeleteForPullRequestComment operation.
+type ReactionsDeleteForPullRequestCommentNoContent struct{}
 
-// ReactionsDeleteForTeamDiscussionCommentResNoContent is response for ReactionsDeleteForTeamDiscussionComment operation.
-type ReactionsDeleteForTeamDiscussionCommentResNoContent struct{}
+// ReactionsDeleteForTeamDiscussionCommentNoContent is response for ReactionsDeleteForTeamDiscussionComment operation.
+type ReactionsDeleteForTeamDiscussionCommentNoContent struct{}
 
-// ReactionsDeleteForTeamDiscussionResNoContent is response for ReactionsDeleteForTeamDiscussion operation.
-type ReactionsDeleteForTeamDiscussionResNoContent struct{}
+// ReactionsDeleteForTeamDiscussionNoContent is response for ReactionsDeleteForTeamDiscussion operation.
+type ReactionsDeleteForTeamDiscussionNoContent struct{}
 
 type ReactionsDeleteLegacyApplicationJSONForbidden BasicError
 
@@ -21220,22 +21207,22 @@ type ReactionsDeleteLegacyApplicationJSONUnauthorized BasicError
 
 func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyRes() {}
 
-// ReactionsDeleteLegacyResNoContent is response for ReactionsDeleteLegacy operation.
-type ReactionsDeleteLegacyResNoContent struct{}
+// ReactionsDeleteLegacyNoContent is response for ReactionsDeleteLegacy operation.
+type ReactionsDeleteLegacyNoContent struct{}
 
-func (*ReactionsDeleteLegacyResNoContent) reactionsDeleteLegacyRes() {}
+func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
-// ReactionsDeleteLegacyResNotModified is response for ReactionsDeleteLegacy operation.
-type ReactionsDeleteLegacyResNotModified struct{}
+// ReactionsDeleteLegacyNotModified is response for ReactionsDeleteLegacy operation.
+type ReactionsDeleteLegacyNotModified struct{}
 
-func (*ReactionsDeleteLegacyResNotModified) reactionsDeleteLegacyRes() {}
+func (*ReactionsDeleteLegacyNotModified) reactionsDeleteLegacyRes() {}
 
-type ReactionsDeleteLegacyResUnsupportedMediaType struct {
+type ReactionsDeleteLegacyUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReactionsDeleteLegacyResUnsupportedMediaType) reactionsDeleteLegacyRes() {}
+func (*ReactionsDeleteLegacyUnsupportedMediaType) reactionsDeleteLegacyRes() {}
 
 type ReactionsListForCommitCommentContent string
 
@@ -21254,12 +21241,12 @@ type ReactionsListForCommitCommentOKApplicationJSON []Reaction
 
 func (*ReactionsListForCommitCommentOKApplicationJSON) reactionsListForCommitCommentRes() {}
 
-type ReactionsListForCommitCommentResUnsupportedMediaType struct {
+type ReactionsListForCommitCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReactionsListForCommitCommentResUnsupportedMediaType) reactionsListForCommitCommentRes() {}
+func (*ReactionsListForCommitCommentUnsupportedMediaType) reactionsListForCommitCommentRes() {}
 
 type ReactionsListForIssueApplicationJSONGone BasicError
 
@@ -21286,12 +21273,12 @@ type ReactionsListForIssueCommentOKApplicationJSON []Reaction
 
 func (*ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
 
-type ReactionsListForIssueCommentResUnsupportedMediaType struct {
+type ReactionsListForIssueCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReactionsListForIssueCommentResUnsupportedMediaType) reactionsListForIssueCommentRes() {}
+func (*ReactionsListForIssueCommentUnsupportedMediaType) reactionsListForIssueCommentRes() {}
 
 type ReactionsListForIssueContent string
 
@@ -21310,12 +21297,12 @@ type ReactionsListForIssueOKApplicationJSON []Reaction
 
 func (*ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
 
-type ReactionsListForIssueResUnsupportedMediaType struct {
+type ReactionsListForIssueUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReactionsListForIssueResUnsupportedMediaType) reactionsListForIssueRes() {}
+func (*ReactionsListForIssueUnsupportedMediaType) reactionsListForIssueRes() {}
 
 type ReactionsListForPullRequestReviewCommentContent string
 
@@ -21335,12 +21322,12 @@ type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
 func (*ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
 }
 
-type ReactionsListForPullRequestReviewCommentResUnsupportedMediaType struct {
+type ReactionsListForPullRequestReviewCommentUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReactionsListForPullRequestReviewCommentResUnsupportedMediaType) reactionsListForPullRequestReviewCommentRes() {
+func (*ReactionsListForPullRequestReviewCommentUnsupportedMediaType) reactionsListForPullRequestReviewCommentRes() {
 }
 
 type ReactionsListForTeamDiscussionCommentInOrgContent string
@@ -21568,15 +21555,18 @@ type ReposAcceptInvitationApplicationJSONNotFound BasicError
 
 func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationRes() {}
 
-// ReposAcceptInvitationResNoContent is response for ReposAcceptInvitation operation.
-type ReposAcceptInvitationResNoContent struct{}
+// ReposAcceptInvitationNoContent is response for ReposAcceptInvitation operation.
+type ReposAcceptInvitationNoContent struct{}
 
-func (*ReposAcceptInvitationResNoContent) reposAcceptInvitationRes() {}
+func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
-// ReposAcceptInvitationResNotModified is response for ReposAcceptInvitation operation.
-type ReposAcceptInvitationResNotModified struct{}
+// ReposAcceptInvitationNotModified is response for ReposAcceptInvitation operation.
+type ReposAcceptInvitationNotModified struct{}
 
-func (*ReposAcceptInvitationResNotModified) reposAcceptInvitationRes() {}
+func (*ReposAcceptInvitationNotModified) reposAcceptInvitationRes() {}
+
+// ReposAddCollaboratorNoContent is response for ReposAddCollaborator operation.
+type ReposAddCollaboratorNoContent struct{}
 
 type ReposAddCollaboratorReq struct {
 	Permission  OptReposAddCollaboratorReqPermission `json:"permission"`
@@ -21593,28 +21583,25 @@ const (
 	ReposAddCollaboratorReqPermissionTriage   ReposAddCollaboratorReqPermission = "triage"
 )
 
-// ReposAddCollaboratorResNoContent is response for ReposAddCollaborator operation.
-type ReposAddCollaboratorResNoContent struct{}
+// ReposCheckCollaboratorNoContent is response for ReposCheckCollaborator operation.
+type ReposCheckCollaboratorNoContent struct{}
 
-// ReposCheckCollaboratorResNoContent is response for ReposCheckCollaborator operation.
-type ReposCheckCollaboratorResNoContent struct{}
+func (*ReposCheckCollaboratorNoContent) reposCheckCollaboratorRes() {}
 
-func (*ReposCheckCollaboratorResNoContent) reposCheckCollaboratorRes() {}
+// ReposCheckCollaboratorNotFound is response for ReposCheckCollaborator operation.
+type ReposCheckCollaboratorNotFound struct{}
 
-// ReposCheckCollaboratorResNotFound is response for ReposCheckCollaborator operation.
-type ReposCheckCollaboratorResNotFound struct{}
+func (*ReposCheckCollaboratorNotFound) reposCheckCollaboratorRes() {}
 
-func (*ReposCheckCollaboratorResNotFound) reposCheckCollaboratorRes() {}
+// ReposCheckVulnerabilityAlertsNoContent is response for ReposCheckVulnerabilityAlerts operation.
+type ReposCheckVulnerabilityAlertsNoContent struct{}
 
-// ReposCheckVulnerabilityAlertsResNoContent is response for ReposCheckVulnerabilityAlerts operation.
-type ReposCheckVulnerabilityAlertsResNoContent struct{}
+func (*ReposCheckVulnerabilityAlertsNoContent) reposCheckVulnerabilityAlertsRes() {}
 
-func (*ReposCheckVulnerabilityAlertsResNoContent) reposCheckVulnerabilityAlertsRes() {}
+// ReposCheckVulnerabilityAlertsNotFound is response for ReposCheckVulnerabilityAlerts operation.
+type ReposCheckVulnerabilityAlertsNotFound struct{}
 
-// ReposCheckVulnerabilityAlertsResNotFound is response for ReposCheckVulnerabilityAlerts operation.
-type ReposCheckVulnerabilityAlertsResNotFound struct{}
-
-func (*ReposCheckVulnerabilityAlertsResNotFound) reposCheckVulnerabilityAlertsRes() {}
+func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsRes() {}
 
 type ReposCompareCommitsApplicationJSONInternalServerError BasicError
 
@@ -21688,6 +21675,9 @@ const (
 	ReposCreateDeploymentStatusReqStateSuccess    ReposCreateDeploymentStatusReqState = "success"
 )
 
+// ReposCreateDispatchEventNoContent is response for ReposCreateDispatchEvent operation.
+type ReposCreateDispatchEventNoContent struct{}
+
 type ReposCreateDispatchEventReq struct {
 	ClientPayload *ReposCreateDispatchEventReqClientPayload `json:"client_payload"`
 	EventType     string                                    `json:"event_type"`
@@ -21695,8 +21685,8 @@ type ReposCreateDispatchEventReq struct {
 
 type ReposCreateDispatchEventReqClientPayload struct{}
 
-// ReposCreateDispatchEventResNoContent is response for ReposCreateDispatchEvent operation.
-type ReposCreateDispatchEventResNoContent struct{}
+// ReposCreateForAuthenticatedUserNotModified is response for ReposCreateForAuthenticatedUser operation.
+type ReposCreateForAuthenticatedUserNotModified struct{}
 
 type ReposCreateForAuthenticatedUserReq struct {
 	AllowAutoMerge      OptBool   `json:"allow_auto_merge"`
@@ -21718,9 +21708,6 @@ type ReposCreateForAuthenticatedUserReq struct {
 	Private             OptBool   `json:"private"`
 	TeamID              OptInt    `json:"team_id"`
 }
-
-// ReposCreateForAuthenticatedUserResNotModified is response for ReposCreateForAuthenticatedUser operation.
-type ReposCreateForAuthenticatedUserResNotModified struct{}
 
 type ReposCreateForkReq struct {
 	Organization OptString `json:"organization"`
@@ -21804,7 +21791,7 @@ const (
 	ReposCreatePagesSiteReqSourcePathSlashDocs ReposCreatePagesSiteReqSourcePath = "/docs"
 )
 
-type ReposCreatePagesSiteResUnsupportedMediaType struct {
+type ReposCreatePagesSiteUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
@@ -21855,26 +21842,26 @@ type ReposDeclineInvitationApplicationJSONNotFound BasicError
 
 func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationRes() {}
 
-// ReposDeclineInvitationResNoContent is response for ReposDeclineInvitation operation.
-type ReposDeclineInvitationResNoContent struct{}
+// ReposDeclineInvitationNoContent is response for ReposDeclineInvitation operation.
+type ReposDeclineInvitationNoContent struct{}
 
-func (*ReposDeclineInvitationResNoContent) reposDeclineInvitationRes() {}
+func (*ReposDeclineInvitationNoContent) reposDeclineInvitationRes() {}
 
-// ReposDeclineInvitationResNotModified is response for ReposDeclineInvitation operation.
-type ReposDeclineInvitationResNotModified struct{}
+// ReposDeclineInvitationNotModified is response for ReposDeclineInvitation operation.
+type ReposDeclineInvitationNotModified struct{}
 
-func (*ReposDeclineInvitationResNotModified) reposDeclineInvitationRes() {}
+func (*ReposDeclineInvitationNotModified) reposDeclineInvitationRes() {}
 
-// ReposDeleteAccessRestrictionsResNoContent is response for ReposDeleteAccessRestrictions operation.
-type ReposDeleteAccessRestrictionsResNoContent struct{}
+// ReposDeleteAccessRestrictionsNoContent is response for ReposDeleteAccessRestrictions operation.
+type ReposDeleteAccessRestrictionsNoContent struct{}
 
-// ReposDeleteAdminBranchProtectionResNoContent is response for ReposDeleteAdminBranchProtection operation.
-type ReposDeleteAdminBranchProtectionResNoContent struct{}
+// ReposDeleteAdminBranchProtectionNoContent is response for ReposDeleteAdminBranchProtection operation.
+type ReposDeleteAdminBranchProtectionNoContent struct{}
 
-func (*ReposDeleteAdminBranchProtectionResNoContent) reposDeleteAdminBranchProtectionRes() {}
+func (*ReposDeleteAdminBranchProtectionNoContent) reposDeleteAdminBranchProtectionRes() {}
 
-// ReposDeleteAnEnvironmentResNoContent is response for ReposDeleteAnEnvironment operation.
-type ReposDeleteAnEnvironmentResNoContent struct{}
+// ReposDeleteAnEnvironmentNoContent is response for ReposDeleteAnEnvironment operation.
+type ReposDeleteAnEnvironmentNoContent struct{}
 
 type ReposDeleteApplicationJSONNotFound BasicError
 
@@ -21884,33 +21871,33 @@ type ReposDeleteApplicationJSONTemporaryRedirect BasicError
 
 func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteRes() {}
 
-// ReposDeleteAutolinkResNoContent is response for ReposDeleteAutolink operation.
-type ReposDeleteAutolinkResNoContent struct{}
+// ReposDeleteAutolinkNoContent is response for ReposDeleteAutolink operation.
+type ReposDeleteAutolinkNoContent struct{}
 
-func (*ReposDeleteAutolinkResNoContent) reposDeleteAutolinkRes() {}
+func (*ReposDeleteAutolinkNoContent) reposDeleteAutolinkRes() {}
 
-// ReposDeleteBranchProtectionResNoContent is response for ReposDeleteBranchProtection operation.
-type ReposDeleteBranchProtectionResNoContent struct{}
+// ReposDeleteBranchProtectionNoContent is response for ReposDeleteBranchProtection operation.
+type ReposDeleteBranchProtectionNoContent struct{}
 
-func (*ReposDeleteBranchProtectionResNoContent) reposDeleteBranchProtectionRes() {}
+func (*ReposDeleteBranchProtectionNoContent) reposDeleteBranchProtectionRes() {}
 
-// ReposDeleteCommitCommentResNoContent is response for ReposDeleteCommitComment operation.
-type ReposDeleteCommitCommentResNoContent struct{}
+// ReposDeleteCommitCommentNoContent is response for ReposDeleteCommitComment operation.
+type ReposDeleteCommitCommentNoContent struct{}
 
-func (*ReposDeleteCommitCommentResNoContent) reposDeleteCommitCommentRes() {}
+func (*ReposDeleteCommitCommentNoContent) reposDeleteCommitCommentRes() {}
 
-// ReposDeleteCommitSignatureProtectionResNoContent is response for ReposDeleteCommitSignatureProtection operation.
-type ReposDeleteCommitSignatureProtectionResNoContent struct{}
+// ReposDeleteCommitSignatureProtectionNoContent is response for ReposDeleteCommitSignatureProtection operation.
+type ReposDeleteCommitSignatureProtectionNoContent struct{}
 
-func (*ReposDeleteCommitSignatureProtectionResNoContent) reposDeleteCommitSignatureProtectionRes() {}
+func (*ReposDeleteCommitSignatureProtectionNoContent) reposDeleteCommitSignatureProtectionRes() {}
 
-// ReposDeleteDeployKeyResNoContent is response for ReposDeleteDeployKey operation.
-type ReposDeleteDeployKeyResNoContent struct{}
+// ReposDeleteDeployKeyNoContent is response for ReposDeleteDeployKey operation.
+type ReposDeleteDeployKeyNoContent struct{}
 
-// ReposDeleteDeploymentResNoContent is response for ReposDeleteDeployment operation.
-type ReposDeleteDeploymentResNoContent struct{}
+// ReposDeleteDeploymentNoContent is response for ReposDeleteDeployment operation.
+type ReposDeleteDeploymentNoContent struct{}
 
-func (*ReposDeleteDeploymentResNoContent) reposDeleteDeploymentRes() {}
+func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentRes() {}
 
 type ReposDeleteFileReq struct {
 	Author    OptReposDeleteFileReqAuthor    `json:"author"`
@@ -21930,86 +21917,85 @@ type ReposDeleteFileReqCommitter struct {
 	Name  OptString `json:"name"`
 }
 
-// ReposDeleteInvitationResNoContent is response for ReposDeleteInvitation operation.
-type ReposDeleteInvitationResNoContent struct{}
-
-// ReposDeletePagesSiteResNoContent is response for ReposDeletePagesSite operation.
-type ReposDeletePagesSiteResNoContent struct{}
-
-type ReposDeletePagesSiteResUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-// ReposDeletePullRequestReviewProtectionResNoContent is response for ReposDeletePullRequestReviewProtection operation.
-type ReposDeletePullRequestReviewProtectionResNoContent struct{}
-
-func (*ReposDeletePullRequestReviewProtectionResNoContent) reposDeletePullRequestReviewProtectionRes() {
-}
-
-// ReposDeleteReleaseAssetResNoContent is response for ReposDeleteReleaseAsset operation.
-type ReposDeleteReleaseAssetResNoContent struct{}
-
-// ReposDeleteReleaseResNoContent is response for ReposDeleteRelease operation.
-type ReposDeleteReleaseResNoContent struct{}
-
-type ReposDeleteResForbidden struct {
+type ReposDeleteForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*ReposDeleteResForbidden) reposDeleteRes() {}
+func (*ReposDeleteForbidden) reposDeleteRes() {}
 
-// ReposDeleteResNoContent is response for ReposDelete operation.
-type ReposDeleteResNoContent struct{}
+// ReposDeleteInvitationNoContent is response for ReposDeleteInvitation operation.
+type ReposDeleteInvitationNoContent struct{}
 
-func (*ReposDeleteResNoContent) reposDeleteRes() {}
+// ReposDeleteNoContent is response for ReposDelete operation.
+type ReposDeleteNoContent struct{}
 
-// ReposDeleteWebhookResNoContent is response for ReposDeleteWebhook operation.
-type ReposDeleteWebhookResNoContent struct{}
+func (*ReposDeleteNoContent) reposDeleteRes() {}
 
-func (*ReposDeleteWebhookResNoContent) reposDeleteWebhookRes() {}
+// ReposDeletePagesSiteNoContent is response for ReposDeletePagesSite operation.
+type ReposDeletePagesSiteNoContent struct{}
 
-// ReposDisableAutomatedSecurityFixesResNoContent is response for ReposDisableAutomatedSecurityFixes operation.
-type ReposDisableAutomatedSecurityFixesResNoContent struct{}
+type ReposDeletePagesSiteUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
 
-// ReposDisableLfsForRepoResNoContent is response for ReposDisableLfsForRepo operation.
-type ReposDisableLfsForRepoResNoContent struct{}
+// ReposDeletePullRequestReviewProtectionNoContent is response for ReposDeletePullRequestReviewProtection operation.
+type ReposDeletePullRequestReviewProtectionNoContent struct{}
 
-// ReposDisableVulnerabilityAlertsResNoContent is response for ReposDisableVulnerabilityAlerts operation.
-type ReposDisableVulnerabilityAlertsResNoContent struct{}
+func (*ReposDeletePullRequestReviewProtectionNoContent) reposDeletePullRequestReviewProtectionRes() {}
 
-// ReposDownloadTarballArchiveResFound is response for ReposDownloadTarballArchive operation.
-type ReposDownloadTarballArchiveResFound struct{}
+// ReposDeleteReleaseAssetNoContent is response for ReposDeleteReleaseAsset operation.
+type ReposDeleteReleaseAssetNoContent struct{}
 
-// ReposDownloadZipballArchiveResFound is response for ReposDownloadZipballArchive operation.
-type ReposDownloadZipballArchiveResFound struct{}
+// ReposDeleteReleaseNoContent is response for ReposDeleteRelease operation.
+type ReposDeleteReleaseNoContent struct{}
 
-// ReposEnableAutomatedSecurityFixesResNoContent is response for ReposEnableAutomatedSecurityFixes operation.
-type ReposEnableAutomatedSecurityFixesResNoContent struct{}
+// ReposDeleteWebhookNoContent is response for ReposDeleteWebhook operation.
+type ReposDeleteWebhookNoContent struct{}
 
-type ReposEnableLfsForRepoResAccepted struct{}
+func (*ReposDeleteWebhookNoContent) reposDeleteWebhookRes() {}
 
-func (*ReposEnableLfsForRepoResAccepted) reposEnableLfsForRepoRes() {}
+// ReposDisableAutomatedSecurityFixesNoContent is response for ReposDisableAutomatedSecurityFixes operation.
+type ReposDisableAutomatedSecurityFixesNoContent struct{}
 
-// ReposEnableLfsForRepoResForbidden is response for ReposEnableLfsForRepo operation.
-type ReposEnableLfsForRepoResForbidden struct{}
+// ReposDisableLfsForRepoNoContent is response for ReposDisableLfsForRepo operation.
+type ReposDisableLfsForRepoNoContent struct{}
 
-func (*ReposEnableLfsForRepoResForbidden) reposEnableLfsForRepoRes() {}
+// ReposDisableVulnerabilityAlertsNoContent is response for ReposDisableVulnerabilityAlerts operation.
+type ReposDisableVulnerabilityAlertsNoContent struct{}
 
-// ReposEnableVulnerabilityAlertsResNoContent is response for ReposEnableVulnerabilityAlerts operation.
-type ReposEnableVulnerabilityAlertsResNoContent struct{}
+// ReposDownloadTarballArchiveFound is response for ReposDownloadTarballArchive operation.
+type ReposDownloadTarballArchiveFound struct{}
+
+// ReposDownloadZipballArchiveFound is response for ReposDownloadZipballArchive operation.
+type ReposDownloadZipballArchiveFound struct{}
+
+// ReposEnableAutomatedSecurityFixesNoContent is response for ReposEnableAutomatedSecurityFixes operation.
+type ReposEnableAutomatedSecurityFixesNoContent struct{}
+
+type ReposEnableLfsForRepoAccepted struct{}
+
+func (*ReposEnableLfsForRepoAccepted) reposEnableLfsForRepoRes() {}
+
+// ReposEnableLfsForRepoForbidden is response for ReposEnableLfsForRepo operation.
+type ReposEnableLfsForRepoForbidden struct{}
+
+func (*ReposEnableLfsForRepoForbidden) reposEnableLfsForRepoRes() {}
+
+// ReposEnableVulnerabilityAlertsNoContent is response for ReposEnableVulnerabilityAlerts operation.
+type ReposEnableVulnerabilityAlertsNoContent struct{}
 
 type ReposGetAllStatusCheckContextsOKApplicationJSON []string
 
 func (*ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
 
-type ReposGetAllTopicsResUnsupportedMediaType struct {
+type ReposGetAllTopicsUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReposGetAllTopicsResUnsupportedMediaType) reposGetAllTopicsRes() {}
+func (*ReposGetAllTopicsUnsupportedMediaType) reposGetAllTopicsRes() {}
 
 type ReposGetApplicationJSONForbidden BasicError
 
@@ -22036,12 +22022,12 @@ type ReposGetBranchApplicationJSONNotFound BasicError
 
 func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
-type ReposGetBranchResUnsupportedMediaType struct {
+type ReposGetBranchUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReposGetBranchResUnsupportedMediaType) reposGetBranchRes() {}
+func (*ReposGetBranchUnsupportedMediaType) reposGetBranchRes() {}
 
 type ReposGetClonesPer string
 
@@ -22051,82 +22037,82 @@ const (
 	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
 )
 
+type ReposGetCodeFrequencyStatsAccepted struct{}
+
+func (*ReposGetCodeFrequencyStatsAccepted) reposGetCodeFrequencyStatsRes() {}
+
+// ReposGetCodeFrequencyStatsNoContent is response for ReposGetCodeFrequencyStats operation.
+type ReposGetCodeFrequencyStatsNoContent struct{}
+
+func (*ReposGetCodeFrequencyStatsNoContent) reposGetCodeFrequencyStatsRes() {}
+
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (*ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
 
-type ReposGetCodeFrequencyStatsResAccepted struct{}
+type ReposGetCommitActivityStatsAccepted struct{}
 
-func (*ReposGetCodeFrequencyStatsResAccepted) reposGetCodeFrequencyStatsRes() {}
+func (*ReposGetCommitActivityStatsAccepted) reposGetCommitActivityStatsRes() {}
 
-// ReposGetCodeFrequencyStatsResNoContent is response for ReposGetCodeFrequencyStats operation.
-type ReposGetCodeFrequencyStatsResNoContent struct{}
+// ReposGetCommitActivityStatsNoContent is response for ReposGetCommitActivityStats operation.
+type ReposGetCommitActivityStatsNoContent struct{}
 
-func (*ReposGetCodeFrequencyStatsResNoContent) reposGetCodeFrequencyStatsRes() {}
+func (*ReposGetCommitActivityStatsNoContent) reposGetCommitActivityStatsRes() {}
 
 type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
-type ReposGetCommitActivityStatsResAccepted struct{}
+type ReposGetContributorsStatsAccepted struct{}
 
-func (*ReposGetCommitActivityStatsResAccepted) reposGetCommitActivityStatsRes() {}
+func (*ReposGetContributorsStatsAccepted) reposGetContributorsStatsRes() {}
 
-// ReposGetCommitActivityStatsResNoContent is response for ReposGetCommitActivityStats operation.
-type ReposGetCommitActivityStatsResNoContent struct{}
+// ReposGetContributorsStatsNoContent is response for ReposGetContributorsStats operation.
+type ReposGetContributorsStatsNoContent struct{}
 
-func (*ReposGetCommitActivityStatsResNoContent) reposGetCommitActivityStatsRes() {}
+func (*ReposGetContributorsStatsNoContent) reposGetContributorsStatsRes() {}
 
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
 
-type ReposGetContributorsStatsResAccepted struct{}
-
-func (*ReposGetContributorsStatsResAccepted) reposGetContributorsStatsRes() {}
-
-// ReposGetContributorsStatsResNoContent is response for ReposGetContributorsStats operation.
-type ReposGetContributorsStatsResNoContent struct{}
-
-func (*ReposGetContributorsStatsResNoContent) reposGetContributorsStatsRes() {}
-
-type ReposGetDeploymentStatusResUnsupportedMediaType struct {
+type ReposGetDeploymentStatusUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReposGetDeploymentStatusResUnsupportedMediaType) reposGetDeploymentStatusRes() {}
+func (*ReposGetDeploymentStatusUnsupportedMediaType) reposGetDeploymentStatusRes() {}
 
-// ReposGetPagesHealthCheckResBadRequest is response for ReposGetPagesHealthCheck operation.
-type ReposGetPagesHealthCheckResBadRequest struct{}
+// ReposGetPagesHealthCheckBadRequest is response for ReposGetPagesHealthCheck operation.
+type ReposGetPagesHealthCheckBadRequest struct{}
 
-func (*ReposGetPagesHealthCheckResBadRequest) reposGetPagesHealthCheckRes() {}
+func (*ReposGetPagesHealthCheckBadRequest) reposGetPagesHealthCheckRes() {}
 
-// ReposGetPagesHealthCheckResUnprocessableEntity is response for ReposGetPagesHealthCheck operation.
-type ReposGetPagesHealthCheckResUnprocessableEntity struct{}
+// ReposGetPagesHealthCheckUnprocessableEntity is response for ReposGetPagesHealthCheck operation.
+type ReposGetPagesHealthCheckUnprocessableEntity struct{}
 
-func (*ReposGetPagesHealthCheckResUnprocessableEntity) reposGetPagesHealthCheckRes() {}
+func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckRes() {}
+
+// ReposGetPunchCardStatsNoContent is response for ReposGetPunchCardStats operation.
+type ReposGetPunchCardStatsNoContent struct{}
+
+func (*ReposGetPunchCardStatsNoContent) reposGetPunchCardStatsRes() {}
 
 type ReposGetPunchCardStatsOKApplicationJSON []CodeFrequencyStat
 
 func (*ReposGetPunchCardStatsOKApplicationJSON) reposGetPunchCardStatsRes() {}
 
-// ReposGetPunchCardStatsResNoContent is response for ReposGetPunchCardStats operation.
-type ReposGetPunchCardStatsResNoContent struct{}
+// ReposGetReleaseAssetFound is response for ReposGetReleaseAsset operation.
+type ReposGetReleaseAssetFound struct{}
 
-func (*ReposGetPunchCardStatsResNoContent) reposGetPunchCardStatsRes() {}
+func (*ReposGetReleaseAssetFound) reposGetReleaseAssetRes() {}
 
-// ReposGetReleaseAssetResFound is response for ReposGetReleaseAsset operation.
-type ReposGetReleaseAssetResFound struct{}
-
-func (*ReposGetReleaseAssetResFound) reposGetReleaseAssetRes() {}
-
-type ReposGetReleaseAssetResUnsupportedMediaType struct {
+type ReposGetReleaseAssetUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReposGetReleaseAssetResUnsupportedMediaType) reposGetReleaseAssetRes() {}
+func (*ReposGetReleaseAssetUnsupportedMediaType) reposGetReleaseAssetRes() {}
 
 type ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON []Team
 
@@ -22202,14 +22188,14 @@ type ReposListContributorsApplicationJSONNotFound BasicError
 
 func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsRes() {}
 
+// ReposListContributorsNoContent is response for ReposListContributors operation.
+type ReposListContributorsNoContent struct{}
+
+func (*ReposListContributorsNoContent) reposListContributorsRes() {}
+
 type ReposListContributorsOKApplicationJSON []Contributor
 
 func (*ReposListContributorsOKApplicationJSON) reposListContributorsRes() {}
-
-// ReposListContributorsResNoContent is response for ReposListContributors operation.
-type ReposListContributorsResNoContent struct{}
-
-func (*ReposListContributorsResNoContent) reposListContributorsRes() {}
 
 type ReposListDeploymentStatusesOKApplicationJSON []DeploymentStatus
 
@@ -22222,8 +22208,8 @@ const (
 	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
 )
 
-// ReposListForAuthenticatedUserResNotModified is response for ReposListForAuthenticatedUser operation.
-type ReposListForAuthenticatedUserResNotModified struct{}
+// ReposListForAuthenticatedUserNotModified is response for ReposListForAuthenticatedUser operation.
+type ReposListForAuthenticatedUserNotModified struct{}
 
 type ReposListForAuthenticatedUserSort string
 
@@ -22332,19 +22318,19 @@ type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicEr
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
+// ReposListInvitationsForAuthenticatedUserNotModified is response for ReposListInvitationsForAuthenticatedUser operation.
+type ReposListInvitationsForAuthenticatedUserNotModified struct{}
+
+func (*ReposListInvitationsForAuthenticatedUserNotModified) reposListInvitationsForAuthenticatedUserRes() {
+}
+
 type ReposListInvitationsForAuthenticatedUserOKApplicationJSON []RepositoryInvitation
 
 func (*ReposListInvitationsForAuthenticatedUserOKApplicationJSON) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-// ReposListInvitationsForAuthenticatedUserResNotModified is response for ReposListInvitationsForAuthenticatedUser operation.
-type ReposListInvitationsForAuthenticatedUserResNotModified struct{}
-
-func (*ReposListInvitationsForAuthenticatedUserResNotModified) reposListInvitationsForAuthenticatedUserRes() {
-}
-
-// ReposListPublicResNotModified is response for ReposListPublic operation.
-type ReposListPublicResNotModified struct{}
+// ReposListPublicNotModified is response for ReposListPublic operation.
+type ReposListPublicNotModified struct{}
 
 type ReposListReleasesOKApplicationJSON []Release
 
@@ -22354,47 +22340,47 @@ type ReposListWebhooksOKApplicationJSON []Hook
 
 func (*ReposListWebhooksOKApplicationJSON) reposListWebhooksRes() {}
 
+// ReposMergeConflict is response for ReposMerge operation.
+type ReposMergeConflict struct{}
+
+// ReposMergeNoContent is response for ReposMerge operation.
+type ReposMergeNoContent struct{}
+
+// ReposMergeNotFound is response for ReposMerge operation.
+type ReposMergeNotFound struct{}
+
 type ReposMergeReq struct {
 	Base          string    `json:"base"`
 	CommitMessage OptString `json:"commit_message"`
 	Head          string    `json:"head"`
 }
 
-// ReposMergeResConflict is response for ReposMerge operation.
-type ReposMergeResConflict struct{}
+// ReposMergeUpstreamConflict is response for ReposMergeUpstream operation.
+type ReposMergeUpstreamConflict struct{}
 
-// ReposMergeResNoContent is response for ReposMerge operation.
-type ReposMergeResNoContent struct{}
-
-// ReposMergeResNotFound is response for ReposMerge operation.
-type ReposMergeResNotFound struct{}
+func (*ReposMergeUpstreamConflict) reposMergeUpstreamRes() {}
 
 type ReposMergeUpstreamReq struct {
 	Branch string `json:"branch"`
 }
 
-// ReposMergeUpstreamResConflict is response for ReposMergeUpstream operation.
-type ReposMergeUpstreamResConflict struct{}
+// ReposMergeUpstreamUnprocessableEntity is response for ReposMergeUpstream operation.
+type ReposMergeUpstreamUnprocessableEntity struct{}
 
-func (*ReposMergeUpstreamResConflict) reposMergeUpstreamRes() {}
+func (*ReposMergeUpstreamUnprocessableEntity) reposMergeUpstreamRes() {}
 
-// ReposMergeUpstreamResUnprocessableEntity is response for ReposMergeUpstream operation.
-type ReposMergeUpstreamResUnprocessableEntity struct{}
+// ReposPingWebhookNoContent is response for ReposPingWebhook operation.
+type ReposPingWebhookNoContent struct{}
 
-func (*ReposMergeUpstreamResUnprocessableEntity) reposMergeUpstreamRes() {}
+func (*ReposPingWebhookNoContent) reposPingWebhookRes() {}
 
-// ReposPingWebhookResNoContent is response for ReposPingWebhook operation.
-type ReposPingWebhookResNoContent struct{}
+type ReposRedeliverWebhookDeliveryAccepted struct{}
 
-func (*ReposPingWebhookResNoContent) reposPingWebhookRes() {}
+// ReposRemoveCollaboratorNoContent is response for ReposRemoveCollaborator operation.
+type ReposRemoveCollaboratorNoContent struct{}
 
-type ReposRedeliverWebhookDeliveryResAccepted struct{}
-
-// ReposRemoveCollaboratorResNoContent is response for ReposRemoveCollaborator operation.
-type ReposRemoveCollaboratorResNoContent struct{}
-
-// ReposRemoveStatusCheckProtectionResNoContent is response for ReposRemoveStatusCheckProtection operation.
-type ReposRemoveStatusCheckProtectionResNoContent struct{}
+// ReposRemoveStatusCheckProtectionNoContent is response for ReposRemoveStatusCheckProtection operation.
+type ReposRemoveStatusCheckProtectionNoContent struct{}
 
 type ReposRenameBranchReq struct {
 	NewName string `json:"new_name"`
@@ -22404,17 +22390,17 @@ type ReposReplaceAllTopicsReq struct {
 	Names []string `json:"names"`
 }
 
-type ReposReplaceAllTopicsResUnsupportedMediaType struct {
+type ReposReplaceAllTopicsUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*ReposReplaceAllTopicsResUnsupportedMediaType) reposReplaceAllTopicsRes() {}
+func (*ReposReplaceAllTopicsUnsupportedMediaType) reposReplaceAllTopicsRes() {}
 
-// ReposTestPushWebhookResNoContent is response for ReposTestPushWebhook operation.
-type ReposTestPushWebhookResNoContent struct{}
+// ReposTestPushWebhookNoContent is response for ReposTestPushWebhook operation.
+type ReposTestPushWebhookNoContent struct{}
 
-func (*ReposTestPushWebhookResNoContent) reposTestPushWebhookRes() {}
+func (*ReposTestPushWebhookNoContent) reposTestPushWebhookRes() {}
 
 type ReposTransferReq struct {
 	NewOwner string `json:"new_owner"`
@@ -22965,15 +22951,15 @@ type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
 
 func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgRes() {}
 
-// ScimDeleteUserFromOrgResNoContent is response for ScimDeleteUserFromOrg operation.
-type ScimDeleteUserFromOrgResNoContent struct{}
+// ScimDeleteUserFromOrgNoContent is response for ScimDeleteUserFromOrg operation.
+type ScimDeleteUserFromOrgNoContent struct{}
 
-func (*ScimDeleteUserFromOrgResNoContent) scimDeleteUserFromOrgRes() {}
+func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
 
-// ScimDeleteUserFromOrgResNotModified is response for ScimDeleteUserFromOrg operation.
-type ScimDeleteUserFromOrgResNotModified struct{}
+// ScimDeleteUserFromOrgNotModified is response for ScimDeleteUserFromOrg operation.
+type ScimDeleteUserFromOrgNotModified struct{}
 
-func (*ScimDeleteUserFromOrgResNotModified) scimDeleteUserFromOrgRes() {}
+func (*ScimDeleteUserFromOrgNotModified) scimDeleteUserFromOrgRes() {}
 
 // Ref: #/components/schemas/scim-enterprise-group
 type ScimEnterpriseGroup struct {
@@ -23167,6 +23153,15 @@ type ScimUserListEnterpriseResourcesItemName struct {
 	GivenName  OptString `json:"givenName"`
 }
 
+// SearchCodeNotModified is response for SearchCode operation.
+type SearchCodeNotModified struct{}
+
+type SearchCodeOK struct {
+	IncompleteResults bool                   `json:"incomplete_results"`
+	Items             []CodeSearchResultItem `json:"items"`
+	TotalCount        int                    `json:"total_count"`
+}
+
 type SearchCodeOrder string
 
 const (
@@ -23174,20 +23169,24 @@ const (
 	SearchCodeOrderAsc  SearchCodeOrder = "asc"
 )
 
-// SearchCodeResNotModified is response for SearchCode operation.
-type SearchCodeResNotModified struct{}
-
-type SearchCodeResOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []CodeSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
-
 type SearchCodeSort string
 
 const (
 	SearchCodeSortIndexed SearchCodeSort = "indexed"
 )
+
+// SearchCommitsNotModified is response for SearchCommits operation.
+type SearchCommitsNotModified struct{}
+
+func (*SearchCommitsNotModified) searchCommitsRes() {}
+
+type SearchCommitsOK struct {
+	IncompleteResults bool                     `json:"incomplete_results"`
+	Items             []CommitSearchResultItem `json:"items"`
+	TotalCount        int                      `json:"total_count"`
+}
+
+func (*SearchCommitsOK) searchCommitsRes() {}
 
 type SearchCommitsOrder string
 
@@ -23196,26 +23195,6 @@ const (
 	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
 )
 
-// SearchCommitsResNotModified is response for SearchCommits operation.
-type SearchCommitsResNotModified struct{}
-
-func (*SearchCommitsResNotModified) searchCommitsRes() {}
-
-type SearchCommitsResOK struct {
-	IncompleteResults bool                     `json:"incomplete_results"`
-	Items             []CommitSearchResultItem `json:"items"`
-	TotalCount        int                      `json:"total_count"`
-}
-
-func (*SearchCommitsResOK) searchCommitsRes() {}
-
-type SearchCommitsResUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*SearchCommitsResUnsupportedMediaType) searchCommitsRes() {}
-
 type SearchCommitsSort string
 
 const (
@@ -23223,21 +23202,28 @@ const (
 	SearchCommitsSortCommitterMinusDate SearchCommitsSort = "committer-date"
 )
 
+type SearchCommitsUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
+func (*SearchCommitsUnsupportedMediaType) searchCommitsRes() {}
+
+// SearchIssuesAndPullRequestsNotModified is response for SearchIssuesAndPullRequests operation.
+type SearchIssuesAndPullRequestsNotModified struct{}
+
+type SearchIssuesAndPullRequestsOK struct {
+	IncompleteResults bool                    `json:"incomplete_results"`
+	Items             []IssueSearchResultItem `json:"items"`
+	TotalCount        int                     `json:"total_count"`
+}
+
 type SearchIssuesAndPullRequestsOrder string
 
 const (
 	SearchIssuesAndPullRequestsOrderDesc SearchIssuesAndPullRequestsOrder = "desc"
 	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
 )
-
-// SearchIssuesAndPullRequestsResNotModified is response for SearchIssuesAndPullRequests operation.
-type SearchIssuesAndPullRequestsResNotModified struct{}
-
-type SearchIssuesAndPullRequestsResOK struct {
-	IncompleteResults bool                    `json:"incomplete_results"`
-	Items             []IssueSearchResultItem `json:"items"`
-	TotalCount        int                     `json:"total_count"`
-}
 
 type SearchIssuesAndPullRequestsSort string
 
@@ -23255,21 +23241,21 @@ const (
 	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
 )
 
+// SearchLabelsNotModified is response for SearchLabels operation.
+type SearchLabelsNotModified struct{}
+
+type SearchLabelsOK struct {
+	IncompleteResults bool                    `json:"incomplete_results"`
+	Items             []LabelSearchResultItem `json:"items"`
+	TotalCount        int                     `json:"total_count"`
+}
+
 type SearchLabelsOrder string
 
 const (
 	SearchLabelsOrderDesc SearchLabelsOrder = "desc"
 	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
 )
-
-// SearchLabelsResNotModified is response for SearchLabels operation.
-type SearchLabelsResNotModified struct{}
-
-type SearchLabelsResOK struct {
-	IncompleteResults bool                    `json:"incomplete_results"`
-	Items             []LabelSearchResultItem `json:"items"`
-	TotalCount        int                     `json:"total_count"`
-}
 
 type SearchLabelsSort string
 
@@ -23278,21 +23264,21 @@ const (
 	SearchLabelsSortUpdated SearchLabelsSort = "updated"
 )
 
+// SearchReposNotModified is response for SearchRepos operation.
+type SearchReposNotModified struct{}
+
+type SearchReposOK struct {
+	IncompleteResults bool                   `json:"incomplete_results"`
+	Items             []RepoSearchResultItem `json:"items"`
+	TotalCount        int                    `json:"total_count"`
+}
+
 type SearchReposOrder string
 
 const (
 	SearchReposOrderDesc SearchReposOrder = "desc"
 	SearchReposOrderAsc  SearchReposOrder = "asc"
 )
-
-// SearchReposResNotModified is response for SearchRepos operation.
-type SearchReposResNotModified struct{}
-
-type SearchReposResOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []RepoSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
 
 type SearchReposSort string
 
@@ -23318,25 +23304,34 @@ type SearchResultTextMatchesItemMatchesItem struct {
 	Text    OptString `json:"text"`
 }
 
-// SearchTopicsResNotModified is response for SearchTopics operation.
-type SearchTopicsResNotModified struct{}
+// SearchTopicsNotModified is response for SearchTopics operation.
+type SearchTopicsNotModified struct{}
 
-func (*SearchTopicsResNotModified) searchTopicsRes() {}
+func (*SearchTopicsNotModified) searchTopicsRes() {}
 
-type SearchTopicsResOK struct {
+type SearchTopicsOK struct {
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []TopicSearchResultItem `json:"items"`
 	TotalCount        int                     `json:"total_count"`
 }
 
-func (*SearchTopicsResOK) searchTopicsRes() {}
+func (*SearchTopicsOK) searchTopicsRes() {}
 
-type SearchTopicsResUnsupportedMediaType struct {
+type SearchTopicsUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*SearchTopicsResUnsupportedMediaType) searchTopicsRes() {}
+func (*SearchTopicsUnsupportedMediaType) searchTopicsRes() {}
+
+// SearchUsersNotModified is response for SearchUsers operation.
+type SearchUsersNotModified struct{}
+
+type SearchUsersOK struct {
+	IncompleteResults bool                   `json:"incomplete_results"`
+	Items             []UserSearchResultItem `json:"items"`
+	TotalCount        int                    `json:"total_count"`
+}
 
 type SearchUsersOrder string
 
@@ -23344,15 +23339,6 @@ const (
 	SearchUsersOrderDesc SearchUsersOrder = "desc"
 	SearchUsersOrderAsc  SearchUsersOrder = "asc"
 )
-
-// SearchUsersResNotModified is response for SearchUsers operation.
-type SearchUsersResNotModified struct{}
-
-type SearchUsersResOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []UserSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
 
 type SearchUsersSort string
 
@@ -23398,30 +23384,30 @@ const (
 	SecretScanningAlertStateResolved SecretScanningAlertState = "resolved"
 )
 
-// SecretScanningGetAlertResNotFound is response for SecretScanningGetAlert operation.
-type SecretScanningGetAlertResNotFound struct{}
+// SecretScanningGetAlertNotFound is response for SecretScanningGetAlert operation.
+type SecretScanningGetAlertNotFound struct{}
 
-func (*SecretScanningGetAlertResNotFound) secretScanningGetAlertRes() {}
+func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
-type SecretScanningGetAlertResServiceUnavailable struct {
+type SecretScanningGetAlertServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*SecretScanningGetAlertResServiceUnavailable) secretScanningGetAlertRes() {}
+func (*SecretScanningGetAlertServiceUnavailable) secretScanningGetAlertRes() {}
 
 type SecretScanningListAlertsForOrgOKApplicationJSON []OrganizationSecretScanningAlert
 
 func (*SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
 
-type SecretScanningListAlertsForOrgResServiceUnavailable struct {
+type SecretScanningListAlertsForOrgServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*SecretScanningListAlertsForOrgResServiceUnavailable) secretScanningListAlertsForOrgRes() {}
+func (*SecretScanningListAlertsForOrgServiceUnavailable) secretScanningListAlertsForOrgRes() {}
 
 type SecretScanningListAlertsForOrgState string
 
@@ -23430,22 +23416,22 @@ const (
 	SecretScanningListAlertsForOrgStateResolved SecretScanningListAlertsForOrgState = "resolved"
 )
 
+// SecretScanningListAlertsForRepoNotFound is response for SecretScanningListAlertsForRepo operation.
+type SecretScanningListAlertsForRepoNotFound struct{}
+
+func (*SecretScanningListAlertsForRepoNotFound) secretScanningListAlertsForRepoRes() {}
+
 type SecretScanningListAlertsForRepoOKApplicationJSON []SecretScanningAlert
 
 func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
 
-// SecretScanningListAlertsForRepoResNotFound is response for SecretScanningListAlertsForRepo operation.
-type SecretScanningListAlertsForRepoResNotFound struct{}
-
-func (*SecretScanningListAlertsForRepoResNotFound) secretScanningListAlertsForRepoRes() {}
-
-type SecretScanningListAlertsForRepoResServiceUnavailable struct {
+type SecretScanningListAlertsForRepoServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*SecretScanningListAlertsForRepoResServiceUnavailable) secretScanningListAlertsForRepoRes() {}
+func (*SecretScanningListAlertsForRepoServiceUnavailable) secretScanningListAlertsForRepoRes() {}
 
 type SecretScanningListAlertsForRepoState string
 
@@ -23454,28 +23440,28 @@ const (
 	SecretScanningListAlertsForRepoStateResolved SecretScanningListAlertsForRepoState = "resolved"
 )
 
+// SecretScanningUpdateAlertNotFound is response for SecretScanningUpdateAlert operation.
+type SecretScanningUpdateAlertNotFound struct{}
+
+func (*SecretScanningUpdateAlertNotFound) secretScanningUpdateAlertRes() {}
+
 type SecretScanningUpdateAlertReq struct {
 	Resolution OptNilSecretScanningAlertResolution `json:"resolution"`
 	State      SecretScanningAlertState            `json:"state"`
 }
 
-// SecretScanningUpdateAlertResNotFound is response for SecretScanningUpdateAlert operation.
-type SecretScanningUpdateAlertResNotFound struct{}
-
-func (*SecretScanningUpdateAlertResNotFound) secretScanningUpdateAlertRes() {}
-
-type SecretScanningUpdateAlertResServiceUnavailable struct {
+type SecretScanningUpdateAlertServiceUnavailable struct {
 	Code             OptString `json:"code"`
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*SecretScanningUpdateAlertResServiceUnavailable) secretScanningUpdateAlertRes() {}
+func (*SecretScanningUpdateAlertServiceUnavailable) secretScanningUpdateAlertRes() {}
 
-// SecretScanningUpdateAlertResUnprocessableEntity is response for SecretScanningUpdateAlert operation.
-type SecretScanningUpdateAlertResUnprocessableEntity struct{}
+// SecretScanningUpdateAlertUnprocessableEntity is response for SecretScanningUpdateAlert operation.
+type SecretScanningUpdateAlertUnprocessableEntity struct{}
 
-func (*SecretScanningUpdateAlertResUnprocessableEntity) secretScanningUpdateAlertRes() {}
+func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertRes() {}
 
 // Ref: #/components/schemas/selected-actions
 type SelectedActions struct {
@@ -23881,20 +23867,25 @@ type TeamSimple struct {
 	URL             url.URL   `json:"url"`
 }
 
-// TeamsAddMemberLegacyResNoContent is response for TeamsAddMemberLegacy operation.
-type TeamsAddMemberLegacyResNoContent struct{}
+// TeamsAddMemberLegacyNoContent is response for TeamsAddMemberLegacy operation.
+type TeamsAddMemberLegacyNoContent struct{}
 
-func (*TeamsAddMemberLegacyResNoContent) teamsAddMemberLegacyRes() {}
+func (*TeamsAddMemberLegacyNoContent) teamsAddMemberLegacyRes() {}
 
-// TeamsAddMemberLegacyResNotFound is response for TeamsAddMemberLegacy operation.
-type TeamsAddMemberLegacyResNotFound struct{}
+// TeamsAddMemberLegacyNotFound is response for TeamsAddMemberLegacy operation.
+type TeamsAddMemberLegacyNotFound struct{}
 
-func (*TeamsAddMemberLegacyResNotFound) teamsAddMemberLegacyRes() {}
+func (*TeamsAddMemberLegacyNotFound) teamsAddMemberLegacyRes() {}
 
-// TeamsAddMemberLegacyResUnprocessableEntity is response for TeamsAddMemberLegacy operation.
-type TeamsAddMemberLegacyResUnprocessableEntity struct{}
+// TeamsAddMemberLegacyUnprocessableEntity is response for TeamsAddMemberLegacy operation.
+type TeamsAddMemberLegacyUnprocessableEntity struct{}
 
-func (*TeamsAddMemberLegacyResUnprocessableEntity) teamsAddMemberLegacyRes() {}
+func (*TeamsAddMemberLegacyUnprocessableEntity) teamsAddMemberLegacyRes() {}
+
+// TeamsAddOrUpdateMembershipForUserInOrgForbidden is response for TeamsAddOrUpdateMembershipForUserInOrg operation.
+type TeamsAddOrUpdateMembershipForUserInOrgForbidden struct{}
+
+func (*TeamsAddOrUpdateMembershipForUserInOrgForbidden) teamsAddOrUpdateMembershipForUserInOrgRes() {}
 
 type TeamsAddOrUpdateMembershipForUserInOrgReq struct {
 	Role OptTeamsAddOrUpdateMembershipForUserInOrgReqRole `json:"role"`
@@ -23907,16 +23898,16 @@ const (
 	TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgReqRole = "maintainer"
 )
 
-// TeamsAddOrUpdateMembershipForUserInOrgResForbidden is response for TeamsAddOrUpdateMembershipForUserInOrg operation.
-type TeamsAddOrUpdateMembershipForUserInOrgResForbidden struct{}
+// TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserInOrg operation.
+type TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserInOrgResForbidden) teamsAddOrUpdateMembershipForUserInOrgRes() {
+func (*TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) teamsAddOrUpdateMembershipForUserInOrgRes() {
 }
 
-// TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserInOrg operation.
-type TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity struct{}
+// TeamsAddOrUpdateMembershipForUserLegacyForbidden is response for TeamsAddOrUpdateMembershipForUserLegacy operation.
+type TeamsAddOrUpdateMembershipForUserLegacyForbidden struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity) teamsAddOrUpdateMembershipForUserInOrgRes() {
+func (*TeamsAddOrUpdateMembershipForUserLegacyForbidden) teamsAddOrUpdateMembershipForUserLegacyRes() {
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyReq struct {
@@ -23930,16 +23921,24 @@ const (
 	TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyReqRole = "maintainer"
 )
 
-// TeamsAddOrUpdateMembershipForUserLegacyResForbidden is response for TeamsAddOrUpdateMembershipForUserLegacy operation.
-type TeamsAddOrUpdateMembershipForUserLegacyResForbidden struct{}
+// TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserLegacy operation.
+type TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserLegacyResForbidden) teamsAddOrUpdateMembershipForUserLegacyRes() {
+func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpdateMembershipForUserLegacyRes() {
 }
 
-// TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserLegacy operation.
-type TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity struct{}
+type TeamsAddOrUpdateProjectPermissionsInOrgForbidden struct {
+	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message"`
+}
 
-func (*TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity) teamsAddOrUpdateMembershipForUserLegacyRes() {
+func (*TeamsAddOrUpdateProjectPermissionsInOrgForbidden) teamsAddOrUpdateProjectPermissionsInOrgRes() {
+}
+
+// TeamsAddOrUpdateProjectPermissionsInOrgNoContent is response for TeamsAddOrUpdateProjectPermissionsInOrg operation.
+type TeamsAddOrUpdateProjectPermissionsInOrgNoContent struct{}
+
+func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProjectPermissionsInOrgRes() {
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgReq struct {
@@ -23954,19 +23953,13 @@ const (
 	TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgReqPermission = "admin"
 )
 
-type TeamsAddOrUpdateProjectPermissionsInOrgResForbidden struct {
+type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*TeamsAddOrUpdateProjectPermissionsInOrgResForbidden) teamsAddOrUpdateProjectPermissionsInOrgRes() {
-}
-
-// TeamsAddOrUpdateProjectPermissionsInOrgResNoContent is response for TeamsAddOrUpdateProjectPermissionsInOrg operation.
-type TeamsAddOrUpdateProjectPermissionsInOrgResNoContent struct{}
-
-func (*TeamsAddOrUpdateProjectPermissionsInOrgResNoContent) teamsAddOrUpdateProjectPermissionsInOrgRes() {
-}
+// TeamsAddOrUpdateProjectPermissionsLegacyNoContent is response for TeamsAddOrUpdateProjectPermissionsLegacy operation.
+type TeamsAddOrUpdateProjectPermissionsLegacyNoContent struct{}
 
 type TeamsAddOrUpdateProjectPermissionsLegacyReq struct {
 	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission `json:"permission"`
@@ -23980,13 +23973,8 @@ const (
 	TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyReqPermission = "admin"
 )
 
-type TeamsAddOrUpdateProjectPermissionsLegacyResForbidden struct {
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-// TeamsAddOrUpdateProjectPermissionsLegacyResNoContent is response for TeamsAddOrUpdateProjectPermissionsLegacy operation.
-type TeamsAddOrUpdateProjectPermissionsLegacyResNoContent struct{}
+// TeamsAddOrUpdateRepoPermissionsInOrgNoContent is response for TeamsAddOrUpdateRepoPermissionsInOrg operation.
+type TeamsAddOrUpdateRepoPermissionsInOrgNoContent struct{}
 
 type TeamsAddOrUpdateRepoPermissionsInOrgReq struct {
 	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission `json:"permission"`
@@ -24002,8 +23990,8 @@ const (
 	TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgReqPermission = "triage"
 )
 
-// TeamsAddOrUpdateRepoPermissionsInOrgResNoContent is response for TeamsAddOrUpdateRepoPermissionsInOrg operation.
-type TeamsAddOrUpdateRepoPermissionsInOrgResNoContent struct{}
+// TeamsAddOrUpdateRepoPermissionsLegacyNoContent is response for TeamsAddOrUpdateRepoPermissionsLegacy operation.
+type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
 
 type TeamsAddOrUpdateRepoPermissionsLegacyReq struct {
 	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission `json:"permission"`
@@ -24017,38 +24005,35 @@ const (
 	TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyReqPermission = "admin"
 )
 
-// TeamsAddOrUpdateRepoPermissionsLegacyResNoContent is response for TeamsAddOrUpdateRepoPermissionsLegacy operation.
-type TeamsAddOrUpdateRepoPermissionsLegacyResNoContent struct{}
+// TeamsCheckPermissionsForProjectInOrgNotFound is response for TeamsCheckPermissionsForProjectInOrg operation.
+type TeamsCheckPermissionsForProjectInOrgNotFound struct{}
 
-// TeamsCheckPermissionsForProjectInOrgResNotFound is response for TeamsCheckPermissionsForProjectInOrg operation.
-type TeamsCheckPermissionsForProjectInOrgResNotFound struct{}
+func (*TeamsCheckPermissionsForProjectInOrgNotFound) teamsCheckPermissionsForProjectInOrgRes() {}
 
-func (*TeamsCheckPermissionsForProjectInOrgResNotFound) teamsCheckPermissionsForProjectInOrgRes() {}
+// TeamsCheckPermissionsForProjectLegacyNotFound is response for TeamsCheckPermissionsForProjectLegacy operation.
+type TeamsCheckPermissionsForProjectLegacyNotFound struct{}
 
-// TeamsCheckPermissionsForProjectLegacyResNotFound is response for TeamsCheckPermissionsForProjectLegacy operation.
-type TeamsCheckPermissionsForProjectLegacyResNotFound struct{}
+func (*TeamsCheckPermissionsForProjectLegacyNotFound) teamsCheckPermissionsForProjectLegacyRes() {}
 
-func (*TeamsCheckPermissionsForProjectLegacyResNotFound) teamsCheckPermissionsForProjectLegacyRes() {}
+// TeamsCheckPermissionsForRepoInOrgNoContent is response for TeamsCheckPermissionsForRepoInOrg operation.
+type TeamsCheckPermissionsForRepoInOrgNoContent struct{}
 
-// TeamsCheckPermissionsForRepoInOrgResNoContent is response for TeamsCheckPermissionsForRepoInOrg operation.
-type TeamsCheckPermissionsForRepoInOrgResNoContent struct{}
+func (*TeamsCheckPermissionsForRepoInOrgNoContent) teamsCheckPermissionsForRepoInOrgRes() {}
 
-func (*TeamsCheckPermissionsForRepoInOrgResNoContent) teamsCheckPermissionsForRepoInOrgRes() {}
+// TeamsCheckPermissionsForRepoInOrgNotFound is response for TeamsCheckPermissionsForRepoInOrg operation.
+type TeamsCheckPermissionsForRepoInOrgNotFound struct{}
 
-// TeamsCheckPermissionsForRepoInOrgResNotFound is response for TeamsCheckPermissionsForRepoInOrg operation.
-type TeamsCheckPermissionsForRepoInOrgResNotFound struct{}
+func (*TeamsCheckPermissionsForRepoInOrgNotFound) teamsCheckPermissionsForRepoInOrgRes() {}
 
-func (*TeamsCheckPermissionsForRepoInOrgResNotFound) teamsCheckPermissionsForRepoInOrgRes() {}
+// TeamsCheckPermissionsForRepoLegacyNoContent is response for TeamsCheckPermissionsForRepoLegacy operation.
+type TeamsCheckPermissionsForRepoLegacyNoContent struct{}
 
-// TeamsCheckPermissionsForRepoLegacyResNoContent is response for TeamsCheckPermissionsForRepoLegacy operation.
-type TeamsCheckPermissionsForRepoLegacyResNoContent struct{}
+func (*TeamsCheckPermissionsForRepoLegacyNoContent) teamsCheckPermissionsForRepoLegacyRes() {}
 
-func (*TeamsCheckPermissionsForRepoLegacyResNoContent) teamsCheckPermissionsForRepoLegacyRes() {}
+// TeamsCheckPermissionsForRepoLegacyNotFound is response for TeamsCheckPermissionsForRepoLegacy operation.
+type TeamsCheckPermissionsForRepoLegacyNotFound struct{}
 
-// TeamsCheckPermissionsForRepoLegacyResNotFound is response for TeamsCheckPermissionsForRepoLegacy operation.
-type TeamsCheckPermissionsForRepoLegacyResNotFound struct{}
-
-func (*TeamsCheckPermissionsForRepoLegacyResNotFound) teamsCheckPermissionsForRepoLegacyRes() {}
+func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoLegacyRes() {}
 
 type TeamsCreateDiscussionCommentInOrgReq struct {
 	Body string `json:"body"`
@@ -24119,38 +24104,38 @@ const (
 	TeamsCreateReqPrivacyClosed TeamsCreateReqPrivacy = "closed"
 )
 
-// TeamsDeleteDiscussionCommentInOrgResNoContent is response for TeamsDeleteDiscussionCommentInOrg operation.
-type TeamsDeleteDiscussionCommentInOrgResNoContent struct{}
+// TeamsDeleteDiscussionCommentInOrgNoContent is response for TeamsDeleteDiscussionCommentInOrg operation.
+type TeamsDeleteDiscussionCommentInOrgNoContent struct{}
 
-// TeamsDeleteDiscussionCommentLegacyResNoContent is response for TeamsDeleteDiscussionCommentLegacy operation.
-type TeamsDeleteDiscussionCommentLegacyResNoContent struct{}
+// TeamsDeleteDiscussionCommentLegacyNoContent is response for TeamsDeleteDiscussionCommentLegacy operation.
+type TeamsDeleteDiscussionCommentLegacyNoContent struct{}
 
-// TeamsDeleteDiscussionInOrgResNoContent is response for TeamsDeleteDiscussionInOrg operation.
-type TeamsDeleteDiscussionInOrgResNoContent struct{}
+// TeamsDeleteDiscussionInOrgNoContent is response for TeamsDeleteDiscussionInOrg operation.
+type TeamsDeleteDiscussionInOrgNoContent struct{}
 
-// TeamsDeleteDiscussionLegacyResNoContent is response for TeamsDeleteDiscussionLegacy operation.
-type TeamsDeleteDiscussionLegacyResNoContent struct{}
+// TeamsDeleteDiscussionLegacyNoContent is response for TeamsDeleteDiscussionLegacy operation.
+type TeamsDeleteDiscussionLegacyNoContent struct{}
 
-// TeamsDeleteInOrgResNoContent is response for TeamsDeleteInOrg operation.
-type TeamsDeleteInOrgResNoContent struct{}
+// TeamsDeleteInOrgNoContent is response for TeamsDeleteInOrg operation.
+type TeamsDeleteInOrgNoContent struct{}
 
-// TeamsDeleteLegacyResNoContent is response for TeamsDeleteLegacy operation.
-type TeamsDeleteLegacyResNoContent struct{}
+// TeamsDeleteLegacyNoContent is response for TeamsDeleteLegacy operation.
+type TeamsDeleteLegacyNoContent struct{}
 
-// TeamsGetMemberLegacyResNoContent is response for TeamsGetMemberLegacy operation.
-type TeamsGetMemberLegacyResNoContent struct{}
+// TeamsGetMemberLegacyNoContent is response for TeamsGetMemberLegacy operation.
+type TeamsGetMemberLegacyNoContent struct{}
 
-func (*TeamsGetMemberLegacyResNoContent) teamsGetMemberLegacyRes() {}
+func (*TeamsGetMemberLegacyNoContent) teamsGetMemberLegacyRes() {}
 
-// TeamsGetMemberLegacyResNotFound is response for TeamsGetMemberLegacy operation.
-type TeamsGetMemberLegacyResNotFound struct{}
+// TeamsGetMemberLegacyNotFound is response for TeamsGetMemberLegacy operation.
+type TeamsGetMemberLegacyNotFound struct{}
 
-func (*TeamsGetMemberLegacyResNotFound) teamsGetMemberLegacyRes() {}
+func (*TeamsGetMemberLegacyNotFound) teamsGetMemberLegacyRes() {}
 
-// TeamsGetMembershipForUserInOrgResNotFound is response for TeamsGetMembershipForUserInOrg operation.
-type TeamsGetMembershipForUserInOrgResNotFound struct{}
+// TeamsGetMembershipForUserInOrgNotFound is response for TeamsGetMembershipForUserInOrg operation.
+type TeamsGetMembershipForUserInOrgNotFound struct{}
 
-func (*TeamsGetMembershipForUserInOrgResNotFound) teamsGetMembershipForUserInOrgRes() {}
+func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
 
 type TeamsListDiscussionCommentsInOrgDirection string
 
@@ -24188,14 +24173,14 @@ type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
 
 func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
 
+// TeamsListForAuthenticatedUserNotModified is response for TeamsListForAuthenticatedUser operation.
+type TeamsListForAuthenticatedUserNotModified struct{}
+
+func (*TeamsListForAuthenticatedUserNotModified) teamsListForAuthenticatedUserRes() {}
+
 type TeamsListForAuthenticatedUserOKApplicationJSON []TeamFull
 
 func (*TeamsListForAuthenticatedUserOKApplicationJSON) teamsListForAuthenticatedUserRes() {}
-
-// TeamsListForAuthenticatedUserResNotModified is response for TeamsListForAuthenticatedUser operation.
-type TeamsListForAuthenticatedUserResNotModified struct{}
-
-func (*TeamsListForAuthenticatedUserResNotModified) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
 
@@ -24237,52 +24222,52 @@ type TeamsListReposLegacyOKApplicationJSON []MinimalRepository
 
 func (*TeamsListReposLegacyOKApplicationJSON) teamsListReposLegacyRes() {}
 
-// TeamsRemoveMemberLegacyResNoContent is response for TeamsRemoveMemberLegacy operation.
-type TeamsRemoveMemberLegacyResNoContent struct{}
+// TeamsRemoveMemberLegacyNoContent is response for TeamsRemoveMemberLegacy operation.
+type TeamsRemoveMemberLegacyNoContent struct{}
 
-func (*TeamsRemoveMemberLegacyResNoContent) teamsRemoveMemberLegacyRes() {}
+func (*TeamsRemoveMemberLegacyNoContent) teamsRemoveMemberLegacyRes() {}
 
-// TeamsRemoveMemberLegacyResNotFound is response for TeamsRemoveMemberLegacy operation.
-type TeamsRemoveMemberLegacyResNotFound struct{}
+// TeamsRemoveMemberLegacyNotFound is response for TeamsRemoveMemberLegacy operation.
+type TeamsRemoveMemberLegacyNotFound struct{}
 
-func (*TeamsRemoveMemberLegacyResNotFound) teamsRemoveMemberLegacyRes() {}
+func (*TeamsRemoveMemberLegacyNotFound) teamsRemoveMemberLegacyRes() {}
 
-// TeamsRemoveMembershipForUserInOrgResForbidden is response for TeamsRemoveMembershipForUserInOrg operation.
-type TeamsRemoveMembershipForUserInOrgResForbidden struct{}
+// TeamsRemoveMembershipForUserInOrgForbidden is response for TeamsRemoveMembershipForUserInOrg operation.
+type TeamsRemoveMembershipForUserInOrgForbidden struct{}
 
-func (*TeamsRemoveMembershipForUserInOrgResForbidden) teamsRemoveMembershipForUserInOrgRes() {}
+func (*TeamsRemoveMembershipForUserInOrgForbidden) teamsRemoveMembershipForUserInOrgRes() {}
 
-// TeamsRemoveMembershipForUserInOrgResNoContent is response for TeamsRemoveMembershipForUserInOrg operation.
-type TeamsRemoveMembershipForUserInOrgResNoContent struct{}
+// TeamsRemoveMembershipForUserInOrgNoContent is response for TeamsRemoveMembershipForUserInOrg operation.
+type TeamsRemoveMembershipForUserInOrgNoContent struct{}
 
-func (*TeamsRemoveMembershipForUserInOrgResNoContent) teamsRemoveMembershipForUserInOrgRes() {}
+func (*TeamsRemoveMembershipForUserInOrgNoContent) teamsRemoveMembershipForUserInOrgRes() {}
 
-// TeamsRemoveMembershipForUserLegacyResForbidden is response for TeamsRemoveMembershipForUserLegacy operation.
-type TeamsRemoveMembershipForUserLegacyResForbidden struct{}
+// TeamsRemoveMembershipForUserLegacyForbidden is response for TeamsRemoveMembershipForUserLegacy operation.
+type TeamsRemoveMembershipForUserLegacyForbidden struct{}
 
-func (*TeamsRemoveMembershipForUserLegacyResForbidden) teamsRemoveMembershipForUserLegacyRes() {}
+func (*TeamsRemoveMembershipForUserLegacyForbidden) teamsRemoveMembershipForUserLegacyRes() {}
 
-// TeamsRemoveMembershipForUserLegacyResNoContent is response for TeamsRemoveMembershipForUserLegacy operation.
-type TeamsRemoveMembershipForUserLegacyResNoContent struct{}
+// TeamsRemoveMembershipForUserLegacyNoContent is response for TeamsRemoveMembershipForUserLegacy operation.
+type TeamsRemoveMembershipForUserLegacyNoContent struct{}
 
-func (*TeamsRemoveMembershipForUserLegacyResNoContent) teamsRemoveMembershipForUserLegacyRes() {}
+func (*TeamsRemoveMembershipForUserLegacyNoContent) teamsRemoveMembershipForUserLegacyRes() {}
 
-// TeamsRemoveProjectInOrgResNoContent is response for TeamsRemoveProjectInOrg operation.
-type TeamsRemoveProjectInOrgResNoContent struct{}
+// TeamsRemoveProjectInOrgNoContent is response for TeamsRemoveProjectInOrg operation.
+type TeamsRemoveProjectInOrgNoContent struct{}
 
-// TeamsRemoveProjectLegacyResNoContent is response for TeamsRemoveProjectLegacy operation.
-type TeamsRemoveProjectLegacyResNoContent struct{}
+// TeamsRemoveProjectLegacyNoContent is response for TeamsRemoveProjectLegacy operation.
+type TeamsRemoveProjectLegacyNoContent struct{}
 
-type TeamsRemoveProjectLegacyResUnsupportedMediaType struct {
+type TeamsRemoveProjectLegacyUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-// TeamsRemoveRepoInOrgResNoContent is response for TeamsRemoveRepoInOrg operation.
-type TeamsRemoveRepoInOrgResNoContent struct{}
+// TeamsRemoveRepoInOrgNoContent is response for TeamsRemoveRepoInOrg operation.
+type TeamsRemoveRepoInOrgNoContent struct{}
 
-// TeamsRemoveRepoLegacyResNoContent is response for TeamsRemoveRepoLegacy operation.
-type TeamsRemoveRepoLegacyResNoContent struct{}
+// TeamsRemoveRepoLegacyNoContent is response for TeamsRemoveRepoLegacy operation.
+type TeamsRemoveRepoLegacyNoContent struct{}
 
 type TeamsUpdateDiscussionCommentInOrgReq struct {
 	Body string `json:"body"`
@@ -24491,11 +24476,11 @@ type UserSearchResultItem struct {
 	URL               url.URL                  `json:"url"`
 }
 
-// UsersBlockResNoContent is response for UsersBlock operation.
-type UsersBlockResNoContent struct{}
+// UsersBlockNoContent is response for UsersBlock operation.
+type UsersBlockNoContent struct{}
 
-// UsersBlockResNotModified is response for UsersBlock operation.
-type UsersBlockResNotModified struct{}
+// UsersBlockNotModified is response for UsersBlock operation.
+type UsersBlockNotModified struct{}
 
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
@@ -24509,25 +24494,25 @@ type UsersCheckBlockedApplicationJSONUnauthorized BasicError
 
 func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedRes() {}
 
-// UsersCheckBlockedResNoContent is response for UsersCheckBlocked operation.
-type UsersCheckBlockedResNoContent struct{}
+// UsersCheckBlockedNoContent is response for UsersCheckBlocked operation.
+type UsersCheckBlockedNoContent struct{}
 
-func (*UsersCheckBlockedResNoContent) usersCheckBlockedRes() {}
+func (*UsersCheckBlockedNoContent) usersCheckBlockedRes() {}
 
-// UsersCheckBlockedResNotModified is response for UsersCheckBlocked operation.
-type UsersCheckBlockedResNotModified struct{}
+// UsersCheckBlockedNotModified is response for UsersCheckBlocked operation.
+type UsersCheckBlockedNotModified struct{}
 
-func (*UsersCheckBlockedResNotModified) usersCheckBlockedRes() {}
+func (*UsersCheckBlockedNotModified) usersCheckBlockedRes() {}
 
-// UsersCheckFollowingForUserResNoContent is response for UsersCheckFollowingForUser operation.
-type UsersCheckFollowingForUserResNoContent struct{}
+// UsersCheckFollowingForUserNoContent is response for UsersCheckFollowingForUser operation.
+type UsersCheckFollowingForUserNoContent struct{}
 
-func (*UsersCheckFollowingForUserResNoContent) usersCheckFollowingForUserRes() {}
+func (*UsersCheckFollowingForUserNoContent) usersCheckFollowingForUserRes() {}
 
-// UsersCheckFollowingForUserResNotFound is response for UsersCheckFollowingForUser operation.
-type UsersCheckFollowingForUserResNotFound struct{}
+// UsersCheckFollowingForUserNotFound is response for UsersCheckFollowingForUser operation.
+type UsersCheckFollowingForUserNotFound struct{}
 
-func (*UsersCheckFollowingForUserResNotFound) usersCheckFollowingForUserRes() {}
+func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserRes() {}
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24544,38 +24529,38 @@ type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized BasicE
 func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-// UsersCheckPersonIsFollowedByAuthenticatedResNoContent is response for UsersCheckPersonIsFollowedByAuthenticated operation.
-type UsersCheckPersonIsFollowedByAuthenticatedResNoContent struct{}
+// UsersCheckPersonIsFollowedByAuthenticatedNoContent is response for UsersCheckPersonIsFollowedByAuthenticated operation.
+type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedResNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-// UsersCheckPersonIsFollowedByAuthenticatedResNotModified is response for UsersCheckPersonIsFollowedByAuthenticated operation.
-type UsersCheckPersonIsFollowedByAuthenticatedResNotModified struct{}
+// UsersCheckPersonIsFollowedByAuthenticatedNotModified is response for UsersCheckPersonIsFollowedByAuthenticated operation.
+type UsersCheckPersonIsFollowedByAuthenticatedNotModified struct{}
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedResNotModified) usersCheckPersonIsFollowedByAuthenticatedRes() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedNotModified) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
+
+// UsersCreateGpgKeyForAuthenticatedNotModified is response for UsersCreateGpgKeyForAuthenticated operation.
+type UsersCreateGpgKeyForAuthenticatedNotModified struct{}
 
 type UsersCreateGpgKeyForAuthenticatedReq struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
 }
 
-// UsersCreateGpgKeyForAuthenticatedResNotModified is response for UsersCreateGpgKeyForAuthenticated operation.
-type UsersCreateGpgKeyForAuthenticatedResNotModified struct{}
+// UsersCreatePublicSSHKeyForAuthenticatedNotModified is response for UsersCreatePublicSSHKeyForAuthenticated operation.
+type UsersCreatePublicSSHKeyForAuthenticatedNotModified struct{}
 
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 	Key   string    `json:"key"`
 	Title OptString `json:"title"`
 }
 
-// UsersCreatePublicSSHKeyForAuthenticatedResNotModified is response for UsersCreatePublicSSHKeyForAuthenticated operation.
-type UsersCreatePublicSSHKeyForAuthenticatedResNotModified struct{}
+// UsersDeleteGpgKeyForAuthenticatedNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
+type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
-// UsersDeleteGpgKeyForAuthenticatedResNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
-type UsersDeleteGpgKeyForAuthenticatedResNoContent struct{}
-
-// UsersDeleteGpgKeyForAuthenticatedResNotModified is response for UsersDeleteGpgKeyForAuthenticated operation.
-type UsersDeleteGpgKeyForAuthenticatedResNotModified struct{}
+// UsersDeleteGpgKeyForAuthenticatedNotModified is response for UsersDeleteGpgKeyForAuthenticated operation.
+type UsersDeleteGpgKeyForAuthenticatedNotModified struct{}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24592,16 +24577,16 @@ type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicErr
 func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-// UsersDeletePublicSSHKeyForAuthenticatedResNoContent is response for UsersDeletePublicSSHKeyForAuthenticated operation.
-type UsersDeletePublicSSHKeyForAuthenticatedResNoContent struct{}
+// UsersDeletePublicSSHKeyForAuthenticatedNoContent is response for UsersDeletePublicSSHKeyForAuthenticated operation.
+type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedResNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-// UsersDeletePublicSSHKeyForAuthenticatedResNotModified is response for UsersDeletePublicSSHKeyForAuthenticated operation.
-type UsersDeletePublicSSHKeyForAuthenticatedResNotModified struct{}
+// UsersDeletePublicSSHKeyForAuthenticatedNotModified is response for UsersDeletePublicSSHKeyForAuthenticated operation.
+type UsersDeletePublicSSHKeyForAuthenticatedNotModified struct{}
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedResNotModified) usersDeletePublicSSHKeyForAuthenticatedRes() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedNotModified) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersFollowApplicationJSONForbidden BasicError
@@ -24616,15 +24601,15 @@ type UsersFollowApplicationJSONUnauthorized BasicError
 
 func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
 
-// UsersFollowResNoContent is response for UsersFollow operation.
-type UsersFollowResNoContent struct{}
+// UsersFollowNoContent is response for UsersFollow operation.
+type UsersFollowNoContent struct{}
 
-func (*UsersFollowResNoContent) usersFollowRes() {}
+func (*UsersFollowNoContent) usersFollowRes() {}
 
-// UsersFollowResNotModified is response for UsersFollow operation.
-type UsersFollowResNotModified struct{}
+// UsersFollowNotModified is response for UsersFollow operation.
+type UsersFollowNotModified struct{}
 
-func (*UsersFollowResNotModified) usersFollowRes() {}
+func (*UsersFollowNotModified) usersFollowRes() {}
 
 type UsersGetContextForUserSubjectType string
 
@@ -24648,10 +24633,10 @@ type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
 }
 
-// UsersGetGpgKeyForAuthenticatedResNotModified is response for UsersGetGpgKeyForAuthenticated operation.
-type UsersGetGpgKeyForAuthenticatedResNotModified struct{}
+// UsersGetGpgKeyForAuthenticatedNotModified is response for UsersGetGpgKeyForAuthenticated operation.
+type UsersGetGpgKeyForAuthenticatedNotModified struct{}
 
-func (*UsersGetGpgKeyForAuthenticatedResNotModified) usersGetGpgKeyForAuthenticatedRes() {}
+func (*UsersGetGpgKeyForAuthenticatedNotModified) usersGetGpgKeyForAuthenticatedRes() {}
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24668,11 +24653,10 @@ type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
-// UsersGetPublicSSHKeyForAuthenticatedResNotModified is response for UsersGetPublicSSHKeyForAuthenticated operation.
-type UsersGetPublicSSHKeyForAuthenticatedResNotModified struct{}
+// UsersGetPublicSSHKeyForAuthenticatedNotModified is response for UsersGetPublicSSHKeyForAuthenticated operation.
+type UsersGetPublicSSHKeyForAuthenticatedNotModified struct{}
 
-func (*UsersGetPublicSSHKeyForAuthenticatedResNotModified) usersGetPublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersGetPublicSSHKeyForAuthenticatedNotModified) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
 type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24688,21 +24672,21 @@ type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedRes() {
 }
 
+// UsersListBlockedByAuthenticatedNotModified is response for UsersListBlockedByAuthenticated operation.
+type UsersListBlockedByAuthenticatedNotModified struct{}
+
+func (*UsersListBlockedByAuthenticatedNotModified) usersListBlockedByAuthenticatedRes() {}
+
 type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
 
-// UsersListBlockedByAuthenticatedResNotModified is response for UsersListBlockedByAuthenticated operation.
-type UsersListBlockedByAuthenticatedResNotModified struct{}
-
-func (*UsersListBlockedByAuthenticatedResNotModified) usersListBlockedByAuthenticatedRes() {}
-
-type UsersListBlockedByAuthenticatedResUnsupportedMediaType struct {
+type UsersListBlockedByAuthenticatedUnsupportedMediaType struct {
 	DocumentationURL string `json:"documentation_url"`
 	Message          string `json:"message"`
 }
 
-func (*UsersListBlockedByAuthenticatedResUnsupportedMediaType) usersListBlockedByAuthenticatedRes() {}
+func (*UsersListBlockedByAuthenticatedUnsupportedMediaType) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24718,14 +24702,14 @@ type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
 }
 
+// UsersListEmailsForAuthenticatedNotModified is response for UsersListEmailsForAuthenticated operation.
+type UsersListEmailsForAuthenticatedNotModified struct{}
+
+func (*UsersListEmailsForAuthenticatedNotModified) usersListEmailsForAuthenticatedRes() {}
+
 type UsersListEmailsForAuthenticatedOKApplicationJSON []Email
 
 func (*UsersListEmailsForAuthenticatedOKApplicationJSON) usersListEmailsForAuthenticatedRes() {}
-
-// UsersListEmailsForAuthenticatedResNotModified is response for UsersListEmailsForAuthenticated operation.
-type UsersListEmailsForAuthenticatedResNotModified struct{}
-
-func (*UsersListEmailsForAuthenticatedResNotModified) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24737,14 +24721,14 @@ type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
 }
 
+// UsersListFollowedByAuthenticatedNotModified is response for UsersListFollowedByAuthenticated operation.
+type UsersListFollowedByAuthenticatedNotModified struct{}
+
+func (*UsersListFollowedByAuthenticatedNotModified) usersListFollowedByAuthenticatedRes() {}
+
 type UsersListFollowedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListFollowedByAuthenticatedOKApplicationJSON) usersListFollowedByAuthenticatedRes() {}
-
-// UsersListFollowedByAuthenticatedResNotModified is response for UsersListFollowedByAuthenticated operation.
-type UsersListFollowedByAuthenticatedResNotModified struct{}
-
-func (*UsersListFollowedByAuthenticatedResNotModified) usersListFollowedByAuthenticatedRes() {}
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -24756,15 +24740,15 @@ type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicErro
 func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
 }
 
+// UsersListFollowersForAuthenticatedUserNotModified is response for UsersListFollowersForAuthenticatedUser operation.
+type UsersListFollowersForAuthenticatedUserNotModified struct{}
+
+func (*UsersListFollowersForAuthenticatedUserNotModified) usersListFollowersForAuthenticatedUserRes() {
+}
+
 type UsersListFollowersForAuthenticatedUserOKApplicationJSON []SimpleUser
 
 func (*UsersListFollowersForAuthenticatedUserOKApplicationJSON) usersListFollowersForAuthenticatedUserRes() {
-}
-
-// UsersListFollowersForAuthenticatedUserResNotModified is response for UsersListFollowersForAuthenticatedUser operation.
-type UsersListFollowersForAuthenticatedUserResNotModified struct{}
-
-func (*UsersListFollowersForAuthenticatedUserResNotModified) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
@@ -24782,14 +24766,19 @@ type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
 }
 
+// UsersListGpgKeysForAuthenticatedNotModified is response for UsersListGpgKeysForAuthenticated operation.
+type UsersListGpgKeysForAuthenticatedNotModified struct{}
+
+func (*UsersListGpgKeysForAuthenticatedNotModified) usersListGpgKeysForAuthenticatedRes() {}
+
 type UsersListGpgKeysForAuthenticatedOKApplicationJSON []GpgKey
 
 func (*UsersListGpgKeysForAuthenticatedOKApplicationJSON) usersListGpgKeysForAuthenticatedRes() {}
 
-// UsersListGpgKeysForAuthenticatedResNotModified is response for UsersListGpgKeysForAuthenticated operation.
-type UsersListGpgKeysForAuthenticatedResNotModified struct{}
+// UsersListNotModified is response for UsersList operation.
+type UsersListNotModified struct{}
 
-func (*UsersListGpgKeysForAuthenticatedResNotModified) usersListGpgKeysForAuthenticatedRes() {}
+func (*UsersListNotModified) usersListRes() {}
 
 type UsersListOKApplicationJSON []SimpleUser
 
@@ -24810,15 +24799,14 @@ type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
 
+// UsersListPublicEmailsForAuthenticatedNotModified is response for UsersListPublicEmailsForAuthenticated operation.
+type UsersListPublicEmailsForAuthenticatedNotModified struct{}
+
+func (*UsersListPublicEmailsForAuthenticatedNotModified) usersListPublicEmailsForAuthenticatedRes() {}
+
 type UsersListPublicEmailsForAuthenticatedOKApplicationJSON []Email
 
 func (*UsersListPublicEmailsForAuthenticatedOKApplicationJSON) usersListPublicEmailsForAuthenticatedRes() {
-}
-
-// UsersListPublicEmailsForAuthenticatedResNotModified is response for UsersListPublicEmailsForAuthenticated operation.
-type UsersListPublicEmailsForAuthenticatedResNotModified struct{}
-
-func (*UsersListPublicEmailsForAuthenticatedResNotModified) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
@@ -24836,21 +24824,19 @@ type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicErro
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
+// UsersListPublicSSHKeysForAuthenticatedNotModified is response for UsersListPublicSSHKeysForAuthenticated operation.
+type UsersListPublicSSHKeysForAuthenticatedNotModified struct{}
+
+func (*UsersListPublicSSHKeysForAuthenticatedNotModified) usersListPublicSSHKeysForAuthenticatedRes() {
+}
+
 type UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON []Key
 
 func (*UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
-// UsersListPublicSSHKeysForAuthenticatedResNotModified is response for UsersListPublicSSHKeysForAuthenticated operation.
-type UsersListPublicSSHKeysForAuthenticatedResNotModified struct{}
-
-func (*UsersListPublicSSHKeysForAuthenticatedResNotModified) usersListPublicSSHKeysForAuthenticatedRes() {
-}
-
-// UsersListResNotModified is response for UsersList operation.
-type UsersListResNotModified struct{}
-
-func (*UsersListResNotModified) usersListRes() {}
+// UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified is response for UsersSetPrimaryEmailVisibilityForAuthenticated operation.
+type UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified struct{}
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedReq struct {
 	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility `json:"visibility"`
@@ -24862,9 +24848,6 @@ const (
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "public"
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "private"
 )
-
-// UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified is response for UsersSetPrimaryEmailVisibilityForAuthenticated operation.
-type UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified struct{}
 
 type UsersUnblockApplicationJSONForbidden BasicError
 
@@ -24878,15 +24861,15 @@ type UsersUnblockApplicationJSONUnauthorized BasicError
 
 func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockRes() {}
 
-// UsersUnblockResNoContent is response for UsersUnblock operation.
-type UsersUnblockResNoContent struct{}
+// UsersUnblockNoContent is response for UsersUnblock operation.
+type UsersUnblockNoContent struct{}
 
-func (*UsersUnblockResNoContent) usersUnblockRes() {}
+func (*UsersUnblockNoContent) usersUnblockRes() {}
 
-// UsersUnblockResNotModified is response for UsersUnblock operation.
-type UsersUnblockResNotModified struct{}
+// UsersUnblockNotModified is response for UsersUnblock operation.
+type UsersUnblockNotModified struct{}
 
-func (*UsersUnblockResNotModified) usersUnblockRes() {}
+func (*UsersUnblockNotModified) usersUnblockRes() {}
 
 type UsersUnfollowApplicationJSONForbidden BasicError
 
@@ -24900,15 +24883,18 @@ type UsersUnfollowApplicationJSONUnauthorized BasicError
 
 func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowRes() {}
 
-// UsersUnfollowResNoContent is response for UsersUnfollow operation.
-type UsersUnfollowResNoContent struct{}
+// UsersUnfollowNoContent is response for UsersUnfollow operation.
+type UsersUnfollowNoContent struct{}
 
-func (*UsersUnfollowResNoContent) usersUnfollowRes() {}
+func (*UsersUnfollowNoContent) usersUnfollowRes() {}
 
-// UsersUnfollowResNotModified is response for UsersUnfollow operation.
-type UsersUnfollowResNotModified struct{}
+// UsersUnfollowNotModified is response for UsersUnfollow operation.
+type UsersUnfollowNotModified struct{}
 
-func (*UsersUnfollowResNotModified) usersUnfollowRes() {}
+func (*UsersUnfollowNotModified) usersUnfollowRes() {}
+
+// UsersUpdateAuthenticatedNotModified is response for UsersUpdateAuthenticated operation.
+type UsersUpdateAuthenticatedNotModified struct{}
 
 type UsersUpdateAuthenticatedReq struct {
 	Bio             OptString    `json:"bio"`
@@ -24920,9 +24906,6 @@ type UsersUpdateAuthenticatedReq struct {
 	Name            OptString    `json:"name"`
 	TwitterUsername OptNilString `json:"twitter_username"`
 }
-
-// UsersUpdateAuthenticatedResNotModified is response for UsersUpdateAuthenticated operation.
-type UsersUpdateAuthenticatedResNotModified struct{}
 
 // Ref: #/components/schemas/validation-error-simple
 type ValidationErrorSimple struct {

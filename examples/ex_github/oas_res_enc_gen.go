@@ -60,17 +60,17 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActionsAddSelectedRepoToOrgSecretResNoContent:
+	case *ActionsAddSelectedRepoToOrgSecretNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActionsAddSelectedRepoToOrgSecretResConflict:
+	case *ActionsAddSelectedRepoToOrgSecretConflict:
 		w.WriteHeader(409)
 		return nil
 	default:
@@ -78,7 +78,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 	}
 }
 
-func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -127,7 +127,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	}
 }
 
-func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunResAccepted, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
 	j := json.GetStream(w)
@@ -157,7 +157,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 			return err
 		}
 		return nil
-	case *ActionsCreateOrUpdateEnvironmentSecretResNoContent:
+	case *ActionsCreateOrUpdateEnvironmentSecretNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -180,7 +180,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 			return err
 		}
 		return nil
-	case *ActionsCreateOrUpdateOrgSecretResNoContent:
+	case *ActionsCreateOrUpdateOrgSecretNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -190,7 +190,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 
 func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActionsCreateOrUpdateRepoSecretResCreated:
+	case *ActionsCreateOrUpdateRepoSecretCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		j := json.GetStream(w)
@@ -203,7 +203,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 			return err
 		}
 		return nil
-	case *ActionsCreateOrUpdateRepoSecretResNoContent:
+	case *ActionsCreateOrUpdateRepoSecretNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -286,72 +286,72 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	return nil
 }
 
-func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactResFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunResFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsResFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -633,7 +633,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	return nil
 }
 
-func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -648,7 +648,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	return nil
 }
 
-func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -663,7 +663,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	return nil
 }
 
-func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -678,7 +678,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	return nil
 }
 
-func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -693,7 +693,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsResOK, w 
 	return nil
 }
 
-func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -708,7 +708,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	return nil
 }
 
-func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -723,7 +723,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsResOK, 
 	return nil
 }
 
-func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -782,7 +782,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 	return nil
 }
 
-func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -797,7 +797,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 	return nil
 }
 
-func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -812,7 +812,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -827,7 +827,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -842,7 +842,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -857,7 +857,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -872,7 +872,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	return nil
 }
 
-func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -887,7 +887,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	return nil
 }
 
-func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -902,7 +902,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	return nil
 }
 
-func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowResCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	j := json.GetStream(w)
@@ -917,17 +917,17 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowResCreated,
 	return nil
 }
 
-func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActionsRemoveSelectedRepoFromOrgSecretResNoContent:
+	case *ActionsRemoveSelectedRepoFromOrgSecretNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActionsRemoveSelectedRepoFromOrgSecretResConflict:
+	case *ActionsRemoveSelectedRepoFromOrgSecretConflict:
 		w.WriteHeader(409)
 		return nil
 	default:
@@ -935,12 +935,12 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 	}
 }
 
-func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowResCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	j := json.GetStream(w)
@@ -955,42 +955,42 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowResCreated,
 	return nil
 }
 
-func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -1012,10 +1012,10 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 
 func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
@@ -1059,17 +1059,17 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	}
 }
 
-func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityDeleteThreadSubscriptionResNoContent:
+	case *ActivityDeleteThreadSubscriptionNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActivityDeleteThreadSubscriptionResNotModified:
+	case *ActivityDeleteThreadSubscriptionNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
@@ -1144,7 +1144,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 			return err
 		}
 		return nil
-	case *ActivityGetRepoSubscriptionResNotFound:
+	case *ActivityGetRepoSubscriptionNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -1167,7 +1167,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 			return err
 		}
 		return nil
-	case *ActivityGetThreadResNotModified:
+	case *ActivityGetThreadNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityGetThreadApplicationJSONUnauthorized:
@@ -1214,7 +1214,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 			return err
 		}
 		return nil
-	case *ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified:
+	case *ActivityGetThreadSubscriptionForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
@@ -1304,7 +1304,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 			return err
 		}
 		return nil
-	case *ActivityListPublicEventsResNotModified:
+	case *ActivityListPublicEventsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1320,7 +1320,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 			return err
 		}
 		return nil
-	case *ActivityListPublicEventsResServiceUnavailable:
+	case *ActivityListPublicEventsServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -1364,7 +1364,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 			return err
 		}
 		return nil
-	case *ActivityListPublicEventsForRepoNetworkResNotModified:
+	case *ActivityListPublicEventsForRepoNetworkNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
@@ -1546,7 +1546,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.github.v3.star+json encoder not implemented")
-	case *ActivityListReposStarredByAuthenticatedUserResNotModified:
+	case *ActivityListReposStarredByAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized:
@@ -1614,7 +1614,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 			return err
 		}
 		return nil
-	case *ActivityListWatchedReposForAuthenticatedUserResNotModified:
+	case *ActivityListWatchedReposForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
@@ -1670,7 +1670,7 @@ func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.Res
 
 func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityMarkNotificationsAsReadResAccepted:
+	case *ActivityMarkNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -1683,10 +1683,10 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 			return err
 		}
 		return nil
-	case *ActivityMarkNotificationsAsReadResResetContent:
+	case *ActivityMarkNotificationsAsReadResetContent:
 		w.WriteHeader(205)
 		return nil
-	case *ActivityMarkNotificationsAsReadResNotModified:
+	case *ActivityMarkNotificationsAsReadNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
@@ -1720,7 +1720,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 
 func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityMarkRepoNotificationsAsReadResAccepted:
+	case *ActivityMarkRepoNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -1733,7 +1733,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 			return err
 		}
 		return nil
-	case *ActivityMarkRepoNotificationsAsReadResResetContent:
+	case *ActivityMarkRepoNotificationsAsReadResetContent:
 		w.WriteHeader(205)
 		return nil
 	default:
@@ -1743,10 +1743,10 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 
 func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityMarkThreadAsReadResResetContent:
+	case *ActivityMarkThreadAsReadResetContent:
 		w.WriteHeader(205)
 		return nil
-	case *ActivityMarkThreadAsReadResNotModified:
+	case *ActivityMarkThreadAsReadNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1797,7 +1797,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 			return err
 		}
 		return nil
-	case *ActivitySetThreadSubscriptionResNotModified:
+	case *ActivitySetThreadSubscriptionNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
@@ -1831,10 +1831,10 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 
 func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityStarRepoForAuthenticatedUserResNoContent:
+	case *ActivityStarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActivityStarRepoForAuthenticatedUserResNotModified:
+	case *ActivityStarRepoForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
@@ -1880,10 +1880,10 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 
 func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityUnstarRepoForAuthenticatedUserResNoContent:
+	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ActivityUnstarRepoForAuthenticatedUserResNotModified:
+	case *ActivityUnstarRepoForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
@@ -1929,10 +1929,10 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 
 func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsAddRepoToInstallationResNoContent:
+	case *AppsAddRepoToInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *AppsAddRepoToInstallationResNotModified:
+	case *AppsAddRepoToInstallationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *AppsAddRepoToInstallationApplicationJSONForbidden:
@@ -1966,7 +1966,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 
 func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsDeleteInstallationResNoContent:
+	case *AppsDeleteInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -2041,7 +2041,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 			return err
 		}
 		return nil
-	case *AppsGetBySlugResUnsupportedMediaType:
+	case *AppsGetBySlugUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -2131,7 +2131,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 			return err
 		}
 		return nil
-	case *AppsGetSubscriptionPlanForAccountStubbedResNotFound:
+	case *AppsGetSubscriptionPlanForAccountStubbedNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -2188,7 +2188,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 
 func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListInstallationReposForAuthenticatedUserResOK:
+	case *AppsListInstallationReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -2201,7 +2201,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 			return err
 		}
 		return nil
-	case *AppsListInstallationReposForAuthenticatedUserResNotModified:
+	case *AppsListInstallationReposForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
@@ -2310,7 +2310,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 
 func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListReposAccessibleToInstallationResOK:
+	case *AppsListReposAccessibleToInstallationOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -2323,7 +2323,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 			return err
 		}
 		return nil
-	case *AppsListReposAccessibleToInstallationResNotModified:
+	case *AppsListReposAccessibleToInstallationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
@@ -2369,7 +2369,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 			return err
 		}
 		return nil
-	case *AppsListSubscriptionsForAuthenticatedUserResNotModified:
+	case *AppsListSubscriptionsForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
@@ -2415,7 +2415,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 			return err
 		}
 		return nil
-	case *AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified:
+	case *AppsListSubscriptionsForAuthenticatedUserStubbedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -2438,10 +2438,10 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 
 func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsRemoveRepoFromInstallationResNoContent:
+	case *AppsRemoveRepoFromInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *AppsRemoveRepoFromInstallationResNotModified:
+	case *AppsRemoveRepoFromInstallationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
@@ -2473,14 +2473,14 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	}
 }
 
-func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsSuspendInstallationResNoContent:
+	case *AppsSuspendInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -2503,7 +2503,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 
 func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsUnsuspendInstallationResNoContent:
+	case *AppsUnsuspendInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -2772,7 +2772,7 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 	return nil
 }
 
-func encodeChecksListForRefResponse(response ChecksListForRefResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -2787,7 +2787,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefResOK, w http.Respo
 	return nil
 }
 
-func encodeChecksListForSuiteResponse(response ChecksListForSuiteResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -2802,7 +2802,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteResOK, w http.R
 	return nil
 }
 
-func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -2817,7 +2817,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefResOK, 
 	return nil
 }
 
-func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteResCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	j := json.GetStream(w)
@@ -2902,7 +2902,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 			return err
 		}
 		return nil
-	case *CodeScanningDeleteAnalysisResServiceUnavailable:
+	case *CodeScanningDeleteAnalysisServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -2959,7 +2959,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 			return err
 		}
 		return nil
-	case *CodeScanningGetAlertResServiceUnavailable:
+	case *CodeScanningGetAlertServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3020,7 +3020,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 			return err
 		}
 		return nil
-	case *CodeScanningGetAnalysisResServiceUnavailable:
+	case *CodeScanningGetAnalysisServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3066,10 +3066,10 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 			return err
 		}
 		return nil
-	case *CodeScanningGetSarifResNotFound:
+	case *CodeScanningGetSarifNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *CodeScanningGetSarifResServiceUnavailable:
+	case *CodeScanningGetSarifServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3125,7 +3125,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 			return err
 		}
 		return nil
-	case *CodeScanningListAlertInstancesResServiceUnavailable:
+	case *CodeScanningListAlertInstancesServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3181,7 +3181,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 			return err
 		}
 		return nil
-	case *CodeScanningListAlertsForRepoResServiceUnavailable:
+	case *CodeScanningListAlertsForRepoServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3237,7 +3237,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 			return err
 		}
 		return nil
-	case *CodeScanningListRecentAnalysesResServiceUnavailable:
+	case *CodeScanningListRecentAnalysesServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3294,7 +3294,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 			return err
 		}
 		return nil
-	case *CodeScanningUpdateAlertResServiceUnavailable:
+	case *CodeScanningUpdateAlertServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3327,7 +3327,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 			return err
 		}
 		return nil
-	case *CodeScanningUploadSarifResBadRequest:
+	case *CodeScanningUploadSarifBadRequest:
 		w.WriteHeader(400)
 		return nil
 	case *CodeScanningUploadSarifApplicationJSONForbidden:
@@ -3354,10 +3354,10 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 			return err
 		}
 		return nil
-	case *CodeScanningUploadSarifResRequestEntityTooLarge:
+	case *CodeScanningUploadSarifRequestEntityTooLarge:
 		w.WriteHeader(413)
 		return nil
-	case *CodeScanningUploadSarifResServiceUnavailable:
+	case *CodeScanningUploadSarifServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -3389,7 +3389,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 			return err
 		}
 		return nil
-	case *CodesOfConductGetAllCodesOfConductResNotModified:
+	case *CodesOfConductGetAllCodesOfConductNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -3412,7 +3412,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 			return err
 		}
 		return nil
-	case *CodesOfConductGetConductCodeResNotModified:
+	case *CodesOfConductGetConductCodeNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -3435,7 +3435,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 
 func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *EmojisGetResOK:
+	case *EmojisGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -3448,7 +3448,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 			return err
 		}
 		return nil
-	case *EmojisGetResNotModified:
+	case *EmojisGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -3456,12 +3456,12 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -3511,32 +3511,32 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -3653,7 +3653,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 	return nil
 }
 
-func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -3720,7 +3720,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 	return nil
 }
 
-func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -3735,7 +3735,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -3750,7 +3750,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -3765,7 +3765,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -3810,22 +3810,22 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	return nil
 }
 
-func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -3860,17 +3860,17 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return nil
 }
 
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -3907,10 +3907,10 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(respo
 
 func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsCheckIsStarredResNoContent:
+	case *GistsCheckIsStarredNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *GistsCheckIsStarredResNotModified:
+	case *GistsCheckIsStarredNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -3926,7 +3926,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 			return err
 		}
 		return nil
-	case *GistsCheckIsStarredResNotFound:
+	case *GistsCheckIsStarredNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		j := json.GetStream(w)
@@ -3959,7 +3959,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 			return err
 		}
 		return nil
-	case *GistsCreateCommentResNotModified:
+	case *GistsCreateCommentNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsCreateCommentApplicationJSONForbidden:
@@ -3993,10 +3993,10 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 
 func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsDeleteResNoContent:
+	case *GistsDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *GistsDeleteResNotModified:
+	case *GistsDeleteNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsDeleteApplicationJSONForbidden:
@@ -4030,10 +4030,10 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 
 func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsDeleteCommentResNoContent:
+	case *GistsDeleteCommentNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *GistsDeleteCommentResNotModified:
+	case *GistsDeleteCommentNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsDeleteCommentApplicationJSONForbidden:
@@ -4080,10 +4080,10 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 			return err
 		}
 		return nil
-	case *GistsGetResNotModified:
+	case *GistsGetNotModified:
 		w.WriteHeader(304)
 		return nil
-	case *GistsGetResForbidden:
+	case *GistsGetForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -4129,10 +4129,10 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 			return err
 		}
 		return nil
-	case *GistsGetCommentResNotModified:
+	case *GistsGetCommentNotModified:
 		w.WriteHeader(304)
 		return nil
-	case *GistsGetCommentResForbidden:
+	case *GistsGetCommentForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -4177,7 +4177,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 			return err
 		}
 		return nil
-	case *GistsListResNotModified:
+	case *GistsListNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -4212,7 +4212,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 			return err
 		}
 		return nil
-	case *GistsListCommentsResNotModified:
+	case *GistsListCommentsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsListCommentsApplicationJSONForbidden:
@@ -4258,7 +4258,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 			return err
 		}
 		return nil
-	case *GistsListCommitsResNotModified:
+	case *GistsListCommitsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsListCommitsApplicationJSONForbidden:
@@ -4304,7 +4304,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *GistsListForksResNotModified:
+	case *GistsListForksNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsListForksApplicationJSONForbidden:
@@ -4350,7 +4350,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 			return err
 		}
 		return nil
-	case *GistsListStarredResNotModified:
+	case *GistsListStarredNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsListStarredApplicationJSONUnauthorized:
@@ -4384,10 +4384,10 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 
 func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsStarResNoContent:
+	case *GistsStarNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *GistsStarResNotModified:
+	case *GistsStarNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsStarApplicationJSONForbidden:
@@ -4421,10 +4421,10 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 
 func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsUnstarResNoContent:
+	case *GistsUnstarNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *GistsUnstarResNotModified:
+	case *GistsUnstarNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *GistsUnstarApplicationJSONForbidden:
@@ -4624,7 +4624,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 			return err
 		}
 		return nil
-	case *GitignoreGetAllTemplatesResNotModified:
+	case *GitignoreGetAllTemplatesNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -4647,7 +4647,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 			return err
 		}
 		return nil
-	case *GitignoreGetTemplateResNotModified:
+	case *GitignoreGetTemplateNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -4655,22 +4655,22 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 	}
 }
 
-func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *InteractionsRemoveRestrictionsForRepoResNoContent:
+	case *InteractionsRemoveRestrictionsForRepoNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *InteractionsRemoveRestrictionsForRepoResConflict:
+	case *InteractionsRemoveRestrictionsForRepoConflict:
 		w.WriteHeader(409)
 		return nil
 	default:
@@ -4693,7 +4693,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 			return err
 		}
 		return nil
-	case *InteractionsSetRestrictionsForRepoResConflict:
+	case *InteractionsSetRestrictionsForRepoConflict:
 		w.WriteHeader(409)
 		return nil
 	default:
@@ -4718,7 +4718,7 @@ func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWrite
 
 func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesCheckUserCanBeAssignedResNoContent:
+	case *IssuesCheckUserCanBeAssignedNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -4739,19 +4739,19 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	}
 }
 
-func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesDeleteMilestoneResNoContent:
+	case *IssuesDeleteMilestoneNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -5122,7 +5122,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 
 func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesRemoveAllLabelsResNoContent:
+	case *IssuesRemoveAllLabelsNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -5203,7 +5203,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 
 func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesUnlockResNoContent:
+	case *IssuesUnlockNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *IssuesUnlockApplicationJSONForbidden:
@@ -5280,7 +5280,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 			return err
 		}
 		return nil
-	case *LicensesGetResNotModified:
+	case *LicensesGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *LicensesGetApplicationJSONForbidden:
@@ -5326,7 +5326,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 			return err
 		}
 		return nil
-	case *LicensesGetAllCommonlyUsedResNotModified:
+	case *LicensesGetAllCommonlyUsedNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -5355,7 +5355,7 @@ func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
-	case *MarkdownRenderResNotModified:
+	case *MarkdownRenderNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -5369,7 +5369,7 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.Respo
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
-	case *MarkdownRenderRawResNotModified:
+	case *MarkdownRenderRawNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -5392,7 +5392,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 			return err
 		}
 		return nil
-	case *MetaGetResNotModified:
+	case *MetaGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -5412,7 +5412,7 @@ func encodeMetaGetZenResponse(response string, w http.ResponseWriter, span trace
 	return fmt.Errorf("text/plain encoder not implemented")
 }
 
-func encodeMetaRootResponse(response MetaRootResOK, w http.ResponseWriter, span trace.Span) error {
+func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.GetStream(w)
@@ -5427,17 +5427,17 @@ func encodeMetaRootResponse(response MetaRootResOK, w http.ResponseWriter, span 
 	return nil
 }
 
-func encodeMigrationsCancelImportResponse(response MigrationsCancelImportResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsDeleteArchiveForAuthenticatedUserResNoContent:
+	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *MigrationsDeleteArchiveForAuthenticatedUserResNotModified:
+	case *MigrationsDeleteArchiveForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
@@ -5483,7 +5483,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 
 func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsDeleteArchiveForOrgResNoContent:
+	case *MigrationsDeleteArchiveForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -5506,7 +5506,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 
 func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsDownloadArchiveForOrgResFound:
+	case *MigrationsDownloadArchiveForOrgFound:
 		w.WriteHeader(302)
 		return nil
 	case *BasicError:
@@ -5529,10 +5529,10 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 
 func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsGetArchiveForAuthenticatedUserResFound:
+	case *MigrationsGetArchiveForAuthenticatedUserFound:
 		w.WriteHeader(302)
 		return nil
-	case *MigrationsGetArchiveForAuthenticatedUserResNotModified:
+	case *MigrationsGetArchiveForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
@@ -5666,7 +5666,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 			return err
 		}
 		return nil
-	case *MigrationsGetStatusForAuthenticatedUserResNotModified:
+	case *MigrationsGetStatusForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
@@ -5757,7 +5757,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 			return err
 		}
 		return nil
-	case *MigrationsListForAuthenticatedUserResNotModified:
+	case *MigrationsListForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
@@ -5877,10 +5877,10 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 
 func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsUnlockRepoForAuthenticatedUserResNoContent:
+	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *MigrationsUnlockRepoForAuthenticatedUserResNotModified:
+	case *MigrationsUnlockRepoForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
@@ -5926,7 +5926,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 
 func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsUnlockRepoForOrgResNoContent:
+	case *MigrationsUnlockRepoForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -5964,10 +5964,10 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 
 func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsDeleteAuthorizationResNoContent:
+	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OAuthAuthorizationsDeleteAuthorizationResNotModified:
+	case *OAuthAuthorizationsDeleteAuthorizationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
@@ -6001,10 +6001,10 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 
 func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsDeleteGrantResNoContent:
+	case *OAuthAuthorizationsDeleteGrantNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OAuthAuthorizationsDeleteGrantResNotModified:
+	case *OAuthAuthorizationsDeleteGrantNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
@@ -6051,7 +6051,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 			return err
 		}
 		return nil
-	case *OAuthAuthorizationsGetAuthorizationResNotModified:
+	case *OAuthAuthorizationsGetAuthorizationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
@@ -6098,7 +6098,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 			return err
 		}
 		return nil
-	case *OAuthAuthorizationsGetGrantResNotModified:
+	case *OAuthAuthorizationsGetGrantNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
@@ -6144,7 +6144,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 			return err
 		}
 		return nil
-	case *OAuthAuthorizationsListAuthorizationsResNotModified:
+	case *OAuthAuthorizationsListAuthorizationsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
@@ -6202,7 +6202,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 			return err
 		}
 		return nil
-	case *OAuthAuthorizationsListGrantsResNotModified:
+	case *OAuthAuthorizationsListGrantsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
@@ -6248,7 +6248,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 
 func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsCheckBlockedUserResNoContent:
+	case *OrgsCheckBlockedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -6271,13 +6271,13 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 
 func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsCheckMembershipForUserResNoContent:
+	case *OrgsCheckMembershipForUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OrgsCheckMembershipForUserResFound:
+	case *OrgsCheckMembershipForUserFound:
 		w.WriteHeader(302)
 		return nil
-	case *OrgsCheckMembershipForUserResNotFound:
+	case *OrgsCheckMembershipForUserNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -6287,10 +6287,10 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 
 func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsCheckPublicMembershipForUserResNoContent:
+	case *OrgsCheckPublicMembershipForUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OrgsCheckPublicMembershipForUserResNotFound:
+	case *OrgsCheckPublicMembershipForUserNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -6300,7 +6300,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 
 func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsConvertMemberToOutsideCollaboratorResAccepted:
+	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -6313,10 +6313,10 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 			return err
 		}
 		return nil
-	case *OrgsConvertMemberToOutsideCollaboratorResNoContent:
+	case *OrgsConvertMemberToOutsideCollaboratorNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OrgsConvertMemberToOutsideCollaboratorResForbidden:
+	case *OrgsConvertMemberToOutsideCollaboratorForbidden:
 		w.WriteHeader(403)
 		return nil
 	case *BasicError:
@@ -6339,7 +6339,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 
 func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsDeleteWebhookResNoContent:
+	case *OrgsDeleteWebhookNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -6565,7 +6565,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 			return err
 		}
 		return nil
-	case *OrgsListResNotModified:
+	case *OrgsListNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -6587,7 +6587,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 			return err
 		}
 		return nil
-	case *OrgsListBlockedUsersResUnsupportedMediaType:
+	case *OrgsListBlockedUsersUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -6651,7 +6651,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 			return err
 		}
 		return nil
-	case *OrgsListForAuthenticatedUserResNotModified:
+	case *OrgsListForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
@@ -6869,7 +6869,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 
 func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsPingWebhookResNoContent:
+	case *OrgsPingWebhookNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -6892,7 +6892,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 
 func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsRemoveMemberResNoContent:
+	case *OrgsRemoveMemberNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -6915,7 +6915,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 
 func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsRemoveMembershipForUserResNoContent:
+	case *OrgsRemoveMembershipForUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
@@ -6949,10 +6949,10 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 
 func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsRemoveOutsideCollaboratorResNoContent:
+	case *OrgsRemoveOutsideCollaboratorNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *OrgsRemoveOutsideCollaboratorResUnprocessableEntity:
+	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
 		j := json.GetStream(w)
@@ -6970,14 +6970,14 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	}
 }
 
-func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsRemoveSamlSSOAuthorizationResNoContent:
+	case *OrgsRemoveSamlSSOAuthorizationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -7000,7 +7000,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 
 func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsSetPublicMembershipForAuthenticatedUserResNoContent:
+	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -7021,7 +7021,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	}
 }
 
-func encodeOrgsUnblockUserResponse(response OrgsUnblockUserResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -7043,7 +7043,7 @@ func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.
 
 func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDeletePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageForAuthenticatedUserResNoContent:
+	case *PackagesDeletePackageForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized:
@@ -7089,7 +7089,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 
 func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageForOrgResNoContent:
+	case *PackagesDeletePackageForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForOrgApplicationJSONUnauthorized:
@@ -7135,7 +7135,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 
 func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageForUserResNoContent:
+	case *PackagesDeletePackageForUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForUserApplicationJSONUnauthorized:
@@ -7181,7 +7181,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 
 func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForAuthenticatedUserResNoContent:
+	case *PackagesDeletePackageVersionForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
@@ -7227,7 +7227,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 
 func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForOrgResNoContent:
+	case *PackagesDeletePackageVersionForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized:
@@ -7273,7 +7273,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 
 func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForUserResNoContent:
+	case *PackagesDeletePackageVersionForUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized:
@@ -7682,7 +7682,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 
 func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageForAuthenticatedUserResNoContent:
+	case *PackagesRestorePackageForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized:
@@ -7728,7 +7728,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 
 func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageForOrgResNoContent:
+	case *PackagesRestorePackageForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForOrgApplicationJSONUnauthorized:
@@ -7774,7 +7774,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 
 func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageForUserResNoContent:
+	case *PackagesRestorePackageForUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForUserApplicationJSONUnauthorized:
@@ -7820,7 +7820,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 
 func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForAuthenticatedUserResNoContent:
+	case *PackagesRestorePackageVersionForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
@@ -7866,7 +7866,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 
 func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForOrgResNoContent:
+	case *PackagesRestorePackageVersionForOrgNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized:
@@ -7912,7 +7912,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 
 func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForUserResNoContent:
+	case *PackagesRestorePackageVersionForUserNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized:
@@ -7971,7 +7971,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 			return err
 		}
 		return nil
-	case *ProjectsCreateColumnResNotModified:
+	case *ProjectsCreateColumnNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsCreateColumnApplicationJSONUnauthorized:
@@ -8031,7 +8031,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 			return err
 		}
 		return nil
-	case *ProjectsCreateForAuthenticatedUserResNotModified:
+	case *ProjectsCreateForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
@@ -8058,7 +8058,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 			return err
 		}
 		return nil
-	case *ProjectsCreateForAuthenticatedUserResUnsupportedMediaType:
+	case *ProjectsCreateForAuthenticatedUserUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -8253,10 +8253,10 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 
 func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsDeleteResNoContent:
+	case *ProjectsDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ProjectsDeleteResNotModified:
+	case *ProjectsDeleteNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteApplicationJSONUnauthorized:
@@ -8271,7 +8271,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *ProjectsDeleteResForbidden:
+	case *ProjectsDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -8315,10 +8315,10 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 
 func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsDeleteCardResNoContent:
+	case *ProjectsDeleteCardNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ProjectsDeleteCardResNotModified:
+	case *ProjectsDeleteCardNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteCardApplicationJSONUnauthorized:
@@ -8333,7 +8333,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 			return err
 		}
 		return nil
-	case *ProjectsDeleteCardResForbidden:
+	case *ProjectsDeleteCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -8365,10 +8365,10 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 
 func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsDeleteColumnResNoContent:
+	case *ProjectsDeleteColumnNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ProjectsDeleteColumnResNotModified:
+	case *ProjectsDeleteColumnNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
@@ -8415,7 +8415,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 			return err
 		}
 		return nil
-	case *ProjectsGetResNotModified:
+	case *ProjectsGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsGetApplicationJSONUnauthorized:
@@ -8462,7 +8462,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 			return err
 		}
 		return nil
-	case *ProjectsGetCardResNotModified:
+	case *ProjectsGetCardNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsGetCardApplicationJSONUnauthorized:
@@ -8521,7 +8521,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 			return err
 		}
 		return nil
-	case *ProjectsGetColumnResNotModified:
+	case *ProjectsGetColumnNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsGetColumnApplicationJSONUnauthorized:
@@ -8579,7 +8579,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 			return err
 		}
 		return nil
-	case *ProjectsListCardsResNotModified:
+	case *ProjectsListCardsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsListCardsApplicationJSONUnauthorized:
@@ -8625,7 +8625,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 			return err
 		}
 		return nil
-	case *ProjectsListColumnsResNotModified:
+	case *ProjectsListColumnsNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsListColumnsApplicationJSONUnauthorized:
@@ -8771,7 +8771,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 
 func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsMoveColumnResCreated:
+	case *ProjectsMoveColumnCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		j := json.GetStream(w)
@@ -8784,7 +8784,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 			return err
 		}
 		return nil
-	case *ProjectsMoveColumnResNotModified:
+	case *ProjectsMoveColumnNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsMoveColumnApplicationJSONUnauthorized:
@@ -8844,7 +8844,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *ProjectsUpdateResNotModified:
+	case *ProjectsUpdateNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateApplicationJSONUnauthorized:
@@ -8859,7 +8859,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *ProjectsUpdateResForbidden:
+	case *ProjectsUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -8872,7 +8872,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *ProjectsUpdateResNotFound:
+	case *ProjectsUpdateNotFound:
 		w.WriteHeader(404)
 		return nil
 	case *ProjectsUpdateApplicationJSONGone:
@@ -8920,7 +8920,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 			return err
 		}
 		return nil
-	case *ProjectsUpdateCardResNotModified:
+	case *ProjectsUpdateCardNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateCardApplicationJSONUnauthorized:
@@ -8992,7 +8992,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 			return err
 		}
 		return nil
-	case *ProjectsUpdateColumnResNotModified:
+	case *ProjectsUpdateColumnNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
@@ -9026,10 +9026,10 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 
 func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullsCheckIfMergedResNoContent:
+	case *PullsCheckIfMergedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *PullsCheckIfMergedResNotFound:
+	case *PullsCheckIfMergedNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -9164,7 +9164,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 
 func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullsDeleteReviewCommentResNoContent:
+	case *PullsDeleteReviewCommentNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -9246,7 +9246,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 			return err
 		}
 		return nil
-	case *PullsGetResNotModified:
+	case *PullsGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *PullsGetApplicationJSONNotFound:
@@ -9599,7 +9599,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 			return err
 		}
 		return nil
-	case *RateLimitGetResNotModified:
+	case *RateLimitGetNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -9712,42 +9712,42 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	return nil
 }
 
-func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsDeleteLegacyResNoContent:
+	case *ReactionsDeleteLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ReactionsDeleteLegacyResNotModified:
+	case *ReactionsDeleteLegacyNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
@@ -9786,7 +9786,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 			return err
 		}
 		return nil
-	case *ReactionsDeleteLegacyResUnsupportedMediaType:
+	case *ReactionsDeleteLegacyUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -9831,7 +9831,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 			return err
 		}
 		return nil
-	case *ReactionsListForCommitCommentResUnsupportedMediaType:
+	case *ReactionsListForCommitCommentUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -9887,7 +9887,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 			return err
 		}
 		return nil
-	case *ReactionsListForIssueResUnsupportedMediaType:
+	case *ReactionsListForIssueUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -9932,7 +9932,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 			return err
 		}
 		return nil
-	case *ReactionsListForIssueCommentResUnsupportedMediaType:
+	case *ReactionsListForIssueCommentUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -9977,7 +9977,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 			return err
 		}
 		return nil
-	case *ReactionsListForPullRequestReviewCommentResUnsupportedMediaType:
+	case *ReactionsListForPullRequestReviewCommentUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -10085,10 +10085,10 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w h
 
 func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposAcceptInvitationResNoContent:
+	case *ReposAcceptInvitationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ReposAcceptInvitationResNotModified:
+	case *ReposAcceptInvitationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ReposAcceptInvitationApplicationJSONForbidden:
@@ -10134,10 +10134,10 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 
 func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposCheckCollaboratorResNoContent:
+	case *ReposCheckCollaboratorNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ReposCheckCollaboratorResNotFound:
+	case *ReposCheckCollaboratorNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -10147,10 +10147,10 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w 
 
 func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposCheckVulnerabilityAlertsResNoContent:
+	case *ReposCheckVulnerabilityAlertsNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ReposCheckVulnerabilityAlertsResNotFound:
+	case *ReposCheckVulnerabilityAlertsNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -10267,10 +10267,10 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 
 func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeclineInvitationResNoContent:
+	case *ReposDeclineInvitationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ReposDeclineInvitationResNotModified:
+	case *ReposDeclineInvitationNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ReposDeclineInvitationApplicationJSONForbidden:
@@ -10316,7 +10316,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 
 func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteResNoContent:
+	case *ReposDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *ReposDeleteApplicationJSONTemporaryRedirect:
@@ -10331,7 +10331,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 			return err
 		}
 		return nil
-	case *ReposDeleteResForbidden:
+	case *ReposDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -10361,14 +10361,14 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteAdminBranchProtectionResNoContent:
+	case *ReposDeleteAdminBranchProtectionNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10389,14 +10389,14 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	}
 }
 
-func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteAutolinkResNoContent:
+	case *ReposDeleteAutolinkNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10419,7 +10419,7 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 
 func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteBranchProtectionResNoContent:
+	case *ReposDeleteBranchProtectionNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10442,7 +10442,7 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 
 func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteCommitCommentResNoContent:
+	case *ReposDeleteCommitCommentNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10465,7 +10465,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 
 func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteCommitSignatureProtectionResNoContent:
+	case *ReposDeleteCommitSignatureProtectionNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10486,14 +10486,14 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	}
 }
 
-func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteDeploymentResNoContent:
+	case *ReposDeleteDeploymentNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10527,14 +10527,14 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	}
 }
 
-func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeletePullRequestReviewProtectionResNoContent:
+	case *ReposDeletePullRequestReviewProtectionNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10555,19 +10555,19 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	}
 }
 
-func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposDeleteWebhookResNoContent:
+	case *ReposDeleteWebhookNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -10588,39 +10588,39 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	}
 }
 
-func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveResFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	return nil
 }
 
-func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveResFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	return nil
 }
 
-func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
 func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposEnableLfsForRepoResAccepted:
+	case *ReposEnableLfsForRepoAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -10633,7 +10633,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 			return err
 		}
 		return nil
-	case *ReposEnableLfsForRepoResForbidden:
+	case *ReposEnableLfsForRepoForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -10641,7 +10641,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 	}
 }
 
-func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -10810,7 +10810,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 			return err
 		}
 		return nil
-	case *ReposGetAllTopicsResUnsupportedMediaType:
+	case *ReposGetAllTopicsUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -10932,7 +10932,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *ReposGetBranchResUnsupportedMediaType:
+	case *ReposGetBranchUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -11030,7 +11030,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 			return err
 		}
 		return nil
-	case *ReposGetCodeFrequencyStatsResAccepted:
+	case *ReposGetCodeFrequencyStatsAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -11043,7 +11043,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 			return err
 		}
 		return nil
-	case *ReposGetCodeFrequencyStatsResNoContent:
+	case *ReposGetCodeFrequencyStatsNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -11131,7 +11131,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 			return err
 		}
 		return nil
-	case *ReposGetCommitActivityStatsResAccepted:
+	case *ReposGetCommitActivityStatsAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -11144,7 +11144,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 			return err
 		}
 		return nil
-	case *ReposGetCommitActivityStatsResNoContent:
+	case *ReposGetCommitActivityStatsNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -11247,7 +11247,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 			return err
 		}
 		return nil
-	case *ReposGetContributorsStatsResAccepted:
+	case *ReposGetContributorsStatsAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		j := json.GetStream(w)
@@ -11260,7 +11260,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 			return err
 		}
 		return nil
-	case *ReposGetContributorsStatsResNoContent:
+	case *ReposGetContributorsStatsNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -11329,7 +11329,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 			return err
 		}
 		return nil
-	case *ReposGetDeploymentStatusResUnsupportedMediaType:
+	case *ReposGetDeploymentStatusUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -11453,7 +11453,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 			return err
 		}
 		return nil
-	case *ReposGetPagesHealthCheckResBadRequest:
+	case *ReposGetPagesHealthCheckBadRequest:
 		w.WriteHeader(400)
 		return nil
 	case *BasicError:
@@ -11469,7 +11469,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 			return err
 		}
 		return nil
-	case *ReposGetPagesHealthCheckResUnprocessableEntity:
+	case *ReposGetPagesHealthCheckUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
 	default:
@@ -11539,7 +11539,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 			return err
 		}
 		return nil
-	case *ReposGetPunchCardStatsResNoContent:
+	case *ReposGetPunchCardStatsNoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -11595,7 +11595,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 			return err
 		}
 		return nil
-	case *ReposGetReleaseAssetResFound:
+	case *ReposGetReleaseAssetFound:
 		w.WriteHeader(302)
 		return nil
 	case *BasicError:
@@ -11611,7 +11611,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 			return err
 		}
 		return nil
-	case *ReposGetReleaseAssetResUnsupportedMediaType:
+	case *ReposGetReleaseAssetUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -12151,7 +12151,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 			return err
 		}
 		return nil
-	case *ReposListContributorsResNoContent:
+	case *ReposListContributorsNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *ReposListContributorsApplicationJSONForbidden:
@@ -12353,7 +12353,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 			return err
 		}
 		return nil
-	case *ReposListInvitationsForAuthenticatedUserResNotModified:
+	case *ReposListInvitationsForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
@@ -12601,10 +12601,10 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 			return err
 		}
 		return nil
-	case *ReposMergeUpstreamResConflict:
+	case *ReposMergeUpstreamConflict:
 		w.WriteHeader(409)
 		return nil
-	case *ReposMergeUpstreamResUnprocessableEntity:
+	case *ReposMergeUpstreamUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
 	default:
@@ -12614,7 +12614,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 
 func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposPingWebhookResNoContent:
+	case *ReposPingWebhookNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -12635,12 +12635,12 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	}
 }
 
-func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -12673,7 +12673,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 			return err
 		}
 		return nil
-	case *ReposReplaceAllTopicsResUnsupportedMediaType:
+	case *ReposReplaceAllTopicsUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -12736,7 +12736,7 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 
 func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposTestPushWebhookResNoContent:
+	case *ReposTestPushWebhookNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -12957,10 +12957,10 @@ func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.Respons
 
 func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ScimDeleteUserFromOrgResNoContent:
+	case *ScimDeleteUserFromOrgNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *ScimDeleteUserFromOrgResNotModified:
+	case *ScimDeleteUserFromOrgNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
@@ -13002,7 +13002,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 
 func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *SearchCommitsResOK:
+	case *SearchCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -13015,10 +13015,10 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 			return err
 		}
 		return nil
-	case *SearchCommitsResNotModified:
+	case *SearchCommitsNotModified:
 		w.WriteHeader(304)
 		return nil
-	case *SearchCommitsResUnsupportedMediaType:
+	case *SearchCommitsUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -13038,7 +13038,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 
 func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *SearchTopicsResOK:
+	case *SearchTopicsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -13051,10 +13051,10 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 			return err
 		}
 		return nil
-	case *SearchTopicsResNotModified:
+	case *SearchTopicsNotModified:
 		w.WriteHeader(304)
 		return nil
-	case *SearchTopicsResUnsupportedMediaType:
+	case *SearchTopicsUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -13087,10 +13087,10 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 			return err
 		}
 		return nil
-	case *SecretScanningGetAlertResNotFound:
+	case *SecretScanningGetAlertNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *SecretScanningGetAlertResServiceUnavailable:
+	case *SecretScanningGetAlertServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -13135,7 +13135,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 			return err
 		}
 		return nil
-	case *SecretScanningListAlertsForOrgResServiceUnavailable:
+	case *SecretScanningListAlertsForOrgServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -13167,10 +13167,10 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 			return err
 		}
 		return nil
-	case *SecretScanningListAlertsForRepoResNotFound:
+	case *SecretScanningListAlertsForRepoNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *SecretScanningListAlertsForRepoResServiceUnavailable:
+	case *SecretScanningListAlertsForRepoServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -13203,13 +13203,13 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 			return err
 		}
 		return nil
-	case *SecretScanningUpdateAlertResNotFound:
+	case *SecretScanningUpdateAlertNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *SecretScanningUpdateAlertResUnprocessableEntity:
+	case *SecretScanningUpdateAlertUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
-	case *SecretScanningUpdateAlertResServiceUnavailable:
+	case *SecretScanningUpdateAlertServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		j := json.GetStream(w)
@@ -13229,7 +13229,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 
 func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsAddMemberLegacyResNoContent:
+	case *TeamsAddMemberLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *BasicError:
@@ -13245,10 +13245,10 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 			return err
 		}
 		return nil
-	case *TeamsAddMemberLegacyResNotFound:
+	case *TeamsAddMemberLegacyNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *TeamsAddMemberLegacyResUnprocessableEntity:
+	case *TeamsAddMemberLegacyUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
 	default:
@@ -13271,10 +13271,10 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 			return err
 		}
 		return nil
-	case *TeamsAddOrUpdateMembershipForUserInOrgResForbidden:
+	case *TeamsAddOrUpdateMembershipForUserInOrgForbidden:
 		w.WriteHeader(403)
 		return nil
-	case *TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity:
+	case *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
 	default:
@@ -13297,7 +13297,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 			return err
 		}
 		return nil
-	case *TeamsAddOrUpdateMembershipForUserLegacyResForbidden:
+	case *TeamsAddOrUpdateMembershipForUserLegacyForbidden:
 		w.WriteHeader(403)
 		return nil
 	case *BasicError:
@@ -13313,7 +13313,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 			return err
 		}
 		return nil
-	case *TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity:
+	case *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
 	default:
@@ -13323,10 +13323,10 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 
 func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsAddOrUpdateProjectPermissionsInOrgResNoContent:
+	case *TeamsAddOrUpdateProjectPermissionsInOrgNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsAddOrUpdateProjectPermissionsInOrgResForbidden:
+	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		j := json.GetStream(w)
@@ -13344,7 +13344,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	}
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -13364,7 +13364,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 			return err
 		}
 		return nil
-	case *TeamsCheckPermissionsForProjectInOrgResNotFound:
+	case *TeamsCheckPermissionsForProjectInOrgNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13387,7 +13387,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 			return err
 		}
 		return nil
-	case *TeamsCheckPermissionsForProjectLegacyResNotFound:
+	case *TeamsCheckPermissionsForProjectLegacyNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13410,10 +13410,10 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 			return err
 		}
 		return nil
-	case *TeamsCheckPermissionsForRepoInOrgResNoContent:
+	case *TeamsCheckPermissionsForRepoInOrgNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsCheckPermissionsForRepoInOrgResNotFound:
+	case *TeamsCheckPermissionsForRepoInOrgNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13436,10 +13436,10 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 			return err
 		}
 		return nil
-	case *TeamsCheckPermissionsForRepoLegacyResNoContent:
+	case *TeamsCheckPermissionsForRepoLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsCheckPermissionsForRepoLegacyResNotFound:
+	case *TeamsCheckPermissionsForRepoLegacyNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13522,27 +13522,27 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -13675,10 +13675,10 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 
 func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsGetMemberLegacyResNoContent:
+	case *TeamsGetMemberLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsGetMemberLegacyResNotFound:
+	case *TeamsGetMemberLegacyNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13701,7 +13701,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 			return err
 		}
 		return nil
-	case *TeamsGetMembershipForUserInOrgResNotFound:
+	case *TeamsGetMembershipForUserInOrgNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -13898,7 +13898,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 			return err
 		}
 		return nil
-	case *TeamsListForAuthenticatedUserResNotModified:
+	case *TeamsListForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
@@ -14212,10 +14212,10 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 
 func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsRemoveMemberLegacyResNoContent:
+	case *TeamsRemoveMemberLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsRemoveMemberLegacyResNotFound:
+	case *TeamsRemoveMemberLegacyNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -14225,10 +14225,10 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, 
 
 func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsRemoveMembershipForUserInOrgResNoContent:
+	case *TeamsRemoveMembershipForUserInOrgNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsRemoveMembershipForUserInOrgResForbidden:
+	case *TeamsRemoveMembershipForUserInOrgForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -14238,10 +14238,10 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 
 func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsRemoveMembershipForUserLegacyResNoContent:
+	case *TeamsRemoveMembershipForUserLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *TeamsRemoveMembershipForUserLegacyResForbidden:
+	case *TeamsRemoveMembershipForUserLegacyForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -14249,17 +14249,17 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 	}
 }
 
-func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyResNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
@@ -14341,10 +14341,10 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, sp
 
 func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersCheckBlockedResNoContent:
+	case *UsersCheckBlockedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersCheckBlockedResNotModified:
+	case *UsersCheckBlockedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersCheckBlockedApplicationJSONUnauthorized:
@@ -14390,10 +14390,10 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 
 func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersCheckFollowingForUserResNoContent:
+	case *UsersCheckFollowingForUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersCheckFollowingForUserResNotFound:
+	case *UsersCheckFollowingForUserNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -14403,10 +14403,10 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 
 func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersCheckPersonIsFollowedByAuthenticatedResNoContent:
+	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersCheckPersonIsFollowedByAuthenticatedResNotModified:
+	case *UsersCheckPersonIsFollowedByAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
@@ -14452,10 +14452,10 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 
 func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersDeletePublicSSHKeyForAuthenticatedResNoContent:
+	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersDeletePublicSSHKeyForAuthenticatedResNotModified:
+	case *UsersDeletePublicSSHKeyForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
@@ -14501,10 +14501,10 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 
 func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersFollowResNoContent:
+	case *UsersFollowNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersFollowResNotModified:
+	case *UsersFollowNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersFollowApplicationJSONUnauthorized:
@@ -14563,7 +14563,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 			return err
 		}
 		return nil
-	case *UsersGetGpgKeyForAuthenticatedResNotModified:
+	case *UsersGetGpgKeyForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
@@ -14622,7 +14622,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 			return err
 		}
 		return nil
-	case *UsersGetPublicSSHKeyForAuthenticatedResNotModified:
+	case *UsersGetPublicSSHKeyForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
@@ -14680,7 +14680,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 			return err
 		}
 		return nil
-	case *UsersListResNotModified:
+	case *UsersListNotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -14702,7 +14702,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *UsersListBlockedByAuthenticatedResNotModified:
+	case *UsersListBlockedByAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
@@ -14741,7 +14741,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *UsersListBlockedByAuthenticatedResUnsupportedMediaType:
+	case *UsersListBlockedByAuthenticatedUnsupportedMediaType:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		j := json.GetStream(w)
@@ -14773,7 +14773,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 			return err
 		}
 		return nil
-	case *UsersListEmailsForAuthenticatedResNotModified:
+	case *UsersListEmailsForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
@@ -14831,7 +14831,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 			return err
 		}
 		return nil
-	case *UsersListFollowedByAuthenticatedResNotModified:
+	case *UsersListFollowedByAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
@@ -14877,7 +14877,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 			return err
 		}
 		return nil
-	case *UsersListFollowersForAuthenticatedUserResNotModified:
+	case *UsersListFollowersForAuthenticatedUserNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
@@ -14967,7 +14967,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 			return err
 		}
 		return nil
-	case *UsersListGpgKeysForAuthenticatedResNotModified:
+	case *UsersListGpgKeysForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
@@ -15047,7 +15047,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 			return err
 		}
 		return nil
-	case *UsersListPublicEmailsForAuthenticatedResNotModified:
+	case *UsersListPublicEmailsForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
@@ -15127,7 +15127,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 			return err
 		}
 		return nil
-	case *UsersListPublicSSHKeysForAuthenticatedResNotModified:
+	case *UsersListPublicSSHKeysForAuthenticatedNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
@@ -15173,10 +15173,10 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 
 func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersUnblockResNoContent:
+	case *UsersUnblockNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersUnblockResNotModified:
+	case *UsersUnblockNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersUnblockApplicationJSONUnauthorized:
@@ -15222,10 +15222,10 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 
 func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersUnfollowResNoContent:
+	case *UsersUnfollowNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *UsersUnfollowResNotModified:
+	case *UsersUnfollowNotModified:
 		w.WriteHeader(304)
 		return nil
 	case *UsersUnfollowApplicationJSONUnauthorized:

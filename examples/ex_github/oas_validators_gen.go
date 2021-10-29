@@ -168,7 +168,7 @@ func (s ActionsEnterprisePermissions) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListArtifactsForRepoResOK) Validate() error {
+func (s ActionsListArtifactsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -187,7 +187,7 @@ func (s ActionsListArtifactsForRepoResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListEnvironmentSecretsResOK) Validate() error {
+func (s ActionsListEnvironmentSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -206,7 +206,7 @@ func (s ActionsListEnvironmentSecretsResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListJobsForWorkflowRunResOK) Validate() error {
+func (s ActionsListJobsForWorkflowRunOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Jobs == nil {
@@ -241,7 +241,7 @@ func (s ActionsListJobsForWorkflowRunResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListOrgSecretsResOK) Validate() error {
+func (s ActionsListOrgSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -276,7 +276,7 @@ func (s ActionsListOrgSecretsResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) Validate() error {
+func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -295,7 +295,7 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) Validate() error
 	}
 	return nil
 }
-func (s ActionsListRepoSecretsResOK) Validate() error {
+func (s ActionsListRepoSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -314,7 +314,7 @@ func (s ActionsListRepoSecretsResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoWorkflowsResOK) Validate() error {
+func (s ActionsListRepoWorkflowsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Workflows == nil {
@@ -349,7 +349,7 @@ func (s ActionsListRepoWorkflowsResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelectedReposForOrgSecretResOK) Validate() error {
+func (s ActionsListSelectedReposForOrgSecretOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -368,7 +368,7 @@ func (s ActionsListSelectedReposForOrgSecretResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) Validate() error {
+func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -387,7 +387,7 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) Va
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnerGroupsForOrgResOK) Validate() error {
+func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RunnerGroups == nil {
@@ -406,7 +406,7 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForOrgResOK) Validate() error {
+func (s ActionsListSelfHostedRunnersForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -441,7 +441,7 @@ func (s ActionsListSelfHostedRunnersForOrgResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForRepoResOK) Validate() error {
+func (s ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -476,7 +476,7 @@ func (s ActionsListSelfHostedRunnersForRepoResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersInGroupForOrgResOK) Validate() error {
+func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -511,7 +511,7 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunArtifactsResOK) Validate() error {
+func (s ActionsListWorkflowRunArtifactsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -530,7 +530,7 @@ func (s ActionsListWorkflowRunArtifactsResOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunsForRepoResOK) Validate() error {
+func (s ActionsListWorkflowRunsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.WorkflowRuns == nil {
@@ -1135,7 +1135,7 @@ func (s AppsCreateInstallationAccessTokenReq) Validate() error {
 func (s AppsListAccountsForPlanStubbedOKApplicationJSON) Validate() error {
 	return nil
 }
-func (s AppsListInstallationReposForAuthenticatedUserResOK) Validate() error {
+func (s AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -1160,7 +1160,7 @@ func (s AppsListPlansOKApplicationJSON) Validate() error {
 func (s AppsListPlansStubbedOKApplicationJSON) Validate() error {
 	return nil
 }
-func (s AppsListReposAccessibleToInstallationResOK) Validate() error {
+func (s AppsListReposAccessibleToInstallationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -1457,7 +1457,7 @@ func (s ChecksCreateSuiteApplicationJSONCreated) Validate() error {
 func (s ChecksCreateSuiteApplicationJSONOK) Validate() error {
 	return nil
 }
-func (s ChecksListForRefResOK) Validate() error {
+func (s ChecksListForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -1492,7 +1492,7 @@ func (s ChecksListForRefResOK) Validate() error {
 	}
 	return nil
 }
-func (s ChecksListForSuiteResOK) Validate() error {
+func (s ChecksListForSuiteOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -1527,7 +1527,7 @@ func (s ChecksListForSuiteResOK) Validate() error {
 	}
 	return nil
 }
-func (s ChecksListSuitesForRefResOK) Validate() error {
+func (s ChecksListSuitesForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckSuites == nil {
@@ -2271,7 +2271,7 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Validate() e
 	}
 	return nil
 }
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) Validate() error {
+func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Organizations == nil {
@@ -2290,7 +2290,7 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) Va
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK) Validate() error {
+func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Organizations == nil {
@@ -2309,7 +2309,7 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) Validate() error {
+func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RunnerGroups == nil {
@@ -2328,7 +2328,7 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) Validate() 
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) Validate() error {
+func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -2360,7 +2360,7 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) Validate() error
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK) Validate() error {
+func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -6001,7 +6001,7 @@ func (s ScimUserListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s SearchCodeResOK) Validate() error {
+func (s SearchCodeOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6036,7 +6036,7 @@ func (s SearchCodeResOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchCommitsResOK) Validate() error {
+func (s SearchCommitsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6071,7 +6071,7 @@ func (s SearchCommitsResOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchIssuesAndPullRequestsResOK) Validate() error {
+func (s SearchIssuesAndPullRequestsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6106,7 +6106,7 @@ func (s SearchIssuesAndPullRequestsResOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchLabelsResOK) Validate() error {
+func (s SearchLabelsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6141,7 +6141,7 @@ func (s SearchLabelsResOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchReposResOK) Validate() error {
+func (s SearchReposOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6179,7 +6179,7 @@ func (s SearchReposResOK) Validate() error {
 func (s SearchResultTextMatches) Validate() error {
 	return nil
 }
-func (s SearchTopicsResOK) Validate() error {
+func (s SearchTopicsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6214,7 +6214,7 @@ func (s SearchTopicsResOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchUsersResOK) Validate() error {
+func (s SearchUsersOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {

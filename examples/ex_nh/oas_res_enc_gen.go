@@ -75,7 +75,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 			return err
 		}
 		return nil
-	case *GetBookResForbidden:
+	case *GetBookForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -89,7 +89,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
-	case *GetPageCoverImageResForbidden:
+	case *GetPageCoverImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -103,7 +103,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
-	case *GetPageImageResForbidden:
+	case *GetPageImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -117,7 +117,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
-	case *GetPageThumbnailImageResForbidden:
+	case *GetPageThumbnailImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -139,7 +139,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 			return err
 		}
 		return nil
-	case *SearchResForbidden:
+	case *SearchForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
@@ -161,7 +161,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 			return err
 		}
 		return nil
-	case *SearchByTagIDResForbidden:
+	case *SearchByTagIDForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:

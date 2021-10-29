@@ -63,15 +63,15 @@ var (
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 	// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg implements actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
-	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, error)
+	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
 	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error)
 	// ActionsAddSelfHostedRunnerToGroupForOrg implements actions/add-self-hosted-runner-to-group-for-org operation.
-	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (ActionsAddSelfHostedRunnerToGroupForOrgResNoContent, error)
+	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (ActionsAddSelfHostedRunnerToGroupForOrgNoContent, error)
 	// ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
 	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error)
 	// ActionsCancelWorkflowRun implements actions/cancel-workflow-run operation.
-	ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (ActionsCancelWorkflowRunResAccepted, error)
+	ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (ActionsCancelWorkflowRunAccepted, error)
 	// ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
 	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error)
 	// ActionsCreateOrUpdateOrgSecret implements actions/create-or-update-org-secret operation.
@@ -89,33 +89,33 @@ type Server interface {
 	// ActionsCreateSelfHostedRunnerGroupForOrg implements actions/create-self-hosted-runner-group-for-org operation.
 	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsDeleteArtifact implements actions/delete-artifact operation.
-	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (ActionsDeleteArtifactResNoContent, error)
+	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (ActionsDeleteArtifactNoContent, error)
 	// ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
-	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (ActionsDeleteEnvironmentSecretResNoContent, error)
+	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (ActionsDeleteEnvironmentSecretNoContent, error)
 	// ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
-	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (ActionsDeleteOrgSecretResNoContent, error)
+	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (ActionsDeleteOrgSecretNoContent, error)
 	// ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
-	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (ActionsDeleteRepoSecretResNoContent, error)
+	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (ActionsDeleteRepoSecretNoContent, error)
 	// ActionsDeleteSelfHostedRunnerFromOrg implements actions/delete-self-hosted-runner-from-org operation.
-	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (ActionsDeleteSelfHostedRunnerFromOrgResNoContent, error)
+	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (ActionsDeleteSelfHostedRunnerFromOrgNoContent, error)
 	// ActionsDeleteSelfHostedRunnerFromRepo implements actions/delete-self-hosted-runner-from-repo operation.
-	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (ActionsDeleteSelfHostedRunnerFromRepoResNoContent, error)
+	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (ActionsDeleteSelfHostedRunnerFromRepoNoContent, error)
 	// ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
-	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent, error)
+	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, error)
 	// ActionsDeleteWorkflowRun implements actions/delete-workflow-run operation.
-	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (ActionsDeleteWorkflowRunResNoContent, error)
+	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (ActionsDeleteWorkflowRunNoContent, error)
 	// ActionsDeleteWorkflowRunLogs implements actions/delete-workflow-run-logs operation.
-	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (ActionsDeleteWorkflowRunLogsResNoContent, error)
+	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (ActionsDeleteWorkflowRunLogsNoContent, error)
 	// ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
-	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent, error)
+	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, error)
 	// ActionsDownloadArtifact implements actions/download-artifact operation.
-	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (ActionsDownloadArtifactResFound, error)
+	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (ActionsDownloadArtifactFound, error)
 	// ActionsDownloadJobLogsForWorkflowRun implements actions/download-job-logs-for-workflow-run operation.
-	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (ActionsDownloadJobLogsForWorkflowRunResFound, error)
+	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (ActionsDownloadJobLogsForWorkflowRunFound, error)
 	// ActionsDownloadWorkflowRunLogs implements actions/download-workflow-run-logs operation.
-	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (ActionsDownloadWorkflowRunLogsResFound, error)
+	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (ActionsDownloadWorkflowRunLogsFound, error)
 	// ActionsEnableSelectedRepositoryGithubActionsOrganization implements actions/enable-selected-repository-github-actions-organization operation.
-	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent, error)
+	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, error)
 	// ActionsGetAllowedActionsOrganization implements actions/get-allowed-actions-organization operation.
 	ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (SelectedActions, error)
 	// ActionsGetAllowedActionsRepository implements actions/get-allowed-actions-repository operation.
@@ -153,71 +153,71 @@ type Server interface {
 	// ActionsGetWorkflowRunUsage implements actions/get-workflow-run-usage operation.
 	ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (WorkflowRunUsage, error)
 	// ActionsListArtifactsForRepo implements actions/list-artifacts-for-repo operation.
-	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepoResOK, error)
+	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepoOK, error)
 	// ActionsListEnvironmentSecrets implements actions/list-environment-secrets operation.
-	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecretsResOK, error)
+	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecretsOK, error)
 	// ActionsListJobsForWorkflowRun implements actions/list-jobs-for-workflow-run operation.
-	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (ActionsListJobsForWorkflowRunResOK, error)
+	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (ActionsListJobsForWorkflowRunOK, error)
 	// ActionsListOrgSecrets implements actions/list-org-secrets operation.
-	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (ActionsListOrgSecretsResOK, error)
+	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (ActionsListOrgSecretsOK, error)
 	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg implements actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
-	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK, error)
+	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error)
 	// ActionsListRepoSecrets implements actions/list-repo-secrets operation.
-	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (ActionsListRepoSecretsResOK, error)
+	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (ActionsListRepoSecretsOK, error)
 	// ActionsListRepoWorkflows implements actions/list-repo-workflows operation.
-	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflowsResOK, error)
+	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflowsOK, error)
 	// ActionsListRunnerApplicationsForOrg implements actions/list-runner-applications-for-org operation.
 	ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error)
 	// ActionsListRunnerApplicationsForRepo implements actions/list-runner-applications-for-repo operation.
 	ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error)
 	// ActionsListSelectedReposForOrgSecret implements actions/list-selected-repos-for-org-secret operation.
-	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (ActionsListSelectedReposForOrgSecretResOK, error)
+	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (ActionsListSelectedReposForOrgSecretOK, error)
 	// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization implements actions/list-selected-repositories-enabled-github-actions-organization operation.
-	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK, error)
+	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error)
 	// ActionsListSelfHostedRunnerGroupsForOrg implements actions/list-self-hosted-runner-groups-for-org operation.
-	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (ActionsListSelfHostedRunnerGroupsForOrgResOK, error)
+	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (ActionsListSelfHostedRunnerGroupsForOrgOK, error)
 	// ActionsListSelfHostedRunnersForOrg implements actions/list-self-hosted-runners-for-org operation.
-	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (ActionsListSelfHostedRunnersForOrgResOK, error)
+	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (ActionsListSelfHostedRunnersForOrgOK, error)
 	// ActionsListSelfHostedRunnersForRepo implements actions/list-self-hosted-runners-for-repo operation.
-	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (ActionsListSelfHostedRunnersForRepoResOK, error)
+	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (ActionsListSelfHostedRunnersForRepoOK, error)
 	// ActionsListSelfHostedRunnersInGroupForOrg implements actions/list-self-hosted-runners-in-group-for-org operation.
-	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrgResOK, error)
+	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrgOK, error)
 	// ActionsListWorkflowRunArtifacts implements actions/list-workflow-run-artifacts operation.
-	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifactsResOK, error)
+	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifactsOK, error)
 	// ActionsListWorkflowRunsForRepo implements actions/list-workflow-runs-for-repo operation.
-	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (ActionsListWorkflowRunsForRepoResOK, error)
+	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (ActionsListWorkflowRunsForRepoOK, error)
 	// ActionsReRunWorkflow implements actions/re-run-workflow operation.
-	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (ActionsReRunWorkflowResCreated, error)
+	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (ActionsReRunWorkflowCreated, error)
 	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
-	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, error)
+	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
 	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error)
 	// ActionsRemoveSelfHostedRunnerFromGroupForOrg implements actions/remove-self-hosted-runner-from-group-for-org operation.
-	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent, error)
+	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, error)
 	// ActionsRetryWorkflow implements actions/retry-workflow operation.
-	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (ActionsRetryWorkflowResCreated, error)
+	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (ActionsRetryWorkflowCreated, error)
 	// ActionsSetAllowedActionsOrganization implements actions/set-allowed-actions-organization operation.
-	ActionsSetAllowedActionsOrganization(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationResNoContent, error)
+	ActionsSetAllowedActionsOrganization(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationNoContent, error)
 	// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
-	ActionsSetAllowedActionsRepository(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryResNoContent, error)
+	ActionsSetAllowedActionsRepository(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryNoContent, error)
 	// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
-	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganizationResNoContent, error)
+	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganizationNoContent, error)
 	// ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
-	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepositoryResNoContent, error)
+	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepositoryNoContent, error)
 	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
-	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, error)
+	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
-	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecretResNoContent, error)
+	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecretNoContent, error)
 	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
-	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, error)
+	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, error)
 	// ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
-	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, error)
+	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrgNoContent, error)
 	// ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
 	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActivityCheckRepoIsStarredByAuthenticatedUser implements activity/check-repo-is-starred-by-authenticated-user operation.
 	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
 	// ActivityDeleteRepoSubscription implements activity/delete-repo-subscription operation.
-	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (ActivityDeleteRepoSubscriptionResNoContent, error)
+	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (ActivityDeleteRepoSubscriptionNoContent, error)
 	// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
 	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error)
 	// ActivityGetFeeds implements activity/get-feeds operation.
@@ -301,7 +301,7 @@ type Server interface {
 	// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
 	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
 	// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
-	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessTokenResNoContent, error)
+	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessTokenNoContent, error)
 	// AppsSuspendInstallation implements apps/suspend-installation operation.
 	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error)
 	// AppsUnsuspendInstallation implements apps/unsuspend-installation operation.
@@ -337,13 +337,13 @@ type Server interface {
 	// ChecksListAnnotations implements checks/list-annotations operation.
 	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) ([]CheckAnnotation, error)
 	// ChecksListForRef implements checks/list-for-ref operation.
-	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (ChecksListForRefResOK, error)
+	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (ChecksListForRefOK, error)
 	// ChecksListForSuite implements checks/list-for-suite operation.
-	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (ChecksListForSuiteResOK, error)
+	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (ChecksListForSuiteOK, error)
 	// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
-	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRefResOK, error)
+	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRefOK, error)
 	// ChecksRerequestSuite implements checks/rerequest-suite operation.
-	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (ChecksRerequestSuiteResCreated, error)
+	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (ChecksRerequestSuiteCreated, error)
 	// ChecksSetSuitesPreferences implements checks/set-suites-preferences operation.
 	ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (CheckSuitePreference, error)
 	// CodeScanningDeleteAnalysis implements code-scanning/delete-analysis operation.
@@ -371,9 +371,9 @@ type Server interface {
 	// EmojisGet implements emojis/get operation.
 	EmojisGet(ctx context.Context) (EmojisGetRes, error)
 	// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
-	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, error)
+	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
-	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent, error)
+	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminCreateRegistrationTokenForEnterprise implements enterprise-admin/create-registration-token-for-enterprise operation.
 	EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (AuthenticationToken, error)
 	// EnterpriseAdminCreateRemoveTokenForEnterprise implements enterprise-admin/create-remove-token-for-enterprise operation.
@@ -381,17 +381,17 @@ type Server interface {
 	// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminDeleteScimGroupFromEnterprise implements enterprise-admin/delete-scim-group-from-enterprise operation.
-	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent, error)
+	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise implements enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
-	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent, error)
+	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
-	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent, error)
+	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
-	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (EnterpriseAdminDeleteUserFromEnterpriseResNoContent, error)
+	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (EnterpriseAdminDeleteUserFromEnterpriseNoContent, error)
 	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
-	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent, error)
+	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
-	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent, error)
+	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminGetAllowedActionsEnterprise implements enterprise-admin/get-allowed-actions-enterprise operation.
 	EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (SelectedActions, error)
 	// EnterpriseAdminGetAuditLog implements enterprise-admin/get-audit-log operation.
@@ -407,7 +407,7 @@ type Server interface {
 	// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise implements enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 	EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
-	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK, error)
+	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error)
 	// EnterpriseAdminListProvisionedGroupsEnterprise implements enterprise-admin/list-provisioned-groups-enterprise operation.
 	EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (ScimGroupListEnterprise, error)
 	// EnterpriseAdminListProvisionedIdentitiesEnterprise implements enterprise-admin/list-provisioned-identities-enterprise operation.
@@ -415,35 +415,35 @@ type Server interface {
 	// EnterpriseAdminListRunnerApplicationsForEnterprise implements enterprise-admin/list-runner-applications-for-enterprise operation.
 	EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error)
 	// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
-	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK, error)
+	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise implements enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
-	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK, error)
+	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnersForEnterprise implements enterprise-admin/list-self-hosted-runners-for-enterprise operation.
-	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK, error)
+	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
-	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK, error)
+	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
 	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseUser implements enterprise-admin/provision-and-invite-enterprise-user operation.
 	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
-	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, error)
+	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
-	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent, error)
+	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminSetAllowedActionsEnterprise implements enterprise-admin/set-allowed-actions-enterprise operation.
-	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, error)
+	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (EnterpriseAdminSetAllowedActionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
-	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, error)
+	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseUser implements enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
-	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, error)
+	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
-	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, error)
+	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
-	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, error)
+	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
 	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
@@ -489,9 +489,9 @@ type Server interface {
 	// GitignoreGetTemplate implements gitignore/get-template operation.
 	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error)
 	// InteractionsRemoveRestrictionsForAuthenticatedUser implements interactions/remove-restrictions-for-authenticated-user operation.
-	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent, error)
+	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, error)
 	// InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
-	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (InteractionsRemoveRestrictionsForOrgResNoContent, error)
+	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (InteractionsRemoveRestrictionsForOrgNoContent, error)
 	// InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
 	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
 	// InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
@@ -501,9 +501,9 @@ type Server interface {
 	// IssuesCheckUserCanBeAssigned implements issues/check-user-can-be-assigned operation.
 	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
 	// IssuesDeleteComment implements issues/delete-comment operation.
-	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteCommentResNoContent, error)
+	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteCommentNoContent, error)
 	// IssuesDeleteLabel implements issues/delete-label operation.
-	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabelResNoContent, error)
+	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabelNoContent, error)
 	// IssuesDeleteMilestone implements issues/delete-milestone operation.
 	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
 	// IssuesGetComment implements issues/get-comment operation.
@@ -555,9 +555,9 @@ type Server interface {
 	// MetaGetZen implements meta/get-zen operation.
 	MetaGetZen(ctx context.Context) (string, error)
 	// MetaRoot implements meta/root operation.
-	MetaRoot(ctx context.Context) (MetaRootResOK, error)
+	MetaRoot(ctx context.Context) (MetaRootOK, error)
 	// MigrationsCancelImport implements migrations/cancel-import operation.
-	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (MigrationsCancelImportResNoContent, error)
+	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (MigrationsCancelImportNoContent, error)
 	// MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
 	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error)
 	// MigrationsDeleteArchiveForOrg implements migrations/delete-archive-for-org operation.
@@ -655,13 +655,13 @@ type Server interface {
 	// OrgsRemoveOutsideCollaborator implements orgs/remove-outside-collaborator operation.
 	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
 	// OrgsRemovePublicMembershipForAuthenticatedUser implements orgs/remove-public-membership-for-authenticated-user operation.
-	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUserResNoContent, error)
+	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUserNoContent, error)
 	// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
 	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
 	// OrgsSetPublicMembershipForAuthenticatedUser implements orgs/set-public-membership-for-authenticated-user operation.
 	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
 	// OrgsUnblockUser implements orgs/unblock-user operation.
-	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserResNoContent, error)
+	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserNoContent, error)
 	// OrgsUpdateWebhookConfigForOrg implements orgs/update-webhook-config-for-org operation.
 	OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (WebhookConfig, error)
 	// PackagesDeletePackageForAuthenticatedUser implements packages/delete-package-for-authenticated-user operation.
@@ -795,17 +795,17 @@ type Server interface {
 	// ReactionsCreateForTeamDiscussionLegacy implements reactions/create-for-team-discussion-legacy operation.
 	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (Reaction, error)
 	// ReactionsDeleteForCommitComment implements reactions/delete-for-commit-comment operation.
-	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (ReactionsDeleteForCommitCommentResNoContent, error)
+	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (ReactionsDeleteForCommitCommentNoContent, error)
 	// ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
-	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (ReactionsDeleteForIssueResNoContent, error)
+	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (ReactionsDeleteForIssueNoContent, error)
 	// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
-	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueCommentResNoContent, error)
+	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueCommentNoContent, error)
 	// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
-	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestCommentResNoContent, error)
+	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestCommentNoContent, error)
 	// ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
-	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (ReactionsDeleteForTeamDiscussionResNoContent, error)
+	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (ReactionsDeleteForTeamDiscussionNoContent, error)
 	// ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
-	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (ReactionsDeleteForTeamDiscussionCommentResNoContent, error)
+	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (ReactionsDeleteForTeamDiscussionCommentNoContent, error)
 	// ReactionsDeleteLegacy implements reactions/delete-legacy operation.
 	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
 	// ReactionsListForCommitComment implements reactions/list-for-commit-comment operation.
@@ -843,11 +843,11 @@ type Server interface {
 	// ReposDelete implements repos/delete operation.
 	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error)
 	// ReposDeleteAccessRestrictions implements repos/delete-access-restrictions operation.
-	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (ReposDeleteAccessRestrictionsResNoContent, error)
+	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (ReposDeleteAccessRestrictionsNoContent, error)
 	// ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
 	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error)
 	// ReposDeleteAnEnvironment implements repos/delete-an-environment operation.
-	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironmentResNoContent, error)
+	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironmentNoContent, error)
 	// ReposDeleteAutolink implements repos/delete-autolink operation.
 	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error)
 	// ReposDeleteBranchProtection implements repos/delete-branch-protection operation.
@@ -857,35 +857,35 @@ type Server interface {
 	// ReposDeleteCommitSignatureProtection implements repos/delete-commit-signature-protection operation.
 	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error)
 	// ReposDeleteDeployKey implements repos/delete-deploy-key operation.
-	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (ReposDeleteDeployKeyResNoContent, error)
+	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (ReposDeleteDeployKeyNoContent, error)
 	// ReposDeleteDeployment implements repos/delete-deployment operation.
 	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
 	// ReposDeleteInvitation implements repos/delete-invitation operation.
-	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationResNoContent, error)
+	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationNoContent, error)
 	// ReposDeletePullRequestReviewProtection implements repos/delete-pull-request-review-protection operation.
 	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error)
 	// ReposDeleteRelease implements repos/delete-release operation.
-	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteReleaseResNoContent, error)
+	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteReleaseNoContent, error)
 	// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
-	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAssetResNoContent, error)
+	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAssetNoContent, error)
 	// ReposDeleteWebhook implements repos/delete-webhook operation.
 	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
 	// ReposDisableAutomatedSecurityFixes implements repos/disable-automated-security-fixes operation.
-	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (ReposDisableAutomatedSecurityFixesResNoContent, error)
+	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (ReposDisableAutomatedSecurityFixesNoContent, error)
 	// ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
-	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (ReposDisableLfsForRepoResNoContent, error)
+	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (ReposDisableLfsForRepoNoContent, error)
 	// ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
-	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (ReposDisableVulnerabilityAlertsResNoContent, error)
+	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (ReposDisableVulnerabilityAlertsNoContent, error)
 	// ReposDownloadTarballArchive implements repos/download-tarball-archive operation.
-	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (ReposDownloadTarballArchiveResFound, error)
+	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (ReposDownloadTarballArchiveFound, error)
 	// ReposDownloadZipballArchive implements repos/download-zipball-archive operation.
-	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchiveResFound, error)
+	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchiveFound, error)
 	// ReposEnableAutomatedSecurityFixes implements repos/enable-automated-security-fixes operation.
-	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (ReposEnableAutomatedSecurityFixesResNoContent, error)
+	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (ReposEnableAutomatedSecurityFixesNoContent, error)
 	// ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
 	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error)
 	// ReposEnableVulnerabilityAlerts implements repos/enable-vulnerability-alerts operation.
-	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (ReposEnableVulnerabilityAlertsResNoContent, error)
+	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (ReposEnableVulnerabilityAlertsNoContent, error)
 	// ReposGet implements repos/get operation.
 	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error)
 	// ReposGetAccessRestrictions implements repos/get-access-restrictions operation.
@@ -1015,9 +1015,9 @@ type Server interface {
 	// ReposPingWebhook implements repos/ping-webhook operation.
 	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
 	// ReposRemoveCollaborator implements repos/remove-collaborator operation.
-	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorResNoContent, error)
+	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorNoContent, error)
 	// ReposRemoveStatusCheckProtection implements repos/remove-status-check-protection operation.
-	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtectionResNoContent, error)
+	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtectionNoContent, error)
 	// ReposReplaceAllTopics implements repos/replace-all-topics operation.
 	ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
 	// ReposRequestPagesBuild implements repos/request-pages-build operation.
@@ -1065,7 +1065,7 @@ type Server interface {
 	// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
 	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
 	// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
-	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, error)
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
 	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error)
 	// TeamsCheckPermissionsForProjectLegacy implements teams/check-permissions-for-project-legacy operation.
@@ -1085,15 +1085,15 @@ type Server interface {
 	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg implements teams/create-or-update-idp-group-connections-in-org operation.
 	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (GroupMapping, error)
 	// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
-	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (TeamsDeleteDiscussionCommentInOrgResNoContent, error)
+	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (TeamsDeleteDiscussionCommentInOrgNoContent, error)
 	// TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
-	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacyResNoContent, error)
+	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacyNoContent, error)
 	// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
-	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (TeamsDeleteDiscussionInOrgResNoContent, error)
+	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (TeamsDeleteDiscussionInOrgNoContent, error)
 	// TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
-	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacyResNoContent, error)
+	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacyNoContent, error)
 	// TeamsDeleteInOrg implements teams/delete-in-org operation.
-	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrgResNoContent, error)
+	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrgNoContent, error)
 	// TeamsGetByName implements teams/get-by-name operation.
 	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error)
 	// TeamsGetDiscussionCommentInOrg implements teams/get-discussion-comment-in-org operation.
@@ -1155,11 +1155,11 @@ type Server interface {
 	// TeamsRemoveMembershipForUserLegacy implements teams/remove-membership-for-user-legacy operation.
 	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
 	// TeamsRemoveProjectInOrg implements teams/remove-project-in-org operation.
-	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrgResNoContent, error)
+	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrgNoContent, error)
 	// TeamsRemoveRepoInOrg implements teams/remove-repo-in-org operation.
-	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (TeamsRemoveRepoInOrgResNoContent, error)
+	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (TeamsRemoveRepoInOrgNoContent, error)
 	// TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
-	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacyResNoContent, error)
+	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacyNoContent, error)
 	// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
 	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsUpdateDiscussionCommentLegacy implements teams/update-discussion-comment-legacy operation.

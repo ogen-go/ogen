@@ -105,10 +105,10 @@ type CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK 
 func (*CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) createAdmissionregistrationV1MutatingWebhookConfigurationRes() {
 }
 
-// CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized is response for CreateAdmissionregistrationV1MutatingWebhookConfiguration operation.
-type CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized struct{}
+// CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized is response for CreateAdmissionregistrationV1MutatingWebhookConfiguration operation.
+type CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized struct{}
 
-func (*CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) createAdmissionregistrationV1MutatingWebhookConfigurationRes() {
+func (*CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) createAdmissionregistrationV1MutatingWebhookConfigurationRes() {
 }
 
 type CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
@@ -156,10 +156,10 @@ type CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlO
 func (*CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) createAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
 }
 
-// CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized is response for CreateAdmissionregistrationV1ValidatingWebhookConfiguration operation.
-type CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized struct{}
+// CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized is response for CreateAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+type CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized struct{}
 
-func (*CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) createAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
+func (*CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) createAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
 }
 
 type CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
@@ -207,10 +207,10 @@ type CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK IoK8sApiexte
 func (*CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) createApiextensionsV1CustomResourceDefinitionRes() {
 }
 
-// CreateApiextensionsV1CustomResourceDefinitionResUnauthorized is response for CreateApiextensionsV1CustomResourceDefinition operation.
-type CreateApiextensionsV1CustomResourceDefinitionResUnauthorized struct{}
+// CreateApiextensionsV1CustomResourceDefinitionUnauthorized is response for CreateApiextensionsV1CustomResourceDefinition operation.
+type CreateApiextensionsV1CustomResourceDefinitionUnauthorized struct{}
 
-func (*CreateApiextensionsV1CustomResourceDefinitionResUnauthorized) createApiextensionsV1CustomResourceDefinitionRes() {
+func (*CreateApiextensionsV1CustomResourceDefinitionUnauthorized) createApiextensionsV1CustomResourceDefinitionRes() {
 }
 
 type CreateApiregistrationV1APIServiceApplicationJSONAccepted IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
@@ -256,10 +256,10 @@ type CreateApiregistrationV1APIServiceApplicationYamlOK IoK8sKubeAggregatorPkgAp
 
 func (*CreateApiregistrationV1APIServiceApplicationYamlOK) createApiregistrationV1APIServiceRes() {}
 
-// CreateApiregistrationV1APIServiceResUnauthorized is response for CreateApiregistrationV1APIService operation.
-type CreateApiregistrationV1APIServiceResUnauthorized struct{}
+// CreateApiregistrationV1APIServiceUnauthorized is response for CreateApiregistrationV1APIService operation.
+type CreateApiregistrationV1APIServiceUnauthorized struct{}
 
-func (*CreateApiregistrationV1APIServiceResUnauthorized) createApiregistrationV1APIServiceRes() {}
+func (*CreateApiregistrationV1APIServiceUnauthorized) createApiregistrationV1APIServiceRes() {}
 
 type CreateAuthenticationV1TokenReviewApplicationJSONAccepted IoK8sAPIAuthenticationV1TokenReview
 
@@ -304,10 +304,10 @@ type CreateAuthenticationV1TokenReviewApplicationYamlOK IoK8sAPIAuthenticationV1
 
 func (*CreateAuthenticationV1TokenReviewApplicationYamlOK) createAuthenticationV1TokenReviewRes() {}
 
-// CreateAuthenticationV1TokenReviewResUnauthorized is response for CreateAuthenticationV1TokenReview operation.
-type CreateAuthenticationV1TokenReviewResUnauthorized struct{}
+// CreateAuthenticationV1TokenReviewUnauthorized is response for CreateAuthenticationV1TokenReview operation.
+type CreateAuthenticationV1TokenReviewUnauthorized struct{}
 
-func (*CreateAuthenticationV1TokenReviewResUnauthorized) createAuthenticationV1TokenReviewRes() {}
+func (*CreateAuthenticationV1TokenReviewUnauthorized) createAuthenticationV1TokenReviewRes() {}
 
 type CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted IoK8sAPIAuthorizationV1SelfSubjectAccessReview
 
@@ -354,10 +354,10 @@ type CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK IoK8sAPIAutho
 func (*CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) createAuthorizationV1SelfSubjectAccessReviewRes() {
 }
 
-// CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized is response for CreateAuthorizationV1SelfSubjectAccessReview operation.
-type CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized struct{}
+// CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized is response for CreateAuthorizationV1SelfSubjectAccessReview operation.
+type CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized struct{}
 
-func (*CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized) createAuthorizationV1SelfSubjectAccessReviewRes() {
+func (*CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) createAuthorizationV1SelfSubjectAccessReviewRes() {
 }
 
 type CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted IoK8sAPIAuthorizationV1SelfSubjectRulesReview
@@ -405,10 +405,10 @@ type CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK IoK8sAPIAuthor
 func (*CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) createAuthorizationV1SelfSubjectRulesReviewRes() {
 }
 
-// CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized is response for CreateAuthorizationV1SelfSubjectRulesReview operation.
-type CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized struct{}
+// CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized is response for CreateAuthorizationV1SelfSubjectRulesReview operation.
+type CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized struct{}
 
-func (*CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized) createAuthorizationV1SelfSubjectRulesReviewRes() {
+func (*CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) createAuthorizationV1SelfSubjectRulesReviewRes() {
 }
 
 type CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted IoK8sAPIAuthorizationV1SubjectAccessReview
@@ -456,10 +456,10 @@ type CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK IoK8sAPIAuthoriza
 func (*CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) createAuthorizationV1SubjectAccessReviewRes() {
 }
 
-// CreateAuthorizationV1SubjectAccessReviewResUnauthorized is response for CreateAuthorizationV1SubjectAccessReview operation.
-type CreateAuthorizationV1SubjectAccessReviewResUnauthorized struct{}
+// CreateAuthorizationV1SubjectAccessReviewUnauthorized is response for CreateAuthorizationV1SubjectAccessReview operation.
+type CreateAuthorizationV1SubjectAccessReviewUnauthorized struct{}
 
-func (*CreateAuthorizationV1SubjectAccessReviewResUnauthorized) createAuthorizationV1SubjectAccessReviewRes() {
+func (*CreateAuthorizationV1SubjectAccessReviewUnauthorized) createAuthorizationV1SubjectAccessReviewRes() {
 }
 
 type CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted IoK8sAPICertificatesV1CertificateSigningRequest
@@ -507,10 +507,10 @@ type CreateCertificatesV1CertificateSigningRequestApplicationYamlOK IoK8sAPICert
 func (*CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) createCertificatesV1CertificateSigningRequestRes() {
 }
 
-// CreateCertificatesV1CertificateSigningRequestResUnauthorized is response for CreateCertificatesV1CertificateSigningRequest operation.
-type CreateCertificatesV1CertificateSigningRequestResUnauthorized struct{}
+// CreateCertificatesV1CertificateSigningRequestUnauthorized is response for CreateCertificatesV1CertificateSigningRequest operation.
+type CreateCertificatesV1CertificateSigningRequestUnauthorized struct{}
 
-func (*CreateCertificatesV1CertificateSigningRequestResUnauthorized) createCertificatesV1CertificateSigningRequestRes() {
+func (*CreateCertificatesV1CertificateSigningRequestUnauthorized) createCertificatesV1CertificateSigningRequestRes() {
 }
 
 type CreateCoreV1NamespaceApplicationJSONAccepted IoK8sAPICoreV1Namespace
@@ -549,10 +549,10 @@ type CreateCoreV1NamespaceApplicationYamlOK IoK8sAPICoreV1Namespace
 
 func (*CreateCoreV1NamespaceApplicationYamlOK) createCoreV1NamespaceRes() {}
 
-// CreateCoreV1NamespaceResUnauthorized is response for CreateCoreV1Namespace operation.
-type CreateCoreV1NamespaceResUnauthorized struct{}
+// CreateCoreV1NamespaceUnauthorized is response for CreateCoreV1Namespace operation.
+type CreateCoreV1NamespaceUnauthorized struct{}
 
-func (*CreateCoreV1NamespaceResUnauthorized) createCoreV1NamespaceRes() {}
+func (*CreateCoreV1NamespaceUnauthorized) createCoreV1NamespaceRes() {}
 
 type CreateCoreV1NodeApplicationJSONAccepted IoK8sAPICoreV1Node
 
@@ -590,10 +590,10 @@ type CreateCoreV1NodeApplicationYamlOK IoK8sAPICoreV1Node
 
 func (*CreateCoreV1NodeApplicationYamlOK) createCoreV1NodeRes() {}
 
-// CreateCoreV1NodeResUnauthorized is response for CreateCoreV1Node operation.
-type CreateCoreV1NodeResUnauthorized struct{}
+// CreateCoreV1NodeUnauthorized is response for CreateCoreV1Node operation.
+type CreateCoreV1NodeUnauthorized struct{}
 
-func (*CreateCoreV1NodeResUnauthorized) createCoreV1NodeRes() {}
+func (*CreateCoreV1NodeUnauthorized) createCoreV1NodeRes() {}
 
 type CreateCoreV1PersistentVolumeApplicationJSONAccepted IoK8sAPICoreV1PersistentVolume
 
@@ -634,10 +634,10 @@ type CreateCoreV1PersistentVolumeApplicationYamlOK IoK8sAPICoreV1PersistentVolum
 
 func (*CreateCoreV1PersistentVolumeApplicationYamlOK) createCoreV1PersistentVolumeRes() {}
 
-// CreateCoreV1PersistentVolumeResUnauthorized is response for CreateCoreV1PersistentVolume operation.
-type CreateCoreV1PersistentVolumeResUnauthorized struct{}
+// CreateCoreV1PersistentVolumeUnauthorized is response for CreateCoreV1PersistentVolume operation.
+type CreateCoreV1PersistentVolumeUnauthorized struct{}
 
-func (*CreateCoreV1PersistentVolumeResUnauthorized) createCoreV1PersistentVolumeRes() {}
+func (*CreateCoreV1PersistentVolumeUnauthorized) createCoreV1PersistentVolumeRes() {}
 
 type CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted IoK8sAPIFlowcontrolV1beta1FlowSchema
 
@@ -684,10 +684,10 @@ type CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK IoK8sAPIFlowco
 func (*CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) createFlowcontrolApiserverV1beta1FlowSchemaRes() {
 }
 
-// CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized is response for CreateFlowcontrolApiserverV1beta1FlowSchema operation.
-type CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized struct{}
+// CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized is response for CreateFlowcontrolApiserverV1beta1FlowSchema operation.
+type CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized struct{}
 
-func (*CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) createFlowcontrolApiserverV1beta1FlowSchemaRes() {
+func (*CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) createFlowcontrolApiserverV1beta1FlowSchemaRes() {
 }
 
 type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
@@ -735,10 +735,10 @@ type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlO
 func (*CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) createFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
-// CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized is response for CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
-type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized struct{}
+// CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized is response for CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized struct{}
 
-func (*CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) createFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
+func (*CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) createFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
 type CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted IoK8sAPIFlowcontrolV1beta2FlowSchema
@@ -786,10 +786,10 @@ type CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK IoK8sAPIFlowco
 func (*CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) createFlowcontrolApiserverV1beta2FlowSchemaRes() {
 }
 
-// CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized is response for CreateFlowcontrolApiserverV1beta2FlowSchema operation.
-type CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized struct{}
+// CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized is response for CreateFlowcontrolApiserverV1beta2FlowSchema operation.
+type CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized struct{}
 
-func (*CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) createFlowcontrolApiserverV1beta2FlowSchemaRes() {
+func (*CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) createFlowcontrolApiserverV1beta2FlowSchemaRes() {
 }
 
 type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
@@ -837,10 +837,10 @@ type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlO
 func (*CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) createFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
-// CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized is response for CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
-type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized struct{}
+// CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized is response for CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized struct{}
 
-func (*CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) createFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
+func (*CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) createFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
 type CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted IoK8sAPIApiserverinternalV1alpha1StorageVersion
@@ -888,10 +888,10 @@ type CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK IoK8sAPIApis
 func (*CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) createInternalApiserverV1alpha1StorageVersionRes() {
 }
 
-// CreateInternalApiserverV1alpha1StorageVersionResUnauthorized is response for CreateInternalApiserverV1alpha1StorageVersion operation.
-type CreateInternalApiserverV1alpha1StorageVersionResUnauthorized struct{}
+// CreateInternalApiserverV1alpha1StorageVersionUnauthorized is response for CreateInternalApiserverV1alpha1StorageVersion operation.
+type CreateInternalApiserverV1alpha1StorageVersionUnauthorized struct{}
 
-func (*CreateInternalApiserverV1alpha1StorageVersionResUnauthorized) createInternalApiserverV1alpha1StorageVersionRes() {
+func (*CreateInternalApiserverV1alpha1StorageVersionUnauthorized) createInternalApiserverV1alpha1StorageVersionRes() {
 }
 
 type CreateNetworkingV1IngressClassApplicationJSONAccepted IoK8sAPINetworkingV1IngressClass
@@ -933,10 +933,10 @@ type CreateNetworkingV1IngressClassApplicationYamlOK IoK8sAPINetworkingV1Ingress
 
 func (*CreateNetworkingV1IngressClassApplicationYamlOK) createNetworkingV1IngressClassRes() {}
 
-// CreateNetworkingV1IngressClassResUnauthorized is response for CreateNetworkingV1IngressClass operation.
-type CreateNetworkingV1IngressClassResUnauthorized struct{}
+// CreateNetworkingV1IngressClassUnauthorized is response for CreateNetworkingV1IngressClass operation.
+type CreateNetworkingV1IngressClassUnauthorized struct{}
 
-func (*CreateNetworkingV1IngressClassResUnauthorized) createNetworkingV1IngressClassRes() {}
+func (*CreateNetworkingV1IngressClassUnauthorized) createNetworkingV1IngressClassRes() {}
 
 type CreateNodeV1RuntimeClassApplicationJSONAccepted IoK8sAPINodeV1RuntimeClass
 
@@ -976,10 +976,10 @@ type CreateNodeV1RuntimeClassApplicationYamlOK IoK8sAPINodeV1RuntimeClass
 
 func (*CreateNodeV1RuntimeClassApplicationYamlOK) createNodeV1RuntimeClassRes() {}
 
-// CreateNodeV1RuntimeClassResUnauthorized is response for CreateNodeV1RuntimeClass operation.
-type CreateNodeV1RuntimeClassResUnauthorized struct{}
+// CreateNodeV1RuntimeClassUnauthorized is response for CreateNodeV1RuntimeClass operation.
+type CreateNodeV1RuntimeClassUnauthorized struct{}
 
-func (*CreateNodeV1RuntimeClassResUnauthorized) createNodeV1RuntimeClassRes() {}
+func (*CreateNodeV1RuntimeClassUnauthorized) createNodeV1RuntimeClassRes() {}
 
 type CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted IoK8sAPINodeV1alpha1RuntimeClass
 
@@ -1020,10 +1020,10 @@ type CreateNodeV1alpha1RuntimeClassApplicationYamlOK IoK8sAPINodeV1alpha1Runtime
 
 func (*CreateNodeV1alpha1RuntimeClassApplicationYamlOK) createNodeV1alpha1RuntimeClassRes() {}
 
-// CreateNodeV1alpha1RuntimeClassResUnauthorized is response for CreateNodeV1alpha1RuntimeClass operation.
-type CreateNodeV1alpha1RuntimeClassResUnauthorized struct{}
+// CreateNodeV1alpha1RuntimeClassUnauthorized is response for CreateNodeV1alpha1RuntimeClass operation.
+type CreateNodeV1alpha1RuntimeClassUnauthorized struct{}
 
-func (*CreateNodeV1alpha1RuntimeClassResUnauthorized) createNodeV1alpha1RuntimeClassRes() {}
+func (*CreateNodeV1alpha1RuntimeClassUnauthorized) createNodeV1alpha1RuntimeClassRes() {}
 
 type CreateNodeV1beta1RuntimeClassApplicationJSONAccepted IoK8sAPINodeV1beta1RuntimeClass
 
@@ -1064,10 +1064,10 @@ type CreateNodeV1beta1RuntimeClassApplicationYamlOK IoK8sAPINodeV1beta1RuntimeCl
 
 func (*CreateNodeV1beta1RuntimeClassApplicationYamlOK) createNodeV1beta1RuntimeClassRes() {}
 
-// CreateNodeV1beta1RuntimeClassResUnauthorized is response for CreateNodeV1beta1RuntimeClass operation.
-type CreateNodeV1beta1RuntimeClassResUnauthorized struct{}
+// CreateNodeV1beta1RuntimeClassUnauthorized is response for CreateNodeV1beta1RuntimeClass operation.
+type CreateNodeV1beta1RuntimeClassUnauthorized struct{}
 
-func (*CreateNodeV1beta1RuntimeClassResUnauthorized) createNodeV1beta1RuntimeClassRes() {}
+func (*CreateNodeV1beta1RuntimeClassUnauthorized) createNodeV1beta1RuntimeClassRes() {}
 
 type CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted IoK8sAPIPolicyV1beta1PodSecurityPolicy
 
@@ -1114,11 +1114,10 @@ type CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK IoK8sAPIPolicyV1beta1
 func (*CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) createPolicyV1beta1PodSecurityPolicyRes() {
 }
 
-// CreatePolicyV1beta1PodSecurityPolicyResUnauthorized is response for CreatePolicyV1beta1PodSecurityPolicy operation.
-type CreatePolicyV1beta1PodSecurityPolicyResUnauthorized struct{}
+// CreatePolicyV1beta1PodSecurityPolicyUnauthorized is response for CreatePolicyV1beta1PodSecurityPolicy operation.
+type CreatePolicyV1beta1PodSecurityPolicyUnauthorized struct{}
 
-func (*CreatePolicyV1beta1PodSecurityPolicyResUnauthorized) createPolicyV1beta1PodSecurityPolicyRes() {
-}
+func (*CreatePolicyV1beta1PodSecurityPolicyUnauthorized) createPolicyV1beta1PodSecurityPolicyRes() {}
 
 type CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted IoK8sAPIRbacV1ClusterRole
 
@@ -1210,17 +1209,16 @@ type CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK IoK8sAPIRbacV1
 func (*CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) createRbacAuthorizationV1ClusterRoleBindingRes() {
 }
 
-// CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized is response for CreateRbacAuthorizationV1ClusterRoleBinding operation.
-type CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized struct{}
+// CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized is response for CreateRbacAuthorizationV1ClusterRoleBinding operation.
+type CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized struct{}
 
-func (*CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized) createRbacAuthorizationV1ClusterRoleBindingRes() {
+func (*CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) createRbacAuthorizationV1ClusterRoleBindingRes() {
 }
 
-// CreateRbacAuthorizationV1ClusterRoleResUnauthorized is response for CreateRbacAuthorizationV1ClusterRole operation.
-type CreateRbacAuthorizationV1ClusterRoleResUnauthorized struct{}
+// CreateRbacAuthorizationV1ClusterRoleUnauthorized is response for CreateRbacAuthorizationV1ClusterRole operation.
+type CreateRbacAuthorizationV1ClusterRoleUnauthorized struct{}
 
-func (*CreateRbacAuthorizationV1ClusterRoleResUnauthorized) createRbacAuthorizationV1ClusterRoleRes() {
-}
+func (*CreateRbacAuthorizationV1ClusterRoleUnauthorized) createRbacAuthorizationV1ClusterRoleRes() {}
 
 type CreateSchedulingV1PriorityClassApplicationJSONAccepted IoK8sAPISchedulingV1PriorityClass
 
@@ -1261,10 +1259,10 @@ type CreateSchedulingV1PriorityClassApplicationYamlOK IoK8sAPISchedulingV1Priori
 
 func (*CreateSchedulingV1PriorityClassApplicationYamlOK) createSchedulingV1PriorityClassRes() {}
 
-// CreateSchedulingV1PriorityClassResUnauthorized is response for CreateSchedulingV1PriorityClass operation.
-type CreateSchedulingV1PriorityClassResUnauthorized struct{}
+// CreateSchedulingV1PriorityClassUnauthorized is response for CreateSchedulingV1PriorityClass operation.
+type CreateSchedulingV1PriorityClassUnauthorized struct{}
 
-func (*CreateSchedulingV1PriorityClassResUnauthorized) createSchedulingV1PriorityClassRes() {}
+func (*CreateSchedulingV1PriorityClassUnauthorized) createSchedulingV1PriorityClassRes() {}
 
 type CreateStorageV1CSIDriverApplicationJSONAccepted IoK8sAPIStorageV1CSIDriver
 
@@ -1304,10 +1302,10 @@ type CreateStorageV1CSIDriverApplicationYamlOK IoK8sAPIStorageV1CSIDriver
 
 func (*CreateStorageV1CSIDriverApplicationYamlOK) createStorageV1CSIDriverRes() {}
 
-// CreateStorageV1CSIDriverResUnauthorized is response for CreateStorageV1CSIDriver operation.
-type CreateStorageV1CSIDriverResUnauthorized struct{}
+// CreateStorageV1CSIDriverUnauthorized is response for CreateStorageV1CSIDriver operation.
+type CreateStorageV1CSIDriverUnauthorized struct{}
 
-func (*CreateStorageV1CSIDriverResUnauthorized) createStorageV1CSIDriverRes() {}
+func (*CreateStorageV1CSIDriverUnauthorized) createStorageV1CSIDriverRes() {}
 
 type CreateStorageV1CSINodeApplicationJSONAccepted IoK8sAPIStorageV1CSINode
 
@@ -1345,10 +1343,10 @@ type CreateStorageV1CSINodeApplicationYamlOK IoK8sAPIStorageV1CSINode
 
 func (*CreateStorageV1CSINodeApplicationYamlOK) createStorageV1CSINodeRes() {}
 
-// CreateStorageV1CSINodeResUnauthorized is response for CreateStorageV1CSINode operation.
-type CreateStorageV1CSINodeResUnauthorized struct{}
+// CreateStorageV1CSINodeUnauthorized is response for CreateStorageV1CSINode operation.
+type CreateStorageV1CSINodeUnauthorized struct{}
 
-func (*CreateStorageV1CSINodeResUnauthorized) createStorageV1CSINodeRes() {}
+func (*CreateStorageV1CSINodeUnauthorized) createStorageV1CSINodeRes() {}
 
 type CreateStorageV1StorageClassApplicationJSONAccepted IoK8sAPIStorageV1StorageClass
 
@@ -1389,10 +1387,10 @@ type CreateStorageV1StorageClassApplicationYamlOK IoK8sAPIStorageV1StorageClass
 
 func (*CreateStorageV1StorageClassApplicationYamlOK) createStorageV1StorageClassRes() {}
 
-// CreateStorageV1StorageClassResUnauthorized is response for CreateStorageV1StorageClass operation.
-type CreateStorageV1StorageClassResUnauthorized struct{}
+// CreateStorageV1StorageClassUnauthorized is response for CreateStorageV1StorageClass operation.
+type CreateStorageV1StorageClassUnauthorized struct{}
 
-func (*CreateStorageV1StorageClassResUnauthorized) createStorageV1StorageClassRes() {}
+func (*CreateStorageV1StorageClassUnauthorized) createStorageV1StorageClassRes() {}
 
 type CreateStorageV1VolumeAttachmentApplicationJSONAccepted IoK8sAPIStorageV1VolumeAttachment
 
@@ -1433,10 +1431,10 @@ type CreateStorageV1VolumeAttachmentApplicationYamlOK IoK8sAPIStorageV1VolumeAtt
 
 func (*CreateStorageV1VolumeAttachmentApplicationYamlOK) createStorageV1VolumeAttachmentRes() {}
 
-// CreateStorageV1VolumeAttachmentResUnauthorized is response for CreateStorageV1VolumeAttachment operation.
-type CreateStorageV1VolumeAttachmentResUnauthorized struct{}
+// CreateStorageV1VolumeAttachmentUnauthorized is response for CreateStorageV1VolumeAttachment operation.
+type CreateStorageV1VolumeAttachmentUnauthorized struct{}
 
-func (*CreateStorageV1VolumeAttachmentResUnauthorized) createStorageV1VolumeAttachmentRes() {}
+func (*CreateStorageV1VolumeAttachmentUnauthorized) createStorageV1VolumeAttachmentRes() {}
 
 type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
 
@@ -1453,10 +1451,10 @@ type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicat
 func (*DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK) deleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes() {
 }
 
-// DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized is response for DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration operation.
-type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized struct{}
+// DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized is response for DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration operation.
+type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized struct{}
 
-func (*DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized) deleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes() {
+func (*DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) deleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes() {
 }
 
 type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1474,10 +1472,10 @@ type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplic
 func (*DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK) deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes() {
 }
 
-// DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized is response for DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration operation.
-type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized struct{}
+// DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized is response for DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration operation.
+type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized struct{}
 
-func (*DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized) deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes() {
+func (*DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes() {
 }
 
 type DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1495,10 +1493,10 @@ type DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK Io
 func (*DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) deleteApiextensionsV1CollectionCustomResourceDefinitionRes() {
 }
 
-// DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized is response for DeleteApiextensionsV1CollectionCustomResourceDefinition operation.
-type DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized struct{}
+// DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized is response for DeleteApiextensionsV1CollectionCustomResourceDefinition operation.
+type DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized struct{}
 
-func (*DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized) deleteApiextensionsV1CollectionCustomResourceDefinitionRes() {
+func (*DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) deleteApiextensionsV1CollectionCustomResourceDefinitionRes() {
 }
 
 type DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1516,10 +1514,10 @@ type DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK IoK8sApimachin
 func (*DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) deleteApiregistrationV1CollectionAPIServiceRes() {
 }
 
-// DeleteApiregistrationV1CollectionAPIServiceResUnauthorized is response for DeleteApiregistrationV1CollectionAPIService operation.
-type DeleteApiregistrationV1CollectionAPIServiceResUnauthorized struct{}
+// DeleteApiregistrationV1CollectionAPIServiceUnauthorized is response for DeleteApiregistrationV1CollectionAPIService operation.
+type DeleteApiregistrationV1CollectionAPIServiceUnauthorized struct{}
 
-func (*DeleteApiregistrationV1CollectionAPIServiceResUnauthorized) deleteApiregistrationV1CollectionAPIServiceRes() {
+func (*DeleteApiregistrationV1CollectionAPIServiceUnauthorized) deleteApiregistrationV1CollectionAPIServiceRes() {
 }
 
 type DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1537,10 +1535,10 @@ type DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK Io
 func (*DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) deleteCertificatesV1CollectionCertificateSigningRequestRes() {
 }
 
-// DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized is response for DeleteCertificatesV1CollectionCertificateSigningRequest operation.
-type DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized struct{}
+// DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized is response for DeleteCertificatesV1CollectionCertificateSigningRequest operation.
+type DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized struct{}
 
-func (*DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized) deleteCertificatesV1CollectionCertificateSigningRequestRes() {
+func (*DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) deleteCertificatesV1CollectionCertificateSigningRequestRes() {
 }
 
 type DeleteCoreV1CollectionNodeApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1556,10 +1554,10 @@ type DeleteCoreV1CollectionNodeApplicationYamlOK IoK8sApimachineryPkgApisMetaV1S
 
 func (*DeleteCoreV1CollectionNodeApplicationYamlOK) deleteCoreV1CollectionNodeRes() {}
 
-// DeleteCoreV1CollectionNodeResUnauthorized is response for DeleteCoreV1CollectionNode operation.
-type DeleteCoreV1CollectionNodeResUnauthorized struct{}
+// DeleteCoreV1CollectionNodeUnauthorized is response for DeleteCoreV1CollectionNode operation.
+type DeleteCoreV1CollectionNodeUnauthorized struct{}
 
-func (*DeleteCoreV1CollectionNodeResUnauthorized) deleteCoreV1CollectionNodeRes() {}
+func (*DeleteCoreV1CollectionNodeUnauthorized) deleteCoreV1CollectionNodeRes() {}
 
 type DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
 
@@ -1576,10 +1574,10 @@ type DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK IoK8sApimachineryPk
 func (*DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) deleteCoreV1CollectionPersistentVolumeRes() {
 }
 
-// DeleteCoreV1CollectionPersistentVolumeResUnauthorized is response for DeleteCoreV1CollectionPersistentVolume operation.
-type DeleteCoreV1CollectionPersistentVolumeResUnauthorized struct{}
+// DeleteCoreV1CollectionPersistentVolumeUnauthorized is response for DeleteCoreV1CollectionPersistentVolume operation.
+type DeleteCoreV1CollectionPersistentVolumeUnauthorized struct{}
 
-func (*DeleteCoreV1CollectionPersistentVolumeResUnauthorized) deleteCoreV1CollectionPersistentVolumeRes() {
+func (*DeleteCoreV1CollectionPersistentVolumeUnauthorized) deleteCoreV1CollectionPersistentVolumeRes() {
 }
 
 type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1597,10 +1595,10 @@ type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK IoK8
 func (*DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) deleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes() {
 }
 
-// DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized is response for DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema operation.
-type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized struct{}
+// DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized is response for DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema operation.
+type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized struct{}
 
-func (*DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized) deleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes() {
+func (*DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) deleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes() {
 }
 
 type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1618,10 +1616,10 @@ type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplic
 func (*DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK) deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes() {
 }
 
-// DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized is response for DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration operation.
-type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized struct{}
+// DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized is response for DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration operation.
+type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized struct{}
 
-func (*DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized) deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes() {
+func (*DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes() {
 }
 
 type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1639,10 +1637,10 @@ type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK IoK8
 func (*DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) deleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes() {
 }
 
-// DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized is response for DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema operation.
-type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized struct{}
+// DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized is response for DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema operation.
+type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized struct{}
 
-func (*DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized) deleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes() {
+func (*DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) deleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes() {
 }
 
 type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1660,10 +1658,10 @@ type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplic
 func (*DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK) deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes() {
 }
 
-// DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized is response for DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration operation.
-type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized struct{}
+// DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized is response for DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration operation.
+type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized struct{}
 
-func (*DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized) deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes() {
+func (*DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes() {
 }
 
 type DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1681,10 +1679,10 @@ type DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK Io
 func (*DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) deleteInternalApiserverV1alpha1CollectionStorageVersionRes() {
 }
 
-// DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized is response for DeleteInternalApiserverV1alpha1CollectionStorageVersion operation.
-type DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized struct{}
+// DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized is response for DeleteInternalApiserverV1alpha1CollectionStorageVersion operation.
+type DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized struct{}
 
-func (*DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized) deleteInternalApiserverV1alpha1CollectionStorageVersionRes() {
+func (*DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) deleteInternalApiserverV1alpha1CollectionStorageVersionRes() {
 }
 
 type DeleteNetworkingV1CollectionIngressClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1702,10 +1700,10 @@ type DeleteNetworkingV1CollectionIngressClassApplicationYamlOK IoK8sApimachinery
 func (*DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) deleteNetworkingV1CollectionIngressClassRes() {
 }
 
-// DeleteNetworkingV1CollectionIngressClassResUnauthorized is response for DeleteNetworkingV1CollectionIngressClass operation.
-type DeleteNetworkingV1CollectionIngressClassResUnauthorized struct{}
+// DeleteNetworkingV1CollectionIngressClassUnauthorized is response for DeleteNetworkingV1CollectionIngressClass operation.
+type DeleteNetworkingV1CollectionIngressClassUnauthorized struct{}
 
-func (*DeleteNetworkingV1CollectionIngressClassResUnauthorized) deleteNetworkingV1CollectionIngressClassRes() {
+func (*DeleteNetworkingV1CollectionIngressClassUnauthorized) deleteNetworkingV1CollectionIngressClassRes() {
 }
 
 type DeleteNodeV1CollectionRuntimeClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1721,10 +1719,10 @@ type DeleteNodeV1CollectionRuntimeClassApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) deleteNodeV1CollectionRuntimeClassRes() {}
 
-// DeleteNodeV1CollectionRuntimeClassResUnauthorized is response for DeleteNodeV1CollectionRuntimeClass operation.
-type DeleteNodeV1CollectionRuntimeClassResUnauthorized struct{}
+// DeleteNodeV1CollectionRuntimeClassUnauthorized is response for DeleteNodeV1CollectionRuntimeClass operation.
+type DeleteNodeV1CollectionRuntimeClassUnauthorized struct{}
 
-func (*DeleteNodeV1CollectionRuntimeClassResUnauthorized) deleteNodeV1CollectionRuntimeClassRes() {}
+func (*DeleteNodeV1CollectionRuntimeClassUnauthorized) deleteNodeV1CollectionRuntimeClassRes() {}
 
 type DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
 
@@ -1741,10 +1739,10 @@ type DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK IoK8sApimachinery
 func (*DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) deleteNodeV1alpha1CollectionRuntimeClassRes() {
 }
 
-// DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized is response for DeleteNodeV1alpha1CollectionRuntimeClass operation.
-type DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized struct{}
+// DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized is response for DeleteNodeV1alpha1CollectionRuntimeClass operation.
+type DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized struct{}
 
-func (*DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized) deleteNodeV1alpha1CollectionRuntimeClassRes() {
+func (*DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) deleteNodeV1alpha1CollectionRuntimeClassRes() {
 }
 
 type DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1762,10 +1760,10 @@ type DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK IoK8sApimachineryP
 func (*DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) deleteNodeV1beta1CollectionRuntimeClassRes() {
 }
 
-// DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized is response for DeleteNodeV1beta1CollectionRuntimeClass operation.
-type DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized struct{}
+// DeleteNodeV1beta1CollectionRuntimeClassUnauthorized is response for DeleteNodeV1beta1CollectionRuntimeClass operation.
+type DeleteNodeV1beta1CollectionRuntimeClassUnauthorized struct{}
 
-func (*DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized) deleteNodeV1beta1CollectionRuntimeClassRes() {
+func (*DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) deleteNodeV1beta1CollectionRuntimeClassRes() {
 }
 
 type DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1783,10 +1781,10 @@ type DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK IoK8sApimac
 func (*DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) deletePolicyV1beta1CollectionPodSecurityPolicyRes() {
 }
 
-// DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized is response for DeletePolicyV1beta1CollectionPodSecurityPolicy operation.
-type DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized struct{}
+// DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized is response for DeletePolicyV1beta1CollectionPodSecurityPolicy operation.
+type DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized struct{}
 
-func (*DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized) deletePolicyV1beta1CollectionPodSecurityPolicyRes() {
+func (*DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) deletePolicyV1beta1CollectionPodSecurityPolicyRes() {
 }
 
 type DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1819,16 +1817,16 @@ type DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK IoK8
 func (*DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) deleteRbacAuthorizationV1CollectionClusterRoleBindingRes() {
 }
 
-// DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized is response for DeleteRbacAuthorizationV1CollectionClusterRoleBinding operation.
-type DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized struct{}
+// DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized is response for DeleteRbacAuthorizationV1CollectionClusterRoleBinding operation.
+type DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized struct{}
 
-func (*DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized) deleteRbacAuthorizationV1CollectionClusterRoleBindingRes() {
+func (*DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) deleteRbacAuthorizationV1CollectionClusterRoleBindingRes() {
 }
 
-// DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized is response for DeleteRbacAuthorizationV1CollectionClusterRole operation.
-type DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized struct{}
+// DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized is response for DeleteRbacAuthorizationV1CollectionClusterRole operation.
+type DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized struct{}
 
-func (*DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized) deleteRbacAuthorizationV1CollectionClusterRoleRes() {
+func (*DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) deleteRbacAuthorizationV1CollectionClusterRoleRes() {
 }
 
 type DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1846,10 +1844,10 @@ type DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK IoK8sApimachiner
 func (*DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) deleteSchedulingV1CollectionPriorityClassRes() {
 }
 
-// DeleteSchedulingV1CollectionPriorityClassResUnauthorized is response for DeleteSchedulingV1CollectionPriorityClass operation.
-type DeleteSchedulingV1CollectionPriorityClassResUnauthorized struct{}
+// DeleteSchedulingV1CollectionPriorityClassUnauthorized is response for DeleteSchedulingV1CollectionPriorityClass operation.
+type DeleteSchedulingV1CollectionPriorityClassUnauthorized struct{}
 
-func (*DeleteSchedulingV1CollectionPriorityClassResUnauthorized) deleteSchedulingV1CollectionPriorityClassRes() {
+func (*DeleteSchedulingV1CollectionPriorityClassUnauthorized) deleteSchedulingV1CollectionPriorityClassRes() {
 }
 
 type DeleteStorageV1CollectionCSIDriverApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1865,10 +1863,10 @@ type DeleteStorageV1CollectionCSIDriverApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*DeleteStorageV1CollectionCSIDriverApplicationYamlOK) deleteStorageV1CollectionCSIDriverRes() {}
 
-// DeleteStorageV1CollectionCSIDriverResUnauthorized is response for DeleteStorageV1CollectionCSIDriver operation.
-type DeleteStorageV1CollectionCSIDriverResUnauthorized struct{}
+// DeleteStorageV1CollectionCSIDriverUnauthorized is response for DeleteStorageV1CollectionCSIDriver operation.
+type DeleteStorageV1CollectionCSIDriverUnauthorized struct{}
 
-func (*DeleteStorageV1CollectionCSIDriverResUnauthorized) deleteStorageV1CollectionCSIDriverRes() {}
+func (*DeleteStorageV1CollectionCSIDriverUnauthorized) deleteStorageV1CollectionCSIDriverRes() {}
 
 type DeleteStorageV1CollectionCSINodeApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
 
@@ -1883,10 +1881,10 @@ type DeleteStorageV1CollectionCSINodeApplicationYamlOK IoK8sApimachineryPkgApisM
 
 func (*DeleteStorageV1CollectionCSINodeApplicationYamlOK) deleteStorageV1CollectionCSINodeRes() {}
 
-// DeleteStorageV1CollectionCSINodeResUnauthorized is response for DeleteStorageV1CollectionCSINode operation.
-type DeleteStorageV1CollectionCSINodeResUnauthorized struct{}
+// DeleteStorageV1CollectionCSINodeUnauthorized is response for DeleteStorageV1CollectionCSINode operation.
+type DeleteStorageV1CollectionCSINodeUnauthorized struct{}
 
-func (*DeleteStorageV1CollectionCSINodeResUnauthorized) deleteStorageV1CollectionCSINodeRes() {}
+func (*DeleteStorageV1CollectionCSINodeUnauthorized) deleteStorageV1CollectionCSINodeRes() {}
 
 type DeleteStorageV1CollectionStorageClassApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
 
@@ -1903,10 +1901,10 @@ type DeleteStorageV1CollectionStorageClassApplicationYamlOK IoK8sApimachineryPkg
 func (*DeleteStorageV1CollectionStorageClassApplicationYamlOK) deleteStorageV1CollectionStorageClassRes() {
 }
 
-// DeleteStorageV1CollectionStorageClassResUnauthorized is response for DeleteStorageV1CollectionStorageClass operation.
-type DeleteStorageV1CollectionStorageClassResUnauthorized struct{}
+// DeleteStorageV1CollectionStorageClassUnauthorized is response for DeleteStorageV1CollectionStorageClass operation.
+type DeleteStorageV1CollectionStorageClassUnauthorized struct{}
 
-func (*DeleteStorageV1CollectionStorageClassResUnauthorized) deleteStorageV1CollectionStorageClassRes() {
+func (*DeleteStorageV1CollectionStorageClassUnauthorized) deleteStorageV1CollectionStorageClassRes() {
 }
 
 type DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK IoK8sApimachineryPkgApisMetaV1Status
@@ -1924,10 +1922,10 @@ type DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK IoK8sApimachiner
 func (*DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) deleteStorageV1CollectionVolumeAttachmentRes() {
 }
 
-// DeleteStorageV1CollectionVolumeAttachmentResUnauthorized is response for DeleteStorageV1CollectionVolumeAttachment operation.
-type DeleteStorageV1CollectionVolumeAttachmentResUnauthorized struct{}
+// DeleteStorageV1CollectionVolumeAttachmentUnauthorized is response for DeleteStorageV1CollectionVolumeAttachment operation.
+type DeleteStorageV1CollectionVolumeAttachmentUnauthorized struct{}
 
-func (*DeleteStorageV1CollectionVolumeAttachmentResUnauthorized) deleteStorageV1CollectionVolumeAttachmentRes() {
+func (*DeleteStorageV1CollectionVolumeAttachmentUnauthorized) deleteStorageV1CollectionVolumeAttachmentRes() {
 }
 
 type GetAPIVersionsApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroupList
@@ -1942,10 +1940,10 @@ type GetAPIVersionsApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroupList
 
 func (*GetAPIVersionsApplicationYamlOK) getAPIVersionsRes() {}
 
-// GetAPIVersionsResUnauthorized is response for GetAPIVersions operation.
-type GetAPIVersionsResUnauthorized struct{}
+// GetAPIVersionsUnauthorized is response for GetAPIVersions operation.
+type GetAPIVersionsUnauthorized struct{}
 
-func (*GetAPIVersionsResUnauthorized) getAPIVersionsRes() {}
+func (*GetAPIVersionsUnauthorized) getAPIVersionsRes() {}
 
 type GetAdmissionregistrationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -1960,10 +1958,10 @@ type GetAdmissionregistrationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisM
 
 func (*GetAdmissionregistrationAPIGroupApplicationYamlOK) getAdmissionregistrationAPIGroupRes() {}
 
-// GetAdmissionregistrationAPIGroupResUnauthorized is response for GetAdmissionregistrationAPIGroup operation.
-type GetAdmissionregistrationAPIGroupResUnauthorized struct{}
+// GetAdmissionregistrationAPIGroupUnauthorized is response for GetAdmissionregistrationAPIGroup operation.
+type GetAdmissionregistrationAPIGroupUnauthorized struct{}
 
-func (*GetAdmissionregistrationAPIGroupResUnauthorized) getAdmissionregistrationAPIGroupRes() {}
+func (*GetAdmissionregistrationAPIGroupUnauthorized) getAdmissionregistrationAPIGroupRes() {}
 
 type GetAdmissionregistrationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -1980,10 +1978,10 @@ type GetAdmissionregistrationV1APIResourcesApplicationYamlOK IoK8sApimachineryPk
 func (*GetAdmissionregistrationV1APIResourcesApplicationYamlOK) getAdmissionregistrationV1APIResourcesRes() {
 }
 
-// GetAdmissionregistrationV1APIResourcesResUnauthorized is response for GetAdmissionregistrationV1APIResources operation.
-type GetAdmissionregistrationV1APIResourcesResUnauthorized struct{}
+// GetAdmissionregistrationV1APIResourcesUnauthorized is response for GetAdmissionregistrationV1APIResources operation.
+type GetAdmissionregistrationV1APIResourcesUnauthorized struct{}
 
-func (*GetAdmissionregistrationV1APIResourcesResUnauthorized) getAdmissionregistrationV1APIResourcesRes() {
+func (*GetAdmissionregistrationV1APIResourcesUnauthorized) getAdmissionregistrationV1APIResourcesRes() {
 }
 
 type GetApiextensionsAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -1998,10 +1996,10 @@ type GetApiextensionsAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1API
 
 func (*GetApiextensionsAPIGroupApplicationYamlOK) getApiextensionsAPIGroupRes() {}
 
-// GetApiextensionsAPIGroupResUnauthorized is response for GetApiextensionsAPIGroup operation.
-type GetApiextensionsAPIGroupResUnauthorized struct{}
+// GetApiextensionsAPIGroupUnauthorized is response for GetApiextensionsAPIGroup operation.
+type GetApiextensionsAPIGroupUnauthorized struct{}
 
-func (*GetApiextensionsAPIGroupResUnauthorized) getApiextensionsAPIGroupRes() {}
+func (*GetApiextensionsAPIGroupUnauthorized) getApiextensionsAPIGroupRes() {}
 
 type GetApiextensionsV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2016,10 +2014,10 @@ type GetApiextensionsV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMet
 
 func (*GetApiextensionsV1APIResourcesApplicationYamlOK) getApiextensionsV1APIResourcesRes() {}
 
-// GetApiextensionsV1APIResourcesResUnauthorized is response for GetApiextensionsV1APIResources operation.
-type GetApiextensionsV1APIResourcesResUnauthorized struct{}
+// GetApiextensionsV1APIResourcesUnauthorized is response for GetApiextensionsV1APIResources operation.
+type GetApiextensionsV1APIResourcesUnauthorized struct{}
 
-func (*GetApiextensionsV1APIResourcesResUnauthorized) getApiextensionsV1APIResourcesRes() {}
+func (*GetApiextensionsV1APIResourcesUnauthorized) getApiextensionsV1APIResourcesRes() {}
 
 type GetApiregistrationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2034,10 +2032,10 @@ type GetApiregistrationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1A
 
 func (*GetApiregistrationAPIGroupApplicationYamlOK) getApiregistrationAPIGroupRes() {}
 
-// GetApiregistrationAPIGroupResUnauthorized is response for GetApiregistrationAPIGroup operation.
-type GetApiregistrationAPIGroupResUnauthorized struct{}
+// GetApiregistrationAPIGroupUnauthorized is response for GetApiregistrationAPIGroup operation.
+type GetApiregistrationAPIGroupUnauthorized struct{}
 
-func (*GetApiregistrationAPIGroupResUnauthorized) getApiregistrationAPIGroupRes() {}
+func (*GetApiregistrationAPIGroupUnauthorized) getApiregistrationAPIGroupRes() {}
 
 type GetApiregistrationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2052,10 +2050,10 @@ type GetApiregistrationV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisM
 
 func (*GetApiregistrationV1APIResourcesApplicationYamlOK) getApiregistrationV1APIResourcesRes() {}
 
-// GetApiregistrationV1APIResourcesResUnauthorized is response for GetApiregistrationV1APIResources operation.
-type GetApiregistrationV1APIResourcesResUnauthorized struct{}
+// GetApiregistrationV1APIResourcesUnauthorized is response for GetApiregistrationV1APIResources operation.
+type GetApiregistrationV1APIResourcesUnauthorized struct{}
 
-func (*GetApiregistrationV1APIResourcesResUnauthorized) getApiregistrationV1APIResourcesRes() {}
+func (*GetApiregistrationV1APIResourcesUnauthorized) getApiregistrationV1APIResourcesRes() {}
 
 type GetAppsAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2069,10 +2067,10 @@ type GetAppsAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetAppsAPIGroupApplicationYamlOK) getAppsAPIGroupRes() {}
 
-// GetAppsAPIGroupResUnauthorized is response for GetAppsAPIGroup operation.
-type GetAppsAPIGroupResUnauthorized struct{}
+// GetAppsAPIGroupUnauthorized is response for GetAppsAPIGroup operation.
+type GetAppsAPIGroupUnauthorized struct{}
 
-func (*GetAppsAPIGroupResUnauthorized) getAppsAPIGroupRes() {}
+func (*GetAppsAPIGroupUnauthorized) getAppsAPIGroupRes() {}
 
 type GetAppsV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2086,10 +2084,10 @@ type GetAppsV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIRes
 
 func (*GetAppsV1APIResourcesApplicationYamlOK) getAppsV1APIResourcesRes() {}
 
-// GetAppsV1APIResourcesResUnauthorized is response for GetAppsV1APIResources operation.
-type GetAppsV1APIResourcesResUnauthorized struct{}
+// GetAppsV1APIResourcesUnauthorized is response for GetAppsV1APIResources operation.
+type GetAppsV1APIResourcesUnauthorized struct{}
 
-func (*GetAppsV1APIResourcesResUnauthorized) getAppsV1APIResourcesRes() {}
+func (*GetAppsV1APIResourcesUnauthorized) getAppsV1APIResourcesRes() {}
 
 type GetAuthenticationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2103,10 +2101,10 @@ type GetAuthenticationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1AP
 
 func (*GetAuthenticationAPIGroupApplicationYamlOK) getAuthenticationAPIGroupRes() {}
 
-// GetAuthenticationAPIGroupResUnauthorized is response for GetAuthenticationAPIGroup operation.
-type GetAuthenticationAPIGroupResUnauthorized struct{}
+// GetAuthenticationAPIGroupUnauthorized is response for GetAuthenticationAPIGroup operation.
+type GetAuthenticationAPIGroupUnauthorized struct{}
 
-func (*GetAuthenticationAPIGroupResUnauthorized) getAuthenticationAPIGroupRes() {}
+func (*GetAuthenticationAPIGroupUnauthorized) getAuthenticationAPIGroupRes() {}
 
 type GetAuthenticationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2121,10 +2119,10 @@ type GetAuthenticationV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMe
 
 func (*GetAuthenticationV1APIResourcesApplicationYamlOK) getAuthenticationV1APIResourcesRes() {}
 
-// GetAuthenticationV1APIResourcesResUnauthorized is response for GetAuthenticationV1APIResources operation.
-type GetAuthenticationV1APIResourcesResUnauthorized struct{}
+// GetAuthenticationV1APIResourcesUnauthorized is response for GetAuthenticationV1APIResources operation.
+type GetAuthenticationV1APIResourcesUnauthorized struct{}
 
-func (*GetAuthenticationV1APIResourcesResUnauthorized) getAuthenticationV1APIResourcesRes() {}
+func (*GetAuthenticationV1APIResourcesUnauthorized) getAuthenticationV1APIResourcesRes() {}
 
 type GetAuthorizationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2138,10 +2136,10 @@ type GetAuthorizationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1API
 
 func (*GetAuthorizationAPIGroupApplicationYamlOK) getAuthorizationAPIGroupRes() {}
 
-// GetAuthorizationAPIGroupResUnauthorized is response for GetAuthorizationAPIGroup operation.
-type GetAuthorizationAPIGroupResUnauthorized struct{}
+// GetAuthorizationAPIGroupUnauthorized is response for GetAuthorizationAPIGroup operation.
+type GetAuthorizationAPIGroupUnauthorized struct{}
 
-func (*GetAuthorizationAPIGroupResUnauthorized) getAuthorizationAPIGroupRes() {}
+func (*GetAuthorizationAPIGroupUnauthorized) getAuthorizationAPIGroupRes() {}
 
 type GetAuthorizationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2156,10 +2154,10 @@ type GetAuthorizationV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMet
 
 func (*GetAuthorizationV1APIResourcesApplicationYamlOK) getAuthorizationV1APIResourcesRes() {}
 
-// GetAuthorizationV1APIResourcesResUnauthorized is response for GetAuthorizationV1APIResources operation.
-type GetAuthorizationV1APIResourcesResUnauthorized struct{}
+// GetAuthorizationV1APIResourcesUnauthorized is response for GetAuthorizationV1APIResources operation.
+type GetAuthorizationV1APIResourcesUnauthorized struct{}
 
-func (*GetAuthorizationV1APIResourcesResUnauthorized) getAuthorizationV1APIResourcesRes() {}
+func (*GetAuthorizationV1APIResourcesUnauthorized) getAuthorizationV1APIResourcesRes() {}
 
 type GetAutoscalingAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2173,10 +2171,10 @@ type GetAutoscalingAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGr
 
 func (*GetAutoscalingAPIGroupApplicationYamlOK) getAutoscalingAPIGroupRes() {}
 
-// GetAutoscalingAPIGroupResUnauthorized is response for GetAutoscalingAPIGroup operation.
-type GetAutoscalingAPIGroupResUnauthorized struct{}
+// GetAutoscalingAPIGroupUnauthorized is response for GetAutoscalingAPIGroup operation.
+type GetAutoscalingAPIGroupUnauthorized struct{}
 
-func (*GetAutoscalingAPIGroupResUnauthorized) getAutoscalingAPIGroupRes() {}
+func (*GetAutoscalingAPIGroupUnauthorized) getAutoscalingAPIGroupRes() {}
 
 type GetAutoscalingV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2191,10 +2189,10 @@ type GetAutoscalingV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV
 
 func (*GetAutoscalingV1APIResourcesApplicationYamlOK) getAutoscalingV1APIResourcesRes() {}
 
-// GetAutoscalingV1APIResourcesResUnauthorized is response for GetAutoscalingV1APIResources operation.
-type GetAutoscalingV1APIResourcesResUnauthorized struct{}
+// GetAutoscalingV1APIResourcesUnauthorized is response for GetAutoscalingV1APIResources operation.
+type GetAutoscalingV1APIResourcesUnauthorized struct{}
 
-func (*GetAutoscalingV1APIResourcesResUnauthorized) getAutoscalingV1APIResourcesRes() {}
+func (*GetAutoscalingV1APIResourcesUnauthorized) getAutoscalingV1APIResourcesRes() {}
 
 type GetAutoscalingV2beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2209,10 +2207,10 @@ type GetAutoscalingV2beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApis
 
 func (*GetAutoscalingV2beta1APIResourcesApplicationYamlOK) getAutoscalingV2beta1APIResourcesRes() {}
 
-// GetAutoscalingV2beta1APIResourcesResUnauthorized is response for GetAutoscalingV2beta1APIResources operation.
-type GetAutoscalingV2beta1APIResourcesResUnauthorized struct{}
+// GetAutoscalingV2beta1APIResourcesUnauthorized is response for GetAutoscalingV2beta1APIResources operation.
+type GetAutoscalingV2beta1APIResourcesUnauthorized struct{}
 
-func (*GetAutoscalingV2beta1APIResourcesResUnauthorized) getAutoscalingV2beta1APIResourcesRes() {}
+func (*GetAutoscalingV2beta1APIResourcesUnauthorized) getAutoscalingV2beta1APIResourcesRes() {}
 
 type GetAutoscalingV2beta2APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2227,10 +2225,10 @@ type GetAutoscalingV2beta2APIResourcesApplicationYamlOK IoK8sApimachineryPkgApis
 
 func (*GetAutoscalingV2beta2APIResourcesApplicationYamlOK) getAutoscalingV2beta2APIResourcesRes() {}
 
-// GetAutoscalingV2beta2APIResourcesResUnauthorized is response for GetAutoscalingV2beta2APIResources operation.
-type GetAutoscalingV2beta2APIResourcesResUnauthorized struct{}
+// GetAutoscalingV2beta2APIResourcesUnauthorized is response for GetAutoscalingV2beta2APIResources operation.
+type GetAutoscalingV2beta2APIResourcesUnauthorized struct{}
 
-func (*GetAutoscalingV2beta2APIResourcesResUnauthorized) getAutoscalingV2beta2APIResourcesRes() {}
+func (*GetAutoscalingV2beta2APIResourcesUnauthorized) getAutoscalingV2beta2APIResourcesRes() {}
 
 type GetBatchAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2244,10 +2242,10 @@ type GetBatchAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetBatchAPIGroupApplicationYamlOK) getBatchAPIGroupRes() {}
 
-// GetBatchAPIGroupResUnauthorized is response for GetBatchAPIGroup operation.
-type GetBatchAPIGroupResUnauthorized struct{}
+// GetBatchAPIGroupUnauthorized is response for GetBatchAPIGroup operation.
+type GetBatchAPIGroupUnauthorized struct{}
 
-func (*GetBatchAPIGroupResUnauthorized) getBatchAPIGroupRes() {}
+func (*GetBatchAPIGroupUnauthorized) getBatchAPIGroupRes() {}
 
 type GetBatchV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2261,10 +2259,10 @@ type GetBatchV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIRe
 
 func (*GetBatchV1APIResourcesApplicationYamlOK) getBatchV1APIResourcesRes() {}
 
-// GetBatchV1APIResourcesResUnauthorized is response for GetBatchV1APIResources operation.
-type GetBatchV1APIResourcesResUnauthorized struct{}
+// GetBatchV1APIResourcesUnauthorized is response for GetBatchV1APIResources operation.
+type GetBatchV1APIResourcesUnauthorized struct{}
 
-func (*GetBatchV1APIResourcesResUnauthorized) getBatchV1APIResourcesRes() {}
+func (*GetBatchV1APIResourcesUnauthorized) getBatchV1APIResourcesRes() {}
 
 type GetBatchV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2279,10 +2277,10 @@ type GetBatchV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*GetBatchV1beta1APIResourcesApplicationYamlOK) getBatchV1beta1APIResourcesRes() {}
 
-// GetBatchV1beta1APIResourcesResUnauthorized is response for GetBatchV1beta1APIResources operation.
-type GetBatchV1beta1APIResourcesResUnauthorized struct{}
+// GetBatchV1beta1APIResourcesUnauthorized is response for GetBatchV1beta1APIResources operation.
+type GetBatchV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetBatchV1beta1APIResourcesResUnauthorized) getBatchV1beta1APIResourcesRes() {}
+func (*GetBatchV1beta1APIResourcesUnauthorized) getBatchV1beta1APIResourcesRes() {}
 
 type GetCertificatesAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2296,10 +2294,10 @@ type GetCertificatesAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIG
 
 func (*GetCertificatesAPIGroupApplicationYamlOK) getCertificatesAPIGroupRes() {}
 
-// GetCertificatesAPIGroupResUnauthorized is response for GetCertificatesAPIGroup operation.
-type GetCertificatesAPIGroupResUnauthorized struct{}
+// GetCertificatesAPIGroupUnauthorized is response for GetCertificatesAPIGroup operation.
+type GetCertificatesAPIGroupUnauthorized struct{}
 
-func (*GetCertificatesAPIGroupResUnauthorized) getCertificatesAPIGroupRes() {}
+func (*GetCertificatesAPIGroupUnauthorized) getCertificatesAPIGroupRes() {}
 
 type GetCertificatesV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2314,15 +2312,15 @@ type GetCertificatesV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMeta
 
 func (*GetCertificatesV1APIResourcesApplicationYamlOK) getCertificatesV1APIResourcesRes() {}
 
-// GetCertificatesV1APIResourcesResUnauthorized is response for GetCertificatesV1APIResources operation.
-type GetCertificatesV1APIResourcesResUnauthorized struct{}
+// GetCertificatesV1APIResourcesUnauthorized is response for GetCertificatesV1APIResources operation.
+type GetCertificatesV1APIResourcesUnauthorized struct{}
 
-func (*GetCertificatesV1APIResourcesResUnauthorized) getCertificatesV1APIResourcesRes() {}
+func (*GetCertificatesV1APIResourcesUnauthorized) getCertificatesV1APIResourcesRes() {}
 
-// GetCodeVersionResUnauthorized is response for GetCodeVersion operation.
-type GetCodeVersionResUnauthorized struct{}
+// GetCodeVersionUnauthorized is response for GetCodeVersion operation.
+type GetCodeVersionUnauthorized struct{}
 
-func (*GetCodeVersionResUnauthorized) getCodeVersionRes() {}
+func (*GetCodeVersionUnauthorized) getCodeVersionRes() {}
 
 type GetCoordinationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2336,10 +2334,10 @@ type GetCoordinationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIG
 
 func (*GetCoordinationAPIGroupApplicationYamlOK) getCoordinationAPIGroupRes() {}
 
-// GetCoordinationAPIGroupResUnauthorized is response for GetCoordinationAPIGroup operation.
-type GetCoordinationAPIGroupResUnauthorized struct{}
+// GetCoordinationAPIGroupUnauthorized is response for GetCoordinationAPIGroup operation.
+type GetCoordinationAPIGroupUnauthorized struct{}
 
-func (*GetCoordinationAPIGroupResUnauthorized) getCoordinationAPIGroupRes() {}
+func (*GetCoordinationAPIGroupUnauthorized) getCoordinationAPIGroupRes() {}
 
 type GetCoordinationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2354,10 +2352,10 @@ type GetCoordinationV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMeta
 
 func (*GetCoordinationV1APIResourcesApplicationYamlOK) getCoordinationV1APIResourcesRes() {}
 
-// GetCoordinationV1APIResourcesResUnauthorized is response for GetCoordinationV1APIResources operation.
-type GetCoordinationV1APIResourcesResUnauthorized struct{}
+// GetCoordinationV1APIResourcesUnauthorized is response for GetCoordinationV1APIResources operation.
+type GetCoordinationV1APIResourcesUnauthorized struct{}
 
-func (*GetCoordinationV1APIResourcesResUnauthorized) getCoordinationV1APIResourcesRes() {}
+func (*GetCoordinationV1APIResourcesUnauthorized) getCoordinationV1APIResourcesRes() {}
 
 type GetCoreAPIVersionsApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIVersions
 
@@ -2371,10 +2369,10 @@ type GetCoreAPIVersionsApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIVersio
 
 func (*GetCoreAPIVersionsApplicationYamlOK) getCoreAPIVersionsRes() {}
 
-// GetCoreAPIVersionsResUnauthorized is response for GetCoreAPIVersions operation.
-type GetCoreAPIVersionsResUnauthorized struct{}
+// GetCoreAPIVersionsUnauthorized is response for GetCoreAPIVersions operation.
+type GetCoreAPIVersionsUnauthorized struct{}
 
-func (*GetCoreAPIVersionsResUnauthorized) getCoreAPIVersionsRes() {}
+func (*GetCoreAPIVersionsUnauthorized) getCoreAPIVersionsRes() {}
 
 type GetCoreV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2388,10 +2386,10 @@ type GetCoreV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIRes
 
 func (*GetCoreV1APIResourcesApplicationYamlOK) getCoreV1APIResourcesRes() {}
 
-// GetCoreV1APIResourcesResUnauthorized is response for GetCoreV1APIResources operation.
-type GetCoreV1APIResourcesResUnauthorized struct{}
+// GetCoreV1APIResourcesUnauthorized is response for GetCoreV1APIResources operation.
+type GetCoreV1APIResourcesUnauthorized struct{}
 
-func (*GetCoreV1APIResourcesResUnauthorized) getCoreV1APIResourcesRes() {}
+func (*GetCoreV1APIResourcesUnauthorized) getCoreV1APIResourcesRes() {}
 
 type GetDiscoveryAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2405,10 +2403,10 @@ type GetDiscoveryAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGrou
 
 func (*GetDiscoveryAPIGroupApplicationYamlOK) getDiscoveryAPIGroupRes() {}
 
-// GetDiscoveryAPIGroupResUnauthorized is response for GetDiscoveryAPIGroup operation.
-type GetDiscoveryAPIGroupResUnauthorized struct{}
+// GetDiscoveryAPIGroupUnauthorized is response for GetDiscoveryAPIGroup operation.
+type GetDiscoveryAPIGroupUnauthorized struct{}
 
-func (*GetDiscoveryAPIGroupResUnauthorized) getDiscoveryAPIGroupRes() {}
+func (*GetDiscoveryAPIGroupUnauthorized) getDiscoveryAPIGroupRes() {}
 
 type GetDiscoveryV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2423,10 +2421,10 @@ type GetDiscoveryV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1A
 
 func (*GetDiscoveryV1APIResourcesApplicationYamlOK) getDiscoveryV1APIResourcesRes() {}
 
-// GetDiscoveryV1APIResourcesResUnauthorized is response for GetDiscoveryV1APIResources operation.
-type GetDiscoveryV1APIResourcesResUnauthorized struct{}
+// GetDiscoveryV1APIResourcesUnauthorized is response for GetDiscoveryV1APIResources operation.
+type GetDiscoveryV1APIResourcesUnauthorized struct{}
 
-func (*GetDiscoveryV1APIResourcesResUnauthorized) getDiscoveryV1APIResourcesRes() {}
+func (*GetDiscoveryV1APIResourcesUnauthorized) getDiscoveryV1APIResourcesRes() {}
 
 type GetDiscoveryV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2441,10 +2439,10 @@ type GetDiscoveryV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMe
 
 func (*GetDiscoveryV1beta1APIResourcesApplicationYamlOK) getDiscoveryV1beta1APIResourcesRes() {}
 
-// GetDiscoveryV1beta1APIResourcesResUnauthorized is response for GetDiscoveryV1beta1APIResources operation.
-type GetDiscoveryV1beta1APIResourcesResUnauthorized struct{}
+// GetDiscoveryV1beta1APIResourcesUnauthorized is response for GetDiscoveryV1beta1APIResources operation.
+type GetDiscoveryV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetDiscoveryV1beta1APIResourcesResUnauthorized) getDiscoveryV1beta1APIResourcesRes() {}
+func (*GetDiscoveryV1beta1APIResourcesUnauthorized) getDiscoveryV1beta1APIResourcesRes() {}
 
 type GetEventsAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2458,10 +2456,10 @@ type GetEventsAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetEventsAPIGroupApplicationYamlOK) getEventsAPIGroupRes() {}
 
-// GetEventsAPIGroupResUnauthorized is response for GetEventsAPIGroup operation.
-type GetEventsAPIGroupResUnauthorized struct{}
+// GetEventsAPIGroupUnauthorized is response for GetEventsAPIGroup operation.
+type GetEventsAPIGroupUnauthorized struct{}
 
-func (*GetEventsAPIGroupResUnauthorized) getEventsAPIGroupRes() {}
+func (*GetEventsAPIGroupUnauthorized) getEventsAPIGroupRes() {}
 
 type GetEventsV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2475,10 +2473,10 @@ type GetEventsV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIR
 
 func (*GetEventsV1APIResourcesApplicationYamlOK) getEventsV1APIResourcesRes() {}
 
-// GetEventsV1APIResourcesResUnauthorized is response for GetEventsV1APIResources operation.
-type GetEventsV1APIResourcesResUnauthorized struct{}
+// GetEventsV1APIResourcesUnauthorized is response for GetEventsV1APIResources operation.
+type GetEventsV1APIResourcesUnauthorized struct{}
 
-func (*GetEventsV1APIResourcesResUnauthorized) getEventsV1APIResourcesRes() {}
+func (*GetEventsV1APIResourcesUnauthorized) getEventsV1APIResourcesRes() {}
 
 type GetEventsV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2493,10 +2491,10 @@ type GetEventsV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV
 
 func (*GetEventsV1beta1APIResourcesApplicationYamlOK) getEventsV1beta1APIResourcesRes() {}
 
-// GetEventsV1beta1APIResourcesResUnauthorized is response for GetEventsV1beta1APIResources operation.
-type GetEventsV1beta1APIResourcesResUnauthorized struct{}
+// GetEventsV1beta1APIResourcesUnauthorized is response for GetEventsV1beta1APIResources operation.
+type GetEventsV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetEventsV1beta1APIResourcesResUnauthorized) getEventsV1beta1APIResourcesRes() {}
+func (*GetEventsV1beta1APIResourcesUnauthorized) getEventsV1beta1APIResourcesRes() {}
 
 type GetFlowcontrolApiserverAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2511,10 +2509,10 @@ type GetFlowcontrolApiserverAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMe
 
 func (*GetFlowcontrolApiserverAPIGroupApplicationYamlOK) getFlowcontrolApiserverAPIGroupRes() {}
 
-// GetFlowcontrolApiserverAPIGroupResUnauthorized is response for GetFlowcontrolApiserverAPIGroup operation.
-type GetFlowcontrolApiserverAPIGroupResUnauthorized struct{}
+// GetFlowcontrolApiserverAPIGroupUnauthorized is response for GetFlowcontrolApiserverAPIGroup operation.
+type GetFlowcontrolApiserverAPIGroupUnauthorized struct{}
 
-func (*GetFlowcontrolApiserverAPIGroupResUnauthorized) getFlowcontrolApiserverAPIGroupRes() {}
+func (*GetFlowcontrolApiserverAPIGroupUnauthorized) getFlowcontrolApiserverAPIGroupRes() {}
 
 type GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2531,10 +2529,10 @@ type GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK IoK8sApimachine
 func (*GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) getFlowcontrolApiserverV1beta1APIResourcesRes() {
 }
 
-// GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized is response for GetFlowcontrolApiserverV1beta1APIResources operation.
-type GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized struct{}
+// GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized is response for GetFlowcontrolApiserverV1beta1APIResources operation.
+type GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized) getFlowcontrolApiserverV1beta1APIResourcesRes() {
+func (*GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) getFlowcontrolApiserverV1beta1APIResourcesRes() {
 }
 
 type GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
@@ -2552,10 +2550,10 @@ type GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK IoK8sApimachine
 func (*GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) getFlowcontrolApiserverV1beta2APIResourcesRes() {
 }
 
-// GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized is response for GetFlowcontrolApiserverV1beta2APIResources operation.
-type GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized struct{}
+// GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized is response for GetFlowcontrolApiserverV1beta2APIResources operation.
+type GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized struct{}
 
-func (*GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized) getFlowcontrolApiserverV1beta2APIResourcesRes() {
+func (*GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) getFlowcontrolApiserverV1beta2APIResourcesRes() {
 }
 
 type GetInternalApiserverAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -2571,10 +2569,10 @@ type GetInternalApiserverAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV
 
 func (*GetInternalApiserverAPIGroupApplicationYamlOK) getInternalApiserverAPIGroupRes() {}
 
-// GetInternalApiserverAPIGroupResUnauthorized is response for GetInternalApiserverAPIGroup operation.
-type GetInternalApiserverAPIGroupResUnauthorized struct{}
+// GetInternalApiserverAPIGroupUnauthorized is response for GetInternalApiserverAPIGroup operation.
+type GetInternalApiserverAPIGroupUnauthorized struct{}
 
-func (*GetInternalApiserverAPIGroupResUnauthorized) getInternalApiserverAPIGroupRes() {}
+func (*GetInternalApiserverAPIGroupUnauthorized) getInternalApiserverAPIGroupRes() {}
 
 type GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2591,10 +2589,10 @@ type GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK IoK8sApimachinery
 func (*GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) getInternalApiserverV1alpha1APIResourcesRes() {
 }
 
-// GetInternalApiserverV1alpha1APIResourcesResUnauthorized is response for GetInternalApiserverV1alpha1APIResources operation.
-type GetInternalApiserverV1alpha1APIResourcesResUnauthorized struct{}
+// GetInternalApiserverV1alpha1APIResourcesUnauthorized is response for GetInternalApiserverV1alpha1APIResources operation.
+type GetInternalApiserverV1alpha1APIResourcesUnauthorized struct{}
 
-func (*GetInternalApiserverV1alpha1APIResourcesResUnauthorized) getInternalApiserverV1alpha1APIResourcesRes() {
+func (*GetInternalApiserverV1alpha1APIResourcesUnauthorized) getInternalApiserverV1alpha1APIResourcesRes() {
 }
 
 type GetNetworkingAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -2609,10 +2607,10 @@ type GetNetworkingAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGro
 
 func (*GetNetworkingAPIGroupApplicationYamlOK) getNetworkingAPIGroupRes() {}
 
-// GetNetworkingAPIGroupResUnauthorized is response for GetNetworkingAPIGroup operation.
-type GetNetworkingAPIGroupResUnauthorized struct{}
+// GetNetworkingAPIGroupUnauthorized is response for GetNetworkingAPIGroup operation.
+type GetNetworkingAPIGroupUnauthorized struct{}
 
-func (*GetNetworkingAPIGroupResUnauthorized) getNetworkingAPIGroupRes() {}
+func (*GetNetworkingAPIGroupUnauthorized) getNetworkingAPIGroupRes() {}
 
 type GetNetworkingV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2627,10 +2625,10 @@ type GetNetworkingV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*GetNetworkingV1APIResourcesApplicationYamlOK) getNetworkingV1APIResourcesRes() {}
 
-// GetNetworkingV1APIResourcesResUnauthorized is response for GetNetworkingV1APIResources operation.
-type GetNetworkingV1APIResourcesResUnauthorized struct{}
+// GetNetworkingV1APIResourcesUnauthorized is response for GetNetworkingV1APIResources operation.
+type GetNetworkingV1APIResourcesUnauthorized struct{}
 
-func (*GetNetworkingV1APIResourcesResUnauthorized) getNetworkingV1APIResourcesRes() {}
+func (*GetNetworkingV1APIResourcesUnauthorized) getNetworkingV1APIResourcesRes() {}
 
 type GetNodeAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2644,10 +2642,10 @@ type GetNodeAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetNodeAPIGroupApplicationYamlOK) getNodeAPIGroupRes() {}
 
-// GetNodeAPIGroupResUnauthorized is response for GetNodeAPIGroup operation.
-type GetNodeAPIGroupResUnauthorized struct{}
+// GetNodeAPIGroupUnauthorized is response for GetNodeAPIGroup operation.
+type GetNodeAPIGroupUnauthorized struct{}
 
-func (*GetNodeAPIGroupResUnauthorized) getNodeAPIGroupRes() {}
+func (*GetNodeAPIGroupUnauthorized) getNodeAPIGroupRes() {}
 
 type GetNodeV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2661,10 +2659,10 @@ type GetNodeV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIRes
 
 func (*GetNodeV1APIResourcesApplicationYamlOK) getNodeV1APIResourcesRes() {}
 
-// GetNodeV1APIResourcesResUnauthorized is response for GetNodeV1APIResources operation.
-type GetNodeV1APIResourcesResUnauthorized struct{}
+// GetNodeV1APIResourcesUnauthorized is response for GetNodeV1APIResources operation.
+type GetNodeV1APIResourcesUnauthorized struct{}
 
-func (*GetNodeV1APIResourcesResUnauthorized) getNodeV1APIResourcesRes() {}
+func (*GetNodeV1APIResourcesUnauthorized) getNodeV1APIResourcesRes() {}
 
 type GetNodeV1alpha1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2679,10 +2677,10 @@ type GetNodeV1alpha1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*GetNodeV1alpha1APIResourcesApplicationYamlOK) getNodeV1alpha1APIResourcesRes() {}
 
-// GetNodeV1alpha1APIResourcesResUnauthorized is response for GetNodeV1alpha1APIResources operation.
-type GetNodeV1alpha1APIResourcesResUnauthorized struct{}
+// GetNodeV1alpha1APIResourcesUnauthorized is response for GetNodeV1alpha1APIResources operation.
+type GetNodeV1alpha1APIResourcesUnauthorized struct{}
 
-func (*GetNodeV1alpha1APIResourcesResUnauthorized) getNodeV1alpha1APIResourcesRes() {}
+func (*GetNodeV1alpha1APIResourcesUnauthorized) getNodeV1alpha1APIResourcesRes() {}
 
 type GetNodeV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2697,10 +2695,10 @@ type GetNodeV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1A
 
 func (*GetNodeV1beta1APIResourcesApplicationYamlOK) getNodeV1beta1APIResourcesRes() {}
 
-// GetNodeV1beta1APIResourcesResUnauthorized is response for GetNodeV1beta1APIResources operation.
-type GetNodeV1beta1APIResourcesResUnauthorized struct{}
+// GetNodeV1beta1APIResourcesUnauthorized is response for GetNodeV1beta1APIResources operation.
+type GetNodeV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetNodeV1beta1APIResourcesResUnauthorized) getNodeV1beta1APIResourcesRes() {}
+func (*GetNodeV1beta1APIResourcesUnauthorized) getNodeV1beta1APIResourcesRes() {}
 
 type GetPolicyAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2714,10 +2712,10 @@ type GetPolicyAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetPolicyAPIGroupApplicationYamlOK) getPolicyAPIGroupRes() {}
 
-// GetPolicyAPIGroupResUnauthorized is response for GetPolicyAPIGroup operation.
-type GetPolicyAPIGroupResUnauthorized struct{}
+// GetPolicyAPIGroupUnauthorized is response for GetPolicyAPIGroup operation.
+type GetPolicyAPIGroupUnauthorized struct{}
 
-func (*GetPolicyAPIGroupResUnauthorized) getPolicyAPIGroupRes() {}
+func (*GetPolicyAPIGroupUnauthorized) getPolicyAPIGroupRes() {}
 
 type GetPolicyV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2731,10 +2729,10 @@ type GetPolicyV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIR
 
 func (*GetPolicyV1APIResourcesApplicationYamlOK) getPolicyV1APIResourcesRes() {}
 
-// GetPolicyV1APIResourcesResUnauthorized is response for GetPolicyV1APIResources operation.
-type GetPolicyV1APIResourcesResUnauthorized struct{}
+// GetPolicyV1APIResourcesUnauthorized is response for GetPolicyV1APIResources operation.
+type GetPolicyV1APIResourcesUnauthorized struct{}
 
-func (*GetPolicyV1APIResourcesResUnauthorized) getPolicyV1APIResourcesRes() {}
+func (*GetPolicyV1APIResourcesUnauthorized) getPolicyV1APIResourcesRes() {}
 
 type GetPolicyV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2749,10 +2747,10 @@ type GetPolicyV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV
 
 func (*GetPolicyV1beta1APIResourcesApplicationYamlOK) getPolicyV1beta1APIResourcesRes() {}
 
-// GetPolicyV1beta1APIResourcesResUnauthorized is response for GetPolicyV1beta1APIResources operation.
-type GetPolicyV1beta1APIResourcesResUnauthorized struct{}
+// GetPolicyV1beta1APIResourcesUnauthorized is response for GetPolicyV1beta1APIResources operation.
+type GetPolicyV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetPolicyV1beta1APIResourcesResUnauthorized) getPolicyV1beta1APIResourcesRes() {}
+func (*GetPolicyV1beta1APIResourcesUnauthorized) getPolicyV1beta1APIResourcesRes() {}
 
 type GetRbacAuthorizationAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2767,10 +2765,10 @@ type GetRbacAuthorizationAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV
 
 func (*GetRbacAuthorizationAPIGroupApplicationYamlOK) getRbacAuthorizationAPIGroupRes() {}
 
-// GetRbacAuthorizationAPIGroupResUnauthorized is response for GetRbacAuthorizationAPIGroup operation.
-type GetRbacAuthorizationAPIGroupResUnauthorized struct{}
+// GetRbacAuthorizationAPIGroupUnauthorized is response for GetRbacAuthorizationAPIGroup operation.
+type GetRbacAuthorizationAPIGroupUnauthorized struct{}
 
-func (*GetRbacAuthorizationAPIGroupResUnauthorized) getRbacAuthorizationAPIGroupRes() {}
+func (*GetRbacAuthorizationAPIGroupUnauthorized) getRbacAuthorizationAPIGroupRes() {}
 
 type GetRbacAuthorizationV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2785,10 +2783,10 @@ type GetRbacAuthorizationV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*GetRbacAuthorizationV1APIResourcesApplicationYamlOK) getRbacAuthorizationV1APIResourcesRes() {}
 
-// GetRbacAuthorizationV1APIResourcesResUnauthorized is response for GetRbacAuthorizationV1APIResources operation.
-type GetRbacAuthorizationV1APIResourcesResUnauthorized struct{}
+// GetRbacAuthorizationV1APIResourcesUnauthorized is response for GetRbacAuthorizationV1APIResources operation.
+type GetRbacAuthorizationV1APIResourcesUnauthorized struct{}
 
-func (*GetRbacAuthorizationV1APIResourcesResUnauthorized) getRbacAuthorizationV1APIResourcesRes() {}
+func (*GetRbacAuthorizationV1APIResourcesUnauthorized) getRbacAuthorizationV1APIResourcesRes() {}
 
 type GetSchedulingAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2802,10 +2800,10 @@ type GetSchedulingAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGro
 
 func (*GetSchedulingAPIGroupApplicationYamlOK) getSchedulingAPIGroupRes() {}
 
-// GetSchedulingAPIGroupResUnauthorized is response for GetSchedulingAPIGroup operation.
-type GetSchedulingAPIGroupResUnauthorized struct{}
+// GetSchedulingAPIGroupUnauthorized is response for GetSchedulingAPIGroup operation.
+type GetSchedulingAPIGroupUnauthorized struct{}
 
-func (*GetSchedulingAPIGroupResUnauthorized) getSchedulingAPIGroupRes() {}
+func (*GetSchedulingAPIGroupUnauthorized) getSchedulingAPIGroupRes() {}
 
 type GetSchedulingV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2820,20 +2818,20 @@ type GetSchedulingV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*GetSchedulingV1APIResourcesApplicationYamlOK) getSchedulingV1APIResourcesRes() {}
 
-// GetSchedulingV1APIResourcesResUnauthorized is response for GetSchedulingV1APIResources operation.
-type GetSchedulingV1APIResourcesResUnauthorized struct{}
+// GetSchedulingV1APIResourcesUnauthorized is response for GetSchedulingV1APIResources operation.
+type GetSchedulingV1APIResourcesUnauthorized struct{}
 
-func (*GetSchedulingV1APIResourcesResUnauthorized) getSchedulingV1APIResourcesRes() {}
+func (*GetSchedulingV1APIResourcesUnauthorized) getSchedulingV1APIResourcesRes() {}
 
 type GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON string
 
 func (*GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) getServiceAccountIssuerOpenIDConfigurationRes() {
 }
 
-// GetServiceAccountIssuerOpenIDConfigurationResUnauthorized is response for GetServiceAccountIssuerOpenIDConfiguration operation.
-type GetServiceAccountIssuerOpenIDConfigurationResUnauthorized struct{}
+// GetServiceAccountIssuerOpenIDConfigurationUnauthorized is response for GetServiceAccountIssuerOpenIDConfiguration operation.
+type GetServiceAccountIssuerOpenIDConfigurationUnauthorized struct{}
 
-func (*GetServiceAccountIssuerOpenIDConfigurationResUnauthorized) getServiceAccountIssuerOpenIDConfigurationRes() {
+func (*GetServiceAccountIssuerOpenIDConfigurationUnauthorized) getServiceAccountIssuerOpenIDConfigurationRes() {
 }
 
 type GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON string
@@ -2841,10 +2839,10 @@ type GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON string
 func (*GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) getServiceAccountIssuerOpenIDKeysetRes() {
 }
 
-// GetServiceAccountIssuerOpenIDKeysetResUnauthorized is response for GetServiceAccountIssuerOpenIDKeyset operation.
-type GetServiceAccountIssuerOpenIDKeysetResUnauthorized struct{}
+// GetServiceAccountIssuerOpenIDKeysetUnauthorized is response for GetServiceAccountIssuerOpenIDKeyset operation.
+type GetServiceAccountIssuerOpenIDKeysetUnauthorized struct{}
 
-func (*GetServiceAccountIssuerOpenIDKeysetResUnauthorized) getServiceAccountIssuerOpenIDKeysetRes() {}
+func (*GetServiceAccountIssuerOpenIDKeysetUnauthorized) getServiceAccountIssuerOpenIDKeysetRes() {}
 
 type GetStorageAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
@@ -2858,10 +2856,10 @@ type GetStorageAPIGroupApplicationYamlOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetStorageAPIGroupApplicationYamlOK) getStorageAPIGroupRes() {}
 
-// GetStorageAPIGroupResUnauthorized is response for GetStorageAPIGroup operation.
-type GetStorageAPIGroupResUnauthorized struct{}
+// GetStorageAPIGroupUnauthorized is response for GetStorageAPIGroup operation.
+type GetStorageAPIGroupUnauthorized struct{}
 
-func (*GetStorageAPIGroupResUnauthorized) getStorageAPIGroupRes() {}
+func (*GetStorageAPIGroupUnauthorized) getStorageAPIGroupRes() {}
 
 type GetStorageV1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2875,10 +2873,10 @@ type GetStorageV1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMetaV1API
 
 func (*GetStorageV1APIResourcesApplicationYamlOK) getStorageV1APIResourcesRes() {}
 
-// GetStorageV1APIResourcesResUnauthorized is response for GetStorageV1APIResources operation.
-type GetStorageV1APIResourcesResUnauthorized struct{}
+// GetStorageV1APIResourcesUnauthorized is response for GetStorageV1APIResources operation.
+type GetStorageV1APIResourcesUnauthorized struct{}
 
-func (*GetStorageV1APIResourcesResUnauthorized) getStorageV1APIResourcesRes() {}
+func (*GetStorageV1APIResourcesUnauthorized) getStorageV1APIResourcesRes() {}
 
 type GetStorageV1alpha1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2893,10 +2891,10 @@ type GetStorageV1alpha1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMet
 
 func (*GetStorageV1alpha1APIResourcesApplicationYamlOK) getStorageV1alpha1APIResourcesRes() {}
 
-// GetStorageV1alpha1APIResourcesResUnauthorized is response for GetStorageV1alpha1APIResources operation.
-type GetStorageV1alpha1APIResourcesResUnauthorized struct{}
+// GetStorageV1alpha1APIResourcesUnauthorized is response for GetStorageV1alpha1APIResources operation.
+type GetStorageV1alpha1APIResourcesUnauthorized struct{}
 
-func (*GetStorageV1alpha1APIResourcesResUnauthorized) getStorageV1alpha1APIResourcesRes() {}
+func (*GetStorageV1alpha1APIResourcesUnauthorized) getStorageV1alpha1APIResourcesRes() {}
 
 type GetStorageV1beta1APIResourcesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIResourceList
 
@@ -2911,10 +2909,10 @@ type GetStorageV1beta1APIResourcesApplicationYamlOK IoK8sApimachineryPkgApisMeta
 
 func (*GetStorageV1beta1APIResourcesApplicationYamlOK) getStorageV1beta1APIResourcesRes() {}
 
-// GetStorageV1beta1APIResourcesResUnauthorized is response for GetStorageV1beta1APIResources operation.
-type GetStorageV1beta1APIResourcesResUnauthorized struct{}
+// GetStorageV1beta1APIResourcesUnauthorized is response for GetStorageV1beta1APIResources operation.
+type GetStorageV1beta1APIResourcesUnauthorized struct{}
 
-func (*GetStorageV1beta1APIResourcesResUnauthorized) getStorageV1beta1APIResourcesRes() {}
+func (*GetStorageV1beta1APIResourcesUnauthorized) getStorageV1beta1APIResourcesRes() {}
 
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhook
 type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
@@ -7388,10 +7386,10 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK Io
 func (*ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) listAdmissionregistrationV1MutatingWebhookConfigurationRes() {
 }
 
-// ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized is response for ListAdmissionregistrationV1MutatingWebhookConfiguration operation.
-type ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized struct{}
+// ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized is response for ListAdmissionregistrationV1MutatingWebhookConfiguration operation.
+type ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized struct{}
 
-func (*ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) listAdmissionregistrationV1MutatingWebhookConfigurationRes() {
+func (*ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) listAdmissionregistrationV1MutatingWebhookConfigurationRes() {
 }
 
 type ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList
@@ -7419,10 +7417,10 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK 
 func (*ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) listAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
 }
 
-// ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized is response for ListAdmissionregistrationV1ValidatingWebhookConfiguration operation.
-type ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized struct{}
+// ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized is response for ListAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+type ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized struct{}
 
-func (*ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) listAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
+func (*ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) listAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
 }
 
 type ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList
@@ -7450,10 +7448,10 @@ type ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK IoK8sApiextens
 func (*ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) listApiextensionsV1CustomResourceDefinitionRes() {
 }
 
-// ListApiextensionsV1CustomResourceDefinitionResUnauthorized is response for ListApiextensionsV1CustomResourceDefinition operation.
-type ListApiextensionsV1CustomResourceDefinitionResUnauthorized struct{}
+// ListApiextensionsV1CustomResourceDefinitionUnauthorized is response for ListApiextensionsV1CustomResourceDefinition operation.
+type ListApiextensionsV1CustomResourceDefinitionUnauthorized struct{}
 
-func (*ListApiextensionsV1CustomResourceDefinitionResUnauthorized) listApiextensionsV1CustomResourceDefinitionRes() {
+func (*ListApiextensionsV1CustomResourceDefinitionUnauthorized) listApiextensionsV1CustomResourceDefinitionRes() {
 }
 
 type ListApiregistrationV1APIServiceApplicationJSONOK IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList
@@ -7479,10 +7477,10 @@ type ListApiregistrationV1APIServiceApplicationYamlOK IoK8sKubeAggregatorPkgApis
 
 func (*ListApiregistrationV1APIServiceApplicationYamlOK) listApiregistrationV1APIServiceRes() {}
 
-// ListApiregistrationV1APIServiceResUnauthorized is response for ListApiregistrationV1APIService operation.
-type ListApiregistrationV1APIServiceResUnauthorized struct{}
+// ListApiregistrationV1APIServiceUnauthorized is response for ListApiregistrationV1APIService operation.
+type ListApiregistrationV1APIServiceUnauthorized struct{}
 
-func (*ListApiregistrationV1APIServiceResUnauthorized) listApiregistrationV1APIServiceRes() {}
+func (*ListApiregistrationV1APIServiceUnauthorized) listApiregistrationV1APIServiceRes() {}
 
 type ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK IoK8sAPIAppsV1ControllerRevisionList
 
@@ -7509,10 +7507,10 @@ type ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK IoK8sAPIAppsV
 func (*ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) listAppsV1ControllerRevisionForAllNamespacesRes() {
 }
 
-// ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized is response for ListAppsV1ControllerRevisionForAllNamespaces operation.
-type ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized struct{}
+// ListAppsV1ControllerRevisionForAllNamespacesUnauthorized is response for ListAppsV1ControllerRevisionForAllNamespaces operation.
+type ListAppsV1ControllerRevisionForAllNamespacesUnauthorized struct{}
 
-func (*ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized) listAppsV1ControllerRevisionForAllNamespacesRes() {
+func (*ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) listAppsV1ControllerRevisionForAllNamespacesRes() {
 }
 
 type ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK IoK8sAPIAppsV1DaemonSetList
@@ -7540,10 +7538,10 @@ type ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK IoK8sAPIAppsV1DaemonSe
 func (*ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) listAppsV1DaemonSetForAllNamespacesRes() {
 }
 
-// ListAppsV1DaemonSetForAllNamespacesResUnauthorized is response for ListAppsV1DaemonSetForAllNamespaces operation.
-type ListAppsV1DaemonSetForAllNamespacesResUnauthorized struct{}
+// ListAppsV1DaemonSetForAllNamespacesUnauthorized is response for ListAppsV1DaemonSetForAllNamespaces operation.
+type ListAppsV1DaemonSetForAllNamespacesUnauthorized struct{}
 
-func (*ListAppsV1DaemonSetForAllNamespacesResUnauthorized) listAppsV1DaemonSetForAllNamespacesRes() {}
+func (*ListAppsV1DaemonSetForAllNamespacesUnauthorized) listAppsV1DaemonSetForAllNamespacesRes() {}
 
 type ListAppsV1DeploymentForAllNamespacesApplicationJSONOK IoK8sAPIAppsV1DeploymentList
 
@@ -7570,11 +7568,10 @@ type ListAppsV1DeploymentForAllNamespacesApplicationYamlOK IoK8sAPIAppsV1Deploym
 func (*ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) listAppsV1DeploymentForAllNamespacesRes() {
 }
 
-// ListAppsV1DeploymentForAllNamespacesResUnauthorized is response for ListAppsV1DeploymentForAllNamespaces operation.
-type ListAppsV1DeploymentForAllNamespacesResUnauthorized struct{}
+// ListAppsV1DeploymentForAllNamespacesUnauthorized is response for ListAppsV1DeploymentForAllNamespaces operation.
+type ListAppsV1DeploymentForAllNamespacesUnauthorized struct{}
 
-func (*ListAppsV1DeploymentForAllNamespacesResUnauthorized) listAppsV1DeploymentForAllNamespacesRes() {
-}
+func (*ListAppsV1DeploymentForAllNamespacesUnauthorized) listAppsV1DeploymentForAllNamespacesRes() {}
 
 type ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK IoK8sAPIAppsV1ReplicaSetList
 
@@ -7601,11 +7598,10 @@ type ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK IoK8sAPIAppsV1Replica
 func (*ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) listAppsV1ReplicaSetForAllNamespacesRes() {
 }
 
-// ListAppsV1ReplicaSetForAllNamespacesResUnauthorized is response for ListAppsV1ReplicaSetForAllNamespaces operation.
-type ListAppsV1ReplicaSetForAllNamespacesResUnauthorized struct{}
+// ListAppsV1ReplicaSetForAllNamespacesUnauthorized is response for ListAppsV1ReplicaSetForAllNamespaces operation.
+type ListAppsV1ReplicaSetForAllNamespacesUnauthorized struct{}
 
-func (*ListAppsV1ReplicaSetForAllNamespacesResUnauthorized) listAppsV1ReplicaSetForAllNamespacesRes() {
-}
+func (*ListAppsV1ReplicaSetForAllNamespacesUnauthorized) listAppsV1ReplicaSetForAllNamespacesRes() {}
 
 type ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK IoK8sAPIAppsV1StatefulSetList
 
@@ -7632,10 +7628,10 @@ type ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK IoK8sAPIAppsV1Statef
 func (*ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) listAppsV1StatefulSetForAllNamespacesRes() {
 }
 
-// ListAppsV1StatefulSetForAllNamespacesResUnauthorized is response for ListAppsV1StatefulSetForAllNamespaces operation.
-type ListAppsV1StatefulSetForAllNamespacesResUnauthorized struct{}
+// ListAppsV1StatefulSetForAllNamespacesUnauthorized is response for ListAppsV1StatefulSetForAllNamespaces operation.
+type ListAppsV1StatefulSetForAllNamespacesUnauthorized struct{}
 
-func (*ListAppsV1StatefulSetForAllNamespacesResUnauthorized) listAppsV1StatefulSetForAllNamespacesRes() {
+func (*ListAppsV1StatefulSetForAllNamespacesUnauthorized) listAppsV1StatefulSetForAllNamespacesRes() {
 }
 
 type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList
@@ -7663,10 +7659,10 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK I
 func (*ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) listAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
-// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized is response for ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
-type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized struct{}
+// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized is response for ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
+type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized struct{}
 
-func (*ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) listAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes() {
+func (*ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) listAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
 type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList
@@ -7694,10 +7690,10 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYam
 func (*ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
-// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized is response for ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
-type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized struct{}
+// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized is response for ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
+type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized struct{}
 
-func (*ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes() {
+func (*ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
 type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList
@@ -7725,10 +7721,10 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYam
 func (*ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
-// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized is response for ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
-type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized struct{}
+// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized is response for ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
+type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized struct{}
 
-func (*ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized) listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes() {
+func (*ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes() {
 }
 
 type ListBatchV1CronJobForAllNamespacesApplicationJSONOK IoK8sAPIBatchV1CronJobList
@@ -7754,10 +7750,10 @@ type ListBatchV1CronJobForAllNamespacesApplicationYamlOK IoK8sAPIBatchV1CronJobL
 
 func (*ListBatchV1CronJobForAllNamespacesApplicationYamlOK) listBatchV1CronJobForAllNamespacesRes() {}
 
-// ListBatchV1CronJobForAllNamespacesResUnauthorized is response for ListBatchV1CronJobForAllNamespaces operation.
-type ListBatchV1CronJobForAllNamespacesResUnauthorized struct{}
+// ListBatchV1CronJobForAllNamespacesUnauthorized is response for ListBatchV1CronJobForAllNamespaces operation.
+type ListBatchV1CronJobForAllNamespacesUnauthorized struct{}
 
-func (*ListBatchV1CronJobForAllNamespacesResUnauthorized) listBatchV1CronJobForAllNamespacesRes() {}
+func (*ListBatchV1CronJobForAllNamespacesUnauthorized) listBatchV1CronJobForAllNamespacesRes() {}
 
 type ListBatchV1JobForAllNamespacesApplicationJSONOK IoK8sAPIBatchV1JobList
 
@@ -7782,10 +7778,10 @@ type ListBatchV1JobForAllNamespacesApplicationYamlOK IoK8sAPIBatchV1JobList
 
 func (*ListBatchV1JobForAllNamespacesApplicationYamlOK) listBatchV1JobForAllNamespacesRes() {}
 
-// ListBatchV1JobForAllNamespacesResUnauthorized is response for ListBatchV1JobForAllNamespaces operation.
-type ListBatchV1JobForAllNamespacesResUnauthorized struct{}
+// ListBatchV1JobForAllNamespacesUnauthorized is response for ListBatchV1JobForAllNamespaces operation.
+type ListBatchV1JobForAllNamespacesUnauthorized struct{}
 
-func (*ListBatchV1JobForAllNamespacesResUnauthorized) listBatchV1JobForAllNamespacesRes() {}
+func (*ListBatchV1JobForAllNamespacesUnauthorized) listBatchV1JobForAllNamespacesRes() {}
 
 type ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK IoK8sAPIBatchV1beta1CronJobList
 
@@ -7812,10 +7808,10 @@ type ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK IoK8sAPIBatchV1bet
 func (*ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) listBatchV1beta1CronJobForAllNamespacesRes() {
 }
 
-// ListBatchV1beta1CronJobForAllNamespacesResUnauthorized is response for ListBatchV1beta1CronJobForAllNamespaces operation.
-type ListBatchV1beta1CronJobForAllNamespacesResUnauthorized struct{}
+// ListBatchV1beta1CronJobForAllNamespacesUnauthorized is response for ListBatchV1beta1CronJobForAllNamespaces operation.
+type ListBatchV1beta1CronJobForAllNamespacesUnauthorized struct{}
 
-func (*ListBatchV1beta1CronJobForAllNamespacesResUnauthorized) listBatchV1beta1CronJobForAllNamespacesRes() {
+func (*ListBatchV1beta1CronJobForAllNamespacesUnauthorized) listBatchV1beta1CronJobForAllNamespacesRes() {
 }
 
 type ListCertificatesV1CertificateSigningRequestApplicationJSONOK IoK8sAPICertificatesV1CertificateSigningRequestList
@@ -7843,10 +7839,10 @@ type ListCertificatesV1CertificateSigningRequestApplicationYamlOK IoK8sAPICertif
 func (*ListCertificatesV1CertificateSigningRequestApplicationYamlOK) listCertificatesV1CertificateSigningRequestRes() {
 }
 
-// ListCertificatesV1CertificateSigningRequestResUnauthorized is response for ListCertificatesV1CertificateSigningRequest operation.
-type ListCertificatesV1CertificateSigningRequestResUnauthorized struct{}
+// ListCertificatesV1CertificateSigningRequestUnauthorized is response for ListCertificatesV1CertificateSigningRequest operation.
+type ListCertificatesV1CertificateSigningRequestUnauthorized struct{}
 
-func (*ListCertificatesV1CertificateSigningRequestResUnauthorized) listCertificatesV1CertificateSigningRequestRes() {
+func (*ListCertificatesV1CertificateSigningRequestUnauthorized) listCertificatesV1CertificateSigningRequestRes() {
 }
 
 type ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK IoK8sAPICoordinationV1LeaseList
@@ -7874,10 +7870,10 @@ type ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK IoK8sAPICoordinati
 func (*ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) listCoordinationV1LeaseForAllNamespacesRes() {
 }
 
-// ListCoordinationV1LeaseForAllNamespacesResUnauthorized is response for ListCoordinationV1LeaseForAllNamespaces operation.
-type ListCoordinationV1LeaseForAllNamespacesResUnauthorized struct{}
+// ListCoordinationV1LeaseForAllNamespacesUnauthorized is response for ListCoordinationV1LeaseForAllNamespaces operation.
+type ListCoordinationV1LeaseForAllNamespacesUnauthorized struct{}
 
-func (*ListCoordinationV1LeaseForAllNamespacesResUnauthorized) listCoordinationV1LeaseForAllNamespacesRes() {
+func (*ListCoordinationV1LeaseForAllNamespacesUnauthorized) listCoordinationV1LeaseForAllNamespacesRes() {
 }
 
 type ListCoreV1ComponentStatusApplicationJSONOK IoK8sAPICoreV1ComponentStatusList
@@ -7901,10 +7897,10 @@ type ListCoreV1ComponentStatusApplicationYamlOK IoK8sAPICoreV1ComponentStatusLis
 
 func (*ListCoreV1ComponentStatusApplicationYamlOK) listCoreV1ComponentStatusRes() {}
 
-// ListCoreV1ComponentStatusResUnauthorized is response for ListCoreV1ComponentStatus operation.
-type ListCoreV1ComponentStatusResUnauthorized struct{}
+// ListCoreV1ComponentStatusUnauthorized is response for ListCoreV1ComponentStatus operation.
+type ListCoreV1ComponentStatusUnauthorized struct{}
 
-func (*ListCoreV1ComponentStatusResUnauthorized) listCoreV1ComponentStatusRes() {}
+func (*ListCoreV1ComponentStatusUnauthorized) listCoreV1ComponentStatusRes() {}
 
 type ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK IoK8sAPICoreV1ConfigMapList
 
@@ -7931,10 +7927,10 @@ type ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK IoK8sAPICoreV1ConfigMa
 func (*ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) listCoreV1ConfigMapForAllNamespacesRes() {
 }
 
-// ListCoreV1ConfigMapForAllNamespacesResUnauthorized is response for ListCoreV1ConfigMapForAllNamespaces operation.
-type ListCoreV1ConfigMapForAllNamespacesResUnauthorized struct{}
+// ListCoreV1ConfigMapForAllNamespacesUnauthorized is response for ListCoreV1ConfigMapForAllNamespaces operation.
+type ListCoreV1ConfigMapForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1ConfigMapForAllNamespacesResUnauthorized) listCoreV1ConfigMapForAllNamespacesRes() {}
+func (*ListCoreV1ConfigMapForAllNamespacesUnauthorized) listCoreV1ConfigMapForAllNamespacesRes() {}
 
 type ListCoreV1EndpointsForAllNamespacesApplicationJSONOK IoK8sAPICoreV1EndpointsList
 
@@ -7961,10 +7957,10 @@ type ListCoreV1EndpointsForAllNamespacesApplicationYamlOK IoK8sAPICoreV1Endpoint
 func (*ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) listCoreV1EndpointsForAllNamespacesRes() {
 }
 
-// ListCoreV1EndpointsForAllNamespacesResUnauthorized is response for ListCoreV1EndpointsForAllNamespaces operation.
-type ListCoreV1EndpointsForAllNamespacesResUnauthorized struct{}
+// ListCoreV1EndpointsForAllNamespacesUnauthorized is response for ListCoreV1EndpointsForAllNamespaces operation.
+type ListCoreV1EndpointsForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1EndpointsForAllNamespacesResUnauthorized) listCoreV1EndpointsForAllNamespacesRes() {}
+func (*ListCoreV1EndpointsForAllNamespacesUnauthorized) listCoreV1EndpointsForAllNamespacesRes() {}
 
 type ListCoreV1EventForAllNamespacesApplicationJSONOK IoK8sAPICoreV1EventList
 
@@ -7989,10 +7985,10 @@ type ListCoreV1EventForAllNamespacesApplicationYamlOK IoK8sAPICoreV1EventList
 
 func (*ListCoreV1EventForAllNamespacesApplicationYamlOK) listCoreV1EventForAllNamespacesRes() {}
 
-// ListCoreV1EventForAllNamespacesResUnauthorized is response for ListCoreV1EventForAllNamespaces operation.
-type ListCoreV1EventForAllNamespacesResUnauthorized struct{}
+// ListCoreV1EventForAllNamespacesUnauthorized is response for ListCoreV1EventForAllNamespaces operation.
+type ListCoreV1EventForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1EventForAllNamespacesResUnauthorized) listCoreV1EventForAllNamespacesRes() {}
+func (*ListCoreV1EventForAllNamespacesUnauthorized) listCoreV1EventForAllNamespacesRes() {}
 
 type ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK IoK8sAPICoreV1LimitRangeList
 
@@ -8019,11 +8015,10 @@ type ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK IoK8sAPICoreV1LimitRa
 func (*ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) listCoreV1LimitRangeForAllNamespacesRes() {
 }
 
-// ListCoreV1LimitRangeForAllNamespacesResUnauthorized is response for ListCoreV1LimitRangeForAllNamespaces operation.
-type ListCoreV1LimitRangeForAllNamespacesResUnauthorized struct{}
+// ListCoreV1LimitRangeForAllNamespacesUnauthorized is response for ListCoreV1LimitRangeForAllNamespaces operation.
+type ListCoreV1LimitRangeForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1LimitRangeForAllNamespacesResUnauthorized) listCoreV1LimitRangeForAllNamespacesRes() {
-}
+func (*ListCoreV1LimitRangeForAllNamespacesUnauthorized) listCoreV1LimitRangeForAllNamespacesRes() {}
 
 type ListCoreV1NamespaceApplicationJSONOK IoK8sAPICoreV1NamespaceList
 
@@ -8045,10 +8040,10 @@ type ListCoreV1NamespaceApplicationYamlOK IoK8sAPICoreV1NamespaceList
 
 func (*ListCoreV1NamespaceApplicationYamlOK) listCoreV1NamespaceRes() {}
 
-// ListCoreV1NamespaceResUnauthorized is response for ListCoreV1Namespace operation.
-type ListCoreV1NamespaceResUnauthorized struct{}
+// ListCoreV1NamespaceUnauthorized is response for ListCoreV1Namespace operation.
+type ListCoreV1NamespaceUnauthorized struct{}
 
-func (*ListCoreV1NamespaceResUnauthorized) listCoreV1NamespaceRes() {}
+func (*ListCoreV1NamespaceUnauthorized) listCoreV1NamespaceRes() {}
 
 type ListCoreV1NodeApplicationJSONOK IoK8sAPICoreV1NodeList
 
@@ -8070,10 +8065,10 @@ type ListCoreV1NodeApplicationYamlOK IoK8sAPICoreV1NodeList
 
 func (*ListCoreV1NodeApplicationYamlOK) listCoreV1NodeRes() {}
 
-// ListCoreV1NodeResUnauthorized is response for ListCoreV1Node operation.
-type ListCoreV1NodeResUnauthorized struct{}
+// ListCoreV1NodeUnauthorized is response for ListCoreV1Node operation.
+type ListCoreV1NodeUnauthorized struct{}
 
-func (*ListCoreV1NodeResUnauthorized) listCoreV1NodeRes() {}
+func (*ListCoreV1NodeUnauthorized) listCoreV1NodeRes() {}
 
 type ListCoreV1PersistentVolumeApplicationJSONOK IoK8sAPICoreV1PersistentVolumeList
 
@@ -8122,16 +8117,16 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK IoK8sAPICo
 func (*ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) listCoreV1PersistentVolumeClaimForAllNamespacesRes() {
 }
 
-// ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized is response for ListCoreV1PersistentVolumeClaimForAllNamespaces operation.
-type ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized struct{}
+// ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized is response for ListCoreV1PersistentVolumeClaimForAllNamespaces operation.
+type ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized) listCoreV1PersistentVolumeClaimForAllNamespacesRes() {
+func (*ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) listCoreV1PersistentVolumeClaimForAllNamespacesRes() {
 }
 
-// ListCoreV1PersistentVolumeResUnauthorized is response for ListCoreV1PersistentVolume operation.
-type ListCoreV1PersistentVolumeResUnauthorized struct{}
+// ListCoreV1PersistentVolumeUnauthorized is response for ListCoreV1PersistentVolume operation.
+type ListCoreV1PersistentVolumeUnauthorized struct{}
 
-func (*ListCoreV1PersistentVolumeResUnauthorized) listCoreV1PersistentVolumeRes() {}
+func (*ListCoreV1PersistentVolumeUnauthorized) listCoreV1PersistentVolumeRes() {}
 
 type ListCoreV1PodForAllNamespacesApplicationJSONOK IoK8sAPICoreV1PodList
 
@@ -8156,10 +8151,10 @@ type ListCoreV1PodForAllNamespacesApplicationYamlOK IoK8sAPICoreV1PodList
 
 func (*ListCoreV1PodForAllNamespacesApplicationYamlOK) listCoreV1PodForAllNamespacesRes() {}
 
-// ListCoreV1PodForAllNamespacesResUnauthorized is response for ListCoreV1PodForAllNamespaces operation.
-type ListCoreV1PodForAllNamespacesResUnauthorized struct{}
+// ListCoreV1PodForAllNamespacesUnauthorized is response for ListCoreV1PodForAllNamespaces operation.
+type ListCoreV1PodForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1PodForAllNamespacesResUnauthorized) listCoreV1PodForAllNamespacesRes() {}
+func (*ListCoreV1PodForAllNamespacesUnauthorized) listCoreV1PodForAllNamespacesRes() {}
 
 type ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK IoK8sAPICoreV1PodTemplateList
 
@@ -8186,10 +8181,10 @@ type ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK IoK8sAPICoreV1PodTem
 func (*ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) listCoreV1PodTemplateForAllNamespacesRes() {
 }
 
-// ListCoreV1PodTemplateForAllNamespacesResUnauthorized is response for ListCoreV1PodTemplateForAllNamespaces operation.
-type ListCoreV1PodTemplateForAllNamespacesResUnauthorized struct{}
+// ListCoreV1PodTemplateForAllNamespacesUnauthorized is response for ListCoreV1PodTemplateForAllNamespaces operation.
+type ListCoreV1PodTemplateForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1PodTemplateForAllNamespacesResUnauthorized) listCoreV1PodTemplateForAllNamespacesRes() {
+func (*ListCoreV1PodTemplateForAllNamespacesUnauthorized) listCoreV1PodTemplateForAllNamespacesRes() {
 }
 
 type ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK IoK8sAPICoreV1ReplicationControllerList
@@ -8217,10 +8212,10 @@ type ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK IoK8sAPICo
 func (*ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) listCoreV1ReplicationControllerForAllNamespacesRes() {
 }
 
-// ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized is response for ListCoreV1ReplicationControllerForAllNamespaces operation.
-type ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized struct{}
+// ListCoreV1ReplicationControllerForAllNamespacesUnauthorized is response for ListCoreV1ReplicationControllerForAllNamespaces operation.
+type ListCoreV1ReplicationControllerForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized) listCoreV1ReplicationControllerForAllNamespacesRes() {
+func (*ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) listCoreV1ReplicationControllerForAllNamespacesRes() {
 }
 
 type ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK IoK8sAPICoreV1ResourceQuotaList
@@ -8248,10 +8243,10 @@ type ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK IoK8sAPICoreV1Reso
 func (*ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) listCoreV1ResourceQuotaForAllNamespacesRes() {
 }
 
-// ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized is response for ListCoreV1ResourceQuotaForAllNamespaces operation.
-type ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized struct{}
+// ListCoreV1ResourceQuotaForAllNamespacesUnauthorized is response for ListCoreV1ResourceQuotaForAllNamespaces operation.
+type ListCoreV1ResourceQuotaForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized) listCoreV1ResourceQuotaForAllNamespacesRes() {
+func (*ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) listCoreV1ResourceQuotaForAllNamespacesRes() {
 }
 
 type ListCoreV1SecretForAllNamespacesApplicationJSONOK IoK8sAPICoreV1SecretList
@@ -8277,10 +8272,10 @@ type ListCoreV1SecretForAllNamespacesApplicationYamlOK IoK8sAPICoreV1SecretList
 
 func (*ListCoreV1SecretForAllNamespacesApplicationYamlOK) listCoreV1SecretForAllNamespacesRes() {}
 
-// ListCoreV1SecretForAllNamespacesResUnauthorized is response for ListCoreV1SecretForAllNamespaces operation.
-type ListCoreV1SecretForAllNamespacesResUnauthorized struct{}
+// ListCoreV1SecretForAllNamespacesUnauthorized is response for ListCoreV1SecretForAllNamespaces operation.
+type ListCoreV1SecretForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1SecretForAllNamespacesResUnauthorized) listCoreV1SecretForAllNamespacesRes() {}
+func (*ListCoreV1SecretForAllNamespacesUnauthorized) listCoreV1SecretForAllNamespacesRes() {}
 
 type ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK IoK8sAPICoreV1ServiceAccountList
 
@@ -8307,10 +8302,10 @@ type ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK IoK8sAPICoreV1Ser
 func (*ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) listCoreV1ServiceAccountForAllNamespacesRes() {
 }
 
-// ListCoreV1ServiceAccountForAllNamespacesResUnauthorized is response for ListCoreV1ServiceAccountForAllNamespaces operation.
-type ListCoreV1ServiceAccountForAllNamespacesResUnauthorized struct{}
+// ListCoreV1ServiceAccountForAllNamespacesUnauthorized is response for ListCoreV1ServiceAccountForAllNamespaces operation.
+type ListCoreV1ServiceAccountForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1ServiceAccountForAllNamespacesResUnauthorized) listCoreV1ServiceAccountForAllNamespacesRes() {
+func (*ListCoreV1ServiceAccountForAllNamespacesUnauthorized) listCoreV1ServiceAccountForAllNamespacesRes() {
 }
 
 type ListCoreV1ServiceForAllNamespacesApplicationJSONOK IoK8sAPICoreV1ServiceList
@@ -8336,10 +8331,10 @@ type ListCoreV1ServiceForAllNamespacesApplicationYamlOK IoK8sAPICoreV1ServiceLis
 
 func (*ListCoreV1ServiceForAllNamespacesApplicationYamlOK) listCoreV1ServiceForAllNamespacesRes() {}
 
-// ListCoreV1ServiceForAllNamespacesResUnauthorized is response for ListCoreV1ServiceForAllNamespaces operation.
-type ListCoreV1ServiceForAllNamespacesResUnauthorized struct{}
+// ListCoreV1ServiceForAllNamespacesUnauthorized is response for ListCoreV1ServiceForAllNamespaces operation.
+type ListCoreV1ServiceForAllNamespacesUnauthorized struct{}
 
-func (*ListCoreV1ServiceForAllNamespacesResUnauthorized) listCoreV1ServiceForAllNamespacesRes() {}
+func (*ListCoreV1ServiceForAllNamespacesUnauthorized) listCoreV1ServiceForAllNamespacesRes() {}
 
 type ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK IoK8sAPIDiscoveryV1EndpointSliceList
 
@@ -8366,10 +8361,10 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK IoK8sAPIDisco
 func (*ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) listDiscoveryV1EndpointSliceForAllNamespacesRes() {
 }
 
-// ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized is response for ListDiscoveryV1EndpointSliceForAllNamespaces operation.
-type ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized struct{}
+// ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized is response for ListDiscoveryV1EndpointSliceForAllNamespaces operation.
+type ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized struct{}
 
-func (*ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized) listDiscoveryV1EndpointSliceForAllNamespacesRes() {
+func (*ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) listDiscoveryV1EndpointSliceForAllNamespacesRes() {
 }
 
 type ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK IoK8sAPIDiscoveryV1beta1EndpointSliceList
@@ -8397,10 +8392,10 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK IoK8sAPI
 func (*ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
 }
 
-// ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized is response for ListDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
-type ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized struct{}
+// ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized is response for ListDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+type ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized struct{}
 
-func (*ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
+func (*ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
 }
 
 type ListEventsV1EventForAllNamespacesApplicationJSONOK IoK8sAPIEventsV1EventList
@@ -8426,10 +8421,10 @@ type ListEventsV1EventForAllNamespacesApplicationYamlOK IoK8sAPIEventsV1EventLis
 
 func (*ListEventsV1EventForAllNamespacesApplicationYamlOK) listEventsV1EventForAllNamespacesRes() {}
 
-// ListEventsV1EventForAllNamespacesResUnauthorized is response for ListEventsV1EventForAllNamespaces operation.
-type ListEventsV1EventForAllNamespacesResUnauthorized struct{}
+// ListEventsV1EventForAllNamespacesUnauthorized is response for ListEventsV1EventForAllNamespaces operation.
+type ListEventsV1EventForAllNamespacesUnauthorized struct{}
 
-func (*ListEventsV1EventForAllNamespacesResUnauthorized) listEventsV1EventForAllNamespacesRes() {}
+func (*ListEventsV1EventForAllNamespacesUnauthorized) listEventsV1EventForAllNamespacesRes() {}
 
 type ListEventsV1beta1EventForAllNamespacesApplicationJSONOK IoK8sAPIEventsV1beta1EventList
 
@@ -8456,10 +8451,10 @@ type ListEventsV1beta1EventForAllNamespacesApplicationYamlOK IoK8sAPIEventsV1bet
 func (*ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) listEventsV1beta1EventForAllNamespacesRes() {
 }
 
-// ListEventsV1beta1EventForAllNamespacesResUnauthorized is response for ListEventsV1beta1EventForAllNamespaces operation.
-type ListEventsV1beta1EventForAllNamespacesResUnauthorized struct{}
+// ListEventsV1beta1EventForAllNamespacesUnauthorized is response for ListEventsV1beta1EventForAllNamespaces operation.
+type ListEventsV1beta1EventForAllNamespacesUnauthorized struct{}
 
-func (*ListEventsV1beta1EventForAllNamespacesResUnauthorized) listEventsV1beta1EventForAllNamespacesRes() {
+func (*ListEventsV1beta1EventForAllNamespacesUnauthorized) listEventsV1beta1EventForAllNamespacesRes() {
 }
 
 type ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK IoK8sAPIFlowcontrolV1beta1FlowSchemaList
@@ -8487,10 +8482,10 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK IoK8sAPIFlowcont
 func (*ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) listFlowcontrolApiserverV1beta1FlowSchemaRes() {
 }
 
-// ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized is response for ListFlowcontrolApiserverV1beta1FlowSchema operation.
-type ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized struct{}
+// ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized is response for ListFlowcontrolApiserverV1beta1FlowSchema operation.
+type ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized struct{}
 
-func (*ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) listFlowcontrolApiserverV1beta1FlowSchemaRes() {
+func (*ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) listFlowcontrolApiserverV1beta1FlowSchemaRes() {
 }
 
 type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList
@@ -8518,10 +8513,10 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK 
 func (*ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) listFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
-// ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized is response for ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
-type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized struct{}
+// ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized is response for ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized struct{}
 
-func (*ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) listFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
+func (*ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) listFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
 type ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK IoK8sAPIFlowcontrolV1beta2FlowSchemaList
@@ -8549,10 +8544,10 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK IoK8sAPIFlowcont
 func (*ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) listFlowcontrolApiserverV1beta2FlowSchemaRes() {
 }
 
-// ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized is response for ListFlowcontrolApiserverV1beta2FlowSchema operation.
-type ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized struct{}
+// ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized is response for ListFlowcontrolApiserverV1beta2FlowSchema operation.
+type ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized struct{}
 
-func (*ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) listFlowcontrolApiserverV1beta2FlowSchemaRes() {
+func (*ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) listFlowcontrolApiserverV1beta2FlowSchemaRes() {
 }
 
 type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList
@@ -8580,10 +8575,10 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK 
 func (*ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) listFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
-// ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized is response for ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
-type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized struct{}
+// ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized is response for ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized struct{}
 
-func (*ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) listFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
+func (*ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) listFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
 type ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK IoK8sAPIApiserverinternalV1alpha1StorageVersionList
@@ -8611,10 +8606,10 @@ type ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK IoK8sAPIApiser
 func (*ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) listInternalApiserverV1alpha1StorageVersionRes() {
 }
 
-// ListInternalApiserverV1alpha1StorageVersionResUnauthorized is response for ListInternalApiserverV1alpha1StorageVersion operation.
-type ListInternalApiserverV1alpha1StorageVersionResUnauthorized struct{}
+// ListInternalApiserverV1alpha1StorageVersionUnauthorized is response for ListInternalApiserverV1alpha1StorageVersion operation.
+type ListInternalApiserverV1alpha1StorageVersionUnauthorized struct{}
 
-func (*ListInternalApiserverV1alpha1StorageVersionResUnauthorized) listInternalApiserverV1alpha1StorageVersionRes() {
+func (*ListInternalApiserverV1alpha1StorageVersionUnauthorized) listInternalApiserverV1alpha1StorageVersionRes() {
 }
 
 type ListNetworkingV1IngressClassApplicationJSONOK IoK8sAPINetworkingV1IngressClassList
@@ -8639,10 +8634,10 @@ type ListNetworkingV1IngressClassApplicationYamlOK IoK8sAPINetworkingV1IngressCl
 
 func (*ListNetworkingV1IngressClassApplicationYamlOK) listNetworkingV1IngressClassRes() {}
 
-// ListNetworkingV1IngressClassResUnauthorized is response for ListNetworkingV1IngressClass operation.
-type ListNetworkingV1IngressClassResUnauthorized struct{}
+// ListNetworkingV1IngressClassUnauthorized is response for ListNetworkingV1IngressClass operation.
+type ListNetworkingV1IngressClassUnauthorized struct{}
 
-func (*ListNetworkingV1IngressClassResUnauthorized) listNetworkingV1IngressClassRes() {}
+func (*ListNetworkingV1IngressClassUnauthorized) listNetworkingV1IngressClassRes() {}
 
 type ListNetworkingV1IngressForAllNamespacesApplicationJSONOK IoK8sAPINetworkingV1IngressList
 
@@ -8669,10 +8664,10 @@ type ListNetworkingV1IngressForAllNamespacesApplicationYamlOK IoK8sAPINetworking
 func (*ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) listNetworkingV1IngressForAllNamespacesRes() {
 }
 
-// ListNetworkingV1IngressForAllNamespacesResUnauthorized is response for ListNetworkingV1IngressForAllNamespaces operation.
-type ListNetworkingV1IngressForAllNamespacesResUnauthorized struct{}
+// ListNetworkingV1IngressForAllNamespacesUnauthorized is response for ListNetworkingV1IngressForAllNamespaces operation.
+type ListNetworkingV1IngressForAllNamespacesUnauthorized struct{}
 
-func (*ListNetworkingV1IngressForAllNamespacesResUnauthorized) listNetworkingV1IngressForAllNamespacesRes() {
+func (*ListNetworkingV1IngressForAllNamespacesUnauthorized) listNetworkingV1IngressForAllNamespacesRes() {
 }
 
 type ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK IoK8sAPINetworkingV1NetworkPolicyList
@@ -8700,10 +8695,10 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK IoK8sAPINetw
 func (*ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) listNetworkingV1NetworkPolicyForAllNamespacesRes() {
 }
 
-// ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized is response for ListNetworkingV1NetworkPolicyForAllNamespaces operation.
-type ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized struct{}
+// ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized is response for ListNetworkingV1NetworkPolicyForAllNamespaces operation.
+type ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized struct{}
 
-func (*ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized) listNetworkingV1NetworkPolicyForAllNamespacesRes() {
+func (*ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) listNetworkingV1NetworkPolicyForAllNamespacesRes() {
 }
 
 type ListNodeV1RuntimeClassApplicationJSONOK IoK8sAPINodeV1RuntimeClassList
@@ -8727,10 +8722,10 @@ type ListNodeV1RuntimeClassApplicationYamlOK IoK8sAPINodeV1RuntimeClassList
 
 func (*ListNodeV1RuntimeClassApplicationYamlOK) listNodeV1RuntimeClassRes() {}
 
-// ListNodeV1RuntimeClassResUnauthorized is response for ListNodeV1RuntimeClass operation.
-type ListNodeV1RuntimeClassResUnauthorized struct{}
+// ListNodeV1RuntimeClassUnauthorized is response for ListNodeV1RuntimeClass operation.
+type ListNodeV1RuntimeClassUnauthorized struct{}
 
-func (*ListNodeV1RuntimeClassResUnauthorized) listNodeV1RuntimeClassRes() {}
+func (*ListNodeV1RuntimeClassUnauthorized) listNodeV1RuntimeClassRes() {}
 
 type ListNodeV1alpha1RuntimeClassApplicationJSONOK IoK8sAPINodeV1alpha1RuntimeClassList
 
@@ -8754,10 +8749,10 @@ type ListNodeV1alpha1RuntimeClassApplicationYamlOK IoK8sAPINodeV1alpha1RuntimeCl
 
 func (*ListNodeV1alpha1RuntimeClassApplicationYamlOK) listNodeV1alpha1RuntimeClassRes() {}
 
-// ListNodeV1alpha1RuntimeClassResUnauthorized is response for ListNodeV1alpha1RuntimeClass operation.
-type ListNodeV1alpha1RuntimeClassResUnauthorized struct{}
+// ListNodeV1alpha1RuntimeClassUnauthorized is response for ListNodeV1alpha1RuntimeClass operation.
+type ListNodeV1alpha1RuntimeClassUnauthorized struct{}
 
-func (*ListNodeV1alpha1RuntimeClassResUnauthorized) listNodeV1alpha1RuntimeClassRes() {}
+func (*ListNodeV1alpha1RuntimeClassUnauthorized) listNodeV1alpha1RuntimeClassRes() {}
 
 type ListNodeV1beta1RuntimeClassApplicationJSONOK IoK8sAPINodeV1beta1RuntimeClassList
 
@@ -8781,10 +8776,10 @@ type ListNodeV1beta1RuntimeClassApplicationYamlOK IoK8sAPINodeV1beta1RuntimeClas
 
 func (*ListNodeV1beta1RuntimeClassApplicationYamlOK) listNodeV1beta1RuntimeClassRes() {}
 
-// ListNodeV1beta1RuntimeClassResUnauthorized is response for ListNodeV1beta1RuntimeClass operation.
-type ListNodeV1beta1RuntimeClassResUnauthorized struct{}
+// ListNodeV1beta1RuntimeClassUnauthorized is response for ListNodeV1beta1RuntimeClass operation.
+type ListNodeV1beta1RuntimeClassUnauthorized struct{}
 
-func (*ListNodeV1beta1RuntimeClassResUnauthorized) listNodeV1beta1RuntimeClassRes() {}
+func (*ListNodeV1beta1RuntimeClassUnauthorized) listNodeV1beta1RuntimeClassRes() {}
 
 type ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK IoK8sAPIPolicyV1PodDisruptionBudgetList
 
@@ -8811,10 +8806,10 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK IoK8sAPIPo
 func (*ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) listPolicyV1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
-// ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized is response for ListPolicyV1PodDisruptionBudgetForAllNamespaces operation.
-type ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized struct{}
+// ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized is response for ListPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+type ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized struct{}
 
-func (*ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized) listPolicyV1PodDisruptionBudgetForAllNamespacesRes() {
+func (*ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) listPolicyV1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
 type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK IoK8sAPIPolicyV1beta1PodDisruptionBudgetList
@@ -8842,10 +8837,10 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK IoK8s
 func (*ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) listPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
-// ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized is response for ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
-type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized struct{}
+// ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized is response for ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized struct{}
 
-func (*ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized) listPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes() {
+func (*ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) listPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes() {
 }
 
 type ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK IoK8sAPIPolicyV1beta1PodSecurityPolicyList
@@ -8871,10 +8866,10 @@ type ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK IoK8sAPIPolicyV1beta1Po
 
 func (*ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) listPolicyV1beta1PodSecurityPolicyRes() {}
 
-// ListPolicyV1beta1PodSecurityPolicyResUnauthorized is response for ListPolicyV1beta1PodSecurityPolicy operation.
-type ListPolicyV1beta1PodSecurityPolicyResUnauthorized struct{}
+// ListPolicyV1beta1PodSecurityPolicyUnauthorized is response for ListPolicyV1beta1PodSecurityPolicy operation.
+type ListPolicyV1beta1PodSecurityPolicyUnauthorized struct{}
 
-func (*ListPolicyV1beta1PodSecurityPolicyResUnauthorized) listPolicyV1beta1PodSecurityPolicyRes() {}
+func (*ListPolicyV1beta1PodSecurityPolicyUnauthorized) listPolicyV1beta1PodSecurityPolicyRes() {}
 
 type ListRbacAuthorizationV1ClusterRoleApplicationJSONOK IoK8sAPIRbacV1ClusterRoleList
 
@@ -8924,16 +8919,16 @@ type ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK IoK8sAPIRbacV1Cl
 func (*ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) listRbacAuthorizationV1ClusterRoleBindingRes() {
 }
 
-// ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized is response for ListRbacAuthorizationV1ClusterRoleBinding operation.
-type ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized struct{}
+// ListRbacAuthorizationV1ClusterRoleBindingUnauthorized is response for ListRbacAuthorizationV1ClusterRoleBinding operation.
+type ListRbacAuthorizationV1ClusterRoleBindingUnauthorized struct{}
 
-func (*ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized) listRbacAuthorizationV1ClusterRoleBindingRes() {
+func (*ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) listRbacAuthorizationV1ClusterRoleBindingRes() {
 }
 
-// ListRbacAuthorizationV1ClusterRoleResUnauthorized is response for ListRbacAuthorizationV1ClusterRole operation.
-type ListRbacAuthorizationV1ClusterRoleResUnauthorized struct{}
+// ListRbacAuthorizationV1ClusterRoleUnauthorized is response for ListRbacAuthorizationV1ClusterRole operation.
+type ListRbacAuthorizationV1ClusterRoleUnauthorized struct{}
 
-func (*ListRbacAuthorizationV1ClusterRoleResUnauthorized) listRbacAuthorizationV1ClusterRoleRes() {}
+func (*ListRbacAuthorizationV1ClusterRoleUnauthorized) listRbacAuthorizationV1ClusterRoleRes() {}
 
 type ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK IoK8sAPIRbacV1RoleBindingList
 
@@ -8960,10 +8955,10 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK IoK8sAP
 func (*ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) listRbacAuthorizationV1RoleBindingForAllNamespacesRes() {
 }
 
-// ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized is response for ListRbacAuthorizationV1RoleBindingForAllNamespaces operation.
-type ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized struct{}
+// ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized is response for ListRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+type ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized struct{}
 
-func (*ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized) listRbacAuthorizationV1RoleBindingForAllNamespacesRes() {
+func (*ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) listRbacAuthorizationV1RoleBindingForAllNamespacesRes() {
 }
 
 type ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK IoK8sAPIRbacV1RoleList
@@ -8991,10 +8986,10 @@ type ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK IoK8sAPIRbacV1
 func (*ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) listRbacAuthorizationV1RoleForAllNamespacesRes() {
 }
 
-// ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized is response for ListRbacAuthorizationV1RoleForAllNamespaces operation.
-type ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized struct{}
+// ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized is response for ListRbacAuthorizationV1RoleForAllNamespaces operation.
+type ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized struct{}
 
-func (*ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized) listRbacAuthorizationV1RoleForAllNamespacesRes() {
+func (*ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) listRbacAuthorizationV1RoleForAllNamespacesRes() {
 }
 
 type ListSchedulingV1PriorityClassApplicationJSONOK IoK8sAPISchedulingV1PriorityClassList
@@ -9020,10 +9015,10 @@ type ListSchedulingV1PriorityClassApplicationYamlOK IoK8sAPISchedulingV1Priority
 
 func (*ListSchedulingV1PriorityClassApplicationYamlOK) listSchedulingV1PriorityClassRes() {}
 
-// ListSchedulingV1PriorityClassResUnauthorized is response for ListSchedulingV1PriorityClass operation.
-type ListSchedulingV1PriorityClassResUnauthorized struct{}
+// ListSchedulingV1PriorityClassUnauthorized is response for ListSchedulingV1PriorityClass operation.
+type ListSchedulingV1PriorityClassUnauthorized struct{}
 
-func (*ListSchedulingV1PriorityClassResUnauthorized) listSchedulingV1PriorityClassRes() {}
+func (*ListSchedulingV1PriorityClassUnauthorized) listSchedulingV1PriorityClassRes() {}
 
 type ListStorageV1CSIDriverApplicationJSONOK IoK8sAPIStorageV1CSIDriverList
 
@@ -9046,10 +9041,10 @@ type ListStorageV1CSIDriverApplicationYamlOK IoK8sAPIStorageV1CSIDriverList
 
 func (*ListStorageV1CSIDriverApplicationYamlOK) listStorageV1CSIDriverRes() {}
 
-// ListStorageV1CSIDriverResUnauthorized is response for ListStorageV1CSIDriver operation.
-type ListStorageV1CSIDriverResUnauthorized struct{}
+// ListStorageV1CSIDriverUnauthorized is response for ListStorageV1CSIDriver operation.
+type ListStorageV1CSIDriverUnauthorized struct{}
 
-func (*ListStorageV1CSIDriverResUnauthorized) listStorageV1CSIDriverRes() {}
+func (*ListStorageV1CSIDriverUnauthorized) listStorageV1CSIDriverRes() {}
 
 type ListStorageV1CSINodeApplicationJSONOK IoK8sAPIStorageV1CSINodeList
 
@@ -9071,10 +9066,10 @@ type ListStorageV1CSINodeApplicationYamlOK IoK8sAPIStorageV1CSINodeList
 
 func (*ListStorageV1CSINodeApplicationYamlOK) listStorageV1CSINodeRes() {}
 
-// ListStorageV1CSINodeResUnauthorized is response for ListStorageV1CSINode operation.
-type ListStorageV1CSINodeResUnauthorized struct{}
+// ListStorageV1CSINodeUnauthorized is response for ListStorageV1CSINode operation.
+type ListStorageV1CSINodeUnauthorized struct{}
 
-func (*ListStorageV1CSINodeResUnauthorized) listStorageV1CSINodeRes() {}
+func (*ListStorageV1CSINodeUnauthorized) listStorageV1CSINodeRes() {}
 
 type ListStorageV1StorageClassApplicationJSONOK IoK8sAPIStorageV1StorageClassList
 
@@ -9097,10 +9092,10 @@ type ListStorageV1StorageClassApplicationYamlOK IoK8sAPIStorageV1StorageClassLis
 
 func (*ListStorageV1StorageClassApplicationYamlOK) listStorageV1StorageClassRes() {}
 
-// ListStorageV1StorageClassResUnauthorized is response for ListStorageV1StorageClass operation.
-type ListStorageV1StorageClassResUnauthorized struct{}
+// ListStorageV1StorageClassUnauthorized is response for ListStorageV1StorageClass operation.
+type ListStorageV1StorageClassUnauthorized struct{}
 
-func (*ListStorageV1StorageClassResUnauthorized) listStorageV1StorageClassRes() {}
+func (*ListStorageV1StorageClassUnauthorized) listStorageV1StorageClassRes() {}
 
 type ListStorageV1VolumeAttachmentApplicationJSONOK IoK8sAPIStorageV1VolumeAttachmentList
 
@@ -9125,10 +9120,10 @@ type ListStorageV1VolumeAttachmentApplicationYamlOK IoK8sAPIStorageV1VolumeAttac
 
 func (*ListStorageV1VolumeAttachmentApplicationYamlOK) listStorageV1VolumeAttachmentRes() {}
 
-// ListStorageV1VolumeAttachmentResUnauthorized is response for ListStorageV1VolumeAttachment operation.
-type ListStorageV1VolumeAttachmentResUnauthorized struct{}
+// ListStorageV1VolumeAttachmentUnauthorized is response for ListStorageV1VolumeAttachment operation.
+type ListStorageV1VolumeAttachmentUnauthorized struct{}
 
-func (*ListStorageV1VolumeAttachmentResUnauthorized) listStorageV1VolumeAttachmentRes() {}
+func (*ListStorageV1VolumeAttachmentUnauthorized) listStorageV1VolumeAttachmentRes() {}
 
 type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK IoK8sAPIStorageV1alpha1CSIStorageCapacityList
 
@@ -9155,10 +9150,10 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK IoK8
 func (*ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) listStorageV1alpha1CSIStorageCapacityForAllNamespacesRes() {
 }
 
-// ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized is response for ListStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
-type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized struct{}
+// ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized is response for ListStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
+type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized struct{}
 
-func (*ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized) listStorageV1alpha1CSIStorageCapacityForAllNamespacesRes() {
+func (*ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) listStorageV1alpha1CSIStorageCapacityForAllNamespacesRes() {
 }
 
 type ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK IoK8sAPIStorageV1beta1CSIStorageCapacityList
@@ -9186,14 +9181,14 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK IoK8s
 func (*ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) listStorageV1beta1CSIStorageCapacityForAllNamespacesRes() {
 }
 
-// ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized is response for ListStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
-type ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized struct{}
+// ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized is response for ListStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
+type ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized struct{}
 
-func (*ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized) listStorageV1beta1CSIStorageCapacityForAllNamespacesRes() {
+func (*ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) listStorageV1beta1CSIStorageCapacityForAllNamespacesRes() {
 }
 
-// LogFileListHandlerResUnauthorized is response for LogFileListHandler operation.
-type LogFileListHandlerResUnauthorized struct{}
+// LogFileListHandlerUnauthorized is response for LogFileListHandler operation.
+type LogFileListHandlerUnauthorized struct{}
 
 // NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
@@ -18818,10 +18813,10 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYaml
 func (*WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK) watchAdmissionregistrationV1MutatingWebhookConfigurationListRes() {
 }
 
-// WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized is response for WatchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
-type WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized struct{}
+// WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized is response for WatchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
+type WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized struct{}
 
-func (*WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized) watchAdmissionregistrationV1MutatingWebhookConfigurationListRes() {
+func (*WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) watchAdmissionregistrationV1MutatingWebhookConfigurationListRes() {
 }
 
 type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -18849,10 +18844,10 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYa
 func (*WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK) watchAdmissionregistrationV1ValidatingWebhookConfigurationListRes() {
 }
 
-// WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized is response for WatchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
-type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized struct{}
+// WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized is response for WatchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
+type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized struct{}
 
-func (*WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized) watchAdmissionregistrationV1ValidatingWebhookConfigurationListRes() {
+func (*WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) watchAdmissionregistrationV1ValidatingWebhookConfigurationListRes() {
 }
 
 type WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -18880,10 +18875,10 @@ type WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK IoK8sApim
 func (*WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) watchApiextensionsV1CustomResourceDefinitionListRes() {
 }
 
-// WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized is response for WatchApiextensionsV1CustomResourceDefinitionList operation.
-type WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized struct{}
+// WatchApiextensionsV1CustomResourceDefinitionListUnauthorized is response for WatchApiextensionsV1CustomResourceDefinitionList operation.
+type WatchApiextensionsV1CustomResourceDefinitionListUnauthorized struct{}
 
-func (*WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized) watchApiextensionsV1CustomResourceDefinitionListRes() {
+func (*WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) watchApiextensionsV1CustomResourceDefinitionListRes() {
 }
 
 type WatchApiregistrationV1APIServiceListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -18911,11 +18906,10 @@ type WatchApiregistrationV1APIServiceListApplicationYamlOK IoK8sApimachineryPkgA
 func (*WatchApiregistrationV1APIServiceListApplicationYamlOK) watchApiregistrationV1APIServiceListRes() {
 }
 
-// WatchApiregistrationV1APIServiceListResUnauthorized is response for WatchApiregistrationV1APIServiceList operation.
-type WatchApiregistrationV1APIServiceListResUnauthorized struct{}
+// WatchApiregistrationV1APIServiceListUnauthorized is response for WatchApiregistrationV1APIServiceList operation.
+type WatchApiregistrationV1APIServiceListUnauthorized struct{}
 
-func (*WatchApiregistrationV1APIServiceListResUnauthorized) watchApiregistrationV1APIServiceListRes() {
-}
+func (*WatchApiregistrationV1APIServiceListUnauthorized) watchApiregistrationV1APIServiceListRes() {}
 
 type WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -18942,10 +18936,10 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK IoK8sApi
 func (*WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) watchAppsV1ControllerRevisionListForAllNamespacesRes() {
 }
 
-// WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized is response for WatchAppsV1ControllerRevisionListForAllNamespaces operation.
-type WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized struct{}
+// WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized is response for WatchAppsV1ControllerRevisionListForAllNamespaces operation.
+type WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized) watchAppsV1ControllerRevisionListForAllNamespacesRes() {
+func (*WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) watchAppsV1ControllerRevisionListForAllNamespacesRes() {
 }
 
 type WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -18973,10 +18967,10 @@ type WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK IoK8sApimachinery
 func (*WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) watchAppsV1DaemonSetListForAllNamespacesRes() {
 }
 
-// WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized is response for WatchAppsV1DaemonSetListForAllNamespaces operation.
-type WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized struct{}
+// WatchAppsV1DaemonSetListForAllNamespacesUnauthorized is response for WatchAppsV1DaemonSetListForAllNamespaces operation.
+type WatchAppsV1DaemonSetListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized) watchAppsV1DaemonSetListForAllNamespacesRes() {
+func (*WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) watchAppsV1DaemonSetListForAllNamespacesRes() {
 }
 
 type WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19004,10 +18998,10 @@ type WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK IoK8sApimachiner
 func (*WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) watchAppsV1DeploymentListForAllNamespacesRes() {
 }
 
-// WatchAppsV1DeploymentListForAllNamespacesResUnauthorized is response for WatchAppsV1DeploymentListForAllNamespaces operation.
-type WatchAppsV1DeploymentListForAllNamespacesResUnauthorized struct{}
+// WatchAppsV1DeploymentListForAllNamespacesUnauthorized is response for WatchAppsV1DeploymentListForAllNamespaces operation.
+type WatchAppsV1DeploymentListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAppsV1DeploymentListForAllNamespacesResUnauthorized) watchAppsV1DeploymentListForAllNamespacesRes() {
+func (*WatchAppsV1DeploymentListForAllNamespacesUnauthorized) watchAppsV1DeploymentListForAllNamespacesRes() {
 }
 
 type WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19035,10 +19029,10 @@ type WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK IoK8sApimachiner
 func (*WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) watchAppsV1ReplicaSetListForAllNamespacesRes() {
 }
 
-// WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized is response for WatchAppsV1ReplicaSetListForAllNamespaces operation.
-type WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized struct{}
+// WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized is response for WatchAppsV1ReplicaSetListForAllNamespaces operation.
+type WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized) watchAppsV1ReplicaSetListForAllNamespacesRes() {
+func (*WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) watchAppsV1ReplicaSetListForAllNamespacesRes() {
 }
 
 type WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19066,10 +19060,10 @@ type WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK IoK8sApimachine
 func (*WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) watchAppsV1StatefulSetListForAllNamespacesRes() {
 }
 
-// WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized is response for WatchAppsV1StatefulSetListForAllNamespaces operation.
-type WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized struct{}
+// WatchAppsV1StatefulSetListForAllNamespacesUnauthorized is response for WatchAppsV1StatefulSetListForAllNamespaces operation.
+type WatchAppsV1StatefulSetListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized) watchAppsV1StatefulSetListForAllNamespacesRes() {
+func (*WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) watchAppsV1StatefulSetListForAllNamespacesRes() {
 }
 
 type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19097,10 +19091,10 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYam
 func (*WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
-// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized is response for WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
-type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized struct{}
+// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized is response for WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
+type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes() {
+func (*WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
 type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19128,10 +19122,10 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicati
 func (*WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
-// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized is response for WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
-type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized struct{}
+// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized is response for WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes() {
+func (*WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
 type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19159,10 +19153,10 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicati
 func (*WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
-// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized is response for WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
-type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized struct{}
+// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized is response for WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
+type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized struct{}
 
-func (*WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes() {
+func (*WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes() {
 }
 
 type WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19190,10 +19184,10 @@ type WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK IoK8sApimachineryP
 func (*WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) watchBatchV1CronJobListForAllNamespacesRes() {
 }
 
-// WatchBatchV1CronJobListForAllNamespacesResUnauthorized is response for WatchBatchV1CronJobListForAllNamespaces operation.
-type WatchBatchV1CronJobListForAllNamespacesResUnauthorized struct{}
+// WatchBatchV1CronJobListForAllNamespacesUnauthorized is response for WatchBatchV1CronJobListForAllNamespaces operation.
+type WatchBatchV1CronJobListForAllNamespacesUnauthorized struct{}
 
-func (*WatchBatchV1CronJobListForAllNamespacesResUnauthorized) watchBatchV1CronJobListForAllNamespacesRes() {
+func (*WatchBatchV1CronJobListForAllNamespacesUnauthorized) watchBatchV1CronJobListForAllNamespacesRes() {
 }
 
 type WatchBatchV1JobListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19221,10 +19215,10 @@ type WatchBatchV1JobListForAllNamespacesApplicationYamlOK IoK8sApimachineryPkgAp
 func (*WatchBatchV1JobListForAllNamespacesApplicationYamlOK) watchBatchV1JobListForAllNamespacesRes() {
 }
 
-// WatchBatchV1JobListForAllNamespacesResUnauthorized is response for WatchBatchV1JobListForAllNamespaces operation.
-type WatchBatchV1JobListForAllNamespacesResUnauthorized struct{}
+// WatchBatchV1JobListForAllNamespacesUnauthorized is response for WatchBatchV1JobListForAllNamespaces operation.
+type WatchBatchV1JobListForAllNamespacesUnauthorized struct{}
 
-func (*WatchBatchV1JobListForAllNamespacesResUnauthorized) watchBatchV1JobListForAllNamespacesRes() {}
+func (*WatchBatchV1JobListForAllNamespacesUnauthorized) watchBatchV1JobListForAllNamespacesRes() {}
 
 type WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19251,10 +19245,10 @@ type WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK IoK8sApimachi
 func (*WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) watchBatchV1beta1CronJobListForAllNamespacesRes() {
 }
 
-// WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized is response for WatchBatchV1beta1CronJobListForAllNamespaces operation.
-type WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized struct{}
+// WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized is response for WatchBatchV1beta1CronJobListForAllNamespaces operation.
+type WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized struct{}
 
-func (*WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized) watchBatchV1beta1CronJobListForAllNamespacesRes() {
+func (*WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) watchBatchV1beta1CronJobListForAllNamespacesRes() {
 }
 
 type WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19282,10 +19276,10 @@ type WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK IoK8sApim
 func (*WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) watchCertificatesV1CertificateSigningRequestListRes() {
 }
 
-// WatchCertificatesV1CertificateSigningRequestListResUnauthorized is response for WatchCertificatesV1CertificateSigningRequestList operation.
-type WatchCertificatesV1CertificateSigningRequestListResUnauthorized struct{}
+// WatchCertificatesV1CertificateSigningRequestListUnauthorized is response for WatchCertificatesV1CertificateSigningRequestList operation.
+type WatchCertificatesV1CertificateSigningRequestListUnauthorized struct{}
 
-func (*WatchCertificatesV1CertificateSigningRequestListResUnauthorized) watchCertificatesV1CertificateSigningRequestListRes() {
+func (*WatchCertificatesV1CertificateSigningRequestListUnauthorized) watchCertificatesV1CertificateSigningRequestListRes() {
 }
 
 type WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19313,10 +19307,10 @@ type WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK IoK8sApimachi
 func (*WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) watchCoordinationV1LeaseListForAllNamespacesRes() {
 }
 
-// WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized is response for WatchCoordinationV1LeaseListForAllNamespaces operation.
-type WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized struct{}
+// WatchCoordinationV1LeaseListForAllNamespacesUnauthorized is response for WatchCoordinationV1LeaseListForAllNamespaces operation.
+type WatchCoordinationV1LeaseListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized) watchCoordinationV1LeaseListForAllNamespacesRes() {
+func (*WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) watchCoordinationV1LeaseListForAllNamespacesRes() {
 }
 
 type WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19344,10 +19338,10 @@ type WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK IoK8sApimachinery
 func (*WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) watchCoreV1ConfigMapListForAllNamespacesRes() {
 }
 
-// WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized is response for WatchCoreV1ConfigMapListForAllNamespaces operation.
-type WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1ConfigMapListForAllNamespacesUnauthorized is response for WatchCoreV1ConfigMapListForAllNamespaces operation.
+type WatchCoreV1ConfigMapListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized) watchCoreV1ConfigMapListForAllNamespacesRes() {
+func (*WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) watchCoreV1ConfigMapListForAllNamespacesRes() {
 }
 
 type WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19375,10 +19369,10 @@ type WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK IoK8sApimachinery
 func (*WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) watchCoreV1EndpointsListForAllNamespacesRes() {
 }
 
-// WatchCoreV1EndpointsListForAllNamespacesResUnauthorized is response for WatchCoreV1EndpointsListForAllNamespaces operation.
-type WatchCoreV1EndpointsListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1EndpointsListForAllNamespacesUnauthorized is response for WatchCoreV1EndpointsListForAllNamespaces operation.
+type WatchCoreV1EndpointsListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1EndpointsListForAllNamespacesResUnauthorized) watchCoreV1EndpointsListForAllNamespacesRes() {
+func (*WatchCoreV1EndpointsListForAllNamespacesUnauthorized) watchCoreV1EndpointsListForAllNamespacesRes() {
 }
 
 type WatchCoreV1EventListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19406,11 +19400,10 @@ type WatchCoreV1EventListForAllNamespacesApplicationYamlOK IoK8sApimachineryPkgA
 func (*WatchCoreV1EventListForAllNamespacesApplicationYamlOK) watchCoreV1EventListForAllNamespacesRes() {
 }
 
-// WatchCoreV1EventListForAllNamespacesResUnauthorized is response for WatchCoreV1EventListForAllNamespaces operation.
-type WatchCoreV1EventListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1EventListForAllNamespacesUnauthorized is response for WatchCoreV1EventListForAllNamespaces operation.
+type WatchCoreV1EventListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1EventListForAllNamespacesResUnauthorized) watchCoreV1EventListForAllNamespacesRes() {
-}
+func (*WatchCoreV1EventListForAllNamespacesUnauthorized) watchCoreV1EventListForAllNamespacesRes() {}
 
 type WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19437,10 +19430,10 @@ type WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK IoK8sApimachiner
 func (*WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) watchCoreV1LimitRangeListForAllNamespacesRes() {
 }
 
-// WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized is response for WatchCoreV1LimitRangeListForAllNamespaces operation.
-type WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1LimitRangeListForAllNamespacesUnauthorized is response for WatchCoreV1LimitRangeListForAllNamespaces operation.
+type WatchCoreV1LimitRangeListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized) watchCoreV1LimitRangeListForAllNamespacesRes() {
+func (*WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) watchCoreV1LimitRangeListForAllNamespacesRes() {
 }
 
 type WatchCoreV1NamespaceListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19464,10 +19457,10 @@ type WatchCoreV1NamespaceListApplicationYamlOK IoK8sApimachineryPkgApisMetaV1Wat
 
 func (*WatchCoreV1NamespaceListApplicationYamlOK) watchCoreV1NamespaceListRes() {}
 
-// WatchCoreV1NamespaceListResUnauthorized is response for WatchCoreV1NamespaceList operation.
-type WatchCoreV1NamespaceListResUnauthorized struct{}
+// WatchCoreV1NamespaceListUnauthorized is response for WatchCoreV1NamespaceList operation.
+type WatchCoreV1NamespaceListUnauthorized struct{}
 
-func (*WatchCoreV1NamespaceListResUnauthorized) watchCoreV1NamespaceListRes() {}
+func (*WatchCoreV1NamespaceListUnauthorized) watchCoreV1NamespaceListRes() {}
 
 type WatchCoreV1NodeListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19489,10 +19482,10 @@ type WatchCoreV1NodeListApplicationYamlOK IoK8sApimachineryPkgApisMetaV1WatchEve
 
 func (*WatchCoreV1NodeListApplicationYamlOK) watchCoreV1NodeListRes() {}
 
-// WatchCoreV1NodeListResUnauthorized is response for WatchCoreV1NodeList operation.
-type WatchCoreV1NodeListResUnauthorized struct{}
+// WatchCoreV1NodeListUnauthorized is response for WatchCoreV1NodeList operation.
+type WatchCoreV1NodeListUnauthorized struct{}
 
-func (*WatchCoreV1NodeListResUnauthorized) watchCoreV1NodeListRes() {}
+func (*WatchCoreV1NodeListUnauthorized) watchCoreV1NodeListRes() {}
 
 type WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19519,10 +19512,10 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK IoK8s
 func (*WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) watchCoreV1PersistentVolumeClaimListForAllNamespacesRes() {
 }
 
-// WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized is response for WatchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
-type WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized is response for WatchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
+type WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized) watchCoreV1PersistentVolumeClaimListForAllNamespacesRes() {
+func (*WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) watchCoreV1PersistentVolumeClaimListForAllNamespacesRes() {
 }
 
 type WatchCoreV1PersistentVolumeListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19548,10 +19541,10 @@ type WatchCoreV1PersistentVolumeListApplicationYamlOK IoK8sApimachineryPkgApisMe
 
 func (*WatchCoreV1PersistentVolumeListApplicationYamlOK) watchCoreV1PersistentVolumeListRes() {}
 
-// WatchCoreV1PersistentVolumeListResUnauthorized is response for WatchCoreV1PersistentVolumeList operation.
-type WatchCoreV1PersistentVolumeListResUnauthorized struct{}
+// WatchCoreV1PersistentVolumeListUnauthorized is response for WatchCoreV1PersistentVolumeList operation.
+type WatchCoreV1PersistentVolumeListUnauthorized struct{}
 
-func (*WatchCoreV1PersistentVolumeListResUnauthorized) watchCoreV1PersistentVolumeListRes() {}
+func (*WatchCoreV1PersistentVolumeListUnauthorized) watchCoreV1PersistentVolumeListRes() {}
 
 type WatchCoreV1PodListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19576,10 +19569,10 @@ type WatchCoreV1PodListForAllNamespacesApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*WatchCoreV1PodListForAllNamespacesApplicationYamlOK) watchCoreV1PodListForAllNamespacesRes() {}
 
-// WatchCoreV1PodListForAllNamespacesResUnauthorized is response for WatchCoreV1PodListForAllNamespaces operation.
-type WatchCoreV1PodListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1PodListForAllNamespacesUnauthorized is response for WatchCoreV1PodListForAllNamespaces operation.
+type WatchCoreV1PodListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1PodListForAllNamespacesResUnauthorized) watchCoreV1PodListForAllNamespacesRes() {}
+func (*WatchCoreV1PodListForAllNamespacesUnauthorized) watchCoreV1PodListForAllNamespacesRes() {}
 
 type WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -19606,10 +19599,10 @@ type WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK IoK8sApimachine
 func (*WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) watchCoreV1PodTemplateListForAllNamespacesRes() {
 }
 
-// WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized is response for WatchCoreV1PodTemplateListForAllNamespaces operation.
-type WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1PodTemplateListForAllNamespacesUnauthorized is response for WatchCoreV1PodTemplateListForAllNamespaces operation.
+type WatchCoreV1PodTemplateListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized) watchCoreV1PodTemplateListForAllNamespacesRes() {
+func (*WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) watchCoreV1PodTemplateListForAllNamespacesRes() {
 }
 
 type WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19637,10 +19630,10 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK IoK8s
 func (*WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) watchCoreV1ReplicationControllerListForAllNamespacesRes() {
 }
 
-// WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized is response for WatchCoreV1ReplicationControllerListForAllNamespaces operation.
-type WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized is response for WatchCoreV1ReplicationControllerListForAllNamespaces operation.
+type WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized) watchCoreV1ReplicationControllerListForAllNamespacesRes() {
+func (*WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) watchCoreV1ReplicationControllerListForAllNamespacesRes() {
 }
 
 type WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19668,10 +19661,10 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK IoK8sApimachi
 func (*WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) watchCoreV1ResourceQuotaListForAllNamespacesRes() {
 }
 
-// WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized is response for WatchCoreV1ResourceQuotaListForAllNamespaces operation.
-type WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized is response for WatchCoreV1ResourceQuotaListForAllNamespaces operation.
+type WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized) watchCoreV1ResourceQuotaListForAllNamespacesRes() {
+func (*WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) watchCoreV1ResourceQuotaListForAllNamespacesRes() {
 }
 
 type WatchCoreV1SecretListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19699,10 +19692,10 @@ type WatchCoreV1SecretListForAllNamespacesApplicationYamlOK IoK8sApimachineryPkg
 func (*WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) watchCoreV1SecretListForAllNamespacesRes() {
 }
 
-// WatchCoreV1SecretListForAllNamespacesResUnauthorized is response for WatchCoreV1SecretListForAllNamespaces operation.
-type WatchCoreV1SecretListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1SecretListForAllNamespacesUnauthorized is response for WatchCoreV1SecretListForAllNamespaces operation.
+type WatchCoreV1SecretListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1SecretListForAllNamespacesResUnauthorized) watchCoreV1SecretListForAllNamespacesRes() {
+func (*WatchCoreV1SecretListForAllNamespacesUnauthorized) watchCoreV1SecretListForAllNamespacesRes() {
 }
 
 type WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19730,10 +19723,10 @@ type WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK IoK8sApimach
 func (*WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) watchCoreV1ServiceAccountListForAllNamespacesRes() {
 }
 
-// WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized is response for WatchCoreV1ServiceAccountListForAllNamespaces operation.
-type WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized is response for WatchCoreV1ServiceAccountListForAllNamespaces operation.
+type WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized) watchCoreV1ServiceAccountListForAllNamespacesRes() {
+func (*WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) watchCoreV1ServiceAccountListForAllNamespacesRes() {
 }
 
 type WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19761,10 +19754,10 @@ type WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK IoK8sApimachineryPk
 func (*WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) watchCoreV1ServiceListForAllNamespacesRes() {
 }
 
-// WatchCoreV1ServiceListForAllNamespacesResUnauthorized is response for WatchCoreV1ServiceListForAllNamespaces operation.
-type WatchCoreV1ServiceListForAllNamespacesResUnauthorized struct{}
+// WatchCoreV1ServiceListForAllNamespacesUnauthorized is response for WatchCoreV1ServiceListForAllNamespaces operation.
+type WatchCoreV1ServiceListForAllNamespacesUnauthorized struct{}
 
-func (*WatchCoreV1ServiceListForAllNamespacesResUnauthorized) watchCoreV1ServiceListForAllNamespacesRes() {
+func (*WatchCoreV1ServiceListForAllNamespacesUnauthorized) watchCoreV1ServiceListForAllNamespacesRes() {
 }
 
 type WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19792,10 +19785,10 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK IoK8sApi
 func (*WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) watchDiscoveryV1EndpointSliceListForAllNamespacesRes() {
 }
 
-// WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized is response for WatchDiscoveryV1EndpointSliceListForAllNamespaces operation.
-type WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized struct{}
+// WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized is response for WatchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+type WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized struct{}
 
-func (*WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized) watchDiscoveryV1EndpointSliceListForAllNamespacesRes() {
+func (*WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) watchDiscoveryV1EndpointSliceListForAllNamespacesRes() {
 }
 
 type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19823,10 +19816,10 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK IoK
 func (*WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) watchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes() {
 }
 
-// WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized is response for WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
-type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized struct{}
+// WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized is response for WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
+type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized struct{}
 
-func (*WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized) watchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes() {
+func (*WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) watchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes() {
 }
 
 type WatchEventsV1EventListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19854,10 +19847,10 @@ type WatchEventsV1EventListForAllNamespacesApplicationYamlOK IoK8sApimachineryPk
 func (*WatchEventsV1EventListForAllNamespacesApplicationYamlOK) watchEventsV1EventListForAllNamespacesRes() {
 }
 
-// WatchEventsV1EventListForAllNamespacesResUnauthorized is response for WatchEventsV1EventListForAllNamespaces operation.
-type WatchEventsV1EventListForAllNamespacesResUnauthorized struct{}
+// WatchEventsV1EventListForAllNamespacesUnauthorized is response for WatchEventsV1EventListForAllNamespaces operation.
+type WatchEventsV1EventListForAllNamespacesUnauthorized struct{}
 
-func (*WatchEventsV1EventListForAllNamespacesResUnauthorized) watchEventsV1EventListForAllNamespacesRes() {
+func (*WatchEventsV1EventListForAllNamespacesUnauthorized) watchEventsV1EventListForAllNamespacesRes() {
 }
 
 type WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19885,10 +19878,10 @@ type WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK IoK8sApimachin
 func (*WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) watchEventsV1beta1EventListForAllNamespacesRes() {
 }
 
-// WatchEventsV1beta1EventListForAllNamespacesResUnauthorized is response for WatchEventsV1beta1EventListForAllNamespaces operation.
-type WatchEventsV1beta1EventListForAllNamespacesResUnauthorized struct{}
+// WatchEventsV1beta1EventListForAllNamespacesUnauthorized is response for WatchEventsV1beta1EventListForAllNamespaces operation.
+type WatchEventsV1beta1EventListForAllNamespacesUnauthorized struct{}
 
-func (*WatchEventsV1beta1EventListForAllNamespacesResUnauthorized) watchEventsV1beta1EventListForAllNamespacesRes() {
+func (*WatchEventsV1beta1EventListForAllNamespacesUnauthorized) watchEventsV1beta1EventListForAllNamespacesRes() {
 }
 
 type WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19916,10 +19909,10 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK IoK8sApimac
 func (*WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) watchFlowcontrolApiserverV1beta1FlowSchemaListRes() {
 }
 
-// WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized is response for WatchFlowcontrolApiserverV1beta1FlowSchemaList operation.
-type WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized struct{}
+// WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized is response for WatchFlowcontrolApiserverV1beta1FlowSchemaList operation.
+type WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized struct{}
 
-func (*WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized) watchFlowcontrolApiserverV1beta1FlowSchemaListRes() {
+func (*WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) watchFlowcontrolApiserverV1beta1FlowSchemaListRes() {
 }
 
 type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19947,10 +19940,10 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYa
 func (*WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK) watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes() {
 }
 
-// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized is response for WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
-type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized struct{}
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized is response for WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
+type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized struct{}
 
-func (*WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized) watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes() {
+func (*WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes() {
 }
 
 type WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -19978,10 +19971,10 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK IoK8sApimac
 func (*WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) watchFlowcontrolApiserverV1beta2FlowSchemaListRes() {
 }
 
-// WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized is response for WatchFlowcontrolApiserverV1beta2FlowSchemaList operation.
-type WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized struct{}
+// WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized is response for WatchFlowcontrolApiserverV1beta2FlowSchemaList operation.
+type WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized struct{}
 
-func (*WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized) watchFlowcontrolApiserverV1beta2FlowSchemaListRes() {
+func (*WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) watchFlowcontrolApiserverV1beta2FlowSchemaListRes() {
 }
 
 type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20009,10 +20002,10 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYa
 func (*WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK) watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes() {
 }
 
-// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized is response for WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
-type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized struct{}
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized is response for WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
+type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized struct{}
 
-func (*WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized) watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes() {
+func (*WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes() {
 }
 
 type WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20040,10 +20033,10 @@ type WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK IoK8sApim
 func (*WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) watchInternalApiserverV1alpha1StorageVersionListRes() {
 }
 
-// WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized is response for WatchInternalApiserverV1alpha1StorageVersionList operation.
-type WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized struct{}
+// WatchInternalApiserverV1alpha1StorageVersionListUnauthorized is response for WatchInternalApiserverV1alpha1StorageVersionList operation.
+type WatchInternalApiserverV1alpha1StorageVersionListUnauthorized struct{}
 
-func (*WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized) watchInternalApiserverV1alpha1StorageVersionListRes() {
+func (*WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) watchInternalApiserverV1alpha1StorageVersionListRes() {
 }
 
 type WatchNetworkingV1IngressClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20069,10 +20062,10 @@ type WatchNetworkingV1IngressClassListApplicationYamlOK IoK8sApimachineryPkgApis
 
 func (*WatchNetworkingV1IngressClassListApplicationYamlOK) watchNetworkingV1IngressClassListRes() {}
 
-// WatchNetworkingV1IngressClassListResUnauthorized is response for WatchNetworkingV1IngressClassList operation.
-type WatchNetworkingV1IngressClassListResUnauthorized struct{}
+// WatchNetworkingV1IngressClassListUnauthorized is response for WatchNetworkingV1IngressClassList operation.
+type WatchNetworkingV1IngressClassListUnauthorized struct{}
 
-func (*WatchNetworkingV1IngressClassListResUnauthorized) watchNetworkingV1IngressClassListRes() {}
+func (*WatchNetworkingV1IngressClassListUnauthorized) watchNetworkingV1IngressClassListRes() {}
 
 type WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20099,10 +20092,10 @@ type WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK IoK8sApimachi
 func (*WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) watchNetworkingV1IngressListForAllNamespacesRes() {
 }
 
-// WatchNetworkingV1IngressListForAllNamespacesResUnauthorized is response for WatchNetworkingV1IngressListForAllNamespaces operation.
-type WatchNetworkingV1IngressListForAllNamespacesResUnauthorized struct{}
+// WatchNetworkingV1IngressListForAllNamespacesUnauthorized is response for WatchNetworkingV1IngressListForAllNamespaces operation.
+type WatchNetworkingV1IngressListForAllNamespacesUnauthorized struct{}
 
-func (*WatchNetworkingV1IngressListForAllNamespacesResUnauthorized) watchNetworkingV1IngressListForAllNamespacesRes() {
+func (*WatchNetworkingV1IngressListForAllNamespacesUnauthorized) watchNetworkingV1IngressListForAllNamespacesRes() {
 }
 
 type WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20130,10 +20123,10 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK IoK8sAp
 func (*WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) watchNetworkingV1NetworkPolicyListForAllNamespacesRes() {
 }
 
-// WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized is response for WatchNetworkingV1NetworkPolicyListForAllNamespaces operation.
-type WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized struct{}
+// WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized is response for WatchNetworkingV1NetworkPolicyListForAllNamespaces operation.
+type WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized struct{}
 
-func (*WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized) watchNetworkingV1NetworkPolicyListForAllNamespacesRes() {
+func (*WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) watchNetworkingV1NetworkPolicyListForAllNamespacesRes() {
 }
 
 type WatchNodeV1RuntimeClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20158,10 +20151,10 @@ type WatchNodeV1RuntimeClassListApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*WatchNodeV1RuntimeClassListApplicationYamlOK) watchNodeV1RuntimeClassListRes() {}
 
-// WatchNodeV1RuntimeClassListResUnauthorized is response for WatchNodeV1RuntimeClassList operation.
-type WatchNodeV1RuntimeClassListResUnauthorized struct{}
+// WatchNodeV1RuntimeClassListUnauthorized is response for WatchNodeV1RuntimeClassList operation.
+type WatchNodeV1RuntimeClassListUnauthorized struct{}
 
-func (*WatchNodeV1RuntimeClassListResUnauthorized) watchNodeV1RuntimeClassListRes() {}
+func (*WatchNodeV1RuntimeClassListUnauthorized) watchNodeV1RuntimeClassListRes() {}
 
 type WatchNodeV1alpha1RuntimeClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20186,10 +20179,10 @@ type WatchNodeV1alpha1RuntimeClassListApplicationYamlOK IoK8sApimachineryPkgApis
 
 func (*WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) watchNodeV1alpha1RuntimeClassListRes() {}
 
-// WatchNodeV1alpha1RuntimeClassListResUnauthorized is response for WatchNodeV1alpha1RuntimeClassList operation.
-type WatchNodeV1alpha1RuntimeClassListResUnauthorized struct{}
+// WatchNodeV1alpha1RuntimeClassListUnauthorized is response for WatchNodeV1alpha1RuntimeClassList operation.
+type WatchNodeV1alpha1RuntimeClassListUnauthorized struct{}
 
-func (*WatchNodeV1alpha1RuntimeClassListResUnauthorized) watchNodeV1alpha1RuntimeClassListRes() {}
+func (*WatchNodeV1alpha1RuntimeClassListUnauthorized) watchNodeV1alpha1RuntimeClassListRes() {}
 
 type WatchNodeV1beta1RuntimeClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20214,10 +20207,10 @@ type WatchNodeV1beta1RuntimeClassListApplicationYamlOK IoK8sApimachineryPkgApisM
 
 func (*WatchNodeV1beta1RuntimeClassListApplicationYamlOK) watchNodeV1beta1RuntimeClassListRes() {}
 
-// WatchNodeV1beta1RuntimeClassListResUnauthorized is response for WatchNodeV1beta1RuntimeClassList operation.
-type WatchNodeV1beta1RuntimeClassListResUnauthorized struct{}
+// WatchNodeV1beta1RuntimeClassListUnauthorized is response for WatchNodeV1beta1RuntimeClassList operation.
+type WatchNodeV1beta1RuntimeClassListUnauthorized struct{}
 
-func (*WatchNodeV1beta1RuntimeClassListResUnauthorized) watchNodeV1beta1RuntimeClassListRes() {}
+func (*WatchNodeV1beta1RuntimeClassListUnauthorized) watchNodeV1beta1RuntimeClassListRes() {}
 
 type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20244,10 +20237,10 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK IoK8s
 func (*WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) watchPolicyV1PodDisruptionBudgetListForAllNamespacesRes() {
 }
 
-// WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized is response for WatchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
-type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized struct{}
+// WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized is response for WatchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized struct{}
 
-func (*WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized) watchPolicyV1PodDisruptionBudgetListForAllNamespacesRes() {
+func (*WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) watchPolicyV1PodDisruptionBudgetListForAllNamespacesRes() {
 }
 
 type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20275,10 +20268,10 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK 
 func (*WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) watchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes() {
 }
 
-// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized is response for WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
-type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized struct{}
+// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized is response for WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
+type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized struct{}
 
-func (*WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized) watchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes() {
+func (*WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) watchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes() {
 }
 
 type WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20306,10 +20299,10 @@ type WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK IoK8sApimachineryP
 func (*WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) watchPolicyV1beta1PodSecurityPolicyListRes() {
 }
 
-// WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized is response for WatchPolicyV1beta1PodSecurityPolicyList operation.
-type WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized struct{}
+// WatchPolicyV1beta1PodSecurityPolicyListUnauthorized is response for WatchPolicyV1beta1PodSecurityPolicyList operation.
+type WatchPolicyV1beta1PodSecurityPolicyListUnauthorized struct{}
 
-func (*WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized) watchPolicyV1beta1PodSecurityPolicyListRes() {
+func (*WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) watchPolicyV1beta1PodSecurityPolicyListRes() {
 }
 
 type WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20337,10 +20330,10 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK IoK8sApimac
 func (*WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) watchRbacAuthorizationV1ClusterRoleBindingListRes() {
 }
 
-// WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized is response for WatchRbacAuthorizationV1ClusterRoleBindingList operation.
-type WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized struct{}
+// WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized is response for WatchRbacAuthorizationV1ClusterRoleBindingList operation.
+type WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized struct{}
 
-func (*WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized) watchRbacAuthorizationV1ClusterRoleBindingListRes() {
+func (*WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) watchRbacAuthorizationV1ClusterRoleBindingListRes() {
 }
 
 type WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20368,10 +20361,10 @@ type WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK IoK8sApimachineryP
 func (*WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) watchRbacAuthorizationV1ClusterRoleListRes() {
 }
 
-// WatchRbacAuthorizationV1ClusterRoleListResUnauthorized is response for WatchRbacAuthorizationV1ClusterRoleList operation.
-type WatchRbacAuthorizationV1ClusterRoleListResUnauthorized struct{}
+// WatchRbacAuthorizationV1ClusterRoleListUnauthorized is response for WatchRbacAuthorizationV1ClusterRoleList operation.
+type WatchRbacAuthorizationV1ClusterRoleListUnauthorized struct{}
 
-func (*WatchRbacAuthorizationV1ClusterRoleListResUnauthorized) watchRbacAuthorizationV1ClusterRoleListRes() {
+func (*WatchRbacAuthorizationV1ClusterRoleListUnauthorized) watchRbacAuthorizationV1ClusterRoleListRes() {
 }
 
 type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20399,10 +20392,10 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK Io
 func (*WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) watchRbacAuthorizationV1RoleBindingListForAllNamespacesRes() {
 }
 
-// WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized is response for WatchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
-type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized struct{}
+// WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized is response for WatchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized struct{}
 
-func (*WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized) watchRbacAuthorizationV1RoleBindingListForAllNamespacesRes() {
+func (*WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) watchRbacAuthorizationV1RoleBindingListForAllNamespacesRes() {
 }
 
 type WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20430,10 +20423,10 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK IoK8sApim
 func (*WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) watchRbacAuthorizationV1RoleListForAllNamespacesRes() {
 }
 
-// WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized is response for WatchRbacAuthorizationV1RoleListForAllNamespaces operation.
-type WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized struct{}
+// WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized is response for WatchRbacAuthorizationV1RoleListForAllNamespaces operation.
+type WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized struct{}
 
-func (*WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized) watchRbacAuthorizationV1RoleListForAllNamespacesRes() {
+func (*WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) watchRbacAuthorizationV1RoleListForAllNamespacesRes() {
 }
 
 type WatchSchedulingV1PriorityClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20459,10 +20452,10 @@ type WatchSchedulingV1PriorityClassListApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*WatchSchedulingV1PriorityClassListApplicationYamlOK) watchSchedulingV1PriorityClassListRes() {}
 
-// WatchSchedulingV1PriorityClassListResUnauthorized is response for WatchSchedulingV1PriorityClassList operation.
-type WatchSchedulingV1PriorityClassListResUnauthorized struct{}
+// WatchSchedulingV1PriorityClassListUnauthorized is response for WatchSchedulingV1PriorityClassList operation.
+type WatchSchedulingV1PriorityClassListUnauthorized struct{}
 
-func (*WatchSchedulingV1PriorityClassListResUnauthorized) watchSchedulingV1PriorityClassListRes() {}
+func (*WatchSchedulingV1PriorityClassListUnauthorized) watchSchedulingV1PriorityClassListRes() {}
 
 type WatchStorageV1CSIDriverListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20486,10 +20479,10 @@ type WatchStorageV1CSIDriverListApplicationYamlOK IoK8sApimachineryPkgApisMetaV1
 
 func (*WatchStorageV1CSIDriverListApplicationYamlOK) watchStorageV1CSIDriverListRes() {}
 
-// WatchStorageV1CSIDriverListResUnauthorized is response for WatchStorageV1CSIDriverList operation.
-type WatchStorageV1CSIDriverListResUnauthorized struct{}
+// WatchStorageV1CSIDriverListUnauthorized is response for WatchStorageV1CSIDriverList operation.
+type WatchStorageV1CSIDriverListUnauthorized struct{}
 
-func (*WatchStorageV1CSIDriverListResUnauthorized) watchStorageV1CSIDriverListRes() {}
+func (*WatchStorageV1CSIDriverListUnauthorized) watchStorageV1CSIDriverListRes() {}
 
 type WatchStorageV1CSINodeListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20512,10 +20505,10 @@ type WatchStorageV1CSINodeListApplicationYamlOK IoK8sApimachineryPkgApisMetaV1Wa
 
 func (*WatchStorageV1CSINodeListApplicationYamlOK) watchStorageV1CSINodeListRes() {}
 
-// WatchStorageV1CSINodeListResUnauthorized is response for WatchStorageV1CSINodeList operation.
-type WatchStorageV1CSINodeListResUnauthorized struct{}
+// WatchStorageV1CSINodeListUnauthorized is response for WatchStorageV1CSINodeList operation.
+type WatchStorageV1CSINodeListUnauthorized struct{}
 
-func (*WatchStorageV1CSINodeListResUnauthorized) watchStorageV1CSINodeListRes() {}
+func (*WatchStorageV1CSINodeListUnauthorized) watchStorageV1CSINodeListRes() {}
 
 type WatchStorageV1StorageClassListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20540,10 +20533,10 @@ type WatchStorageV1StorageClassListApplicationYamlOK IoK8sApimachineryPkgApisMet
 
 func (*WatchStorageV1StorageClassListApplicationYamlOK) watchStorageV1StorageClassListRes() {}
 
-// WatchStorageV1StorageClassListResUnauthorized is response for WatchStorageV1StorageClassList operation.
-type WatchStorageV1StorageClassListResUnauthorized struct{}
+// WatchStorageV1StorageClassListUnauthorized is response for WatchStorageV1StorageClassList operation.
+type WatchStorageV1StorageClassListUnauthorized struct{}
 
-func (*WatchStorageV1StorageClassListResUnauthorized) watchStorageV1StorageClassListRes() {}
+func (*WatchStorageV1StorageClassListUnauthorized) watchStorageV1StorageClassListRes() {}
 
 type WatchStorageV1VolumeAttachmentListApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20568,10 +20561,10 @@ type WatchStorageV1VolumeAttachmentListApplicationYamlOK IoK8sApimachineryPkgApi
 
 func (*WatchStorageV1VolumeAttachmentListApplicationYamlOK) watchStorageV1VolumeAttachmentListRes() {}
 
-// WatchStorageV1VolumeAttachmentListResUnauthorized is response for WatchStorageV1VolumeAttachmentList operation.
-type WatchStorageV1VolumeAttachmentListResUnauthorized struct{}
+// WatchStorageV1VolumeAttachmentListUnauthorized is response for WatchStorageV1VolumeAttachmentList operation.
+type WatchStorageV1VolumeAttachmentListUnauthorized struct{}
 
-func (*WatchStorageV1VolumeAttachmentListResUnauthorized) watchStorageV1VolumeAttachmentListRes() {}
+func (*WatchStorageV1VolumeAttachmentListUnauthorized) watchStorageV1VolumeAttachmentListRes() {}
 
 type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
 
@@ -20598,10 +20591,10 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK
 func (*WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) watchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes() {
 }
 
-// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized is response for WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
-type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized struct{}
+// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized is response for WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized struct{}
 
-func (*WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized) watchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes() {
+func (*WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) watchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes() {
 }
 
 type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -20629,8 +20622,8 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK 
 func (*WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) watchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes() {
 }
 
-// WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized is response for WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
-type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized struct{}
+// WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized is response for WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
+type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized struct{}
 
-func (*WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized) watchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes() {
+func (*WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) watchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes() {
 }

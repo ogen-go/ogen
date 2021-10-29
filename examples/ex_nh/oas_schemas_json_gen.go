@@ -263,17 +263,44 @@ func (s *Book) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetBookResForbidden) WriteJSON(j *json.Stream) {
+func (s GetBookForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetBookResForbidden from json stream.
-func (s *GetBookResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetBookForbidden from json stream.
+func (s *GetBookForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBookResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode GetBookForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetPageCoverImageForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GetPageCoverImageForbidden from json stream.
+func (s *GetPageCoverImageForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -293,17 +320,17 @@ func (GetPageCoverImageOKImage) WriteJSON(j *json.Stream)    {}
 func (GetPageCoverImageOKImage) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPageCoverImageResForbidden) WriteJSON(j *json.Stream) {
+func (s GetPageImageForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetPageCoverImageResForbidden from json stream.
-func (s *GetPageCoverImageResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetPageImageForbidden from json stream.
+func (s *GetPageImageForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPageCoverImageResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode GetPageImageForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -323,17 +350,17 @@ func (GetPageImageOKImage) WriteJSON(j *json.Stream)    {}
 func (GetPageImageOKImage) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPageImageResForbidden) WriteJSON(j *json.Stream) {
+func (s GetPageThumbnailImageForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetPageImageResForbidden from json stream.
-func (s *GetPageImageResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetPageThumbnailImageForbidden from json stream.
+func (s *GetPageThumbnailImageForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPageImageResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -351,33 +378,6 @@ func (s *GetPageImageResForbidden) ReadJSON(i *json.Iter) error {
 
 func (GetPageThumbnailImageOKImage) WriteJSON(j *json.Stream)    {}
 func (GetPageThumbnailImageOKImage) ReadJSON(i *json.Iter) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s GetPageThumbnailImageResForbidden) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads GetPageThumbnailImageResForbidden from json stream.
-func (s *GetPageThumbnailImageResForbidden) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPageThumbnailImageResForbidden to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
 
 // WriteJSON implements json.Marshaler.
 func (s Image) WriteJSON(j *json.Stream) {
@@ -683,21 +683,48 @@ func (o *OptTitle) ReadJSON(i *json.Iter) error {
 	}
 }
 
-func (SearchByTagIDOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (SearchByTagIDOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s SearchByTagIDResForbidden) WriteJSON(j *json.Stream) {
+func (s SearchByTagIDForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchByTagIDResForbidden from json stream.
-func (s *SearchByTagIDResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchByTagIDForbidden from json stream.
+func (s *SearchByTagIDForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchByTagIDResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchByTagIDForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (SearchByTagIDOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (SearchByTagIDOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s SearchForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SearchForbidden from json stream.
+func (s *SearchForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -715,33 +742,6 @@ func (s *SearchByTagIDResForbidden) ReadJSON(i *json.Iter) error {
 
 func (SearchOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (SearchOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s SearchResForbidden) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SearchResForbidden from json stream.
-func (s *SearchResForbidden) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchResForbidden to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
 
 // WriteJSON implements json.Marshaler.
 func (s SearchResponse) WriteJSON(j *json.Stream) {

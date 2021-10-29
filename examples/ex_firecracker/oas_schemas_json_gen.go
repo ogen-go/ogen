@@ -539,17 +539,17 @@ func (s *CpuTemplate) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateSnapshotResNoContent) WriteJSON(j *json.Stream) {
+func (s CreateSnapshotNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateSnapshotResNoContent from json stream.
-func (s *CreateSnapshotResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateSnapshotNoContent from json stream.
+func (s *CreateSnapshotNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateSnapshotResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateSnapshotNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -566,17 +566,17 @@ func (s *CreateSnapshotResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateSyncActionResNoContent) WriteJSON(j *json.Stream) {
+func (s CreateSyncActionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateSyncActionResNoContent from json stream.
-func (s *CreateSyncActionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateSyncActionNoContent from json stream.
+func (s *CreateSyncActionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateSyncActionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateSyncActionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1160,17 +1160,17 @@ func (s *InstanceInfoState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s LoadSnapshotResNoContent) WriteJSON(j *json.Stream) {
+func (s LoadSnapshotNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LoadSnapshotResNoContent from json stream.
-func (s *LoadSnapshotResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads LoadSnapshotNoContent from json stream.
+func (s *LoadSnapshotNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LoadSnapshotResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode LoadSnapshotNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1471,17 +1471,17 @@ func (s *MmdsConfig) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsConfigPutResNoContent) WriteJSON(j *json.Stream) {
+func (s MmdsConfigPutNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MmdsConfigPutResNoContent from json stream.
-func (s *MmdsConfigPutResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MmdsConfigPutNoContent from json stream.
+func (s *MmdsConfigPutNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MmdsConfigPutResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MmdsConfigPutNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1498,17 +1498,44 @@ func (s *MmdsConfigPutResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsGetResOK) WriteJSON(j *json.Stream) {
+func (s MmdsGetOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MmdsGetResOK from json stream.
-func (s *MmdsGetResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MmdsGetOK from json stream.
+func (s *MmdsGetOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MmdsGetResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode MmdsGetOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsPatchNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads MmdsPatchNoContent from json stream.
+func (s *MmdsPatchNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MmdsPatchNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1552,17 +1579,17 @@ func (s *MmdsPatchReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsPatchResNoContent) WriteJSON(j *json.Stream) {
+func (s MmdsPutNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MmdsPatchResNoContent from json stream.
-func (s *MmdsPatchResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MmdsPutNoContent from json stream.
+func (s *MmdsPutNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MmdsPatchResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MmdsPutNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1590,33 +1617,6 @@ func (s MmdsPutReq) WriteJSON(j *json.Stream) {
 func (s *MmdsPutReq) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode MmdsPutReq to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s MmdsPutResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads MmdsPutResNoContent from json stream.
-func (s *MmdsPutResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MmdsPutResNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2236,17 +2236,17 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchBalloonResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchBalloonNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchBalloonResNoContent from json stream.
-func (s *PatchBalloonResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchBalloonNoContent from json stream.
+func (s *PatchBalloonNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchBalloonResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchBalloonNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2263,17 +2263,17 @@ func (s *PatchBalloonResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchBalloonStatsIntervalResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchBalloonStatsIntervalNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchBalloonStatsIntervalResNoContent from json stream.
-func (s *PatchBalloonStatsIntervalResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchBalloonStatsIntervalNoContent from json stream.
+func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchBalloonStatsIntervalResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchBalloonStatsIntervalNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2290,17 +2290,17 @@ func (s *PatchBalloonStatsIntervalResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchGuestDriveByIDResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchGuestDriveByIDNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchGuestDriveByIDResNoContent from json stream.
-func (s *PatchGuestDriveByIDResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchGuestDriveByIDNoContent from json stream.
+func (s *PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchGuestDriveByIDResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchGuestDriveByIDNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2317,17 +2317,17 @@ func (s *PatchGuestDriveByIDResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchGuestNetworkInterfaceByIDResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchGuestNetworkInterfaceByIDResNoContent from json stream.
-func (s *PatchGuestNetworkInterfaceByIDResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchGuestNetworkInterfaceByIDNoContent from json stream.
+func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchGuestNetworkInterfaceByIDResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchGuestNetworkInterfaceByIDNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2344,17 +2344,17 @@ func (s *PatchGuestNetworkInterfaceByIDResNoContent) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchMachineConfigurationResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchMachineConfigurationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchMachineConfigurationResNoContent from json stream.
-func (s *PatchMachineConfigurationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchMachineConfigurationNoContent from json stream.
+func (s *PatchMachineConfigurationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchMachineConfigurationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchMachineConfigurationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2371,17 +2371,17 @@ func (s *PatchMachineConfigurationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PatchVmResNoContent) WriteJSON(j *json.Stream) {
+func (s PatchVmNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PatchVmResNoContent from json stream.
-func (s *PatchVmResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PatchVmNoContent from json stream.
+func (s *PatchVmNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PatchVmResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PatchVmNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2398,17 +2398,17 @@ func (s *PatchVmResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutBalloonResNoContent) WriteJSON(j *json.Stream) {
+func (s PutBalloonNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutBalloonResNoContent from json stream.
-func (s *PutBalloonResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutBalloonNoContent from json stream.
+func (s *PutBalloonNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutBalloonResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutBalloonNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2425,17 +2425,17 @@ func (s *PutBalloonResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutGuestBootSourceResNoContent) WriteJSON(j *json.Stream) {
+func (s PutGuestBootSourceNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutGuestBootSourceResNoContent from json stream.
-func (s *PutGuestBootSourceResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutGuestBootSourceNoContent from json stream.
+func (s *PutGuestBootSourceNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutGuestBootSourceResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutGuestBootSourceNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2452,17 +2452,17 @@ func (s *PutGuestBootSourceResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutGuestDriveByIDResNoContent) WriteJSON(j *json.Stream) {
+func (s PutGuestDriveByIDNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutGuestDriveByIDResNoContent from json stream.
-func (s *PutGuestDriveByIDResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutGuestDriveByIDNoContent from json stream.
+func (s *PutGuestDriveByIDNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutGuestDriveByIDResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutGuestDriveByIDNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2479,17 +2479,17 @@ func (s *PutGuestDriveByIDResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutGuestNetworkInterfaceByIDResNoContent) WriteJSON(j *json.Stream) {
+func (s PutGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutGuestNetworkInterfaceByIDResNoContent from json stream.
-func (s *PutGuestNetworkInterfaceByIDResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutGuestNetworkInterfaceByIDNoContent from json stream.
+func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutGuestNetworkInterfaceByIDResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutGuestNetworkInterfaceByIDNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2506,17 +2506,17 @@ func (s *PutGuestNetworkInterfaceByIDResNoContent) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutGuestVsockResNoContent) WriteJSON(j *json.Stream) {
+func (s PutGuestVsockNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutGuestVsockResNoContent from json stream.
-func (s *PutGuestVsockResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutGuestVsockNoContent from json stream.
+func (s *PutGuestVsockNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutGuestVsockResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutGuestVsockNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2533,17 +2533,17 @@ func (s *PutGuestVsockResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutLoggerResNoContent) WriteJSON(j *json.Stream) {
+func (s PutLoggerNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutLoggerResNoContent from json stream.
-func (s *PutLoggerResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutLoggerNoContent from json stream.
+func (s *PutLoggerNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutLoggerResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutLoggerNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2560,17 +2560,17 @@ func (s *PutLoggerResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutMachineConfigurationResNoContent) WriteJSON(j *json.Stream) {
+func (s PutMachineConfigurationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutMachineConfigurationResNoContent from json stream.
-func (s *PutMachineConfigurationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutMachineConfigurationNoContent from json stream.
+func (s *PutMachineConfigurationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutMachineConfigurationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutMachineConfigurationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2587,17 +2587,17 @@ func (s *PutMachineConfigurationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PutMetricsResNoContent) WriteJSON(j *json.Stream) {
+func (s PutMetricsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PutMetricsResNoContent from json stream.
-func (s *PutMetricsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PutMetricsNoContent from json stream.
+func (s *PutMetricsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PutMetricsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PutMetricsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {

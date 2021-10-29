@@ -75,7 +75,7 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerCallbackQueryPostResOK
+			var response AnswerCallbackQueryPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -129,7 +129,7 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response, span trace.Sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerPreCheckoutQueryPostResOK
+			var response AnswerPreCheckoutQueryPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -183,7 +183,7 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerShippingQueryPostResOK
+			var response AnswerShippingQueryPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -237,7 +237,7 @@ func decodeClosePostResponse(resp *http.Response, span trace.Span) (res ClosePos
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ClosePostResOK
+			var response ClosePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -291,7 +291,7 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response DeleteStickerFromSetPostResOK
+			var response DeleteStickerFromSetPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -345,7 +345,7 @@ func decodeDeleteWebhookPostResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response DeleteWebhookPostResOK
+			var response DeleteWebhookPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -399,7 +399,7 @@ func decodeGetFilePostResponse(resp *http.Response, span trace.Span) (res GetFil
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetFilePostResOK
+			var response GetFilePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -453,7 +453,7 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetGameHighScoresPostResOK
+			var response GetGameHighScoresPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -507,7 +507,7 @@ func decodeGetMePostResponse(resp *http.Response, span trace.Span) (res GetMePos
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetMePostResOK
+			var response GetMePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -561,7 +561,7 @@ func decodeGetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetMyCommandsPostResOK
+			var response GetMyCommandsPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -615,7 +615,7 @@ func decodeGetStickerSetPostResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetStickerSetPostResOK
+			var response GetStickerSetPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -669,7 +669,7 @@ func decodeGetUpdatesPostResponse(resp *http.Response, span trace.Span) (res Get
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetUpdatesPostResOK
+			var response GetUpdatesPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -723,7 +723,7 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetUserProfilePhotosPostResOK
+			var response GetUserProfilePhotosPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -777,7 +777,7 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response, span trace.Span) (res
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetWebhookInfoPostResOK
+			var response GetWebhookInfoPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -831,7 +831,7 @@ func decodeLogOutPostResponse(resp *http.Response, span trace.Span) (res LogOutP
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response LogOutPostResOK
+			var response LogOutPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -885,7 +885,7 @@ func decodeSendGamePostResponse(resp *http.Response, span trace.Span) (res SendG
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SendGamePostResOK
+			var response SendGamePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -939,7 +939,7 @@ func decodeSendInvoicePostResponse(resp *http.Response, span trace.Span) (res Se
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SendInvoicePostResOK
+			var response SendInvoicePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -993,7 +993,7 @@ func decodeSetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetMyCommandsPostResOK
+			var response SetMyCommandsPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1047,7 +1047,7 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response, span trace.S
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetStickerPositionInSetPostResOK
+			var response SetStickerPositionInSetPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1101,7 +1101,7 @@ func decodeSetWebhookPostResponse(resp *http.Response, span trace.Span) (res Set
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetWebhookPostResOK
+			var response SetWebhookPostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1155,7 +1155,7 @@ func decodeUploadStickerFilePostResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response UploadStickerFilePostResOK
+			var response UploadStickerFilePostOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err

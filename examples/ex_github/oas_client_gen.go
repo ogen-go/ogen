@@ -94,7 +94,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -226,7 +226,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	return result, nil
 }
 
-func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res ActionsAddSelfHostedRunnerToGroupForOrgResNoContent, err error) {
+func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsAddSelfHostedRunnerToGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-self-hosted-runner-to-group-for-org`)),
@@ -359,7 +359,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	return result, nil
 }
 
-func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res ActionsCancelWorkflowRunResAccepted, err error) {
+func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res ActionsCancelWorkflowRunAccepted, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCancelWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/cancel-workflow-run`)),
@@ -937,7 +937,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res ActionsDeleteArtifactResNoContent, err error) {
+func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res ActionsDeleteArtifactNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-artifact`)),
@@ -1003,7 +1003,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res ActionsDeleteEnvironmentSecretResNoContent, err error) {
+func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-environment-secret`)),
@@ -1069,7 +1069,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res ActionsDeleteOrgSecretResNoContent, err error) {
+func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res ActionsDeleteOrgSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-org-secret`)),
@@ -1125,7 +1125,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res ActionsDeleteRepoSecretResNoContent, err error) {
+func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res ActionsDeleteRepoSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-repo-secret`)),
@@ -1191,7 +1191,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res ActionsDeleteSelfHostedRunnerFromOrgResNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-org`)),
@@ -1247,7 +1247,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res ActionsDeleteSelfHostedRunnerFromRepoResNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerFromRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-repo`)),
@@ -1313,7 +1313,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerGroupFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-group-from-org`)),
@@ -1369,7 +1369,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res ActionsDeleteWorkflowRunResNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res ActionsDeleteWorkflowRunNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run`)),
@@ -1435,7 +1435,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	return result, nil
 }
 
-func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res ActionsDeleteWorkflowRunLogsResNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run-logs`)),
@@ -1502,7 +1502,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	return result, nil
 }
 
-func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDisableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/disable-selected-repository-github-actions-organization`)),
@@ -1558,7 +1558,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	return result, nil
 }
 
-func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactResFound, err error) {
+func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-artifact`)),
@@ -1634,7 +1634,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	return result, nil
 }
 
-func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunResFound, err error) {
+func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadJobLogsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-job-logs-for-workflow-run`)),
@@ -1701,7 +1701,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsResFound, err error) {
+func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-workflow-run-logs`)),
@@ -1768,7 +1768,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	return result, nil
 }
 
-func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsEnableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/enable-selected-repository-github-actions-organization`)),
@@ -2891,7 +2891,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	return result, nil
 }
 
-func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res ActionsListArtifactsForRepoResOK, err error) {
+func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res ActionsListArtifactsForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListArtifactsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-artifacts-for-repo`)),
@@ -2971,7 +2971,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	return result, nil
 }
 
-func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res ActionsListEnvironmentSecretsResOK, err error) {
+func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res ActionsListEnvironmentSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListEnvironmentSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-environment-secrets`)),
@@ -3051,7 +3051,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	return result, nil
 }
 
-func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res ActionsListJobsForWorkflowRunResOK, err error) {
+func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res ActionsListJobsForWorkflowRunOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListJobsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-jobs-for-workflow-run`)),
@@ -3151,7 +3151,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	return result, nil
 }
 
-func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res ActionsListOrgSecretsResOK, err error) {
+func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res ActionsListOrgSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListOrgSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-org-secrets`)),
@@ -3221,7 +3221,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	return result, nil
 }
 
-func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK, err error) {
+func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -3301,7 +3301,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	return result, nil
 }
 
-func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res ActionsListRepoSecretsResOK, err error) {
+func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res ActionsListRepoSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-secrets`)),
@@ -3381,7 +3381,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	return result, nil
 }
 
-func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res ActionsListRepoWorkflowsResOK, err error) {
+func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res ActionsListRepoWorkflowsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoWorkflows`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-workflows`)),
@@ -3565,7 +3565,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res ActionsListSelectedReposForOrgSecretResOK, err error) {
+func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res ActionsListSelectedReposForOrgSecretOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repos-for-org-secret`)),
@@ -3645,7 +3645,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK, err error) {
+func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repositories-enabled-github-actions-organization`)),
@@ -3715,7 +3715,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	return result, nil
 }
 
-func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res ActionsListSelfHostedRunnerGroupsForOrgResOK, err error) {
+func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnerGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runner-groups-for-org`)),
@@ -3785,7 +3785,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res ActionsListSelfHostedRunnersForOrgResOK, err error) {
+func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res ActionsListSelfHostedRunnersForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-org`)),
@@ -3855,7 +3855,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res ActionsListSelfHostedRunnersForRepoResOK, err error) {
+func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res ActionsListSelfHostedRunnersForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-repo`)),
@@ -3935,7 +3935,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	return result, nil
 }
 
-func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res ActionsListSelfHostedRunnersInGroupForOrgResOK, err error) {
+func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res ActionsListSelfHostedRunnersInGroupForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-in-group-for-org`)),
@@ -4015,7 +4015,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res ActionsListWorkflowRunArtifactsResOK, err error) {
+func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res ActionsListWorkflowRunArtifactsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListWorkflowRunArtifacts`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-run-artifacts`)),
@@ -4105,7 +4105,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	return result, nil
 }
 
-func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res ActionsListWorkflowRunsForRepoResOK, err error) {
+func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res ActionsListWorkflowRunsForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListWorkflowRunsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-runs-for-repo`)),
@@ -4235,7 +4235,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	return result, nil
 }
 
-func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res ActionsReRunWorkflowResCreated, err error) {
+func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res ActionsReRunWorkflowCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsReRunWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/re-run-workflow`)),
@@ -4302,7 +4302,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	return result, nil
 }
 
-func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -4434,7 +4434,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent, err error) {
+func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRemoveSelfHostedRunnerFromGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-self-hosted-runner-from-group-for-org`)),
@@ -4500,7 +4500,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res ActionsRetryWorkflowResCreated, err error) {
+func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res ActionsRetryWorkflowCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRetryWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/retry-workflow`)),
@@ -4567,7 +4567,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	return result, nil
 }
 
-func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
@@ -4622,7 +4622,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	return result, nil
 }
 
-func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryResNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
@@ -4687,7 +4687,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -4751,7 +4751,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryResNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -4825,7 +4825,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -4899,7 +4899,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretResNoContent, err error) {
+func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -4973,7 +4973,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -5037,7 +5037,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, err error) {
+func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -5240,7 +5240,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res ActivityDeleteRepoSubscriptionResNoContent, err error) {
+func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityDeleteRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-repo-subscription`)),
@@ -7808,7 +7808,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	return result, nil
 }
 
-func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res AppsRevokeInstallationAccessTokenResNoContent, err error) {
+func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsRevokeInstallationAccessToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/revoke-installation-access-token`)),
@@ -8759,7 +8759,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	return result, nil
 }
 
-func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res ChecksListForRefResOK, err error) {
+func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res ChecksListForRefOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-ref`)),
@@ -8889,7 +8889,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	return result, nil
 }
 
-func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res ChecksListForSuiteResOK, err error) {
+func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res ChecksListForSuiteOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListForSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-suite`)),
@@ -9009,7 +9009,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	return result, nil
 }
 
-func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res ChecksListSuitesForRefResOK, err error) {
+func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res ChecksListSuitesForRefOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListSuitesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-suites-for-ref`)),
@@ -9119,7 +9119,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	return result, nil
 }
 
-func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res ChecksRerequestSuiteResCreated, err error) {
+func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res ChecksRerequestSuiteCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksRerequestSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/rerequest-suite`)),
@@ -10145,7 +10145,7 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -10211,7 +10211,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-self-hosted-runner-to-group-for-enterprise`)),
@@ -10435,7 +10435,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteScimGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-scim-group-from-enterprise`)),
@@ -10491,7 +10491,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-from-enterprise`)),
@@ -10547,7 +10547,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-group-from-enterprise`)),
@@ -10603,7 +10603,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res EnterpriseAdminDeleteUserFromEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteUserFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-user-from-enterprise`)),
@@ -10659,7 +10659,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/disable-selected-organization-github-actions-enterprise`)),
@@ -10715,7 +10715,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/enable-selected-organization-github-actions-enterprise`)),
@@ -11222,7 +11222,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK, err error) {
+func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -11519,7 +11519,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK, err error) {
+func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise`)),
@@ -11589,7 +11589,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runner-groups-for-enterprise`)),
@@ -11659,7 +11659,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnersForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-for-enterprise`)),
@@ -11729,7 +11729,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-in-group-for-enterprise`)),
@@ -11937,7 +11937,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -12003,7 +12003,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise`)),
@@ -12069,7 +12069,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-allowed-actions-enterprise`)),
@@ -12124,7 +12124,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -12334,7 +12334,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -12408,7 +12408,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -12472,7 +12472,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -13894,7 +13894,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	return result, nil
 }
 
-func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsRemoveRestrictionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-authenticated-user`)),
@@ -13931,7 +13931,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	return result, nil
 }
 
-func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res InteractionsRemoveRestrictionsForOrgResNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsRemoveRestrictionsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-org`)),
@@ -14250,7 +14250,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	return result, nil
 }
 
-func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentResNoContent, err error) {
+func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-comment`)),
@@ -14316,7 +14316,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	return result, nil
 }
 
-func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelResNoContent, err error) {
+func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesDeleteLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-label`)),
@@ -15933,9 +15933,9 @@ func (c *Client) MarkdownRender(ctx context.Context, request MarkdownRenderReq) 
 
 func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
 	switch request := request.(type) {
-	case *MarkdownRenderRawReqTextPlain:
-		// Validation is not required for this type.
 	case *MarkdownRenderRawReqTextXMarkdown:
+		// Validation is not required for this type.
+	case *MarkdownRenderRawReqTextPlain:
 		// Validation is not required for this type.
 	default:
 		err = fmt.Errorf("unexpected request type: %T", request)
@@ -16109,7 +16109,7 @@ func (c *Client) MetaGetZen(ctx context.Context) (res string, err error) {
 	return result, nil
 }
 
-func (c *Client) MetaRoot(ctx context.Context) (res MetaRootResOK, err error) {
+func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MetaRoot`,
 		trace.WithAttributes(otelogen.OperationID(`meta/root`)),
@@ -16146,7 +16146,7 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootResOK, err error) {
 	return result, nil
 }
 
-func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res MigrationsCancelImportResNoContent, err error) {
+func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res MigrationsCancelImportNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsCancelImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/cancel-import`)),
@@ -19136,7 +19136,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	return result, nil
 }
 
-func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserResNoContent, err error) {
+func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemovePublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-public-membership-for-authenticated-user`)),
@@ -19304,7 +19304,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserResNoContent, err error) {
+func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUnblockUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/unblock-user`)),
@@ -24092,7 +24092,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res ReactionsDeleteForCommitCommentResNoContent, err error) {
+func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res ReactionsDeleteForCommitCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-commit-comment`)),
@@ -24168,7 +24168,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res ReactionsDeleteForIssueResNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res ReactionsDeleteForIssueNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue`)),
@@ -24244,7 +24244,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res ReactionsDeleteForIssueCommentResNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res ReactionsDeleteForIssueCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue-comment`)),
@@ -24320,7 +24320,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res ReactionsDeleteForPullRequestCommentResNoContent, err error) {
+func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForPullRequestComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-pull-request-comment`)),
@@ -24396,7 +24396,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res ReactionsDeleteForTeamDiscussionResNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForTeamDiscussion`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion`)),
@@ -24472,7 +24472,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res ReactionsDeleteForTeamDiscussionCommentResNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForTeamDiscussionComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion-comment`)),
@@ -25979,7 +25979,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	return result, nil
 }
 
-func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res ReposDeleteAccessRestrictionsResNoContent, err error) {
+func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res ReposDeleteAccessRestrictionsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-access-restrictions`)),
@@ -26113,7 +26113,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	return result, nil
 }
 
-func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res ReposDeleteAnEnvironmentResNoContent, err error) {
+func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res ReposDeleteAnEnvironmentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAnEnvironment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-an-environment`)),
@@ -26445,7 +26445,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res ReposDeleteDeployKeyResNoContent, err error) {
+func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res ReposDeleteDeployKeyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deploy-key`)),
@@ -26577,7 +26577,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	return result, nil
 }
 
-func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationResNoContent, err error) {
+func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-invitation`)),
@@ -26710,7 +26710,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res ReposDeleteReleaseResNoContent, err error) {
+func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res ReposDeleteReleaseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release`)),
@@ -26776,7 +26776,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	return result, nil
 }
 
-func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetResNoContent, err error) {
+func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release-asset`)),
@@ -26908,7 +26908,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	return result, nil
 }
 
-func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res ReposDisableAutomatedSecurityFixesResNoContent, err error) {
+func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-automated-security-fixes`)),
@@ -26965,7 +26965,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res ReposDisableLfsForRepoResNoContent, err error) {
+func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res ReposDisableLfsForRepoNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-lfs-for-repo`)),
@@ -27022,7 +27022,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	return result, nil
 }
 
-func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res ReposDisableVulnerabilityAlertsResNoContent, err error) {
+func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-vulnerability-alerts`)),
@@ -27079,7 +27079,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	return result, nil
 }
 
-func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveResFound, err error) {
+func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDownloadTarballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-tarball-archive`)),
@@ -27145,7 +27145,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	return result, nil
 }
 
-func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveResFound, err error) {
+func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDownloadZipballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-zipball-archive`)),
@@ -27211,7 +27211,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	return result, nil
 }
 
-func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res ReposEnableAutomatedSecurityFixesResNoContent, err error) {
+func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposEnableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-automated-security-fixes`)),
@@ -27325,7 +27325,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	return result, nil
 }
 
-func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res ReposEnableVulnerabilityAlertsResNoContent, err error) {
+func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposEnableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-vulnerability-alerts`)),
@@ -32005,7 +32005,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	return result, nil
 }
 
-func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorResNoContent, err error) {
+func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-collaborator`)),
@@ -32071,7 +32071,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	return result, nil
 }
 
-func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res ReposRemoveStatusCheckProtectionResNoContent, err error) {
+func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveStatusCheckProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-protection`)),
@@ -33880,7 +33880,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -34562,7 +34562,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res TeamsDeleteDiscussionCommentInOrgResNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-in-org`)),
@@ -34638,7 +34638,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyResNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-legacy`)),
@@ -34704,7 +34704,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res TeamsDeleteDiscussionInOrgResNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-in-org`)),
@@ -34770,7 +34770,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	return result, nil
 }
 
-func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyResNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-legacy`)),
@@ -34826,7 +34826,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	return result, nil
 }
 
-func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res TeamsDeleteInOrgResNoContent, err error) {
+func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res TeamsDeleteInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-in-org`)),
@@ -36978,7 +36978,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res TeamsRemoveProjectInOrgResNoContent, err error) {
+func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res TeamsRemoveProjectInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-in-org`)),
@@ -37044,7 +37044,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res TeamsRemoveRepoInOrgResNoContent, err error) {
+func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res TeamsRemoveRepoInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-in-org`)),
@@ -37120,7 +37120,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyResNoContent, err error) {
+func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-legacy`)),

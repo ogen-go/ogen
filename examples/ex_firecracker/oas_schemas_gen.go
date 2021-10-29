@@ -114,15 +114,15 @@ const (
 	CpuTemplateT2 CpuTemplate = "T2"
 )
 
-// CreateSnapshotResNoContent is response for CreateSnapshot operation.
-type CreateSnapshotResNoContent struct{}
+// CreateSnapshotNoContent is response for CreateSnapshot operation.
+type CreateSnapshotNoContent struct{}
 
-func (*CreateSnapshotResNoContent) createSnapshotRes() {}
+func (*CreateSnapshotNoContent) createSnapshotRes() {}
 
-// CreateSyncActionResNoContent is response for CreateSyncAction operation.
-type CreateSyncActionResNoContent struct{}
+// CreateSyncActionNoContent is response for CreateSyncAction operation.
+type CreateSyncActionNoContent struct{}
 
-func (*CreateSyncActionResNoContent) createSyncActionRes() {}
+func (*CreateSyncActionNoContent) createSyncActionRes() {}
 
 // Ref: #/components/schemas/Drive
 type Drive struct {
@@ -243,10 +243,10 @@ const (
 	InstanceInfoStatePaused     InstanceInfoState = "Paused"
 )
 
-// LoadSnapshotResNoContent is response for LoadSnapshot operation.
-type LoadSnapshotResNoContent struct{}
+// LoadSnapshotNoContent is response for LoadSnapshot operation.
+type LoadSnapshotNoContent struct{}
 
-func (*LoadSnapshotResNoContent) loadSnapshotRes() {}
+func (*LoadSnapshotNoContent) loadSnapshotRes() {}
 
 // Ref: #/components/schemas/Logger
 type Logger struct {
@@ -286,28 +286,28 @@ type MmdsConfig struct {
 	Ipv4Address OptString `json:"ipv4_address"`
 }
 
-// MmdsConfigPutResNoContent is response for MmdsConfigPut operation.
-type MmdsConfigPutResNoContent struct{}
+// MmdsConfigPutNoContent is response for MmdsConfigPut operation.
+type MmdsConfigPutNoContent struct{}
 
-func (*MmdsConfigPutResNoContent) mmdsConfigPutRes() {}
+func (*MmdsConfigPutNoContent) mmdsConfigPutRes() {}
 
-type MmdsGetResOK struct{}
+type MmdsGetOK struct{}
 
-func (*MmdsGetResOK) mmdsGetRes() {}
+func (*MmdsGetOK) mmdsGetRes() {}
+
+// MmdsPatchNoContent is response for MmdsPatch operation.
+type MmdsPatchNoContent struct{}
+
+func (*MmdsPatchNoContent) mmdsPatchRes() {}
 
 type MmdsPatchReq struct{}
 
-// MmdsPatchResNoContent is response for MmdsPatch operation.
-type MmdsPatchResNoContent struct{}
+// MmdsPutNoContent is response for MmdsPut operation.
+type MmdsPutNoContent struct{}
 
-func (*MmdsPatchResNoContent) mmdsPatchRes() {}
+func (*MmdsPutNoContent) mmdsPutRes() {}
 
 type MmdsPutReq struct{}
-
-// MmdsPutResNoContent is response for MmdsPut operation.
-type MmdsPutResNoContent struct{}
-
-func (*MmdsPutResNoContent) mmdsPutRes() {}
 
 // Ref: #/components/schemas/NetworkInterface
 type NetworkInterface struct {
@@ -941,75 +941,75 @@ type PartialNetworkInterface struct {
 	TxRateLimiter OptRateLimiter `json:"tx_rate_limiter"`
 }
 
-// PatchBalloonResNoContent is response for PatchBalloon operation.
-type PatchBalloonResNoContent struct{}
+// PatchBalloonNoContent is response for PatchBalloon operation.
+type PatchBalloonNoContent struct{}
 
-func (*PatchBalloonResNoContent) patchBalloonRes() {}
+func (*PatchBalloonNoContent) patchBalloonRes() {}
 
-// PatchBalloonStatsIntervalResNoContent is response for PatchBalloonStatsInterval operation.
-type PatchBalloonStatsIntervalResNoContent struct{}
+// PatchBalloonStatsIntervalNoContent is response for PatchBalloonStatsInterval operation.
+type PatchBalloonStatsIntervalNoContent struct{}
 
-func (*PatchBalloonStatsIntervalResNoContent) patchBalloonStatsIntervalRes() {}
+func (*PatchBalloonStatsIntervalNoContent) patchBalloonStatsIntervalRes() {}
 
-// PatchGuestDriveByIDResNoContent is response for PatchGuestDriveByID operation.
-type PatchGuestDriveByIDResNoContent struct{}
+// PatchGuestDriveByIDNoContent is response for PatchGuestDriveByID operation.
+type PatchGuestDriveByIDNoContent struct{}
 
-func (*PatchGuestDriveByIDResNoContent) patchGuestDriveByIDRes() {}
+func (*PatchGuestDriveByIDNoContent) patchGuestDriveByIDRes() {}
 
-// PatchGuestNetworkInterfaceByIDResNoContent is response for PatchGuestNetworkInterfaceByID operation.
-type PatchGuestNetworkInterfaceByIDResNoContent struct{}
+// PatchGuestNetworkInterfaceByIDNoContent is response for PatchGuestNetworkInterfaceByID operation.
+type PatchGuestNetworkInterfaceByIDNoContent struct{}
 
-func (*PatchGuestNetworkInterfaceByIDResNoContent) patchGuestNetworkInterfaceByIDRes() {}
+func (*PatchGuestNetworkInterfaceByIDNoContent) patchGuestNetworkInterfaceByIDRes() {}
 
-// PatchMachineConfigurationResNoContent is response for PatchMachineConfiguration operation.
-type PatchMachineConfigurationResNoContent struct{}
+// PatchMachineConfigurationNoContent is response for PatchMachineConfiguration operation.
+type PatchMachineConfigurationNoContent struct{}
 
-func (*PatchMachineConfigurationResNoContent) patchMachineConfigurationRes() {}
+func (*PatchMachineConfigurationNoContent) patchMachineConfigurationRes() {}
 
-// PatchVmResNoContent is response for PatchVm operation.
-type PatchVmResNoContent struct{}
+// PatchVmNoContent is response for PatchVm operation.
+type PatchVmNoContent struct{}
 
-func (*PatchVmResNoContent) patchVmRes() {}
+func (*PatchVmNoContent) patchVmRes() {}
 
-// PutBalloonResNoContent is response for PutBalloon operation.
-type PutBalloonResNoContent struct{}
+// PutBalloonNoContent is response for PutBalloon operation.
+type PutBalloonNoContent struct{}
 
-func (*PutBalloonResNoContent) putBalloonRes() {}
+func (*PutBalloonNoContent) putBalloonRes() {}
 
-// PutGuestBootSourceResNoContent is response for PutGuestBootSource operation.
-type PutGuestBootSourceResNoContent struct{}
+// PutGuestBootSourceNoContent is response for PutGuestBootSource operation.
+type PutGuestBootSourceNoContent struct{}
 
-func (*PutGuestBootSourceResNoContent) putGuestBootSourceRes() {}
+func (*PutGuestBootSourceNoContent) putGuestBootSourceRes() {}
 
-// PutGuestDriveByIDResNoContent is response for PutGuestDriveByID operation.
-type PutGuestDriveByIDResNoContent struct{}
+// PutGuestDriveByIDNoContent is response for PutGuestDriveByID operation.
+type PutGuestDriveByIDNoContent struct{}
 
-func (*PutGuestDriveByIDResNoContent) putGuestDriveByIDRes() {}
+func (*PutGuestDriveByIDNoContent) putGuestDriveByIDRes() {}
 
-// PutGuestNetworkInterfaceByIDResNoContent is response for PutGuestNetworkInterfaceByID operation.
-type PutGuestNetworkInterfaceByIDResNoContent struct{}
+// PutGuestNetworkInterfaceByIDNoContent is response for PutGuestNetworkInterfaceByID operation.
+type PutGuestNetworkInterfaceByIDNoContent struct{}
 
-func (*PutGuestNetworkInterfaceByIDResNoContent) putGuestNetworkInterfaceByIDRes() {}
+func (*PutGuestNetworkInterfaceByIDNoContent) putGuestNetworkInterfaceByIDRes() {}
 
-// PutGuestVsockResNoContent is response for PutGuestVsock operation.
-type PutGuestVsockResNoContent struct{}
+// PutGuestVsockNoContent is response for PutGuestVsock operation.
+type PutGuestVsockNoContent struct{}
 
-func (*PutGuestVsockResNoContent) putGuestVsockRes() {}
+func (*PutGuestVsockNoContent) putGuestVsockRes() {}
 
-// PutLoggerResNoContent is response for PutLogger operation.
-type PutLoggerResNoContent struct{}
+// PutLoggerNoContent is response for PutLogger operation.
+type PutLoggerNoContent struct{}
 
-func (*PutLoggerResNoContent) putLoggerRes() {}
+func (*PutLoggerNoContent) putLoggerRes() {}
 
-// PutMachineConfigurationResNoContent is response for PutMachineConfiguration operation.
-type PutMachineConfigurationResNoContent struct{}
+// PutMachineConfigurationNoContent is response for PutMachineConfiguration operation.
+type PutMachineConfigurationNoContent struct{}
 
-func (*PutMachineConfigurationResNoContent) putMachineConfigurationRes() {}
+func (*PutMachineConfigurationNoContent) putMachineConfigurationRes() {}
 
-// PutMetricsResNoContent is response for PutMetrics operation.
-type PutMetricsResNoContent struct{}
+// PutMetricsNoContent is response for PutMetrics operation.
+type PutMetricsNoContent struct{}
 
-func (*PutMetricsResNoContent) putMetricsRes() {}
+func (*PutMetricsNoContent) putMetricsRes() {}
 
 // Ref: #/components/schemas/RateLimiter
 type RateLimiter struct {

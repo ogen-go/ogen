@@ -545,17 +545,17 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent from json stream.
-func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
+func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -572,17 +572,17 @@ func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsAddSelectedRepoToOrgSecretResConflict) WriteJSON(j *json.Stream) {
+func (s ActionsAddSelectedRepoToOrgSecretConflict) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsAddSelectedRepoToOrgSecretResConflict from json stream.
-func (s *ActionsAddSelectedRepoToOrgSecretResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsAddSelectedRepoToOrgSecretConflict from json stream.
+func (s *ActionsAddSelectedRepoToOrgSecretConflict) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretResConflict to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretConflict to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -599,17 +599,17 @@ func (s *ActionsAddSelectedRepoToOrgSecretResConflict) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsAddSelectedRepoToOrgSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsAddSelectedRepoToOrgSecretResNoContent from json stream.
-func (s *ActionsAddSelectedRepoToOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsAddSelectedRepoToOrgSecretNoContent from json stream.
+func (s *ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -626,17 +626,17 @@ func (s *ActionsAddSelectedRepoToOrgSecretResNoContent) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsAddSelfHostedRunnerToGroupForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsAddSelfHostedRunnerToGroupForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsAddSelfHostedRunnerToGroupForOrgResNoContent from json stream.
-func (s *ActionsAddSelfHostedRunnerToGroupForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsAddSelfHostedRunnerToGroupForOrgNoContent from json stream.
+func (s *ActionsAddSelfHostedRunnerToGroupForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsAddSelfHostedRunnerToGroupForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsAddSelfHostedRunnerToGroupForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -814,17 +814,44 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCancelWorkflowRunResAccepted) WriteJSON(j *json.Stream) {
+func (s ActionsCancelWorkflowRunAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsCancelWorkflowRunResAccepted from json stream.
-func (s *ActionsCancelWorkflowRunResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsCancelWorkflowRunAccepted from json stream.
+func (s *ActionsCancelWorkflowRunAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsCancelWorkflowRunResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -892,17 +919,17 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateEnvironmentSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateOrgSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretResNoContent from json stream.
-func (s *ActionsCreateOrUpdateEnvironmentSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsCreateOrUpdateOrgSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1045,17 +1072,44 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) ReadJSON(i *json.Iter) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateOrgSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateRepoSecretCreated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsCreateOrUpdateOrgSecretResNoContent from json stream.
-func (s *ActionsCreateOrUpdateOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsCreateOrUpdateRepoSecretCreated from json stream.
+func (s *ActionsCreateOrUpdateRepoSecretCreated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateRepoSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActionsCreateOrUpdateRepoSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1121,60 +1175,6 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretResCreated) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActionsCreateOrUpdateRepoSecretResCreated from json stream.
-func (s *ActionsCreateOrUpdateRepoSecretResCreated) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretResCreated to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActionsCreateOrUpdateRepoSecretResNoContent from json stream.
-func (s *ActionsCreateOrUpdateRepoSecretResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -1369,17 +1369,17 @@ func (s *ActionsCreateWorkflowDispatchWorkflowID) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteArtifactResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteArtifactNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteArtifactResNoContent from json stream.
-func (s *ActionsDeleteArtifactResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteArtifactNoContent from json stream.
+func (s *ActionsDeleteArtifactNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteArtifactResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteArtifactNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1396,17 +1396,17 @@ func (s *ActionsDeleteArtifactResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteEnvironmentSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteEnvironmentSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteEnvironmentSecretResNoContent from json stream.
-func (s *ActionsDeleteEnvironmentSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteEnvironmentSecretNoContent from json stream.
+func (s *ActionsDeleteEnvironmentSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteEnvironmentSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteEnvironmentSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1423,17 +1423,17 @@ func (s *ActionsDeleteEnvironmentSecretResNoContent) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteOrgSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteOrgSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteOrgSecretResNoContent from json stream.
-func (s *ActionsDeleteOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteOrgSecretNoContent from json stream.
+func (s *ActionsDeleteOrgSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteOrgSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteOrgSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1450,17 +1450,17 @@ func (s *ActionsDeleteOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteRepoSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteRepoSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteRepoSecretResNoContent from json stream.
-func (s *ActionsDeleteRepoSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteRepoSecretNoContent from json stream.
+func (s *ActionsDeleteRepoSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteRepoSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteRepoSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1477,17 +1477,17 @@ func (s *ActionsDeleteRepoSecretResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteSelfHostedRunnerFromOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteSelfHostedRunnerFromOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteSelfHostedRunnerFromOrgResNoContent from json stream.
-func (s *ActionsDeleteSelfHostedRunnerFromOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteSelfHostedRunnerFromOrgNoContent from json stream.
+func (s *ActionsDeleteSelfHostedRunnerFromOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1504,17 +1504,17 @@ func (s *ActionsDeleteSelfHostedRunnerFromOrgResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteSelfHostedRunnerFromRepoResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteSelfHostedRunnerFromRepoNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteSelfHostedRunnerFromRepoResNoContent from json stream.
-func (s *ActionsDeleteSelfHostedRunnerFromRepoResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteSelfHostedRunnerFromRepoNoContent from json stream.
+func (s *ActionsDeleteSelfHostedRunnerFromRepoNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromRepoResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromRepoNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1531,17 +1531,17 @@ func (s *ActionsDeleteSelfHostedRunnerFromRepoResNoContent) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent from json stream.
-func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent from json stream.
+func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1558,17 +1558,17 @@ func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgResNoContent) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteWorkflowRunLogsResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteWorkflowRunLogsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteWorkflowRunLogsResNoContent from json stream.
-func (s *ActionsDeleteWorkflowRunLogsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteWorkflowRunLogsNoContent from json stream.
+func (s *ActionsDeleteWorkflowRunLogsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunLogsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunLogsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1585,17 +1585,17 @@ func (s *ActionsDeleteWorkflowRunLogsResNoContent) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDeleteWorkflowRunResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDeleteWorkflowRunNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDeleteWorkflowRunResNoContent from json stream.
-func (s *ActionsDeleteWorkflowRunResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDeleteWorkflowRunNoContent from json stream.
+func (s *ActionsDeleteWorkflowRunNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1612,17 +1612,17 @@ func (s *ActionsDeleteWorkflowRunResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent from json stream.
-func (s *ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent from json stream.
+func (s *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDisableSelectedRepositoryGithubActionsOrganizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1677,17 +1677,17 @@ func (s *ActionsDisableWorkflowWorkflowID) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDownloadArtifactResFound) WriteJSON(j *json.Stream) {
+func (s ActionsDownloadArtifactFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDownloadArtifactResFound from json stream.
-func (s *ActionsDownloadArtifactResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDownloadArtifactFound from json stream.
+func (s *ActionsDownloadArtifactFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDownloadArtifactResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDownloadArtifactFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1704,17 +1704,17 @@ func (s *ActionsDownloadArtifactResFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDownloadJobLogsForWorkflowRunResFound) WriteJSON(j *json.Stream) {
+func (s ActionsDownloadJobLogsForWorkflowRunFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDownloadJobLogsForWorkflowRunResFound from json stream.
-func (s *ActionsDownloadJobLogsForWorkflowRunResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDownloadJobLogsForWorkflowRunFound from json stream.
+func (s *ActionsDownloadJobLogsForWorkflowRunFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDownloadJobLogsForWorkflowRunResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDownloadJobLogsForWorkflowRunFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1731,17 +1731,17 @@ func (s *ActionsDownloadJobLogsForWorkflowRunResFound) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsDownloadWorkflowRunLogsResFound) WriteJSON(j *json.Stream) {
+func (s ActionsDownloadWorkflowRunLogsFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsDownloadWorkflowRunLogsResFound from json stream.
-func (s *ActionsDownloadWorkflowRunLogsResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsDownloadWorkflowRunLogsFound from json stream.
+func (s *ActionsDownloadWorkflowRunLogsFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsDownloadWorkflowRunLogsResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsDownloadWorkflowRunLogsFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1758,17 +1758,17 @@ func (s *ActionsDownloadWorkflowRunLogsResFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent from json stream.
-func (s *ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent from json stream.
+func (s *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsEnableSelectedRepositoryGithubActionsOrganizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1994,7 +1994,7 @@ func (s *ActionsGetWorkflowWorkflowID) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListArtifactsForRepoResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListArtifactsForRepoOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2014,10 +2014,10 @@ func (s ActionsListArtifactsForRepoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListArtifactsForRepoResOK from json stream.
-func (s *ActionsListArtifactsForRepoResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListArtifactsForRepoOK from json stream.
+func (s *ActionsListArtifactsForRepoOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListArtifactsForRepoResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListArtifactsForRepoOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2070,7 +2070,7 @@ func (s *ActionsListArtifactsForRepoResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListEnvironmentSecretsResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListEnvironmentSecretsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2090,10 +2090,10 @@ func (s ActionsListEnvironmentSecretsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListEnvironmentSecretsResOK from json stream.
-func (s *ActionsListEnvironmentSecretsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListEnvironmentSecretsOK from json stream.
+func (s *ActionsListEnvironmentSecretsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListEnvironmentSecretsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListEnvironmentSecretsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2160,7 +2160,7 @@ func (s *ActionsListJobsForWorkflowRunFilter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListJobsForWorkflowRunResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListJobsForWorkflowRunOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2180,10 +2180,10 @@ func (s ActionsListJobsForWorkflowRunResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListJobsForWorkflowRunResOK from json stream.
-func (s *ActionsListJobsForWorkflowRunResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListJobsForWorkflowRunOK from json stream.
+func (s *ActionsListJobsForWorkflowRunOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListJobsForWorkflowRunResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListJobsForWorkflowRunOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2236,7 +2236,7 @@ func (s *ActionsListJobsForWorkflowRunResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListOrgSecretsResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListOrgSecretsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2256,10 +2256,10 @@ func (s ActionsListOrgSecretsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListOrgSecretsResOK from json stream.
-func (s *ActionsListOrgSecretsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListOrgSecretsOK from json stream.
+func (s *ActionsListOrgSecretsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListOrgSecretsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListOrgSecretsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2312,7 +2312,7 @@ func (s *ActionsListOrgSecretsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2332,10 +2332,10 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK from json stream.
-func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK from json stream.
+func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2388,7 +2388,7 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListRepoSecretsResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListRepoSecretsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2408,10 +2408,10 @@ func (s ActionsListRepoSecretsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListRepoSecretsResOK from json stream.
-func (s *ActionsListRepoSecretsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListRepoSecretsOK from json stream.
+func (s *ActionsListRepoSecretsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListRepoSecretsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListRepoSecretsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2464,7 +2464,7 @@ func (s *ActionsListRepoSecretsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListRepoWorkflowsResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListRepoWorkflowsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2484,10 +2484,10 @@ func (s ActionsListRepoWorkflowsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListRepoWorkflowsResOK from json stream.
-func (s *ActionsListRepoWorkflowsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListRepoWorkflowsOK from json stream.
+func (s *ActionsListRepoWorkflowsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListRepoWorkflowsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListRepoWorkflowsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2540,7 +2540,7 @@ func (s *ActionsListRepoWorkflowsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelectedReposForOrgSecretResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelectedReposForOrgSecretOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2560,10 +2560,10 @@ func (s ActionsListSelectedReposForOrgSecretResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelectedReposForOrgSecretResOK from json stream.
-func (s *ActionsListSelectedReposForOrgSecretResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelectedReposForOrgSecretOK from json stream.
+func (s *ActionsListSelectedReposForOrgSecretOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelectedReposForOrgSecretResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelectedReposForOrgSecretOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2616,7 +2616,7 @@ func (s *ActionsListSelectedReposForOrgSecretResOK) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2636,10 +2636,10 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) Wr
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK from json stream.
-func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK from json stream.
+func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2692,7 +2692,7 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResOK) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelfHostedRunnerGroupsForOrgResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelfHostedRunnerGroupsForOrgOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2712,10 +2712,10 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgResOK) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelfHostedRunnerGroupsForOrgResOK from json stream.
-func (s *ActionsListSelfHostedRunnerGroupsForOrgResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelfHostedRunnerGroupsForOrgOK from json stream.
+func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnerGroupsForOrgResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnerGroupsForOrgOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2768,7 +2768,7 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgResOK) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersForOrgResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelfHostedRunnersForOrgOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2788,10 +2788,10 @@ func (s ActionsListSelfHostedRunnersForOrgResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelfHostedRunnersForOrgResOK from json stream.
-func (s *ActionsListSelfHostedRunnersForOrgResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelfHostedRunnersForOrgOK from json stream.
+func (s *ActionsListSelfHostedRunnersForOrgOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForOrgResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForOrgOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2844,7 +2844,7 @@ func (s *ActionsListSelfHostedRunnersForOrgResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersForRepoResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelfHostedRunnersForRepoOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2864,10 +2864,10 @@ func (s ActionsListSelfHostedRunnersForRepoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelfHostedRunnersForRepoResOK from json stream.
-func (s *ActionsListSelfHostedRunnersForRepoResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelfHostedRunnersForRepoOK from json stream.
+func (s *ActionsListSelfHostedRunnersForRepoOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForRepoResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForRepoOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2920,7 +2920,7 @@ func (s *ActionsListSelfHostedRunnersForRepoResOK) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersInGroupForOrgResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListSelfHostedRunnersInGroupForOrgOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2940,10 +2940,10 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgResOK) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListSelfHostedRunnersInGroupForOrgResOK from json stream.
-func (s *ActionsListSelfHostedRunnersInGroupForOrgResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListSelfHostedRunnersInGroupForOrgOK from json stream.
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersInGroupForOrgResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersInGroupForOrgOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2996,7 +2996,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgResOK) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListWorkflowRunArtifactsResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListWorkflowRunArtifactsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3016,10 +3016,10 @@ func (s ActionsListWorkflowRunArtifactsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListWorkflowRunArtifactsResOK from json stream.
-func (s *ActionsListWorkflowRunArtifactsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListWorkflowRunArtifactsOK from json stream.
+func (s *ActionsListWorkflowRunArtifactsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunArtifactsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunArtifactsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3072,7 +3072,7 @@ func (s *ActionsListWorkflowRunArtifactsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListWorkflowRunsForRepoResOK) WriteJSON(j *json.Stream) {
+func (s ActionsListWorkflowRunsForRepoOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3092,10 +3092,10 @@ func (s ActionsListWorkflowRunsForRepoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsListWorkflowRunsForRepoResOK from json stream.
-func (s *ActionsListWorkflowRunsForRepoResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsListWorkflowRunsForRepoOK from json stream.
+func (s *ActionsListWorkflowRunsForRepoOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsForRepoResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsForRepoOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3411,17 +3411,17 @@ func (s *ActionsPublicKey) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsReRunWorkflowResCreated) WriteJSON(j *json.Stream) {
+func (s ActionsReRunWorkflowCreated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsReRunWorkflowResCreated from json stream.
-func (s *ActionsReRunWorkflowResCreated) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsReRunWorkflowCreated from json stream.
+func (s *ActionsReRunWorkflowCreated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsReRunWorkflowResCreated to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3438,17 +3438,17 @@ func (s *ActionsReRunWorkflowResCreated) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent from json stream.
-func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
+func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3465,17 +3465,17 @@ func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsRemoveSelectedRepoFromOrgSecretResConflict) WriteJSON(j *json.Stream) {
+func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretResConflict from json stream.
-func (s *ActionsRemoveSelectedRepoFromOrgSecretResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretConflict from json stream.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretResConflict to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretConflict to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3492,17 +3492,17 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretResConflict) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsRemoveSelectedRepoFromOrgSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretResNoContent from json stream.
-func (s *ActionsRemoveSelectedRepoFromOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretNoContent from json stream.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3519,17 +3519,17 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretResNoContent) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent from json stream.
-func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent from json stream.
+func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelfHostedRunnerFromGroupForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3619,17 +3619,17 @@ func (s *ActionsRepositoryPermissions) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsRetryWorkflowResCreated) WriteJSON(j *json.Stream) {
+func (s ActionsRetryWorkflowCreated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsRetryWorkflowResCreated from json stream.
-func (s *ActionsRetryWorkflowResCreated) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsRetryWorkflowCreated from json stream.
+func (s *ActionsRetryWorkflowCreated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsRetryWorkflowResCreated to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3819,17 +3819,17 @@ func (s *ActionsSecret) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetAllowedActionsOrganizationResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetAllowedActionsOrganizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetAllowedActionsOrganizationResNoContent from json stream.
-func (s *ActionsSetAllowedActionsOrganizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetAllowedActionsOrganizationNoContent from json stream.
+func (s *ActionsSetAllowedActionsOrganizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsOrganizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsOrganizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3846,17 +3846,44 @@ func (s *ActionsSetAllowedActionsOrganizationResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetAllowedActionsRepositoryResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetAllowedActionsRepositoryNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetAllowedActionsRepositoryResNoContent from json stream.
-func (s *ActionsSetAllowedActionsRepositoryResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetAllowedActionsRepositoryNoContent from json stream.
+func (s *ActionsSetAllowedActionsRepositoryNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsRepositoryResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsRepositoryNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetGithubActionsPermissionsOrganizationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationNoContent from json stream.
+func (s *ActionsSetGithubActionsPermissionsOrganizationNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3931,17 +3958,17 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsOrganizationResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetGithubActionsPermissionsRepositoryNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationResNoContent from json stream.
-func (s *ActionsSetGithubActionsPermissionsOrganizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryNoContent from json stream.
+func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4014,17 +4041,17 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) ReadJSON(i *json.Iter)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsRepositoryResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryResNoContent from json stream.
-func (s *ActionsSetGithubActionsPermissionsRepositoryResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4103,17 +4130,17 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelectedReposForOrgSecretNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent from json stream.
-func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetSelectedReposForOrgSecretNoContent from json stream.
+func (s *ActionsSetSelectedReposForOrgSecretNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4192,17 +4219,17 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetSelectedReposForOrgSecretResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetSelectedReposForOrgSecretResNoContent from json stream.
-func (s *ActionsSetSelectedReposForOrgSecretResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent from json stream.
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4281,17 +4308,17 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelfHostedRunnersInGroupForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent from json stream.
-func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgNoContent from json stream.
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4358,33 +4385,6 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) ReadJSON(i *json.Iter) err
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgResNoContent from json stream.
-func (s *ActionsSetSelfHostedRunnersInGroupForOrgResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -4485,17 +4485,17 @@ func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent from json stream.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserNoContent from json stream.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4512,17 +4512,17 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserResNoContent) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified from json stream.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserNotModified from json stream.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4539,17 +4539,17 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserResNotModified) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityDeleteRepoSubscriptionResNoContent) WriteJSON(j *json.Stream) {
+func (s ActivityDeleteRepoSubscriptionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityDeleteRepoSubscriptionResNoContent from json stream.
-func (s *ActivityDeleteRepoSubscriptionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityDeleteRepoSubscriptionNoContent from json stream.
+func (s *ActivityDeleteRepoSubscriptionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityDeleteRepoSubscriptionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityDeleteRepoSubscriptionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4576,17 +4576,17 @@ func (ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityDeleteThreadSubscriptionResNoContent) WriteJSON(j *json.Stream) {
+func (s ActivityDeleteThreadSubscriptionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityDeleteThreadSubscriptionResNoContent from json stream.
-func (s *ActivityDeleteThreadSubscriptionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityDeleteThreadSubscriptionNoContent from json stream.
+func (s *ActivityDeleteThreadSubscriptionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityDeleteThreadSubscriptionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityDeleteThreadSubscriptionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4603,17 +4603,17 @@ func (s *ActivityDeleteThreadSubscriptionResNoContent) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityDeleteThreadSubscriptionResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityDeleteThreadSubscriptionNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityDeleteThreadSubscriptionResNotModified from json stream.
-func (s *ActivityDeleteThreadSubscriptionResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityDeleteThreadSubscriptionNotModified from json stream.
+func (s *ActivityDeleteThreadSubscriptionNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityDeleteThreadSubscriptionResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityDeleteThreadSubscriptionNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4630,17 +4630,17 @@ func (s *ActivityDeleteThreadSubscriptionResNotModified) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityGetRepoSubscriptionResNotFound) WriteJSON(j *json.Stream) {
+func (s ActivityGetRepoSubscriptionNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityGetRepoSubscriptionResNotFound from json stream.
-func (s *ActivityGetRepoSubscriptionResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityGetRepoSubscriptionNotFound from json stream.
+func (s *ActivityGetRepoSubscriptionNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityGetRepoSubscriptionResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityGetRepoSubscriptionNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4663,17 +4663,17 @@ func (ActivityGetThreadApplicationJSONUnauthorized) WriteJSON(j *json.Stream)   
 func (ActivityGetThreadApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityGetThreadResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityGetThreadNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityGetThreadResNotModified from json stream.
-func (s *ActivityGetThreadResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityGetThreadNotModified from json stream.
+func (s *ActivityGetThreadNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityGetThreadResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityGetThreadNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4702,17 +4702,17 @@ func (ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthoriz
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityGetThreadSubscriptionForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified from json stream.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityGetThreadSubscriptionForAuthenticatedUserNotModified from json stream.
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4729,17 +4729,17 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserResNotModified) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityListNotificationsForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityListNotificationsForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityListNotificationsForAuthenticatedUserResNotModified from json stream.
-func (s *ActivityListNotificationsForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityListNotificationsForAuthenticatedUserNotModified from json stream.
+func (s *ActivityListNotificationsForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListNotificationsForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityListNotificationsForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4771,23 +4771,50 @@ func (ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) ReadJSON(i 
 	return nil
 }
 
-func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s ActivityListPublicEventsForRepoNetworkResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityListPublicEventsForRepoNetworkNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityListPublicEventsForRepoNetworkResNotModified from json stream.
-func (s *ActivityListPublicEventsForRepoNetworkResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityListPublicEventsForRepoNetworkNotModified from json stream.
+func (s *ActivityListPublicEventsForRepoNetworkNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityListPublicEventsNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActivityListPublicEventsNotModified from json stream.
+func (s *ActivityListPublicEventsNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4807,34 +4834,7 @@ func (ActivityListPublicEventsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ActivityListPublicEventsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityListPublicEventsResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActivityListPublicEventsResNotModified from json stream.
-func (s *ActivityListPublicEventsResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityListPublicEventsResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s ActivityListPublicEventsServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4856,10 +4856,10 @@ func (s ActivityListPublicEventsResServiceUnavailable) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityListPublicEventsResServiceUnavailable from json stream.
-func (s *ActivityListPublicEventsResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityListPublicEventsServiceUnavailable from json stream.
+func (s *ActivityListPublicEventsServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityListPublicEventsServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4937,29 +4937,18 @@ func (s *ActivityListReposStarredByAuthenticatedUserDirection) ReadJSON(i *json.
 	return i.Error
 }
 
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) WriteJSON(j *json.Stream) {
-}
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s ActivityListReposStarredByAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityListReposStarredByAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityListReposStarredByAuthenticatedUserResNotModified from json stream.
-func (s *ActivityListReposStarredByAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityListReposStarredByAuthenticatedUserNotModified from json stream.
+func (s *ActivityListReposStarredByAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4973,6 +4962,17 @@ func (s *ActivityListReposStarredByAuthenticatedUserResNotModified) ReadJSON(i *
 		return retErr
 	}
 	return i.Error
+}
+
+func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
+func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) WriteJSON(j *json.Stream) {
+}
+func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) ReadJSON(i *json.Iter) error {
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5029,27 +5029,71 @@ func (ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) R
 	return nil
 }
 
-func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s ActivityListWatchedReposForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityListWatchedReposForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityListWatchedReposForAuthenticatedUserResNotModified from json stream.
-func (s *ActivityListWatchedReposForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityListWatchedReposForAuthenticatedUserNotModified from json stream.
+func (s *ActivityListWatchedReposForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkNotificationsAsReadAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActivityMarkNotificationsAsReadAccepted from json stream.
+func (s *ActivityMarkNotificationsAsReadAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadAccepted to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -5069,6 +5113,33 @@ func (ActivityMarkNotificationsAsReadApplicationJSONForbidden) ReadJSON(i *json.
 func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
 func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
 	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkNotificationsAsReadNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActivityMarkNotificationsAsReadNotModified from json stream.
+func (s *ActivityMarkNotificationsAsReadNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5133,7 +5204,34 @@ func (s *ActivityMarkNotificationsAsReadReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadResAccepted) WriteJSON(j *json.Stream) {
+func (s ActivityMarkNotificationsAsReadResetContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActivityMarkNotificationsAsReadResetContent from json stream.
+func (s *ActivityMarkNotificationsAsReadResetContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadResetContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkRepoNotificationsAsReadAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5142,13 +5240,18 @@ func (s ActivityMarkNotificationsAsReadResAccepted) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+	if s.URL.Set {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityMarkNotificationsAsReadResAccepted from json stream.
-func (s *ActivityMarkNotificationsAsReadResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityMarkRepoNotificationsAsReadAccepted from json stream.
+func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5165,60 +5268,18 @@ func (s *ActivityMarkNotificationsAsReadResAccepted) ReadJSON(i *json.Iter) erro
 				return false
 			}
 			return true
-		default:
-			i.Skip()
+		case "url":
+			if err := func() error {
+				s.URL.Reset()
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActivityMarkNotificationsAsReadResNotModified from json stream.
-func (s *ActivityMarkNotificationsAsReadResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadResResetContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActivityMarkNotificationsAsReadResResetContent from json stream.
-func (s *ActivityMarkNotificationsAsReadResResetContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadResResetContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -5275,78 +5336,17 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadResAccepted) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	if s.URL.Set {
-		more.More()
-		j.WriteObjectField("url")
-		s.URL.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActivityMarkRepoNotificationsAsReadResAccepted from json stream.
-func (s *ActivityMarkRepoNotificationsAsReadResAccepted) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadResAccepted to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadResResetContent) WriteJSON(j *json.Stream) {
+func (s ActivityMarkRepoNotificationsAsReadResetContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityMarkRepoNotificationsAsReadResResetContent from json stream.
-func (s *ActivityMarkRepoNotificationsAsReadResResetContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityMarkRepoNotificationsAsReadResetContent from json stream.
+func (s *ActivityMarkRepoNotificationsAsReadResetContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadResResetContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadResetContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5363,17 +5363,17 @@ func (s *ActivityMarkRepoNotificationsAsReadResResetContent) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkThreadAsReadResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityMarkThreadAsReadNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityMarkThreadAsReadResNotModified from json stream.
-func (s *ActivityMarkThreadAsReadResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityMarkThreadAsReadNotModified from json stream.
+func (s *ActivityMarkThreadAsReadNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkThreadAsReadResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityMarkThreadAsReadNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5390,17 +5390,17 @@ func (s *ActivityMarkThreadAsReadResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkThreadAsReadResResetContent) WriteJSON(j *json.Stream) {
+func (s ActivityMarkThreadAsReadResetContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityMarkThreadAsReadResResetContent from json stream.
-func (s *ActivityMarkThreadAsReadResResetContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityMarkThreadAsReadResetContent from json stream.
+func (s *ActivityMarkThreadAsReadResetContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityMarkThreadAsReadResResetContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityMarkThreadAsReadResetContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5486,6 +5486,33 @@ func (ActivitySetThreadSubscriptionApplicationJSONUnauthorized) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ActivitySetThreadSubscriptionNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ActivitySetThreadSubscriptionNotModified from json stream.
+func (s *ActivitySetThreadSubscriptionNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ActivitySetThreadSubscriptionNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ActivitySetThreadSubscriptionReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -5529,33 +5556,6 @@ func (s *ActivitySetThreadSubscriptionReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ActivitySetThreadSubscriptionResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ActivitySetThreadSubscriptionResNotModified from json stream.
-func (s *ActivitySetThreadSubscriptionResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivitySetThreadSubscriptionResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 	return nil
@@ -5572,17 +5572,17 @@ func (ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityStarRepoForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s ActivityStarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityStarRepoForAuthenticatedUserResNoContent from json stream.
-func (s *ActivityStarRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityStarRepoForAuthenticatedUserNoContent from json stream.
+func (s *ActivityStarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5599,17 +5599,17 @@ func (s *ActivityStarRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityStarRepoForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityStarRepoForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityStarRepoForAuthenticatedUserResNotModified from json stream.
-func (s *ActivityStarRepoForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityStarRepoForAuthenticatedUserNotModified from json stream.
+func (s *ActivityStarRepoForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5641,17 +5641,17 @@ func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityUnstarRepoForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityUnstarRepoForAuthenticatedUserResNoContent from json stream.
-func (s *ActivityUnstarRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityUnstarRepoForAuthenticatedUserNoContent from json stream.
+func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5668,17 +5668,17 @@ func (s *ActivityUnstarRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityUnstarRepoForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ActivityUnstarRepoForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ActivityUnstarRepoForAuthenticatedUserResNotModified from json stream.
-func (s *ActivityUnstarRepoForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ActivityUnstarRepoForAuthenticatedUserNotModified from json stream.
+func (s *ActivityUnstarRepoForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7052,17 +7052,17 @@ func (AppsAddRepoToInstallationApplicationJSONNotFound) WriteJSON(j *json.Stream
 func (AppsAddRepoToInstallationApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsAddRepoToInstallationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsAddRepoToInstallationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsAddRepoToInstallationResNoContent from json stream.
-func (s *AppsAddRepoToInstallationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsAddRepoToInstallationNoContent from json stream.
+func (s *AppsAddRepoToInstallationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsAddRepoToInstallationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsAddRepoToInstallationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7079,17 +7079,17 @@ func (s *AppsAddRepoToInstallationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsAddRepoToInstallationResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsAddRepoToInstallationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsAddRepoToInstallationResNotModified from json stream.
-func (s *AppsAddRepoToInstallationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsAddRepoToInstallationNotModified from json stream.
+func (s *AppsAddRepoToInstallationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsAddRepoToInstallationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsAddRepoToInstallationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7133,6 +7133,33 @@ func (s *AppsCheckTokenReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsCreateContentAttachmentNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsCreateContentAttachmentNotModified from json stream.
+func (s *AppsCreateContentAttachmentNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -7196,34 +7223,7 @@ func (s *AppsCreateContentAttachmentReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCreateContentAttachmentResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AppsCreateContentAttachmentResNotModified from json stream.
-func (s *AppsCreateContentAttachmentResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsCreateContentAttachmentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s AppsCreateContentAttachmentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7236,10 +7236,10 @@ func (s AppsCreateContentAttachmentResUnsupportedMediaType) WriteJSON(j *json.St
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsCreateContentAttachmentResUnsupportedMediaType from json stream.
-func (s *AppsCreateContentAttachmentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsCreateContentAttachmentUnsupportedMediaType from json stream.
+func (s *AppsCreateContentAttachmentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7419,7 +7419,7 @@ func (s *AppsCreateInstallationAccessTokenReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCreateInstallationAccessTokenResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s AppsCreateInstallationAccessTokenUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7432,10 +7432,10 @@ func (s AppsCreateInstallationAccessTokenResUnsupportedMediaType) WriteJSON(j *j
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsCreateInstallationAccessTokenResUnsupportedMediaType from json stream.
-func (s *AppsCreateInstallationAccessTokenResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsCreateInstallationAccessTokenUnsupportedMediaType from json stream.
+func (s *AppsCreateInstallationAccessTokenUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsCreateInstallationAccessTokenResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsCreateInstallationAccessTokenUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7458,6 +7458,33 @@ func (s *AppsCreateInstallationAccessTokenResUnsupportedMediaType) ReadJSON(i *j
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsDeleteAuthorizationNoContent from json stream.
+func (s *AppsDeleteAuthorizationNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsDeleteAuthorizationNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -7509,17 +7536,17 @@ func (s *AppsDeleteAuthorizationReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsDeleteAuthorizationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsDeleteInstallationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsDeleteAuthorizationResNoContent from json stream.
-func (s *AppsDeleteAuthorizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsDeleteInstallationNoContent from json stream.
+func (s *AppsDeleteInstallationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsDeleteAuthorizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsDeleteInstallationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7536,17 +7563,17 @@ func (s *AppsDeleteAuthorizationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsDeleteInstallationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsDeleteTokenNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsDeleteInstallationResNoContent from json stream.
-func (s *AppsDeleteInstallationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsDeleteTokenNoContent from json stream.
+func (s *AppsDeleteTokenNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsDeleteInstallationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsDeleteTokenNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7601,33 +7628,6 @@ func (s *AppsDeleteTokenReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s AppsDeleteTokenResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AppsDeleteTokenResNoContent from json stream.
-func (s *AppsDeleteTokenResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsDeleteTokenResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (AppsGetBySlugApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (AppsGetBySlugApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -7635,7 +7635,7 @@ func (AppsGetBySlugApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (AppsGetBySlugApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsGetBySlugResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s AppsGetBySlugUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7648,10 +7648,10 @@ func (s AppsGetBySlugResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsGetBySlugResUnsupportedMediaType from json stream.
-func (s *AppsGetBySlugResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsGetBySlugUnsupportedMediaType from json stream.
+func (s *AppsGetBySlugUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsGetBySlugResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsGetBySlugUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7696,17 +7696,17 @@ func (AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsGetSubscriptionPlanForAccountStubbedResNotFound) WriteJSON(j *json.Stream) {
+func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsGetSubscriptionPlanForAccountStubbedResNotFound from json stream.
-func (s *AppsGetSubscriptionPlanForAccountStubbedResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsGetSubscriptionPlanForAccountStubbedNotFound from json stream.
+func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsGetSubscriptionPlanForAccountStubbedResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsGetSubscriptionPlanForAccountStubbedNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7794,17 +7794,17 @@ func (AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsListInstallationReposForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListInstallationReposForAuthenticatedUserResNotModified from json stream.
-func (s *AppsListInstallationReposForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsListInstallationReposForAuthenticatedUserNotModified from json stream.
+func (s *AppsListInstallationReposForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7821,7 +7821,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserResNotModified) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserResOK) WriteJSON(j *json.Stream) {
+func (s AppsListInstallationReposForAuthenticatedUserOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7846,10 +7846,10 @@ func (s AppsListInstallationReposForAuthenticatedUserResOK) WriteJSON(j *json.St
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListInstallationReposForAuthenticatedUserResOK from json stream.
-func (s *AppsListInstallationReposForAuthenticatedUserResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsListInstallationReposForAuthenticatedUserOK from json stream.
+func (s *AppsListInstallationReposForAuthenticatedUserOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7936,17 +7936,17 @@ func (AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsListReposAccessibleToInstallationResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsListReposAccessibleToInstallationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListReposAccessibleToInstallationResNotModified from json stream.
-func (s *AppsListReposAccessibleToInstallationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsListReposAccessibleToInstallationNotModified from json stream.
+func (s *AppsListReposAccessibleToInstallationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListReposAccessibleToInstallationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsListReposAccessibleToInstallationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7963,7 +7963,7 @@ func (s *AppsListReposAccessibleToInstallationResNotModified) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsListReposAccessibleToInstallationResOK) WriteJSON(j *json.Stream) {
+func (s AppsListReposAccessibleToInstallationOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7988,10 +7988,10 @@ func (s AppsListReposAccessibleToInstallationResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListReposAccessibleToInstallationResOK from json stream.
-func (s *AppsListReposAccessibleToInstallationResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsListReposAccessibleToInstallationOK from json stream.
+func (s *AppsListReposAccessibleToInstallationOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListReposAccessibleToInstallationResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsListReposAccessibleToInstallationOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8066,23 +8066,50 @@ func (AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Read
 	return nil
 }
 
-func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s AppsListSubscriptionsForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsListSubscriptionsForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListSubscriptionsForAuthenticatedUserResNotModified from json stream.
-func (s *AppsListSubscriptionsForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsListSubscriptionsForAuthenticatedUserNotModified from json stream.
+func (s *AppsListSubscriptionsForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsListSubscriptionsForAuthenticatedUserStubbedNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsListSubscriptionsForAuthenticatedUserStubbedNotModified from json stream.
+func (s *AppsListSubscriptionsForAuthenticatedUserStubbedNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserStubbedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8104,44 +8131,17 @@ func (AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsRedeliverWebhookDeliveryAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified from json stream.
-func (s *AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsRedeliverWebhookDeliveryAccepted from json stream.
+func (s *AppsRedeliverWebhookDeliveryAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserStubbedResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsRedeliverWebhookDeliveryResAccepted) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AppsRedeliverWebhookDeliveryResAccepted from json stream.
-func (s *AppsRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsRedeliverWebhookDeliveryResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsRedeliverWebhookDeliveryAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8166,17 +8166,17 @@ func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) WriteJSON(j *json.S
 func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsRemoveRepoFromInstallationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsRemoveRepoFromInstallationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsRemoveRepoFromInstallationResNoContent from json stream.
-func (s *AppsRemoveRepoFromInstallationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsRemoveRepoFromInstallationNoContent from json stream.
+func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsRemoveRepoFromInstallationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsRemoveRepoFromInstallationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8193,17 +8193,17 @@ func (s *AppsRemoveRepoFromInstallationResNoContent) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsRemoveRepoFromInstallationResNotModified) WriteJSON(j *json.Stream) {
+func (s AppsRemoveRepoFromInstallationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsRemoveRepoFromInstallationResNotModified from json stream.
-func (s *AppsRemoveRepoFromInstallationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsRemoveRepoFromInstallationNotModified from json stream.
+func (s *AppsRemoveRepoFromInstallationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsRemoveRepoFromInstallationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsRemoveRepoFromInstallationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8259,17 +8259,17 @@ func (s *AppsResetTokenReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsRevokeInstallationAccessTokenResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsRevokeInstallationAccessTokenNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsRevokeInstallationAccessTokenResNoContent from json stream.
-func (s *AppsRevokeInstallationAccessTokenResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsRevokeInstallationAccessTokenNoContent from json stream.
+func (s *AppsRevokeInstallationAccessTokenNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsRevokeInstallationAccessTokenResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsRevokeInstallationAccessTokenNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8450,17 +8450,17 @@ func (s *AppsScopeTokenReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsSuspendInstallationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsSuspendInstallationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsSuspendInstallationResNoContent from json stream.
-func (s *AppsSuspendInstallationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsSuspendInstallationNoContent from json stream.
+func (s *AppsSuspendInstallationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsSuspendInstallationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsSuspendInstallationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8477,17 +8477,17 @@ func (s *AppsSuspendInstallationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsUnsuspendInstallationResNoContent) WriteJSON(j *json.Stream) {
+func (s AppsUnsuspendInstallationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AppsUnsuspendInstallationResNoContent from json stream.
-func (s *AppsUnsuspendInstallationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AppsUnsuspendInstallationNoContent from json stream.
+func (s *AppsUnsuspendInstallationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsUnsuspendInstallationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode AppsUnsuspendInstallationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14548,7 +14548,7 @@ func (s *ChecksListForRefFilter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksListForRefResOK) WriteJSON(j *json.Stream) {
+func (s ChecksListForRefOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14568,10 +14568,10 @@ func (s ChecksListForRefResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ChecksListForRefResOK from json stream.
-func (s *ChecksListForRefResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ChecksListForRefOK from json stream.
+func (s *ChecksListForRefOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ChecksListForRefResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ChecksListForRefOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14652,7 +14652,7 @@ func (s *ChecksListForSuiteFilter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksListForSuiteResOK) WriteJSON(j *json.Stream) {
+func (s ChecksListForSuiteOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14672,10 +14672,10 @@ func (s ChecksListForSuiteResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ChecksListForSuiteResOK from json stream.
-func (s *ChecksListForSuiteResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ChecksListForSuiteOK from json stream.
+func (s *ChecksListForSuiteOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ChecksListForSuiteResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ChecksListForSuiteOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14742,7 +14742,7 @@ func (s *ChecksListForSuiteStatus) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksListSuitesForRefResOK) WriteJSON(j *json.Stream) {
+func (s ChecksListSuitesForRefOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14762,10 +14762,10 @@ func (s ChecksListSuitesForRefResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ChecksListSuitesForRefResOK from json stream.
-func (s *ChecksListSuitesForRefResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ChecksListSuitesForRefOK from json stream.
+func (s *ChecksListSuitesForRefOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ChecksListSuitesForRefResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ChecksListSuitesForRefOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14818,17 +14818,17 @@ func (s *ChecksListSuitesForRefResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksRerequestSuiteResCreated) WriteJSON(j *json.Stream) {
+func (s ChecksRerequestSuiteCreated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ChecksRerequestSuiteResCreated from json stream.
-func (s *ChecksRerequestSuiteResCreated) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ChecksRerequestSuiteCreated from json stream.
+func (s *ChecksRerequestSuiteCreated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ChecksRerequestSuiteResCreated to nil`)
+		fmt.Errorf(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16762,7 +16762,7 @@ func (CodeScanningDeleteAnalysisApplicationJSONNotFound) WriteJSON(j *json.Strea
 func (CodeScanningDeleteAnalysisApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningDeleteAnalysisResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningDeleteAnalysisServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16784,10 +16784,10 @@ func (s CodeScanningDeleteAnalysisResServiceUnavailable) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningDeleteAnalysisResServiceUnavailable from json stream.
-func (s *CodeScanningDeleteAnalysisResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningDeleteAnalysisServiceUnavailable from json stream.
+func (s *CodeScanningDeleteAnalysisServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningDeleteAnalysisResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningDeleteAnalysisServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16846,7 +16846,7 @@ func (CodeScanningGetAlertApplicationJSONNotFound) WriteJSON(j *json.Stream)    
 func (CodeScanningGetAlertApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningGetAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningGetAlertServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16868,10 +16868,10 @@ func (s CodeScanningGetAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningGetAlertResServiceUnavailable from json stream.
-func (s *CodeScanningGetAlertResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningGetAlertServiceUnavailable from json stream.
+func (s *CodeScanningGetAlertServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningGetAlertResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningGetAlertServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16933,7 +16933,7 @@ func (CodeScanningGetAnalysisOKApplicationJSONSarif) WriteJSON(j *json.Stream)  
 func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningGetAnalysisResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningGetAnalysisServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16955,10 +16955,10 @@ func (s CodeScanningGetAnalysisResServiceUnavailable) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningGetAnalysisResServiceUnavailable from json stream.
-func (s *CodeScanningGetAnalysisResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningGetAnalysisServiceUnavailable from json stream.
+func (s *CodeScanningGetAnalysisServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningGetAnalysisResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningGetAnalysisServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17011,17 +17011,17 @@ func (s *CodeScanningGetAnalysisResServiceUnavailable) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningGetSarifResNotFound) WriteJSON(j *json.Stream) {
+func (s CodeScanningGetSarifNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningGetSarifResNotFound from json stream.
-func (s *CodeScanningGetSarifResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningGetSarifNotFound from json stream.
+func (s *CodeScanningGetSarifNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningGetSarifResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningGetSarifNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17038,7 +17038,7 @@ func (s *CodeScanningGetSarifResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningGetSarifResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningGetSarifServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17060,10 +17060,10 @@ func (s CodeScanningGetSarifResServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningGetSarifResServiceUnavailable from json stream.
-func (s *CodeScanningGetSarifResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningGetSarifServiceUnavailable from json stream.
+func (s *CodeScanningGetSarifServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningGetSarifResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningGetSarifServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17127,7 +17127,7 @@ func (CodeScanningListAlertInstancesOKApplicationJSON) WriteJSON(j *json.Stream)
 func (CodeScanningListAlertInstancesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningListAlertInstancesResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningListAlertInstancesServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17149,10 +17149,10 @@ func (s CodeScanningListAlertInstancesResServiceUnavailable) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningListAlertInstancesResServiceUnavailable from json stream.
-func (s *CodeScanningListAlertInstancesResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningListAlertInstancesServiceUnavailable from json stream.
+func (s *CodeScanningListAlertInstancesServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningListAlertInstancesResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningListAlertInstancesServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17214,7 +17214,7 @@ func (CodeScanningListAlertsForRepoOKApplicationJSON) WriteJSON(j *json.Stream) 
 func (CodeScanningListAlertsForRepoOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningListAlertsForRepoResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningListAlertsForRepoServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17236,10 +17236,10 @@ func (s CodeScanningListAlertsForRepoResServiceUnavailable) WriteJSON(j *json.St
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningListAlertsForRepoResServiceUnavailable from json stream.
-func (s *CodeScanningListAlertsForRepoResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningListAlertsForRepoServiceUnavailable from json stream.
+func (s *CodeScanningListAlertsForRepoServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningListAlertsForRepoResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningListAlertsForRepoServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17303,7 +17303,7 @@ func (CodeScanningListRecentAnalysesOKApplicationJSON) WriteJSON(j *json.Stream)
 func (CodeScanningListRecentAnalysesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningListRecentAnalysesResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningListRecentAnalysesServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17325,10 +17325,10 @@ func (s CodeScanningListRecentAnalysesResServiceUnavailable) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningListRecentAnalysesResServiceUnavailable from json stream.
-func (s *CodeScanningListRecentAnalysesResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningListRecentAnalysesServiceUnavailable from json stream.
+func (s *CodeScanningListRecentAnalysesServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningListRecentAnalysesResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningListRecentAnalysesServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17584,7 +17584,7 @@ func (s *CodeScanningUpdateAlertReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningUpdateAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningUpdateAlertServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17606,10 +17606,10 @@ func (s CodeScanningUpdateAlertResServiceUnavailable) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningUpdateAlertResServiceUnavailable from json stream.
-func (s *CodeScanningUpdateAlertResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningUpdateAlertServiceUnavailable from json stream.
+func (s *CodeScanningUpdateAlertServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningUpdateAlertResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningUpdateAlertServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17666,6 +17666,33 @@ func (CodeScanningUploadSarifApplicationJSONForbidden) ReadJSON(i *json.Iter) er
 
 func (CodeScanningUploadSarifApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (CodeScanningUploadSarifApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningUploadSarifBadRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads CodeScanningUploadSarifBadRequest from json stream.
+func (s *CodeScanningUploadSarifBadRequest) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifBadRequest to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningUploadSarifReq) WriteJSON(j *json.Stream) {
@@ -17782,17 +17809,17 @@ func (s *CodeScanningUploadSarifReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningUploadSarifResBadRequest) WriteJSON(j *json.Stream) {
+func (s CodeScanningUploadSarifRequestEntityTooLarge) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningUploadSarifResBadRequest from json stream.
-func (s *CodeScanningUploadSarifResBadRequest) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningUploadSarifRequestEntityTooLarge from json stream.
+func (s *CodeScanningUploadSarifRequestEntityTooLarge) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifResBadRequest to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifRequestEntityTooLarge to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17809,34 +17836,7 @@ func (s *CodeScanningUploadSarifResBadRequest) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningUploadSarifResRequestEntityTooLarge) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads CodeScanningUploadSarifResRequestEntityTooLarge from json stream.
-func (s *CodeScanningUploadSarifResRequestEntityTooLarge) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifResRequestEntityTooLarge to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s CodeScanningUploadSarifResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s CodeScanningUploadSarifServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17858,10 +17858,10 @@ func (s CodeScanningUploadSarifResServiceUnavailable) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodeScanningUploadSarifResServiceUnavailable from json stream.
-func (s *CodeScanningUploadSarifResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodeScanningUploadSarifServiceUnavailable from json stream.
+func (s *CodeScanningUploadSarifServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18162,21 +18162,18 @@ func (s *CodeSearchResultItem) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s CodesOfConductGetAllCodesOfConductResNotModified) WriteJSON(j *json.Stream) {
+func (s CodesOfConductGetAllCodesOfConductNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodesOfConductGetAllCodesOfConductResNotModified from json stream.
-func (s *CodesOfConductGetAllCodesOfConductResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodesOfConductGetAllCodesOfConductNotModified from json stream.
+func (s *CodesOfConductGetAllCodesOfConductNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodesOfConductGetAllCodesOfConductResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode CodesOfConductGetAllCodesOfConductNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18192,18 +18189,21 @@ func (s *CodesOfConductGetAllCodesOfConductResNotModified) ReadJSON(i *json.Iter
 	return i.Error
 }
 
+func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s CodesOfConductGetConductCodeResNotModified) WriteJSON(j *json.Stream) {
+func (s CodesOfConductGetConductCodeNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CodesOfConductGetConductCodeResNotModified from json stream.
-func (s *CodesOfConductGetConductCodeResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CodesOfConductGetConductCodeNotModified from json stream.
+func (s *CodesOfConductGetConductCodeNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CodesOfConductGetConductCodeResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode CodesOfConductGetConductCodeNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23187,17 +23187,17 @@ func (s *Email) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EmojisGetResNotModified) WriteJSON(j *json.Stream) {
+func (s EmojisGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EmojisGetResNotModified from json stream.
-func (s *EmojisGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EmojisGetNotModified from json stream.
+func (s *EmojisGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EmojisGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode EmojisGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23214,17 +23214,17 @@ func (s *EmojisGetResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EmojisGetResOK) WriteJSON(j *json.Stream) {
+func (s EmojisGetOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EmojisGetResOK from json stream.
-func (s *EmojisGetResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EmojisGetOK from json stream.
+func (s *EmojisGetOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EmojisGetResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EmojisGetOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23296,17 +23296,17 @@ func (s *EnabledRepositories) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23323,17 +23323,17 @@ func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoCont
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23494,17 +23494,17 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23521,17 +23521,17 @@ func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseResNoContent) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23548,17 +23548,17 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResNoContent) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23575,17 +23575,17 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResNoContent) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminDeleteUserFromEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminDeleteUserFromEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminDeleteUserFromEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminDeleteUserFromEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminDeleteUserFromEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminDeleteUserFromEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteUserFromEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteUserFromEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23602,17 +23602,17 @@ func (s *EnterpriseAdminDeleteUserFromEnterpriseResNoContent) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23629,17 +23629,17 @@ func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResNoC
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23684,7 +23684,7 @@ func (s *EnterpriseAdminGetAuditLogOrder) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -23704,10 +23704,10 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) Wr
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK from json stream.
-func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK from json stream.
+func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23760,7 +23760,7 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResOK) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -23780,10 +23780,10 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK from json stream.
-func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK from json stream.
+func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23836,7 +23836,7 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseR
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -23856,10 +23856,10 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK from json stream.
-func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK from json stream.
+func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23912,7 +23912,7 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -23936,10 +23936,10 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK from json stream.
-func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminListSelfHostedRunnersForEnterpriseOK from json stream.
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersForEnterpriseOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23995,7 +23995,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseResOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -24015,10 +24015,10 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK) WriteJSON
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK from json stream.
-func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK from json stream.
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24545,17 +24545,17 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24572,17 +24572,17 @@ func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoC
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24599,17 +24599,44 @@ func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResNoContent
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetAllowedActionsEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetAllowedActionsEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminSetAllowedActionsEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminSetAllowedActionsEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminSetAllowedActionsEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminSetAllowedActionsEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetAllowedActionsEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetAllowedActionsEnterpriseNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24672,33 +24699,6 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) ReadJSON(i *js
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -25185,6 +25185,33 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -25247,17 +25274,17 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25336,17 +25363,17 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent from json stream.
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25413,33 +25440,6 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) ReadJSON(i 
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent from json stream.
-func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -30741,17 +30741,17 @@ func (s *GistSimpleForksItem) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsCheckIsStarredResNoContent) WriteJSON(j *json.Stream) {
+func (s GistsCheckIsStarredNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsCheckIsStarredResNoContent from json stream.
-func (s *GistsCheckIsStarredResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsCheckIsStarredNoContent from json stream.
+func (s *GistsCheckIsStarredNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30768,17 +30768,17 @@ func (s *GistsCheckIsStarredResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsCheckIsStarredResNotFound) WriteJSON(j *json.Stream) {
+func (s GistsCheckIsStarredNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsCheckIsStarredResNotFound from json stream.
-func (s *GistsCheckIsStarredResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsCheckIsStarredNotFound from json stream.
+func (s *GistsCheckIsStarredNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30795,17 +30795,17 @@ func (s *GistsCheckIsStarredResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsCheckIsStarredResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsCheckIsStarredNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsCheckIsStarredResNotModified from json stream.
-func (s *GistsCheckIsStarredResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsCheckIsStarredNotModified from json stream.
+func (s *GistsCheckIsStarredNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30826,6 +30826,33 @@ func (GistsCreateCommentApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 
 func (GistsCreateCommentApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsCreateCommentApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s GistsCreateCommentNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GistsCreateCommentNotModified from json stream.
+func (s *GistsCreateCommentNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GistsCreateCommentNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s GistsCreateCommentReq) WriteJSON(j *json.Stream) {
@@ -30866,33 +30893,6 @@ func (s *GistsCreateCommentReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s GistsCreateCommentResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads GistsCreateCommentResNotModified from json stream.
-func (s *GistsCreateCommentResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsCreateCommentResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (GistsDeleteApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (GistsDeleteApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -30906,17 +30906,17 @@ func (GistsDeleteCommentApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsDeleteCommentApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsDeleteCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s GistsDeleteCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsDeleteCommentResNoContent from json stream.
-func (s *GistsDeleteCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsDeleteCommentNoContent from json stream.
+func (s *GistsDeleteCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsDeleteCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsDeleteCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30933,17 +30933,17 @@ func (s *GistsDeleteCommentResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsDeleteCommentResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsDeleteCommentNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsDeleteCommentResNotModified from json stream.
-func (s *GistsDeleteCommentResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsDeleteCommentNotModified from json stream.
+func (s *GistsDeleteCommentNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsDeleteCommentResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsDeleteCommentNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30960,17 +30960,17 @@ func (s *GistsDeleteCommentResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsDeleteResNoContent) WriteJSON(j *json.Stream) {
+func (s GistsDeleteNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsDeleteResNoContent from json stream.
-func (s *GistsDeleteResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsDeleteNoContent from json stream.
+func (s *GistsDeleteNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsDeleteResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsDeleteNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30987,17 +30987,17 @@ func (s *GistsDeleteResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsDeleteResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsDeleteNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsDeleteResNotModified from json stream.
-func (s *GistsDeleteResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsDeleteNotModified from json stream.
+func (s *GistsDeleteNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsDeleteResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsDeleteNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31014,17 +31014,17 @@ func (s *GistsDeleteResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsForkResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsForkNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsForkResNotModified from json stream.
-func (s *GistsForkResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsForkNotModified from json stream.
+func (s *GistsForkNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsForkResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsForkNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31041,7 +31041,7 @@ func (s *GistsForkResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetCommentResForbidden) WriteJSON(j *json.Stream) {
+func (s GistsGetCommentForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -31063,10 +31063,10 @@ func (s GistsGetCommentResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetCommentResForbidden from json stream.
-func (s *GistsGetCommentResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetCommentForbidden from json stream.
+func (s *GistsGetCommentForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetCommentResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetCommentForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31119,7 +31119,7 @@ func (s *GistsGetCommentResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetCommentResForbiddenBlock) WriteJSON(j *json.Stream) {
+func (s GistsGetCommentForbiddenBlock) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -31141,10 +31141,10 @@ func (s GistsGetCommentResForbiddenBlock) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetCommentResForbiddenBlock from json stream.
-func (s *GistsGetCommentResForbiddenBlock) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetCommentForbiddenBlock from json stream.
+func (s *GistsGetCommentForbiddenBlock) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetCommentResForbiddenBlock to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetCommentForbiddenBlock to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31197,17 +31197,17 @@ func (s *GistsGetCommentResForbiddenBlock) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetCommentResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsGetCommentNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetCommentResNotModified from json stream.
-func (s *GistsGetCommentResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetCommentNotModified from json stream.
+func (s *GistsGetCommentNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetCommentResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetCommentNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31224,7 +31224,7 @@ func (s *GistsGetCommentResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetResForbidden) WriteJSON(j *json.Stream) {
+func (s GistsGetForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -31246,10 +31246,10 @@ func (s GistsGetResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetResForbidden from json stream.
-func (s *GistsGetResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetForbidden from json stream.
+func (s *GistsGetForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31302,7 +31302,7 @@ func (s *GistsGetResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetResForbiddenBlock) WriteJSON(j *json.Stream) {
+func (s GistsGetForbiddenBlock) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -31324,10 +31324,10 @@ func (s GistsGetResForbiddenBlock) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetResForbiddenBlock from json stream.
-func (s *GistsGetResForbiddenBlock) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetForbiddenBlock from json stream.
+func (s *GistsGetForbiddenBlock) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetResForbiddenBlock to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetForbiddenBlock to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31380,17 +31380,17 @@ func (s *GistsGetResForbiddenBlock) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsGetResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsGetResNotModified from json stream.
-func (s *GistsGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsGetNotModified from json stream.
+func (s *GistsGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31412,21 +31412,18 @@ func (GistsListCommentsApplicationJSONForbidden) ReadJSON(i *json.Iter) error { 
 func (GistsListCommentsApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsListCommentsApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-func (GistsListCommentsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (GistsListCommentsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s GistsListCommentsResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsListCommentsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsListCommentsResNotModified from json stream.
-func (s *GistsListCommentsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsListCommentsNotModified from json stream.
+func (s *GistsListCommentsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListCommentsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsListCommentsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31441,6 +31438,9 @@ func (s *GistsListCommentsResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (GistsListCommentsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (GistsListCommentsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (GistsListCommitsApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (GistsListCommitsApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
@@ -31448,21 +31448,18 @@ func (GistsListCommitsApplicationJSONForbidden) ReadJSON(i *json.Iter) error { r
 func (GistsListCommitsApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsListCommitsApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-func (GistsListCommitsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (GistsListCommitsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s GistsListCommitsResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsListCommitsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsListCommitsResNotModified from json stream.
-func (s *GistsListCommitsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsListCommitsNotModified from json stream.
+func (s *GistsListCommitsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListCommitsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsListCommitsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31478,27 +31475,57 @@ func (s *GistsListCommitsResNotModified) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (GistsListCommitsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (GistsListCommitsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 func (GistsListForksApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (GistsListForksApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
 func (GistsListForksApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsListForksApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-func (GistsListForksOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (GistsListForksOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s GistsListForksResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsListForksNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsListForksResNotModified from json stream.
-func (s *GistsListForksResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsListForksNotModified from json stream.
+func (s *GistsListForksNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListForksResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsListForksNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (GistsListForksOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (GistsListForksOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s GistsListNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GistsListNotModified from json stream.
+func (s *GistsListNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GistsListNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31518,44 +31545,17 @@ func (GistsListOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (GistsListOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsListPublicResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsListPublicNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsListPublicResNotModified from json stream.
-func (s *GistsListPublicResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsListPublicNotModified from json stream.
+func (s *GistsListPublicNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListPublicResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s GistsListResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads GistsListResNotModified from json stream.
-func (s *GistsListResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsListPublicNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31577,21 +31577,18 @@ func (GistsListStarredApplicationJSONForbidden) ReadJSON(i *json.Iter) error { r
 func (GistsListStarredApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (GistsListStarredApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
-func (GistsListStarredOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (GistsListStarredOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s GistsListStarredResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsListStarredNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsListStarredResNotModified from json stream.
-func (s *GistsListStarredResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsListStarredNotModified from json stream.
+func (s *GistsListStarredNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsListStarredResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsListStarredNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31606,6 +31603,9 @@ func (s *GistsListStarredResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (GistsListStarredOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (GistsListStarredOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (GistsStarApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (GistsStarApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
@@ -31614,17 +31614,17 @@ func (GistsStarApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsStarApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsStarResNoContent) WriteJSON(j *json.Stream) {
+func (s GistsStarNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsStarResNoContent from json stream.
-func (s *GistsStarResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsStarNoContent from json stream.
+func (s *GistsStarNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsStarResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsStarNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31641,17 +31641,17 @@ func (s *GistsStarResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsStarResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsStarNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsStarResNotModified from json stream.
-func (s *GistsStarResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsStarNotModified from json stream.
+func (s *GistsStarNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsStarResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsStarNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31674,17 +31674,17 @@ func (GistsUnstarApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (GistsUnstarApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsUnstarResNoContent) WriteJSON(j *json.Stream) {
+func (s GistsUnstarNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsUnstarResNoContent from json stream.
-func (s *GistsUnstarResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsUnstarNoContent from json stream.
+func (s *GistsUnstarNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsUnstarResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsUnstarNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31701,17 +31701,17 @@ func (s *GistsUnstarResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsUnstarResNotModified) WriteJSON(j *json.Stream) {
+func (s GistsUnstarNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GistsUnstarResNotModified from json stream.
-func (s *GistsUnstarResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GistsUnstarNotModified from json stream.
+func (s *GistsUnstarNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GistsUnstarResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GistsUnstarNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33100,17 +33100,17 @@ func (s *GitCreateTreeReqTreeItemType) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitDeleteRefResNoContent) WriteJSON(j *json.Stream) {
+func (s GitDeleteRefNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GitDeleteRefResNoContent from json stream.
-func (s *GitDeleteRefResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GitDeleteRefNoContent from json stream.
+func (s *GitDeleteRefNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GitDeleteRefResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode GitDeleteRefNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33829,21 +33829,18 @@ func (s *GitUpdateRefReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (GitignoreGetAllTemplatesOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (GitignoreGetAllTemplatesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s GitignoreGetAllTemplatesResNotModified) WriteJSON(j *json.Stream) {
+func (s GitignoreGetAllTemplatesNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GitignoreGetAllTemplatesResNotModified from json stream.
-func (s *GitignoreGetAllTemplatesResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GitignoreGetAllTemplatesNotModified from json stream.
+func (s *GitignoreGetAllTemplatesNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GitignoreGetAllTemplatesResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GitignoreGetAllTemplatesNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33859,18 +33856,21 @@ func (s *GitignoreGetAllTemplatesResNotModified) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (GitignoreGetAllTemplatesOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (GitignoreGetAllTemplatesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s GitignoreGetTemplateResNotModified) WriteJSON(j *json.Stream) {
+func (s GitignoreGetTemplateNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GitignoreGetTemplateResNotModified from json stream.
-func (s *GitignoreGetTemplateResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GitignoreGetTemplateNotModified from json stream.
+func (s *GitignoreGetTemplateNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GitignoreGetTemplateResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode GitignoreGetTemplateNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37225,17 +37225,17 @@ func (s *InteractionLimitResponse) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent from json stream.
-func (s *InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads InteractionsRemoveRestrictionsForAuthenticatedUserNoContent from json stream.
+func (s *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37252,17 +37252,17 @@ func (s *InteractionsRemoveRestrictionsForAuthenticatedUserResNoContent) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s InteractionsRemoveRestrictionsForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s InteractionsRemoveRestrictionsForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads InteractionsRemoveRestrictionsForOrgResNoContent from json stream.
-func (s *InteractionsRemoveRestrictionsForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads InteractionsRemoveRestrictionsForOrgNoContent from json stream.
+func (s *InteractionsRemoveRestrictionsForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37279,17 +37279,17 @@ func (s *InteractionsRemoveRestrictionsForOrgResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s InteractionsRemoveRestrictionsForRepoResConflict) WriteJSON(j *json.Stream) {
+func (s InteractionsRemoveRestrictionsForRepoConflict) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads InteractionsRemoveRestrictionsForRepoResConflict from json stream.
-func (s *InteractionsRemoveRestrictionsForRepoResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads InteractionsRemoveRestrictionsForRepoConflict from json stream.
+func (s *InteractionsRemoveRestrictionsForRepoConflict) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoResConflict to nil`)
+		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoConflict to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37306,17 +37306,17 @@ func (s *InteractionsRemoveRestrictionsForRepoResConflict) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s InteractionsRemoveRestrictionsForRepoResNoContent) WriteJSON(j *json.Stream) {
+func (s InteractionsRemoveRestrictionsForRepoNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads InteractionsRemoveRestrictionsForRepoResNoContent from json stream.
-func (s *InteractionsRemoveRestrictionsForRepoResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads InteractionsRemoveRestrictionsForRepoNoContent from json stream.
+func (s *InteractionsRemoveRestrictionsForRepoNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37333,17 +37333,17 @@ func (s *InteractionsRemoveRestrictionsForRepoResNoContent) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s InteractionsSetRestrictionsForRepoResConflict) WriteJSON(j *json.Stream) {
+func (s InteractionsSetRestrictionsForRepoConflict) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads InteractionsSetRestrictionsForRepoResConflict from json stream.
-func (s *InteractionsSetRestrictionsForRepoResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads InteractionsSetRestrictionsForRepoConflict from json stream.
+func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode InteractionsSetRestrictionsForRepoResConflict to nil`)
+		fmt.Errorf(`invalid: unable to decode InteractionsSetRestrictionsForRepoConflict to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39771,17 +39771,17 @@ func (s *IssuesAddAssigneesReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesCheckUserCanBeAssignedResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesCheckUserCanBeAssignedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesCheckUserCanBeAssignedResNoContent from json stream.
-func (s *IssuesCheckUserCanBeAssignedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesCheckUserCanBeAssignedNoContent from json stream.
+func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesCheckUserCanBeAssignedResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesCheckUserCanBeAssignedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40014,17 +40014,17 @@ func (s *IssuesCreateMilestoneReqState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesDeleteCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesDeleteCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesDeleteCommentResNoContent from json stream.
-func (s *IssuesDeleteCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesDeleteCommentNoContent from json stream.
+func (s *IssuesDeleteCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesDeleteCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesDeleteCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40041,17 +40041,17 @@ func (s *IssuesDeleteCommentResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesDeleteLabelResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesDeleteLabelNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesDeleteLabelResNoContent from json stream.
-func (s *IssuesDeleteLabelResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesDeleteLabelNoContent from json stream.
+func (s *IssuesDeleteLabelNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesDeleteLabelResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesDeleteLabelNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40068,17 +40068,17 @@ func (s *IssuesDeleteLabelResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesDeleteMilestoneResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesDeleteMilestoneNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesDeleteMilestoneResNoContent from json stream.
-func (s *IssuesDeleteMilestoneResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesDeleteMilestoneNoContent from json stream.
+func (s *IssuesDeleteMilestoneNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesDeleteMilestoneResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesDeleteMilestoneNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40405,6 +40405,33 @@ func (s *IssuesListState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s IssuesLockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads IssuesLockNoContent from json stream.
+func (s *IssuesLockNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode IssuesLockNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s IssuesLockReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -40463,44 +40490,17 @@ func (s *IssuesLockReqLockReason) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesLockResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesRemoveAllLabelsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesLockResNoContent from json stream.
-func (s *IssuesLockResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesRemoveAllLabelsNoContent from json stream.
+func (s *IssuesRemoveAllLabelsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesLockResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesRemoveAllLabelsResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads IssuesRemoveAllLabelsResNoContent from json stream.
-func (s *IssuesRemoveAllLabelsResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesRemoveAllLabelsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesRemoveAllLabelsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40596,17 +40596,17 @@ func (IssuesUnlockApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (IssuesUnlockApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesUnlockResNoContent) WriteJSON(j *json.Stream) {
+func (s IssuesUnlockNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads IssuesUnlockResNoContent from json stream.
-func (s *IssuesUnlockResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads IssuesUnlockNoContent from json stream.
+func (s *IssuesUnlockNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesUnlockResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode IssuesUnlockNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42322,21 +42322,18 @@ func (s *LicenseSimple) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (LicensesGetAllCommonlyUsedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (LicensesGetAllCommonlyUsedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s LicensesGetAllCommonlyUsedResNotModified) WriteJSON(j *json.Stream) {
+func (s LicensesGetAllCommonlyUsedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LicensesGetAllCommonlyUsedResNotModified from json stream.
-func (s *LicensesGetAllCommonlyUsedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads LicensesGetAllCommonlyUsedNotModified from json stream.
+func (s *LicensesGetAllCommonlyUsedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LicensesGetAllCommonlyUsedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode LicensesGetAllCommonlyUsedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42352,6 +42349,9 @@ func (s *LicensesGetAllCommonlyUsedResNotModified) ReadJSON(i *json.Iter) error 
 	return i.Error
 }
 
+func (LicensesGetAllCommonlyUsedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (LicensesGetAllCommonlyUsedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 func (LicensesGetApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (LicensesGetApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -42359,17 +42359,17 @@ func (LicensesGetApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (LicensesGetApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s LicensesGetResNotModified) WriteJSON(j *json.Stream) {
+func (s LicensesGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LicensesGetResNotModified from json stream.
-func (s *LicensesGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads LicensesGetNotModified from json stream.
+func (s *LicensesGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LicensesGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode LicensesGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42475,30 +42475,18 @@ func (s *LinkWithType) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (MarkdownRenderOKTextHTML) WriteJSON(j *json.Stream)    {}
-func (MarkdownRenderOKTextHTML) ReadJSON(i *json.Iter) error { return nil }
-
-func (MarkdownRenderRawOKTextHTML) WriteJSON(j *json.Stream)    {}
-func (MarkdownRenderRawOKTextHTML) ReadJSON(i *json.Iter) error { return nil }
-
-func (MarkdownRenderRawReqTextPlain) WriteJSON(j *json.Stream)    {}
-func (MarkdownRenderRawReqTextPlain) ReadJSON(i *json.Iter) error { return nil }
-
-func (MarkdownRenderRawReqTextXMarkdown) WriteJSON(j *json.Stream)    {}
-func (MarkdownRenderRawReqTextXMarkdown) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s MarkdownRenderRawResNotModified) WriteJSON(j *json.Stream) {
+func (s MarkdownRenderNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MarkdownRenderRawResNotModified from json stream.
-func (s *MarkdownRenderRawResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MarkdownRenderNotModified from json stream.
+func (s *MarkdownRenderNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MarkdownRenderRawResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MarkdownRenderNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42513,6 +42501,45 @@ func (s *MarkdownRenderRawResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (MarkdownRenderOKTextHTML) WriteJSON(j *json.Stream)    {}
+func (MarkdownRenderOKTextHTML) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s MarkdownRenderRawNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads MarkdownRenderRawNotModified from json stream.
+func (s *MarkdownRenderRawNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MarkdownRenderRawNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (MarkdownRenderRawOKTextHTML) WriteJSON(j *json.Stream)    {}
+func (MarkdownRenderRawOKTextHTML) ReadJSON(i *json.Iter) error { return nil }
+
+func (MarkdownRenderRawReqTextPlain) WriteJSON(j *json.Stream)    {}
+func (MarkdownRenderRawReqTextPlain) ReadJSON(i *json.Iter) error { return nil }
+
+func (MarkdownRenderRawReqTextXMarkdown) WriteJSON(j *json.Stream)    {}
+func (MarkdownRenderRawReqTextXMarkdown) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s MarkdownRenderReq) WriteJSON(j *json.Stream) {
@@ -42598,33 +42625,6 @@ func (s *MarkdownRenderReqMode) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode MarkdownRenderReqMode to nil`)
 	}
 	*s = MarkdownRenderReqMode(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s MarkdownRenderResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads MarkdownRenderResNotModified from json stream.
-func (s *MarkdownRenderResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MarkdownRenderResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -43482,17 +43482,17 @@ func (s *MergedUpstreamMergeType) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MetaGetResNotModified) WriteJSON(j *json.Stream) {
+func (s MetaGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MetaGetResNotModified from json stream.
-func (s *MetaGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MetaGetNotModified from json stream.
+func (s *MetaGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MetaGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MetaGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43509,7 +43509,7 @@ func (s *MetaGetResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MetaRootResOK) WriteJSON(j *json.Stream) {
+func (s MetaRootOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43617,10 +43617,10 @@ func (s MetaRootResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MetaRootResOK from json stream.
-func (s *MetaRootResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MetaRootOK from json stream.
+func (s *MetaRootOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MetaRootResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode MetaRootOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44237,17 +44237,17 @@ func (s *Migration) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsCancelImportResNoContent) WriteJSON(j *json.Stream) {
+func (s MigrationsCancelImportNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsCancelImportResNoContent from json stream.
-func (s *MigrationsCancelImportResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsCancelImportNoContent from json stream.
+func (s *MigrationsCancelImportNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsCancelImportResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsCancelImportNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44281,17 +44281,17 @@ func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsDeleteArchiveForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserResNoContent from json stream.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserNoContent from json stream.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44308,17 +44308,17 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserResNoContent) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsDeleteArchiveForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s MigrationsDeleteArchiveForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44335,17 +44335,17 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserResNotModified) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsDeleteArchiveForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s MigrationsDeleteArchiveForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsDeleteArchiveForOrgResNoContent from json stream.
-func (s *MigrationsDeleteArchiveForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsDeleteArchiveForOrgNoContent from json stream.
+func (s *MigrationsDeleteArchiveForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44362,17 +44362,17 @@ func (s *MigrationsDeleteArchiveForOrgResNoContent) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsDownloadArchiveForOrgResFound) WriteJSON(j *json.Stream) {
+func (s MigrationsDownloadArchiveForOrgFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsDownloadArchiveForOrgResFound from json stream.
-func (s *MigrationsDownloadArchiveForOrgResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsDownloadArchiveForOrgFound from json stream.
+func (s *MigrationsDownloadArchiveForOrgFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsDownloadArchiveForOrgResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsDownloadArchiveForOrgFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44400,17 +44400,17 @@ func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsGetArchiveForAuthenticatedUserResFound) WriteJSON(j *json.Stream) {
+func (s MigrationsGetArchiveForAuthenticatedUserFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsGetArchiveForAuthenticatedUserResFound from json stream.
-func (s *MigrationsGetArchiveForAuthenticatedUserResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsGetArchiveForAuthenticatedUserFound from json stream.
+func (s *MigrationsGetArchiveForAuthenticatedUserFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44427,17 +44427,17 @@ func (s *MigrationsGetArchiveForAuthenticatedUserResFound) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsGetArchiveForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s MigrationsGetArchiveForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsGetArchiveForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsGetArchiveForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsGetArchiveForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsGetArchiveForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44472,17 +44472,17 @@ func (MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsGetStatusForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s MigrationsGetStatusForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsGetStatusForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsGetStatusForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsGetStatusForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsGetStatusForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44522,21 +44522,18 @@ func (MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(i 
 	return nil
 }
 
-func (MigrationsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (MigrationsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s MigrationsListForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s MigrationsListForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsListForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsListForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsListForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsListForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsListForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44551,6 +44548,9 @@ func (s *MigrationsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter
 	}
 	return i.Error
 }
+
+func (MigrationsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (MigrationsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s MigrationsListForOrgExcludeItem) WriteJSON(j *json.Stream) {
@@ -44685,6 +44685,33 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode MigrationsSetLfsPreferenceReqUseLfs to nil`)
 	}
 	*s = MigrationsSetLfsPreferenceReqUseLfs(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsStartForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads MigrationsStartForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsStartForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -44868,33 +44895,6 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) ReadJSON(i *json.Ite
 		fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserReqExcludeItem to nil`)
 	}
 	*s = MigrationsStartForAuthenticatedUserReqExcludeItem(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s MigrationsStartForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads MigrationsStartForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsStartForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -45219,17 +45219,17 @@ func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsUnlockRepoForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserResNoContent from json stream.
-func (s *MigrationsUnlockRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserNoContent from json stream.
+func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45246,17 +45246,17 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserResNoContent) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsUnlockRepoForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s MigrationsUnlockRepoForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserResNotModified from json stream.
-func (s *MigrationsUnlockRepoForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserNotModified from json stream.
+func (s *MigrationsUnlockRepoForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45273,17 +45273,17 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserResNotModified) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsUnlockRepoForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s MigrationsUnlockRepoForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MigrationsUnlockRepoForOrgResNoContent from json stream.
-func (s *MigrationsUnlockRepoForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads MigrationsUnlockRepoForOrgNoContent from json stream.
+func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54898,6 +54898,33 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OAuthAuthorizationsCreateAuthorizationNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OAuthAuthorizationsCreateAuthorizationNotModified from json stream.
+func (s *OAuthAuthorizationsCreateAuthorizationNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsCreateAuthorizationNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsCreateAuthorizationReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -55026,33 +55053,6 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) ReadJSON(i *json.Iter) error
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads OAuthAuthorizationsCreateAuthorizationResNotModified from json stream.
-func (s *OAuthAuthorizationsCreateAuthorizationResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsCreateAuthorizationResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 	return nil
@@ -55064,17 +55064,17 @@ func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsDeleteAuthorizationResNoContent) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsDeleteAuthorizationResNoContent from json stream.
-func (s *OAuthAuthorizationsDeleteAuthorizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsDeleteAuthorizationNoContent from json stream.
+func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55091,17 +55091,17 @@ func (s *OAuthAuthorizationsDeleteAuthorizationResNoContent) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsDeleteAuthorizationResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsDeleteAuthorizationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsDeleteAuthorizationResNotModified from json stream.
-func (s *OAuthAuthorizationsDeleteAuthorizationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsDeleteAuthorizationNotModified from json stream.
+func (s *OAuthAuthorizationsDeleteAuthorizationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55128,17 +55128,17 @@ func (OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsDeleteGrantResNoContent) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsDeleteGrantNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsDeleteGrantResNoContent from json stream.
-func (s *OAuthAuthorizationsDeleteGrantResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsDeleteGrantNoContent from json stream.
+func (s *OAuthAuthorizationsDeleteGrantNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteGrantResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteGrantNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55155,17 +55155,17 @@ func (s *OAuthAuthorizationsDeleteGrantResNoContent) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsDeleteGrantResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsDeleteGrantNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsDeleteGrantResNotModified from json stream.
-func (s *OAuthAuthorizationsDeleteGrantResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsDeleteGrantNotModified from json stream.
+func (s *OAuthAuthorizationsDeleteGrantNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteGrantResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteGrantNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55192,17 +55192,17 @@ func (OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsGetAuthorizationResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsGetAuthorizationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsGetAuthorizationResNotModified from json stream.
-func (s *OAuthAuthorizationsGetAuthorizationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsGetAuthorizationNotModified from json stream.
+func (s *OAuthAuthorizationsGetAuthorizationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetAuthorizationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetAuthorizationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55227,17 +55227,17 @@ func (OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsGetGrantResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsGetGrantNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsGetGrantResNotModified from json stream.
-func (s *OAuthAuthorizationsGetGrantResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsGetGrantNotModified from json stream.
+func (s *OAuthAuthorizationsGetGrantNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetGrantResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetGrantNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55332,6 +55332,33 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Rea
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified from json stream.
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -55450,33 +55477,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) ReadJSON(i *json.
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified from json stream.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 	return nil
@@ -55492,23 +55492,18 @@ func (OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) ReadJSON
 	return nil
 }
 
-func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsListAuthorizationsResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsListAuthorizationsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsListAuthorizationsResNotModified from json stream.
-func (s *OAuthAuthorizationsListAuthorizationsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsListAuthorizationsNotModified from json stream.
+func (s *OAuthAuthorizationsListAuthorizationsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55522,6 +55517,11 @@ func (s *OAuthAuthorizationsListAuthorizationsResNotModified) ReadJSON(i *json.I
 		return retErr
 	}
 	return i.Error
+}
+
+func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
 }
 
 func (OAuthAuthorizationsListGrantsApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
@@ -55535,21 +55535,18 @@ func (OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) ReadJSON(i *json
 	return nil
 }
 
-func (OAuthAuthorizationsListGrantsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (OAuthAuthorizationsListGrantsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s OAuthAuthorizationsListGrantsResNotModified) WriteJSON(j *json.Stream) {
+func (s OAuthAuthorizationsListGrantsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OAuthAuthorizationsListGrantsResNotModified from json stream.
-func (s *OAuthAuthorizationsListGrantsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OAuthAuthorizationsListGrantsNotModified from json stream.
+func (s *OAuthAuthorizationsListGrantsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsListGrantsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsListGrantsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55564,6 +55561,9 @@ func (s *OAuthAuthorizationsListGrantsResNotModified) ReadJSON(i *json.Iter) err
 	}
 	return i.Error
 }
+
+func (OAuthAuthorizationsListGrantsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (OAuthAuthorizationsListGrantsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsUpdateAuthorizationReq) WriteJSON(j *json.Stream) {
@@ -57474,15 +57474,15 @@ func (o *OptGistHistoryChangeStatus) ReadJSON(i *json.Iter) error {
 	}
 }
 
-// WriteJSON writes json value of GistsGetCommentResForbiddenBlock to json stream.
-func (o OptGistsGetCommentResForbiddenBlock) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GistsGetCommentForbiddenBlock to json stream.
+func (o OptGistsGetCommentForbiddenBlock) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of GistsGetCommentResForbiddenBlock from json iterator.
-func (o *OptGistsGetCommentResForbiddenBlock) ReadJSON(i *json.Iter) error {
+// ReadJSON reads json value of GistsGetCommentForbiddenBlock from json iterator.
+func (o *OptGistsGetCommentForbiddenBlock) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptGistsGetCommentResForbiddenBlock to nil`)
+		fmt.Errorf(`invalid: unable to decode OptGistsGetCommentForbiddenBlock to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -57492,19 +57492,19 @@ func (o *OptGistsGetCommentResForbiddenBlock) ReadJSON(i *json.Iter) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGistsGetCommentResForbiddenBlock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptGistsGetCommentForbiddenBlock", i.WhatIsNext())
 	}
 }
 
-// WriteJSON writes json value of GistsGetResForbiddenBlock to json stream.
-func (o OptGistsGetResForbiddenBlock) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GistsGetForbiddenBlock to json stream.
+func (o OptGistsGetForbiddenBlock) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of GistsGetResForbiddenBlock from json iterator.
-func (o *OptGistsGetResForbiddenBlock) ReadJSON(i *json.Iter) error {
+// ReadJSON reads json value of GistsGetForbiddenBlock from json iterator.
+func (o *OptGistsGetForbiddenBlock) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptGistsGetResForbiddenBlock to nil`)
+		fmt.Errorf(`invalid: unable to decode OptGistsGetForbiddenBlock to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -57514,7 +57514,7 @@ func (o *OptGistsGetResForbiddenBlock) ReadJSON(i *json.Iter) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGistsGetResForbiddenBlock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptGistsGetForbiddenBlock", i.WhatIsNext())
 	}
 }
 
@@ -63681,17 +63681,17 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsBlockUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsBlockUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsBlockUserResNoContent from json stream.
-func (s *OrgsBlockUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsBlockUserNoContent from json stream.
+func (s *OrgsBlockUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsBlockUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsBlockUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63708,17 +63708,17 @@ func (s *OrgsBlockUserResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCancelInvitationResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsCancelInvitationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCancelInvitationResNoContent from json stream.
-func (s *OrgsCancelInvitationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCancelInvitationNoContent from json stream.
+func (s *OrgsCancelInvitationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCancelInvitationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCancelInvitationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63735,17 +63735,17 @@ func (s *OrgsCancelInvitationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckBlockedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsCheckBlockedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckBlockedUserResNoContent from json stream.
-func (s *OrgsCheckBlockedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckBlockedUserNoContent from json stream.
+func (s *OrgsCheckBlockedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckBlockedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckBlockedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63762,17 +63762,17 @@ func (s *OrgsCheckBlockedUserResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckMembershipForUserResFound) WriteJSON(j *json.Stream) {
+func (s OrgsCheckMembershipForUserFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckMembershipForUserResFound from json stream.
-func (s *OrgsCheckMembershipForUserResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckMembershipForUserFound from json stream.
+func (s *OrgsCheckMembershipForUserFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63789,17 +63789,17 @@ func (s *OrgsCheckMembershipForUserResFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckMembershipForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsCheckMembershipForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckMembershipForUserResNoContent from json stream.
-func (s *OrgsCheckMembershipForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckMembershipForUserNoContent from json stream.
+func (s *OrgsCheckMembershipForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63816,17 +63816,17 @@ func (s *OrgsCheckMembershipForUserResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckMembershipForUserResNotFound) WriteJSON(j *json.Stream) {
+func (s OrgsCheckMembershipForUserNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckMembershipForUserResNotFound from json stream.
-func (s *OrgsCheckMembershipForUserResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckMembershipForUserNotFound from json stream.
+func (s *OrgsCheckMembershipForUserNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63843,17 +63843,17 @@ func (s *OrgsCheckMembershipForUserResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckPublicMembershipForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsCheckPublicMembershipForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckPublicMembershipForUserResNoContent from json stream.
-func (s *OrgsCheckPublicMembershipForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckPublicMembershipForUserNoContent from json stream.
+func (s *OrgsCheckPublicMembershipForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63870,17 +63870,17 @@ func (s *OrgsCheckPublicMembershipForUserResNoContent) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCheckPublicMembershipForUserResNotFound) WriteJSON(j *json.Stream) {
+func (s OrgsCheckPublicMembershipForUserNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsCheckPublicMembershipForUserResNotFound from json stream.
-func (s *OrgsCheckPublicMembershipForUserResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsCheckPublicMembershipForUserNotFound from json stream.
+func (s *OrgsCheckPublicMembershipForUserNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63897,17 +63897,17 @@ func (s *OrgsCheckPublicMembershipForUserResNotFound) ReadJSON(i *json.Iter) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsConvertMemberToOutsideCollaboratorResAccepted) WriteJSON(j *json.Stream) {
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorResAccepted from json stream.
-func (s *OrgsConvertMemberToOutsideCollaboratorResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorAccepted from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63924,17 +63924,17 @@ func (s *OrgsConvertMemberToOutsideCollaboratorResAccepted) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsConvertMemberToOutsideCollaboratorResForbidden) WriteJSON(j *json.Stream) {
+func (s OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorResForbidden from json stream.
-func (s *OrgsConvertMemberToOutsideCollaboratorResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorForbidden from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63951,17 +63951,17 @@ func (s *OrgsConvertMemberToOutsideCollaboratorResForbidden) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsConvertMemberToOutsideCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorResNoContent from json stream.
-func (s *OrgsConvertMemberToOutsideCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorNoContent from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64345,17 +64345,17 @@ func (s *OrgsCreateWebhookReqConfig) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsDeleteWebhookResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsDeleteWebhookNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsDeleteWebhookResNoContent from json stream.
-func (s *OrgsDeleteWebhookResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsDeleteWebhookNoContent from json stream.
+func (s *OrgsDeleteWebhookNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsDeleteWebhookResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsDeleteWebhookNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64419,7 +64419,7 @@ func (OrgsListBlockedUsersOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (OrgsListBlockedUsersOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsListBlockedUsersResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s OrgsListBlockedUsersUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -64432,10 +64432,10 @@ func (s OrgsListBlockedUsersResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsListBlockedUsersResUnsupportedMediaType from json stream.
-func (s *OrgsListBlockedUsersResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsListBlockedUsersUnsupportedMediaType from json stream.
+func (s *OrgsListBlockedUsersUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsListBlockedUsersResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsListBlockedUsersUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64480,21 +64480,18 @@ func (OrgsListForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(i *json.
 	return nil
 }
 
-func (OrgsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (OrgsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s OrgsListForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s OrgsListForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsListForAuthenticatedUserResNotModified from json stream.
-func (s *OrgsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsListForAuthenticatedUserNotModified from json stream.
+func (s *OrgsListForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsListForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsListForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64509,6 +64506,9 @@ func (s *OrgsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) erro
 	}
 	return i.Error
 }
+
+func (OrgsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (OrgsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (OrgsListInvitationTeamsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (OrgsListInvitationTeamsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
@@ -64528,17 +64528,17 @@ func (s *OrgsListMembersFilter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsListMembersResFound) WriteJSON(j *json.Stream) {
+func (s OrgsListMembersFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsListMembersResFound from json stream.
-func (s *OrgsListMembersResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsListMembersFound from json stream.
+func (s *OrgsListMembersFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsListMembersResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsListMembersFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64569,17 +64569,17 @@ func (s *OrgsListMembersRole) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsListMembershipsForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s OrgsListMembershipsForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsListMembershipsForAuthenticatedUserResNotModified from json stream.
-func (s *OrgsListMembershipsForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsListMembershipsForAuthenticatedUserNotModified from json stream.
+func (s *OrgsListMembershipsForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64609,6 +64609,33 @@ func (s *OrgsListMembershipsForAuthenticatedUserState) ReadJSON(i *json.Iter) er
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s OrgsListNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsListNotModified from json stream.
+func (s *OrgsListNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsListNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (OrgsListOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (OrgsListOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
@@ -64629,48 +64656,21 @@ func (s *OrgsListOutsideCollaboratorsFilter) ReadJSON(i *json.Iter) error {
 func (OrgsListPendingInvitationsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (OrgsListPendingInvitationsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s OrgsListResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads OrgsListResNotModified from json stream.
-func (s *OrgsListResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsListResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (OrgsListWebhooksOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (OrgsListWebhooksOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsPingWebhookResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsPingWebhookNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsPingWebhookResNoContent from json stream.
-func (s *OrgsPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsPingWebhookNoContent from json stream.
+func (s *OrgsPingWebhookNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsPingWebhookResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsPingWebhookNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64687,17 +64687,17 @@ func (s *OrgsPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRedeliverWebhookDeliveryResAccepted) WriteJSON(j *json.Stream) {
+func (s OrgsRedeliverWebhookDeliveryAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRedeliverWebhookDeliveryResAccepted from json stream.
-func (s *OrgsRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRedeliverWebhookDeliveryAccepted from json stream.
+func (s *OrgsRedeliverWebhookDeliveryAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRedeliverWebhookDeliveryResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRedeliverWebhookDeliveryAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64714,17 +64714,17 @@ func (s *OrgsRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemoveMemberResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsRemoveMemberNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemoveMemberResNoContent from json stream.
-func (s *OrgsRemoveMemberResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemoveMemberNoContent from json stream.
+func (s *OrgsRemoveMemberNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemoveMemberResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemoveMemberNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64747,17 +64747,17 @@ func (OrgsRemoveMembershipForUserApplicationJSONNotFound) WriteJSON(j *json.Stre
 func (OrgsRemoveMembershipForUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemoveMembershipForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsRemoveMembershipForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemoveMembershipForUserResNoContent from json stream.
-func (s *OrgsRemoveMembershipForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemoveMembershipForUserNoContent from json stream.
+func (s *OrgsRemoveMembershipForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemoveMembershipForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemoveMembershipForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64774,17 +64774,17 @@ func (s *OrgsRemoveMembershipForUserResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemoveOutsideCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsRemoveOutsideCollaboratorNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemoveOutsideCollaboratorResNoContent from json stream.
-func (s *OrgsRemoveOutsideCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemoveOutsideCollaboratorNoContent from json stream.
+func (s *OrgsRemoveOutsideCollaboratorNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64801,7 +64801,7 @@ func (s *OrgsRemoveOutsideCollaboratorResNoContent) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemoveOutsideCollaboratorResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -64818,10 +64818,10 @@ func (s OrgsRemoveOutsideCollaboratorResUnprocessableEntity) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemoveOutsideCollaboratorResUnprocessableEntity from json stream.
-func (s *OrgsRemoveOutsideCollaboratorResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemoveOutsideCollaboratorUnprocessableEntity from json stream.
+func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorUnprocessableEntity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64862,17 +64862,17 @@ func (s *OrgsRemoveOutsideCollaboratorResUnprocessableEntity) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemovePublicMembershipForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsRemovePublicMembershipForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemovePublicMembershipForAuthenticatedUserResNoContent from json stream.
-func (s *OrgsRemovePublicMembershipForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemovePublicMembershipForAuthenticatedUserNoContent from json stream.
+func (s *OrgsRemovePublicMembershipForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemovePublicMembershipForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemovePublicMembershipForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64889,17 +64889,17 @@ func (s *OrgsRemovePublicMembershipForAuthenticatedUserResNoContent) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsRemoveSamlSSOAuthorizationResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsRemoveSamlSSOAuthorizationResNoContent from json stream.
-func (s *OrgsRemoveSamlSSOAuthorizationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsRemoveSamlSSOAuthorizationNoContent from json stream.
+func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsRemoveSamlSSOAuthorizationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsRemoveSamlSSOAuthorizationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64974,17 +64974,17 @@ func (s *OrgsSetMembershipForUserReqRole) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsSetPublicMembershipForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsSetPublicMembershipForAuthenticatedUserResNoContent from json stream.
-func (s *OrgsSetPublicMembershipForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsSetPublicMembershipForAuthenticatedUserNoContent from json stream.
+func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsSetPublicMembershipForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsSetPublicMembershipForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65001,17 +65001,17 @@ func (s *OrgsSetPublicMembershipForAuthenticatedUserResNoContent) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUnblockUserResNoContent) WriteJSON(j *json.Stream) {
+func (s OrgsUnblockUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsUnblockUserResNoContent from json stream.
-func (s *OrgsUnblockUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsUnblockUserNoContent from json stream.
+func (s *OrgsUnblockUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsUnblockUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsUnblockUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65461,7 +65461,7 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -65474,10 +65474,10 @@ func (s OrgsUpdateResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads OrgsUpdateResUnsupportedMediaType from json stream.
-func (s *OrgsUpdateResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads OrgsUpdateUnsupportedMediaType from json stream.
+func (s *OrgsUpdateUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode OrgsUpdateResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode OrgsUpdateUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66521,31 +66521,17 @@ func (PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesDeletePackageForAuthenticatedUserPackageType from json stream.
-func (s *PackagesDeletePackageForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserPackageType to nil`)
-	}
-	*s = PackagesDeletePackageForAuthenticatedUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesDeletePackageForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesDeletePackageForAuthenticatedUserResNoContent from json stream.
-func (s *PackagesDeletePackageForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesDeletePackageForAuthenticatedUserNoContent from json stream.
+func (s *PackagesDeletePackageForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66561,6 +66547,20 @@ func (s *PackagesDeletePackageForAuthenticatedUserResNoContent) ReadJSON(i *json
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s PackagesDeletePackageForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesDeletePackageForAuthenticatedUserPackageType from json stream.
+func (s *PackagesDeletePackageForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserPackageType to nil`)
+	}
+	*s = PackagesDeletePackageForAuthenticatedUserPackageType(i.Str())
+	return i.Error
+}
+
 func (PackagesDeletePackageForOrgApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (PackagesDeletePackageForOrgApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -66570,6 +66570,33 @@ func (PackagesDeletePackageForOrgApplicationJSONNotFound) ReadJSON(i *json.Iter)
 func (PackagesDeletePackageForOrgApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
 func (PackagesDeletePackageForOrgApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
 	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesDeletePackageForOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PackagesDeletePackageForOrgNoContent from json stream.
+func (s *PackagesDeletePackageForOrgNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForOrgNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -66586,18 +66613,29 @@ func (s *PackagesDeletePackageForOrgPackageType) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (PackagesDeletePackageForUserApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
+func (PackagesDeletePackageForUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
+
+func (PackagesDeletePackageForUserApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
+func (PackagesDeletePackageForUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
+
+func (PackagesDeletePackageForUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
+func (PackagesDeletePackageForUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesDeletePackageForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesDeletePackageForOrgResNoContent from json stream.
-func (s *PackagesDeletePackageForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesDeletePackageForUserNoContent from json stream.
+func (s *PackagesDeletePackageForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66611,17 +66649,6 @@ func (s *PackagesDeletePackageForOrgResNoContent) ReadJSON(i *json.Iter) error {
 		return retErr
 	}
 	return i.Error
-}
-
-func (PackagesDeletePackageForUserApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
-func (PackagesDeletePackageForUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
-
-func (PackagesDeletePackageForUserApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
-func (PackagesDeletePackageForUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
-
-func (PackagesDeletePackageForUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
-func (PackagesDeletePackageForUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -66635,33 +66662,6 @@ func (s *PackagesDeletePackageForUserPackageType) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForUserPackageType to nil`)
 	}
 	*s = PackagesDeletePackageForUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageForUserResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads PackagesDeletePackageForUserResNoContent from json stream.
-func (s *PackagesDeletePackageForUserResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForUserResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -66684,31 +66684,17 @@ func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserPackageType from json stream.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserPackageType to nil`)
-	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesDeletePackageVersionForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserResNoContent from json stream.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserNoContent from json stream.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66721,6 +66707,20 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserResNoContent) ReadJSON(
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserPackageType from json stream.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserPackageType to nil`)
+	}
+	*s = PackagesDeletePackageVersionForAuthenticatedUserPackageType(i.Str())
 	return i.Error
 }
 
@@ -66740,31 +66740,17 @@ func (PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForOrgPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesDeletePackageVersionForOrgPackageType from json stream.
-func (s *PackagesDeletePackageVersionForOrgPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgPackageType to nil`)
-	}
-	*s = PackagesDeletePackageVersionForOrgPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesDeletePackageVersionForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesDeletePackageVersionForOrgResNoContent from json stream.
-func (s *PackagesDeletePackageVersionForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesDeletePackageVersionForOrgNoContent from json stream.
+func (s *PackagesDeletePackageVersionForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66777,6 +66763,20 @@ func (s *PackagesDeletePackageVersionForOrgResNoContent) ReadJSON(i *json.Iter) 
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesDeletePackageVersionForOrgPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesDeletePackageVersionForOrgPackageType from json stream.
+func (s *PackagesDeletePackageVersionForOrgPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgPackageType to nil`)
+	}
+	*s = PackagesDeletePackageVersionForOrgPackageType(i.Str())
 	return i.Error
 }
 
@@ -66796,31 +66796,17 @@ func (PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesDeletePackageVersionForUserPackageType from json stream.
-func (s *PackagesDeletePackageVersionForUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserPackageType to nil`)
-	}
-	*s = PackagesDeletePackageVersionForUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesDeletePackageVersionForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesDeletePackageVersionForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesDeletePackageVersionForUserResNoContent from json stream.
-func (s *PackagesDeletePackageVersionForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesDeletePackageVersionForUserNoContent from json stream.
+func (s *PackagesDeletePackageVersionForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66833,6 +66819,20 @@ func (s *PackagesDeletePackageVersionForUserResNoContent) ReadJSON(i *json.Iter)
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesDeletePackageVersionForUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesDeletePackageVersionForUserPackageType from json stream.
+func (s *PackagesDeletePackageVersionForUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserPackageType to nil`)
+	}
+	*s = PackagesDeletePackageVersionForUserPackageType(i.Str())
 	return i.Error
 }
 
@@ -67186,31 +67186,17 @@ func (PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesRestorePackageForAuthenticatedUserPackageType from json stream.
-func (s *PackagesRestorePackageForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserPackageType to nil`)
-	}
-	*s = PackagesRestorePackageForAuthenticatedUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesRestorePackageForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesRestorePackageForAuthenticatedUserResNoContent from json stream.
-func (s *PackagesRestorePackageForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesRestorePackageForAuthenticatedUserNoContent from json stream.
+func (s *PackagesRestorePackageForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67226,6 +67212,20 @@ func (s *PackagesRestorePackageForAuthenticatedUserResNoContent) ReadJSON(i *jso
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s PackagesRestorePackageForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesRestorePackageForAuthenticatedUserPackageType from json stream.
+func (s *PackagesRestorePackageForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserPackageType to nil`)
+	}
+	*s = PackagesRestorePackageForAuthenticatedUserPackageType(i.Str())
+	return i.Error
+}
+
 func (PackagesRestorePackageForOrgApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (PackagesRestorePackageForOrgApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -67235,6 +67235,33 @@ func (PackagesRestorePackageForOrgApplicationJSONNotFound) ReadJSON(i *json.Iter
 func (PackagesRestorePackageForOrgApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
 func (PackagesRestorePackageForOrgApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
 	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesRestorePackageForOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PackagesRestorePackageForOrgNoContent from json stream.
+func (s *PackagesRestorePackageForOrgNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForOrgNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -67251,18 +67278,29 @@ func (s *PackagesRestorePackageForOrgPackageType) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (PackagesRestorePackageForUserApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
+func (PackagesRestorePackageForUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
+
+func (PackagesRestorePackageForUserApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
+func (PackagesRestorePackageForUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
+
+func (PackagesRestorePackageForUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
+func (PackagesRestorePackageForUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesRestorePackageForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesRestorePackageForOrgResNoContent from json stream.
-func (s *PackagesRestorePackageForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesRestorePackageForUserNoContent from json stream.
+func (s *PackagesRestorePackageForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67276,17 +67314,6 @@ func (s *PackagesRestorePackageForOrgResNoContent) ReadJSON(i *json.Iter) error 
 		return retErr
 	}
 	return i.Error
-}
-
-func (PackagesRestorePackageForUserApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
-func (PackagesRestorePackageForUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
-
-func (PackagesRestorePackageForUserApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
-func (PackagesRestorePackageForUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
-
-func (PackagesRestorePackageForUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
-func (PackagesRestorePackageForUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -67300,33 +67327,6 @@ func (s *PackagesRestorePackageForUserPackageType) ReadJSON(i *json.Iter) error 
 		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForUserPackageType to nil`)
 	}
 	*s = PackagesRestorePackageForUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageForUserResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads PackagesRestorePackageForUserResNoContent from json stream.
-func (s *PackagesRestorePackageForUserResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForUserResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -67349,31 +67349,17 @@ func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthoriz
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserPackageType from json stream.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserPackageType to nil`)
-	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesRestorePackageVersionForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserResNoContent from json stream.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserNoContent from json stream.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67386,6 +67372,20 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserResNoContent) ReadJSON
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserPackageType from json stream.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserPackageType to nil`)
+	}
+	*s = PackagesRestorePackageVersionForAuthenticatedUserPackageType(i.Str())
 	return i.Error
 }
 
@@ -67405,31 +67405,17 @@ func (PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForOrgPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesRestorePackageVersionForOrgPackageType from json stream.
-func (s *PackagesRestorePackageVersionForOrgPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgPackageType to nil`)
-	}
-	*s = PackagesRestorePackageVersionForOrgPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesRestorePackageVersionForOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesRestorePackageVersionForOrgResNoContent from json stream.
-func (s *PackagesRestorePackageVersionForOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesRestorePackageVersionForOrgNoContent from json stream.
+func (s *PackagesRestorePackageVersionForOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67442,6 +67428,20 @@ func (s *PackagesRestorePackageVersionForOrgResNoContent) ReadJSON(i *json.Iter)
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesRestorePackageVersionForOrgPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesRestorePackageVersionForOrgPackageType from json stream.
+func (s *PackagesRestorePackageVersionForOrgPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgPackageType to nil`)
+	}
+	*s = PackagesRestorePackageVersionForOrgPackageType(i.Str())
 	return i.Error
 }
 
@@ -67461,31 +67461,17 @@ func (PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForUserPackageType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads PackagesRestorePackageVersionForUserPackageType from json stream.
-func (s *PackagesRestorePackageVersionForUserPackageType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserPackageType to nil`)
-	}
-	*s = PackagesRestorePackageVersionForUserPackageType(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesRestorePackageVersionForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s PackagesRestorePackageVersionForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PackagesRestorePackageVersionForUserResNoContent from json stream.
-func (s *PackagesRestorePackageVersionForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PackagesRestorePackageVersionForUserNoContent from json stream.
+func (s *PackagesRestorePackageVersionForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67498,6 +67484,20 @@ func (s *PackagesRestorePackageVersionForUserResNoContent) ReadJSON(i *json.Iter
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PackagesRestorePackageVersionForUserPackageType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PackagesRestorePackageVersionForUserPackageType from json stream.
+func (s *PackagesRestorePackageVersionForUserPackageType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserPackageType to nil`)
+	}
+	*s = PackagesRestorePackageVersionForUserPackageType(i.Str())
 	return i.Error
 }
 
@@ -70806,6 +70806,60 @@ func (s *ProjectOrganizationPermission) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsAddCollaboratorNoContent from json stream.
+func (s *ProjectsAddCollaboratorNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsAddCollaboratorNotModified from json stream.
+func (s *ProjectsAddCollaboratorNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ProjectsAddCollaboratorReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -70863,65 +70917,38 @@ func (s *ProjectsAddCollaboratorReqPermission) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ProjectsAddCollaboratorResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsAddCollaboratorResNoContent from json stream.
-func (s *ProjectsAddCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsAddCollaboratorResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsAddCollaboratorResNotModified from json stream.
-func (s *ProjectsAddCollaboratorResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (ProjectsCreateColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (ProjectsCreateColumnApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
 func (ProjectsCreateColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (ProjectsCreateColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsCreateColumnNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsCreateColumnNotModified from json stream.
+func (s *ProjectsCreateColumnNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsCreateColumnNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateColumnReq) WriteJSON(j *json.Stream) {
@@ -70962,18 +70989,28 @@ func (s *ProjectsCreateColumnReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
+func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
+func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
+func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateColumnResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsCreateColumnResNotModified from json stream.
-func (s *ProjectsCreateColumnResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsCreateForAuthenticatedUserNotModified from json stream.
+func (s *ProjectsCreateForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsCreateColumnResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsCreateForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -70987,16 +71024,6 @@ func (s *ProjectsCreateColumnResNotModified) ReadJSON(i *json.Iter) error {
 		return retErr
 	}
 	return i.Error
-}
-
-func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
-func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
-func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) WriteJSON(j *json.Stream) {}
-func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error {
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -71056,34 +71083,7 @@ func (s *ProjectsCreateForAuthenticatedUserReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsCreateForAuthenticatedUserResNotModified from json stream.
-func (s *ProjectsCreateForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsCreateForAuthenticatedUserResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateForAuthenticatedUserUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -71096,10 +71096,10 @@ func (s ProjectsCreateForAuthenticatedUserResUnsupportedMediaType) WriteJSON(j *
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsCreateForAuthenticatedUserResUnsupportedMediaType from json stream.
-func (s *ProjectsCreateForAuthenticatedUserResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsCreateForAuthenticatedUserUnsupportedMediaType from json stream.
+func (s *ProjectsCreateForAuthenticatedUserUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsCreateForAuthenticatedUserResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsCreateForAuthenticatedUserUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71285,7 +71285,7 @@ func (ProjectsDeleteCardApplicationJSONUnauthorized) WriteJSON(j *json.Stream)  
 func (ProjectsDeleteCardApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteCardResForbidden) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteCardForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -71314,10 +71314,10 @@ func (s ProjectsDeleteCardResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteCardResForbidden from json stream.
-func (s *ProjectsDeleteCardResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteCardForbidden from json stream.
+func (s *ProjectsDeleteCardForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71383,17 +71383,17 @@ func (s *ProjectsDeleteCardResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteCardResNoContent) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteCardNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteCardResNoContent from json stream.
-func (s *ProjectsDeleteCardResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteCardNoContent from json stream.
+func (s *ProjectsDeleteCardNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71410,17 +71410,17 @@ func (s *ProjectsDeleteCardResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteCardResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteCardNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteCardResNotModified from json stream.
-func (s *ProjectsDeleteCardResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteCardNotModified from json stream.
+func (s *ProjectsDeleteCardNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71443,17 +71443,17 @@ func (ProjectsDeleteColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)
 func (ProjectsDeleteColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteColumnResNoContent) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteColumnNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteColumnResNoContent from json stream.
-func (s *ProjectsDeleteColumnResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteColumnNoContent from json stream.
+func (s *ProjectsDeleteColumnNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteColumnResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteColumnNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71470,17 +71470,17 @@ func (s *ProjectsDeleteColumnResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteColumnResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteColumnNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteColumnResNotModified from json stream.
-func (s *ProjectsDeleteColumnResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteColumnNotModified from json stream.
+func (s *ProjectsDeleteColumnNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteColumnResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteColumnNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71497,7 +71497,7 @@ func (s *ProjectsDeleteColumnResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteResForbidden) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -71526,10 +71526,10 @@ func (s ProjectsDeleteResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteResForbidden from json stream.
-func (s *ProjectsDeleteResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteForbidden from json stream.
+func (s *ProjectsDeleteForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71595,17 +71595,17 @@ func (s *ProjectsDeleteResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteResNoContent) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteResNoContent from json stream.
-func (s *ProjectsDeleteResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteNoContent from json stream.
+func (s *ProjectsDeleteNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71622,17 +71622,17 @@ func (s *ProjectsDeleteResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsDeleteResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsDeleteNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsDeleteResNotModified from json stream.
-func (s *ProjectsDeleteResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsDeleteNotModified from json stream.
+func (s *ProjectsDeleteNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsDeleteResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsDeleteNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71664,17 +71664,17 @@ func (ProjectsGetCardApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {
 func (ProjectsGetCardApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsGetCardResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsGetCardNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsGetCardResNotModified from json stream.
-func (s *ProjectsGetCardResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsGetCardNotModified from json stream.
+func (s *ProjectsGetCardNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsGetCardResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsGetCardNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71700,17 +71700,17 @@ func (ProjectsGetColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)   
 func (ProjectsGetColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsGetColumnResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsGetColumnNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsGetColumnResNotModified from json stream.
-func (s *ProjectsGetColumnResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsGetColumnNotModified from json stream.
+func (s *ProjectsGetColumnNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsGetColumnResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsGetColumnNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71727,17 +71727,17 @@ func (s *ProjectsGetColumnResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsGetPermissionForUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsGetPermissionForUserResNotModified from json stream.
-func (s *ProjectsGetPermissionForUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsGetNotModified from json stream.
+func (s *ProjectsGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsGetPermissionForUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71754,17 +71754,17 @@ func (s *ProjectsGetPermissionForUserResNotModified) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsGetResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsGetPermissionForUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsGetResNotModified from json stream.
-func (s *ProjectsGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsGetPermissionForUserNotModified from json stream.
+func (s *ProjectsGetPermissionForUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsGetPermissionForUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71800,21 +71800,18 @@ func (s *ProjectsListCardsArchivedState) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (ProjectsListCardsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (ProjectsListCardsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s ProjectsListCardsResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsListCardsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsListCardsResNotModified from json stream.
-func (s *ProjectsListCardsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsListCardsNotModified from json stream.
+func (s *ProjectsListCardsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsListCardsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsListCardsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71829,6 +71826,9 @@ func (s *ProjectsListCardsResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (ProjectsListCardsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (ProjectsListCardsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsListCollaboratorsAffiliation) WriteJSON(j *json.Stream) {
@@ -71845,17 +71845,17 @@ func (s *ProjectsListCollaboratorsAffiliation) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsListCollaboratorsResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsListCollaboratorsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsListCollaboratorsResNotModified from json stream.
-func (s *ProjectsListCollaboratorsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsListCollaboratorsNotModified from json stream.
+func (s *ProjectsListCollaboratorsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsListCollaboratorsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsListCollaboratorsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71877,21 +71877,18 @@ func (ProjectsListColumnsApplicationJSONForbidden) ReadJSON(i *json.Iter) error 
 func (ProjectsListColumnsApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (ProjectsListColumnsApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
-func (ProjectsListColumnsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (ProjectsListColumnsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s ProjectsListColumnsResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsListColumnsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsListColumnsResNotModified from json stream.
-func (s *ProjectsListColumnsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsListColumnsNotModified from json stream.
+func (s *ProjectsListColumnsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsListColumnsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsListColumnsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -71906,6 +71903,9 @@ func (s *ProjectsListColumnsResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (ProjectsListColumnsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (ProjectsListColumnsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (ProjectsListForOrgOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ProjectsListForOrgOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
@@ -71968,73 +71968,17 @@ func (s *ProjectsListForUserState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardReq) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.ColumnID.Set {
-		more.More()
-		j.WriteObjectField("column_id")
-		s.ColumnID.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("position")
-	j.WriteString(s.Position)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsMoveCardReq from json stream.
-func (s *ProjectsMoveCardReq) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardReq to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "column_id":
-			if err := func() error {
-				s.ColumnID.Reset()
-				if err := s.ColumnID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "position":
-			if err := func() error {
-				s.Position = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResCreated) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveCardCreated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveCardResCreated from json stream.
-func (s *ProjectsMoveCardResCreated) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsMoveCardCreated from json stream.
+func (s *ProjectsMoveCardCreated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResCreated to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72051,7 +71995,7 @@ func (s *ProjectsMoveCardResCreated) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResForbidden) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveCardForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -72080,10 +72024,10 @@ func (s ProjectsMoveCardResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveCardResForbidden from json stream.
-func (s *ProjectsMoveCardResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsMoveCardForbidden from json stream.
+func (s *ProjectsMoveCardForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72105,7 +72049,7 @@ func (s *ProjectsMoveCardResForbidden) ReadJSON(i *json.Iter) error {
 				s.Errors = nil
 				var retErr error
 				i.Array(func(i *json.Iter) bool {
-					var elem ProjectsMoveCardResForbiddenErrorsItem
+					var elem ProjectsMoveCardForbiddenErrorsItem
 					if err := func() error {
 						if err := elem.ReadJSON(i); err != nil {
 							return err
@@ -72151,7 +72095,7 @@ func (s *ProjectsMoveCardResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResForbiddenErrorsItem) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveCardForbiddenErrorsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -72178,10 +72122,10 @@ func (s ProjectsMoveCardResForbiddenErrorsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveCardResForbiddenErrorsItem from json stream.
-func (s *ProjectsMoveCardResForbiddenErrorsItem) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsMoveCardForbiddenErrorsItem from json stream.
+func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResForbiddenErrorsItem to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardForbiddenErrorsItem to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72246,21 +72190,77 @@ func (s *ProjectsMoveCardResForbiddenErrorsItem) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveCardNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveCardResNotModified from json stream.
-func (s *ProjectsMoveCardResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsMoveCardNotModified from json stream.
+func (s *ProjectsMoveCardNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsMoveCardReq) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ColumnID.Set {
+		more.More()
+		j.WriteObjectField("column_id")
+		s.ColumnID.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("position")
+	j.WriteString(s.Position)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsMoveCardReq from json stream.
+func (s *ProjectsMoveCardReq) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardReq to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "column_id":
+			if err := func() error {
+				s.ColumnID.Reset()
+				if err := s.ColumnID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "position":
+			if err := func() error {
+				s.Position = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -72277,6 +72277,60 @@ func (ProjectsMoveColumnApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 
 func (ProjectsMoveColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (ProjectsMoveColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsMoveColumnCreated) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsMoveColumnCreated from json stream.
+func (s *ProjectsMoveColumnCreated) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsMoveColumnNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsMoveColumnNotModified from json stream.
+func (s *ProjectsMoveColumnNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveColumnReq) WriteJSON(j *json.Stream) {
@@ -72318,17 +72372,17 @@ func (s *ProjectsMoveColumnReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveColumnResCreated) WriteJSON(j *json.Stream) {
+func (s ProjectsRemoveCollaboratorNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveColumnResCreated from json stream.
-func (s *ProjectsMoveColumnResCreated) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsRemoveCollaboratorNoContent from json stream.
+func (s *ProjectsRemoveCollaboratorNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnResCreated to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72345,71 +72399,17 @@ func (s *ProjectsMoveColumnResCreated) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveColumnResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsRemoveCollaboratorNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsMoveColumnResNotModified from json stream.
-func (s *ProjectsMoveColumnResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsRemoveCollaboratorNotModified from json stream.
+func (s *ProjectsRemoveCollaboratorNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsRemoveCollaboratorResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsRemoveCollaboratorResNoContent from json stream.
-func (s *ProjectsRemoveCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsRemoveCollaboratorResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsRemoveCollaboratorResNotModified from json stream.
-func (s *ProjectsRemoveCollaboratorResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72439,6 +72439,33 @@ func (ProjectsUpdateCardApplicationJSONNotFound) ReadJSON(i *json.Iter) error { 
 
 func (ProjectsUpdateCardApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (ProjectsUpdateCardApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsUpdateCardNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsUpdateCardNotModified from json stream.
+func (s *ProjectsUpdateCardNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsUpdateCardNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateCardReq) WriteJSON(j *json.Stream) {
@@ -72501,18 +72528,24 @@ func (s *ProjectsUpdateCardReq) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+func (ProjectsUpdateColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
+func (ProjectsUpdateColumnApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
+
+func (ProjectsUpdateColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
+func (ProjectsUpdateColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateCardResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateColumnNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsUpdateCardResNotModified from json stream.
-func (s *ProjectsUpdateCardResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsUpdateColumnNotModified from json stream.
+func (s *ProjectsUpdateColumnNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsUpdateCardResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsUpdateColumnNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72527,12 +72560,6 @@ func (s *ProjectsUpdateCardResNotModified) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
-
-func (ProjectsUpdateColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
-func (ProjectsUpdateColumnApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
-
-func (ProjectsUpdateColumnApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
-func (ProjectsUpdateColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateColumnReq) WriteJSON(j *json.Stream) {
@@ -72574,17 +72601,142 @@ func (s *ProjectsUpdateColumnReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateColumnResNotModified) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.DocumentationURL.Set {
+		more.More()
+		j.WriteObjectField("documentation_url")
+		s.DocumentationURL.WriteJSON(j)
+	}
+	if s.Errors != nil {
+		more.More()
+		j.WriteObjectField("errors")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Errors {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsUpdateForbidden from json stream.
+func (s *ProjectsUpdateForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsUpdateForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL.Reset()
+				if err := s.DocumentationURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "errors":
+			if err := func() error {
+				s.Errors = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem string
+					if err := func() error {
+						elem = string(i.Str())
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Errors = append(s.Errors, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsUpdateNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ProjectsUpdateColumnResNotModified from json stream.
-func (s *ProjectsUpdateColumnResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ProjectsUpdateNotFound from json stream.
+func (s *ProjectsUpdateNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsUpdateColumnResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ProjectsUpdateNotFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsUpdateNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsUpdateNotModified from json stream.
+func (s *ProjectsUpdateNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsUpdateNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -72723,158 +72875,6 @@ func (s *ProjectsUpdateReqOrganizationPermission) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode ProjectsUpdateReqOrganizationPermission to nil`)
 	}
 	*s = ProjectsUpdateReqOrganizationPermission(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateResForbidden) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Errors != nil {
-		more.More()
-		j.WriteObjectField("errors")
-		more.Down()
-		j.WriteArrayStart()
-		for _, elem := range s.Errors {
-			more.More()
-			j.WriteString(elem)
-		}
-		j.WriteArrayEnd()
-		more.Up()
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsUpdateResForbidden from json stream.
-func (s *ProjectsUpdateResForbidden) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsUpdateResForbidden to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "errors":
-			if err := func() error {
-				s.Errors = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Errors = append(s.Errors, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateResNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsUpdateResNotFound from json stream.
-func (s *ProjectsUpdateResNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsUpdateResNotFound to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsUpdateResNotModified from json stream.
-func (s *ProjectsUpdateResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsUpdateResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -82048,17 +82048,17 @@ func (s *PullRequestState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCheckIfMergedResNoContent) WriteJSON(j *json.Stream) {
+func (s PullsCheckIfMergedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PullsCheckIfMergedResNoContent from json stream.
-func (s *PullsCheckIfMergedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PullsCheckIfMergedNoContent from json stream.
+func (s *PullsCheckIfMergedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82075,17 +82075,17 @@ func (s *PullsCheckIfMergedResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCheckIfMergedResNotFound) WriteJSON(j *json.Stream) {
+func (s PullsCheckIfMergedNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PullsCheckIfMergedResNotFound from json stream.
-func (s *PullsCheckIfMergedResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PullsCheckIfMergedNotFound from json stream.
+func (s *PullsCheckIfMergedNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82747,17 +82747,17 @@ func (s *PullsCreateReviewReqEvent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsDeleteReviewCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s PullsDeleteReviewCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PullsDeleteReviewCommentResNoContent from json stream.
-func (s *PullsDeleteReviewCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PullsDeleteReviewCommentNoContent from json stream.
+func (s *PullsDeleteReviewCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsDeleteReviewCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode PullsDeleteReviewCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82836,17 +82836,17 @@ func (PullsGetApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (PullsGetApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsGetResNotModified) WriteJSON(j *json.Stream) {
+func (s PullsGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PullsGetResNotModified from json stream.
-func (s *PullsGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PullsGetNotModified from json stream.
+func (s *PullsGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode PullsGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82880,17 +82880,17 @@ func (s *PullsListDirection) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsListResNotModified) WriteJSON(j *json.Stream) {
+func (s PullsListNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PullsListResNotModified from json stream.
-func (s *PullsListResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads PullsListNotModified from json stream.
+func (s *PullsListNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsListResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode PullsListNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82987,6 +82987,128 @@ func (s *PullsListState) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode PullsListState to nil`)
 	}
 	*s = PullsListState(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsMergeConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.DocumentationURL.Set {
+		more.More()
+		j.WriteObjectField("documentation_url")
+		s.DocumentationURL.WriteJSON(j)
+	}
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PullsMergeConflict from json stream.
+func (s *PullsMergeConflict) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PullsMergeConflict to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL.Reset()
+				if err := s.DocumentationURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsMergeMethodNotAllowed) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.DocumentationURL.Set {
+		more.More()
+		j.WriteObjectField("documentation_url")
+		s.DocumentationURL.WriteJSON(j)
+	}
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PullsMergeMethodNotAllowed from json stream.
+func (s *PullsMergeMethodNotAllowed) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PullsMergeMethodNotAllowed to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL.Reset()
+				if err := s.DocumentationURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -83096,128 +83218,6 @@ func (s *PullsMergeReqMergeMethod) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode PullsMergeReqMergeMethod to nil`)
 	}
 	*s = PullsMergeReqMergeMethod(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsMergeResConflict) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads PullsMergeResConflict from json stream.
-func (s *PullsMergeResConflict) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsMergeResConflict to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsMergeResMethodNotAllowed) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads PullsMergeResMethodNotAllowed from json stream.
-func (s *PullsMergeResMethodNotAllowed) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsMergeResMethodNotAllowed to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
 	return i.Error
 }
 
@@ -83399,6 +83399,67 @@ func (s *PullsSubmitReviewReqEvent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s PullsUpdateBranchAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	if s.URL.Set {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PullsUpdateBranchAccepted from json stream.
+func (s *PullsUpdateBranchAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PullsUpdateBranchAccepted to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				s.URL.Reset()
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s PullsUpdateBranchReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -83423,67 +83484,6 @@ func (s *PullsUpdateBranchReq) ReadJSON(i *json.Iter) error {
 			if err := func() error {
 				s.ExpectedHeadSha.Reset()
 				if err := s.ExpectedHeadSha.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsUpdateBranchResAccepted) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	if s.URL.Set {
-		more.More()
-		j.WriteObjectField("url")
-		s.URL.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads PullsUpdateBranchResAccepted from json stream.
-func (s *PullsUpdateBranchResAccepted) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PullsUpdateBranchResAccepted to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
 				return i.Error
@@ -83783,17 +83783,17 @@ func (s *RateLimit) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s RateLimitGetResNotModified) WriteJSON(j *json.Stream) {
+func (s RateLimitGetNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads RateLimitGetResNotModified from json stream.
-func (s *RateLimitGetResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads RateLimitGetNotModified from json stream.
+func (s *RateLimitGetNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode RateLimitGetResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode RateLimitGetNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -84320,7 +84320,7 @@ func (s *ReactionsCreateForCommitCommentReqContent) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForCommitCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForCommitCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -84333,10 +84333,10 @@ func (s ReactionsCreateForCommitCommentResUnsupportedMediaType) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsCreateForCommitCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsCreateForCommitCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsCreateForCommitCommentUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForCommitCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsCreateForCommitCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForCommitCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -84426,7 +84426,7 @@ func (s *ReactionsCreateForIssueCommentReqContent) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -84439,10 +84439,10 @@ func (s ReactionsCreateForIssueCommentResUnsupportedMediaType) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsCreateForIssueCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsCreateForIssueCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsCreateForIssueCommentUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForIssueCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -84532,7 +84532,7 @@ func (s *ReactionsCreateForIssueReqContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -84545,10 +84545,10 @@ func (s ReactionsCreateForIssueResUnsupportedMediaType) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsCreateForIssueResUnsupportedMediaType from json stream.
-func (s *ReactionsCreateForIssueResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsCreateForIssueUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForIssueUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -84638,7 +84638,7 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -84651,10 +84651,10 @@ func (s ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType) Write
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -84744,7 +84744,7 @@ func (s *ReactionsCreateForReleaseReqContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForReleaseResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForReleaseUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -84757,10 +84757,10 @@ func (s ReactionsCreateForReleaseResUnsupportedMediaType) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsCreateForReleaseResUnsupportedMediaType from json stream.
-func (s *ReactionsCreateForReleaseResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsCreateForReleaseUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForReleaseUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsCreateForReleaseResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForReleaseUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85035,17 +85035,17 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForCommitCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForCommitCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForCommitCommentResNoContent from json stream.
-func (s *ReactionsDeleteForCommitCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForCommitCommentNoContent from json stream.
+func (s *ReactionsDeleteForCommitCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForCommitCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForCommitCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85062,17 +85062,17 @@ func (s *ReactionsDeleteForCommitCommentResNoContent) ReadJSON(i *json.Iter) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForIssueCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForIssueCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForIssueCommentResNoContent from json stream.
-func (s *ReactionsDeleteForIssueCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForIssueCommentNoContent from json stream.
+func (s *ReactionsDeleteForIssueCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85089,17 +85089,17 @@ func (s *ReactionsDeleteForIssueCommentResNoContent) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForIssueResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForIssueNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForIssueResNoContent from json stream.
-func (s *ReactionsDeleteForIssueResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForIssueNoContent from json stream.
+func (s *ReactionsDeleteForIssueNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85116,17 +85116,17 @@ func (s *ReactionsDeleteForIssueResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForPullRequestCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForPullRequestCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForPullRequestCommentResNoContent from json stream.
-func (s *ReactionsDeleteForPullRequestCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForPullRequestCommentNoContent from json stream.
+func (s *ReactionsDeleteForPullRequestCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForPullRequestCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForPullRequestCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85143,17 +85143,17 @@ func (s *ReactionsDeleteForPullRequestCommentResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForTeamDiscussionCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForTeamDiscussionCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForTeamDiscussionCommentResNoContent from json stream.
-func (s *ReactionsDeleteForTeamDiscussionCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForTeamDiscussionCommentNoContent from json stream.
+func (s *ReactionsDeleteForTeamDiscussionCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85170,17 +85170,17 @@ func (s *ReactionsDeleteForTeamDiscussionCommentResNoContent) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteForTeamDiscussionResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteForTeamDiscussionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteForTeamDiscussionResNoContent from json stream.
-func (s *ReactionsDeleteForTeamDiscussionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteForTeamDiscussionNoContent from json stream.
+func (s *ReactionsDeleteForTeamDiscussionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85206,17 +85206,17 @@ func (ReactionsDeleteLegacyApplicationJSONUnauthorized) WriteJSON(j *json.Stream
 func (ReactionsDeleteLegacyApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteLegacyResNoContent from json stream.
-func (s *ReactionsDeleteLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteLegacyNoContent from json stream.
+func (s *ReactionsDeleteLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85233,17 +85233,17 @@ func (s *ReactionsDeleteLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteLegacyResNotModified) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteLegacyNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteLegacyResNotModified from json stream.
-func (s *ReactionsDeleteLegacyResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteLegacyNotModified from json stream.
+func (s *ReactionsDeleteLegacyNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85260,7 +85260,7 @@ func (s *ReactionsDeleteLegacyResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsDeleteLegacyResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsDeleteLegacyUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -85273,10 +85273,10 @@ func (s ReactionsDeleteLegacyResUnsupportedMediaType) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsDeleteLegacyResUnsupportedMediaType from json stream.
-func (s *ReactionsDeleteLegacyResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsDeleteLegacyUnsupportedMediaType from json stream.
+func (s *ReactionsDeleteLegacyUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85328,7 +85328,7 @@ func (ReactionsListForCommitCommentOKApplicationJSON) WriteJSON(j *json.Stream) 
 func (ReactionsListForCommitCommentOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsListForCommitCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsListForCommitCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -85341,10 +85341,10 @@ func (s ReactionsListForCommitCommentResUnsupportedMediaType) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsListForCommitCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsListForCommitCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsListForCommitCommentUnsupportedMediaType from json stream.
+func (s *ReactionsListForCommitCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsListForCommitCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsListForCommitCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85402,7 +85402,7 @@ func (ReactionsListForIssueCommentOKApplicationJSON) WriteJSON(j *json.Stream)  
 func (ReactionsListForIssueCommentOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsListForIssueCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsListForIssueCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -85415,10 +85415,10 @@ func (s ReactionsListForIssueCommentResUnsupportedMediaType) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsListForIssueCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsListForIssueCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsListForIssueCommentUnsupportedMediaType from json stream.
+func (s *ReactionsListForIssueCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsListForIssueCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsListForIssueCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85470,7 +85470,7 @@ func (ReactionsListForIssueOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReactionsListForIssueOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsListForIssueResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsListForIssueUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -85483,10 +85483,10 @@ func (s ReactionsListForIssueResUnsupportedMediaType) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsListForIssueResUnsupportedMediaType from json stream.
-func (s *ReactionsListForIssueResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsListForIssueUnsupportedMediaType from json stream.
+func (s *ReactionsListForIssueUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsListForIssueResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsListForIssueUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -85540,7 +85540,7 @@ func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsListForPullRequestReviewCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReactionsListForPullRequestReviewCommentUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -85553,10 +85553,10 @@ func (s ReactionsListForPullRequestReviewCommentResUnsupportedMediaType) WriteJS
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReactionsListForPullRequestReviewCommentResUnsupportedMediaType from json stream.
-func (s *ReactionsListForPullRequestReviewCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReactionsListForPullRequestReviewCommentUnsupportedMediaType from json stream.
+func (s *ReactionsListForPullRequestReviewCommentUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReactionsListForPullRequestReviewCommentResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReactionsListForPullRequestReviewCommentUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87636,17 +87636,17 @@ func (ReposAcceptInvitationApplicationJSONNotFound) WriteJSON(j *json.Stream)   
 func (ReposAcceptInvitationApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposAcceptInvitationResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposAcceptInvitationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposAcceptInvitationResNoContent from json stream.
-func (s *ReposAcceptInvitationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposAcceptInvitationNoContent from json stream.
+func (s *ReposAcceptInvitationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposAcceptInvitationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposAcceptInvitationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87663,17 +87663,44 @@ func (s *ReposAcceptInvitationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposAcceptInvitationResNotModified) WriteJSON(j *json.Stream) {
+func (s ReposAcceptInvitationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposAcceptInvitationResNotModified from json stream.
-func (s *ReposAcceptInvitationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposAcceptInvitationNotModified from json stream.
+func (s *ReposAcceptInvitationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposAcceptInvitationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposAcceptInvitationNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposAddCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposAddCollaboratorNoContent from json stream.
+func (s *ReposAddCollaboratorNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposAddCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87765,17 +87792,17 @@ func (s *ReposAddCollaboratorReqPermission) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposAddCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposCheckCollaboratorNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposAddCollaboratorResNoContent from json stream.
-func (s *ReposAddCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCheckCollaboratorNoContent from json stream.
+func (s *ReposCheckCollaboratorNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposAddCollaboratorResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87792,17 +87819,17 @@ func (s *ReposAddCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCheckCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposCheckCollaboratorNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposCheckCollaboratorResNoContent from json stream.
-func (s *ReposCheckCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCheckCollaboratorNotFound from json stream.
+func (s *ReposCheckCollaboratorNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87819,17 +87846,17 @@ func (s *ReposCheckCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCheckCollaboratorResNotFound) WriteJSON(j *json.Stream) {
+func (s ReposCheckVulnerabilityAlertsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposCheckCollaboratorResNotFound from json stream.
-func (s *ReposCheckCollaboratorResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCheckVulnerabilityAlertsNoContent from json stream.
+func (s *ReposCheckVulnerabilityAlertsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -87846,44 +87873,17 @@ func (s *ReposCheckCollaboratorResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCheckVulnerabilityAlertsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposCheckVulnerabilityAlertsNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposCheckVulnerabilityAlertsResNoContent from json stream.
-func (s *ReposCheckVulnerabilityAlertsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCheckVulnerabilityAlertsNotFound from json stream.
+func (s *ReposCheckVulnerabilityAlertsNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposCheckVulnerabilityAlertsResNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposCheckVulnerabilityAlertsResNotFound from json stream.
-func (s *ReposCheckVulnerabilityAlertsResNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -88397,6 +88397,33 @@ func (s *ReposCreateDeploymentStatusReqState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReposCreateDispatchEventNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposCreateDispatchEventNoContent from json stream.
+func (s *ReposCreateDispatchEventNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposCreateDispatchEventNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReposCreateDispatchEventReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -88487,17 +88514,17 @@ func (s *ReposCreateDispatchEventReqClientPayload) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDispatchEventResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposCreateForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposCreateDispatchEventResNoContent from json stream.
-func (s *ReposCreateDispatchEventResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCreateForAuthenticatedUserNotModified from json stream.
+func (s *ReposCreateForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCreateDispatchEventResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCreateForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -88830,33 +88857,6 @@ func (s *ReposCreateForAuthenticatedUserReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposCreateForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposCreateForAuthenticatedUserResNotModified from json stream.
-func (s *ReposCreateForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCreateForAuthenticatedUserResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true
@@ -89760,7 +89760,7 @@ func (s *ReposCreatePagesSiteReqSourcePath) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreatePagesSiteResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposCreatePagesSiteUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -89773,10 +89773,10 @@ func (s ReposCreatePagesSiteResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposCreatePagesSiteResUnsupportedMediaType from json stream.
-func (s *ReposCreatePagesSiteResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposCreatePagesSiteUnsupportedMediaType from json stream.
+func (s *ReposCreatePagesSiteUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90319,17 +90319,17 @@ func (ReposDeclineInvitationApplicationJSONNotFound) WriteJSON(j *json.Stream)  
 func (ReposDeclineInvitationApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeclineInvitationResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeclineInvitationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeclineInvitationResNoContent from json stream.
-func (s *ReposDeclineInvitationResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeclineInvitationNoContent from json stream.
+func (s *ReposDeclineInvitationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeclineInvitationResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeclineInvitationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90346,17 +90346,17 @@ func (s *ReposDeclineInvitationResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeclineInvitationResNotModified) WriteJSON(j *json.Stream) {
+func (s ReposDeclineInvitationNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeclineInvitationResNotModified from json stream.
-func (s *ReposDeclineInvitationResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeclineInvitationNotModified from json stream.
+func (s *ReposDeclineInvitationNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeclineInvitationResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeclineInvitationNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90373,17 +90373,17 @@ func (s *ReposDeclineInvitationResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteAccessRestrictionsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteAccessRestrictionsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteAccessRestrictionsResNoContent from json stream.
-func (s *ReposDeleteAccessRestrictionsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteAccessRestrictionsNoContent from json stream.
+func (s *ReposDeleteAccessRestrictionsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteAccessRestrictionsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteAccessRestrictionsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90400,17 +90400,17 @@ func (s *ReposDeleteAccessRestrictionsResNoContent) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteAdminBranchProtectionResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteAdminBranchProtectionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteAdminBranchProtectionResNoContent from json stream.
-func (s *ReposDeleteAdminBranchProtectionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteAdminBranchProtectionNoContent from json stream.
+func (s *ReposDeleteAdminBranchProtectionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteAdminBranchProtectionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteAdminBranchProtectionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90427,17 +90427,17 @@ func (s *ReposDeleteAdminBranchProtectionResNoContent) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteAnEnvironmentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteAnEnvironmentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteAnEnvironmentResNoContent from json stream.
-func (s *ReposDeleteAnEnvironmentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteAnEnvironmentNoContent from json stream.
+func (s *ReposDeleteAnEnvironmentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteAnEnvironmentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteAnEnvironmentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90460,17 +90460,17 @@ func (ReposDeleteApplicationJSONTemporaryRedirect) WriteJSON(j *json.Stream)    
 func (ReposDeleteApplicationJSONTemporaryRedirect) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteAutolinkResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteAutolinkNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteAutolinkResNoContent from json stream.
-func (s *ReposDeleteAutolinkResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteAutolinkNoContent from json stream.
+func (s *ReposDeleteAutolinkNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteAutolinkResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteAutolinkNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90487,17 +90487,17 @@ func (s *ReposDeleteAutolinkResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteBranchProtectionResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteBranchProtectionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteBranchProtectionResNoContent from json stream.
-func (s *ReposDeleteBranchProtectionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteBranchProtectionNoContent from json stream.
+func (s *ReposDeleteBranchProtectionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteBranchProtectionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteBranchProtectionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90514,17 +90514,17 @@ func (s *ReposDeleteBranchProtectionResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteCommitCommentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteCommitCommentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteCommitCommentResNoContent from json stream.
-func (s *ReposDeleteCommitCommentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteCommitCommentNoContent from json stream.
+func (s *ReposDeleteCommitCommentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteCommitCommentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteCommitCommentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90541,17 +90541,17 @@ func (s *ReposDeleteCommitCommentResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteCommitSignatureProtectionResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteCommitSignatureProtectionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteCommitSignatureProtectionResNoContent from json stream.
-func (s *ReposDeleteCommitSignatureProtectionResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteCommitSignatureProtectionNoContent from json stream.
+func (s *ReposDeleteCommitSignatureProtectionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteCommitSignatureProtectionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteCommitSignatureProtectionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90568,17 +90568,17 @@ func (s *ReposDeleteCommitSignatureProtectionResNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteDeployKeyResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteDeployKeyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteDeployKeyResNoContent from json stream.
-func (s *ReposDeleteDeployKeyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteDeployKeyNoContent from json stream.
+func (s *ReposDeleteDeployKeyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteDeployKeyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteDeployKeyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90595,17 +90595,17 @@ func (s *ReposDeleteDeployKeyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteDeploymentResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteDeploymentNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteDeploymentResNoContent from json stream.
-func (s *ReposDeleteDeploymentResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteDeploymentNoContent from json stream.
+func (s *ReposDeleteDeploymentNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteDeploymentResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteDeploymentNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -90846,193 +90846,7 @@ func (s *ReposDeleteFileReqCommitter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteInvitationResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeleteInvitationResNoContent from json stream.
-func (s *ReposDeleteInvitationResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteInvitationResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeletePagesSiteResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeletePagesSiteResNoContent from json stream.
-func (s *ReposDeletePagesSiteResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeletePagesSiteResUnsupportedMediaType) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("documentation_url")
-	j.WriteString(s.DocumentationURL)
-	more.More()
-	j.WriteObjectField("message")
-	j.WriteString(s.Message)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeletePagesSiteResUnsupportedMediaType from json stream.
-func (s *ReposDeletePagesSiteResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteResUnsupportedMediaType to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeletePullRequestReviewProtectionResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeletePullRequestReviewProtectionResNoContent from json stream.
-func (s *ReposDeletePullRequestReviewProtectionResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeletePullRequestReviewProtectionResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeleteReleaseAssetResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeleteReleaseAssetResNoContent from json stream.
-func (s *ReposDeleteReleaseAssetResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseAssetResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeleteReleaseResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeleteReleaseResNoContent from json stream.
-func (s *ReposDeleteReleaseResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposDeleteResForbidden) WriteJSON(j *json.Stream) {
+func (s ReposDeleteForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -91049,10 +90863,10 @@ func (s ReposDeleteResForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteResForbidden from json stream.
-func (s *ReposDeleteResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteForbidden from json stream.
+func (s *ReposDeleteForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91093,17 +90907,17 @@ func (s *ReposDeleteResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteInvitationNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteResNoContent from json stream.
-func (s *ReposDeleteResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteInvitationNoContent from json stream.
+func (s *ReposDeleteInvitationNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteInvitationNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91120,17 +90934,17 @@ func (s *ReposDeleteResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteWebhookResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDeleteWebhookResNoContent from json stream.
-func (s *ReposDeleteWebhookResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteNoContent from json stream.
+func (s *ReposDeleteNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteWebhookResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91147,17 +90961,17 @@ func (s *ReposDeleteWebhookResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDisableAutomatedSecurityFixesResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeletePagesSiteNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDisableAutomatedSecurityFixesResNoContent from json stream.
-func (s *ReposDisableAutomatedSecurityFixesResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeletePagesSiteNoContent from json stream.
+func (s *ReposDeletePagesSiteNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDisableAutomatedSecurityFixesResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91174,17 +90988,68 @@ func (s *ReposDisableAutomatedSecurityFixesResNoContent) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDisableLfsForRepoResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeletePagesSiteUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposDeletePagesSiteUnsupportedMediaType from json stream.
+func (s *ReposDeletePagesSiteUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeletePullRequestReviewProtectionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDisableLfsForRepoResNoContent from json stream.
-func (s *ReposDisableLfsForRepoResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeletePullRequestReviewProtectionNoContent from json stream.
+func (s *ReposDeletePullRequestReviewProtectionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDisableLfsForRepoResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeletePullRequestReviewProtectionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91201,17 +91066,17 @@ func (s *ReposDisableLfsForRepoResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDisableVulnerabilityAlertsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDeleteReleaseAssetNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDisableVulnerabilityAlertsResNoContent from json stream.
-func (s *ReposDisableVulnerabilityAlertsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteReleaseAssetNoContent from json stream.
+func (s *ReposDeleteReleaseAssetNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDisableVulnerabilityAlertsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseAssetNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91228,17 +91093,17 @@ func (s *ReposDisableVulnerabilityAlertsResNoContent) ReadJSON(i *json.Iter) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDownloadTarballArchiveResFound) WriteJSON(j *json.Stream) {
+func (s ReposDeleteReleaseNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDownloadTarballArchiveResFound from json stream.
-func (s *ReposDownloadTarballArchiveResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteReleaseNoContent from json stream.
+func (s *ReposDeleteReleaseNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDownloadTarballArchiveResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91255,17 +91120,17 @@ func (s *ReposDownloadTarballArchiveResFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDownloadZipballArchiveResFound) WriteJSON(j *json.Stream) {
+func (s ReposDeleteWebhookNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposDownloadZipballArchiveResFound from json stream.
-func (s *ReposDownloadZipballArchiveResFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDeleteWebhookNoContent from json stream.
+func (s *ReposDeleteWebhookNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDownloadZipballArchiveResFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDeleteWebhookNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91282,17 +91147,17 @@ func (s *ReposDownloadZipballArchiveResFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposEnableAutomatedSecurityFixesResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDisableAutomatedSecurityFixesNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposEnableAutomatedSecurityFixesResNoContent from json stream.
-func (s *ReposEnableAutomatedSecurityFixesResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDisableAutomatedSecurityFixesNoContent from json stream.
+func (s *ReposDisableAutomatedSecurityFixesNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposEnableAutomatedSecurityFixesResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDisableAutomatedSecurityFixesNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91309,17 +91174,17 @@ func (s *ReposEnableAutomatedSecurityFixesResNoContent) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposEnableLfsForRepoResAccepted) WriteJSON(j *json.Stream) {
+func (s ReposDisableLfsForRepoNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposEnableLfsForRepoResAccepted from json stream.
-func (s *ReposEnableLfsForRepoResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDisableLfsForRepoNoContent from json stream.
+func (s *ReposDisableLfsForRepoNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposEnableLfsForRepoResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDisableLfsForRepoNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91336,17 +91201,17 @@ func (s *ReposEnableLfsForRepoResAccepted) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposEnableLfsForRepoResForbidden) WriteJSON(j *json.Stream) {
+func (s ReposDisableVulnerabilityAlertsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposEnableLfsForRepoResForbidden from json stream.
-func (s *ReposEnableLfsForRepoResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDisableVulnerabilityAlertsNoContent from json stream.
+func (s *ReposDisableVulnerabilityAlertsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposEnableLfsForRepoResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDisableVulnerabilityAlertsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91363,17 +91228,152 @@ func (s *ReposEnableLfsForRepoResForbidden) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposEnableVulnerabilityAlertsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposDownloadTarballArchiveFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposEnableVulnerabilityAlertsResNoContent from json stream.
-func (s *ReposEnableVulnerabilityAlertsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposDownloadTarballArchiveFound from json stream.
+func (s *ReposDownloadTarballArchiveFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposEnableVulnerabilityAlertsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposDownloadTarballArchiveFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDownloadZipballArchiveFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposDownloadZipballArchiveFound from json stream.
+func (s *ReposDownloadZipballArchiveFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposDownloadZipballArchiveFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableAutomatedSecurityFixesNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposEnableAutomatedSecurityFixesNoContent from json stream.
+func (s *ReposEnableAutomatedSecurityFixesNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposEnableAutomatedSecurityFixesNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableLfsForRepoAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposEnableLfsForRepoAccepted from json stream.
+func (s *ReposEnableLfsForRepoAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposEnableLfsForRepoAccepted to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableLfsForRepoForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposEnableLfsForRepoForbidden from json stream.
+func (s *ReposEnableLfsForRepoForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposEnableLfsForRepoForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableVulnerabilityAlertsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposEnableVulnerabilityAlertsNoContent from json stream.
+func (s *ReposEnableVulnerabilityAlertsNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposEnableVulnerabilityAlertsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91393,7 +91393,7 @@ func (ReposGetAllStatusCheckContextsOKApplicationJSON) WriteJSON(j *json.Stream)
 func (ReposGetAllStatusCheckContextsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetAllTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposGetAllTopicsUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -91406,10 +91406,10 @@ func (s ReposGetAllTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetAllTopicsResUnsupportedMediaType from json stream.
-func (s *ReposGetAllTopicsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetAllTopicsUnsupportedMediaType from json stream.
+func (s *ReposGetAllTopicsUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetAllTopicsResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetAllTopicsUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91464,7 +91464,7 @@ func (ReposGetBranchApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (ReposGetBranchApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetBranchResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposGetBranchUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -91477,10 +91477,10 @@ func (s ReposGetBranchResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetBranchResUnsupportedMediaType from json stream.
-func (s *ReposGetBranchResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetBranchUnsupportedMediaType from json stream.
+func (s *ReposGetBranchUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetBranchResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetBranchUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91528,21 +91528,18 @@ func (s *ReposGetClonesPer) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (ReposGetCodeFrequencyStatsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (ReposGetCodeFrequencyStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s ReposGetCodeFrequencyStatsResAccepted) WriteJSON(j *json.Stream) {
+func (s ReposGetCodeFrequencyStatsAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetCodeFrequencyStatsResAccepted from json stream.
-func (s *ReposGetCodeFrequencyStatsResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetCodeFrequencyStatsAccepted from json stream.
+func (s *ReposGetCodeFrequencyStatsAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetCodeFrequencyStatsResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetCodeFrequencyStatsAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91559,17 +91556,74 @@ func (s *ReposGetCodeFrequencyStatsResAccepted) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetCodeFrequencyStatsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposGetCodeFrequencyStatsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetCodeFrequencyStatsResNoContent from json stream.
-func (s *ReposGetCodeFrequencyStatsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetCodeFrequencyStatsNoContent from json stream.
+func (s *ReposGetCodeFrequencyStatsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetCodeFrequencyStatsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetCodeFrequencyStatsNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (ReposGetCodeFrequencyStatsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (ReposGetCodeFrequencyStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ReposGetCommitActivityStatsAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposGetCommitActivityStatsAccepted from json stream.
+func (s *ReposGetCommitActivityStatsAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposGetCommitActivityStatsAccepted to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposGetCommitActivityStatsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposGetCommitActivityStatsNoContent from json stream.
+func (s *ReposGetCommitActivityStatsNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposGetCommitActivityStatsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91589,17 +91643,17 @@ func (ReposGetCommitActivityStatsOKApplicationJSON) WriteJSON(j *json.Stream)   
 func (ReposGetCommitActivityStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetCommitActivityStatsResAccepted) WriteJSON(j *json.Stream) {
+func (s ReposGetContributorsStatsAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetCommitActivityStatsResAccepted from json stream.
-func (s *ReposGetCommitActivityStatsResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetContributorsStatsAccepted from json stream.
+func (s *ReposGetContributorsStatsAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetCommitActivityStatsResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetContributorsStatsAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91616,17 +91670,17 @@ func (s *ReposGetCommitActivityStatsResAccepted) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetCommitActivityStatsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposGetContributorsStatsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetCommitActivityStatsResNoContent from json stream.
-func (s *ReposGetCommitActivityStatsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetContributorsStatsNoContent from json stream.
+func (s *ReposGetContributorsStatsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetCommitActivityStatsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetContributorsStatsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91646,61 +91700,7 @@ func (ReposGetContributorsStatsOKApplicationJSON) WriteJSON(j *json.Stream)    {
 func (ReposGetContributorsStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetContributorsStatsResAccepted) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposGetContributorsStatsResAccepted from json stream.
-func (s *ReposGetContributorsStatsResAccepted) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetContributorsStatsResAccepted to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposGetContributorsStatsResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposGetContributorsStatsResNoContent from json stream.
-func (s *ReposGetContributorsStatsResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetContributorsStatsResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposGetDeploymentStatusResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposGetDeploymentStatusUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -91713,10 +91713,10 @@ func (s ReposGetDeploymentStatusResUnsupportedMediaType) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetDeploymentStatusResUnsupportedMediaType from json stream.
-func (s *ReposGetDeploymentStatusResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetDeploymentStatusUnsupportedMediaType from json stream.
+func (s *ReposGetDeploymentStatusUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetDeploymentStatusResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetDeploymentStatusUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91751,17 +91751,17 @@ func (s *ReposGetDeploymentStatusResUnsupportedMediaType) ReadJSON(i *json.Iter)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetPagesHealthCheckResBadRequest) WriteJSON(j *json.Stream) {
+func (s ReposGetPagesHealthCheckBadRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetPagesHealthCheckResBadRequest from json stream.
-func (s *ReposGetPagesHealthCheckResBadRequest) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetPagesHealthCheckBadRequest from json stream.
+func (s *ReposGetPagesHealthCheckBadRequest) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckResBadRequest to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckBadRequest to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91778,17 +91778,44 @@ func (s *ReposGetPagesHealthCheckResBadRequest) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetPagesHealthCheckResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s ReposGetPagesHealthCheckUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetPagesHealthCheckResUnprocessableEntity from json stream.
-func (s *ReposGetPagesHealthCheckResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetPagesHealthCheckUnprocessableEntity from json stream.
+func (s *ReposGetPagesHealthCheckUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckUnprocessableEntity to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposGetPunchCardStatsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposGetPunchCardStatsNoContent from json stream.
+func (s *ReposGetPunchCardStatsNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposGetPunchCardStatsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91808,17 +91835,17 @@ func (ReposGetPunchCardStatsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReposGetPunchCardStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetPunchCardStatsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposGetReleaseAssetFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetPunchCardStatsResNoContent from json stream.
-func (s *ReposGetPunchCardStatsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetReleaseAssetFound from json stream.
+func (s *ReposGetReleaseAssetFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetPunchCardStatsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetReleaseAssetFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91835,34 +91862,7 @@ func (s *ReposGetPunchCardStatsResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposGetReleaseAssetResFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposGetReleaseAssetResFound from json stream.
-func (s *ReposGetReleaseAssetResFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetReleaseAssetResFound to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposGetReleaseAssetResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposGetReleaseAssetUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -91875,10 +91875,10 @@ func (s ReposGetReleaseAssetResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposGetReleaseAssetResUnsupportedMediaType from json stream.
-func (s *ReposGetReleaseAssetResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposGetReleaseAssetUnsupportedMediaType from json stream.
+func (s *ReposGetReleaseAssetUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetReleaseAssetResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposGetReleaseAssetUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -91986,21 +91986,18 @@ func (ReposListContributorsApplicationJSONForbidden) ReadJSON(i *json.Iter) erro
 func (ReposListContributorsApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (ReposListContributorsApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-func (ReposListContributorsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (ReposListContributorsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s ReposListContributorsResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposListContributorsNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposListContributorsResNoContent from json stream.
-func (s *ReposListContributorsResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposListContributorsNoContent from json stream.
+func (s *ReposListContributorsNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposListContributorsResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposListContributorsNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92015,6 +92012,9 @@ func (s *ReposListContributorsResNoContent) ReadJSON(i *json.Iter) error {
 	}
 	return i.Error
 }
+
+func (ReposListContributorsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (ReposListContributorsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (ReposListDeploymentStatusesOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReposListDeploymentStatusesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
@@ -92034,17 +92034,17 @@ func (s *ReposListForAuthenticatedUserDirection) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposListForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ReposListForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposListForAuthenticatedUserResNotModified from json stream.
-func (s *ReposListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposListForAuthenticatedUserNotModified from json stream.
+func (s *ReposListForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92219,23 +92219,18 @@ func (ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) ReadJ
 	return nil
 }
 
-func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s ReposListInvitationsForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s ReposListInvitationsForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposListInvitationsForAuthenticatedUserResNotModified from json stream.
-func (s *ReposListInvitationsForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposListInvitationsForAuthenticatedUserNotModified from json stream.
+func (s *ReposListInvitationsForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92251,18 +92246,23 @@ func (s *ReposListInvitationsForAuthenticatedUserResNotModified) ReadJSON(i *jso
 	return i.Error
 }
 
+func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
-func (s ReposListPublicResNotModified) WriteJSON(j *json.Stream) {
+func (s ReposListPublicNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposListPublicResNotModified from json stream.
-func (s *ReposListPublicResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposListPublicNotModified from json stream.
+func (s *ReposListPublicNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposListPublicResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposListPublicNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92283,6 +92283,87 @@ func (ReposListReleasesOKApplicationJSON) ReadJSON(i *json.Iter) error { return 
 
 func (ReposListWebhooksOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReposListWebhooksOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeConflict from json stream.
+func (s *ReposMergeConflict) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeConflict to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeNoContent from json stream.
+func (s *ReposMergeNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeNotFound from json stream.
+func (s *ReposMergeNotFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeNotFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeReq) WriteJSON(j *json.Stream) {
@@ -92353,71 +92434,17 @@ func (s *ReposMergeReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposMergeResConflict) WriteJSON(j *json.Stream) {
+func (s ReposMergeUpstreamConflict) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposMergeResConflict from json stream.
-func (s *ReposMergeResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposMergeUpstreamConflict from json stream.
+func (s *ReposMergeUpstreamConflict) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposMergeResConflict to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposMergeResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposMergeResNoContent from json stream.
-func (s *ReposMergeResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposMergeResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposMergeResNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposMergeResNotFound from json stream.
-func (s *ReposMergeResNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposMergeResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamConflict to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92473,17 +92500,17 @@ func (s *ReposMergeUpstreamReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposMergeUpstreamResConflict) WriteJSON(j *json.Stream) {
+func (s ReposMergeUpstreamUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposMergeUpstreamResConflict from json stream.
-func (s *ReposMergeUpstreamResConflict) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposMergeUpstreamUnprocessableEntity from json stream.
+func (s *ReposMergeUpstreamUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamResConflict to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamUnprocessableEntity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92500,17 +92527,17 @@ func (s *ReposMergeUpstreamResConflict) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposMergeUpstreamResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s ReposPingWebhookNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposMergeUpstreamResUnprocessableEntity from json stream.
-func (s *ReposMergeUpstreamResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposPingWebhookNoContent from json stream.
+func (s *ReposPingWebhookNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposPingWebhookNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92527,17 +92554,17 @@ func (s *ReposMergeUpstreamResUnprocessableEntity) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposPingWebhookResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposRedeliverWebhookDeliveryAccepted) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposPingWebhookResNoContent from json stream.
-func (s *ReposPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposRedeliverWebhookDeliveryAccepted from json stream.
+func (s *ReposRedeliverWebhookDeliveryAccepted) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposPingWebhookResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposRedeliverWebhookDeliveryAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92554,17 +92581,17 @@ func (s *ReposPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposRedeliverWebhookDeliveryResAccepted) WriteJSON(j *json.Stream) {
+func (s ReposRemoveCollaboratorNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposRedeliverWebhookDeliveryResAccepted from json stream.
-func (s *ReposRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposRemoveCollaboratorNoContent from json stream.
+func (s *ReposRemoveCollaboratorNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposRedeliverWebhookDeliveryResAccepted to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposRemoveCollaboratorNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92581,44 +92608,17 @@ func (s *ReposRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposRemoveCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposRemoveStatusCheckProtectionNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposRemoveCollaboratorResNoContent from json stream.
-func (s *ReposRemoveCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposRemoveStatusCheckProtectionNoContent from json stream.
+func (s *ReposRemoveStatusCheckProtectionNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposRemoveCollaboratorResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposRemoveStatusCheckProtectionResNoContent) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposRemoveStatusCheckProtectionResNoContent from json stream.
-func (s *ReposRemoveStatusCheckProtectionResNoContent) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposRemoveStatusCheckProtectionResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposRemoveStatusCheckProtectionNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92736,7 +92736,7 @@ func (s *ReposReplaceAllTopicsReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposReplaceAllTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s ReposReplaceAllTopicsUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -92749,10 +92749,10 @@ func (s ReposReplaceAllTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposReplaceAllTopicsResUnsupportedMediaType from json stream.
-func (s *ReposReplaceAllTopicsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposReplaceAllTopicsUnsupportedMediaType from json stream.
+func (s *ReposReplaceAllTopicsUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposReplaceAllTopicsResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposReplaceAllTopicsUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -92787,17 +92787,17 @@ func (s *ReposReplaceAllTopicsResUnsupportedMediaType) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposTestPushWebhookResNoContent) WriteJSON(j *json.Stream) {
+func (s ReposTestPushWebhookNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ReposTestPushWebhookResNoContent from json stream.
-func (s *ReposTestPushWebhookResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ReposTestPushWebhookNoContent from json stream.
+func (s *ReposTestPushWebhookNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposTestPushWebhookResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ReposTestPushWebhookNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -99692,17 +99692,17 @@ func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) WriteJSON(j *json.Stream
 func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimDeleteUserFromOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s ScimDeleteUserFromOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ScimDeleteUserFromOrgResNoContent from json stream.
-func (s *ScimDeleteUserFromOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ScimDeleteUserFromOrgNoContent from json stream.
+func (s *ScimDeleteUserFromOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ScimDeleteUserFromOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode ScimDeleteUserFromOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -99719,17 +99719,17 @@ func (s *ScimDeleteUserFromOrgResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimDeleteUserFromOrgResNotModified) WriteJSON(j *json.Stream) {
+func (s ScimDeleteUserFromOrgNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ScimDeleteUserFromOrgResNotModified from json stream.
-func (s *ScimDeleteUserFromOrgResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ScimDeleteUserFromOrgNotModified from json stream.
+func (s *ScimDeleteUserFromOrgNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ScimDeleteUserFromOrgResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode ScimDeleteUserFromOrgNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102581,31 +102581,17 @@ func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCodeOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchCodeOrder from json stream.
-func (s *SearchCodeOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCodeOrder to nil`)
-	}
-	*s = SearchCodeOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchCodeResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchCodeNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchCodeResNotModified from json stream.
-func (s *SearchCodeResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchCodeNotModified from json stream.
+func (s *SearchCodeNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCodeResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchCodeNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102622,7 +102608,7 @@ func (s *SearchCodeResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCodeResOK) WriteJSON(j *json.Stream) {
+func (s SearchCodeOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -102645,10 +102631,10 @@ func (s SearchCodeResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchCodeResOK from json stream.
-func (s *SearchCodeResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchCodeOK from json stream.
+func (s *SearchCodeOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCodeResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchCodeOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102710,6 +102696,20 @@ func (s *SearchCodeResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SearchCodeOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchCodeOrder from json stream.
+func (s *SearchCodeOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchCodeOrder to nil`)
+	}
+	*s = SearchCodeOrder(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SearchCodeSort) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -102724,31 +102724,17 @@ func (s *SearchCodeSort) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCommitsOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchCommitsOrder from json stream.
-func (s *SearchCommitsOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCommitsOrder to nil`)
-	}
-	*s = SearchCommitsOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchCommitsResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchCommitsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchCommitsResNotModified from json stream.
-func (s *SearchCommitsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchCommitsNotModified from json stream.
+func (s *SearchCommitsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCommitsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchCommitsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102765,7 +102751,7 @@ func (s *SearchCommitsResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCommitsResOK) WriteJSON(j *json.Stream) {
+func (s SearchCommitsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -102788,10 +102774,10 @@ func (s SearchCommitsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchCommitsResOK from json stream.
-func (s *SearchCommitsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchCommitsOK from json stream.
+func (s *SearchCommitsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCommitsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchCommitsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102853,7 +102839,35 @@ func (s *SearchCommitsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCommitsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s SearchCommitsOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchCommitsOrder from json stream.
+func (s *SearchCommitsOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchCommitsOrder to nil`)
+	}
+	*s = SearchCommitsOrder(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchCommitsSort) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchCommitsSort from json stream.
+func (s *SearchCommitsSort) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchCommitsSort to nil`)
+	}
+	*s = SearchCommitsSort(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchCommitsUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -102866,10 +102880,10 @@ func (s SearchCommitsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchCommitsResUnsupportedMediaType from json stream.
-func (s *SearchCommitsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchCommitsUnsupportedMediaType from json stream.
+func (s *SearchCommitsUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCommitsResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchCommitsUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102904,45 +102918,17 @@ func (s *SearchCommitsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCommitsSort) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchCommitsSort from json stream.
-func (s *SearchCommitsSort) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCommitsSort to nil`)
-	}
-	*s = SearchCommitsSort(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchIssuesAndPullRequestsOrder from json stream.
-func (s *SearchIssuesAndPullRequestsOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
-	}
-	*s = SearchIssuesAndPullRequestsOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchIssuesAndPullRequestsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchIssuesAndPullRequestsResNotModified from json stream.
-func (s *SearchIssuesAndPullRequestsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchIssuesAndPullRequestsNotModified from json stream.
+func (s *SearchIssuesAndPullRequestsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -102959,7 +102945,7 @@ func (s *SearchIssuesAndPullRequestsResNotModified) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsResOK) WriteJSON(j *json.Stream) {
+func (s SearchIssuesAndPullRequestsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -102982,10 +102968,10 @@ func (s SearchIssuesAndPullRequestsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchIssuesAndPullRequestsResOK from json stream.
-func (s *SearchIssuesAndPullRequestsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchIssuesAndPullRequestsOK from json stream.
+func (s *SearchIssuesAndPullRequestsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103047,6 +103033,20 @@ func (s *SearchIssuesAndPullRequestsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SearchIssuesAndPullRequestsOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchIssuesAndPullRequestsOrder from json stream.
+func (s *SearchIssuesAndPullRequestsOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
+	}
+	*s = SearchIssuesAndPullRequestsOrder(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SearchIssuesAndPullRequestsSort) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -103061,31 +103061,17 @@ func (s *SearchIssuesAndPullRequestsSort) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchLabelsOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchLabelsOrder from json stream.
-func (s *SearchLabelsOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchLabelsOrder to nil`)
-	}
-	*s = SearchLabelsOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchLabelsResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchLabelsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchLabelsResNotModified from json stream.
-func (s *SearchLabelsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchLabelsNotModified from json stream.
+func (s *SearchLabelsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchLabelsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchLabelsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103102,7 +103088,7 @@ func (s *SearchLabelsResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchLabelsResOK) WriteJSON(j *json.Stream) {
+func (s SearchLabelsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103125,10 +103111,10 @@ func (s SearchLabelsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchLabelsResOK from json stream.
-func (s *SearchLabelsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchLabelsOK from json stream.
+func (s *SearchLabelsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchLabelsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchLabelsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103190,6 +103176,20 @@ func (s *SearchLabelsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SearchLabelsOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchLabelsOrder from json stream.
+func (s *SearchLabelsOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchLabelsOrder to nil`)
+	}
+	*s = SearchLabelsOrder(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SearchLabelsSort) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -103204,31 +103204,17 @@ func (s *SearchLabelsSort) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchReposOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchReposOrder from json stream.
-func (s *SearchReposOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchReposOrder to nil`)
-	}
-	*s = SearchReposOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchReposResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchReposNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchReposResNotModified from json stream.
-func (s *SearchReposResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchReposNotModified from json stream.
+func (s *SearchReposNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchReposResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchReposNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103245,7 +103231,7 @@ func (s *SearchReposResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchReposResOK) WriteJSON(j *json.Stream) {
+func (s SearchReposOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103268,10 +103254,10 @@ func (s SearchReposResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchReposResOK from json stream.
-func (s *SearchReposResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchReposOK from json stream.
+func (s *SearchReposOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchReposResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchReposOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103329,6 +103315,20 @@ func (s *SearchReposResOK) ReadJSON(i *json.Iter) error {
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchReposOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchReposOrder from json stream.
+func (s *SearchReposOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchReposOrder to nil`)
+	}
+	*s = SearchReposOrder(i.Str())
 	return i.Error
 }
 
@@ -103565,17 +103565,17 @@ func (s *SearchResultTextMatchesItemMatchesItem) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchTopicsResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchTopicsNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchTopicsResNotModified from json stream.
-func (s *SearchTopicsResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchTopicsNotModified from json stream.
+func (s *SearchTopicsNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchTopicsResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchTopicsNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103592,7 +103592,7 @@ func (s *SearchTopicsResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchTopicsResOK) WriteJSON(j *json.Stream) {
+func (s SearchTopicsOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103615,10 +103615,10 @@ func (s SearchTopicsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchTopicsResOK from json stream.
-func (s *SearchTopicsResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchTopicsOK from json stream.
+func (s *SearchTopicsOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchTopicsResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchTopicsOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103680,7 +103680,7 @@ func (s *SearchTopicsResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s SearchTopicsUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103693,10 +103693,10 @@ func (s SearchTopicsResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchTopicsResUnsupportedMediaType from json stream.
-func (s *SearchTopicsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchTopicsUnsupportedMediaType from json stream.
+func (s *SearchTopicsUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchTopicsResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchTopicsUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103731,31 +103731,17 @@ func (s *SearchTopicsResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchUsersOrder) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads SearchUsersOrder from json stream.
-func (s *SearchUsersOrder) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchUsersOrder to nil`)
-	}
-	*s = SearchUsersOrder(i.Str())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchUsersResNotModified) WriteJSON(j *json.Stream) {
+func (s SearchUsersNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchUsersResNotModified from json stream.
-func (s *SearchUsersResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchUsersNotModified from json stream.
+func (s *SearchUsersNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchUsersResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchUsersNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103772,7 +103758,7 @@ func (s *SearchUsersResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchUsersResOK) WriteJSON(j *json.Stream) {
+func (s SearchUsersOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103795,10 +103781,10 @@ func (s SearchUsersResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchUsersResOK from json stream.
-func (s *SearchUsersResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchUsersOK from json stream.
+func (s *SearchUsersOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchUsersResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchUsersOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -103856,6 +103842,20 @@ func (s *SearchUsersResOK) ReadJSON(i *json.Iter) error {
 	if retErr != nil {
 		return retErr
 	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchUsersOrder) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SearchUsersOrder from json stream.
+func (s *SearchUsersOrder) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchUsersOrder to nil`)
+	}
+	*s = SearchUsersOrder(i.Str())
 	return i.Error
 }
 
@@ -104116,17 +104116,17 @@ func (s *SecretScanningAlertState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningGetAlertResNotFound) WriteJSON(j *json.Stream) {
+func (s SecretScanningGetAlertNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningGetAlertResNotFound from json stream.
-func (s *SecretScanningGetAlertResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningGetAlertNotFound from json stream.
+func (s *SecretScanningGetAlertNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningGetAlertResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningGetAlertNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104143,7 +104143,7 @@ func (s *SecretScanningGetAlertResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningGetAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SecretScanningGetAlertServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -104165,10 +104165,10 @@ func (s SecretScanningGetAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningGetAlertResServiceUnavailable from json stream.
-func (s *SecretScanningGetAlertResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningGetAlertServiceUnavailable from json stream.
+func (s *SecretScanningGetAlertServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningGetAlertResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningGetAlertServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104224,7 +104224,7 @@ func (SecretScanningListAlertsForOrgOKApplicationJSON) WriteJSON(j *json.Stream)
 func (SecretScanningListAlertsForOrgOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningListAlertsForOrgResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SecretScanningListAlertsForOrgServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -104246,10 +104246,10 @@ func (s SecretScanningListAlertsForOrgResServiceUnavailable) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningListAlertsForOrgResServiceUnavailable from json stream.
-func (s *SecretScanningListAlertsForOrgResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningListAlertsForOrgServiceUnavailable from json stream.
+func (s *SecretScanningListAlertsForOrgServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForOrgResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForOrgServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104315,21 +104315,18 @@ func (s *SecretScanningListAlertsForOrgState) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-func (SecretScanningListAlertsForRepoOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (SecretScanningListAlertsForRepoOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningListAlertsForRepoResNotFound) WriteJSON(j *json.Stream) {
+func (s SecretScanningListAlertsForRepoNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningListAlertsForRepoResNotFound from json stream.
-func (s *SecretScanningListAlertsForRepoResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningListAlertsForRepoNotFound from json stream.
+func (s *SecretScanningListAlertsForRepoNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104345,8 +104342,11 @@ func (s *SecretScanningListAlertsForRepoResNotFound) ReadJSON(i *json.Iter) erro
 	return i.Error
 }
 
+func (SecretScanningListAlertsForRepoOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (SecretScanningListAlertsForRepoOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningListAlertsForRepoResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SecretScanningListAlertsForRepoServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -104368,10 +104368,10 @@ func (s SecretScanningListAlertsForRepoResServiceUnavailable) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningListAlertsForRepoResServiceUnavailable from json stream.
-func (s *SecretScanningListAlertsForRepoResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningListAlertsForRepoServiceUnavailable from json stream.
+func (s *SecretScanningListAlertsForRepoServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104438,6 +104438,33 @@ func (s *SecretScanningListAlertsForRepoState) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SecretScanningUpdateAlertNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SecretScanningUpdateAlertNotFound from json stream.
+func (s *SecretScanningUpdateAlertNotFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertNotFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -104496,34 +104523,7 @@ func (s *SecretScanningUpdateAlertReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningUpdateAlertResNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SecretScanningUpdateAlertResNotFound from json stream.
-func (s *SecretScanningUpdateAlertResNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertResNotFound to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SecretScanningUpdateAlertResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SecretScanningUpdateAlertServiceUnavailable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -104545,10 +104545,10 @@ func (s SecretScanningUpdateAlertResServiceUnavailable) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningUpdateAlertResServiceUnavailable from json stream.
-func (s *SecretScanningUpdateAlertResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningUpdateAlertServiceUnavailable from json stream.
+func (s *SecretScanningUpdateAlertServiceUnavailable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertServiceUnavailable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -104601,17 +104601,17 @@ func (s *SecretScanningUpdateAlertResServiceUnavailable) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningUpdateAlertResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s SecretScanningUpdateAlertUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SecretScanningUpdateAlertResUnprocessableEntity from json stream.
-func (s *SecretScanningUpdateAlertResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SecretScanningUpdateAlertUnprocessableEntity from json stream.
+func (s *SecretScanningUpdateAlertUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertUnprocessableEntity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109162,17 +109162,17 @@ func (s *TeamSimple) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddMemberLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsAddMemberLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddMemberLegacyResNoContent from json stream.
-func (s *TeamsAddMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddMemberLegacyNoContent from json stream.
+func (s *TeamsAddMemberLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109189,17 +109189,17 @@ func (s *TeamsAddMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddMemberLegacyResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsAddMemberLegacyNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddMemberLegacyResNotFound from json stream.
-func (s *TeamsAddMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddMemberLegacyNotFound from json stream.
+func (s *TeamsAddMemberLegacyNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109216,17 +109216,44 @@ func (s *TeamsAddMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddMemberLegacyResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s TeamsAddMemberLegacyUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddMemberLegacyResUnprocessableEntity from json stream.
-func (s *TeamsAddMemberLegacyResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddMemberLegacyUnprocessableEntity from json stream.
+func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyUnprocessableEntity to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgForbidden from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109301,17 +109328,17 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgResForbidden) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgResForbidden from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109328,17 +109355,17 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgResForbidden) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyForbidden from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109413,17 +109440,17 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyResForbidden) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyResForbidden from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109440,17 +109467,78 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyResForbidden) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.DocumentationURL.Set {
+		more.More()
+		j.WriteObjectField("documentation_url")
+		s.DocumentationURL.WriteJSON(j)
+	}
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgForbidden from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL.Reset()
+				if err := s.DocumentationURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgNoContent from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyResUnprocessableEntity to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109525,7 +109613,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgResForbidden) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -109542,10 +109630,10 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgResForbidden) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgResForbidden from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyForbidden from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109586,17 +109674,17 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgResForbidden) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgResNoContent from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyNoContent from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109671,78 +109759,17 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyResForbidden) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyResForbidden from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyResForbidden) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyResForbidden to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyResNoContent from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgNoContent from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109817,17 +109844,17 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgResNoContent from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyNoContent from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109902,17 +109929,17 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyResNoContent from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForProjectInOrgNotFound from json stream.
+func (s *TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectInOrgNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109929,17 +109956,17 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyResNoContent) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForProjectInOrgResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsCheckPermissionsForProjectInOrgResNotFound from json stream.
-func (s *TeamsCheckPermissionsForProjectInOrgResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForProjectLegacyNotFound from json stream.
+func (s *TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectInOrgResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectLegacyNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109956,17 +109983,17 @@ func (s *TeamsCheckPermissionsForProjectInOrgResNotFound) ReadJSON(i *json.Iter)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForProjectLegacyResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsCheckPermissionsForProjectLegacyResNotFound from json stream.
-func (s *TeamsCheckPermissionsForProjectLegacyResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForRepoInOrgNoContent from json stream.
+func (s *TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectLegacyResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -109983,17 +110010,17 @@ func (s *TeamsCheckPermissionsForProjectLegacyResNotFound) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForRepoInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsCheckPermissionsForRepoInOrgResNoContent from json stream.
-func (s *TeamsCheckPermissionsForRepoInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForRepoInOrgNotFound from json stream.
+func (s *TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110010,17 +110037,17 @@ func (s *TeamsCheckPermissionsForRepoInOrgResNoContent) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForRepoInOrgResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsCheckPermissionsForRepoInOrgResNotFound from json stream.
-func (s *TeamsCheckPermissionsForRepoInOrgResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForRepoLegacyNoContent from json stream.
+func (s *TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110037,44 +110064,17 @@ func (s *TeamsCheckPermissionsForRepoInOrgResNotFound) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForRepoLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsCheckPermissionsForRepoLegacyResNoContent from json stream.
-func (s *TeamsCheckPermissionsForRepoLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsCheckPermissionsForRepoLegacyNotFound from json stream.
+func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsCheckPermissionsForRepoLegacyResNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads TeamsCheckPermissionsForRepoLegacyResNotFound from json stream.
-func (s *TeamsCheckPermissionsForRepoLegacyResNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110838,17 +110838,17 @@ func (s *TeamsCreateReqPrivacy) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteDiscussionCommentInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteDiscussionCommentInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteDiscussionCommentInOrgResNoContent from json stream.
-func (s *TeamsDeleteDiscussionCommentInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteDiscussionCommentInOrgNoContent from json stream.
+func (s *TeamsDeleteDiscussionCommentInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110865,17 +110865,17 @@ func (s *TeamsDeleteDiscussionCommentInOrgResNoContent) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteDiscussionCommentLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteDiscussionCommentLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteDiscussionCommentLegacyResNoContent from json stream.
-func (s *TeamsDeleteDiscussionCommentLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteDiscussionCommentLegacyNoContent from json stream.
+func (s *TeamsDeleteDiscussionCommentLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110892,17 +110892,17 @@ func (s *TeamsDeleteDiscussionCommentLegacyResNoContent) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteDiscussionInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteDiscussionInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteDiscussionInOrgResNoContent from json stream.
-func (s *TeamsDeleteDiscussionInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteDiscussionInOrgNoContent from json stream.
+func (s *TeamsDeleteDiscussionInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110919,17 +110919,17 @@ func (s *TeamsDeleteDiscussionInOrgResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteDiscussionLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteDiscussionLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteDiscussionLegacyResNoContent from json stream.
-func (s *TeamsDeleteDiscussionLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteDiscussionLegacyNoContent from json stream.
+func (s *TeamsDeleteDiscussionLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110946,17 +110946,17 @@ func (s *TeamsDeleteDiscussionLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteInOrgResNoContent from json stream.
-func (s *TeamsDeleteInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteInOrgNoContent from json stream.
+func (s *TeamsDeleteInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -110973,17 +110973,17 @@ func (s *TeamsDeleteInOrgResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsDeleteLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsDeleteLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsDeleteLegacyResNoContent from json stream.
-func (s *TeamsDeleteLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsDeleteLegacyNoContent from json stream.
+func (s *TeamsDeleteLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsDeleteLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsDeleteLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111000,17 +111000,17 @@ func (s *TeamsDeleteLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsGetMemberLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsGetMemberLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsGetMemberLegacyResNoContent from json stream.
-func (s *TeamsGetMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsGetMemberLegacyNoContent from json stream.
+func (s *TeamsGetMemberLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111027,17 +111027,17 @@ func (s *TeamsGetMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsGetMemberLegacyResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsGetMemberLegacyNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsGetMemberLegacyResNotFound from json stream.
-func (s *TeamsGetMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsGetMemberLegacyNotFound from json stream.
+func (s *TeamsGetMemberLegacyNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111054,17 +111054,17 @@ func (s *TeamsGetMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsGetMembershipForUserInOrgResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsGetMembershipForUserInOrgNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsGetMembershipForUserInOrgResNotFound from json stream.
-func (s *TeamsGetMembershipForUserInOrgResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsGetMembershipForUserInOrgNotFound from json stream.
+func (s *TeamsGetMembershipForUserInOrgNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsGetMembershipForUserInOrgResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsGetMembershipForUserInOrgNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111142,21 +111142,18 @@ func (TeamsListForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.It
 func (TeamsListForAuthenticatedUserApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (TeamsListForAuthenticatedUserApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-func (TeamsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (TeamsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s TeamsListForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s TeamsListForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsListForAuthenticatedUserResNotModified from json stream.
-func (s *TeamsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsListForAuthenticatedUserNotModified from json stream.
+func (s *TeamsListForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsListForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsListForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111171,6 +111168,9 @@ func (s *TeamsListForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) err
 	}
 	return i.Error
 }
+
+func (TeamsListForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (TeamsListForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (TeamsListIdpGroupsForLegacyApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (TeamsListIdpGroupsForLegacyApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
@@ -111219,17 +111219,17 @@ func (TeamsListReposLegacyOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (TeamsListReposLegacyOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMemberLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMemberLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMemberLegacyResNoContent from json stream.
-func (s *TeamsRemoveMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMemberLegacyNoContent from json stream.
+func (s *TeamsRemoveMemberLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111246,17 +111246,17 @@ func (s *TeamsRemoveMemberLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMemberLegacyResNotFound) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMemberLegacyNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMemberLegacyResNotFound from json stream.
-func (s *TeamsRemoveMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMemberLegacyNotFound from json stream.
+func (s *TeamsRemoveMemberLegacyNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111273,17 +111273,17 @@ func (s *TeamsRemoveMemberLegacyResNotFound) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMembershipForUserInOrgResForbidden) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMembershipForUserInOrgResForbidden from json stream.
-func (s *TeamsRemoveMembershipForUserInOrgResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMembershipForUserInOrgForbidden from json stream.
+func (s *TeamsRemoveMembershipForUserInOrgForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111300,17 +111300,17 @@ func (s *TeamsRemoveMembershipForUserInOrgResForbidden) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMembershipForUserInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMembershipForUserInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMembershipForUserInOrgResNoContent from json stream.
-func (s *TeamsRemoveMembershipForUserInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMembershipForUserInOrgNoContent from json stream.
+func (s *TeamsRemoveMembershipForUserInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111327,17 +111327,17 @@ func (s *TeamsRemoveMembershipForUserInOrgResNoContent) ReadJSON(i *json.Iter) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMembershipForUserLegacyResForbidden) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMembershipForUserLegacyResForbidden from json stream.
-func (s *TeamsRemoveMembershipForUserLegacyResForbidden) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMembershipForUserLegacyForbidden from json stream.
+func (s *TeamsRemoveMembershipForUserLegacyForbidden) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyResForbidden to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyForbidden to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111354,17 +111354,17 @@ func (s *TeamsRemoveMembershipForUserLegacyResForbidden) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveMembershipForUserLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveMembershipForUserLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveMembershipForUserLegacyResNoContent from json stream.
-func (s *TeamsRemoveMembershipForUserLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveMembershipForUserLegacyNoContent from json stream.
+func (s *TeamsRemoveMembershipForUserLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111381,17 +111381,17 @@ func (s *TeamsRemoveMembershipForUserLegacyResNoContent) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveProjectInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveProjectInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveProjectInOrgResNoContent from json stream.
-func (s *TeamsRemoveProjectInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveProjectInOrgNoContent from json stream.
+func (s *TeamsRemoveProjectInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111408,17 +111408,17 @@ func (s *TeamsRemoveProjectInOrgResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveProjectLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveProjectLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveProjectLegacyResNoContent from json stream.
-func (s *TeamsRemoveProjectLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveProjectLegacyNoContent from json stream.
+func (s *TeamsRemoveProjectLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111435,7 +111435,7 @@ func (s *TeamsRemoveProjectLegacyResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveProjectLegacyResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveProjectLegacyUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -111448,10 +111448,10 @@ func (s TeamsRemoveProjectLegacyResUnsupportedMediaType) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveProjectLegacyResUnsupportedMediaType from json stream.
-func (s *TeamsRemoveProjectLegacyResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveProjectLegacyUnsupportedMediaType from json stream.
+func (s *TeamsRemoveProjectLegacyUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectLegacyResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectLegacyUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111486,17 +111486,17 @@ func (s *TeamsRemoveProjectLegacyResUnsupportedMediaType) ReadJSON(i *json.Iter)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveRepoInOrgResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveRepoInOrgNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveRepoInOrgResNoContent from json stream.
-func (s *TeamsRemoveRepoInOrgResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveRepoInOrgNoContent from json stream.
+func (s *TeamsRemoveRepoInOrgNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoInOrgResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoInOrgNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -111513,17 +111513,17 @@ func (s *TeamsRemoveRepoInOrgResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsRemoveRepoLegacyResNoContent) WriteJSON(j *json.Stream) {
+func (s TeamsRemoveRepoLegacyNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads TeamsRemoveRepoLegacyResNoContent from json stream.
-func (s *TeamsRemoveRepoLegacyResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads TeamsRemoveRepoLegacyNoContent from json stream.
+func (s *TeamsRemoveRepoLegacyNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoLegacyResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoLegacyNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113722,17 +113722,17 @@ func (s *UserSearchResultItem) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersBlockResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersBlockNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersBlockResNoContent from json stream.
-func (s *UsersBlockResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersBlockNoContent from json stream.
+func (s *UsersBlockNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersBlockResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersBlockNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113749,17 +113749,17 @@ func (s *UsersBlockResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersBlockResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersBlockNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersBlockResNotModified from json stream.
-func (s *UsersBlockResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersBlockNotModified from json stream.
+func (s *UsersBlockNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersBlockResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersBlockNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113785,17 +113785,17 @@ func (UsersCheckBlockedApplicationJSONUnauthorized) WriteJSON(j *json.Stream)   
 func (UsersCheckBlockedApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckBlockedResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersCheckBlockedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckBlockedResNoContent from json stream.
-func (s *UsersCheckBlockedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckBlockedNoContent from json stream.
+func (s *UsersCheckBlockedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckBlockedResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckBlockedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113812,17 +113812,17 @@ func (s *UsersCheckBlockedResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckBlockedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersCheckBlockedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckBlockedResNotModified from json stream.
-func (s *UsersCheckBlockedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckBlockedNotModified from json stream.
+func (s *UsersCheckBlockedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckBlockedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckBlockedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113839,17 +113839,17 @@ func (s *UsersCheckBlockedResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckFollowingForUserResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersCheckFollowingForUserNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckFollowingForUserResNoContent from json stream.
-func (s *UsersCheckFollowingForUserResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckFollowingForUserNoContent from json stream.
+func (s *UsersCheckFollowingForUserNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113866,17 +113866,17 @@ func (s *UsersCheckFollowingForUserResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckFollowingForUserResNotFound) WriteJSON(j *json.Stream) {
+func (s UsersCheckFollowingForUserNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckFollowingForUserResNotFound from json stream.
-func (s *UsersCheckFollowingForUserResNotFound) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckFollowingForUserNotFound from json stream.
+func (s *UsersCheckFollowingForUserNotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserResNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserNotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113909,17 +113909,17 @@ func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckPersonIsFollowedByAuthenticatedResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedResNoContent from json stream.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedNoContent from json stream.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -113936,17 +113936,44 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedResNoContent) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCheckPersonIsFollowedByAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersCheckPersonIsFollowedByAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedResNotModified from json stream.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedNotModified from json stream.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersCreateGpgKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersCreateGpgKeyForAuthenticatedNotModified from json stream.
+func (s *UsersCreateGpgKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114002,17 +114029,17 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersCreatePublicSSHKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCreateGpgKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersCreateGpgKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedNotModified from json stream.
+func (s *UsersCreatePublicSSHKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114085,17 +114112,17 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) ReadJSON(i *json.Iter) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedNoContent from json stream.
+func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114112,44 +114139,17 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedResNotModified) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersDeleteGpgKeyForAuthenticatedResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersDeleteGpgKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedResNoContent from json stream.
-func (s *UsersDeleteGpgKeyForAuthenticatedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedNotModified from json stream.
+func (s *UsersDeleteGpgKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedResNoContent to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s UsersDeleteGpgKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersDeleteGpgKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114181,17 +114181,17 @@ func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersDeletePublicSSHKeyForAuthenticatedResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedResNoContent from json stream.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedNoContent from json stream.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114208,17 +114208,17 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedResNoContent) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersDeletePublicSSHKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersDeletePublicSSHKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedNotModified from json stream.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114244,17 +114244,17 @@ func (UsersFollowApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (UsersFollowApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersFollowResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersFollowNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersFollowResNoContent from json stream.
-func (s *UsersFollowResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersFollowNoContent from json stream.
+func (s *UsersFollowNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersFollowResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersFollowNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114271,17 +114271,17 @@ func (s *UsersFollowResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersFollowResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersFollowNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersFollowResNotModified from json stream.
-func (s *UsersFollowResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersFollowNotModified from json stream.
+func (s *UsersFollowNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersFollowResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersFollowNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114325,17 +114325,17 @@ func (UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersGetGpgKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersGetGpgKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersGetGpgKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersGetGpgKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersGetGpgKeyForAuthenticatedNotModified from json stream.
+func (s *UsersGetGpgKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114367,17 +114367,17 @@ func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersGetPublicSSHKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersGetPublicSSHKeyForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersGetPublicSSHKeyForAuthenticatedResNotModified from json stream.
-func (s *UsersGetPublicSSHKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersGetPublicSSHKeyForAuthenticatedNotModified from json stream.
+func (s *UsersGetPublicSSHKeyForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114408,21 +114408,18 @@ func (UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) ReadJSON(i *js
 	return nil
 }
 
-func (UsersListBlockedByAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (UsersListBlockedByAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListBlockedByAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListBlockedByAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListBlockedByAuthenticatedResNotModified from json stream.
-func (s *UsersListBlockedByAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListBlockedByAuthenticatedNotModified from json stream.
+func (s *UsersListBlockedByAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListBlockedByAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListBlockedByAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114438,8 +114435,11 @@ func (s *UsersListBlockedByAuthenticatedResNotModified) ReadJSON(i *json.Iter) e
 	return i.Error
 }
 
+func (UsersListBlockedByAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (UsersListBlockedByAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s UsersListBlockedByAuthenticatedResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+func (s UsersListBlockedByAuthenticatedUnsupportedMediaType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -114452,10 +114452,10 @@ func (s UsersListBlockedByAuthenticatedResUnsupportedMediaType) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListBlockedByAuthenticatedResUnsupportedMediaType from json stream.
-func (s *UsersListBlockedByAuthenticatedResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListBlockedByAuthenticatedUnsupportedMediaType from json stream.
+func (s *UsersListBlockedByAuthenticatedUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListBlockedByAuthenticatedResUnsupportedMediaType to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListBlockedByAuthenticatedUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114504,21 +114504,18 @@ func (UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) ReadJSON(i *js
 	return nil
 }
 
-func (UsersListEmailsForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (UsersListEmailsForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListEmailsForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListEmailsForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListEmailsForAuthenticatedResNotModified from json stream.
-func (s *UsersListEmailsForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListEmailsForAuthenticatedNotModified from json stream.
+func (s *UsersListEmailsForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListEmailsForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListEmailsForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114533,6 +114530,9 @@ func (s *UsersListEmailsForAuthenticatedResNotModified) ReadJSON(i *json.Iter) e
 	}
 	return i.Error
 }
+
+func (UsersListEmailsForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (UsersListEmailsForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (UsersListFollowedByAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (UsersListFollowedByAuthenticatedApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
@@ -114544,21 +114544,18 @@ func (UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) ReadJSON(i *j
 	return nil
 }
 
-func (UsersListFollowedByAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (UsersListFollowedByAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListFollowedByAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListFollowedByAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListFollowedByAuthenticatedResNotModified from json stream.
-func (s *UsersListFollowedByAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListFollowedByAuthenticatedNotModified from json stream.
+func (s *UsersListFollowedByAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListFollowedByAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListFollowedByAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114573,6 +114570,9 @@ func (s *UsersListFollowedByAuthenticatedResNotModified) ReadJSON(i *json.Iter) 
 	}
 	return i.Error
 }
+
+func (UsersListFollowedByAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (UsersListFollowedByAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 func (UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
@@ -114584,23 +114584,18 @@ func (UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) ReadJSO
 	return nil
 }
 
-func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListFollowersForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListFollowersForAuthenticatedUserNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListFollowersForAuthenticatedUserResNotModified from json stream.
-func (s *UsersListFollowersForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListFollowersForAuthenticatedUserNotModified from json stream.
+func (s *UsersListFollowersForAuthenticatedUserNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListFollowersForAuthenticatedUserResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListFollowersForAuthenticatedUserNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114614,6 +114609,11 @@ func (s *UsersListFollowersForAuthenticatedUserResNotModified) ReadJSON(i *json.
 		return retErr
 	}
 	return i.Error
+}
+
+func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
 }
 
 func (UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
@@ -114631,21 +114631,48 @@ func (UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) ReadJSON(i *j
 	return nil
 }
 
-func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
-func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListGpgKeysForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListGpgKeysForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListGpgKeysForAuthenticatedResNotModified from json stream.
-func (s *UsersListGpgKeysForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListGpgKeysForAuthenticatedNotModified from json stream.
+func (s *UsersListGpgKeysForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListGpgKeysForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListGpgKeysForAuthenticatedNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream)    {}
+func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s UsersListNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersListNotModified from json stream.
+func (s *UsersListNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersListNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114679,23 +114706,18 @@ func (UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) ReadJSON
 	return nil
 }
 
-func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListPublicEmailsForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListPublicEmailsForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListPublicEmailsForAuthenticatedResNotModified from json stream.
-func (s *UsersListPublicEmailsForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListPublicEmailsForAuthenticatedNotModified from json stream.
+func (s *UsersListPublicEmailsForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114709,6 +114731,11 @@ func (s *UsersListPublicEmailsForAuthenticatedResNotModified) ReadJSON(i *json.I
 		return retErr
 	}
 	return i.Error
+}
+
+func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
 }
 
 func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
@@ -114726,23 +114753,18 @@ func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) ReadJSO
 	return nil
 }
 
-func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream) {}
-func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
-func (s UsersListPublicSSHKeysForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersListPublicSSHKeysForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListPublicSSHKeysForAuthenticatedResNotModified from json stream.
-func (s *UsersListPublicSSHKeysForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersListPublicSSHKeysForAuthenticatedNotModified from json stream.
+func (s *UsersListPublicSSHKeysForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114758,18 +114780,23 @@ func (s *UsersListPublicSSHKeysForAuthenticatedResNotModified) ReadJSON(i *json.
 	return i.Error
 }
 
+func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) WriteJSON(j *json.Stream) {}
+func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) ReadJSON(i *json.Iter) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
-func (s UsersListResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersListResNotModified from json stream.
-func (s *UsersListResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified from json stream.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersListResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114840,33 +114867,6 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) ReadJSON(i
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified from json stream.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (UsersUnblockApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (UsersUnblockApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -114877,17 +114877,17 @@ func (UsersUnblockApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (UsersUnblockApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersUnblockResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersUnblockNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersUnblockResNoContent from json stream.
-func (s *UsersUnblockResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersUnblockNoContent from json stream.
+func (s *UsersUnblockNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersUnblockResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersUnblockNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114904,17 +114904,17 @@ func (s *UsersUnblockResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersUnblockResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersUnblockNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersUnblockResNotModified from json stream.
-func (s *UsersUnblockResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersUnblockNotModified from json stream.
+func (s *UsersUnblockNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersUnblockResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersUnblockNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114940,17 +114940,17 @@ func (UsersUnfollowApplicationJSONUnauthorized) WriteJSON(j *json.Stream)    {}
 func (UsersUnfollowApplicationJSONUnauthorized) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersUnfollowResNoContent) WriteJSON(j *json.Stream) {
+func (s UsersUnfollowNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersUnfollowResNoContent from json stream.
-func (s *UsersUnfollowResNoContent) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersUnfollowNoContent from json stream.
+func (s *UsersUnfollowNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersUnfollowResNoContent to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersUnfollowNoContent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -114967,17 +114967,44 @@ func (s *UsersUnfollowResNoContent) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersUnfollowResNotModified) WriteJSON(j *json.Stream) {
+func (s UsersUnfollowNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UsersUnfollowResNotModified from json stream.
-func (s *UsersUnfollowResNotModified) ReadJSON(i *json.Iter) error {
+// ReadJSON reads UsersUnfollowNotModified from json stream.
+func (s *UsersUnfollowNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersUnfollowResNotModified to nil`)
+		fmt.Errorf(`invalid: unable to decode UsersUnfollowNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersUpdateAuthenticatedNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersUpdateAuthenticatedNotModified from json stream.
+func (s *UsersUpdateAuthenticatedNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersUpdateAuthenticatedNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -115145,33 +115172,6 @@ func (s *UsersUpdateAuthenticatedReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s UsersUpdateAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads UsersUpdateAuthenticatedResNotModified from json stream.
-func (s *UsersUpdateAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersUpdateAuthenticatedResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
 		default:
 			i.Skip()
 			return true

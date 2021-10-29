@@ -216,6 +216,57 @@ func (s *Animation) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s AnswerCallbackQueryPostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	j.WriteBool(s.Result)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AnswerCallbackQueryPostOK from json stream.
+func (s *AnswerCallbackQueryPostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				s.Result = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s AnswerCallbackQueryPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -537,7 +588,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryPostResOK) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -550,10 +601,10 @@ func (s AnswerCallbackQueryPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerCallbackQueryPostResOK from json stream.
-func (s *AnswerCallbackQueryPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AnswerPreCheckoutQueryPostOK from json stream.
+func (s *AnswerPreCheckoutQueryPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -792,7 +843,7 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryPostResOK) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -805,10 +856,10 @@ func (s AnswerPreCheckoutQueryPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryPostResOK from json stream.
-func (s *AnswerPreCheckoutQueryPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads AnswerShippingQueryPostOK from json stream.
+func (s *AnswerShippingQueryPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1146,57 +1197,6 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) err
 		case "shipping_query_id":
 			if err := func() error {
 				s.ShippingQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryPostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	j.WriteBool(s.Result)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AnswerShippingQueryPostResOK from json stream.
-func (s *AnswerShippingQueryPostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -2279,7 +2279,7 @@ func (s *ChosenInlineResult) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ClosePostResOK) WriteJSON(j *json.Stream) {
+func (s ClosePostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2292,10 +2292,10 @@ func (s ClosePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ClosePostResOK from json stream.
-func (s *ClosePostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ClosePostOK from json stream.
+func (s *ClosePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ClosePostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode ClosePostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2432,6 +2432,57 @@ func (s *Contact) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s DeleteStickerFromSetPostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	j.WriteBool(s.Result)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads DeleteStickerFromSetPostOK from json stream.
+func (s *DeleteStickerFromSetPostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				s.Result = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s DeleteStickerFromSetPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -2549,7 +2600,7 @@ func (s *DeleteStickerFromSetPostReqMultipartFormData) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetPostResOK) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2562,10 +2613,10 @@ func (s DeleteStickerFromSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStickerFromSetPostResOK from json stream.
-func (s *DeleteStickerFromSetPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteWebhookPostOK from json stream.
+func (s *DeleteWebhookPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2714,57 +2765,6 @@ func (s *DeleteWebhookPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s DeleteWebhookPostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	j.WriteBool(s.Result)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads DeleteWebhookPostResOK from json stream.
-func (s *DeleteWebhookPostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3681,6 +3681,59 @@ func (s *GameHighScore) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s GetFilePostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	s.Result.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GetFilePostOK from json stream.
+func (s *GetFilePostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetFilePostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s GetFilePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -3798,7 +3851,7 @@ func (s *GetFilePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFilePostResOK) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3807,14 +3860,21 @@ func (s GetFilePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteBool(s.Ok)
 	more.More()
 	j.WriteObjectField("result")
-	s.Result.WriteJSON(j)
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Result {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFilePostResOK from json stream.
-func (s *GetFilePostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetGameHighScoresPostOK from json stream.
+func (s *GetGameHighScoresPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFilePostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3830,8 +3890,24 @@ func (s *GetFilePostResOK) ReadJSON(i *json.Iter) error {
 			return true
 		case "result":
 			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
+				s.Result = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem GameHighScore
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Result = append(s.Result, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
 				return i.Error
 			}(); err != nil {
@@ -4121,83 +4197,7 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iter) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresPostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range s.Result {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads GetGameHighScoresPostResOK from json stream.
-func (s *GetGameHighScoresPostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				s.Result = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem GameHighScore
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Result = append(s.Result, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s GetMePostResOK) WriteJSON(j *json.Stream) {
+func (s GetMePostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4210,10 +4210,10 @@ func (s GetMePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMePostResOK from json stream.
-func (s *GetMePostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetMePostOK from json stream.
+func (s *GetMePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetMePostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetMePostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4250,7 +4250,7 @@ func (s *GetMePostResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
+func (s GetMyCommandsPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4270,10 +4270,10 @@ func (s GetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMyCommandsPostResOK from json stream.
-func (s *GetMyCommandsPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetMyCommandsPostOK from json stream.
+func (s *GetMyCommandsPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetMyCommandsPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetMyCommandsPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4307,6 +4307,59 @@ func (s *GetMyCommandsPostResOK) ReadJSON(i *json.Iter) error {
 				})
 				if retErr != nil {
 					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetStickerSetPostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	s.Result.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GetStickerSetPostOK from json stream.
+func (s *GetStickerSetPostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetStickerSetPostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
 				}
 				return i.Error
 			}(); err != nil {
@@ -4443,7 +4496,7 @@ func (s *GetStickerSetPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetPostResOK) WriteJSON(j *json.Stream) {
+func (s GetUpdatesPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4452,14 +4505,21 @@ func (s GetStickerSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteBool(s.Ok)
 	more.More()
 	j.WriteObjectField("result")
-	s.Result.WriteJSON(j)
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Result {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStickerSetPostResOK from json stream.
-func (s *GetStickerSetPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetUpdatesPostOK from json stream.
+func (s *GetUpdatesPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStickerSetPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetUpdatesPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4475,8 +4535,24 @@ func (s *GetStickerSetPostResOK) ReadJSON(i *json.Iter) error {
 			return true
 		case "result":
 			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
+				s.Result = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem Update
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Result = append(s.Result, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
 				return i.Error
 			}(); err != nil {
@@ -4841,7 +4917,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesPostResOK) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4850,21 +4926,14 @@ func (s GetUpdatesPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteBool(s.Ok)
 	more.More()
 	j.WriteObjectField("result")
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range s.Result {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
+	s.Result.WriteJSON(j)
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUpdatesPostResOK from json stream.
-func (s *GetUpdatesPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetUserProfilePhotosPostOK from json stream.
+func (s *GetUserProfilePhotosPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetUpdatesPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4880,24 +4949,8 @@ func (s *GetUpdatesPostResOK) ReadJSON(i *json.Iter) error {
 			return true
 		case "result":
 			if err := func() error {
-				s.Result = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem Update
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Result = append(s.Result, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
 				}
 				return i.Error
 			}(); err != nil {
@@ -5136,7 +5189,7 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosPostResOK) WriteJSON(j *json.Stream) {
+func (s GetWebhookInfoPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5149,63 +5202,10 @@ func (s GetUserProfilePhotosPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUserProfilePhotosPostResOK from json stream.
-func (s *GetUserProfilePhotosPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetWebhookInfoPostOK from json stream.
+func (s *GetWebhookInfoPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s GetWebhookInfoPostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	s.Result.WriteJSON(j)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads GetWebhookInfoPostResOK from json stream.
-func (s *GetWebhookInfoPostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetWebhookInfoPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode GetWebhookInfoPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5841,7 +5841,7 @@ func (s *Location) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s LogOutPostResOK) WriteJSON(j *json.Stream) {
+func (s LogOutPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5854,10 +5854,10 @@ func (s LogOutPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LogOutPostResOK from json stream.
-func (s *LogOutPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads LogOutPostOK from json stream.
+func (s *LogOutPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LogOutPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode LogOutPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9125,6 +9125,59 @@ func (s *ResponseParameters) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SendGamePostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	s.Result.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SendGamePostOK from json stream.
+func (s *SendGamePostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendGamePostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SendGamePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -9482,7 +9535,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGamePostResOK) WriteJSON(j *json.Stream) {
+func (s SendInvoicePostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9495,10 +9548,10 @@ func (s SendGamePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendGamePostResOK from json stream.
-func (s *SendGamePostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SendInvoicePostOK from json stream.
+func (s *SendInvoicePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SendGamePostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SendInvoicePostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10795,59 +10848,6 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoicePostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	s.Result.WriteJSON(j)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SendInvoicePostResOK from json stream.
-func (s *SendInvoicePostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SendInvoicePostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SetGameScorePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -11256,6 +11256,57 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SetMyCommandsPostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	j.WriteBool(s.Result)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SetMyCommandsPostOK from json stream.
+func (s *SetMyCommandsPostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				s.Result = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SetMyCommandsPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -11448,7 +11499,7 @@ func (s *SetMyCommandsPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11461,10 +11512,10 @@ func (s SetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetMyCommandsPostResOK from json stream.
-func (s *SetMyCommandsPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SetStickerPositionInSetPostOK from json stream.
+func (s *SetStickerPositionInSetPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11652,7 +11703,7 @@ func (s *SetStickerPositionInSetPostReqMultipartFormData) ReadJSON(i *json.Iter)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetPostResOK) WriteJSON(j *json.Stream) {
+func (s SetWebhookPostOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11665,10 +11716,10 @@ func (s SetStickerPositionInSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetStickerPositionInSetPostResOK from json stream.
-func (s *SetStickerPositionInSetPostResOK) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SetWebhookPostOK from json stream.
+func (s *SetWebhookPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostResOK to nil`)
+		fmt.Errorf(`invalid: unable to decode SetWebhookPostOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11829,57 +11880,6 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iter) error {
 		case "url":
 			if err := func() error {
 				s.URL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SetWebhookPostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	j.WriteBool(s.Result)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SetWebhookPostResOK from json stream.
-func (s *SetWebhookPostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SetWebhookPostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -12812,6 +12812,59 @@ func (s *Update) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s UploadStickerFilePostOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	more.More()
+	j.WriteObjectField("result")
+	s.Result.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UploadStickerFilePostOK from json stream.
+func (s *UploadStickerFilePostOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UploadStickerFilePostOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s UploadStickerFilePostReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -12845,59 +12898,6 @@ func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iter) error {
 		case "user_id":
 			if err := func() error {
 				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s UploadStickerFilePostResOK) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	more.More()
-	j.WriteObjectField("result")
-	s.Result.WriteJSON(j)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads UploadStickerFilePostResOK from json stream.
-func (s *UploadStickerFilePostResOK) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UploadStickerFilePostResOK to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
 				return i.Error
 			}(); err != nil {
 				retErr = err

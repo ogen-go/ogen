@@ -257,7 +257,7 @@ func (s Game) Validate() error {
 	}
 	return nil
 }
-func (s GetGameHighScoresPostResOK) Validate() error {
+func (s GetGameHighScoresPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
@@ -276,7 +276,7 @@ func (s GetGameHighScoresPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s GetMyCommandsPostResOK) Validate() error {
+func (s GetMyCommandsPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
@@ -295,11 +295,46 @@ func (s GetMyCommandsPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s GetStickerSetPostResOK) Validate() error {
+func (s GetStickerSetPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Result.Validate(); err != nil {
 			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "result",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s GetUpdatesPostOK) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Result == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Result {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -361,28 +396,11 @@ func (s GetUpdatesPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s GetUpdatesPostResOK) Validate() error {
+func (s GetUserProfilePhotosPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Result == nil {
-			return fmt.Errorf("required, can't be nil")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Result {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
+		if err := s.Result.Validate(); err != nil {
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -436,24 +454,6 @@ func (s GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limit",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s GetUserProfilePhotosPostResOK) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := s.Result.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "result",
 			Error: err,
 		})
 	}
@@ -778,6 +778,24 @@ func (s PollAnswer) Validate() error {
 	}
 	return nil
 }
+func (s SendGamePostOK) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "result",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s SendGamePostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -826,7 +844,7 @@ func (s SendGamePostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s SendGamePostResOK) Validate() error {
+func (s SendInvoicePostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Result.Validate(); err != nil {
@@ -920,24 +938,6 @@ func (s SendInvoicePostReqMultipartFormData) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SendInvoicePostResOK) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := s.Result.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "result",
 			Error: err,
 		})
 	}

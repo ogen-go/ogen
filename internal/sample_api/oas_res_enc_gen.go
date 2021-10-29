@@ -75,7 +75,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 			return err
 		}
 		return nil
-	case *FoobarGetResNotFound:
+	case *FoobarGetNotFound:
 		w.WriteHeader(404)
 		return nil
 	default:
@@ -98,7 +98,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 			return err
 		}
 		return nil
-	case *FoobarPostResNotFound:
+	case *FoobarPostNotFound:
 		w.WriteHeader(404)
 		return nil
 	case *FoobarPostDefStatusCode:

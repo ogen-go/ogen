@@ -12611,7 +12611,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerResUnauthorized, err error) {
+func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogFileListHandler`,
 		trace.WithAttributes(otelogen.OperationID(`logFileListHandler`)),

@@ -206,16 +206,6 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
 	switch request := request.(type) {
-	case *AnswerShippingQueryPostReqMultipartFormData:
-		if verr := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
-		}
 	case *AnswerShippingQueryPostReqApplicationJSON:
 		if verr := func() error {
 			if err := request.Validate(); err != nil {
@@ -227,6 +217,16 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 			return
 		}
 	case *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *AnswerShippingQueryPostReqMultipartFormData:
 		if verr := func() error {
 			if err := request.Validate(); err != nil {
 				return err

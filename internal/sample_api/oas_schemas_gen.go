@@ -69,10 +69,10 @@ type Data struct {
 	ID          ID        `json:"id"`
 }
 
-// FoobarGetResNotFound is response for FoobarGet operation.
-type FoobarGetResNotFound struct{}
+// FoobarGetNotFound is response for FoobarGet operation.
+type FoobarGetNotFound struct{}
 
-func (*FoobarGetResNotFound) foobarGetRes() {}
+func (*FoobarGetNotFound) foobarGetRes() {}
 
 type FoobarPostDef struct {
 	Code    int64  `json:"code"`
@@ -87,10 +87,10 @@ type FoobarPostDefStatusCode struct {
 
 func (*FoobarPostDefStatusCode) foobarPostRes() {}
 
-// FoobarPostResNotFound is response for FoobarPost operation.
-type FoobarPostResNotFound struct{}
+// FoobarPostNotFound is response for FoobarPost operation.
+type FoobarPostNotFound struct{}
 
-func (*FoobarPostResNotFound) foobarPostRes() {}
+func (*FoobarPostNotFound) foobarPostRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
 type FoobarPutDef struct{}

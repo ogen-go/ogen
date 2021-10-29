@@ -122,7 +122,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -192,7 +192,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -262,7 +262,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateApiextensionsV1CustomResourceDefinitionResUnauthorized:
+	case *CreateApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -332,7 +332,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateApiregistrationV1APIServiceResUnauthorized:
+	case *CreateApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -402,7 +402,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAuthenticationV1TokenReviewResUnauthorized:
+	case *CreateAuthenticationV1TokenReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -472,7 +472,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -542,7 +542,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -612,7 +612,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateAuthorizationV1SubjectAccessReviewResUnauthorized:
+	case *CreateAuthorizationV1SubjectAccessReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -682,7 +682,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateCertificatesV1CertificateSigningRequestResUnauthorized:
+	case *CreateCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -752,7 +752,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateCoreV1NamespaceResUnauthorized:
+	case *CreateCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -822,7 +822,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.Respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateCoreV1NodeResUnauthorized:
+	case *CreateCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -892,7 +892,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateCoreV1PersistentVolumeResUnauthorized:
+	case *CreateCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -962,7 +962,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1032,7 +1032,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1102,7 +1102,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1172,7 +1172,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1242,7 +1242,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateInternalApiserverV1alpha1StorageVersionResUnauthorized:
+	case *CreateInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1312,7 +1312,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateNetworkingV1IngressClassResUnauthorized:
+	case *CreateNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1382,7 +1382,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateNodeV1RuntimeClassResUnauthorized:
+	case *CreateNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1452,7 +1452,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateNodeV1alpha1RuntimeClassResUnauthorized:
+	case *CreateNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1522,7 +1522,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateNodeV1beta1RuntimeClassResUnauthorized:
+	case *CreateNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1592,7 +1592,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreatePolicyV1beta1PodSecurityPolicyResUnauthorized:
+	case *CreatePolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1662,7 +1662,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateRbacAuthorizationV1ClusterRoleResUnauthorized:
+	case *CreateRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1732,7 +1732,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1802,7 +1802,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateSchedulingV1PriorityClassResUnauthorized:
+	case *CreateSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1872,7 +1872,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateStorageV1CSIDriverResUnauthorized:
+	case *CreateStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -1942,7 +1942,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateStorageV1CSINodeResUnauthorized:
+	case *CreateStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2012,7 +2012,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateStorageV1StorageClassResUnauthorized:
+	case *CreateStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2082,7 +2082,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *CreateStorageV1VolumeAttachmentResUnauthorized:
+	case *CreateStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2112,7 +2112,7 @@ func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized:
+	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2142,7 +2142,7 @@ func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized:
+	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2172,7 +2172,7 @@ func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized:
+	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2202,7 +2202,7 @@ func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteAp
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteApiregistrationV1CollectionAPIServiceResUnauthorized:
+	case *DeleteApiregistrationV1CollectionAPIServiceUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2232,7 +2232,7 @@ func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized:
+	case *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2262,7 +2262,7 @@ func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNod
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteCoreV1CollectionNodeResUnauthorized:
+	case *DeleteCoreV1CollectionNodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2292,7 +2292,7 @@ func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1C
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteCoreV1CollectionPersistentVolumeResUnauthorized:
+	case *DeleteCoreV1CollectionPersistentVolumeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2322,7 +2322,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2352,7 +2352,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2382,7 +2382,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized:
+	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2412,7 +2412,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized:
+	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2442,7 +2442,7 @@ func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized:
+	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2472,7 +2472,7 @@ func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetwo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteNetworkingV1CollectionIngressClassResUnauthorized:
+	case *DeleteNetworkingV1CollectionIngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2502,7 +2502,7 @@ func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1Colle
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteNodeV1CollectionRuntimeClassResUnauthorized:
+	case *DeleteNodeV1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2532,7 +2532,7 @@ func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized:
+	case *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2562,7 +2562,7 @@ func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized:
+	case *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2592,7 +2592,7 @@ func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response Delet
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized:
+	case *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2622,7 +2622,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response Delet
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2652,7 +2652,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2682,7 +2682,7 @@ func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSche
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteSchedulingV1CollectionPriorityClassResUnauthorized:
+	case *DeleteSchedulingV1CollectionPriorityClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2712,7 +2712,7 @@ func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1Co
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteStorageV1CollectionCSIDriverResUnauthorized:
+	case *DeleteStorageV1CollectionCSIDriverUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2742,7 +2742,7 @@ func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1Coll
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteStorageV1CollectionCSINodeResUnauthorized:
+	case *DeleteStorageV1CollectionCSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2772,7 +2772,7 @@ func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteStorageV1CollectionStorageClassResUnauthorized:
+	case *DeleteStorageV1CollectionStorageClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2802,7 +2802,7 @@ func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStor
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *DeleteStorageV1CollectionVolumeAttachmentResUnauthorized:
+	case *DeleteStorageV1CollectionVolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2832,7 +2832,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAPIVersionsResUnauthorized:
+	case *GetAPIVersionsUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2862,7 +2862,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAdmissionregistrationAPIGroupResUnauthorized:
+	case *GetAdmissionregistrationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2892,7 +2892,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAdmissionregistrationV1APIResourcesResUnauthorized:
+	case *GetAdmissionregistrationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2922,7 +2922,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetApiextensionsAPIGroupResUnauthorized:
+	case *GetApiextensionsAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2952,7 +2952,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetApiextensionsV1APIResourcesResUnauthorized:
+	case *GetApiextensionsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -2982,7 +2982,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetApiregistrationAPIGroupResUnauthorized:
+	case *GetApiregistrationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3012,7 +3012,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetApiregistrationV1APIResourcesResUnauthorized:
+	case *GetApiregistrationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3042,7 +3042,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAppsAPIGroupResUnauthorized:
+	case *GetAppsAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3072,7 +3072,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAppsV1APIResourcesResUnauthorized:
+	case *GetAppsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3102,7 +3102,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAuthenticationAPIGroupResUnauthorized:
+	case *GetAuthenticationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3132,7 +3132,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAuthenticationV1APIResourcesResUnauthorized:
+	case *GetAuthenticationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3162,7 +3162,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAuthorizationAPIGroupResUnauthorized:
+	case *GetAuthorizationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3192,7 +3192,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAuthorizationV1APIResourcesResUnauthorized:
+	case *GetAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3222,7 +3222,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAutoscalingAPIGroupResUnauthorized:
+	case *GetAutoscalingAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3252,7 +3252,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAutoscalingV1APIResourcesResUnauthorized:
+	case *GetAutoscalingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3282,7 +3282,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAutoscalingV2beta1APIResourcesResUnauthorized:
+	case *GetAutoscalingV2beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3312,7 +3312,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetAutoscalingV2beta2APIResourcesResUnauthorized:
+	case *GetAutoscalingV2beta2APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3342,7 +3342,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetBatchAPIGroupResUnauthorized:
+	case *GetBatchAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3372,7 +3372,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetBatchV1APIResourcesResUnauthorized:
+	case *GetBatchV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3402,7 +3402,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetBatchV1beta1APIResourcesResUnauthorized:
+	case *GetBatchV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3432,7 +3432,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCertificatesAPIGroupResUnauthorized:
+	case *GetCertificatesAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3462,7 +3462,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCertificatesV1APIResourcesResUnauthorized:
+	case *GetCertificatesV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3485,7 +3485,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 			return err
 		}
 		return nil
-	case *GetCodeVersionResUnauthorized:
+	case *GetCodeVersionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3515,7 +3515,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCoordinationAPIGroupResUnauthorized:
+	case *GetCoordinationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3545,7 +3545,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCoordinationV1APIResourcesResUnauthorized:
+	case *GetCoordinationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3575,7 +3575,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCoreAPIVersionsResUnauthorized:
+	case *GetCoreAPIVersionsUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3605,7 +3605,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetCoreV1APIResourcesResUnauthorized:
+	case *GetCoreV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3635,7 +3635,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetDiscoveryAPIGroupResUnauthorized:
+	case *GetDiscoveryAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3665,7 +3665,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetDiscoveryV1APIResourcesResUnauthorized:
+	case *GetDiscoveryV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3695,7 +3695,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetDiscoveryV1beta1APIResourcesResUnauthorized:
+	case *GetDiscoveryV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3725,7 +3725,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetEventsAPIGroupResUnauthorized:
+	case *GetEventsAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3755,7 +3755,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetEventsV1APIResourcesResUnauthorized:
+	case *GetEventsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3785,7 +3785,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetEventsV1beta1APIResourcesResUnauthorized:
+	case *GetEventsV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3815,7 +3815,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetFlowcontrolApiserverAPIGroupResUnauthorized:
+	case *GetFlowcontrolApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3845,7 +3845,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized:
+	case *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3875,7 +3875,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized:
+	case *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3905,7 +3905,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetInternalApiserverAPIGroupResUnauthorized:
+	case *GetInternalApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3935,7 +3935,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetInternalApiserverV1alpha1APIResourcesResUnauthorized:
+	case *GetInternalApiserverV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3965,7 +3965,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNetworkingAPIGroupResUnauthorized:
+	case *GetNetworkingAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -3995,7 +3995,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNetworkingV1APIResourcesResUnauthorized:
+	case *GetNetworkingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4025,7 +4025,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNodeAPIGroupResUnauthorized:
+	case *GetNodeAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4055,7 +4055,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNodeV1APIResourcesResUnauthorized:
+	case *GetNodeV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4085,7 +4085,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNodeV1alpha1APIResourcesResUnauthorized:
+	case *GetNodeV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4115,7 +4115,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetNodeV1beta1APIResourcesResUnauthorized:
+	case *GetNodeV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4145,7 +4145,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetPolicyAPIGroupResUnauthorized:
+	case *GetPolicyAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4175,7 +4175,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetPolicyV1APIResourcesResUnauthorized:
+	case *GetPolicyV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4205,7 +4205,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetPolicyV1beta1APIResourcesResUnauthorized:
+	case *GetPolicyV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4235,7 +4235,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetRbacAuthorizationAPIGroupResUnauthorized:
+	case *GetRbacAuthorizationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4265,7 +4265,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetRbacAuthorizationV1APIResourcesResUnauthorized:
+	case *GetRbacAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4295,7 +4295,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetSchedulingAPIGroupResUnauthorized:
+	case *GetSchedulingAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4325,7 +4325,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetSchedulingV1APIResourcesResUnauthorized:
+	case *GetSchedulingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4347,7 +4347,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 			return err
 		}
 		return nil
-	case *GetServiceAccountIssuerOpenIDConfigurationResUnauthorized:
+	case *GetServiceAccountIssuerOpenIDConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4361,7 +4361,7 @@ func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccoun
 		w.Header().Set("Content-Type", "application/jwk-set+json")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/jwk-set+json encoder not implemented")
-	case *GetServiceAccountIssuerOpenIDKeysetResUnauthorized:
+	case *GetServiceAccountIssuerOpenIDKeysetUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4391,7 +4391,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetStorageAPIGroupResUnauthorized:
+	case *GetStorageAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4421,7 +4421,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetStorageV1APIResourcesResUnauthorized:
+	case *GetStorageV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4451,7 +4451,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetStorageV1alpha1APIResourcesResUnauthorized:
+	case *GetStorageV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4481,7 +4481,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *GetStorageV1beta1APIResourcesResUnauthorized:
+	case *GetStorageV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4519,7 +4519,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized:
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4557,7 +4557,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized:
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4595,7 +4595,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListApiextensionsV1CustomResourceDefinitionResUnauthorized:
+	case *ListApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4633,7 +4633,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListApiregistrationV1APIServiceResUnauthorized:
+	case *ListApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4671,7 +4671,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized:
+	case *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4709,7 +4709,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAppsV1DaemonSetForAllNamespacesResUnauthorized:
+	case *ListAppsV1DaemonSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4747,7 +4747,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAppsV1DeploymentForAllNamespacesResUnauthorized:
+	case *ListAppsV1DeploymentForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4785,7 +4785,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAppsV1ReplicaSetForAllNamespacesResUnauthorized:
+	case *ListAppsV1ReplicaSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4823,7 +4823,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAppsV1StatefulSetForAllNamespacesResUnauthorized:
+	case *ListAppsV1StatefulSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4861,7 +4861,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized:
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4899,7 +4899,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized:
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4937,7 +4937,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized:
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -4975,7 +4975,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListBatchV1CronJobForAllNamespacesResUnauthorized:
+	case *ListBatchV1CronJobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5013,7 +5013,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListBatchV1JobForAllNamespacesResUnauthorized:
+	case *ListBatchV1JobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5051,7 +5051,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListBatchV1beta1CronJobForAllNamespacesResUnauthorized:
+	case *ListBatchV1beta1CronJobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5089,7 +5089,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCertificatesV1CertificateSigningRequestResUnauthorized:
+	case *ListCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5127,7 +5127,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoordinationV1LeaseForAllNamespacesResUnauthorized:
+	case *ListCoordinationV1LeaseForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5165,7 +5165,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ComponentStatusResUnauthorized:
+	case *ListCoreV1ComponentStatusUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5203,7 +5203,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ConfigMapForAllNamespacesResUnauthorized:
+	case *ListCoreV1ConfigMapForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5241,7 +5241,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1EndpointsForAllNamespacesResUnauthorized:
+	case *ListCoreV1EndpointsForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5279,7 +5279,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1EventForAllNamespacesResUnauthorized:
+	case *ListCoreV1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5317,7 +5317,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1LimitRangeForAllNamespacesResUnauthorized:
+	case *ListCoreV1LimitRangeForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5355,7 +5355,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1NamespaceResUnauthorized:
+	case *ListCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5393,7 +5393,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1NodeResUnauthorized:
+	case *ListCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5431,7 +5431,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1PersistentVolumeResUnauthorized:
+	case *ListCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5469,7 +5469,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized:
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5507,7 +5507,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1PodForAllNamespacesResUnauthorized:
+	case *ListCoreV1PodForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5545,7 +5545,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1PodTemplateForAllNamespacesResUnauthorized:
+	case *ListCoreV1PodTemplateForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5583,7 +5583,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized:
+	case *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5621,7 +5621,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized:
+	case *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5659,7 +5659,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1SecretForAllNamespacesResUnauthorized:
+	case *ListCoreV1SecretForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5697,7 +5697,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ServiceAccountForAllNamespacesResUnauthorized:
+	case *ListCoreV1ServiceAccountForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5735,7 +5735,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListCoreV1ServiceForAllNamespacesResUnauthorized:
+	case *ListCoreV1ServiceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5773,7 +5773,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized:
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5811,7 +5811,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized:
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5849,7 +5849,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListEventsV1EventForAllNamespacesResUnauthorized:
+	case *ListEventsV1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5887,7 +5887,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListEventsV1beta1EventForAllNamespacesResUnauthorized:
+	case *ListEventsV1beta1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5925,7 +5925,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized:
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -5963,7 +5963,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized:
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6001,7 +6001,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized:
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6039,7 +6039,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized:
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6077,7 +6077,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListInternalApiserverV1alpha1StorageVersionResUnauthorized:
+	case *ListInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6115,7 +6115,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNetworkingV1IngressClassResUnauthorized:
+	case *ListNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6153,7 +6153,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNetworkingV1IngressForAllNamespacesResUnauthorized:
+	case *ListNetworkingV1IngressForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6191,7 +6191,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized:
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6229,7 +6229,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNodeV1RuntimeClassResUnauthorized:
+	case *ListNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6267,7 +6267,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNodeV1alpha1RuntimeClassResUnauthorized:
+	case *ListNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6305,7 +6305,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListNodeV1beta1RuntimeClassResUnauthorized:
+	case *ListNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6343,7 +6343,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized:
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6381,7 +6381,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized:
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6419,7 +6419,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListPolicyV1beta1PodSecurityPolicyResUnauthorized:
+	case *ListPolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6457,7 +6457,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListRbacAuthorizationV1ClusterRoleResUnauthorized:
+	case *ListRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6495,7 +6495,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized:
+	case *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6533,7 +6533,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized:
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6571,7 +6571,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized:
+	case *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6609,7 +6609,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListSchedulingV1PriorityClassResUnauthorized:
+	case *ListSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6647,7 +6647,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1CSIDriverResUnauthorized:
+	case *ListStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6685,7 +6685,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1CSINodeResUnauthorized:
+	case *ListStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6723,7 +6723,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1StorageClassResUnauthorized:
+	case *ListStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6761,7 +6761,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1VolumeAttachmentResUnauthorized:
+	case *ListStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6799,7 +6799,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized:
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6837,7 +6837,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized:
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6845,7 +6845,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 	}
 }
 
-func encodeLogFileListHandlerResponse(response LogFileListHandlerResUnauthorized, w http.ResponseWriter, span trace.Span) error {
+func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	return nil
 }
@@ -6880,7 +6880,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized:
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6918,7 +6918,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized:
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6956,7 +6956,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized:
+	case *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -6994,7 +6994,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchApiregistrationV1APIServiceListResUnauthorized:
+	case *WatchApiregistrationV1APIServiceListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7032,7 +7032,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized:
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7070,7 +7070,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized:
+	case *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7108,7 +7108,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAppsV1DeploymentListForAllNamespacesResUnauthorized:
+	case *WatchAppsV1DeploymentListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7146,7 +7146,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized:
+	case *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7184,7 +7184,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized:
+	case *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7222,7 +7222,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized:
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7260,7 +7260,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized:
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7298,7 +7298,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized:
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7336,7 +7336,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchBatchV1CronJobListForAllNamespacesResUnauthorized:
+	case *WatchBatchV1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7374,7 +7374,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchBatchV1JobListForAllNamespacesResUnauthorized:
+	case *WatchBatchV1JobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7412,7 +7412,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized:
+	case *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7450,7 +7450,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCertificatesV1CertificateSigningRequestListResUnauthorized:
+	case *WatchCertificatesV1CertificateSigningRequestListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7488,7 +7488,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized:
+	case *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7526,7 +7526,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7564,7 +7564,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1EndpointsListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1EndpointsListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7602,7 +7602,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1EventListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7640,7 +7640,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7678,7 +7678,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1NamespaceListResUnauthorized:
+	case *WatchCoreV1NamespaceListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7716,7 +7716,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1NodeListResUnauthorized:
+	case *WatchCoreV1NodeListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7754,7 +7754,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7792,7 +7792,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1PersistentVolumeListResUnauthorized:
+	case *WatchCoreV1PersistentVolumeListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7830,7 +7830,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1PodListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1PodListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7868,7 +7868,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7906,7 +7906,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7944,7 +7944,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -7982,7 +7982,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1SecretListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1SecretListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8020,7 +8020,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8058,7 +8058,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchCoreV1ServiceListForAllNamespacesResUnauthorized:
+	case *WatchCoreV1ServiceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8096,7 +8096,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized:
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8134,7 +8134,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized:
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8172,7 +8172,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchEventsV1EventListForAllNamespacesResUnauthorized:
+	case *WatchEventsV1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8210,7 +8210,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchEventsV1beta1EventListForAllNamespacesResUnauthorized:
+	case *WatchEventsV1beta1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8248,7 +8248,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized:
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8286,7 +8286,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized:
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8324,7 +8324,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized:
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8362,7 +8362,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized:
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8400,7 +8400,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized:
+	case *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8438,7 +8438,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNetworkingV1IngressClassListResUnauthorized:
+	case *WatchNetworkingV1IngressClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8476,7 +8476,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNetworkingV1IngressListForAllNamespacesResUnauthorized:
+	case *WatchNetworkingV1IngressListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8514,7 +8514,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized:
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8552,7 +8552,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNodeV1RuntimeClassListResUnauthorized:
+	case *WatchNodeV1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8590,7 +8590,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNodeV1alpha1RuntimeClassListResUnauthorized:
+	case *WatchNodeV1alpha1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8628,7 +8628,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchNodeV1beta1RuntimeClassListResUnauthorized:
+	case *WatchNodeV1beta1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8666,7 +8666,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized:
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8704,7 +8704,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized:
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8742,7 +8742,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized:
+	case *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8780,7 +8780,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized:
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8818,7 +8818,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchRbacAuthorizationV1ClusterRoleListResUnauthorized:
+	case *WatchRbacAuthorizationV1ClusterRoleListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8856,7 +8856,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized:
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8894,7 +8894,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized:
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8932,7 +8932,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchSchedulingV1PriorityClassListResUnauthorized:
+	case *WatchSchedulingV1PriorityClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -8970,7 +8970,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1CSIDriverListResUnauthorized:
+	case *WatchStorageV1CSIDriverListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -9008,7 +9008,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1CSINodeListResUnauthorized:
+	case *WatchStorageV1CSINodeListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -9046,7 +9046,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1StorageClassListResUnauthorized:
+	case *WatchStorageV1StorageClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -9084,7 +9084,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1VolumeAttachmentListResUnauthorized:
+	case *WatchStorageV1VolumeAttachmentListUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -9122,7 +9122,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized:
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:
@@ -9160,7 +9160,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized:
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
 	default:

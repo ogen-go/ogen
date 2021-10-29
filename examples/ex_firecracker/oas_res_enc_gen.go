@@ -62,7 +62,7 @@ var (
 
 func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *CreateSnapshotResNoContent:
+	case *CreateSnapshotNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -98,7 +98,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 
 func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *CreateSyncActionResNoContent:
+	case *CreateSyncActionNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -325,7 +325,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 
 func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *LoadSnapshotResNoContent:
+	case *LoadSnapshotNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -361,7 +361,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 
 func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MmdsConfigPutResNoContent:
+	case *MmdsConfigPutNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -397,7 +397,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 
 func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MmdsGetResOK:
+	case *MmdsGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.GetStream(w)
@@ -443,7 +443,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 
 func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MmdsPatchResNoContent:
+	case *MmdsPatchNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -479,7 +479,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 
 func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MmdsPutResNoContent:
+	case *MmdsPutNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -515,7 +515,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 
 func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchBalloonResNoContent:
+	case *PatchBalloonNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -551,7 +551,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 
 func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchBalloonStatsIntervalResNoContent:
+	case *PatchBalloonStatsIntervalNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -587,7 +587,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 
 func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchGuestDriveByIDResNoContent:
+	case *PatchGuestDriveByIDNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -623,7 +623,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 
 func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchGuestNetworkInterfaceByIDResNoContent:
+	case *PatchGuestNetworkInterfaceByIDNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -659,7 +659,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 
 func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchMachineConfigurationResNoContent:
+	case *PatchMachineConfigurationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -695,7 +695,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 
 func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PatchVmResNoContent:
+	case *PatchVmNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -731,7 +731,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 
 func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutBalloonResNoContent:
+	case *PutBalloonNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -767,7 +767,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 
 func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutGuestBootSourceResNoContent:
+	case *PutGuestBootSourceNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -803,7 +803,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 
 func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutGuestDriveByIDResNoContent:
+	case *PutGuestDriveByIDNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -839,7 +839,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 
 func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutGuestNetworkInterfaceByIDResNoContent:
+	case *PutGuestNetworkInterfaceByIDNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -875,7 +875,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 
 func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutGuestVsockResNoContent:
+	case *PutGuestVsockNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -911,7 +911,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 
 func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutLoggerResNoContent:
+	case *PutLoggerNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -947,7 +947,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 
 func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutMachineConfigurationResNoContent:
+	case *PutMachineConfigurationNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:
@@ -983,7 +983,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 
 func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PutMetricsResNoContent:
+	case *PutMetricsNoContent:
 		w.WriteHeader(204)
 		return nil
 	case *Error:

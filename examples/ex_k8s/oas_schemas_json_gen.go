@@ -115,17 +115,17 @@ func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized from json stream.
-func (s *CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
+func (s *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -196,17 +196,17 @@ func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYaml
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized from json stream.
-func (s *CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -275,17 +275,17 @@ func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateApiextensionsV1CustomResourceDefinitionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateApiextensionsV1CustomResourceDefinitionResUnauthorized from json stream.
-func (s *CreateApiextensionsV1CustomResourceDefinitionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
+func (s *CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateApiextensionsV1CustomResourceDefinitionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -346,17 +346,17 @@ func (CreateApiregistrationV1APIServiceApplicationYamlOK) WriteJSON(j *json.Stre
 func (CreateApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateApiregistrationV1APIServiceResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateApiregistrationV1APIServiceResUnauthorized from json stream.
-func (s *CreateApiregistrationV1APIServiceResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateApiregistrationV1APIServiceUnauthorized from json stream.
+func (s *CreateApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateApiregistrationV1APIServiceResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateApiregistrationV1APIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -417,17 +417,17 @@ func (CreateAuthenticationV1TokenReviewApplicationYamlOK) WriteJSON(j *json.Stre
 func (CreateAuthenticationV1TokenReviewApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAuthenticationV1TokenReviewResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAuthenticationV1TokenReviewUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAuthenticationV1TokenReviewResUnauthorized from json stream.
-func (s *CreateAuthenticationV1TokenReviewResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAuthenticationV1TokenReviewUnauthorized from json stream.
+func (s *CreateAuthenticationV1TokenReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthenticationV1TokenReviewResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAuthenticationV1TokenReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -494,17 +494,17 @@ func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized from json stream.
-func (s *CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectAccessReviewResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -569,17 +569,17 @@ func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized from json stream.
-func (s *CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectRulesReviewResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -644,17 +644,17 @@ func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateAuthorizationV1SubjectAccessReviewResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateAuthorizationV1SubjectAccessReviewResUnauthorized from json stream.
-func (s *CreateAuthorizationV1SubjectAccessReviewResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateAuthorizationV1SubjectAccessReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SubjectAccessReviewResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SubjectAccessReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -723,17 +723,17 @@ func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateCertificatesV1CertificateSigningRequestResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateCertificatesV1CertificateSigningRequestResUnauthorized from json stream.
-func (s *CreateCertificatesV1CertificateSigningRequestResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateCertificatesV1CertificateSigningRequestUnauthorized from json stream.
+func (s *CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCertificatesV1CertificateSigningRequestResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateCertificatesV1CertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -783,17 +783,17 @@ func (CreateCoreV1NamespaceApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (CreateCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateCoreV1NamespaceResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateCoreV1NamespaceResUnauthorized from json stream.
-func (s *CreateCoreV1NamespaceResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateCoreV1NamespaceUnauthorized from json stream.
+func (s *CreateCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1NamespaceResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateCoreV1NamespaceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -841,17 +841,17 @@ func (CreateCoreV1NodeApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (CreateCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateCoreV1NodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateCoreV1NodeResUnauthorized from json stream.
-func (s *CreateCoreV1NodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateCoreV1NodeUnauthorized from json stream.
+func (s *CreateCoreV1NodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1NodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateCoreV1NodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -903,17 +903,17 @@ func (CreateCoreV1PersistentVolumeApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (CreateCoreV1PersistentVolumeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateCoreV1PersistentVolumeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateCoreV1PersistentVolumeResUnauthorized from json stream.
-func (s *CreateCoreV1PersistentVolumeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateCoreV1PersistentVolumeUnauthorized from json stream.
+func (s *CreateCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1PersistentVolumeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateCoreV1PersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -978,17 +978,17 @@ func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized from json stream.
-func (s *CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1059,17 +1059,17 @@ func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYaml
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized from json stream.
-func (s *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1134,17 +1134,17 @@ func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized from json stream.
-func (s *CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1215,17 +1215,17 @@ func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYaml
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized from json stream.
-func (s *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1294,17 +1294,17 @@ func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateInternalApiserverV1alpha1StorageVersionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateInternalApiserverV1alpha1StorageVersionResUnauthorized from json stream.
-func (s *CreateInternalApiserverV1alpha1StorageVersionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
+func (s *CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateInternalApiserverV1alpha1StorageVersionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1356,17 +1356,17 @@ func (CreateNetworkingV1IngressClassApplicationYamlOK) WriteJSON(j *json.Stream)
 func (CreateNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateNetworkingV1IngressClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateNetworkingV1IngressClassResUnauthorized from json stream.
-func (s *CreateNetworkingV1IngressClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateNetworkingV1IngressClassUnauthorized from json stream.
+func (s *CreateNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNetworkingV1IngressClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateNetworkingV1IngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1416,17 +1416,17 @@ func (CreateNodeV1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (CreateNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateNodeV1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateNodeV1RuntimeClassResUnauthorized from json stream.
-func (s *CreateNodeV1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateNodeV1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateNodeV1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1478,17 +1478,17 @@ func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)
 func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateNodeV1alpha1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateNodeV1alpha1RuntimeClassResUnauthorized from json stream.
-func (s *CreateNodeV1alpha1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateNodeV1alpha1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1alpha1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateNodeV1alpha1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1540,17 +1540,17 @@ func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateNodeV1beta1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateNodeV1beta1RuntimeClassResUnauthorized from json stream.
-func (s *CreateNodeV1beta1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateNodeV1beta1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1beta1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateNodeV1beta1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1611,17 +1611,17 @@ func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSON(j *json.S
 func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreatePolicyV1beta1PodSecurityPolicyResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreatePolicyV1beta1PodSecurityPolicyResUnauthorized from json stream.
-func (s *CreatePolicyV1beta1PodSecurityPolicyResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreatePolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
+func (s *CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreatePolicyV1beta1PodSecurityPolicyResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreatePolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1730,17 +1730,17 @@ func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized from json stream.
-func (s *CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
+func (s *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1757,17 +1757,17 @@ func (s *CreateRbacAuthorizationV1ClusterRoleBindingResUnauthorized) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateRbacAuthorizationV1ClusterRoleResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleResUnauthorized from json stream.
-func (s *CreateRbacAuthorizationV1ClusterRoleResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
+func (s *CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1823,17 +1823,17 @@ func (CreateSchedulingV1PriorityClassApplicationYamlOK) WriteJSON(j *json.Stream
 func (CreateSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateSchedulingV1PriorityClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateSchedulingV1PriorityClassResUnauthorized from json stream.
-func (s *CreateSchedulingV1PriorityClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateSchedulingV1PriorityClassUnauthorized from json stream.
+func (s *CreateSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateSchedulingV1PriorityClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateSchedulingV1PriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1883,17 +1883,17 @@ func (CreateStorageV1CSIDriverApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (CreateStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateStorageV1CSIDriverResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateStorageV1CSIDriverResUnauthorized from json stream.
-func (s *CreateStorageV1CSIDriverResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateStorageV1CSIDriverUnauthorized from json stream.
+func (s *CreateStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSIDriverResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1943,17 +1943,17 @@ func (CreateStorageV1CSINodeApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (CreateStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateStorageV1CSINodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateStorageV1CSINodeResUnauthorized from json stream.
-func (s *CreateStorageV1CSINodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateStorageV1CSINodeUnauthorized from json stream.
+func (s *CreateStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSINodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2004,17 +2004,17 @@ func (CreateStorageV1StorageClassApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (CreateStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateStorageV1StorageClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateStorageV1StorageClassResUnauthorized from json stream.
-func (s *CreateStorageV1StorageClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateStorageV1StorageClassUnauthorized from json stream.
+func (s *CreateStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1StorageClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateStorageV1StorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2070,17 +2070,17 @@ func (CreateStorageV1VolumeAttachmentApplicationYamlOK) WriteJSON(j *json.Stream
 func (CreateStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateStorageV1VolumeAttachmentResUnauthorized) WriteJSON(j *json.Stream) {
+func (s CreateStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateStorageV1VolumeAttachmentResUnauthorized from json stream.
-func (s *CreateStorageV1VolumeAttachmentResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads CreateStorageV1VolumeAttachmentUnauthorized from json stream.
+func (s *CreateStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1VolumeAttachmentResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode CreateStorageV1VolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2115,17 +2115,17 @@ func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplica
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized from json stream.
-func (s *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized from json stream.
+func (s *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2160,17 +2160,17 @@ func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationAppli
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized from json stream.
-func (s *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2205,17 +2205,17 @@ func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized from json stream.
-func (s *DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized from json stream.
+func (s *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteApiextensionsV1CollectionCustomResourceDefinitionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2248,17 +2248,17 @@ func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteApiregistrationV1CollectionAPIServiceResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteApiregistrationV1CollectionAPIServiceResUnauthorized from json stream.
-func (s *DeleteApiregistrationV1CollectionAPIServiceResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteApiregistrationV1CollectionAPIServiceUnauthorized from json stream.
+func (s *DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteApiregistrationV1CollectionAPIServiceResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteApiregistrationV1CollectionAPIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2293,17 +2293,17 @@ func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized from json stream.
-func (s *DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized from json stream.
+func (s *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCertificatesV1CollectionCertificateSigningRequestResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2331,17 +2331,17 @@ func (DeleteCoreV1CollectionNodeApplicationYamlOK) WriteJSON(j *json.Stream)    
 func (DeleteCoreV1CollectionNodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteCoreV1CollectionNodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteCoreV1CollectionNodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteCoreV1CollectionNodeResUnauthorized from json stream.
-func (s *DeleteCoreV1CollectionNodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteCoreV1CollectionNodeUnauthorized from json stream.
+func (s *DeleteCoreV1CollectionNodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionNodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionNodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2374,17 +2374,17 @@ func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteCoreV1CollectionPersistentVolumeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteCoreV1CollectionPersistentVolumeResUnauthorized from json stream.
-func (s *DeleteCoreV1CollectionPersistentVolumeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteCoreV1CollectionPersistentVolumeUnauthorized from json stream.
+func (s *DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionPersistentVolumeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionPersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2419,17 +2419,17 @@ func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized from json stream.
-func (s *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2464,17 +2464,17 @@ func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationAppli
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized from json stream.
-func (s *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2509,17 +2509,17 @@ func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized from json stream.
-func (s *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2554,17 +2554,17 @@ func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationAppli
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized from json stream.
-func (s *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2599,17 +2599,17 @@ func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized from json stream.
-func (s *DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized from json stream.
+func (s *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteInternalApiserverV1alpha1CollectionStorageVersionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2642,17 +2642,17 @@ func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteNetworkingV1CollectionIngressClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteNetworkingV1CollectionIngressClassResUnauthorized from json stream.
-func (s *DeleteNetworkingV1CollectionIngressClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteNetworkingV1CollectionIngressClassUnauthorized from json stream.
+func (s *DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNetworkingV1CollectionIngressClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteNetworkingV1CollectionIngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2681,17 +2681,17 @@ func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) WriteJSON(j *json.Str
 func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteNodeV1CollectionRuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteNodeV1CollectionRuntimeClassResUnauthorized from json stream.
-func (s *DeleteNodeV1CollectionRuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteNodeV1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1CollectionRuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteNodeV1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2724,17 +2724,17 @@ func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized from json stream.
-func (s *DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1alpha1CollectionRuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2767,17 +2767,17 @@ func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized from json stream.
-func (s *DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteNodeV1beta1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1beta1CollectionRuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteNodeV1beta1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2810,17 +2810,17 @@ func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized from json stream.
-func (s *DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized from json stream.
+func (s *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeletePolicyV1beta1CollectionPodSecurityPolicyResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2871,17 +2871,17 @@ func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized from json stream.
-func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized from json stream.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2898,17 +2898,17 @@ func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingResUnauthorized) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized from json stream.
-func (s *DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized from json stream.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2941,17 +2941,17 @@ func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteSchedulingV1CollectionPriorityClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteSchedulingV1CollectionPriorityClassResUnauthorized from json stream.
-func (s *DeleteSchedulingV1CollectionPriorityClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteSchedulingV1CollectionPriorityClassUnauthorized from json stream.
+func (s *DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteSchedulingV1CollectionPriorityClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteSchedulingV1CollectionPriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2980,17 +2980,17 @@ func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) WriteJSON(j *json.Str
 func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStorageV1CollectionCSIDriverResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStorageV1CollectionCSIDriverResUnauthorized from json stream.
-func (s *DeleteStorageV1CollectionCSIDriverResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteStorageV1CollectionCSIDriverUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSIDriverResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3018,17 +3018,17 @@ func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) WriteJSON(j *json.Strea
 func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStorageV1CollectionCSINodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStorageV1CollectionCSINodeResUnauthorized from json stream.
-func (s *DeleteStorageV1CollectionCSINodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteStorageV1CollectionCSINodeUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSINodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3061,17 +3061,17 @@ func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStorageV1CollectionStorageClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStorageV1CollectionStorageClassResUnauthorized from json stream.
-func (s *DeleteStorageV1CollectionStorageClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteStorageV1CollectionStorageClassUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionStorageClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionStorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3104,17 +3104,17 @@ func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStorageV1CollectionVolumeAttachmentResUnauthorized) WriteJSON(j *json.Stream) {
+func (s DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStorageV1CollectionVolumeAttachmentResUnauthorized from json stream.
-func (s *DeleteStorageV1CollectionVolumeAttachmentResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads DeleteStorageV1CollectionVolumeAttachmentUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionVolumeAttachmentResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionVolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3140,17 +3140,17 @@ func (GetAPIVersionsApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAPIVersionsResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAPIVersionsResUnauthorized from json stream.
-func (s *GetAPIVersionsResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAPIVersionsUnauthorized from json stream.
+func (s *GetAPIVersionsUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAPIVersionsResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAPIVersionsUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3178,17 +3178,17 @@ func (GetAdmissionregistrationAPIGroupApplicationYamlOK) WriteJSON(j *json.Strea
 func (GetAdmissionregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAdmissionregistrationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAdmissionregistrationAPIGroupResUnauthorized from json stream.
-func (s *GetAdmissionregistrationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAdmissionregistrationAPIGroupUnauthorized from json stream.
+func (s *GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3221,17 +3221,17 @@ func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAdmissionregistrationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAdmissionregistrationV1APIResourcesResUnauthorized from json stream.
-func (s *GetAdmissionregistrationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAdmissionregistrationV1APIResourcesUnauthorized from json stream.
+func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3259,17 +3259,17 @@ func (GetApiextensionsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetApiextensionsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetApiextensionsAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetApiextensionsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetApiextensionsAPIGroupResUnauthorized from json stream.
-func (s *GetApiextensionsAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetApiextensionsAPIGroupUnauthorized from json stream.
+func (s *GetApiextensionsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiextensionsAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetApiextensionsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3297,17 +3297,17 @@ func (GetApiextensionsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)
 func (GetApiextensionsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetApiextensionsV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetApiextensionsV1APIResourcesResUnauthorized from json stream.
-func (s *GetApiextensionsV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetApiextensionsV1APIResourcesUnauthorized from json stream.
+func (s *GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiextensionsV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetApiextensionsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3335,17 +3335,17 @@ func (GetApiregistrationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    
 func (GetApiregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetApiregistrationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetApiregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetApiregistrationAPIGroupResUnauthorized from json stream.
-func (s *GetApiregistrationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetApiregistrationAPIGroupUnauthorized from json stream.
+func (s *GetApiregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiregistrationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetApiregistrationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3373,17 +3373,17 @@ func (GetApiregistrationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Strea
 func (GetApiregistrationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetApiregistrationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetApiregistrationV1APIResourcesResUnauthorized from json stream.
-func (s *GetApiregistrationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetApiregistrationV1APIResourcesUnauthorized from json stream.
+func (s *GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiregistrationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetApiregistrationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3409,17 +3409,17 @@ func (GetAppsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetAppsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAppsAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAppsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAppsAPIGroupResUnauthorized from json stream.
-func (s *GetAppsAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAppsAPIGroupUnauthorized from json stream.
+func (s *GetAppsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAppsAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAppsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3447,17 +3447,17 @@ func (GetAppsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetAppsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAppsV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAppsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAppsV1APIResourcesResUnauthorized from json stream.
-func (s *GetAppsV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAppsV1APIResourcesUnauthorized from json stream.
+func (s *GetAppsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAppsV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAppsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3485,17 +3485,17 @@ func (GetAuthenticationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {
 func (GetAuthenticationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAuthenticationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAuthenticationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAuthenticationAPIGroupResUnauthorized from json stream.
-func (s *GetAuthenticationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAuthenticationAPIGroupUnauthorized from json stream.
+func (s *GetAuthenticationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthenticationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAuthenticationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3523,17 +3523,17 @@ func (GetAuthenticationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream
 func (GetAuthenticationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAuthenticationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAuthenticationV1APIResourcesResUnauthorized from json stream.
-func (s *GetAuthenticationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAuthenticationV1APIResourcesUnauthorized from json stream.
+func (s *GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthenticationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAuthenticationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3561,17 +3561,17 @@ func (GetAuthorizationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAuthorizationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAuthorizationAPIGroupResUnauthorized from json stream.
-func (s *GetAuthorizationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAuthorizationAPIGroupUnauthorized from json stream.
+func (s *GetAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthorizationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAuthorizationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3599,17 +3599,17 @@ func (GetAuthorizationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)
 func (GetAuthorizationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAuthorizationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAuthorizationV1APIResourcesResUnauthorized from json stream.
-func (s *GetAuthorizationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAuthorizationV1APIResourcesUnauthorized from json stream.
+func (s *GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthorizationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAuthorizationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3637,17 +3637,17 @@ func (GetAutoscalingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetAutoscalingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAutoscalingAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAutoscalingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAutoscalingAPIGroupResUnauthorized from json stream.
-func (s *GetAutoscalingAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAutoscalingAPIGroupUnauthorized from json stream.
+func (s *GetAutoscalingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAutoscalingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3675,17 +3675,17 @@ func (GetAutoscalingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (GetAutoscalingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAutoscalingV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAutoscalingV1APIResourcesResUnauthorized from json stream.
-func (s *GetAutoscalingV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAutoscalingV1APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAutoscalingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3714,17 +3714,17 @@ func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stre
 func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAutoscalingV2beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAutoscalingV2beta1APIResourcesResUnauthorized from json stream.
-func (s *GetAutoscalingV2beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAutoscalingV2beta1APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3753,17 +3753,17 @@ func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) WriteJSON(j *json.Stre
 func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetAutoscalingV2beta2APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetAutoscalingV2beta2APIResourcesResUnauthorized from json stream.
-func (s *GetAutoscalingV2beta2APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetAutoscalingV2beta2APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta2APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta2APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3789,17 +3789,17 @@ func (GetBatchAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetBatchAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetBatchAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetBatchAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetBatchAPIGroupResUnauthorized from json stream.
-func (s *GetBatchAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetBatchAPIGroupUnauthorized from json stream.
+func (s *GetBatchAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetBatchAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3827,17 +3827,17 @@ func (GetBatchV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetBatchV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetBatchV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetBatchV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetBatchV1APIResourcesResUnauthorized from json stream.
-func (s *GetBatchV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetBatchV1APIResourcesUnauthorized from json stream.
+func (s *GetBatchV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetBatchV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3865,17 +3865,17 @@ func (GetBatchV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (GetBatchV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetBatchV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetBatchV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetBatchV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetBatchV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetBatchV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3903,17 +3903,17 @@ func (GetCertificatesAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetCertificatesAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCertificatesAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCertificatesAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCertificatesAPIGroupResUnauthorized from json stream.
-func (s *GetCertificatesAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCertificatesAPIGroupUnauthorized from json stream.
+func (s *GetCertificatesAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCertificatesAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCertificatesAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3941,17 +3941,17 @@ func (GetCertificatesV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (GetCertificatesV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCertificatesV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCertificatesV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCertificatesV1APIResourcesResUnauthorized from json stream.
-func (s *GetCertificatesV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCertificatesV1APIResourcesUnauthorized from json stream.
+func (s *GetCertificatesV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCertificatesV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCertificatesV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3968,17 +3968,17 @@ func (s *GetCertificatesV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCodeVersionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCodeVersionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCodeVersionResUnauthorized from json stream.
-func (s *GetCodeVersionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCodeVersionUnauthorized from json stream.
+func (s *GetCodeVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCodeVersionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCodeVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4006,17 +4006,17 @@ func (GetCoordinationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetCoordinationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCoordinationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCoordinationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCoordinationAPIGroupResUnauthorized from json stream.
-func (s *GetCoordinationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCoordinationAPIGroupUnauthorized from json stream.
+func (s *GetCoordinationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoordinationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCoordinationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4044,17 +4044,17 @@ func (GetCoordinationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (GetCoordinationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCoordinationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCoordinationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCoordinationV1APIResourcesResUnauthorized from json stream.
-func (s *GetCoordinationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCoordinationV1APIResourcesUnauthorized from json stream.
+func (s *GetCoordinationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoordinationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCoordinationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4080,17 +4080,17 @@ func (GetCoreAPIVersionsApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetCoreAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCoreAPIVersionsResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCoreAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCoreAPIVersionsResUnauthorized from json stream.
-func (s *GetCoreAPIVersionsResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCoreAPIVersionsUnauthorized from json stream.
+func (s *GetCoreAPIVersionsUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoreAPIVersionsResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCoreAPIVersionsUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4118,17 +4118,17 @@ func (GetCoreV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetCoreV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetCoreV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetCoreV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetCoreV1APIResourcesResUnauthorized from json stream.
-func (s *GetCoreV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetCoreV1APIResourcesUnauthorized from json stream.
+func (s *GetCoreV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoreV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetCoreV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4156,17 +4156,17 @@ func (GetDiscoveryAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetDiscoveryAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetDiscoveryAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetDiscoveryAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetDiscoveryAPIGroupResUnauthorized from json stream.
-func (s *GetDiscoveryAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetDiscoveryAPIGroupUnauthorized from json stream.
+func (s *GetDiscoveryAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetDiscoveryAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4194,17 +4194,17 @@ func (GetDiscoveryV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    
 func (GetDiscoveryV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetDiscoveryV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetDiscoveryV1APIResourcesResUnauthorized from json stream.
-func (s *GetDiscoveryV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetDiscoveryV1APIResourcesUnauthorized from json stream.
+func (s *GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4232,17 +4232,17 @@ func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream
 func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetDiscoveryV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetDiscoveryV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetDiscoveryV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetDiscoveryV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4268,17 +4268,17 @@ func (GetEventsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetEventsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetEventsAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetEventsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetEventsAPIGroupResUnauthorized from json stream.
-func (s *GetEventsAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetEventsAPIGroupUnauthorized from json stream.
+func (s *GetEventsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetEventsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4306,17 +4306,17 @@ func (GetEventsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetEventsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetEventsV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetEventsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetEventsV1APIResourcesResUnauthorized from json stream.
-func (s *GetEventsV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetEventsV1APIResourcesUnauthorized from json stream.
+func (s *GetEventsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetEventsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4344,17 +4344,17 @@ func (GetEventsV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (GetEventsV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetEventsV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetEventsV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetEventsV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetEventsV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetEventsV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4382,17 +4382,17 @@ func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream
 func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFlowcontrolApiserverAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFlowcontrolApiserverAPIGroupResUnauthorized from json stream.
-func (s *GetFlowcontrolApiserverAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetFlowcontrolApiserverAPIGroupUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4425,17 +4425,17 @@ func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4468,17 +4468,17 @@ func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized from json stream.
-func (s *GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta2APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4506,17 +4506,17 @@ func (GetInternalApiserverAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (GetInternalApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetInternalApiserverAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetInternalApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetInternalApiserverAPIGroupResUnauthorized from json stream.
-func (s *GetInternalApiserverAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetInternalApiserverAPIGroupUnauthorized from json stream.
+func (s *GetInternalApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetInternalApiserverAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetInternalApiserverAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4549,17 +4549,17 @@ func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetInternalApiserverV1alpha1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetInternalApiserverV1alpha1APIResourcesResUnauthorized from json stream.
-func (s *GetInternalApiserverV1alpha1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetInternalApiserverV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetInternalApiserverV1alpha1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetInternalApiserverV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4587,17 +4587,17 @@ func (GetNetworkingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetNetworkingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNetworkingAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNetworkingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNetworkingAPIGroupResUnauthorized from json stream.
-func (s *GetNetworkingAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNetworkingAPIGroupUnauthorized from json stream.
+func (s *GetNetworkingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNetworkingAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNetworkingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4625,17 +4625,17 @@ func (GetNetworkingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (GetNetworkingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNetworkingV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNetworkingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNetworkingV1APIResourcesResUnauthorized from json stream.
-func (s *GetNetworkingV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNetworkingV1APIResourcesUnauthorized from json stream.
+func (s *GetNetworkingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNetworkingV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNetworkingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4661,17 +4661,17 @@ func (GetNodeAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetNodeAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNodeAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNodeAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNodeAPIGroupResUnauthorized from json stream.
-func (s *GetNodeAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNodeAPIGroupUnauthorized from json stream.
+func (s *GetNodeAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNodeAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4699,17 +4699,17 @@ func (GetNodeV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetNodeV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNodeV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNodeV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNodeV1APIResourcesResUnauthorized from json stream.
-func (s *GetNodeV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNodeV1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNodeV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4737,17 +4737,17 @@ func (GetNodeV1alpha1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (GetNodeV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNodeV1alpha1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNodeV1alpha1APIResourcesResUnauthorized from json stream.
-func (s *GetNodeV1alpha1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNodeV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1alpha1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNodeV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4775,17 +4775,17 @@ func (GetNodeV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    
 func (GetNodeV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetNodeV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetNodeV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetNodeV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetNodeV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetNodeV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4811,17 +4811,17 @@ func (GetPolicyAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetPolicyAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPolicyAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetPolicyAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetPolicyAPIGroupResUnauthorized from json stream.
-func (s *GetPolicyAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetPolicyAPIGroupUnauthorized from json stream.
+func (s *GetPolicyAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetPolicyAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4849,17 +4849,17 @@ func (GetPolicyV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetPolicyV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPolicyV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetPolicyV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetPolicyV1APIResourcesResUnauthorized from json stream.
-func (s *GetPolicyV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetPolicyV1APIResourcesUnauthorized from json stream.
+func (s *GetPolicyV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetPolicyV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4887,17 +4887,17 @@ func (GetPolicyV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (GetPolicyV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPolicyV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetPolicyV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetPolicyV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetPolicyV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetPolicyV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4925,17 +4925,17 @@ func (GetRbacAuthorizationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (GetRbacAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetRbacAuthorizationAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetRbacAuthorizationAPIGroupResUnauthorized from json stream.
-func (s *GetRbacAuthorizationAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetRbacAuthorizationAPIGroupUnauthorized from json stream.
+func (s *GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4964,17 +4964,17 @@ func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Str
 func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetRbacAuthorizationV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetRbacAuthorizationV1APIResourcesResUnauthorized from json stream.
-func (s *GetRbacAuthorizationV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetRbacAuthorizationV1APIResourcesUnauthorized from json stream.
+func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5002,17 +5002,17 @@ func (GetSchedulingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetSchedulingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetSchedulingAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetSchedulingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetSchedulingAPIGroupResUnauthorized from json stream.
-func (s *GetSchedulingAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetSchedulingAPIGroupUnauthorized from json stream.
+func (s *GetSchedulingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetSchedulingAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetSchedulingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5040,17 +5040,17 @@ func (GetSchedulingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (GetSchedulingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetSchedulingV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetSchedulingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetSchedulingV1APIResourcesResUnauthorized from json stream.
-func (s *GetSchedulingV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetSchedulingV1APIResourcesUnauthorized from json stream.
+func (s *GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetSchedulingV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetSchedulingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5072,17 +5072,17 @@ func (GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetServiceAccountIssuerOpenIDConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetServiceAccountIssuerOpenIDConfigurationResUnauthorized from json stream.
-func (s *GetServiceAccountIssuerOpenIDConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5104,17 +5104,17 @@ func (GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetServiceAccountIssuerOpenIDKeysetResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetServiceAccountIssuerOpenIDKeysetResUnauthorized from json stream.
-func (s *GetServiceAccountIssuerOpenIDKeysetResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetServiceAccountIssuerOpenIDKeysetUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDKeysetResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDKeysetUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5140,17 +5140,17 @@ func (GetStorageAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetStorageAPIGroupApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStorageAPIGroupResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetStorageAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStorageAPIGroupResUnauthorized from json stream.
-func (s *GetStorageAPIGroupResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetStorageAPIGroupUnauthorized from json stream.
+func (s *GetStorageAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageAPIGroupResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetStorageAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5178,17 +5178,17 @@ func (GetStorageV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (GetStorageV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStorageV1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetStorageV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStorageV1APIResourcesResUnauthorized from json stream.
-func (s *GetStorageV1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetStorageV1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetStorageV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5216,17 +5216,17 @@ func (GetStorageV1alpha1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)
 func (GetStorageV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStorageV1alpha1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStorageV1alpha1APIResourcesResUnauthorized from json stream.
-func (s *GetStorageV1alpha1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetStorageV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1alpha1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetStorageV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5254,17 +5254,17 @@ func (GetStorageV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (GetStorageV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStorageV1beta1APIResourcesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStorageV1beta1APIResourcesResUnauthorized from json stream.
-func (s *GetStorageV1beta1APIResourcesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads GetStorageV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1beta1APIResourcesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode GetStorageV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64265,17 +64265,17 @@ func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized from json stream.
-func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
+func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1MutatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64322,17 +64322,17 @@ func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized from json stream.
-func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1ValidatingWebhookConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64377,17 +64377,17 @@ func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListApiextensionsV1CustomResourceDefinitionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListApiextensionsV1CustomResourceDefinitionResUnauthorized from json stream.
-func (s *ListApiextensionsV1CustomResourceDefinitionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
+func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListApiextensionsV1CustomResourceDefinitionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64426,17 +64426,17 @@ func (ListApiregistrationV1APIServiceApplicationYamlOK) WriteJSON(j *json.Stream
 func (ListApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListApiregistrationV1APIServiceResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListApiregistrationV1APIServiceResUnauthorized from json stream.
-func (s *ListApiregistrationV1APIServiceResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListApiregistrationV1APIServiceUnauthorized from json stream.
+func (s *ListApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListApiregistrationV1APIServiceResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListApiregistrationV1APIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64481,17 +64481,17 @@ func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized from json stream.
-func (s *ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAppsV1ControllerRevisionForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1ControllerRevisionForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAppsV1ControllerRevisionForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64531,17 +64531,17 @@ func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.St
 func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAppsV1DaemonSetForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAppsV1DaemonSetForAllNamespacesResUnauthorized from json stream.
-func (s *ListAppsV1DaemonSetForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAppsV1DaemonSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1DaemonSetForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAppsV1DaemonSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64581,17 +64581,17 @@ func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) WriteJSON(j *json.S
 func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAppsV1DeploymentForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAppsV1DeploymentForAllNamespacesResUnauthorized from json stream.
-func (s *ListAppsV1DeploymentForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAppsV1DeploymentForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1DeploymentForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAppsV1DeploymentForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64631,17 +64631,17 @@ func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.S
 func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAppsV1ReplicaSetForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAppsV1ReplicaSetForAllNamespacesResUnauthorized from json stream.
-func (s *ListAppsV1ReplicaSetForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAppsV1ReplicaSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1ReplicaSetForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAppsV1ReplicaSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64685,17 +64685,17 @@ func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAppsV1StatefulSetForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAppsV1StatefulSetForAllNamespacesResUnauthorized from json stream.
-func (s *ListAppsV1StatefulSetForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAppsV1StatefulSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1StatefulSetForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAppsV1StatefulSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64742,17 +64742,17 @@ func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized from json stream.
-func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64799,17 +64799,17 @@ func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYa
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized from json stream.
-func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64856,17 +64856,17 @@ func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYa
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized from json stream.
-func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64906,17 +64906,17 @@ func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Str
 func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListBatchV1CronJobForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListBatchV1CronJobForAllNamespacesResUnauthorized from json stream.
-func (s *ListBatchV1CronJobForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListBatchV1CronJobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1CronJobForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListBatchV1CronJobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64955,17 +64955,17 @@ func (ListBatchV1JobForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream)
 func (ListBatchV1JobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListBatchV1JobForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListBatchV1JobForAllNamespacesResUnauthorized from json stream.
-func (s *ListBatchV1JobForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListBatchV1JobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1JobForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListBatchV1JobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65010,17 +65010,17 @@ func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListBatchV1beta1CronJobForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListBatchV1beta1CronJobForAllNamespacesResUnauthorized from json stream.
-func (s *ListBatchV1beta1CronJobForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListBatchV1beta1CronJobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1beta1CronJobForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListBatchV1beta1CronJobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65065,17 +65065,17 @@ func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCertificatesV1CertificateSigningRequestResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCertificatesV1CertificateSigningRequestResUnauthorized from json stream.
-func (s *ListCertificatesV1CertificateSigningRequestResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCertificatesV1CertificateSigningRequestUnauthorized from json stream.
+func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCertificatesV1CertificateSigningRequestResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCertificatesV1CertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65120,17 +65120,17 @@ func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoordinationV1LeaseForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoordinationV1LeaseForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoordinationV1LeaseForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoordinationV1LeaseForAllNamespacesUnauthorized from json stream.
+func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoordinationV1LeaseForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoordinationV1LeaseForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65167,17 +65167,17 @@ func (ListCoreV1ComponentStatusApplicationYamlOK) WriteJSON(j *json.Stream)    {
 func (ListCoreV1ComponentStatusApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ComponentStatusResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ComponentStatusUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ComponentStatusResUnauthorized from json stream.
-func (s *ListCoreV1ComponentStatusResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ComponentStatusUnauthorized from json stream.
+func (s *ListCoreV1ComponentStatusUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ComponentStatusResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ComponentStatusUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65217,17 +65217,17 @@ func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) WriteJSON(j *json.St
 func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ConfigMapForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ConfigMapForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1ConfigMapForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ConfigMapForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ConfigMapForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ConfigMapForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65267,17 +65267,17 @@ func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) WriteJSON(j *json.St
 func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1EndpointsForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1EndpointsForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1EndpointsForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1EndpointsForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1EndpointsForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1EndpointsForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65316,17 +65316,17 @@ func (ListCoreV1EventForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream
 func (ListCoreV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1EventForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1EventForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1EventForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1EventForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65366,17 +65366,17 @@ func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) WriteJSON(j *json.S
 func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1LimitRangeForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1LimitRangeForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1LimitRangeForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1LimitRangeForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1LimitRangeForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1LimitRangeForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65410,17 +65410,17 @@ func (ListCoreV1NamespaceApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (ListCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1NamespaceResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1NamespaceResUnauthorized from json stream.
-func (s *ListCoreV1NamespaceResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1NamespaceUnauthorized from json stream.
+func (s *ListCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1NamespaceResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1NamespaceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65454,17 +65454,17 @@ func (ListCoreV1NodeApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (ListCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1NodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1NodeResUnauthorized from json stream.
-func (s *ListCoreV1NodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1NodeUnauthorized from json stream.
+func (s *ListCoreV1NodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1NodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1NodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65531,17 +65531,17 @@ func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65558,17 +65558,17 @@ func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesResUnauthorized) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1PersistentVolumeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1PersistentVolumeResUnauthorized from json stream.
-func (s *ListCoreV1PersistentVolumeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1PersistentVolumeUnauthorized from json stream.
+func (s *ListCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65607,17 +65607,17 @@ func (ListCoreV1PodForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (ListCoreV1PodForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1PodForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1PodForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1PodForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1PodForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PodForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1PodForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65661,17 +65661,17 @@ func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1PodTemplateForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1PodTemplateForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1PodTemplateForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1PodTemplateForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PodTemplateForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1PodTemplateForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65716,17 +65716,17 @@ func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ReplicationControllerForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ReplicationControllerForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ReplicationControllerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65771,17 +65771,17 @@ func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ResourceQuotaForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ResourceQuotaForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ResourceQuotaForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65820,17 +65820,17 @@ func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Strea
 func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1SecretForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1SecretForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1SecretForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1SecretForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1SecretForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1SecretForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65875,17 +65875,17 @@ func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ServiceAccountForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ServiceAccountForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1ServiceAccountForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ServiceAccountForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceAccountForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceAccountForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65925,17 +65925,17 @@ func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stre
 func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListCoreV1ServiceForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListCoreV1ServiceForAllNamespacesResUnauthorized from json stream.
-func (s *ListCoreV1ServiceForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListCoreV1ServiceForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65980,17 +65980,17 @@ func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized from json stream.
-func (s *ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized from json stream.
+func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1EndpointSliceForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66035,17 +66035,17 @@ func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized from json stream.
-func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized from json stream.
+func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1beta1EndpointSliceForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66085,17 +66085,17 @@ func (ListEventsV1EventForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stre
 func (ListEventsV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListEventsV1EventForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListEventsV1EventForAllNamespacesResUnauthorized from json stream.
-func (s *ListEventsV1EventForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListEventsV1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListEventsV1EventForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListEventsV1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66139,17 +66139,17 @@ func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListEventsV1beta1EventForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListEventsV1beta1EventForAllNamespacesResUnauthorized from json stream.
-func (s *ListEventsV1beta1EventForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListEventsV1beta1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListEventsV1beta1EventForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListEventsV1beta1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66194,17 +66194,17 @@ func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized from json stream.
-func (s *ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1FlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66251,17 +66251,17 @@ func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized from json stream.
-func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66306,17 +66306,17 @@ func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized from json stream.
-func (s *ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2FlowSchemaResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66363,17 +66363,17 @@ func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized from json stream.
-func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66418,17 +66418,17 @@ func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListInternalApiserverV1alpha1StorageVersionResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListInternalApiserverV1alpha1StorageVersionResUnauthorized from json stream.
-func (s *ListInternalApiserverV1alpha1StorageVersionResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
+func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListInternalApiserverV1alpha1StorageVersionResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66467,17 +66467,17 @@ func (ListNetworkingV1IngressClassApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (ListNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNetworkingV1IngressClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNetworkingV1IngressClassResUnauthorized from json stream.
-func (s *ListNetworkingV1IngressClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNetworkingV1IngressClassUnauthorized from json stream.
+func (s *ListNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66522,17 +66522,17 @@ func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNetworkingV1IngressForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNetworkingV1IngressForAllNamespacesResUnauthorized from json stream.
-func (s *ListNetworkingV1IngressForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNetworkingV1IngressForAllNamespacesUnauthorized from json stream.
+func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66577,17 +66577,17 @@ func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized from json stream.
-func (s *ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized from json stream.
+func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1NetworkPolicyForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66624,17 +66624,17 @@ func (ListNodeV1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (ListNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNodeV1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNodeV1RuntimeClassResUnauthorized from json stream.
-func (s *ListNodeV1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNodeV1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNodeV1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66673,17 +66673,17 @@ func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)  
 func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNodeV1alpha1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNodeV1alpha1RuntimeClassResUnauthorized from json stream.
-func (s *ListNodeV1alpha1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNodeV1alpha1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1alpha1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNodeV1alpha1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66722,17 +66722,17 @@ func (ListNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (ListNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListNodeV1beta1RuntimeClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListNodeV1beta1RuntimeClassResUnauthorized from json stream.
-func (s *ListNodeV1beta1RuntimeClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListNodeV1beta1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1beta1RuntimeClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListNodeV1beta1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66777,17 +66777,17 @@ func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized from json stream.
-func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
+func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1PodDisruptionBudgetForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66834,17 +66834,17 @@ func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized from json stream.
-func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
+func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66884,17 +66884,17 @@ func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSON(j *json.Str
 func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListPolicyV1beta1PodSecurityPolicyResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListPolicyV1beta1PodSecurityPolicyResUnauthorized from json stream.
-func (s *ListPolicyV1beta1PodSecurityPolicyResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListPolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
+func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodSecurityPolicyResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66962,17 +66962,17 @@ func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized from json stream.
-func (s *ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66989,17 +66989,17 @@ func (s *ListRbacAuthorizationV1ClusterRoleBindingResUnauthorized) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListRbacAuthorizationV1ClusterRoleResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListRbacAuthorizationV1ClusterRoleResUnauthorized from json stream.
-func (s *ListRbacAuthorizationV1ClusterRoleResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67046,17 +67046,17 @@ func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized from json stream.
-func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleBindingForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67101,17 +67101,17 @@ func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized from json stream.
-func (s *ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67150,17 +67150,17 @@ func (ListSchedulingV1PriorityClassApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (ListSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListSchedulingV1PriorityClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListSchedulingV1PriorityClassResUnauthorized from json stream.
-func (s *ListSchedulingV1PriorityClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListSchedulingV1PriorityClassUnauthorized from json stream.
+func (s *ListSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListSchedulingV1PriorityClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListSchedulingV1PriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67197,17 +67197,17 @@ func (ListStorageV1CSIDriverApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (ListStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1CSIDriverResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1CSIDriverResUnauthorized from json stream.
-func (s *ListStorageV1CSIDriverResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1CSIDriverUnauthorized from json stream.
+func (s *ListStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1CSIDriverResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1CSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67243,17 +67243,17 @@ func (ListStorageV1CSINodeApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (ListStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1CSINodeResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1CSINodeResUnauthorized from json stream.
-func (s *ListStorageV1CSINodeResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1CSINodeUnauthorized from json stream.
+func (s *ListStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1CSINodeResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1CSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67290,17 +67290,17 @@ func (ListStorageV1StorageClassApplicationYamlOK) WriteJSON(j *json.Stream)    {
 func (ListStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1StorageClassResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1StorageClassResUnauthorized from json stream.
-func (s *ListStorageV1StorageClassResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1StorageClassUnauthorized from json stream.
+func (s *ListStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1StorageClassResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1StorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67339,17 +67339,17 @@ func (ListStorageV1VolumeAttachmentApplicationYamlOK) WriteJSON(j *json.Stream) 
 func (ListStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1VolumeAttachmentResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1VolumeAttachmentResUnauthorized from json stream.
-func (s *ListStorageV1VolumeAttachmentResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1VolumeAttachmentUnauthorized from json stream.
+func (s *ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1VolumeAttachmentResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1VolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67396,17 +67396,17 @@ func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized from json stream.
-func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
+func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67453,17 +67453,17 @@ func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized from json stream.
-func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
+func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67480,17 +67480,17 @@ func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesResUnauthorized) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s LogFileListHandlerResUnauthorized) WriteJSON(j *json.Stream) {
+func (s LogFileListHandlerUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LogFileListHandlerResUnauthorized from json stream.
-func (s *LogFileListHandlerResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads LogFileListHandlerUnauthorized from json stream.
+func (s *LogFileListHandlerUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LogFileListHandlerResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode LogFileListHandlerUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73055,17 +73055,17 @@ func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYam
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized from json stream.
-func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized from json stream.
+func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1MutatingWebhookConfigurationListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73112,17 +73112,17 @@ func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationY
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized from json stream.
-func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized from json stream.
+func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73167,17 +73167,17 @@ func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized from json stream.
-func (s *WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchApiextensionsV1CustomResourceDefinitionListUnauthorized from json stream.
+func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchApiextensionsV1CustomResourceDefinitionListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchApiextensionsV1CustomResourceDefinitionListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73217,17 +73217,17 @@ func (WatchApiregistrationV1APIServiceListApplicationYamlOK) WriteJSON(j *json.S
 func (WatchApiregistrationV1APIServiceListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchApiregistrationV1APIServiceListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchApiregistrationV1APIServiceListResUnauthorized from json stream.
-func (s *WatchApiregistrationV1APIServiceListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchApiregistrationV1APIServiceListUnauthorized from json stream.
+func (s *WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchApiregistrationV1APIServiceListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchApiregistrationV1APIServiceListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73272,17 +73272,17 @@ func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1ControllerRevisionListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73327,17 +73327,17 @@ func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAppsV1DaemonSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1DaemonSetListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAppsV1DaemonSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73382,17 +73382,17 @@ func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAppsV1DeploymentListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAppsV1DeploymentListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAppsV1DeploymentListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAppsV1DeploymentListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1DeploymentListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAppsV1DeploymentListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73437,17 +73437,17 @@ func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1ReplicaSetListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73492,17 +73492,17 @@ func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAppsV1StatefulSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1StatefulSetListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAppsV1StatefulSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73549,17 +73549,17 @@ func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYa
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73606,17 +73606,17 @@ func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73663,17 +73663,17 @@ func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73718,17 +73718,17 @@ func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchBatchV1CronJobListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchBatchV1CronJobListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchBatchV1CronJobListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchBatchV1CronJobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1CronJobListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchBatchV1CronJobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73768,17 +73768,17 @@ func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.St
 func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchBatchV1JobListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchBatchV1JobListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchBatchV1JobListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchBatchV1JobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1JobListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchBatchV1JobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73823,17 +73823,17 @@ func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1beta1CronJobListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73878,17 +73878,17 @@ func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCertificatesV1CertificateSigningRequestListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCertificatesV1CertificateSigningRequestListResUnauthorized from json stream.
-func (s *WatchCertificatesV1CertificateSigningRequestListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCertificatesV1CertificateSigningRequestListUnauthorized from json stream.
+func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCertificatesV1CertificateSigningRequestListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCertificatesV1CertificateSigningRequestListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73933,17 +73933,17 @@ func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoordinationV1LeaseListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoordinationV1LeaseListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoordinationV1LeaseListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73988,17 +73988,17 @@ func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1ConfigMapListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ConfigMapListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1ConfigMapListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74043,17 +74043,17 @@ func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1EndpointsListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1EndpointsListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1EndpointsListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1EndpointsListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1EndpointsListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1EndpointsListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74093,17 +74093,17 @@ func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.S
 func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1EventListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1EventListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1EventListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1EventListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74148,17 +74148,17 @@ func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1LimitRangeListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1LimitRangeListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1LimitRangeListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74195,17 +74195,17 @@ func (WatchCoreV1NamespaceListApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (WatchCoreV1NamespaceListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1NamespaceListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1NamespaceListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1NamespaceListResUnauthorized from json stream.
-func (s *WatchCoreV1NamespaceListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1NamespaceListUnauthorized from json stream.
+func (s *WatchCoreV1NamespaceListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1NamespaceListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1NamespaceListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74239,17 +74239,17 @@ func (WatchCoreV1NodeListApplicationYamlOK) WriteJSON(j *json.Stream)    {}
 func (WatchCoreV1NodeListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1NodeListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1NodeListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1NodeListResUnauthorized from json stream.
-func (s *WatchCoreV1NodeListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1NodeListUnauthorized from json stream.
+func (s *WatchCoreV1NodeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1NodeListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1NodeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74296,17 +74296,17 @@ func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeClaimListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74345,17 +74345,17 @@ func (WatchCoreV1PersistentVolumeListApplicationYamlOK) WriteJSON(j *json.Stream
 func (WatchCoreV1PersistentVolumeListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1PersistentVolumeListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1PersistentVolumeListResUnauthorized from json stream.
-func (s *WatchCoreV1PersistentVolumeListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1PersistentVolumeListUnauthorized from json stream.
+func (s *WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74395,17 +74395,17 @@ func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Str
 func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1PodListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1PodListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1PodListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1PodListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74450,17 +74450,17 @@ func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1PodTemplateListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodTemplateListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodTemplateListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74507,17 +74507,17 @@ func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ReplicationControllerListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74562,17 +74562,17 @@ func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ResourceQuotaListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74616,17 +74616,17 @@ func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1SecretListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1SecretListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1SecretListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1SecretListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1SecretListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1SecretListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74671,17 +74671,17 @@ func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceAccountListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74725,17 +74725,17 @@ func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchCoreV1ServiceListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchCoreV1ServiceListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchCoreV1ServiceListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchCoreV1ServiceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74780,17 +74780,17 @@ func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1EndpointSliceListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74837,17 +74837,17 @@ func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74891,17 +74891,17 @@ func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchEventsV1EventListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchEventsV1EventListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchEventsV1EventListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchEventsV1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchEventsV1EventListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchEventsV1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74946,17 +74946,17 @@ func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchEventsV1beta1EventListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchEventsV1beta1EventListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchEventsV1beta1EventListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchEventsV1beta1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchEventsV1beta1EventListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchEventsV1beta1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75001,17 +75001,17 @@ func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized from json stream.
-func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1FlowSchemaListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75058,17 +75058,17 @@ func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationY
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized from json stream.
-func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75113,17 +75113,17 @@ func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized from json stream.
-func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2FlowSchemaListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75170,17 +75170,17 @@ func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationY
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized from json stream.
-func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75225,17 +75225,17 @@ func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized from json stream.
-func (s *WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchInternalApiserverV1alpha1StorageVersionListUnauthorized from json stream.
+func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchInternalApiserverV1alpha1StorageVersionListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchInternalApiserverV1alpha1StorageVersionListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75275,17 +75275,17 @@ func (WatchNetworkingV1IngressClassListApplicationYamlOK) WriteJSON(j *json.Stre
 func (WatchNetworkingV1IngressClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNetworkingV1IngressClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNetworkingV1IngressClassListResUnauthorized from json stream.
-func (s *WatchNetworkingV1IngressClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNetworkingV1IngressClassListUnauthorized from json stream.
+func (s *WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75330,17 +75330,17 @@ func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNetworkingV1IngressListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNetworkingV1IngressListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchNetworkingV1IngressListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNetworkingV1IngressListForAllNamespacesUnauthorized from json stream.
+func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75387,17 +75387,17 @@ func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized from json stream.
+func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1NetworkPolicyListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75436,17 +75436,17 @@ func (WatchNodeV1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (WatchNodeV1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNodeV1RuntimeClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNodeV1RuntimeClassListResUnauthorized from json stream.
-func (s *WatchNodeV1RuntimeClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNodeV1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1RuntimeClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNodeV1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75486,17 +75486,17 @@ func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Stre
 func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNodeV1alpha1RuntimeClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNodeV1alpha1RuntimeClassListResUnauthorized from json stream.
-func (s *WatchNodeV1alpha1RuntimeClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNodeV1alpha1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1alpha1RuntimeClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNodeV1alpha1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75535,17 +75535,17 @@ func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Strea
 func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchNodeV1beta1RuntimeClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchNodeV1beta1RuntimeClassListResUnauthorized from json stream.
-func (s *WatchNodeV1beta1RuntimeClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchNodeV1beta1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1beta1RuntimeClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchNodeV1beta1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75592,17 +75592,17 @@ func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75649,17 +75649,17 @@ func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75704,17 +75704,17 @@ func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized from json stream.
-func (s *WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchPolicyV1beta1PodSecurityPolicyListUnauthorized from json stream.
+func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodSecurityPolicyListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodSecurityPolicyListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75759,17 +75759,17 @@ func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized from json stream.
-func (s *WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleBindingListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75814,17 +75814,17 @@ func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchRbacAuthorizationV1ClusterRoleListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleListResUnauthorized from json stream.
-func (s *WatchRbacAuthorizationV1ClusterRoleListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleListUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75871,17 +75871,17 @@ func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75926,17 +75926,17 @@ func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75976,17 +75976,17 @@ func (WatchSchedulingV1PriorityClassListApplicationYamlOK) WriteJSON(j *json.Str
 func (WatchSchedulingV1PriorityClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchSchedulingV1PriorityClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchSchedulingV1PriorityClassListResUnauthorized from json stream.
-func (s *WatchSchedulingV1PriorityClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchSchedulingV1PriorityClassListUnauthorized from json stream.
+func (s *WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchSchedulingV1PriorityClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchSchedulingV1PriorityClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76025,17 +76025,17 @@ func (WatchStorageV1CSIDriverListApplicationYamlOK) WriteJSON(j *json.Stream)   
 func (WatchStorageV1CSIDriverListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1CSIDriverListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1CSIDriverListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1CSIDriverListResUnauthorized from json stream.
-func (s *WatchStorageV1CSIDriverListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1CSIDriverListUnauthorized from json stream.
+func (s *WatchStorageV1CSIDriverListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSIDriverListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSIDriverListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76072,17 +76072,17 @@ func (WatchStorageV1CSINodeListApplicationYamlOK) WriteJSON(j *json.Stream)    {
 func (WatchStorageV1CSINodeListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1CSINodeListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1CSINodeListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1CSINodeListResUnauthorized from json stream.
-func (s *WatchStorageV1CSINodeListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1CSINodeListUnauthorized from json stream.
+func (s *WatchStorageV1CSINodeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSINodeListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSINodeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76121,17 +76121,17 @@ func (WatchStorageV1StorageClassListApplicationYamlOK) WriteJSON(j *json.Stream)
 func (WatchStorageV1StorageClassListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1StorageClassListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1StorageClassListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1StorageClassListResUnauthorized from json stream.
-func (s *WatchStorageV1StorageClassListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1StorageClassListUnauthorized from json stream.
+func (s *WatchStorageV1StorageClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1StorageClassListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1StorageClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76171,17 +76171,17 @@ func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) WriteJSON(j *json.Str
 func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1VolumeAttachmentListResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1VolumeAttachmentListResUnauthorized from json stream.
-func (s *WatchStorageV1VolumeAttachmentListResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1VolumeAttachmentListUnauthorized from json stream.
+func (s *WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1VolumeAttachmentListResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1VolumeAttachmentListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76228,17 +76228,17 @@ func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
+func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76285,17 +76285,17 @@ func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized) WriteJSON(j *json.Stream) {
+func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized from json stream.
-func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized) ReadJSON(i *json.Iter) error {
+// ReadJSON reads WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
+func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResUnauthorized to nil`)
+		fmt.Errorf(`invalid: unable to decode WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {

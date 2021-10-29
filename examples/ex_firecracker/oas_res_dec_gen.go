@@ -69,7 +69,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 
 	switch resp.StatusCode {
 	case 204:
-		return &CreateSnapshotResNoContent{}, nil
+		return &CreateSnapshotNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -125,7 +125,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 
 	switch resp.StatusCode {
 	case 204:
-		return &CreateSyncActionResNoContent{}, nil
+		return &CreateSyncActionNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -493,7 +493,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 
 	switch resp.StatusCode {
 	case 204:
-		return &LoadSnapshotResNoContent{}, nil
+		return &LoadSnapshotNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -549,7 +549,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 
 	switch resp.StatusCode {
 	case 204:
-		return &MmdsConfigPutResNoContent{}, nil
+		return &MmdsConfigPutNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -611,7 +611,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response MmdsGetResOK
+			var response MmdsGetOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -680,7 +680,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 
 	switch resp.StatusCode {
 	case 204:
-		return &MmdsPatchResNoContent{}, nil
+		return &MmdsPatchNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -736,7 +736,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 
 	switch resp.StatusCode {
 	case 204:
-		return &MmdsPutResNoContent{}, nil
+		return &MmdsPutNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -792,7 +792,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchBalloonResNoContent{}, nil
+		return &PatchBalloonNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -848,7 +848,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchBalloonStatsIntervalResNoContent{}, nil
+		return &PatchBalloonStatsIntervalNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -904,7 +904,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchGuestDriveByIDResNoContent{}, nil
+		return &PatchGuestDriveByIDNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -960,7 +960,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchGuestNetworkInterfaceByIDResNoContent{}, nil
+		return &PatchGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1016,7 +1016,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchMachineConfigurationResNoContent{}, nil
+		return &PatchMachineConfigurationNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1072,7 +1072,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 
 	switch resp.StatusCode {
 	case 204:
-		return &PatchVmResNoContent{}, nil
+		return &PatchVmNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1128,7 +1128,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutBalloonResNoContent{}, nil
+		return &PutBalloonNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1184,7 +1184,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutGuestBootSourceResNoContent{}, nil
+		return &PutGuestBootSourceNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1240,7 +1240,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutGuestDriveByIDResNoContent{}, nil
+		return &PutGuestDriveByIDNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1296,7 +1296,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutGuestNetworkInterfaceByIDResNoContent{}, nil
+		return &PutGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1352,7 +1352,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutGuestVsockResNoContent{}, nil
+		return &PutGuestVsockNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1408,7 +1408,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutLoggerResNoContent{}, nil
+		return &PutLoggerNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1464,7 +1464,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutMachineConfigurationResNoContent{}, nil
+		return &PutMachineConfigurationNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1520,7 +1520,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 
 	switch resp.StatusCode {
 	case 204:
-		return &PutMetricsResNoContent{}, nil
+		return &PutMetricsNoContent{}, nil
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
