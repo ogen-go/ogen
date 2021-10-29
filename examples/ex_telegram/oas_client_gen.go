@@ -94,7 +94,18 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
+func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
+	switch request := request.(type) {
+	case *AnswerCallbackQueryPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *AnswerCallbackQueryPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -110,7 +121,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req, span)
+	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -138,7 +149,18 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 	return result, nil
 }
 
-func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
+func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
+	switch request := request.(type) {
+	case *AnswerPreCheckoutQueryPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *AnswerPreCheckoutQueryPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -154,7 +176,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req, span)
+	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -182,7 +204,42 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 	return result, nil
 }
 
-func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
+func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
+	switch request := request.(type) {
+	case *AnswerShippingQueryPostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *AnswerShippingQueryPostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -198,7 +255,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req, span)
+	buf, contentType, err := encodeAnswerShippingQueryPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -262,7 +319,18 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	return result, nil
 }
 
-func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
+func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
+	switch request := request.(type) {
+	case *DeleteStickerFromSetPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *DeleteStickerFromSetPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -278,7 +346,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req, span)
+	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -306,7 +374,18 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 	return result, nil
 }
 
-func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
+func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
+	switch request := request.(type) {
+	case *DeleteWebhookPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *DeleteWebhookPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *DeleteWebhookPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -322,7 +401,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteWebhookPostRequest(req, span)
+	buf, contentType, err := encodeDeleteWebhookPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -350,7 +429,18 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 	return result, nil
 }
 
-func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFilePostRes, err error) {
+func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReq) (res GetFilePostRes, err error) {
+	switch request := request.(type) {
+	case *GetFilePostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *GetFilePostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *GetFilePostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -366,7 +456,7 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetFilePostRequest(req, span)
+	buf, contentType, err := encodeGetFilePostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -394,7 +484,18 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 	return result, nil
 }
 
-func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
+func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
+	switch request := request.(type) {
+	case *GetGameHighScoresPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *GetGameHighScoresPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -410,7 +511,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetGameHighScoresPostRequest(req, span)
+	buf, contentType, err := encodeGetGameHighScoresPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -510,7 +611,18 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 	return result, nil
 }
 
-func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
+func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
+	switch request := request.(type) {
+	case *GetStickerSetPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *GetStickerSetPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *GetStickerSetPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -526,7 +638,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetStickerSetPostRequest(req, span)
+	buf, contentType, err := encodeGetStickerSetPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -554,7 +666,42 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 	return result, nil
 }
 
-func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
+func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
+	switch request := request.(type) {
+	case *GetUpdatesPostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *GetUpdatesPostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *GetUpdatesPostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -570,7 +717,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUpdatesPostRequest(req, span)
+	buf, contentType, err := encodeGetUpdatesPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -598,7 +745,42 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 	return result, nil
 }
 
-func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
+func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
+	switch request := request.(type) {
+	case *GetUserProfilePhotosPostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *GetUserProfilePhotosPostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -614,7 +796,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req, span)
+	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -714,7 +896,42 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	return result, nil
 }
 
-func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res SendGamePostRes, err error) {
+func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReq) (res SendGamePostRes, err error) {
+	switch request := request.(type) {
+	case *SendGamePostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SendGamePostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SendGamePostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -730,7 +947,7 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendGamePostRequest(req, span)
+	buf, contentType, err := encodeSendGamePostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -758,7 +975,42 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 	return result, nil
 }
 
-func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (res SendInvoicePostRes, err error) {
+func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq) (res SendInvoicePostRes, err error) {
+	switch request := request.(type) {
+	case *SendInvoicePostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SendInvoicePostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SendInvoicePostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -774,7 +1026,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendInvoicePostRequest(req, span)
+	buf, contentType, err := encodeSendInvoicePostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -802,7 +1054,42 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 	return result, nil
 }
 
-func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
+func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
+	switch request := request.(type) {
+	case *SetMyCommandsPostReqApplicationJSON:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SetMyCommandsPostReqApplicationXWwwFormUrlencoded:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *SetMyCommandsPostReqMultipartFormData:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -818,7 +1105,7 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetMyCommandsPostRequest(req, span)
+	buf, contentType, err := encodeSetMyCommandsPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -846,7 +1133,18 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 	return result, nil
 }
 
-func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
+func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
+	switch request := request.(type) {
+	case *SetStickerPositionInSetPostReqApplicationJSON:
+		// Validation is not required for this type.
+	case *SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *SetStickerPositionInSetPostReqMultipartFormData:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -862,7 +1160,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req, span)
+	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -890,7 +1188,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 	return result, nil
 }
 
-func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res SetWebhookPostRes, err error) {
+func (c *Client) SetWebhookPost(ctx context.Context, request SetWebhookPostReq) (res SetWebhookPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -906,7 +1204,7 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetWebhookPostRequest(req, span)
+	buf, contentType, err := encodeSetWebhookPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -934,7 +1232,7 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 	return result, nil
 }
 
-func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostReq) (res UploadStickerFilePostRes, err error) {
+func (c *Client) UploadStickerFilePost(ctx context.Context, request UploadStickerFilePostReq) (res UploadStickerFilePostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -950,7 +1248,7 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUploadStickerFilePostRequest(req, span)
+	buf, contentType, err := encodeUploadStickerFilePostRequest(request, span)
 	if err != nil {
 		return res, err
 	}

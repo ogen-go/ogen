@@ -94,7 +94,16 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1MutatingWebhookConfiguration`)),
@@ -111,7 +120,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req, span)
+	buf, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -162,7 +171,16 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
-func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1ValidatingWebhookConfiguration`)),
@@ -179,7 +197,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req, span)
+	buf, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -230,7 +248,16 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
+func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`createApiextensionsV1CustomResourceDefinition`)),
@@ -247,7 +274,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req, span)
+	buf, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -298,7 +325,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
+func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`createApiregistrationV1APIService`)),
@@ -315,7 +342,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req, span)
+	buf, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -366,7 +393,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 	return result, nil
 }
 
-func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
+func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, request IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthenticationV1TokenReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthenticationV1TokenReview`)),
@@ -383,7 +410,7 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req, span)
+	buf, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -411,7 +438,7 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
+func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, request IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectAccessReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectAccessReview`)),
@@ -428,7 +455,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req, span)
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -456,7 +483,16 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
+func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, request IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectRulesReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectRulesReview`)),
@@ -473,7 +509,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req, span)
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -501,7 +537,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
+func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, request IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SubjectAccessReview`,
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SubjectAccessReview`)),
@@ -518,7 +554,7 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req, span)
+	buf, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -546,7 +582,16 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, req IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
+func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, request IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`createCertificatesV1CertificateSigningRequest`)),
@@ -563,7 +608,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req, span)
+	buf, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -614,7 +659,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
+func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Namespace`)),
@@ -631,7 +676,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateCoreV1NamespaceRequest(req, span)
+	buf, contentType, err := encodeCreateCoreV1NamespaceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -682,7 +727,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
+func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Node`)),
@@ -699,7 +744,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateCoreV1NodeRequest(req, span)
+	buf, contentType, err := encodeCreateCoreV1NodeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -750,7 +795,16 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
+func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1PersistentVolume`)),
@@ -767,7 +821,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req, span)
+	buf, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -818,7 +872,16 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1FlowSchema`)),
@@ -835,7 +898,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req, span)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -886,7 +949,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
@@ -903,7 +966,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req, span)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -954,7 +1017,16 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2FlowSchema`)),
@@ -971,7 +1043,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req, span)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1022,7 +1094,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
@@ -1039,7 +1111,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req, span)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1090,7 +1162,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, req IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
+func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, request IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`createInternalApiserverV1alpha1StorageVersion`)),
@@ -1107,7 +1179,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req, span)
+	buf, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1158,7 +1230,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
+func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNetworkingV1IngressClass`)),
@@ -1175,7 +1247,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req, span)
+	buf, contentType, err := encodeCreateNetworkingV1IngressClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1226,7 +1298,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1RuntimeClass`)),
@@ -1243,7 +1315,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req, span)
+	buf, contentType, err := encodeCreateNodeV1RuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1294,7 +1366,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1alpha1RuntimeClass`)),
@@ -1311,7 +1383,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req, span)
+	buf, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1362,7 +1434,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1beta1RuntimeClass`)),
@@ -1379,7 +1451,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req, span)
+	buf, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1430,7 +1502,16 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 	return result, nil
 }
 
-func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
+func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, request IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`createPolicyV1beta1PodSecurityPolicy`)),
@@ -1447,7 +1528,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req, span)
+	buf, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1498,7 +1579,16 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 	return result, nil
 }
 
-func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, request IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRole`)),
@@ -1515,7 +1605,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req, span)
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1566,7 +1656,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 	return result, nil
 }
 
-func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, request IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRoleBinding`)),
@@ -1583,7 +1673,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req, span)
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1634,7 +1724,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
+func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`createSchedulingV1PriorityClass`)),
@@ -1651,7 +1741,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req, span)
+	buf, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1702,7 +1792,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
+func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSIDriver`)),
@@ -1719,7 +1809,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateStorageV1CSIDriverRequest(req, span)
+	buf, contentType, err := encodeCreateStorageV1CSIDriverRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1770,7 +1860,16 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
+func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSINode`)),
@@ -1787,7 +1886,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateStorageV1CSINodeRequest(req, span)
+	buf, contentType, err := encodeCreateStorageV1CSINodeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1838,7 +1937,16 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
+func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1StorageClass`)),
@@ -1855,7 +1963,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateStorageV1StorageClassRequest(req, span)
+	buf, contentType, err := encodeCreateStorageV1StorageClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1906,7 +2014,16 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
+func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1VolumeAttachment`)),
@@ -1923,7 +2040,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req, span)
+	buf, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1974,7 +2091,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 	return result, nil
 }
 
-func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`)),
@@ -1991,7 +2108,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req, span)
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2132,7 +2249,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 	return result, nil
 }
 
-func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`)),
@@ -2149,7 +2266,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req, span)
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2290,7 +2407,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 	return result, nil
 }
 
-func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
+func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiextensionsV1CollectionCustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiextensionsV1CollectionCustomResourceDefinition`)),
@@ -2307,7 +2424,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req, span)
+	buf, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2448,7 +2565,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 	return result, nil
 }
 
-func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
+func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiregistrationV1CollectionAPIService`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiregistrationV1CollectionAPIService`)),
@@ -2465,7 +2582,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req, span)
+	buf, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2606,7 +2723,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
+func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCertificatesV1CollectionCertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCertificatesV1CollectionCertificateSigningRequest`)),
@@ -2623,7 +2740,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req, span)
+	buf, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2764,7 +2881,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 	return result, nil
 }
 
-func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
+func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionNode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionNode`)),
@@ -2781,7 +2898,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req, span)
+	buf, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2922,7 +3039,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 	return result, nil
 }
 
-func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
+func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionPersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionPersistentVolume`)),
@@ -2939,7 +3056,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req, span)
+	buf, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3080,7 +3197,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionFlowSchema`)),
@@ -3097,7 +3214,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req, span)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3238,7 +3355,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`)),
@@ -3255,7 +3372,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req, span)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3396,7 +3513,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionFlowSchema`)),
@@ -3413,7 +3530,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req, span)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3554,7 +3671,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`)),
@@ -3571,7 +3688,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req, span)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3712,7 +3829,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 	return result, nil
 }
 
-func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
+func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteInternalApiserverV1alpha1CollectionStorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`deleteInternalApiserverV1alpha1CollectionStorageVersion`)),
@@ -3729,7 +3846,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req, span)
+	buf, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3870,7 +3987,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 	return result, nil
 }
 
-func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
+func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNetworkingV1CollectionIngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNetworkingV1CollectionIngressClass`)),
@@ -3887,7 +4004,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req, span)
+	buf, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4028,7 +4145,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1CollectionRuntimeClass`)),
@@ -4045,7 +4162,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req, span)
+	buf, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4186,7 +4303,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1alpha1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1alpha1CollectionRuntimeClass`)),
@@ -4203,7 +4320,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req, span)
+	buf, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4344,7 +4461,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1beta1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1beta1CollectionRuntimeClass`)),
@@ -4361,7 +4478,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req, span)
+	buf, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4502,7 +4619,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
+func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePolicyV1beta1CollectionPodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`deletePolicyV1beta1CollectionPodSecurityPolicy`)),
@@ -4519,7 +4636,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req, span)
+	buf, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4660,7 +4777,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRole`)),
@@ -4677,7 +4794,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req, span)
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4818,7 +4935,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRoleBinding`)),
@@ -4835,7 +4952,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req, span)
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4976,7 +5093,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 	return result, nil
 }
 
-func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
+func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteSchedulingV1CollectionPriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteSchedulingV1CollectionPriorityClass`)),
@@ -4993,7 +5110,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req, span)
+	buf, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -5134,7 +5251,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
+func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSIDriver`)),
@@ -5151,7 +5268,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req, span)
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -5292,7 +5409,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
+func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSINode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSINode`)),
@@ -5309,7 +5426,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req, span)
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -5450,7 +5567,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
+func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionStorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionStorageClass`)),
@@ -5467,7 +5584,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req, span)
+	buf, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -5608,7 +5725,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
+func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionVolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionVolumeAttachment`)),
@@ -5625,7 +5742,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req, span)
+	buf, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(request, span)
 	if err != nil {
 		return res, err
 	}

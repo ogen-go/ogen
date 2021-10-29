@@ -426,7 +426,16 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateOrUpdateEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-environment-secret`)),
@@ -443,7 +452,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(req, span)
+	buf, contentType, err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -500,7 +509,16 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateOrUpdateOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-org-secret`)),
@@ -517,7 +535,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req Actions
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateOrgSecretRequest(req, span)
+	buf, contentType, err := encodeActionsCreateOrUpdateOrgSecretRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -564,7 +582,16 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req Actions
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateOrUpdateRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-repo-secret`)),
@@ -581,7 +608,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req Action
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateRepoSecretRequest(req, span)
+	buf, contentType, err := encodeActionsCreateOrUpdateRepoSecretRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -846,7 +873,16 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	return result, nil
 }
 
-func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-self-hosted-runner-group-for-org`)),
@@ -863,7 +899,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(req, span)
+	buf, contentType, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4531,7 +4567,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	return result, nil
 }
 
-func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationResNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
@@ -4548,7 +4584,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, req S
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetAllowedActionsOrganizationRequest(req, span)
+	buf, contentType, err := encodeActionsSetAllowedActionsOrganizationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4586,7 +4622,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, req S
 	return result, nil
 }
 
-func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryResNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryResNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
@@ -4603,7 +4639,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, req Sel
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetAllowedActionsRepositoryRequest(req, span)
+	buf, contentType, err := encodeActionsSetAllowedActionsRepositoryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4651,7 +4687,16 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, req Sel
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-organization`)),
@@ -4668,7 +4713,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(req, span)
+	buf, contentType, err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4706,7 +4751,16 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryResNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-repository`)),
@@ -4723,7 +4777,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(req, span)
+	buf, contentType, err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4771,7 +4825,16 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -4788,7 +4851,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(req, span)
+	buf, contentType, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4836,7 +4899,16 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretResNoContent, err error) {
+func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repos-for-org-secret`)),
@@ -4853,7 +4925,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelectedReposForOrgSecretRequest(req, span)
+	buf, contentType, err := encodeActionsSetSelectedReposForOrgSecretRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4901,7 +4973,16 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req Ac
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, err error) {
+func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repositories-enabled-github-actions-organization`)),
@@ -4918,7 +4999,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(req, span)
+	buf, contentType, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -4956,7 +5037,16 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, err error) {
+func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-self-hosted-runners-in-group-for-org`)),
@@ -4973,7 +5063,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(req, span)
+	buf, contentType, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -5021,7 +5111,16 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsUpdateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/update-self-hosted-runner-group-for-org`)),
@@ -5038,7 +5137,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(req, span)
+	buf, contentType, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -6491,7 +6590,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	return result, nil
 }
 
-func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req ActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request ActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-notifications-as-read`)),
@@ -6508,7 +6607,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req Activi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivityMarkNotificationsAsReadRequest(req, span)
+	buf, contentType, err := encodeActivityMarkNotificationsAsReadRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -6536,7 +6635,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req Activi
 	return result, nil
 }
 
-func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, req ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkRepoNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-repo-notifications-as-read`)),
@@ -6553,7 +6652,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, req Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivityMarkRepoNotificationsAsReadRequest(req, span)
+	buf, contentType, err := encodeActivityMarkRepoNotificationsAsReadRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -6647,7 +6746,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	return result, nil
 }
 
-func (c *Client) ActivitySetRepoSubscription(ctx context.Context, req ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
+func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-repo-subscription`)),
@@ -6664,7 +6763,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, req ActivitySe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivitySetRepoSubscriptionRequest(req, span)
+	buf, contentType, err := encodeActivitySetRepoSubscriptionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -6712,7 +6811,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, req ActivitySe
 	return result, nil
 }
 
-func (c *Client) ActivitySetThreadSubscription(ctx context.Context, req ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
+func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-thread-subscription`)),
@@ -6729,7 +6828,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, req Activity
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivitySetThreadSubscriptionRequest(req, span)
+	buf, contentType, err := encodeActivitySetThreadSubscriptionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -7840,7 +7939,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	return result, nil
 }
 
-func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, req AppsUpdateWebhookConfigForAppReq) (res WebhookConfig, err error) {
+func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request AppsUpdateWebhookConfigForAppReq) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsUpdateWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/update-webhook-config-for-app`)),
@@ -7857,7 +7956,7 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, req AppsUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAppsUpdateWebhookConfigForAppRequest(req, span)
+	buf, contentType, err := encodeAppsUpdateWebhookConfigForAppRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -8308,7 +8407,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) ChecksCreate(ctx context.Context, req ChecksCreateReq, params ChecksCreateParams) (res CheckRun, err error) {
+func (c *Client) ChecksCreate(ctx context.Context, request ChecksCreateReq, params ChecksCreateParams) (res CheckRun, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksCreate`,
 		trace.WithAttributes(otelogen.OperationID(`checks/create`)),
@@ -8325,7 +8424,7 @@ func (c *Client) ChecksCreate(ctx context.Context, req ChecksCreateReq, params C
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeChecksCreateRequest(req, span)
+	buf, contentType, err := encodeChecksCreateRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -8373,7 +8472,7 @@ func (c *Client) ChecksCreate(ctx context.Context, req ChecksCreateReq, params C
 	return result, nil
 }
 
-func (c *Client) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
+func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksCreateSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/create-suite`)),
@@ -8390,7 +8489,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeChecksCreateSuiteRequest(req, span)
+	buf, contentType, err := encodeChecksCreateSuiteRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -9087,7 +9186,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	return result, nil
 }
 
-func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
+func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksSetSuitesPreferences`,
 		trace.WithAttributes(otelogen.OperationID(`checks/set-suites-preferences`)),
@@ -9104,7 +9203,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeChecksSetSuitesPreferencesRequest(req, span)
+	buf, contentType, err := encodeChecksSetSuitesPreferencesRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -9769,7 +9868,16 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	return result, nil
 }
 
-func (c *Client) CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
+func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/update-alert`)),
@@ -9786,7 +9894,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUp
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCodeScanningUpdateAlertRequest(req, span)
+	buf, contentType, err := encodeCodeScanningUpdateAlertRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -9843,7 +9951,16 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUp
 	return result, nil
 }
 
-func (c *Client) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
+func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningUploadSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/upload-sarif`)),
@@ -9860,7 +9977,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUp
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCodeScanningUploadSarifRequest(req, span)
+	buf, contentType, err := encodeCodeScanningUploadSarifRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -10254,7 +10371,16 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-self-hosted-runner-group-for-enterprise`)),
@@ -10271,7 +10397,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -11683,7 +11809,16 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminProvisionAndInviteEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-group`)),
@@ -11700,7 +11835,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -11738,7 +11873,16 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminProvisionAndInviteEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-user`)),
@@ -11755,7 +11899,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -11925,7 +12069,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseResNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-allowed-actions-enterprise`)),
@@ -11942,7 +12086,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -11980,7 +12124,16 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-github-actions-permissions-enterprise`)),
@@ -11997,7 +12150,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12035,7 +12188,16 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetInformationForProvisionedEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-group`)),
@@ -12052,7 +12214,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12099,7 +12261,16 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetInformationForProvisionedEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-user`)),
@@ -12116,7 +12287,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12163,7 +12334,16 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -12180,7 +12360,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12228,7 +12408,16 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise`)),
@@ -12245,7 +12434,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12283,7 +12472,16 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-self-hosted-runners-in-group-for-enterprise`)),
@@ -12300,7 +12498,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12348,7 +12546,16 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminUpdateAttributeForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-user`)),
@@ -12365,7 +12572,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12412,7 +12619,16 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-self-hosted-runner-group-for-enterprise`)),
@@ -12429,7 +12645,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(req, span)
+	buf, contentType, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -12523,7 +12739,16 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	return result, nil
 }
 
-func (c *Client) GistsCreateComment(ctx context.Context, req GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
+func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsCreateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/create-comment`)),
@@ -12540,7 +12765,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, req GistsCreateCommentR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGistsCreateCommentRequest(req, span)
+	buf, contentType, err := encodeGistsCreateCommentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -13226,7 +13451,16 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	return result, nil
 }
 
-func (c *Client) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
+func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsUpdateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/update-comment`)),
@@ -13243,7 +13477,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGistsUpdateCommentRequest(req, span)
+	buf, contentType, err := encodeGistsUpdateCommentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -13801,7 +14035,16 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
+func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsSetRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-repo`)),
@@ -13818,7 +14061,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req Int
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeInteractionsSetRestrictionsForRepoRequest(req, span)
+	buf, contentType, err := encodeInteractionsSetRestrictionsForRepoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -13866,7 +14109,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req Int
 	return result, nil
 }
 
-func (c *Client) IssuesAddAssignees(ctx context.Context, req IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
+func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesAddAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/add-assignees`)),
@@ -13883,7 +14126,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, req IssuesAddAssigneesR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesAddAssigneesRequest(req, span)
+	buf, contentType, err := encodeIssuesAddAssigneesRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -15086,7 +15329,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	return result, nil
 }
 
-func (c *Client) IssuesRemoveAssignees(ctx context.Context, req IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
+func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesRemoveAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-assignees`)),
@@ -15103,7 +15346,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, req IssuesRemoveAssi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesRemoveAssigneesRequest(req, span)
+	buf, contentType, err := encodeIssuesRemoveAssigneesRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -15304,7 +15547,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	return result, nil
 }
 
-func (c *Client) IssuesUpdateLabel(ctx context.Context, req IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
+func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-label`)),
@@ -15321,7 +15564,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, req IssuesUpdateLabelReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesUpdateLabelRequest(req, span)
+	buf, contentType, err := encodeIssuesUpdateLabelRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -15378,7 +15621,16 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, req IssuesUpdateLabelReq
 	return result, nil
 }
 
-func (c *Client) IssuesUpdateMilestone(ctx context.Context, req IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
+func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdateMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-milestone`)),
@@ -15395,7 +15647,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, req IssuesUpdateMile
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesUpdateMilestoneRequest(req, span)
+	buf, contentType, err := encodeIssuesUpdateMilestoneRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -15625,7 +15877,16 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	return result, nil
 }
 
-func (c *Client) MarkdownRender(ctx context.Context, req MarkdownRenderReq) (res MarkdownRenderRes, err error) {
+func (c *Client) MarkdownRender(ctx context.Context, request MarkdownRenderReq) (res MarkdownRenderRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MarkdownRender`,
 		trace.WithAttributes(otelogen.OperationID(`markdown/render`)),
@@ -15642,7 +15903,7 @@ func (c *Client) MarkdownRender(ctx context.Context, req MarkdownRenderReq) (res
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMarkdownRenderRequest(req, span)
+	buf, contentType, err := encodeMarkdownRenderRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -15670,7 +15931,16 @@ func (c *Client) MarkdownRender(ctx context.Context, req MarkdownRenderReq) (res
 	return result, nil
 }
 
-func (c *Client) MarkdownRenderRaw(ctx context.Context, req MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
+func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
+	switch request := request.(type) {
+	case *MarkdownRenderRawReqTextPlain:
+		// Validation is not required for this type.
+	case *MarkdownRenderRawReqTextXMarkdown:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MarkdownRenderRaw`,
 		trace.WithAttributes(otelogen.OperationID(`markdown/render-raw`)),
@@ -15687,7 +15957,7 @@ func (c *Client) MarkdownRenderRaw(ctx context.Context, req MarkdownRenderRawReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMarkdownRenderRawRequest(req, span)
+	buf, contentType, err := encodeMarkdownRenderRawRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -16867,7 +17137,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	return result, nil
 }
 
-func (c *Client) MigrationsUpdateImport(ctx context.Context, req MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
+func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsUpdateImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/update-import`)),
@@ -16884,7 +17154,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, req MigrationsUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMigrationsUpdateImportRequest(req, span)
+	buf, contentType, err := encodeMigrationsUpdateImportRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -19090,7 +19360,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	return result, nil
 }
 
-func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
+func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUpdateWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook-config-for-org`)),
@@ -19107,7 +19377,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OrgsUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeOrgsUpdateWebhookConfigForOrgRequest(req, span)
+	buf, contentType, err := encodeOrgsUpdateWebhookConfigForOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -20875,7 +21145,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
+func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-column`)),
@@ -20892,7 +21162,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateCol
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateColumnRequest(req, span)
+	buf, contentType, err := encodeProjectsCreateColumnRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -20930,7 +21200,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateCol
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
+func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-authenticated-user`)),
@@ -20947,7 +21217,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req Pro
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForAuthenticatedUserRequest(req, span)
+	buf, contentType, err := encodeProjectsCreateForAuthenticatedUserRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -20975,7 +21245,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req Pro
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
+func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-org`)),
@@ -20992,7 +21262,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateFor
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForOrgRequest(req, span)
+	buf, contentType, err := encodeProjectsCreateForOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21030,7 +21300,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateFor
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
+func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-repo`)),
@@ -21047,7 +21317,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateFo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForRepoRequest(req, span)
+	buf, contentType, err := encodeProjectsCreateForRepoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21691,7 +21961,16 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	return result, nil
 }
 
-func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
+func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsMoveColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/move-column`)),
@@ -21708,7 +21987,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsMoveColumnRequest(req, span)
+	buf, contentType, err := encodeProjectsMoveColumnRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21746,7 +22025,16 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnR
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdate(ctx context.Context, req ProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
+func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update`)),
@@ -21763,7 +22051,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, req ProjectsUpdateReq, para
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateRequest(req, span)
+	buf, contentType, err := encodeProjectsUpdateRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21800,7 +22088,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, req ProjectsUpdateReq, para
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdateCard(ctx context.Context, req ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
+func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdateCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-card`)),
@@ -21817,7 +22105,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, req ProjectsUpdateCardR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateCardRequest(req, span)
+	buf, contentType, err := encodeProjectsUpdateCardRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21854,7 +22142,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, req ProjectsUpdateCardR
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
+func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-column`)),
@@ -21871,7 +22159,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateCol
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateColumnRequest(req, span)
+	buf, contentType, err := encodeProjectsUpdateColumnRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -21975,7 +22263,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	return result, nil
 }
 
-func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
+func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCreateReplyForReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-reply-for-review-comment`)),
@@ -21992,7 +22280,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, req Pulls
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsCreateReplyForReviewCommentRequest(req, span)
+	buf, contentType, err := encodePullsCreateReplyForReviewCommentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -22060,7 +22348,16 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, req Pulls
 	return result, nil
 }
 
-func (c *Client) PullsCreateReview(ctx context.Context, req PullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
+func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCreateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-review`)),
@@ -22077,7 +22374,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, req PullsCreateReviewReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsCreateReviewRequest(req, span)
+	buf, contentType, err := encodePullsCreateReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -22277,7 +22574,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	return result, nil
 }
 
-func (c *Client) PullsDismissReview(ctx context.Context, req PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
+func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsDismissReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/dismiss-review`)),
@@ -22294,7 +22591,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, req PullsDismissReviewR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsDismissReviewRequest(req, span)
+	buf, contentType, err := encodePullsDismissReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23170,7 +23467,16 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	return result, nil
 }
 
-func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
+func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsSubmitReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/submit-review`)),
@@ -23187,7 +23493,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsSubmitReviewRequest(req, span)
+	buf, contentType, err := encodePullsSubmitReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23255,7 +23561,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq
 	return result, nil
 }
 
-func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
+func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review`)),
@@ -23272,7 +23578,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsUpdateReviewRequest(req, span)
+	buf, contentType, err := encodePullsUpdateReviewRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23339,7 +23645,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewReq
 	return result, nil
 }
 
-func (c *Client) PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
+func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdateReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review-comment`)),
@@ -23356,7 +23662,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, req PullsUpdateRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsUpdateReviewCommentRequest(req, span)
+	buf, contentType, err := encodePullsUpdateReviewCommentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23450,7 +23756,16 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-in-org`)),
@@ -23467,7 +23782,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(req, span)
+	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23535,7 +23850,16 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-legacy`)),
@@ -23552,7 +23876,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(req, span)
+	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23610,7 +23934,16 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-in-org`)),
@@ -23627,7 +23960,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionInOrgRequest(req, span)
+	buf, contentType, err := encodeReactionsCreateForTeamDiscussionInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -23685,7 +24018,16 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req 
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-legacy`)),
@@ -23702,7 +24044,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionLegacyRequest(req, span)
+	buf, contentType, err := encodeReactionsCreateForTeamDiscussionLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -25387,7 +25729,16 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res Status, err error) {
+func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res Status, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateCommitStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-status`)),
@@ -25404,7 +25755,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCom
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposCreateCommitStatusRequest(req, span)
+	buf, contentType, err := encodeReposCreateCommitStatusRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -25461,7 +25812,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCom
 	return result, nil
 }
 
-func (c *Client) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res Repository, err error) {
+func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res Repository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateUsingTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-using-template`)),
@@ -25478,7 +25829,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUs
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposCreateUsingTemplateRequest(req, span)
+	buf, contentType, err := encodeReposCreateUsingTemplateRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -31522,7 +31873,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	return result, nil
 }
 
-func (c *Client) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
+func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposMergeUpstream`,
 		trace.WithAttributes(otelogen.OperationID(`repos/merge-upstream`)),
@@ -31539,7 +31890,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposMergeUpstreamRequest(req, span)
+	buf, contentType, err := encodeReposMergeUpstreamRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -31787,7 +32138,16 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	return result, nil
 }
 
-func (c *Client) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
+func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposReplaceAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/replace-all-topics`)),
@@ -31804,7 +32164,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllT
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposReplaceAllTopicsRequest(req, span)
+	buf, contentType, err := encodeReposReplaceAllTopicsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32043,7 +32403,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	return result, nil
 }
 
-func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferReq, params ReposTransferParams) (res MinimalRepository, err error) {
+func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, params ReposTransferParams) (res MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposTransfer`,
 		trace.WithAttributes(otelogen.OperationID(`repos/transfer`)),
@@ -32060,7 +32420,7 @@ func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferReq, params
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposTransferRequest(req, span)
+	buf, contentType, err := encodeReposTransferRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32108,7 +32468,16 @@ func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferReq, params
 	return result, nil
 }
 
-func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
+func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-branch-protection`)),
@@ -32125,7 +32494,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateBranchProtectionRequest(req, span)
+	buf, contentType, err := encodeReposUpdateBranchProtectionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32183,7 +32552,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdat
 	return result, nil
 }
 
-func (c *Client) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
+func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-commit-comment`)),
@@ -32200,7 +32569,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateCommitCommentRequest(req, span)
+	buf, contentType, err := encodeReposUpdateCommitCommentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32257,7 +32626,16 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCo
 	return result, nil
 }
 
-func (c *Client) ReposUpdateInvitation(ctx context.Context, req ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
+func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-invitation`)),
@@ -32274,7 +32652,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, req ReposUpdateInvit
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateInvitationRequest(req, span)
+	buf, contentType, err := encodeReposUpdateInvitationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32331,7 +32709,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, req ReposUpdateInvit
 	return result, nil
 }
 
-func (c *Client) ReposUpdateRelease(ctx context.Context, req ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
+func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release`)),
@@ -32348,7 +32726,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, req ReposUpdateReleaseR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateReleaseRequest(req, span)
+	buf, contentType, err := encodeReposUpdateReleaseRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32405,7 +32783,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, req ReposUpdateReleaseR
 	return result, nil
 }
 
-func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
+func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release-asset`)),
@@ -32422,7 +32800,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateRel
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateReleaseAssetRequest(req, span)
+	buf, contentType, err := encodeReposUpdateReleaseAssetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32479,7 +32857,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateRel
 	return result, nil
 }
 
-func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
+func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook-config-for-repo`)),
@@ -32496,7 +32874,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateWebhookConfigForRepoRequest(req, span)
+	buf, contentType, err := encodeReposUpdateWebhookConfigForRepoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -32554,7 +32932,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposU
 	return result, nil
 }
 
-func (c *Client) ReposUploadReleaseAsset(ctx context.Context, req string, params ReposUploadReleaseAssetParams) (res ReleaseAsset, err error) {
+func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, params ReposUploadReleaseAssetParams) (res ReleaseAsset, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUploadReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/upload-release-asset`)),
@@ -32571,7 +32949,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, req string, params
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUploadReleaseAssetRequest(req, span)
+	buf, contentType, err := encodeReposUploadReleaseAssetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33124,7 +33502,16 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	return result, nil
 }
 
-func (c *Client) SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
+func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SecretScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/update-alert`)),
@@ -33141,7 +33528,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, req SecretScanni
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSecretScanningUpdateAlertRequest(req, span)
+	buf, contentType, err := encodeSecretScanningUpdateAlertRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33254,7 +33641,16 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-in-org`)),
@@ -33271,7 +33667,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33328,7 +33724,16 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-legacy`)),
@@ -33345,7 +33750,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(req, span)
+	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33392,7 +33797,16 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateProjectPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-in-org`)),
@@ -33409,7 +33823,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33466,7 +33880,16 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgResNoContent, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateRepoPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-in-org`)),
@@ -33483,7 +33906,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req T
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33814,7 +34237,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-in-org`)),
@@ -33831,7 +34254,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req Team
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionCommentInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsCreateDiscussionCommentInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33889,7 +34312,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req Team
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-legacy`)),
@@ -33906,7 +34329,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req Tea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionCommentLegacyRequest(req, span)
+	buf, contentType, err := encodeTeamsCreateDiscussionCommentLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -33954,7 +34377,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req Tea
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-in-org`)),
@@ -33971,7 +34394,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreate
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsCreateDiscussionInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -34019,7 +34442,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreate
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-legacy`)),
@@ -34036,7 +34459,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionLegacyRequest(req, span)
+	buf, contentType, err := encodeTeamsCreateDiscussionLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -34074,7 +34497,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreat
 	return result, nil
 }
 
-func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
+func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateOrUpdateIdpGroupConnectionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-in-org`)),
@@ -34091,7 +34514,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -36763,7 +37186,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-in-org`)),
@@ -36780,7 +37203,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req Team
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionCommentInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsUpdateDiscussionCommentInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -36847,7 +37270,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req Team
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-legacy`)),
@@ -36864,7 +37287,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req Tea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionCommentLegacyRequest(req, span)
+	buf, contentType, err := encodeTeamsUpdateDiscussionCommentLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -36921,7 +37344,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req Tea
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-in-org`)),
@@ -36938,7 +37361,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req TeamsUpdate
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsUpdateDiscussionInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -36995,7 +37418,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req TeamsUpdate
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-legacy`)),
@@ -37012,7 +37435,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req TeamsUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionLegacyRequest(req, span)
+	buf, contentType, err := encodeTeamsUpdateDiscussionLegacyRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -37059,7 +37482,16 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req TeamsUpdat
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateInOrg(ctx context.Context, req TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
+func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-in-org`)),
@@ -37076,7 +37508,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, req TeamsUpdateInOrgReq, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateInOrgRequest(req, span)
+	buf, contentType, err := encodeTeamsUpdateInOrgRequest(request, span)
 	if err != nil {
 		return res, err
 	}

@@ -94,7 +94,16 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
@@ -111,7 +120,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateSnapshotRequest(req, span)
+	buf, contentType, err := encodeCreateSnapshotRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -139,7 +148,16 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 	return result, nil
 }
 
-func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionRes, err error) {
+func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSyncAction`,
 		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
@@ -156,7 +174,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateSyncActionRequest(req, span)
+	buf, contentType, err := encodeCreateSyncActionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -369,7 +387,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	return result, nil
 }
 
-func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotRes, err error) {
+func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (res LoadSnapshotRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LoadSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
@@ -386,7 +404,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeLoadSnapshotRequest(req, span)
+	buf, contentType, err := encodeLoadSnapshotRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -414,7 +432,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 	return result, nil
 }
 
-func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutRes, err error) {
+func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res MmdsConfigPutRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsConfigPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -430,7 +448,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMmdsConfigPutRequest(req, span)
+	buf, contentType, err := encodeMmdsConfigPutRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -494,7 +512,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	return result, nil
 }
 
-func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatchRes, err error) {
+func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsPatchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -510,7 +528,7 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMmdsPatchRequest(req, span)
+	buf, contentType, err := encodeMmdsPatchRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -538,7 +556,7 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 	return result, nil
 }
 
-func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, err error) {
+func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -554,7 +572,7 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMmdsPutRequest(req, span)
+	buf, contentType, err := encodeMmdsPutRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -582,7 +600,7 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 	return result, nil
 }
 
-func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonRes, err error) {
+func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res PatchBalloonRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
@@ -599,7 +617,7 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchBalloonRequest(req, span)
+	buf, contentType, err := encodePatchBalloonRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -627,7 +645,7 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 	return result, nil
 }
 
-func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
+func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloonStatsInterval`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
@@ -644,7 +662,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req, span)
+	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -672,7 +690,16 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 	return result, nil
 }
 
-func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
@@ -689,7 +716,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchGuestDriveByIDRequest(req, span)
+	buf, contentType, err := encodePatchGuestDriveByIDRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -726,7 +753,16 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 	return result, nil
 }
 
-func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
@@ -743,7 +779,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req, span)
+	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -780,7 +816,16 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 	return result, nil
 }
 
-func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
@@ -797,7 +842,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchMachineConfigurationRequest(req, span)
+	buf, contentType, err := encodePatchMachineConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -825,7 +870,16 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 	return result, nil
 }
 
-func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error) {
+func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchVm`,
 		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
@@ -842,7 +896,7 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePatchVmRequest(req, span)
+	buf, contentType, err := encodePatchVmRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -870,7 +924,7 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 	return result, nil
 }
 
-func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes, err error) {
+func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloonRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
@@ -887,7 +941,7 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutBalloonRequest(req, span)
+	buf, contentType, err := encodePutBalloonRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -915,7 +969,7 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 	return result, nil
 }
 
-func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceRes, err error) {
+func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (res PutGuestBootSourceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestBootSource`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
@@ -932,7 +986,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutGuestBootSourceRequest(req, span)
+	buf, contentType, err := encodePutGuestBootSourceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -960,7 +1014,16 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 	return result, nil
 }
 
-func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
@@ -977,7 +1040,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutGuestDriveByIDRequest(req, span)
+	buf, contentType, err := encodePutGuestDriveByIDRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1014,7 +1077,16 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 	return result, nil
 }
 
-func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
@@ -1031,7 +1103,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req, span)
+	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1068,7 +1140,16 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 	return result, nil
 }
 
-func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockRes, err error) {
+func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestVsock`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
@@ -1085,7 +1166,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutGuestVsockRequest(req, span)
+	buf, contentType, err := encodePutGuestVsockRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1113,7 +1194,16 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 	return result, nil
 }
 
-func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, err error) {
+func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutLogger`,
 		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
@@ -1130,7 +1220,7 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutLoggerRequest(req, span)
+	buf, contentType, err := encodePutLoggerRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1158,7 +1248,16 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 	return result, nil
 }
 
-func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PutMachineConfigurationRes, err error) {
+func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
@@ -1175,7 +1274,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutMachineConfigurationRequest(req, span)
+	buf, contentType, err := encodePutMachineConfigurationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1203,7 +1302,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 	return result, nil
 }
 
-func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes, err error) {
+func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetricsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
@@ -1220,7 +1319,7 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePutMetricsRequest(req, span)
+	buf, contentType, err := encodePutMetricsRequest(request, span)
 	if err != nil {
 		return res, err
 	}

@@ -94,7 +94,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res AddStickerToSetRes, err error) {
+func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (res AddStickerToSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
 		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
@@ -111,7 +111,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAddStickerToSetRequest(req, span)
+	buf, contentType, err := encodeAddStickerToSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -139,7 +139,16 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 	return result, nil
 }
 
-func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
+func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerCallbackQuery`)),
@@ -156,7 +165,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerCallbackQueryRequest(req, span)
+	buf, contentType, err := encodeAnswerCallbackQueryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -184,7 +193,16 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 	return result, nil
 }
 
-func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
+func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerInlineQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerInlineQuery`)),
@@ -201,7 +219,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerInlineQueryRequest(req, span)
+	buf, contentType, err := encodeAnswerInlineQueryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -229,7 +247,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 	return result, nil
 }
 
-func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res AnswerPreCheckoutQueryRes, err error) {
+func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCheckoutQuery) (res AnswerPreCheckoutQueryRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerPreCheckoutQuery`)),
@@ -246,7 +264,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerPreCheckoutQueryRequest(req, span)
+	buf, contentType, err := encodeAnswerPreCheckoutQueryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -274,7 +292,16 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 	return result, nil
 }
 
-func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
+func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQuery`,
 		trace.WithAttributes(otelogen.OperationID(`answerShippingQuery`)),
@@ -291,7 +318,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerShippingQueryRequest(req, span)
+	buf, contentType, err := encodeAnswerShippingQueryRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -319,7 +346,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 	return result, nil
 }
 
-func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanChatMemberRes, err error) {
+func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res BanChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`banChatMember`)),
@@ -336,7 +363,7 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeBanChatMemberRequest(req, span)
+	buf, contentType, err := encodeBanChatMemberRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -364,7 +391,16 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 	return result, nil
 }
 
-func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMessageRes, err error) {
+func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res CopyMessageRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CopyMessage`,
 		trace.WithAttributes(otelogen.OperationID(`copyMessage`)),
@@ -381,7 +417,7 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCopyMessageRequest(req, span)
+	buf, contentType, err := encodeCopyMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -409,7 +445,7 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 	return result, nil
 }
 
-func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
+func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
@@ -426,7 +462,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateChatInviteLinkRequest(req, span)
+	buf, contentType, err := encodeCreateChatInviteLinkRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -454,7 +490,16 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 	return result, nil
 }
 
-func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
+func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNewStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`createNewStickerSet`)),
@@ -471,7 +516,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNewStickerSetRequest(req, span)
+	buf, contentType, err := encodeCreateNewStickerSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -499,7 +544,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 	return result, nil
 }
 
-func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res DeleteChatPhotoRes, err error) {
+func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (res DeleteChatPhotoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`deleteChatPhoto`)),
@@ -516,7 +561,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteChatPhotoRequest(req, span)
+	buf, contentType, err := encodeDeleteChatPhotoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -544,7 +589,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 	return result, nil
 }
 
-func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res DeleteChatStickerSetRes, err error) {
+func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatStickerSet) (res DeleteChatStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`deleteChatStickerSet`)),
@@ -561,7 +606,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteChatStickerSetRequest(req, span)
+	buf, contentType, err := encodeDeleteChatStickerSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -589,7 +634,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 	return result, nil
 }
 
-func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res DeleteMessageRes, err error) {
+func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res DeleteMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMessage`,
 		trace.WithAttributes(otelogen.OperationID(`deleteMessage`)),
@@ -606,7 +651,7 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteMessageRequest(req, span)
+	buf, contentType, err := encodeDeleteMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -634,7 +679,7 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 	return result, nil
 }
 
-func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res DeleteMyCommandsRes, err error) {
+func (c *Client) DeleteMyCommands(ctx context.Context, request DeleteMyCommands) (res DeleteMyCommandsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`deleteMyCommands`)),
@@ -651,7 +696,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteMyCommandsRequest(req, span)
+	buf, contentType, err := encodeDeleteMyCommandsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -679,7 +724,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 	return result, nil
 }
 
-func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res DeleteStickerFromSetRes, err error) {
+func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteStickerFromSet) (res DeleteStickerFromSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSet`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStickerFromSet`)),
@@ -696,7 +741,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStickerFromSetRequest(req, span)
+	buf, contentType, err := encodeDeleteStickerFromSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -724,7 +769,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 	return result, nil
 }
 
-func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res DeleteWebhookRes, err error) {
+func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res DeleteWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`deleteWebhook`)),
@@ -741,7 +786,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteWebhookRequest(req, span)
+	buf, contentType, err := encodeDeleteWebhookRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -769,7 +814,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 	return result, nil
 }
 
-func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
+func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),
@@ -786,7 +831,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditChatInviteLinkRequest(req, span)
+	buf, contentType, err := encodeEditChatInviteLinkRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -814,7 +859,16 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 	return result, nil
 }
 
-func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res EditMessageCaptionRes, err error) {
+func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res EditMessageCaptionRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageCaption`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageCaption`)),
@@ -831,7 +885,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageCaptionRequest(req, span)
+	buf, contentType, err := encodeEditMessageCaptionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -859,7 +913,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 	return result, nil
 }
 
-func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
+func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
@@ -876,7 +930,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageLiveLocationRequest(req, span)
+	buf, contentType, err := encodeEditMessageLiveLocationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -904,7 +958,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 	return result, nil
 }
 
-func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res EditMessageMediaRes, err error) {
+func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res EditMessageMediaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
@@ -921,7 +975,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageMediaRequest(req, span)
+	buf, contentType, err := encodeEditMessageMediaRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -949,7 +1003,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 	return result, nil
 }
 
-func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
+func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
@@ -966,7 +1020,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageReplyMarkupRequest(req, span)
+	buf, contentType, err := encodeEditMessageReplyMarkupRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -994,7 +1048,16 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 	return result, nil
 }
 
-func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res EditMessageTextRes, err error) {
+func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res EditMessageTextRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageText`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageText`)),
@@ -1011,7 +1074,7 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageTextRequest(req, span)
+	buf, contentType, err := encodeEditMessageTextRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1039,7 +1102,7 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 	return result, nil
 }
 
-func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res ExportChatInviteLinkRes, err error) {
+func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInviteLink) (res ExportChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ExportChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`exportChatInviteLink`)),
@@ -1056,7 +1119,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeExportChatInviteLinkRequest(req, span)
+	buf, contentType, err := encodeExportChatInviteLinkRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1084,7 +1147,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 	return result, nil
 }
 
-func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res ForwardMessageRes, err error) {
+func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (res ForwardMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ForwardMessage`,
 		trace.WithAttributes(otelogen.OperationID(`forwardMessage`)),
@@ -1101,7 +1164,7 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeForwardMessageRequest(req, span)
+	buf, contentType, err := encodeForwardMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1129,7 +1192,7 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 	return result, nil
 }
 
-func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err error) {
+func (c *Client) GetChat(ctx context.Context, request GetChat) (res GetChatRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChat`,
 		trace.WithAttributes(otelogen.OperationID(`getChat`)),
@@ -1146,7 +1209,7 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatRequest(req, span)
+	buf, contentType, err := encodeGetChatRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1174,7 +1237,7 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 	return result, nil
 }
 
-func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res GetChatAdministratorsRes, err error) {
+func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdministrators) (res GetChatAdministratorsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatAdministrators`,
 		trace.WithAttributes(otelogen.OperationID(`getChatAdministrators`)),
@@ -1191,7 +1254,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatAdministratorsRequest(req, span)
+	buf, contentType, err := encodeGetChatAdministratorsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1219,7 +1282,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 	return result, nil
 }
 
-func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetChatMemberRes, err error) {
+func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res GetChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`getChatMember`)),
@@ -1236,7 +1299,7 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatMemberRequest(req, span)
+	buf, contentType, err := encodeGetChatMemberRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1264,7 +1327,7 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 	return result, nil
 }
 
-func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res GetChatMemberCountRes, err error) {
+func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCount) (res GetChatMemberCountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMemberCount`,
 		trace.WithAttributes(otelogen.OperationID(`getChatMemberCount`)),
@@ -1281,7 +1344,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatMemberCountRequest(req, span)
+	buf, contentType, err := encodeGetChatMemberCountRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1309,7 +1372,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 	return result, nil
 }
 
-func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err error) {
+func (c *Client) GetFile(ctx context.Context, request GetFile) (res GetFileRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFile`,
 		trace.WithAttributes(otelogen.OperationID(`getFile`)),
@@ -1326,7 +1389,7 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetFileRequest(req, span)
+	buf, contentType, err := encodeGetFileRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1354,7 +1417,7 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 	return result, nil
 }
 
-func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res GetGameHighScoresRes, err error) {
+func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScores) (res GetGameHighScoresRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScores`,
 		trace.WithAttributes(otelogen.OperationID(`getGameHighScores`)),
@@ -1371,7 +1434,7 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetGameHighScoresRequest(req, span)
+	buf, contentType, err := encodeGetGameHighScoresRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1436,7 +1499,7 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 	return result, nil
 }
 
-func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetMyCommandsRes, err error) {
+func (c *Client) GetMyCommands(ctx context.Context, request GetMyCommands) (res GetMyCommandsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`getMyCommands`)),
@@ -1453,7 +1516,7 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetMyCommandsRequest(req, span)
+	buf, contentType, err := encodeGetMyCommandsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1481,7 +1544,7 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 	return result, nil
 }
 
-func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetStickerSetRes, err error) {
+func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res GetStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`getStickerSet`)),
@@ -1498,7 +1561,7 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetStickerSetRequest(req, span)
+	buf, contentType, err := encodeGetStickerSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1526,7 +1589,16 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 	return result, nil
 }
 
-func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdatesRes, err error) {
+func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpdatesRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdates`,
 		trace.WithAttributes(otelogen.OperationID(`getUpdates`)),
@@ -1543,7 +1615,7 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUpdatesRequest(req, span)
+	buf, contentType, err := encodeGetUpdatesRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1571,7 +1643,16 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 	return result, nil
 }
 
-func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
+func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotos`,
 		trace.WithAttributes(otelogen.OperationID(`getUserProfilePhotos`)),
@@ -1588,7 +1669,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUserProfilePhotosRequest(req, span)
+	buf, contentType, err := encodeGetUserProfilePhotosRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1616,7 +1697,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 	return result, nil
 }
 
-func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes, err error) {
+func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res LeaveChatRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LeaveChat`,
 		trace.WithAttributes(otelogen.OperationID(`leaveChat`)),
@@ -1633,7 +1714,7 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeLeaveChatRequest(req, span)
+	buf, contentType, err := encodeLeaveChatRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1661,7 +1742,7 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 	return result, nil
 }
 
-func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res PinChatMessageRes, err error) {
+func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (res PinChatMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PinChatMessage`,
 		trace.WithAttributes(otelogen.OperationID(`pinChatMessage`)),
@@ -1678,7 +1759,7 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePinChatMessageRequest(req, span)
+	buf, contentType, err := encodePinChatMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1706,7 +1787,7 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 	return result, nil
 }
 
-func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res PromoteChatMemberRes, err error) {
+func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMember) (res PromoteChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PromoteChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`promoteChatMember`)),
@@ -1723,7 +1804,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePromoteChatMemberRequest(req, span)
+	buf, contentType, err := encodePromoteChatMemberRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1751,7 +1832,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 	return result, nil
 }
 
-func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res RestrictChatMemberRes, err error) {
+func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMember) (res RestrictChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RestrictChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`restrictChatMember`)),
@@ -1768,7 +1849,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeRestrictChatMemberRequest(req, span)
+	buf, contentType, err := encodeRestrictChatMemberRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1796,7 +1877,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 	return result, nil
 }
 
-func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res RevokeChatInviteLinkRes, err error) {
+func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInviteLink) (res RevokeChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RevokeChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`revokeChatInviteLink`)),
@@ -1813,7 +1894,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeRevokeChatInviteLinkRequest(req, span)
+	buf, contentType, err := encodeRevokeChatInviteLinkRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1841,7 +1922,16 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 	return result, nil
 }
 
-func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res SendAnimationRes, err error) {
+func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res SendAnimationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAnimation`,
 		trace.WithAttributes(otelogen.OperationID(`sendAnimation`)),
@@ -1858,7 +1948,7 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendAnimationRequest(req, span)
+	buf, contentType, err := encodeSendAnimationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1886,7 +1976,16 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 	return result, nil
 }
 
-func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes, err error) {
+func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudioRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAudio`,
 		trace.WithAttributes(otelogen.OperationID(`sendAudio`)),
@@ -1903,7 +2002,7 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendAudioRequest(req, span)
+	buf, contentType, err := encodeSendAudioRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1931,7 +2030,7 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 	return result, nil
 }
 
-func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res SendChatActionRes, err error) {
+func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (res SendChatActionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendChatAction`,
 		trace.WithAttributes(otelogen.OperationID(`sendChatAction`)),
@@ -1948,7 +2047,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendChatActionRequest(req, span)
+	buf, contentType, err := encodeSendChatActionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1976,7 +2075,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 	return result, nil
 }
 
-func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendContactRes, err error) {
+func (c *Client) SendContact(ctx context.Context, request SendContact) (res SendContactRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
 		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
@@ -1993,7 +2092,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendContactRequest(req, span)
+	buf, contentType, err := encodeSendContactRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2021,7 +2120,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 	return result, nil
 }
 
-func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, err error) {
+func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
 		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
@@ -2038,7 +2137,7 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendDiceRequest(req, span)
+	buf, contentType, err := encodeSendDiceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2066,7 +2165,16 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 	return result, nil
 }
 
-func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDocumentRes, err error) {
+func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res SendDocumentRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDocument`,
 		trace.WithAttributes(otelogen.OperationID(`sendDocument`)),
@@ -2083,7 +2191,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendDocumentRequest(req, span)
+	buf, contentType, err := encodeSendDocumentRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2111,7 +2219,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 	return result, nil
 }
 
-func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, err error) {
+func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
 		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
@@ -2128,7 +2236,7 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendGameRequest(req, span)
+	buf, contentType, err := encodeSendGameRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2156,7 +2264,16 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 	return result, nil
 }
 
-func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvoiceRes, err error) {
+func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res SendInvoiceRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoice`,
 		trace.WithAttributes(otelogen.OperationID(`sendInvoice`)),
@@ -2173,7 +2290,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendInvoiceRequest(req, span)
+	buf, contentType, err := encodeSendInvoiceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2201,7 +2318,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 	return result, nil
 }
 
-func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLocationRes, err error) {
+func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res SendLocationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
 		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
@@ -2218,7 +2335,7 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendLocationRequest(req, span)
+	buf, contentType, err := encodeSendLocationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2246,7 +2363,16 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 	return result, nil
 }
 
-func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res SendMediaGroupRes, err error) {
+func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res SendMediaGroupRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMediaGroup`,
 		trace.WithAttributes(otelogen.OperationID(`sendMediaGroup`)),
@@ -2263,7 +2389,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendMediaGroupRequest(req, span)
+	buf, contentType, err := encodeSendMediaGroupRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2291,7 +2417,16 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 	return result, nil
 }
 
-func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMessageRes, err error) {
+func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res SendMessageRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMessage`,
 		trace.WithAttributes(otelogen.OperationID(`sendMessage`)),
@@ -2308,7 +2443,7 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendMessageRequest(req, span)
+	buf, contentType, err := encodeSendMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2336,7 +2471,16 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 	return result, nil
 }
 
-func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes, err error) {
+func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhotoRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`sendPhoto`)),
@@ -2353,7 +2497,7 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendPhotoRequest(req, span)
+	buf, contentType, err := encodeSendPhotoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2381,7 +2525,16 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 	return result, nil
 }
 
-func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, err error) {
+func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPoll`,
 		trace.WithAttributes(otelogen.OperationID(`sendPoll`)),
@@ -2398,7 +2551,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendPollRequest(req, span)
+	buf, contentType, err := encodeSendPollRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2426,7 +2579,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 	return result, nil
 }
 
-func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStickerRes, err error) {
+func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res SendStickerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
 		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
@@ -2443,7 +2596,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendStickerRequest(req, span)
+	buf, contentType, err := encodeSendStickerRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2471,7 +2624,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 	return result, nil
 }
 
-func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes, err error) {
+func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenueRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
 		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
@@ -2488,7 +2641,7 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVenueRequest(req, span)
+	buf, contentType, err := encodeSendVenueRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2516,7 +2669,16 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 	return result, nil
 }
 
-func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes, err error) {
+func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVideoRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideo`,
 		trace.WithAttributes(otelogen.OperationID(`sendVideo`)),
@@ -2533,7 +2695,7 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVideoRequest(req, span)
+	buf, contentType, err := encodeSendVideoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2561,7 +2723,16 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 	return result, nil
 }
 
-func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res SendVideoNoteRes, err error) {
+func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res SendVideoNoteRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideoNote`,
 		trace.WithAttributes(otelogen.OperationID(`sendVideoNote`)),
@@ -2578,7 +2749,7 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVideoNoteRequest(req, span)
+	buf, contentType, err := encodeSendVideoNoteRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2606,7 +2777,16 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 	return result, nil
 }
 
-func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes, err error) {
+func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoiceRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVoice`,
 		trace.WithAttributes(otelogen.OperationID(`sendVoice`)),
@@ -2623,7 +2803,7 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVoiceRequest(req, span)
+	buf, contentType, err := encodeSendVoiceRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2651,7 +2831,16 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 	return result, nil
 }
 
-func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
+func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatAdministratorCustomTitle`,
 		trace.WithAttributes(otelogen.OperationID(`setChatAdministratorCustomTitle`)),
@@ -2668,7 +2857,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatAdministratorCustomTitleRequest(req, span)
+	buf, contentType, err := encodeSetChatAdministratorCustomTitleRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2696,7 +2885,16 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 	return result, nil
 }
 
-func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res SetChatDescriptionRes, err error) {
+func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res SetChatDescriptionRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatDescription`,
 		trace.WithAttributes(otelogen.OperationID(`setChatDescription`)),
@@ -2713,7 +2911,7 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatDescriptionRequest(req, span)
+	buf, contentType, err := encodeSetChatDescriptionRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2741,7 +2939,7 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 	return result, nil
 }
 
-func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res SetChatPermissionsRes, err error) {
+func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissions) (res SetChatPermissionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPermissions`,
 		trace.WithAttributes(otelogen.OperationID(`setChatPermissions`)),
@@ -2758,7 +2956,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatPermissionsRequest(req, span)
+	buf, contentType, err := encodeSetChatPermissionsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2786,7 +2984,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 	return result, nil
 }
 
-func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetChatPhotoRes, err error) {
+func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res SetChatPhotoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPhoto`,
 		trace.WithAttributes(otelogen.OperationID(`setChatPhoto`)),
@@ -2803,7 +3001,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatPhotoRequest(req, span)
+	buf, contentType, err := encodeSetChatPhotoRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2831,7 +3029,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 	return result, nil
 }
 
-func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res SetChatStickerSetRes, err error) {
+func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSet) (res SetChatStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatStickerSet`,
 		trace.WithAttributes(otelogen.OperationID(`setChatStickerSet`)),
@@ -2848,7 +3046,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatStickerSetRequest(req, span)
+	buf, contentType, err := encodeSetChatStickerSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2876,7 +3074,16 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 	return result, nil
 }
 
-func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetChatTitleRes, err error) {
+func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res SetChatTitleRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatTitle`,
 		trace.WithAttributes(otelogen.OperationID(`setChatTitle`)),
@@ -2893,7 +3100,7 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatTitleRequest(req, span)
+	buf, contentType, err := encodeSetChatTitleRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2921,7 +3128,7 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 	return result, nil
 }
 
-func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGameScoreRes, err error) {
+func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res SetGameScoreRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetGameScore`,
 		trace.WithAttributes(otelogen.OperationID(`setGameScore`)),
@@ -2938,7 +3145,7 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetGameScoreRequest(req, span)
+	buf, contentType, err := encodeSetGameScoreRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -2966,7 +3173,16 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 	return result, nil
 }
 
-func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetMyCommandsRes, err error) {
+func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res SetMyCommandsRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommands`,
 		trace.WithAttributes(otelogen.OperationID(`setMyCommands`)),
@@ -2983,7 +3199,7 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetMyCommandsRequest(req, span)
+	buf, contentType, err := encodeSetMyCommandsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3011,7 +3227,16 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 	return result, nil
 }
 
-func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
+func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetPassportDataErrors`,
 		trace.WithAttributes(otelogen.OperationID(`setPassportDataErrors`)),
@@ -3028,7 +3253,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetPassportDataErrorsRequest(req, span)
+	buf, contentType, err := encodeSetPassportDataErrorsRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3056,7 +3281,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 	return result, nil
 }
 
-func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res SetStickerPositionInSetRes, err error) {
+func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetStickerPositionInSet) (res SetStickerPositionInSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSet`,
 		trace.WithAttributes(otelogen.OperationID(`setStickerPositionInSet`)),
@@ -3073,7 +3298,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetStickerPositionInSetRequest(req, span)
+	buf, contentType, err := encodeSetStickerPositionInSetRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3101,7 +3326,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 	return result, nil
 }
 
-func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res SetStickerSetThumbRes, err error) {
+func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetThumb) (res SetStickerSetThumbRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerSetThumb`,
 		trace.WithAttributes(otelogen.OperationID(`setStickerSetThumb`)),
@@ -3118,7 +3343,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetStickerSetThumbRequest(req, span)
+	buf, contentType, err := encodeSetStickerSetThumbRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3146,7 +3371,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 	return result, nil
 }
 
-func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhookRes, err error) {
+func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`setWebhook`)),
@@ -3163,7 +3388,7 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetWebhookRequest(req, span)
+	buf, contentType, err := encodeSetWebhookRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3191,7 +3416,7 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 	return result, nil
 }
 
-func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
+func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
@@ -3208,7 +3433,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeStopMessageLiveLocationRequest(req, span)
+	buf, contentType, err := encodeStopMessageLiveLocationRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3236,7 +3461,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 	return result, nil
 }
 
-func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, err error) {
+func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
 		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),
@@ -3253,7 +3478,7 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeStopPollRequest(req, span)
+	buf, contentType, err := encodeStopPollRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3281,7 +3506,7 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 	return result, nil
 }
 
-func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res UnbanChatMemberRes, err error) {
+func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (res UnbanChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatMember`,
 		trace.WithAttributes(otelogen.OperationID(`unbanChatMember`)),
@@ -3298,7 +3523,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnbanChatMemberRequest(req, span)
+	buf, contentType, err := encodeUnbanChatMemberRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3326,7 +3551,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 	return result, nil
 }
 
-func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res UnpinAllChatMessagesRes, err error) {
+func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatMessages) (res UnpinAllChatMessagesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinAllChatMessages`,
 		trace.WithAttributes(otelogen.OperationID(`unpinAllChatMessages`)),
@@ -3343,7 +3568,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnpinAllChatMessagesRequest(req, span)
+	buf, contentType, err := encodeUnpinAllChatMessagesRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3371,7 +3596,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 	return result, nil
 }
 
-func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res UnpinChatMessageRes, err error) {
+func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage) (res UnpinChatMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinChatMessage`,
 		trace.WithAttributes(otelogen.OperationID(`unpinChatMessage`)),
@@ -3388,7 +3613,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnpinChatMessageRequest(req, span)
+	buf, contentType, err := encodeUnpinChatMessageRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -3416,7 +3641,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 	return result, nil
 }
 
-func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res UploadStickerFileRes, err error) {
+func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFile) (res UploadStickerFileRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFile`,
 		trace.WithAttributes(otelogen.OperationID(`uploadStickerFile`)),
@@ -3433,7 +3658,7 @@ func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUploadStickerFileRequest(req, span)
+	buf, contentType, err := encodeUploadStickerFileRequest(request, span)
 	if err != nil {
 		return res, err
 	}

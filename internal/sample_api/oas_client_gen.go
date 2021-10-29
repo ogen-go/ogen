@@ -154,7 +154,16 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	return result, nil
 }
 
-func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, err error) {
+func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPost`,
 		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
@@ -171,7 +180,7 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeFoobarPostRequest(req, span)
+	buf, contentType, err := encodeFoobarPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -235,7 +244,24 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err error) {
+func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, err error) {
+	switch request := request.(type) {
+	case *Pet:
+		if verr := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); verr != nil {
+			err = fmt.Errorf("validate: %w", verr)
+			return
+		}
+	case *PetCreateReqTextPlain:
+		// Validation is not required for this type.
+	default:
+		err = fmt.Errorf("unexpected request type: %T", request)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetCreate`,
 		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
@@ -252,7 +278,7 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetCreateRequest(req, span)
+	buf, contentType, err := encodePetCreateRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -490,7 +516,27 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	return result, nil
 }
 
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		if err := (validate.String{
+			MinLength:    6,
+			MinLengthSet: true,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(request)); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNameAliasPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -506,7 +552,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNameAliasPostRequest(req, span)
+	buf, contentType, err := encodePetUpdateNameAliasPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -534,7 +580,24 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 	return result, nil
 }
 
-func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpdateNamePostDefStatusCode, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
+	if verr := func() error {
+		if err := (validate.String{
+			MinLength:    6,
+			MinLengthSet: true,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(request)); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -550,7 +613,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNamePostRequest(req, span)
+	buf, contentType, err := encodePetUpdateNamePostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
