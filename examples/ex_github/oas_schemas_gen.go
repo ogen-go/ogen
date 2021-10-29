@@ -84,6 +84,13 @@ type APIOverviewSSHKeyFingerprints struct {
 	SHA256RSA     OptString `json:"SHA256_RSA"`
 }
 
+type Accepted struct{}
+
+func (*Accepted) reposEnableLfsForRepoRes()       {}
+func (*Accepted) reposGetCodeFrequencyStatsRes()  {}
+func (*Accepted) reposGetCommitActivityStatsRes() {}
+func (*Accepted) reposGetContributorsStatsRes()   {}
+
 // ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
@@ -890,12 +897,6 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-// ActivityCheckRepoIsStarredByAuthenticatedUserNotModified is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
-type ActivityCheckRepoIsStarredByAuthenticatedUserNotModified struct{}
-
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserNotModified) activityCheckRepoIsStarredByAuthenticatedUserRes() {
-}
-
 // ActivityDeleteRepoSubscriptionNoContent is response for ActivityDeleteRepoSubscription operation.
 type ActivityDeleteRepoSubscriptionNoContent struct{}
 
@@ -914,11 +915,6 @@ type ActivityDeleteThreadSubscriptionNoContent struct{}
 
 func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionRes() {}
 
-// ActivityDeleteThreadSubscriptionNotModified is response for ActivityDeleteThreadSubscription operation.
-type ActivityDeleteThreadSubscriptionNotModified struct{}
-
-func (*ActivityDeleteThreadSubscriptionNotModified) activityDeleteThreadSubscriptionRes() {}
-
 // ActivityGetRepoSubscriptionNotFound is response for ActivityGetRepoSubscription operation.
 type ActivityGetRepoSubscriptionNotFound struct{}
 
@@ -932,11 +928,6 @@ type ActivityGetThreadApplicationJSONUnauthorized BasicError
 
 func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadRes() {}
 
-// ActivityGetThreadNotModified is response for ActivityGetThread operation.
-type ActivityGetThreadNotModified struct{}
-
-func (*ActivityGetThreadNotModified) activityGetThreadRes() {}
-
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
@@ -946,15 +937,6 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorize
 
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
-
-// ActivityGetThreadSubscriptionForAuthenticatedUserNotModified is response for ActivityGetThreadSubscriptionForAuthenticatedUser operation.
-type ActivityGetThreadSubscriptionForAuthenticatedUserNotModified struct{}
-
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserNotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {
-}
-
-// ActivityListNotificationsForAuthenticatedUserNotModified is response for ActivityListNotificationsForAuthenticatedUser operation.
-type ActivityListNotificationsForAuthenticatedUserNotModified struct{}
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
 
@@ -971,33 +953,14 @@ type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkRes() {
 }
 
-// ActivityListPublicEventsForRepoNetworkNotModified is response for ActivityListPublicEventsForRepoNetwork operation.
-type ActivityListPublicEventsForRepoNetworkNotModified struct{}
-
-func (*ActivityListPublicEventsForRepoNetworkNotModified) activityListPublicEventsForRepoNetworkRes() {
-}
-
 type ActivityListPublicEventsForRepoNetworkOKApplicationJSON []Event
 
 func (*ActivityListPublicEventsForRepoNetworkOKApplicationJSON) activityListPublicEventsForRepoNetworkRes() {
 }
 
-// ActivityListPublicEventsNotModified is response for ActivityListPublicEvents operation.
-type ActivityListPublicEventsNotModified struct{}
-
-func (*ActivityListPublicEventsNotModified) activityListPublicEventsRes() {}
-
 type ActivityListPublicEventsOKApplicationJSON []Event
 
 func (*ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
-
-type ActivityListPublicEventsServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*ActivityListPublicEventsServiceUnavailable) activityListPublicEventsRes() {}
 
 type ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1015,12 +978,6 @@ const (
 	ActivityListReposStarredByAuthenticatedUserDirectionAsc  ActivityListReposStarredByAuthenticatedUserDirection = "asc"
 	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
 )
-
-// ActivityListReposStarredByAuthenticatedUserNotModified is response for ActivityListReposStarredByAuthenticatedUser operation.
-type ActivityListReposStarredByAuthenticatedUserNotModified struct{}
-
-func (*ActivityListReposStarredByAuthenticatedUserNotModified) activityListReposStarredByAuthenticatedUserRes() {
-}
 
 type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
 
@@ -1063,12 +1020,6 @@ type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized Bas
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
-// ActivityListWatchedReposForAuthenticatedUserNotModified is response for ActivityListWatchedReposForAuthenticatedUser operation.
-type ActivityListWatchedReposForAuthenticatedUserNotModified struct{}
-
-func (*ActivityListWatchedReposForAuthenticatedUserNotModified) activityListWatchedReposForAuthenticatedUserRes() {
-}
-
 type ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON []MinimalRepository
 
 func (*ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) activityListWatchedReposForAuthenticatedUserRes() {
@@ -1089,11 +1040,6 @@ type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
 
 func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadRes() {
 }
-
-// ActivityMarkNotificationsAsReadNotModified is response for ActivityMarkNotificationsAsRead operation.
-type ActivityMarkNotificationsAsReadNotModified struct{}
-
-func (*ActivityMarkNotificationsAsReadNotModified) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkNotificationsAsReadReq struct {
 	LastReadAt OptTime `json:"last_read_at"`
@@ -1121,11 +1067,6 @@ type ActivityMarkRepoNotificationsAsReadResetContent struct{}
 
 func (*ActivityMarkRepoNotificationsAsReadResetContent) activityMarkRepoNotificationsAsReadRes() {}
 
-// ActivityMarkThreadAsReadNotModified is response for ActivityMarkThreadAsRead operation.
-type ActivityMarkThreadAsReadNotModified struct{}
-
-func (*ActivityMarkThreadAsReadNotModified) activityMarkThreadAsReadRes() {}
-
 // ActivityMarkThreadAsReadResetContent is response for ActivityMarkThreadAsRead operation.
 type ActivityMarkThreadAsReadResetContent struct{}
 
@@ -1143,11 +1084,6 @@ func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadS
 type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
 
 func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionRes() {}
-
-// ActivitySetThreadSubscriptionNotModified is response for ActivitySetThreadSubscription operation.
-type ActivitySetThreadSubscriptionNotModified struct{}
-
-func (*ActivitySetThreadSubscriptionNotModified) activitySetThreadSubscriptionRes() {}
 
 type ActivitySetThreadSubscriptionReq struct {
 	Ignored OptBool `json:"ignored"`
@@ -1173,11 +1109,6 @@ type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserRes() {}
 
-// ActivityStarRepoForAuthenticatedUserNotModified is response for ActivityStarRepoForAuthenticatedUser operation.
-type ActivityStarRepoForAuthenticatedUserNotModified struct{}
-
-func (*ActivityStarRepoForAuthenticatedUserNotModified) activityStarRepoForAuthenticatedUserRes() {}
-
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserRes() {
@@ -1197,12 +1128,6 @@ func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activi
 type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserRes() {}
-
-// ActivityUnstarRepoForAuthenticatedUserNotModified is response for ActivityUnstarRepoForAuthenticatedUser operation.
-type ActivityUnstarRepoForAuthenticatedUserNotModified struct{}
-
-func (*ActivityUnstarRepoForAuthenticatedUserNotModified) activityUnstarRepoForAuthenticatedUserRes() {
-}
 
 // Ref: #/components/schemas/actor
 type Actor struct {
@@ -1516,26 +1441,13 @@ type AppsAddRepoToInstallationNoContent struct{}
 
 func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationRes() {}
 
-// AppsAddRepoToInstallationNotModified is response for AppsAddRepoToInstallation operation.
-type AppsAddRepoToInstallationNotModified struct{}
-
-func (*AppsAddRepoToInstallationNotModified) appsAddRepoToInstallationRes() {}
-
 type AppsCheckTokenReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-// AppsCreateContentAttachmentNotModified is response for AppsCreateContentAttachment operation.
-type AppsCreateContentAttachmentNotModified struct{}
-
 type AppsCreateContentAttachmentReq struct {
 	Body  string `json:"body"`
 	Title string `json:"title"`
-}
-
-type AppsCreateContentAttachmentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
 }
 
 type AppsCreateFromManifestReq struct{}
@@ -1544,11 +1456,6 @@ type AppsCreateInstallationAccessTokenReq struct {
 	Permissions   OptAppPermissions `json:"permissions"`
 	Repositories  []string          `json:"repositories"`
 	RepositoryIds []int             `json:"repository_ids"`
-}
-
-type AppsCreateInstallationAccessTokenUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
 }
 
 // AppsDeleteAuthorizationNoContent is response for AppsDeleteAuthorization operation.
@@ -1577,13 +1484,6 @@ func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugRes() {}
 type AppsGetBySlugApplicationJSONNotFound BasicError
 
 func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugRes() {}
-
-type AppsGetBySlugUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*AppsGetBySlugUnsupportedMediaType) appsGetBySlugRes() {}
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
 
@@ -1643,12 +1543,6 @@ type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicE
 func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-// AppsListInstallationReposForAuthenticatedUserNotModified is response for AppsListInstallationReposForAuthenticatedUser operation.
-type AppsListInstallationReposForAuthenticatedUserNotModified struct{}
-
-func (*AppsListInstallationReposForAuthenticatedUserNotModified) appsListInstallationReposForAuthenticatedUserRes() {
-}
-
 type AppsListInstallationReposForAuthenticatedUserOK struct {
 	Repositories        []Repository `json:"repositories"`
 	RepositorySelection OptString    `json:"repository_selection"`
@@ -1684,11 +1578,6 @@ type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
 func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
 
-// AppsListReposAccessibleToInstallationNotModified is response for AppsListReposAccessibleToInstallation operation.
-type AppsListReposAccessibleToInstallationNotModified struct{}
-
-func (*AppsListReposAccessibleToInstallationNotModified) appsListReposAccessibleToInstallationRes() {}
-
 type AppsListReposAccessibleToInstallationOK struct {
 	Repositories        []Repository `json:"repositories"`
 	RepositorySelection OptString    `json:"repository_selection"`
@@ -1707,29 +1596,15 @@ type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicE
 func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
-// AppsListSubscriptionsForAuthenticatedUserNotModified is response for AppsListSubscriptionsForAuthenticatedUser operation.
-type AppsListSubscriptionsForAuthenticatedUserNotModified struct{}
-
-func (*AppsListSubscriptionsForAuthenticatedUserNotModified) appsListSubscriptionsForAuthenticatedUserRes() {
-}
-
 type AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON []UserMarketplacePurchase
 
 func (*AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserRes() {
-}
-
-// AppsListSubscriptionsForAuthenticatedUserStubbedNotModified is response for AppsListSubscriptionsForAuthenticatedUserStubbed operation.
-type AppsListSubscriptionsForAuthenticatedUserStubbedNotModified struct{}
-
-func (*AppsListSubscriptionsForAuthenticatedUserStubbedNotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMarketplacePurchase
 
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
-
-type AppsRedeliverWebhookDeliveryAccepted struct{}
 
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
@@ -1743,11 +1618,6 @@ func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFrom
 type AppsRemoveRepoFromInstallationNoContent struct{}
 
 func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationRes() {}
-
-// AppsRemoveRepoFromInstallationNotModified is response for AppsRemoveRepoFromInstallation operation.
-type AppsRemoveRepoFromInstallationNotModified struct{}
-
-func (*AppsRemoveRepoFromInstallationNotModified) appsRemoveRepoFromInstallationRes() {}
 
 type AppsResetTokenReq struct {
 	AccessToken string `json:"access_token"`
@@ -2780,14 +2650,6 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningDeleteAnalysisServiceUnavailable) codeScanningDeleteAnalysisRes() {}
-
 type CodeScanningGetAlertApplicationJSONForbidden BasicError
 
 func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertRes() {}
@@ -2795,14 +2657,6 @@ func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertRes() {
 type CodeScanningGetAlertApplicationJSONNotFound BasicError
 
 func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertRes() {}
-
-type CodeScanningGetAlertServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningGetAlertServiceUnavailable) codeScanningGetAlertRes() {}
 
 type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
 
@@ -2816,26 +2670,10 @@ type CodeScanningGetAnalysisOKApplicationJSONSarif string
 
 func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
 
-type CodeScanningGetAnalysisServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningGetAnalysisServiceUnavailable) codeScanningGetAnalysisRes() {}
-
 // CodeScanningGetSarifNotFound is response for CodeScanningGetSarif operation.
 type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
-
-type CodeScanningGetSarifServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningGetSarifServiceUnavailable) codeScanningGetSarifRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
 
@@ -2849,14 +2687,6 @@ type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
 func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertInstancesServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningListAlertInstancesServiceUnavailable) codeScanningListAlertInstancesRes() {}
-
 type CodeScanningListAlertsForRepoApplicationJSONForbidden BasicError
 
 func (*CodeScanningListAlertsForRepoApplicationJSONForbidden) codeScanningListAlertsForRepoRes() {}
@@ -2869,14 +2699,6 @@ type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
 
 func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListAlertsForRepoServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningListAlertsForRepoServiceUnavailable) codeScanningListAlertsForRepoRes() {}
-
 type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
 func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesRes() {}
@@ -2888,14 +2710,6 @@ func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRe
 type CodeScanningListRecentAnalysesOKApplicationJSON []CodeScanningAnalysis
 
 func (*CodeScanningListRecentAnalysesOKApplicationJSON) codeScanningListRecentAnalysesRes() {}
-
-type CodeScanningListRecentAnalysesServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningListRecentAnalysesServiceUnavailable) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningRef string
 
@@ -2935,14 +2749,6 @@ type CodeScanningUpdateAlertReq struct {
 	State           CodeScanningAlertSetState              `json:"state"`
 }
 
-type CodeScanningUpdateAlertServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningUpdateAlertServiceUnavailable) codeScanningUpdateAlertRes() {}
-
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
 
 func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifRes() {}
@@ -2970,14 +2776,6 @@ type CodeScanningUploadSarifRequestEntityTooLarge struct{}
 
 func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifRes() {}
 
-type CodeScanningUploadSarifServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*CodeScanningUploadSarifServiceUnavailable) codeScanningUploadSarifRes() {}
-
 // Ref: #/components/schemas/code-search-result-item
 type CodeSearchResultItem struct {
 	FileSize       OptInt                   `json:"file_size"`
@@ -2995,19 +2793,9 @@ type CodeSearchResultItem struct {
 	URL            url.URL                  `json:"url"`
 }
 
-// CodesOfConductGetAllCodesOfConductNotModified is response for CodesOfConductGetAllCodesOfConduct operation.
-type CodesOfConductGetAllCodesOfConductNotModified struct{}
-
-func (*CodesOfConductGetAllCodesOfConductNotModified) codesOfConductGetAllCodesOfConductRes() {}
-
 type CodesOfConductGetAllCodesOfConductOKApplicationJSON []CodeOfConduct
 
 func (*CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllCodesOfConductRes() {}
-
-// CodesOfConductGetConductCodeNotModified is response for CodesOfConductGetConductCode operation.
-type CodesOfConductGetConductCodeNotModified struct{}
-
-func (*CodesOfConductGetConductCodeNotModified) codesOfConductGetConductCodeRes() {}
 
 // Ref: #/components/schemas/collaborator
 type Collaborator struct {
@@ -3444,11 +3232,6 @@ type Email struct {
 	Visibility NilString `json:"visibility"`
 }
 
-// EmojisGetNotModified is response for EmojisGet operation.
-type EmojisGetNotModified struct{}
-
-func (*EmojisGetNotModified) emojisGetRes() {}
-
 type EmojisGetOK struct{}
 
 func (*EmojisGetOK) emojisGetRes() {}
@@ -3831,6 +3614,26 @@ type FileCommitContentLinks struct {
 	Self OptString `json:"self"`
 }
 
+type ForbiddenGist struct {
+	Block            OptForbiddenGistBlock `json:"block"`
+	DocumentationURL OptString             `json:"documentation_url"`
+	Message          OptString             `json:"message"`
+}
+
+func (*ForbiddenGist) gistsGetCommentRes() {}
+func (*ForbiddenGist) gistsGetRes()        {}
+
+type ForbiddenGistBlock struct {
+	CreatedAt OptString    `json:"created_at"`
+	HTMLURL   OptNilString `json:"html_url"`
+	Reason    OptString    `json:"reason"`
+}
+
+// Ref: #/components/responses/found
+type Found struct{}
+
+func (*Found) reposGetReleaseAssetRes() {}
+
 // Ref: #/components/schemas/full-repository
 type FullRepository struct {
 	AllowAutoMerge         OptBool                                 `json:"allow_auto_merge"`
@@ -4083,11 +3886,6 @@ type GistsCheckIsStarredNotFound struct{}
 
 func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
-// GistsCheckIsStarredNotModified is response for GistsCheckIsStarred operation.
-type GistsCheckIsStarredNotModified struct{}
-
-func (*GistsCheckIsStarredNotModified) gistsCheckIsStarredRes() {}
-
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
 func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
@@ -4095,11 +3893,6 @@ func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
 type GistsCreateCommentApplicationJSONNotFound BasicError
 
 func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
-
-// GistsCreateCommentNotModified is response for GistsCreateComment operation.
-type GistsCreateCommentNotModified struct{}
-
-func (*GistsCreateCommentNotModified) gistsCreateCommentRes() {}
 
 type GistsCreateCommentReq struct {
 	Body string `json:"body"`
@@ -4126,61 +3919,10 @@ type GistsDeleteCommentNoContent struct{}
 
 func (*GistsDeleteCommentNoContent) gistsDeleteCommentRes() {}
 
-// GistsDeleteCommentNotModified is response for GistsDeleteComment operation.
-type GistsDeleteCommentNotModified struct{}
-
-func (*GistsDeleteCommentNotModified) gistsDeleteCommentRes() {}
-
 // GistsDeleteNoContent is response for GistsDelete operation.
 type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteRes() {}
-
-// GistsDeleteNotModified is response for GistsDelete operation.
-type GistsDeleteNotModified struct{}
-
-func (*GistsDeleteNotModified) gistsDeleteRes() {}
-
-// GistsForkNotModified is response for GistsFork operation.
-type GistsForkNotModified struct{}
-
-type GistsGetCommentForbidden struct {
-	Block            OptGistsGetCommentForbiddenBlock `json:"block"`
-	DocumentationURL OptString                        `json:"documentation_url"`
-	Message          OptString                        `json:"message"`
-}
-
-func (*GistsGetCommentForbidden) gistsGetCommentRes() {}
-
-type GistsGetCommentForbiddenBlock struct {
-	CreatedAt OptString    `json:"created_at"`
-	HTMLURL   OptNilString `json:"html_url"`
-	Reason    OptString    `json:"reason"`
-}
-
-// GistsGetCommentNotModified is response for GistsGetComment operation.
-type GistsGetCommentNotModified struct{}
-
-func (*GistsGetCommentNotModified) gistsGetCommentRes() {}
-
-type GistsGetForbidden struct {
-	Block            OptGistsGetForbiddenBlock `json:"block"`
-	DocumentationURL OptString                 `json:"documentation_url"`
-	Message          OptString                 `json:"message"`
-}
-
-func (*GistsGetForbidden) gistsGetRes() {}
-
-type GistsGetForbiddenBlock struct {
-	CreatedAt OptString    `json:"created_at"`
-	HTMLURL   OptNilString `json:"html_url"`
-	Reason    OptString    `json:"reason"`
-}
-
-// GistsGetNotModified is response for GistsGet operation.
-type GistsGetNotModified struct{}
-
-func (*GistsGetNotModified) gistsGetRes() {}
 
 type GistsListCommentsApplicationJSONForbidden BasicError
 
@@ -4189,11 +3931,6 @@ func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
 type GistsListCommentsApplicationJSONNotFound BasicError
 
 func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
-
-// GistsListCommentsNotModified is response for GistsListComments operation.
-type GistsListCommentsNotModified struct{}
-
-func (*GistsListCommentsNotModified) gistsListCommentsRes() {}
 
 type GistsListCommentsOKApplicationJSON []GistComment
 
@@ -4207,11 +3944,6 @@ type GistsListCommitsApplicationJSONNotFound BasicError
 
 func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
-// GistsListCommitsNotModified is response for GistsListCommits operation.
-type GistsListCommitsNotModified struct{}
-
-func (*GistsListCommitsNotModified) gistsListCommitsRes() {}
-
 type GistsListCommitsOKApplicationJSON []GistCommit
 
 func (*GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
@@ -4224,26 +3956,13 @@ type GistsListForksApplicationJSONNotFound BasicError
 
 func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
 
-// GistsListForksNotModified is response for GistsListForks operation.
-type GistsListForksNotModified struct{}
-
-func (*GistsListForksNotModified) gistsListForksRes() {}
-
 type GistsListForksOKApplicationJSON []GistSimple
 
 func (*GistsListForksOKApplicationJSON) gistsListForksRes() {}
 
-// GistsListNotModified is response for GistsList operation.
-type GistsListNotModified struct{}
-
-func (*GistsListNotModified) gistsListRes() {}
-
 type GistsListOKApplicationJSON []BaseGist
 
 func (*GistsListOKApplicationJSON) gistsListRes() {}
-
-// GistsListPublicNotModified is response for GistsListPublic operation.
-type GistsListPublicNotModified struct{}
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
@@ -4252,11 +3971,6 @@ func (*GistsListStarredApplicationJSONForbidden) gistsListStarredRes() {}
 type GistsListStarredApplicationJSONUnauthorized BasicError
 
 func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
-
-// GistsListStarredNotModified is response for GistsListStarred operation.
-type GistsListStarredNotModified struct{}
-
-func (*GistsListStarredNotModified) gistsListStarredRes() {}
 
 type GistsListStarredOKApplicationJSON []BaseGist
 
@@ -4275,11 +3989,6 @@ type GistsStarNoContent struct{}
 
 func (*GistsStarNoContent) gistsStarRes() {}
 
-// GistsStarNotModified is response for GistsStar operation.
-type GistsStarNotModified struct{}
-
-func (*GistsStarNotModified) gistsStarRes() {}
-
 type GistsUnstarApplicationJSONForbidden BasicError
 
 func (*GistsUnstarApplicationJSONForbidden) gistsUnstarRes() {}
@@ -4292,11 +4001,6 @@ func (*GistsUnstarApplicationJSONNotFound) gistsUnstarRes() {}
 type GistsUnstarNoContent struct{}
 
 func (*GistsUnstarNoContent) gistsUnstarRes() {}
-
-// GistsUnstarNotModified is response for GistsUnstar operation.
-type GistsUnstarNotModified struct{}
-
-func (*GistsUnstarNotModified) gistsUnstarRes() {}
 
 type GistsUpdateCommentReq struct {
 	Body string `json:"body"`
@@ -4500,19 +4204,9 @@ type GitUpdateRefReq struct {
 	Sha   string  `json:"sha"`
 }
 
-// GitignoreGetAllTemplatesNotModified is response for GitignoreGetAllTemplates operation.
-type GitignoreGetAllTemplatesNotModified struct{}
-
-func (*GitignoreGetAllTemplatesNotModified) gitignoreGetAllTemplatesRes() {}
-
 type GitignoreGetAllTemplatesOKApplicationJSON []string
 
 func (*GitignoreGetAllTemplatesOKApplicationJSON) gitignoreGetAllTemplatesRes() {}
-
-// GitignoreGetTemplateNotModified is response for GitignoreGetTemplate operation.
-type GitignoreGetTemplateNotModified struct{}
-
-func (*GitignoreGetTemplateNotModified) gitignoreGetTemplateRes() {}
 
 // Ref: #/components/schemas/gitignore-template
 type GitignoreTemplate struct {
@@ -5479,11 +5173,6 @@ type LicenseSimple struct {
 	URL     NilURL    `json:"url"`
 }
 
-// LicensesGetAllCommonlyUsedNotModified is response for LicensesGetAllCommonlyUsed operation.
-type LicensesGetAllCommonlyUsedNotModified struct{}
-
-func (*LicensesGetAllCommonlyUsedNotModified) licensesGetAllCommonlyUsedRes() {}
-
 type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
 func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
@@ -5496,11 +5185,6 @@ type LicensesGetApplicationJSONNotFound BasicError
 
 func (*LicensesGetApplicationJSONNotFound) licensesGetRes() {}
 
-// LicensesGetNotModified is response for LicensesGet operation.
-type LicensesGetNotModified struct{}
-
-func (*LicensesGetNotModified) licensesGetRes() {}
-
 // Ref: #/components/schemas/link
 type Link struct {
 	Href string `json:"href"`
@@ -5512,19 +5196,9 @@ type LinkWithType struct {
 	Type string `json:"type"`
 }
 
-// MarkdownRenderNotModified is response for MarkdownRender operation.
-type MarkdownRenderNotModified struct{}
-
-func (*MarkdownRenderNotModified) markdownRenderRes() {}
-
 type MarkdownRenderOKTextHTML string
 
 func (*MarkdownRenderOKTextHTML) markdownRenderRes() {}
-
-// MarkdownRenderRawNotModified is response for MarkdownRenderRaw operation.
-type MarkdownRenderRawNotModified struct{}
-
-func (*MarkdownRenderRawNotModified) markdownRenderRawRes() {}
 
 type MarkdownRenderRawOKTextHTML string
 
@@ -5630,11 +5304,6 @@ const (
 	MergedUpstreamMergeTypeNone             MergedUpstreamMergeType = "none"
 )
 
-// MetaGetNotModified is response for MetaGet operation.
-type MetaGetNotModified struct{}
-
-func (*MetaGetNotModified) metaGetRes() {}
-
 type MetaRootOK struct {
 	AuthorizationsURL                string    `json:"authorizations_url"`
 	CodeSearchURL                    string    `json:"code_search_url"`
@@ -5719,12 +5388,6 @@ type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-// MigrationsDeleteArchiveForAuthenticatedUserNotModified is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
-type MigrationsDeleteArchiveForAuthenticatedUserNotModified struct{}
-
-func (*MigrationsDeleteArchiveForAuthenticatedUserNotModified) migrationsDeleteArchiveForAuthenticatedUserRes() {
-}
-
 // MigrationsDeleteArchiveForOrgNoContent is response for MigrationsDeleteArchiveForOrg operation.
 type MigrationsDeleteArchiveForOrgNoContent struct{}
 
@@ -5750,12 +5413,6 @@ type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
 func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserRes() {}
 
-// MigrationsGetArchiveForAuthenticatedUserNotModified is response for MigrationsGetArchiveForAuthenticatedUser operation.
-type MigrationsGetArchiveForAuthenticatedUserNotModified struct{}
-
-func (*MigrationsGetArchiveForAuthenticatedUserNotModified) migrationsGetArchiveForAuthenticatedUserRes() {
-}
-
 type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
 func (*MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
@@ -5775,12 +5432,6 @@ type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicErr
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-// MigrationsGetStatusForAuthenticatedUserNotModified is response for MigrationsGetStatusForAuthenticatedUser operation.
-type MigrationsGetStatusForAuthenticatedUserNotModified struct{}
-
-func (*MigrationsGetStatusForAuthenticatedUserNotModified) migrationsGetStatusForAuthenticatedUserRes() {
-}
-
 type MigrationsGetStatusForOrgExcludeItem string
 
 const (
@@ -5796,11 +5447,6 @@ type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
 func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
 }
-
-// MigrationsListForAuthenticatedUserNotModified is response for MigrationsListForAuthenticatedUser operation.
-type MigrationsListForAuthenticatedUserNotModified struct{}
-
-func (*MigrationsListForAuthenticatedUserNotModified) migrationsListForAuthenticatedUserRes() {}
 
 type MigrationsListForAuthenticatedUserOKApplicationJSON []Migration
 
@@ -5835,9 +5481,6 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptIn  MigrationsSetLfsPreferenceReqUseLfs = "opt_in"
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
-
-// MigrationsStartForAuthenticatedUserNotModified is response for MigrationsStartForAuthenticatedUser operation.
-type MigrationsStartForAuthenticatedUserNotModified struct{}
 
 type MigrationsStartForAuthenticatedUserReq struct {
 	Exclude              []MigrationsStartForAuthenticatedUserReqExcludeItem `json:"exclude"`
@@ -5905,12 +5548,6 @@ func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migr
 type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
-}
-
-// MigrationsUnlockRepoForAuthenticatedUserNotModified is response for MigrationsUnlockRepoForAuthenticatedUser operation.
-type MigrationsUnlockRepoForAuthenticatedUserNotModified struct{}
-
-func (*MigrationsUnlockRepoForAuthenticatedUserNotModified) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 // MigrationsUnlockRepoForOrgNoContent is response for MigrationsUnlockRepoForOrg operation.
@@ -7018,6 +6655,113 @@ func (o NilURL) Get() (v url.URL, ok bool) {
 	return o.Value, true
 }
 
+// Ref: #/components/responses/no_content
+type NoContent struct{}
+
+func (*NoContent) reposGetCodeFrequencyStatsRes()  {}
+func (*NoContent) reposGetCommitActivityStatsRes() {}
+func (*NoContent) reposGetContributorsStatsRes()   {}
+func (*NoContent) reposGetPunchCardStatsRes()      {}
+
+// Ref: #/components/responses/not_modified
+type NotModified struct{}
+
+func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserRes()     {}
+func (*NotModified) activityDeleteThreadSubscriptionRes()                  {}
+func (*NotModified) activityGetThreadRes()                                 {}
+func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
+func (*NotModified) activityListPublicEventsForRepoNetworkRes()            {}
+func (*NotModified) activityListPublicEventsRes()                          {}
+func (*NotModified) activityListReposStarredByAuthenticatedUserRes()       {}
+func (*NotModified) activityListWatchedReposForAuthenticatedUserRes()      {}
+func (*NotModified) activityMarkNotificationsAsReadRes()                   {}
+func (*NotModified) activityMarkThreadAsReadRes()                          {}
+func (*NotModified) activitySetThreadSubscriptionRes()                     {}
+func (*NotModified) activityStarRepoForAuthenticatedUserRes()              {}
+func (*NotModified) activityUnstarRepoForAuthenticatedUserRes()            {}
+func (*NotModified) appsAddRepoToInstallationRes()                         {}
+func (*NotModified) appsListInstallationReposForAuthenticatedUserRes()     {}
+func (*NotModified) appsListReposAccessibleToInstallationRes()             {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserRes()         {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes()  {}
+func (*NotModified) appsRemoveRepoFromInstallationRes()                    {}
+func (*NotModified) codesOfConductGetAllCodesOfConductRes()                {}
+func (*NotModified) codesOfConductGetConductCodeRes()                      {}
+func (*NotModified) emojisGetRes()                                         {}
+func (*NotModified) gistsCheckIsStarredRes()                               {}
+func (*NotModified) gistsCreateCommentRes()                                {}
+func (*NotModified) gistsDeleteCommentRes()                                {}
+func (*NotModified) gistsDeleteRes()                                       {}
+func (*NotModified) gistsGetCommentRes()                                   {}
+func (*NotModified) gistsGetRes()                                          {}
+func (*NotModified) gistsListCommentsRes()                                 {}
+func (*NotModified) gistsListCommitsRes()                                  {}
+func (*NotModified) gistsListForksRes()                                    {}
+func (*NotModified) gistsListRes()                                         {}
+func (*NotModified) gistsListStarredRes()                                  {}
+func (*NotModified) gistsStarRes()                                         {}
+func (*NotModified) gistsUnstarRes()                                       {}
+func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
+func (*NotModified) gitignoreGetTemplateRes()                              {}
+func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
+func (*NotModified) licensesGetRes()                                       {}
+func (*NotModified) markdownRenderRawRes()                                 {}
+func (*NotModified) markdownRenderRes()                                    {}
+func (*NotModified) metaGetRes()                                           {}
+func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
+func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
+func (*NotModified) migrationsGetStatusForAuthenticatedUserRes()           {}
+func (*NotModified) migrationsListForAuthenticatedUserRes()                {}
+func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes()          {}
+func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes()            {}
+func (*NotModified) oAuthAuthorizationsDeleteGrantRes()                    {}
+func (*NotModified) oAuthAuthorizationsGetAuthorizationRes()               {}
+func (*NotModified) oAuthAuthorizationsGetGrantRes()                       {}
+func (*NotModified) oAuthAuthorizationsListAuthorizationsRes()             {}
+func (*NotModified) oAuthAuthorizationsListGrantsRes()                     {}
+func (*NotModified) orgsListForAuthenticatedUserRes()                      {}
+func (*NotModified) orgsListRes()                                          {}
+func (*NotModified) projectsCreateColumnRes()                              {}
+func (*NotModified) projectsCreateForAuthenticatedUserRes()                {}
+func (*NotModified) projectsDeleteCardRes()                                {}
+func (*NotModified) projectsDeleteColumnRes()                              {}
+func (*NotModified) projectsDeleteRes()                                    {}
+func (*NotModified) projectsGetCardRes()                                   {}
+func (*NotModified) projectsGetColumnRes()                                 {}
+func (*NotModified) projectsGetRes()                                       {}
+func (*NotModified) projectsListCardsRes()                                 {}
+func (*NotModified) projectsListColumnsRes()                               {}
+func (*NotModified) projectsMoveColumnRes()                                {}
+func (*NotModified) projectsUpdateCardRes()                                {}
+func (*NotModified) projectsUpdateColumnRes()                              {}
+func (*NotModified) projectsUpdateRes()                                    {}
+func (*NotModified) pullsGetRes()                                          {}
+func (*NotModified) rateLimitGetRes()                                      {}
+func (*NotModified) reactionsDeleteLegacyRes()                             {}
+func (*NotModified) reposAcceptInvitationRes()                             {}
+func (*NotModified) reposDeclineInvitationRes()                            {}
+func (*NotModified) reposListInvitationsForAuthenticatedUserRes()          {}
+func (*NotModified) scimDeleteUserFromOrgRes()                             {}
+func (*NotModified) searchCommitsRes()                                     {}
+func (*NotModified) searchTopicsRes()                                      {}
+func (*NotModified) teamsListForAuthenticatedUserRes()                     {}
+func (*NotModified) usersCheckBlockedRes()                                 {}
+func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes()         {}
+func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
+func (*NotModified) usersFollowRes()                                       {}
+func (*NotModified) usersGetGpgKeyForAuthenticatedRes()                    {}
+func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes()              {}
+func (*NotModified) usersListBlockedByAuthenticatedRes()                   {}
+func (*NotModified) usersListEmailsForAuthenticatedRes()                   {}
+func (*NotModified) usersListFollowedByAuthenticatedRes()                  {}
+func (*NotModified) usersListFollowersForAuthenticatedUserRes()            {}
+func (*NotModified) usersListGpgKeysForAuthenticatedRes()                  {}
+func (*NotModified) usersListPublicEmailsForAuthenticatedRes()             {}
+func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes()            {}
+func (*NotModified) usersListRes()                                         {}
+func (*NotModified) usersUnblockRes()                                      {}
+func (*NotModified) usersUnfollowRes()                                     {}
+
 // Ref: #/components/schemas/nullable-code-of-conduct-simple
 type NullableCodeOfConductSimple struct {
 	HTMLURL NilURL  `json:"html_url"`
@@ -7503,9 +7247,6 @@ type NullableTeamSimple struct {
 	URL             url.URL   `json:"url"`
 }
 
-// OAuthAuthorizationsCreateAuthorizationNotModified is response for OAuthAuthorizationsCreateAuthorization operation.
-type OAuthAuthorizationsCreateAuthorizationNotModified struct{}
-
 type OAuthAuthorizationsCreateAuthorizationReq struct {
 	ClientID     OptString         `json:"client_id"`
 	ClientSecret OptString         `json:"client_secret"`
@@ -7530,12 +7271,6 @@ type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
-// OAuthAuthorizationsDeleteAuthorizationNotModified is response for OAuthAuthorizationsDeleteAuthorization operation.
-type OAuthAuthorizationsDeleteAuthorizationNotModified struct{}
-
-func (*OAuthAuthorizationsDeleteAuthorizationNotModified) oAuthAuthorizationsDeleteAuthorizationRes() {
-}
-
 type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
 
 func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantRes() {}
@@ -7550,11 +7285,6 @@ type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRes() {}
 
-// OAuthAuthorizationsDeleteGrantNotModified is response for OAuthAuthorizationsDeleteGrant operation.
-type OAuthAuthorizationsDeleteGrantNotModified struct{}
-
-func (*OAuthAuthorizationsDeleteGrantNotModified) oAuthAuthorizationsDeleteGrantRes() {}
-
 type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
 
 func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationRes() {
@@ -7565,11 +7295,6 @@ type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
-// OAuthAuthorizationsGetAuthorizationNotModified is response for OAuthAuthorizationsGetAuthorization operation.
-type OAuthAuthorizationsGetAuthorizationNotModified struct{}
-
-func (*OAuthAuthorizationsGetAuthorizationNotModified) oAuthAuthorizationsGetAuthorizationRes() {}
-
 type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantRes() {}
@@ -7578,20 +7303,12 @@ type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
-// OAuthAuthorizationsGetGrantNotModified is response for OAuthAuthorizationsGetGrant operation.
-type OAuthAuthorizationsGetGrantNotModified struct{}
-
-func (*OAuthAuthorizationsGetGrantNotModified) oAuthAuthorizationsGetGrantRes() {}
-
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	ClientSecret string            `json:"client_secret"`
 	Note         OptString         `json:"note"`
 	NoteURL      OptString         `json:"note_url"`
 	Scopes       OptNilStringArray `json:"scopes"`
 }
-
-// OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified is response for OAuthAuthorizationsGetOrCreateAuthorizationForApp operation.
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppNotModified struct{}
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	ClientSecret string            `json:"client_secret"`
@@ -7616,11 +7333,6 @@ type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
-// OAuthAuthorizationsListAuthorizationsNotModified is response for OAuthAuthorizationsListAuthorizations operation.
-type OAuthAuthorizationsListAuthorizationsNotModified struct{}
-
-func (*OAuthAuthorizationsListAuthorizationsNotModified) oAuthAuthorizationsListAuthorizationsRes() {}
-
 type OAuthAuthorizationsListAuthorizationsOKApplicationJSON []Authorization
 
 func (*OAuthAuthorizationsListAuthorizationsOKApplicationJSON) oAuthAuthorizationsListAuthorizationsRes() {
@@ -7637,11 +7349,6 @@ func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizations
 type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
-
-// OAuthAuthorizationsListGrantsNotModified is response for OAuthAuthorizationsListGrants operation.
-type OAuthAuthorizationsListGrantsNotModified struct{}
-
-func (*OAuthAuthorizationsListGrantsNotModified) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsOKApplicationJSON []ApplicationGrant
 
@@ -10662,6 +10369,44 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
+// NewOptForbiddenGistBlock returns new OptForbiddenGistBlock with value set to v.
+func NewOptForbiddenGistBlock(v ForbiddenGistBlock) OptForbiddenGistBlock {
+	return OptForbiddenGistBlock{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptForbiddenGistBlock is optional ForbiddenGistBlock.
+type OptForbiddenGistBlock struct {
+	Value ForbiddenGistBlock
+	Set   bool
+}
+
+// IsSet returns true if OptForbiddenGistBlock was set.
+func (o OptForbiddenGistBlock) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptForbiddenGistBlock) Reset() {
+	var v ForbiddenGistBlock
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptForbiddenGistBlock) SetTo(v ForbiddenGistBlock) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptForbiddenGistBlock) Get() (v ForbiddenGistBlock, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptFullRepositoryPermissions returns new OptFullRepositoryPermissions with value set to v.
 func NewOptFullRepositoryPermissions(v FullRepositoryPermissions) OptFullRepositoryPermissions {
 	return OptFullRepositoryPermissions{
@@ -10884,82 +10629,6 @@ func (o *OptGistHistoryChangeStatus) SetTo(v GistHistoryChangeStatus) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptGistsGetCommentForbiddenBlock returns new OptGistsGetCommentForbiddenBlock with value set to v.
-func NewOptGistsGetCommentForbiddenBlock(v GistsGetCommentForbiddenBlock) OptGistsGetCommentForbiddenBlock {
-	return OptGistsGetCommentForbiddenBlock{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptGistsGetCommentForbiddenBlock is optional GistsGetCommentForbiddenBlock.
-type OptGistsGetCommentForbiddenBlock struct {
-	Value GistsGetCommentForbiddenBlock
-	Set   bool
-}
-
-// IsSet returns true if OptGistsGetCommentForbiddenBlock was set.
-func (o OptGistsGetCommentForbiddenBlock) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptGistsGetCommentForbiddenBlock) Reset() {
-	var v GistsGetCommentForbiddenBlock
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptGistsGetCommentForbiddenBlock) SetTo(v GistsGetCommentForbiddenBlock) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptGistsGetCommentForbiddenBlock) Get() (v GistsGetCommentForbiddenBlock, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptGistsGetForbiddenBlock returns new OptGistsGetForbiddenBlock with value set to v.
-func NewOptGistsGetForbiddenBlock(v GistsGetForbiddenBlock) OptGistsGetForbiddenBlock {
-	return OptGistsGetForbiddenBlock{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptGistsGetForbiddenBlock is optional GistsGetForbiddenBlock.
-type OptGistsGetForbiddenBlock struct {
-	Value GistsGetForbiddenBlock
-	Set   bool
-}
-
-// IsSet returns true if OptGistsGetForbiddenBlock was set.
-func (o OptGistsGetForbiddenBlock) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptGistsGetForbiddenBlock) Reset() {
-	var v GistsGetForbiddenBlock
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptGistsGetForbiddenBlock) SetTo(v GistsGetForbiddenBlock) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptGistsGetForbiddenBlock) Get() (v GistsGetForbiddenBlock, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18244,13 +17913,6 @@ type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
 func (*OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
-type OrgsListBlockedUsersUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*OrgsListBlockedUsersUnsupportedMediaType) orgsListBlockedUsersRes() {}
-
 type OrgsListFailedInvitationsOKApplicationJSON []OrganizationInvitation
 
 func (*OrgsListFailedInvitationsOKApplicationJSON) orgsListFailedInvitationsRes() {}
@@ -18262,11 +17924,6 @@ func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenti
 type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
 func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
-
-// OrgsListForAuthenticatedUserNotModified is response for OrgsListForAuthenticatedUser operation.
-type OrgsListForAuthenticatedUserNotModified struct{}
-
-func (*OrgsListForAuthenticatedUserNotModified) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListForAuthenticatedUserOKApplicationJSON []OrganizationSimple
 
@@ -18294,20 +17951,12 @@ const (
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
 
-// OrgsListMembershipsForAuthenticatedUserNotModified is response for OrgsListMembershipsForAuthenticatedUser operation.
-type OrgsListMembershipsForAuthenticatedUserNotModified struct{}
-
 type OrgsListMembershipsForAuthenticatedUserState string
 
 const (
 	OrgsListMembershipsForAuthenticatedUserStateActive  OrgsListMembershipsForAuthenticatedUserState = "active"
 	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
 )
-
-// OrgsListNotModified is response for OrgsList operation.
-type OrgsListNotModified struct{}
-
-func (*OrgsListNotModified) orgsListRes() {}
 
 type OrgsListOKApplicationJSON []OrganizationSimple
 
@@ -18332,8 +17981,6 @@ func (*OrgsListWebhooksOKApplicationJSON) orgsListWebhooksRes() {}
 type OrgsPingWebhookNoContent struct{}
 
 func (*OrgsPingWebhookNoContent) orgsPingWebhookRes() {}
-
-type OrgsRedeliverWebhookDeliveryAccepted struct{}
 
 // OrgsRemoveMemberNoContent is response for OrgsRemoveMember operation.
 type OrgsRemoveMemberNoContent struct{}
@@ -18441,11 +18088,6 @@ const (
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate OrgsUpdateReqMembersAllowedRepositoryCreationType = "private"
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateReqMembersAllowedRepositoryCreationType = "none"
 )
-
-type OrgsUpdateUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -19352,6 +18994,28 @@ type PorterLargeFile struct {
 	Size    int    `json:"size"`
 }
 
+type PreviewHeaderMissing struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
+func (*PreviewHeaderMissing) appsGetBySlugRes()                            {}
+func (*PreviewHeaderMissing) orgsListBlockedUsersRes()                     {}
+func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes()       {}
+func (*PreviewHeaderMissing) reactionsDeleteLegacyRes()                    {}
+func (*PreviewHeaderMissing) reactionsListForCommitCommentRes()            {}
+func (*PreviewHeaderMissing) reactionsListForIssueCommentRes()             {}
+func (*PreviewHeaderMissing) reactionsListForIssueRes()                    {}
+func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes() {}
+func (*PreviewHeaderMissing) reposGetAllTopicsRes()                        {}
+func (*PreviewHeaderMissing) reposGetBranchRes()                           {}
+func (*PreviewHeaderMissing) reposGetDeploymentStatusRes()                 {}
+func (*PreviewHeaderMissing) reposGetReleaseAssetRes()                     {}
+func (*PreviewHeaderMissing) reposReplaceAllTopicsRes()                    {}
+func (*PreviewHeaderMissing) searchCommitsRes()                            {}
+func (*PreviewHeaderMissing) searchTopicsRes()                             {}
+func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes()          {}
+
 // Ref: #/components/schemas/private-user
 type PrivateUser struct {
 	AvatarURL               url.URL            `json:"avatar_url"`
@@ -19478,9 +19142,6 @@ const (
 // ProjectsAddCollaboratorNoContent is response for ProjectsAddCollaborator operation.
 type ProjectsAddCollaboratorNoContent struct{}
 
-// ProjectsAddCollaboratorNotModified is response for ProjectsAddCollaborator operation.
-type ProjectsAddCollaboratorNotModified struct{}
-
 type ProjectsAddCollaboratorReq struct {
 	Permission OptProjectsAddCollaboratorReqPermission `json:"permission"`
 }
@@ -19501,11 +19162,6 @@ type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnRes() {}
 
-// ProjectsCreateColumnNotModified is response for ProjectsCreateColumn operation.
-type ProjectsCreateColumnNotModified struct{}
-
-func (*ProjectsCreateColumnNotModified) projectsCreateColumnRes() {}
-
 type ProjectsCreateColumnReq struct {
 	Name string `json:"name"`
 }
@@ -19520,22 +19176,9 @@ type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
 func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserRes() {
 }
 
-// ProjectsCreateForAuthenticatedUserNotModified is response for ProjectsCreateForAuthenticatedUser operation.
-type ProjectsCreateForAuthenticatedUserNotModified struct{}
-
-func (*ProjectsCreateForAuthenticatedUserNotModified) projectsCreateForAuthenticatedUserRes() {}
-
 type ProjectsCreateForAuthenticatedUserReq struct {
 	Body OptNilString `json:"body"`
 	Name string       `json:"name"`
-}
-
-type ProjectsCreateForAuthenticatedUserUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ProjectsCreateForAuthenticatedUserUnsupportedMediaType) projectsCreateForAuthenticatedUserRes() {
 }
 
 type ProjectsCreateForOrgApplicationJSONForbidden BasicError
@@ -19613,11 +19256,6 @@ type ProjectsDeleteCardNoContent struct{}
 
 func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
-// ProjectsDeleteCardNotModified is response for ProjectsDeleteCard operation.
-type ProjectsDeleteCardNotModified struct{}
-
-func (*ProjectsDeleteCardNotModified) projectsDeleteCardRes() {}
-
 type ProjectsDeleteColumnApplicationJSONForbidden BasicError
 
 func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnRes() {}
@@ -19631,11 +19269,6 @@ type ProjectsDeleteColumnNoContent struct{}
 
 func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
 
-// ProjectsDeleteColumnNotModified is response for ProjectsDeleteColumn operation.
-type ProjectsDeleteColumnNotModified struct{}
-
-func (*ProjectsDeleteColumnNotModified) projectsDeleteColumnRes() {}
-
 type ProjectsDeleteForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Errors           []string  `json:"errors"`
@@ -19648,11 +19281,6 @@ func (*ProjectsDeleteForbidden) projectsDeleteRes() {}
 type ProjectsDeleteNoContent struct{}
 
 func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
-
-// ProjectsDeleteNotModified is response for ProjectsDelete operation.
-type ProjectsDeleteNotModified struct{}
-
-func (*ProjectsDeleteNotModified) projectsDeleteRes() {}
 
 type ProjectsGetApplicationJSONForbidden BasicError
 
@@ -19674,11 +19302,6 @@ type ProjectsGetCardApplicationJSONUnauthorized BasicError
 
 func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardRes() {}
 
-// ProjectsGetCardNotModified is response for ProjectsGetCard operation.
-type ProjectsGetCardNotModified struct{}
-
-func (*ProjectsGetCardNotModified) projectsGetCardRes() {}
-
 type ProjectsGetColumnApplicationJSONForbidden BasicError
 
 func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnRes() {}
@@ -19690,19 +19313,6 @@ func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnRes() {}
 type ProjectsGetColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
-
-// ProjectsGetColumnNotModified is response for ProjectsGetColumn operation.
-type ProjectsGetColumnNotModified struct{}
-
-func (*ProjectsGetColumnNotModified) projectsGetColumnRes() {}
-
-// ProjectsGetNotModified is response for ProjectsGet operation.
-type ProjectsGetNotModified struct{}
-
-func (*ProjectsGetNotModified) projectsGetRes() {}
-
-// ProjectsGetPermissionForUserNotModified is response for ProjectsGetPermissionForUser operation.
-type ProjectsGetPermissionForUserNotModified struct{}
 
 type ProjectsListCardsApplicationJSONForbidden BasicError
 
@@ -19720,11 +19330,6 @@ const (
 	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
 )
 
-// ProjectsListCardsNotModified is response for ProjectsListCards operation.
-type ProjectsListCardsNotModified struct{}
-
-func (*ProjectsListCardsNotModified) projectsListCardsRes() {}
-
 type ProjectsListCardsOKApplicationJSON []ProjectCard
 
 func (*ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
@@ -19737,9 +19342,6 @@ const (
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
 
-// ProjectsListCollaboratorsNotModified is response for ProjectsListCollaborators operation.
-type ProjectsListCollaboratorsNotModified struct{}
-
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
 func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
@@ -19747,11 +19349,6 @@ func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
 type ProjectsListColumnsApplicationJSONUnauthorized BasicError
 
 func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
-
-// ProjectsListColumnsNotModified is response for ProjectsListColumns operation.
-type ProjectsListColumnsNotModified struct{}
-
-func (*ProjectsListColumnsNotModified) projectsListColumnsRes() {}
 
 type ProjectsListColumnsOKApplicationJSON []ProjectColumn
 
@@ -19820,9 +19417,6 @@ type ProjectsMoveCardForbiddenErrorsItem struct {
 	Resource OptString `json:"resource"`
 }
 
-// ProjectsMoveCardNotModified is response for ProjectsMoveCard operation.
-type ProjectsMoveCardNotModified struct{}
-
 type ProjectsMoveCardReq struct {
 	ColumnID OptInt `json:"column_id"`
 	Position string `json:"position"`
@@ -19840,20 +19434,12 @@ type ProjectsMoveColumnCreated struct{}
 
 func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
-// ProjectsMoveColumnNotModified is response for ProjectsMoveColumn operation.
-type ProjectsMoveColumnNotModified struct{}
-
-func (*ProjectsMoveColumnNotModified) projectsMoveColumnRes() {}
-
 type ProjectsMoveColumnReq struct {
 	Position string `json:"position"`
 }
 
 // ProjectsRemoveCollaboratorNoContent is response for ProjectsRemoveCollaborator operation.
 type ProjectsRemoveCollaboratorNoContent struct{}
-
-// ProjectsRemoveCollaboratorNotModified is response for ProjectsRemoveCollaborator operation.
-type ProjectsRemoveCollaboratorNotModified struct{}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
@@ -19875,11 +19461,6 @@ type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
 
 func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
 
-// ProjectsUpdateCardNotModified is response for ProjectsUpdateCard operation.
-type ProjectsUpdateCardNotModified struct{}
-
-func (*ProjectsUpdateCardNotModified) projectsUpdateCardRes() {}
-
 type ProjectsUpdateCardReq struct {
 	Archived OptBool      `json:"archived"`
 	Note     OptNilString `json:"note"`
@@ -19892,11 +19473,6 @@ func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnRes() {
 type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnRes() {}
-
-// ProjectsUpdateColumnNotModified is response for ProjectsUpdateColumn operation.
-type ProjectsUpdateColumnNotModified struct{}
-
-func (*ProjectsUpdateColumnNotModified) projectsUpdateColumnRes() {}
 
 type ProjectsUpdateColumnReq struct {
 	Name string `json:"name"`
@@ -19914,11 +19490,6 @@ func (*ProjectsUpdateForbidden) projectsUpdateRes() {}
 type ProjectsUpdateNotFound struct{}
 
 func (*ProjectsUpdateNotFound) projectsUpdateRes() {}
-
-// ProjectsUpdateNotModified is response for ProjectsUpdate operation.
-type ProjectsUpdateNotModified struct{}
-
-func (*ProjectsUpdateNotModified) projectsUpdateRes() {}
 
 type ProjectsUpdateReq struct {
 	Body                   OptNilString                               `json:"body"`
@@ -20766,11 +20337,6 @@ type PullsGetApplicationJSONNotFound BasicError
 
 func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
 
-// PullsGetNotModified is response for PullsGet operation.
-type PullsGetNotModified struct{}
-
-func (*PullsGetNotModified) pullsGetRes() {}
-
 type PullsListCommentsForReviewOKApplicationJSON []ReviewComment
 
 func (*PullsListCommentsForReviewOKApplicationJSON) pullsListCommentsForReviewRes() {}
@@ -20781,9 +20347,6 @@ const (
 	PullsListDirectionAsc  PullsListDirection = "asc"
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
-
-// PullsListNotModified is response for PullsList operation.
-type PullsListNotModified struct{}
 
 type PullsListReviewCommentsDirection string
 
@@ -20922,11 +20485,6 @@ type RateLimit struct {
 	Used      int `json:"used"`
 }
 
-// RateLimitGetNotModified is response for RateLimitGet operation.
-type RateLimitGetNotModified struct{}
-
-func (*RateLimitGetNotModified) rateLimitGetRes() {}
-
 // Ref: #/components/schemas/rate-limit-overview
 type RateLimitOverview struct {
 	Rate      RateLimit                  `json:"rate"`
@@ -20998,11 +20556,6 @@ const (
 	ReactionsCreateForCommitCommentReqContentEyes     ReactionsCreateForCommitCommentReqContent = "eyes"
 )
 
-type ReactionsCreateForCommitCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
 type ReactionsCreateForIssueCommentReq struct {
 	Content ReactionsCreateForIssueCommentReqContent `json:"content"`
 }
@@ -21019,11 +20572,6 @@ const (
 	ReactionsCreateForIssueCommentReqContentRocket   ReactionsCreateForIssueCommentReqContent = "rocket"
 	ReactionsCreateForIssueCommentReqContentEyes     ReactionsCreateForIssueCommentReqContent = "eyes"
 )
-
-type ReactionsCreateForIssueCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
 
 type ReactionsCreateForIssueReq struct {
 	Content ReactionsCreateForIssueReqContent `json:"content"`
@@ -21042,11 +20590,6 @@ const (
 	ReactionsCreateForIssueReqContentEyes     ReactionsCreateForIssueReqContent = "eyes"
 )
 
-type ReactionsCreateForIssueUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
 type ReactionsCreateForPullRequestReviewCommentReq struct {
 	Content ReactionsCreateForPullRequestReviewCommentReqContent `json:"content"`
 }
@@ -21064,11 +20607,6 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
 
-type ReactionsCreateForPullRequestReviewCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
 type ReactionsCreateForReleaseReq struct {
 	Content ReactionsCreateForReleaseReqContent `json:"content"`
 }
@@ -21083,11 +20621,6 @@ const (
 	ReactionsCreateForReleaseReqContentRocket ReactionsCreateForReleaseReqContent = "rocket"
 	ReactionsCreateForReleaseReqContentEyes   ReactionsCreateForReleaseReqContent = "eyes"
 )
-
-type ReactionsCreateForReleaseUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
 
@@ -21212,18 +20745,6 @@ type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
-// ReactionsDeleteLegacyNotModified is response for ReactionsDeleteLegacy operation.
-type ReactionsDeleteLegacyNotModified struct{}
-
-func (*ReactionsDeleteLegacyNotModified) reactionsDeleteLegacyRes() {}
-
-type ReactionsDeleteLegacyUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReactionsDeleteLegacyUnsupportedMediaType) reactionsDeleteLegacyRes() {}
-
 type ReactionsListForCommitCommentContent string
 
 const (
@@ -21240,13 +20761,6 @@ const (
 type ReactionsListForCommitCommentOKApplicationJSON []Reaction
 
 func (*ReactionsListForCommitCommentOKApplicationJSON) reactionsListForCommitCommentRes() {}
-
-type ReactionsListForCommitCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReactionsListForCommitCommentUnsupportedMediaType) reactionsListForCommitCommentRes() {}
 
 type ReactionsListForIssueApplicationJSONGone BasicError
 
@@ -21273,13 +20787,6 @@ type ReactionsListForIssueCommentOKApplicationJSON []Reaction
 
 func (*ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
 
-type ReactionsListForIssueCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReactionsListForIssueCommentUnsupportedMediaType) reactionsListForIssueCommentRes() {}
-
 type ReactionsListForIssueContent string
 
 const (
@@ -21297,13 +20804,6 @@ type ReactionsListForIssueOKApplicationJSON []Reaction
 
 func (*ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
 
-type ReactionsListForIssueUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReactionsListForIssueUnsupportedMediaType) reactionsListForIssueRes() {}
-
 type ReactionsListForPullRequestReviewCommentContent string
 
 const (
@@ -21320,14 +20820,6 @@ const (
 type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
 
 func (*ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
-}
-
-type ReactionsListForPullRequestReviewCommentUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReactionsListForPullRequestReviewCommentUnsupportedMediaType) reactionsListForPullRequestReviewCommentRes() {
 }
 
 type ReactionsListForTeamDiscussionCommentInOrgContent string
@@ -21560,11 +21052,6 @@ type ReposAcceptInvitationNoContent struct{}
 
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
-// ReposAcceptInvitationNotModified is response for ReposAcceptInvitation operation.
-type ReposAcceptInvitationNotModified struct{}
-
-func (*ReposAcceptInvitationNotModified) reposAcceptInvitationRes() {}
-
 // ReposAddCollaboratorNoContent is response for ReposAddCollaborator operation.
 type ReposAddCollaboratorNoContent struct{}
 
@@ -21685,9 +21172,6 @@ type ReposCreateDispatchEventReq struct {
 
 type ReposCreateDispatchEventReqClientPayload struct{}
 
-// ReposCreateForAuthenticatedUserNotModified is response for ReposCreateForAuthenticatedUser operation.
-type ReposCreateForAuthenticatedUserNotModified struct{}
-
 type ReposCreateForAuthenticatedUserReq struct {
 	AllowAutoMerge      OptBool   `json:"allow_auto_merge"`
 	AllowMergeCommit    OptBool   `json:"allow_merge_commit"`
@@ -21791,11 +21275,6 @@ const (
 	ReposCreatePagesSiteReqSourcePathSlashDocs ReposCreatePagesSiteReqSourcePath = "/docs"
 )
 
-type ReposCreatePagesSiteUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
 type ReposCreateReleaseReq struct {
 	Body                   OptString `json:"body"`
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
@@ -21846,11 +21325,6 @@ func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationRes(
 type ReposDeclineInvitationNoContent struct{}
 
 func (*ReposDeclineInvitationNoContent) reposDeclineInvitationRes() {}
-
-// ReposDeclineInvitationNotModified is response for ReposDeclineInvitation operation.
-type ReposDeclineInvitationNotModified struct{}
-
-func (*ReposDeclineInvitationNotModified) reposDeclineInvitationRes() {}
 
 // ReposDeleteAccessRestrictionsNoContent is response for ReposDeleteAccessRestrictions operation.
 type ReposDeleteAccessRestrictionsNoContent struct{}
@@ -21935,11 +21409,6 @@ func (*ReposDeleteNoContent) reposDeleteRes() {}
 // ReposDeletePagesSiteNoContent is response for ReposDeletePagesSite operation.
 type ReposDeletePagesSiteNoContent struct{}
 
-type ReposDeletePagesSiteUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
 // ReposDeletePullRequestReviewProtectionNoContent is response for ReposDeletePullRequestReviewProtection operation.
 type ReposDeletePullRequestReviewProtectionNoContent struct{}
 
@@ -21974,10 +21443,6 @@ type ReposDownloadZipballArchiveFound struct{}
 // ReposEnableAutomatedSecurityFixesNoContent is response for ReposEnableAutomatedSecurityFixes operation.
 type ReposEnableAutomatedSecurityFixesNoContent struct{}
 
-type ReposEnableLfsForRepoAccepted struct{}
-
-func (*ReposEnableLfsForRepoAccepted) reposEnableLfsForRepoRes() {}
-
 // ReposEnableLfsForRepoForbidden is response for ReposEnableLfsForRepo operation.
 type ReposEnableLfsForRepoForbidden struct{}
 
@@ -21989,13 +21454,6 @@ type ReposEnableVulnerabilityAlertsNoContent struct{}
 type ReposGetAllStatusCheckContextsOKApplicationJSON []string
 
 func (*ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
-
-type ReposGetAllTopicsUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReposGetAllTopicsUnsupportedMediaType) reposGetAllTopicsRes() {}
 
 type ReposGetApplicationJSONForbidden BasicError
 
@@ -22022,13 +21480,6 @@ type ReposGetBranchApplicationJSONNotFound BasicError
 
 func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
-type ReposGetBranchUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReposGetBranchUnsupportedMediaType) reposGetBranchRes() {}
-
 type ReposGetClonesPer string
 
 const (
@@ -22037,51 +21488,17 @@ const (
 	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
 )
 
-type ReposGetCodeFrequencyStatsAccepted struct{}
-
-func (*ReposGetCodeFrequencyStatsAccepted) reposGetCodeFrequencyStatsRes() {}
-
-// ReposGetCodeFrequencyStatsNoContent is response for ReposGetCodeFrequencyStats operation.
-type ReposGetCodeFrequencyStatsNoContent struct{}
-
-func (*ReposGetCodeFrequencyStatsNoContent) reposGetCodeFrequencyStatsRes() {}
-
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (*ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
-
-type ReposGetCommitActivityStatsAccepted struct{}
-
-func (*ReposGetCommitActivityStatsAccepted) reposGetCommitActivityStatsRes() {}
-
-// ReposGetCommitActivityStatsNoContent is response for ReposGetCommitActivityStats operation.
-type ReposGetCommitActivityStatsNoContent struct{}
-
-func (*ReposGetCommitActivityStatsNoContent) reposGetCommitActivityStatsRes() {}
 
 type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
-type ReposGetContributorsStatsAccepted struct{}
-
-func (*ReposGetContributorsStatsAccepted) reposGetContributorsStatsRes() {}
-
-// ReposGetContributorsStatsNoContent is response for ReposGetContributorsStats operation.
-type ReposGetContributorsStatsNoContent struct{}
-
-func (*ReposGetContributorsStatsNoContent) reposGetContributorsStatsRes() {}
-
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
-
-type ReposGetDeploymentStatusUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReposGetDeploymentStatusUnsupportedMediaType) reposGetDeploymentStatusRes() {}
 
 // ReposGetPagesHealthCheckBadRequest is response for ReposGetPagesHealthCheck operation.
 type ReposGetPagesHealthCheckBadRequest struct{}
@@ -22093,26 +21510,9 @@ type ReposGetPagesHealthCheckUnprocessableEntity struct{}
 
 func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckRes() {}
 
-// ReposGetPunchCardStatsNoContent is response for ReposGetPunchCardStats operation.
-type ReposGetPunchCardStatsNoContent struct{}
-
-func (*ReposGetPunchCardStatsNoContent) reposGetPunchCardStatsRes() {}
-
 type ReposGetPunchCardStatsOKApplicationJSON []CodeFrequencyStat
 
 func (*ReposGetPunchCardStatsOKApplicationJSON) reposGetPunchCardStatsRes() {}
-
-// ReposGetReleaseAssetFound is response for ReposGetReleaseAsset operation.
-type ReposGetReleaseAssetFound struct{}
-
-func (*ReposGetReleaseAssetFound) reposGetReleaseAssetRes() {}
-
-type ReposGetReleaseAssetUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReposGetReleaseAssetUnsupportedMediaType) reposGetReleaseAssetRes() {}
 
 type ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON []Team
 
@@ -22207,9 +21607,6 @@ const (
 	ReposListForAuthenticatedUserDirectionAsc  ReposListForAuthenticatedUserDirection = "asc"
 	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
 )
-
-// ReposListForAuthenticatedUserNotModified is response for ReposListForAuthenticatedUser operation.
-type ReposListForAuthenticatedUserNotModified struct{}
 
 type ReposListForAuthenticatedUserSort string
 
@@ -22318,19 +21715,10 @@ type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicEr
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-// ReposListInvitationsForAuthenticatedUserNotModified is response for ReposListInvitationsForAuthenticatedUser operation.
-type ReposListInvitationsForAuthenticatedUserNotModified struct{}
-
-func (*ReposListInvitationsForAuthenticatedUserNotModified) reposListInvitationsForAuthenticatedUserRes() {
-}
-
 type ReposListInvitationsForAuthenticatedUserOKApplicationJSON []RepositoryInvitation
 
 func (*ReposListInvitationsForAuthenticatedUserOKApplicationJSON) reposListInvitationsForAuthenticatedUserRes() {
 }
-
-// ReposListPublicNotModified is response for ReposListPublic operation.
-type ReposListPublicNotModified struct{}
 
 type ReposListReleasesOKApplicationJSON []Release
 
@@ -22374,8 +21762,6 @@ type ReposPingWebhookNoContent struct{}
 
 func (*ReposPingWebhookNoContent) reposPingWebhookRes() {}
 
-type ReposRedeliverWebhookDeliveryAccepted struct{}
-
 // ReposRemoveCollaboratorNoContent is response for ReposRemoveCollaborator operation.
 type ReposRemoveCollaboratorNoContent struct{}
 
@@ -22389,13 +21775,6 @@ type ReposRenameBranchReq struct {
 type ReposReplaceAllTopicsReq struct {
 	Names []string `json:"names"`
 }
-
-type ReposReplaceAllTopicsUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*ReposReplaceAllTopicsUnsupportedMediaType) reposReplaceAllTopicsRes() {}
 
 // ReposTestPushWebhookNoContent is response for ReposTestPushWebhook operation.
 type ReposTestPushWebhookNoContent struct{}
@@ -22956,11 +22335,6 @@ type ScimDeleteUserFromOrgNoContent struct{}
 
 func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
 
-// ScimDeleteUserFromOrgNotModified is response for ScimDeleteUserFromOrg operation.
-type ScimDeleteUserFromOrgNotModified struct{}
-
-func (*ScimDeleteUserFromOrgNotModified) scimDeleteUserFromOrgRes() {}
-
 // Ref: #/components/schemas/scim-enterprise-group
 type ScimEnterpriseGroup struct {
 	DisplayName OptString                        `json:"displayName"`
@@ -23153,9 +22527,6 @@ type ScimUserListEnterpriseResourcesItemName struct {
 	GivenName  OptString `json:"givenName"`
 }
 
-// SearchCodeNotModified is response for SearchCode operation.
-type SearchCodeNotModified struct{}
-
 type SearchCodeOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []CodeSearchResultItem `json:"items"`
@@ -23174,11 +22545,6 @@ type SearchCodeSort string
 const (
 	SearchCodeSortIndexed SearchCodeSort = "indexed"
 )
-
-// SearchCommitsNotModified is response for SearchCommits operation.
-type SearchCommitsNotModified struct{}
-
-func (*SearchCommitsNotModified) searchCommitsRes() {}
 
 type SearchCommitsOK struct {
 	IncompleteResults bool                     `json:"incomplete_results"`
@@ -23201,16 +22567,6 @@ const (
 	SearchCommitsSortAuthorMinusDate    SearchCommitsSort = "author-date"
 	SearchCommitsSortCommitterMinusDate SearchCommitsSort = "committer-date"
 )
-
-type SearchCommitsUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*SearchCommitsUnsupportedMediaType) searchCommitsRes() {}
-
-// SearchIssuesAndPullRequestsNotModified is response for SearchIssuesAndPullRequests operation.
-type SearchIssuesAndPullRequestsNotModified struct{}
 
 type SearchIssuesAndPullRequestsOK struct {
 	IncompleteResults bool                    `json:"incomplete_results"`
@@ -23241,9 +22597,6 @@ const (
 	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
 )
 
-// SearchLabelsNotModified is response for SearchLabels operation.
-type SearchLabelsNotModified struct{}
-
 type SearchLabelsOK struct {
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []LabelSearchResultItem `json:"items"`
@@ -23263,9 +22616,6 @@ const (
 	SearchLabelsSortCreated SearchLabelsSort = "created"
 	SearchLabelsSortUpdated SearchLabelsSort = "updated"
 )
-
-// SearchReposNotModified is response for SearchRepos operation.
-type SearchReposNotModified struct{}
 
 type SearchReposOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
@@ -23304,11 +22654,6 @@ type SearchResultTextMatchesItemMatchesItem struct {
 	Text    OptString `json:"text"`
 }
 
-// SearchTopicsNotModified is response for SearchTopics operation.
-type SearchTopicsNotModified struct{}
-
-func (*SearchTopicsNotModified) searchTopicsRes() {}
-
 type SearchTopicsOK struct {
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []TopicSearchResultItem `json:"items"`
@@ -23316,16 +22661,6 @@ type SearchTopicsOK struct {
 }
 
 func (*SearchTopicsOK) searchTopicsRes() {}
-
-type SearchTopicsUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*SearchTopicsUnsupportedMediaType) searchTopicsRes() {}
-
-// SearchUsersNotModified is response for SearchUsers operation.
-type SearchUsersNotModified struct{}
 
 type SearchUsersOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
@@ -23389,25 +22724,9 @@ type SecretScanningGetAlertNotFound struct{}
 
 func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
-type SecretScanningGetAlertServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*SecretScanningGetAlertServiceUnavailable) secretScanningGetAlertRes() {}
-
 type SecretScanningListAlertsForOrgOKApplicationJSON []OrganizationSecretScanningAlert
 
 func (*SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
-
-type SecretScanningListAlertsForOrgServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*SecretScanningListAlertsForOrgServiceUnavailable) secretScanningListAlertsForOrgRes() {}
 
 type SecretScanningListAlertsForOrgState string
 
@@ -23424,14 +22743,6 @@ func (*SecretScanningListAlertsForRepoNotFound) secretScanningListAlertsForRepoR
 type SecretScanningListAlertsForRepoOKApplicationJSON []SecretScanningAlert
 
 func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
-
-type SecretScanningListAlertsForRepoServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*SecretScanningListAlertsForRepoServiceUnavailable) secretScanningListAlertsForRepoRes() {}
 
 type SecretScanningListAlertsForRepoState string
 
@@ -23450,14 +22761,6 @@ type SecretScanningUpdateAlertReq struct {
 	State      SecretScanningAlertState            `json:"state"`
 }
 
-type SecretScanningUpdateAlertServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
-func (*SecretScanningUpdateAlertServiceUnavailable) secretScanningUpdateAlertRes() {}
-
 // SecretScanningUpdateAlertUnprocessableEntity is response for SecretScanningUpdateAlert operation.
 type SecretScanningUpdateAlertUnprocessableEntity struct{}
 
@@ -23471,6 +22774,27 @@ type SelectedActions struct {
 }
 
 type SelectedActionsURL string
+
+type ServiceUnavailable struct {
+	Code             OptString `json:"code"`
+	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message"`
+}
+
+func (*ServiceUnavailable) activityListPublicEventsRes()        {}
+func (*ServiceUnavailable) codeScanningDeleteAnalysisRes()      {}
+func (*ServiceUnavailable) codeScanningGetAlertRes()            {}
+func (*ServiceUnavailable) codeScanningGetAnalysisRes()         {}
+func (*ServiceUnavailable) codeScanningGetSarifRes()            {}
+func (*ServiceUnavailable) codeScanningListAlertInstancesRes()  {}
+func (*ServiceUnavailable) codeScanningListAlertsForRepoRes()   {}
+func (*ServiceUnavailable) codeScanningListRecentAnalysesRes()  {}
+func (*ServiceUnavailable) codeScanningUpdateAlertRes()         {}
+func (*ServiceUnavailable) codeScanningUploadSarifRes()         {}
+func (*ServiceUnavailable) secretScanningGetAlertRes()          {}
+func (*ServiceUnavailable) secretScanningListAlertsForOrgRes()  {}
+func (*ServiceUnavailable) secretScanningListAlertsForRepoRes() {}
+func (*ServiceUnavailable) secretScanningUpdateAlertRes()       {}
 
 // Ref: #/components/schemas/short-blob
 type ShortBlob struct {
@@ -24173,11 +23497,6 @@ type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
 
 func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
 
-// TeamsListForAuthenticatedUserNotModified is response for TeamsListForAuthenticatedUser operation.
-type TeamsListForAuthenticatedUserNotModified struct{}
-
-func (*TeamsListForAuthenticatedUserNotModified) teamsListForAuthenticatedUserRes() {}
-
 type TeamsListForAuthenticatedUserOKApplicationJSON []TeamFull
 
 func (*TeamsListForAuthenticatedUserOKApplicationJSON) teamsListForAuthenticatedUserRes() {}
@@ -24257,11 +23576,6 @@ type TeamsRemoveProjectInOrgNoContent struct{}
 
 // TeamsRemoveProjectLegacyNoContent is response for TeamsRemoveProjectLegacy operation.
 type TeamsRemoveProjectLegacyNoContent struct{}
-
-type TeamsRemoveProjectLegacyUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
 
 // TeamsRemoveRepoInOrgNoContent is response for TeamsRemoveRepoInOrg operation.
 type TeamsRemoveRepoInOrgNoContent struct{}
@@ -24479,9 +23793,6 @@ type UserSearchResultItem struct {
 // UsersBlockNoContent is response for UsersBlock operation.
 type UsersBlockNoContent struct{}
 
-// UsersBlockNotModified is response for UsersBlock operation.
-type UsersBlockNotModified struct{}
-
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
 func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedRes() {}
@@ -24498,11 +23809,6 @@ func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedRes() {}
 type UsersCheckBlockedNoContent struct{}
 
 func (*UsersCheckBlockedNoContent) usersCheckBlockedRes() {}
-
-// UsersCheckBlockedNotModified is response for UsersCheckBlocked operation.
-type UsersCheckBlockedNotModified struct{}
-
-func (*UsersCheckBlockedNotModified) usersCheckBlockedRes() {}
 
 // UsersCheckFollowingForUserNoContent is response for UsersCheckFollowingForUser operation.
 type UsersCheckFollowingForUserNoContent struct{}
@@ -24535,21 +23841,9 @@ type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-// UsersCheckPersonIsFollowedByAuthenticatedNotModified is response for UsersCheckPersonIsFollowedByAuthenticated operation.
-type UsersCheckPersonIsFollowedByAuthenticatedNotModified struct{}
-
-func (*UsersCheckPersonIsFollowedByAuthenticatedNotModified) usersCheckPersonIsFollowedByAuthenticatedRes() {
-}
-
-// UsersCreateGpgKeyForAuthenticatedNotModified is response for UsersCreateGpgKeyForAuthenticated operation.
-type UsersCreateGpgKeyForAuthenticatedNotModified struct{}
-
 type UsersCreateGpgKeyForAuthenticatedReq struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
 }
-
-// UsersCreatePublicSSHKeyForAuthenticatedNotModified is response for UsersCreatePublicSSHKeyForAuthenticated operation.
-type UsersCreatePublicSSHKeyForAuthenticatedNotModified struct{}
 
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 	Key   string    `json:"key"`
@@ -24558,9 +23852,6 @@ type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 
 // UsersDeleteGpgKeyForAuthenticatedNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
 type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
-
-// UsersDeleteGpgKeyForAuthenticatedNotModified is response for UsersDeleteGpgKeyForAuthenticated operation.
-type UsersDeleteGpgKeyForAuthenticatedNotModified struct{}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24583,12 +23874,6 @@ type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-// UsersDeletePublicSSHKeyForAuthenticatedNotModified is response for UsersDeletePublicSSHKeyForAuthenticated operation.
-type UsersDeletePublicSSHKeyForAuthenticatedNotModified struct{}
-
-func (*UsersDeletePublicSSHKeyForAuthenticatedNotModified) usersDeletePublicSSHKeyForAuthenticatedRes() {
-}
-
 type UsersFollowApplicationJSONForbidden BasicError
 
 func (*UsersFollowApplicationJSONForbidden) usersFollowRes() {}
@@ -24605,11 +23890,6 @@ func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
 type UsersFollowNoContent struct{}
 
 func (*UsersFollowNoContent) usersFollowRes() {}
-
-// UsersFollowNotModified is response for UsersFollow operation.
-type UsersFollowNotModified struct{}
-
-func (*UsersFollowNotModified) usersFollowRes() {}
 
 type UsersGetContextForUserSubjectType string
 
@@ -24633,11 +23913,6 @@ type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
 }
 
-// UsersGetGpgKeyForAuthenticatedNotModified is response for UsersGetGpgKeyForAuthenticated operation.
-type UsersGetGpgKeyForAuthenticatedNotModified struct{}
-
-func (*UsersGetGpgKeyForAuthenticatedNotModified) usersGetGpgKeyForAuthenticatedRes() {}
-
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {
@@ -24653,11 +23928,6 @@ type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
-// UsersGetPublicSSHKeyForAuthenticatedNotModified is response for UsersGetPublicSSHKeyForAuthenticated operation.
-type UsersGetPublicSSHKeyForAuthenticatedNotModified struct{}
-
-func (*UsersGetPublicSSHKeyForAuthenticatedNotModified) usersGetPublicSSHKeyForAuthenticatedRes() {}
-
 type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
 
 func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedRes() {
@@ -24672,21 +23942,9 @@ type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedRes() {
 }
 
-// UsersListBlockedByAuthenticatedNotModified is response for UsersListBlockedByAuthenticated operation.
-type UsersListBlockedByAuthenticatedNotModified struct{}
-
-func (*UsersListBlockedByAuthenticatedNotModified) usersListBlockedByAuthenticatedRes() {}
-
 type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
-
-type UsersListBlockedByAuthenticatedUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*UsersListBlockedByAuthenticatedUnsupportedMediaType) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24702,11 +23960,6 @@ type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
 }
 
-// UsersListEmailsForAuthenticatedNotModified is response for UsersListEmailsForAuthenticated operation.
-type UsersListEmailsForAuthenticatedNotModified struct{}
-
-func (*UsersListEmailsForAuthenticatedNotModified) usersListEmailsForAuthenticatedRes() {}
-
 type UsersListEmailsForAuthenticatedOKApplicationJSON []Email
 
 func (*UsersListEmailsForAuthenticatedOKApplicationJSON) usersListEmailsForAuthenticatedRes() {}
@@ -24721,11 +23974,6 @@ type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
 }
 
-// UsersListFollowedByAuthenticatedNotModified is response for UsersListFollowedByAuthenticated operation.
-type UsersListFollowedByAuthenticatedNotModified struct{}
-
-func (*UsersListFollowedByAuthenticatedNotModified) usersListFollowedByAuthenticatedRes() {}
-
 type UsersListFollowedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListFollowedByAuthenticatedOKApplicationJSON) usersListFollowedByAuthenticatedRes() {}
@@ -24738,12 +23986,6 @@ func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersList
 type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
 func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
-}
-
-// UsersListFollowersForAuthenticatedUserNotModified is response for UsersListFollowersForAuthenticatedUser operation.
-type UsersListFollowersForAuthenticatedUserNotModified struct{}
-
-func (*UsersListFollowersForAuthenticatedUserNotModified) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListFollowersForAuthenticatedUserOKApplicationJSON []SimpleUser
@@ -24766,19 +24008,9 @@ type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
 }
 
-// UsersListGpgKeysForAuthenticatedNotModified is response for UsersListGpgKeysForAuthenticated operation.
-type UsersListGpgKeysForAuthenticatedNotModified struct{}
-
-func (*UsersListGpgKeysForAuthenticatedNotModified) usersListGpgKeysForAuthenticatedRes() {}
-
 type UsersListGpgKeysForAuthenticatedOKApplicationJSON []GpgKey
 
 func (*UsersListGpgKeysForAuthenticatedOKApplicationJSON) usersListGpgKeysForAuthenticatedRes() {}
-
-// UsersListNotModified is response for UsersList operation.
-type UsersListNotModified struct{}
-
-func (*UsersListNotModified) usersListRes() {}
 
 type UsersListOKApplicationJSON []SimpleUser
 
@@ -24798,11 +24030,6 @@ type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
-
-// UsersListPublicEmailsForAuthenticatedNotModified is response for UsersListPublicEmailsForAuthenticated operation.
-type UsersListPublicEmailsForAuthenticatedNotModified struct{}
-
-func (*UsersListPublicEmailsForAuthenticatedNotModified) usersListPublicEmailsForAuthenticatedRes() {}
 
 type UsersListPublicEmailsForAuthenticatedOKApplicationJSON []Email
 
@@ -24824,19 +24051,10 @@ type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicErro
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
-// UsersListPublicSSHKeysForAuthenticatedNotModified is response for UsersListPublicSSHKeysForAuthenticated operation.
-type UsersListPublicSSHKeysForAuthenticatedNotModified struct{}
-
-func (*UsersListPublicSSHKeysForAuthenticatedNotModified) usersListPublicSSHKeysForAuthenticatedRes() {
-}
-
 type UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON []Key
 
 func (*UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) usersListPublicSSHKeysForAuthenticatedRes() {
 }
-
-// UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified is response for UsersSetPrimaryEmailVisibilityForAuthenticated operation.
-type UsersSetPrimaryEmailVisibilityForAuthenticatedNotModified struct{}
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedReq struct {
 	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility `json:"visibility"`
@@ -24866,11 +24084,6 @@ type UsersUnblockNoContent struct{}
 
 func (*UsersUnblockNoContent) usersUnblockRes() {}
 
-// UsersUnblockNotModified is response for UsersUnblock operation.
-type UsersUnblockNotModified struct{}
-
-func (*UsersUnblockNotModified) usersUnblockRes() {}
-
 type UsersUnfollowApplicationJSONForbidden BasicError
 
 func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowRes() {}
@@ -24887,14 +24100,6 @@ func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowRes() {}
 type UsersUnfollowNoContent struct{}
 
 func (*UsersUnfollowNoContent) usersUnfollowRes() {}
-
-// UsersUnfollowNotModified is response for UsersUnfollow operation.
-type UsersUnfollowNotModified struct{}
-
-func (*UsersUnfollowNotModified) usersUnfollowRes() {}
-
-// UsersUpdateAuthenticatedNotModified is response for UsersUpdateAuthenticated operation.
-type UsersUpdateAuthenticatedNotModified struct{}
 
 type UsersUpdateAuthenticatedReq struct {
 	Bio             OptString    `json:"bio"`

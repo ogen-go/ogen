@@ -155,34 +155,7 @@ func (s *Data) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarGetNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads FoobarGetNotFound from json stream.
-func (s *FoobarGetNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarGetNotFound to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s FoobarPostDef) WriteJSON(j *json.Stream) {
+func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -195,10 +168,10 @@ func (s FoobarPostDef) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarPostDef from json stream.
-func (s *FoobarPostDef) ReadJSON(i *json.Iter) error {
+// ReadJSON reads Error from json stream.
+func (s *Error) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPostDef to nil`)
+		fmt.Errorf(`invalid: unable to decode Error to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -233,44 +206,17 @@ func (s *FoobarPostDef) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostDefStatusCode) WriteJSON(j *json.Stream) {
+func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarPostDefStatusCode from json stream.
-func (s *FoobarPostDefStatusCode) ReadJSON(i *json.Iter) error {
+// ReadJSON reads ErrorStatusCode from json stream.
+func (s *ErrorStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPostDefStatusCode to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s FoobarPostNotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads FoobarPostNotFound from json stream.
-func (s *FoobarPostNotFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPostNotFound to nil`)
+		fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -406,6 +352,33 @@ func (o *NilString) ReadJSON(i *json.Iter) error {
 	default:
 		return fmt.Errorf("unexpected type %q while reading NilString", i.WhatIsNext())
 	}
+}
+
+// WriteJSON implements json.Marshaler.
+func (s NotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads NotFound from json stream.
+func (s *NotFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode NotFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
 }
 
 // WriteJSON writes json value of Data to json stream.

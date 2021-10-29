@@ -69,28 +69,18 @@ type Data struct {
 	ID          ID        `json:"id"`
 }
 
-// FoobarGetNotFound is response for FoobarGet operation.
-type FoobarGetNotFound struct{}
-
-func (*FoobarGetNotFound) foobarGetRes() {}
-
-type FoobarPostDef struct {
+type Error struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
 }
 
-// FoobarPostDefStatusCode wraps FoobarPostDef with StatusCode.
-type FoobarPostDefStatusCode struct {
+// ErrorStatusCode wraps Error with StatusCode.
+type ErrorStatusCode struct {
 	StatusCode int
-	Response   FoobarPostDef
+	Response   Error
 }
 
-func (*FoobarPostDefStatusCode) foobarPostRes() {}
-
-// FoobarPostNotFound is response for FoobarPost operation.
-type FoobarPostNotFound struct{}
-
-func (*FoobarPostNotFound) foobarPostRes() {}
+func (*ErrorStatusCode) foobarPostRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
 type FoobarPutDef struct{}
@@ -195,6 +185,12 @@ func (o NilString) Get() (v string, ok bool) {
 	}
 	return o.Value, true
 }
+
+// Ref: #/components/responses/NotFound
+type NotFound struct{}
+
+func (*NotFound) foobarGetRes()  {}
+func (*NotFound) foobarPostRes() {}
 
 // NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {

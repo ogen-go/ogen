@@ -15933,9 +15933,9 @@ func (c *Client) MarkdownRender(ctx context.Context, request MarkdownRenderReq) 
 
 func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
 	switch request := request.(type) {
-	case *MarkdownRenderRawReqTextXMarkdown:
-		// Validation is not required for this type.
 	case *MarkdownRenderRawReqTextPlain:
+		// Validation is not required for this type.
+	case *MarkdownRenderRawReqTextXMarkdown:
 		// Validation is not required for this type.
 	default:
 		err = fmt.Errorf("unexpected request type: %T", request)

@@ -2223,7 +2223,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 204:
 		return &ActivityCheckRepoIsStarredByAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityCheckRepoIsStarredByAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2318,7 +2318,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 	case 204:
 		return &ActivityDeleteThreadSubscriptionNoContent{}, nil
 	case 304:
-		return &ActivityDeleteThreadSubscriptionNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2487,7 +2487,7 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityGetThreadNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2565,7 +2565,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityGetThreadSubscriptionForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2743,7 +2743,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListPublicEventsNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2772,7 +2772,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ActivityListPublicEventsServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -2842,7 +2842,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListPublicEventsForRepoNetworkNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3222,7 +3222,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListReposStarredByAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3350,7 +3350,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivityListWatchedReposForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3480,7 +3480,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 	case 205:
 		return &ActivityMarkNotificationsAsReadResetContent{}, nil
 	case 304:
-		return &ActivityMarkNotificationsAsReadNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3575,7 +3575,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response, span trace.Span
 	case 205:
 		return &ActivityMarkThreadAsReadResetContent{}, nil
 	case 304:
-		return &ActivityMarkThreadAsReadNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3666,7 +3666,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ActivitySetThreadSubscriptionNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3725,7 +3725,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 	case 204:
 		return &ActivityStarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityStarRepoForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3805,7 +3805,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 	case 204:
 		return &ActivityUnstarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &ActivityUnstarRepoForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3885,7 +3885,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 	case 204:
 		return &AppsAddRepoToInstallationNoContent{}, nil
 	case 304:
-		return &AppsAddRepoToInstallationNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4081,7 +4081,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AppsGetBySlugUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -4352,7 +4352,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListInstallationReposForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4561,7 +4561,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListReposAccessibleToInstallationNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4639,7 +4639,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListSubscriptionsForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4717,7 +4717,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &AppsListSubscriptionsForAuthenticatedUserStubbedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4755,7 +4755,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 	case 204:
 		return &AppsRemoveRepoFromInstallationNoContent{}, nil
 	case 304:
-		return &AppsRemoveRepoFromInstallationNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -5708,7 +5708,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningDeleteAnalysisServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5805,7 +5805,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetAlertServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5904,7 +5904,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetAnalysisServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -5982,7 +5982,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningGetSarifServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6079,7 +6079,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListAlertInstancesServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6176,7 +6176,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListAlertsForRepoServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6273,7 +6273,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningListRecentAnalysesServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6370,7 +6370,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningUpdateAlertServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6471,7 +6471,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response CodeScanningUploadSarifServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -6520,7 +6520,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &CodesOfConductGetAllCodesOfConductNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -6556,7 +6556,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &CodesOfConductGetConductCodeNotModified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -6613,7 +6613,7 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &EmojisGetNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -7703,7 +7703,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 	case 204:
 		return &GistsCheckIsStarredNoContent{}, nil
 	case 304:
-		return &GistsCheckIsStarredNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7781,7 +7781,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsCreateCommentNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7840,7 +7840,7 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 	case 204:
 		return &GistsDeleteNoContent{}, nil
 	case 304:
-		return &GistsDeleteNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7899,7 +7899,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 	case 204:
 		return &GistsDeleteCommentNoContent{}, nil
 	case 304:
-		return &GistsDeleteCommentNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7977,7 +7977,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsGetNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -7985,7 +7985,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GistsGetForbidden
+			var response ForbiddenGist
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -8055,7 +8055,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsGetCommentNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8063,7 +8063,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GistsGetCommentForbidden
+			var response ForbiddenGist
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -8133,7 +8133,7 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8190,7 +8190,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListCommentsNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8268,7 +8268,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListCommitsNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8346,7 +8346,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListForksNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8424,7 +8424,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GistsListStarredNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8483,7 +8483,7 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 	case 204:
 		return &GistsStarNoContent{}, nil
 	case 304:
-		return &GistsStarNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8542,7 +8542,7 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 	case 204:
 		return &GistsUnstarNoContent{}, nil
 	case 304:
-		return &GistsUnstarNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -8890,7 +8890,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GitignoreGetAllTemplatesNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8926,7 +8926,7 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &GitignoreGetTemplateNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10060,7 +10060,7 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &LicensesGetNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10138,7 +10138,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &LicensesGetAllCommonlyUsedNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10194,7 +10194,7 @@ func decodeMarkdownRenderResponse(resp *http.Response, span trace.Span) (res Mar
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MarkdownRenderNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10216,7 +10216,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MarkdownRenderRawNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10252,7 +10252,7 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MetaGetNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10358,7 +10358,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 204:
 		return &MigrationsDeleteArchiveForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &MigrationsDeleteArchiveForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10510,7 +10510,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 	case 302:
 		return &MigrationsGetArchiveForAuthenticatedUserFound{}, nil
 	case 304:
-		return &MigrationsGetArchiveForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10748,7 +10748,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MigrationsGetStatusForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10902,7 +10902,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &MigrationsListForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11121,7 +11121,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 	case 204:
 		return &MigrationsUnlockRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &MigrationsUnlockRepoForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11271,7 +11271,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 	case 204:
 		return &OAuthAuthorizationsDeleteAuthorizationNoContent{}, nil
 	case 304:
-		return &OAuthAuthorizationsDeleteAuthorizationNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11330,7 +11330,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 	case 204:
 		return &OAuthAuthorizationsDeleteGrantNoContent{}, nil
 	case 304:
-		return &OAuthAuthorizationsDeleteGrantNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11408,7 +11408,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsGetAuthorizationNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11486,7 +11486,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsGetGrantNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11564,7 +11564,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsListAuthorizationsNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -11663,7 +11663,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OAuthAuthorizationsListGrantsNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -12275,7 +12275,7 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OrgsListNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -12317,7 +12317,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response OrgsListBlockedUsersUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -12421,7 +12421,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &OrgsListForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14798,7 +14798,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsCreateColumnNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14897,7 +14897,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsCreateForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -14947,7 +14947,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ProjectsCreateForAuthenticatedUserUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -15276,7 +15276,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 	case 204:
 		return &ProjectsDeleteNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15377,7 +15377,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 	case 204:
 		return &ProjectsDeleteCardNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteCardNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15457,7 +15457,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 	case 204:
 		return &ProjectsDeleteColumnNoContent{}, nil
 	case 304:
-		return &ProjectsDeleteColumnNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15535,7 +15535,7 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15613,7 +15613,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetCardNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15712,7 +15712,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsGetColumnNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15811,7 +15811,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsListCardsNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -15889,7 +15889,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsListColumnsNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16161,7 +16161,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsMoveColumnNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16260,7 +16260,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16382,7 +16382,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateCardNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16502,7 +16502,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ProjectsUpdateColumnNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -16916,7 +16916,7 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &PullsGetNotModified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17579,7 +17579,7 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &RateLimitGetNotModified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17885,7 +17885,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 	case 204:
 		return &ReactionsDeleteLegacyNoContent{}, nil
 	case 304:
-		return &ReactionsDeleteLegacyNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -17956,7 +17956,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsDeleteLegacyUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18032,7 +18032,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForCommitCommentUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18129,7 +18129,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForIssueUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18205,7 +18205,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForIssueCommentUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18281,7 +18281,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReactionsListForPullRequestReviewCommentUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -18511,7 +18511,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 	case 204:
 		return &ReposAcceptInvitationNoContent{}, nil
 	case 304:
-		return &ReposAcceptInvitationNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -18824,7 +18824,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 	case 204:
 		return &ReposDeclineInvitationNoContent{}, nil
 	case 304:
-		return &ReposDeclineInvitationNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -19475,7 +19475,7 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposEnableLfsForRepoAccepted
+			var response Accepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -19809,7 +19809,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetAllTopicsUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20016,7 +20016,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetBranchUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20181,7 +20181,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetCodeFrequencyStatsAccepted
+			var response Accepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20196,7 +20196,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetCodeFrequencyStatsNoContent{}, nil
+		return &NoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20348,7 +20348,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetCommitActivityStatsAccepted
+			var response Accepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20363,7 +20363,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetCommitActivityStatsNoContent{}, nil
+		return &NoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20549,7 +20549,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetContributorsStatsAccepted
+			var response Accepted
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -20564,7 +20564,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetContributorsStatsNoContent{}, nil
+		return &NoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -20682,7 +20682,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetDeploymentStatusUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -21057,7 +21057,7 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 204:
-		return &ReposGetPunchCardStatsNoContent{}, nil
+		return &NoContent{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -21148,7 +21148,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 302:
-		return &ReposGetReleaseAssetFound{}, nil
+		return &Found{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -21177,7 +21177,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposGetReleaseAssetUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -22525,7 +22525,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &ReposListInvitationsForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23149,7 +23149,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ReposReplaceAllTopicsUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23681,7 +23681,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 	case 204:
 		return &ScimDeleteUserFromOrgNoContent{}, nil
 	case 304:
-		return &ScimDeleteUserFromOrgNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23763,7 +23763,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &SearchCommitsNotModified{}, nil
+		return &NotModified{}, nil
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23771,7 +23771,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchCommitsUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23820,7 +23820,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &SearchTopicsNotModified{}, nil
+		return &NotModified{}, nil
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -23828,7 +23828,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SearchTopicsUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23885,7 +23885,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningGetAlertServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -23961,7 +23961,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningListAlertsForOrgServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24018,7 +24018,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningListAlertsForRepoServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -24077,7 +24077,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SecretScanningUpdateAlertServiceUnavailable
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -25366,7 +25366,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &TeamsListForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26250,7 +26250,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 	case 204:
 		return &UsersCheckBlockedNoContent{}, nil
 	case 304:
-		return &UsersCheckBlockedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26347,7 +26347,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 204:
 		return &UsersCheckPersonIsFollowedByAuthenticatedNoContent{}, nil
 	case 304:
-		return &UsersCheckPersonIsFollowedByAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26427,7 +26427,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 	case 204:
 		return &UsersDeletePublicSSHKeyForAuthenticatedNoContent{}, nil
 	case 304:
-		return &UsersDeletePublicSSHKeyForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26507,7 +26507,7 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 	case 204:
 		return &UsersFollowNoContent{}, nil
 	case 304:
-		return &UsersFollowNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26606,7 +26606,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersGetGpgKeyForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26705,7 +26705,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersGetPublicSSHKeyForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26804,7 +26804,7 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListNotModified{}, nil
+		return &NotModified{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26840,7 +26840,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListBlockedByAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -26911,7 +26911,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 			defer json.PutIter(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response UsersListBlockedByAuthenticatedUnsupportedMediaType
+			var response PreviewHeaderMissing
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -26960,7 +26960,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListEmailsForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27059,7 +27059,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListFollowedByAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27137,7 +27137,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListFollowersForAuthenticatedUserNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27315,7 +27315,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListGpgKeysForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27464,7 +27464,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListPublicEmailsForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27613,7 +27613,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 304:
-		return &UsersListPublicSSHKeysForAuthenticatedNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27693,7 +27693,7 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 	case 204:
 		return &UsersUnblockNoContent{}, nil
 	case 304:
-		return &UsersUnblockNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -27773,7 +27773,7 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 	case 204:
 		return &UsersUnfollowNoContent{}, nil
 	case 304:
-		return &UsersUnfollowNotModified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
