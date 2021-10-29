@@ -64,13 +64,14 @@ func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq, span t
 	switch req := req.(type) {
 	case *AnswerCallbackQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -89,13 +90,14 @@ func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq, 
 	switch req := req.(type) {
 	case *AnswerPreCheckoutQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -114,13 +116,14 @@ func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq, span t
 	switch req := req.(type) {
 	case *AnswerShippingQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -139,13 +142,14 @@ func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq, span
 	switch req := req.(type) {
 	case *DeleteStickerFromSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -164,13 +168,14 @@ func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq, span trace.Span) (
 	switch req := req.(type) {
 	case *DeleteWebhookPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -189,13 +194,14 @@ func encodeGetFilePostRequest(req GetFilePostReq, span trace.Span) (data *bytes.
 	switch req := req.(type) {
 	case *GetFilePostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -214,13 +220,14 @@ func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq, span trace
 	switch req := req.(type) {
 	case *GetGameHighScoresPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -239,13 +246,14 @@ func encodeGetStickerSetPostRequest(req GetStickerSetPostReq, span trace.Span) (
 	switch req := req.(type) {
 	case *GetStickerSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -264,13 +272,14 @@ func encodeGetUpdatesPostRequest(req GetUpdatesPostReq, span trace.Span) (data *
 	switch req := req.(type) {
 	case *GetUpdatesPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -289,13 +298,14 @@ func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq, span
 	switch req := req.(type) {
 	case *GetUserProfilePhotosPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -314,13 +324,14 @@ func encodeSendGamePostRequest(req SendGamePostReq, span trace.Span) (data *byte
 	switch req := req.(type) {
 	case *SendGamePostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -339,13 +350,14 @@ func encodeSendInvoicePostRequest(req SendInvoicePostReq, span trace.Span) (data
 	switch req := req.(type) {
 	case *SendInvoicePostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -364,13 +376,14 @@ func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq, span trace.Span) (
 	switch req := req.(type) {
 	case *SetMyCommandsPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -389,13 +402,14 @@ func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq
 	switch req := req.(type) {
 	case *SetStickerPositionInSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
-		j := json.GetStream(buf)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		w := json.GetWriter()
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
+		w.Reset(buf)
 		more.More()
-		req.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		req.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}

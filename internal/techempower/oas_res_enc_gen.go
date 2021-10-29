@@ -60,73 +60,78 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeCachingResponse(response WorldObjects, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	// Unsupported kind "alias".
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeDBResponse(response WorldObject, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeJSONResponse(response HelloWorld, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeQueriesResponse(response WorldObjects, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	// Unsupported kind "alias".
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeUpdatesResponse(response WorldObjects, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	// Unsupported kind "alias".
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil

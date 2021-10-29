@@ -71,13 +71,13 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response Book
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
+				if err := response.ReadJSON(r); err != nil {
 					return err
 				}
 				return nil
@@ -173,9 +173,9 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response SearchOKApplicationJSON
 			if err := func() error {
@@ -209,9 +209,9 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {

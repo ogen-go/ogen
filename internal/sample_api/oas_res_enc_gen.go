@@ -60,57 +60,60 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeFoobarGetResponse(response FoobarGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/foobar: unexpected response type: %T", response)
 	}
 }
 
-func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeFoobarPostResponse(response FoobarPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -119,73 +122,77 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	}
 }
 
-func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
+func encodeFoobarPutResponse(response FoobarPutDefStatusCode, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(response.StatusCode)
 	return nil
 }
 
-func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePetCreateResponse(response Pet, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePetFriendsNamesByIDResponse(response []string, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		j.WriteString(elem)
+		w.Str(elem)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodePetGetResponse(response PetGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PetGetDefStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -194,42 +201,44 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	}
 }
 
-func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePetGetByNameResponse(response Pet, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePetNameByIDResponse(response string, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	j.WriteString(response)
-	if err := j.Flush(); err != nil {
+	w.Str(response)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
+func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(response.StatusCode)
 	return nil
 }
 
-func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
+func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(response.StatusCode)
 	return nil
 }

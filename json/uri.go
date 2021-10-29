@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-func ReadURI(i *Iter) (v url.URL, err error) {
+func ReadURI(i *Reader) (v url.URL, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -16,6 +16,6 @@ func ReadURI(i *Iter) (v url.URL, err error) {
 	return *u, nil
 }
 
-func WriteURI(s *Stream, v url.URL) {
-	s.WriteString(v.String())
+func WriteURI(s *Writer, v url.URL) {
+	s.Str(v.String())
 }

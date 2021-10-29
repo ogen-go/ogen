@@ -70,11 +70,11 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		i := json.GetIter()
-		defer json.PutIter(i)
-		i.ResetBytes(buf.Bytes())
+		r := json.GetReader()
+		defer json.PutReader(r)
+		r.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(i); err != nil {
+			if err := request.ReadJSON(r); err != nil {
 				return err
 			}
 			return nil
@@ -105,11 +105,11 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req PetCreateReq,
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		i := json.GetIter()
-		defer json.PutIter(i)
-		i.ResetBytes(buf.Bytes())
+		r := json.GetReader()
+		defer json.PutReader(r)
+		r.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(i); err != nil {
+			if err := request.ReadJSON(r); err != nil {
 				return err
 			}
 			return nil
@@ -144,9 +144,9 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PetName
-		i := json.GetIter()
-		defer json.PutIter(i)
-		i.ResetBytes(buf.Bytes())
+		r := json.GetReader()
+		defer json.PutReader(r)
+		r.ResetBytes(buf.Bytes())
 		if err := func() error {
 			if err := fmt.Errorf(`decoding of "PetName" (alias) is not implemented`); err != nil {
 				return err
@@ -190,11 +190,11 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request string
-		i := json.GetIter()
-		defer json.PutIter(i)
-		i.ResetBytes(buf.Bytes())
+		r := json.GetReader()
+		defer json.PutReader(r)
+		r.ResetBytes(buf.Bytes())
 		if err := func() error {
-			v, err := i.Str()
+			v, err := r.Str()
 			request = string(v)
 			if err != nil {
 				return err

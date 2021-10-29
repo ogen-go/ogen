@@ -60,65 +60,68 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsAddSelectedRepoToOrgSecretNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ActionsAddSelectedRepoToOrgSecretConflict:
-		w.WriteHeader(409)
+		rw.WriteHeader(409)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -127,930 +130,980 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	}
 }
 
-func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(202)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(202)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsCreateOrUpdateEnvironmentSecretNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}: unexpected response type: %T", response)
 	}
 }
 
-func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsCreateOrUpdateOrgSecretNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}: unexpected response type: %T", response)
 	}
 }
 
-func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsCreateOrUpdateRepoSecretCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsCreateOrUpdateRepoSecretNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/actions/secrets/{secret_name}: unexpected response type: %T", response)
 	}
 }
 
-func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
+func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
+func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
+func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(302)
 	return nil
 }
 
-func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetArtifactResponse(response Artifact, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetJobForWorkflowRunResponse(response Job, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetRepoSecretResponse(response ActionsSecret, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsGetWorkflowRunResponse(response WorkflowRun, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	more.Down()
+	w.ArrStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(w)
+	}
+	w.ArrEnd()
+	more.Up()
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
-func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsRemoveSelectedRepoFromOrgSecretNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ActionsRemoveSelectedRepoFromOrgSecretConflict:
-		w.WriteHeader(409)
+		rw.WriteHeader(409)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1059,40 +1112,42 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	}
 }
 
-func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityDeleteThreadSubscriptionNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1101,96 +1156,102 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	}
 }
 
-func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityGetFeedsResponse(response Feed, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositorySubscription:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityGetRepoSubscriptionNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/subscription: unexpected response type: %T", response)
 	}
 }
 
-func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityGetThreadResponse(response ActivityGetThreadRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Thread:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityGetThreadApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityGetThreadApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1199,45 +1260,48 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	}
 }
 
-func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1246,90 +1310,95 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	}
 }
 
-func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1338,56 +1407,60 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	}
 }
 
-func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsForRepoNetworkOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(301)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1396,180 +1469,189 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	}
 }
 
-func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListPublicEventsForUserResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListPublicOrgEventsResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListReceivedEventsForUserResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListRepoEventsResponse(response []Event, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON:
-		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
-		w.WriteHeader(200)
+		rw.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
+		rw.WriteHeader(200)
 		return fmt.Errorf("application/vnd.github.v3.star+json encoder not implemented")
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1578,66 +1660,70 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	}
 }
 
-func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1646,70 +1732,74 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	}
 }
 
-func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivityListWatchersForRepoResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkNotificationsAsReadAccepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityMarkNotificationsAsReadResetContent:
-		w.WriteHeader(205)
+		rw.WriteHeader(205)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1718,47 +1808,49 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	}
 }
 
-func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityMarkRepoNotificationsAsReadResetContent:
-		w.WriteHeader(205)
+		rw.WriteHeader(205)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/notifications: unexpected response type: %T", response)
 	}
 }
 
-func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkThreadAsReadResetContent:
-		w.WriteHeader(205)
+		rw.WriteHeader(205)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1767,60 +1859,64 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	}
 }
 
-func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1829,47 +1925,50 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	}
 }
 
-func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityStarRepoForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1878,47 +1977,50 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	}
 }
 
-func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1927,35 +2029,37 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	}
 }
 
-func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsAddRepoToInstallationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *AppsAddRepoToInstallationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsAddRepoToInstallationApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1964,21 +2068,22 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	}
 }
 
-func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1987,70 +2092,75 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 	}
 }
 
-func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeAppsGetAuthenticatedResponse(response Integration, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Integration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetBySlugApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetBySlugApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2059,42 +2169,45 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	}
 }
 
-func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2103,81 +2216,86 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	}
 }
 
-func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetSubscriptionPlanForAccountStubbedNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/marketplace_listing/stubbed/accounts/{account_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanStubbedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2186,45 +2304,48 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	}
 }
 
-func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2233,41 +2354,44 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	}
 }
 
-func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListPlansResponse(response AppsListPlansRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListPlansApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListPlansApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2276,30 +2400,32 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	}
 }
 
-func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2308,45 +2434,48 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	}
 }
 
-func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2355,44 +2484,47 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	}
 }
 
-func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2401,33 +2533,35 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	}
 }
 
-func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2436,35 +2570,37 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	}
 }
 
-func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsRemoveRepoFromInstallationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2473,26 +2609,27 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	}
 }
 
-func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsSuspendInstallationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2501,21 +2638,22 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 	}
 }
 
-func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsUnsuspendInstallationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2524,179 +2662,191 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	}
 }
 
-func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ChecksCreateSuiteApplicationJSONOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ChecksCreateSuiteApplicationJSONCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2705,198 +2855,211 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	}
 }
 
-func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksGetResponse(response CheckRun, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksGetSuiteResponse(response CheckSuite, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksListAnnotationsResponse(response []CheckAnnotation, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksListForRefResponse(response ChecksListForRefOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysisDeletion:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(400)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
+		rw.Header().Set("Content-Type", "application/scim+json")
+		rw.WriteHeader(400)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2905,55 +3068,59 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	}
 }
 
-func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetAlertApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetAlertApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2962,59 +3129,63 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	}
 }
 
-func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysis:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
-		w.Header().Set("Content-Type", "application/json+sarif")
-		w.WriteHeader(200)
+		rw.Header().Set("Content-Type", "application/json+sarif")
+		rw.WriteHeader(200)
 		return fmt.Errorf("application/json+sarif encoder not implemented")
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetAnalysisApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3023,47 +3194,50 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	}
 }
 
-func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsStatus:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetSarifNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3072,54 +3246,58 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	}
 }
 
-func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertInstancesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3128,54 +3306,58 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	}
 }
 
-func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertsForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertsForRepoApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertsForRepoApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3184,54 +3366,58 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	}
 }
 
-func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListRecentAnalysesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3240,55 +3426,59 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	}
 }
 
-func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUpdateAlertApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUpdateAlertApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3297,61 +3487,65 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	}
 }
 
-func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsReceipt:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUploadSarifBadRequest:
-		w.WriteHeader(400)
+		rw.WriteHeader(400)
 		return nil
 	case *CodeScanningUploadSarifApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUploadSarifApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUploadSarifRequestEntityTooLarge:
-		w.WriteHeader(413)
+		rw.WriteHeader(413)
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3360,56 +3554,59 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	}
 }
 
-func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodesOfConductGetAllCodesOfConductOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/codes_of_conduct: unexpected response type: %T", response)
 	}
 }
 
-func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, w http.ResponseWriter, span trace.Span) error {
+func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeOfConduct:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3418,509 +3615,536 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	}
 }
 
-func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeEmojisGetResponse(response EmojisGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmojisGetOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/emojis: unexpected response type: %T", response)
 	}
 }
 
-func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	more.Down()
+	w.ArrStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(w)
+	}
+	w.ArrEnd()
+	more.Up()
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
+	return nil
+}
+
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsCheckIsStarredNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsCheckIsStarredNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3929,45 +4153,48 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	}
 }
 
-func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsCreateCommentApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsCreateCommentApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3976,35 +4203,37 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	}
 }
 
-func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsDeleteResponse(response GistsDeleteRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsDeleteNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsDeleteApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsDeleteApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4013,35 +4242,37 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsDeleteCommentNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsDeleteCommentApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsDeleteCommentApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4050,47 +4281,50 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	}
 }
 
-func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsGetResponse(response GistsGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ForbiddenGist:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4099,47 +4333,50 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	}
 }
 
-func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsGetCommentResponse(response GistsGetCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ForbiddenGist:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4148,33 +4385,35 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	}
 }
 
-func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsListResponse(response GistsListRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4183,44 +4422,47 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsListCommentsResponse(response GistsListCommentsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommentsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsListCommentsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListCommentsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4229,44 +4471,47 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	}
 }
 
-func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsListCommitsResponse(response GistsListCommitsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommitsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsListCommitsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListCommitsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4275,44 +4520,47 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	}
 }
 
-func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsListForksResponse(response GistsListForksRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForksOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsListForksApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListForksApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4321,44 +4569,47 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	}
 }
 
-func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsListStarredResponse(response GistsListStarredRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListStarredOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsListStarredApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListStarredApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4367,35 +4618,37 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	}
 }
 
-func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsStarResponse(response GistsStarRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsStarNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsStarApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsStarApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4404,35 +4657,37 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsUnstarResponse(response GistsUnstarRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsUnstarNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *GistsUnstarApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsUnstarApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4441,31 +4696,33 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4474,31 +4731,33 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	}
 }
 
-func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGitGetCommitResponse(response GitGetCommitRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4507,31 +4766,33 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 	}
 }
 
-func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGitGetRefResponse(response GitGetRefRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRef:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4540,31 +4801,33 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGitGetTagResponse(response GitGetTagRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTag:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4573,149 +4836,155 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeGitListMatchingRefsResponse(response []GitRef, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreGetAllTemplatesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/gitignore/templates: unexpected response type: %T", response)
 	}
 }
 
-func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreTemplate:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/gitignore/templates/{name}: unexpected response type: %T", response)
 	}
 }
 
-func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionsRemoveRestrictionsForRepoNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *InteractionsRemoveRestrictionsForRepoConflict:
-		w.WriteHeader(409)
+		rw.WriteHeader(409)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T", response)
 	}
 }
 
-func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *InteractionsSetRestrictionsForRepoConflict:
-		w.WriteHeader(409)
+		rw.WriteHeader(409)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T", response)
 	}
 }
 
-func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeIssuesAddAssigneesResponse(response IssueSimple, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesCheckUserCanBeAssignedNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4724,31 +4993,32 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	}
 }
 
-func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesDeleteMilestoneNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4757,31 +5027,33 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 	}
 }
 
-func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4790,54 +5062,58 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	}
 }
 
-func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesGetEventResponse(response IssuesGetEventRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueEvent:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesGetEventApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesGetEventApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesGetEventApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4846,31 +5122,33 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	}
 }
 
-func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Label:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4879,31 +5157,33 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	}
 }
 
-func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Milestone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4912,30 +5192,32 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	}
 }
 
-func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4944,41 +5226,44 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	}
 }
 
-func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesListCommentsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesListCommentsApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4987,52 +5272,55 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	}
 }
 
-func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeIssuesListLabelsForMilestoneResponse(response []Label, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5041,30 +5329,32 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	}
 }
 
-func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5073,30 +5363,32 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	}
 }
 
-func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListMilestonesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5105,21 +5397,22 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	}
 }
 
-func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveAllLabelsNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5128,56 +5421,60 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 	}
 }
 
-func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeIssuesRemoveAssigneesResponse(response IssueSimple, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveLabelOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesRemoveLabelApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesRemoveLabelApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5186,32 +5483,34 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	}
 }
 
-func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesUnlockResponse(response IssuesUnlockRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesUnlockNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *IssuesUnlockApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesUnlockApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5220,75 +5519,80 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 	}
 }
 
-func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeIssuesUpdateLabelResponse(response Label, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeIssuesUpdateMilestoneResponse(response Milestone, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeLicensesGetResponse(response LicensesGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *License:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *LicensesGetApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *LicensesGetApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5297,167 +5601,174 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LicensesGetAllCommonlyUsedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/licenses: unexpected response type: %T", response)
 	}
 }
 
-func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeLicensesGetForRepoResponse(response LicenseContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMarkdownRenderResponse(response MarkdownRenderRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarkdownRenderOKTextHTML:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
+		rw.Header().Set("Content-Type", "text/html")
+		rw.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/markdown: unexpected response type: %T", response)
 	}
 }
 
-func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarkdownRenderRawOKTextHTML:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
+		rw.Header().Set("Content-Type", "text/html")
+		rw.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/markdown/raw: unexpected response type: %T", response)
 	}
 }
 
-func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMetaGetResponse(response MetaGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *APIOverview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/meta: unexpected response type: %T", response)
 	}
 }
 
-func encodeMetaGetOctocatResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octocat-stream")
-	w.WriteHeader(200)
+func encodeMetaGetOctocatResponse(response string, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/octocat-stream")
+	rw.WriteHeader(200)
 	return fmt.Errorf("application/octocat-stream encoder not implemented")
 }
 
-func encodeMetaGetZenResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "text/plain")
-	w.WriteHeader(200)
+func encodeMetaGetZenResponse(response string, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "text/plain")
+	rw.WriteHeader(200)
 	return fmt.Errorf("text/plain encoder not implemented")
 }
 
-func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeMetaRootResponse(response MetaRootOK, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5466,21 +5777,22 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	}
 }
 
-func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5489,21 +5801,22 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 	}
 }
 
-func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDownloadArchiveForOrgFound:
-		w.WriteHeader(302)
+		rw.WriteHeader(302)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5512,35 +5825,37 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 	}
 }
 
-func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsGetArchiveForAuthenticatedUserFound:
-		w.WriteHeader(302)
+		rw.WriteHeader(302)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5549,30 +5864,32 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	}
 }
 
-func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsGetCommitAuthorsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5581,31 +5898,33 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	}
 }
 
-func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Import:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5614,79 +5933,84 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	}
 }
 
-func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5695,31 +6019,33 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	}
 }
 
-func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5728,44 +6054,47 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 	}
 }
 
-func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5774,52 +6103,55 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	}
 }
 
-func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeMigrationsListForOrgResponse(response []Migration, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5828,30 +6160,32 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	}
 }
 
-func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5860,47 +6194,50 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	}
 }
 
-func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5909,21 +6246,22 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	}
 }
 
-func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5932,50 +6270,53 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	}
 }
 
-func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeMigrationsUpdateImportResponse(response Import, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5984,35 +6325,37 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	}
 }
 
-func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteGrantNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6021,45 +6364,48 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	}
 }
 
-func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6068,45 +6414,48 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	}
 }
 
-func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ApplicationGrant:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6115,56 +6464,60 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	}
 }
 
-func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6173,56 +6526,60 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	}
 }
 
-func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6231,21 +6588,22 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	}
 }
 
-func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckBlockedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6254,66 +6612,68 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 	}
 }
 
-func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckMembershipForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *OrgsCheckMembershipForUserFound:
-		w.WriteHeader(302)
+		rw.WriteHeader(302)
 		return nil
 	case *OrgsCheckMembershipForUserNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/members/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckPublicMembershipForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *OrgsCheckPublicMembershipForUserNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/public_members/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsConvertMemberToOutsideCollaboratorNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *OrgsConvertMemberToOutsideCollaboratorForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6322,21 +6682,22 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	}
 }
 
-func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsDeleteWebhookNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6345,31 +6706,33 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 	}
 }
 
-func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsGetResponse(response OrgsGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrganizationFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6378,64 +6741,68 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 	}
 }
 
-func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6444,42 +6811,45 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	}
 }
 
-func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6488,31 +6858,33 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	}
 }
 
-func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6521,67 +6893,71 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	}
 }
 
-func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListResponse(response OrgsListRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/organizations: unexpected response type: %T", response)
 	}
 }
 
-func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListBlockedUsersOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6590,30 +6966,32 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	}
 }
 
-func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6622,44 +7000,47 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	}
 }
 
-func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6668,52 +7049,55 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	}
 }
 
-func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsListForUserResponse(response []OrganizationSimple, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6722,52 +7106,55 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	}
 }
 
-func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6776,74 +7163,78 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	}
 }
 
-func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsListPublicMembersResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6852,21 +7243,22 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	}
 }
 
-func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsPingWebhookNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6875,21 +7267,22 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 	}
 }
 
-func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMemberNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6898,32 +7291,34 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 	}
 }
 
-func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMembershipForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6932,21 +7327,22 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	}
 }
 
-func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveOutsideCollaboratorNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6955,26 +7351,27 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	}
 }
 
-func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveSamlSSOAuthorizationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6983,21 +7380,22 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	}
 }
 
-func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7006,64 +7404,68 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	}
 }
 
-func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDeletePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDeletePackageForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7072,44 +7474,47 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	}
 }
 
-func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7118,44 +7523,47 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	}
 }
 
-func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageForUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7164,44 +7572,47 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	}
 }
 
-func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7210,44 +7621,47 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	}
 }
 
-func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7256,44 +7670,47 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	}
 }
 
-func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesDeletePackageVersionForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7302,53 +7719,57 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	}
 }
 
-func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7357,53 +7778,57 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	}
 }
 
-func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7412,53 +7837,57 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	}
 }
 
-func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7467,153 +7896,163 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	}
 }
 
-func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageForOrganizationResponse(response Package, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageForUserResponse(response Package, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePackagesListPackagesForOrganizationResponse(response PackagesListPackagesForOrganizationRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesListPackagesForOrganizationResponse(response PackagesListPackagesForOrganizationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForOrganizationOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesListPackagesForOrganizationApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesListPackagesForOrganizationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7622,41 +8061,44 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	}
 }
 
-func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesListPackagesForUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesListPackagesForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7665,44 +8107,47 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	}
 }
 
-func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7711,44 +8156,47 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	}
 }
 
-func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7757,44 +8205,47 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	}
 }
 
-func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageForUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7803,44 +8254,47 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	}
 }
 
-func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7849,44 +8303,47 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	}
 }
 
-func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7895,44 +8352,47 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	}
 }
 
-func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PackagesRestorePackageVersionForUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7941,58 +8401,62 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	}
 }
 
-func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsCreateColumnApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateColumnApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8001,71 +8465,76 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	}
 }
 
-func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8074,79 +8543,85 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	}
 }
 
-func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8155,79 +8630,85 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	}
 }
 
-func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8236,60 +8717,64 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	}
 }
 
-func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsDeleteResponse(response ProjectsDeleteRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8298,48 +8783,51 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	}
 }
 
-func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteCardNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteCardApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteCardApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8348,35 +8836,37 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	}
 }
 
-func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteColumnNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteColumnApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8385,45 +8875,48 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	}
 }
 
-func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsGetResponse(response ProjectsGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsGetApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8432,57 +8925,61 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsGetCardResponse(response ProjectsGetCardRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsGetCardApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetCardApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetCardApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8491,57 +8988,61 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	}
 }
 
-func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsGetColumnApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetColumnApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetColumnApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8550,44 +9051,47 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	}
 }
 
-func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsListCardsResponse(response ProjectsListCardsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCardsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsListCardsApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListCardsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8596,44 +9100,47 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	}
 }
 
-func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListColumnsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsListColumnsApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListColumnsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8642,30 +9149,32 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	}
 }
 
-func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForOrgOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8674,78 +9183,84 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	}
 }
 
-func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListForRepoApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListForRepoApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListForRepoApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListForRepoApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8754,58 +9269,62 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	}
 }
 
-func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveColumnCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsMoveColumnApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsMoveColumnApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8814,74 +9333,79 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	}
 }
 
-func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsUpdateResponse(response ProjectsUpdateRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *ProjectsUpdateApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8890,70 +9414,75 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	}
 }
 
-func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateCardApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateCardApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateCardApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8962,45 +9491,48 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	}
 }
 
-func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http.ResponseWriter, span trace.Span) error {
+func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateColumnApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9009,44 +9541,46 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	}
 }
 
-func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsCheckIfMergedNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *PullsCheckIfMergedNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge: unexpected response type: %T", response)
 	}
 }
 
-func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9055,44 +9589,47 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	}
 }
 
-func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsCreateReviewResponse(response PullsCreateReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9101,44 +9638,47 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	}
 }
 
-func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9147,21 +9687,22 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	}
 }
 
-func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsDeleteReviewCommentNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9170,44 +9711,47 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 	}
 }
 
-func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsDismissReviewResponse(response PullsDismissReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9216,45 +9760,48 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	}
 }
 
-func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsGetResponse(response PullsGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *PullsGetApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PullsGetApplicationJSONInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(500)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9263,31 +9810,33 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	}
 }
 
-func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsGetReviewResponse(response PullsGetReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9296,31 +9845,33 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	}
 }
 
-func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9329,30 +9880,32 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	}
 }
 
-func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9361,158 +9914,167 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	}
 }
 
-func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePullsListCommitsResponse(response []Commit, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePullsListReviewsResponse(response []PullRequestReview, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewsResponse(response []PullRequestReview, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	w.ArrStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(w)
+	}
+	w.ArrEnd()
+	more.Up()
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PullsSubmitReviewApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PullsSubmitReviewApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9521,31 +10083,33 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	}
 }
 
-func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.ResponseWriter, span trace.Span) error {
+func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9554,49 +10118,52 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	}
 }
 
-func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeRateLimitGetResponse(response RateLimitGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RateLimitOverview:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9605,29 +10172,31 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	}
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9636,44 +10205,47 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	}
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(201)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9682,105 +10254,110 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	}
 }
 
-func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsDeleteLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9789,43 +10366,46 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	}
 }
 
-func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForCommitCommentOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9834,54 +10414,58 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	}
 }
 
-func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsListForIssueApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsListForIssueApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(410)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9890,43 +10474,46 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	}
 }
 
-func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueCommentOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9935,43 +10522,46 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	}
 }
 
-func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForPullRequestReviewCommentOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -9980,135 +10570,142 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	}
 }
 
-func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAcceptInvitationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ReposAcceptInvitationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposAcceptInvitationApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposAcceptInvitationApplicationJSONConflict:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(409)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10117,68 +10714,71 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	}
 }
 
-func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ReposCheckCollaboratorNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/collaborators/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCheckVulnerabilityAlertsNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ReposCheckVulnerabilityAlertsNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/vulnerability-alerts: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComparison:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposCompareCommitsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposCompareCommitsApplicationJSONInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(500)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10187,31 +10787,33 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	}
 }
 
-func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10220,77 +10822,82 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	}
 }
 
-func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposCreateCommitStatusResponse(response Status, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposCreateUsingTemplateResponse(response Repository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeclineInvitationNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ReposDeclineInvitationApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeclineInvitationApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeclineInvitationApplicationJSONConflict:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(409)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10299,45 +10906,48 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	}
 }
 
-func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteResponse(response ReposDeleteRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ReposDeleteApplicationJSONTemporaryRedirect:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(307)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(307)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeleteForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeleteApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10346,26 +10956,27 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteAdminBranchProtectionNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10374,26 +10985,27 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	}
 }
 
-func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteAutolinkNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10402,21 +11014,22 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 	}
 }
 
-func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteBranchProtectionNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10425,21 +11038,22 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 	}
 }
 
-func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitCommentNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10448,21 +11062,22 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 	}
 }
 
-func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitSignatureProtectionNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10471,39 +11086,41 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	}
 }
 
-func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteDeploymentNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10512,26 +11129,27 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	}
 }
 
-func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeletePullRequestReviewProtectionNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10540,31 +11158,32 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	}
 }
 
-func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteWebhookNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10573,112 +11192,117 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	}
 }
 
-func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
+func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(302)
 	return nil
 }
 
-func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
+func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(302)
 	return nil
 }
 
-func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposEnableLfsForRepoForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/lfs: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetResponse(response ReposGetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(301)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10687,31 +11311,33 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	}
 }
 
-func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchRestrictionPolicy:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10720,45 +11346,48 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	}
 }
 
-func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAllStatusCheckContextsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10767,44 +11396,47 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	}
 }
 
-func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10813,30 +11445,32 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	}
 }
 
-func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10845,31 +11479,33 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	}
 }
 
-func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Autolink:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10878,55 +11514,59 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	}
 }
 
-func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetBranchResponse(response ReposGetBranchRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetBranchApplicationJSONMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(301)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetBranchApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10935,31 +11575,33 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	}
 }
 
-func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchProtection:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -10968,31 +11610,33 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	}
 }
 
-func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetClonesResponse(response ReposGetClonesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CloneTraffic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11001,66 +11645,70 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 	}
 }
 
-func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCodeFrequencyStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/stats/code_frequency: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11069,31 +11717,33 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	}
 }
 
-func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CombinedCommitStatus:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11102,66 +11752,70 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	}
 }
 
-func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/stats/commit_activity: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11170,31 +11824,33 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	}
 }
 
-func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11203,81 +11859,86 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	}
 }
 
-func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetContributorsStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/stats/contributors: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeployKey:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11286,44 +11947,47 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	}
 }
 
-func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeploymentStatus:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11332,61 +11996,65 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	}
 }
 
-func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetLatestPagesBuildResponse(response PageBuild, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetLatestReleaseResponse(response Release, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetPagesResponse(response ReposGetPagesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Page:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11395,98 +12063,104 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	}
 }
 
-func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetPagesBuildResponse(response PageBuild, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PagesHealthCheck:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *EmptyObject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(202)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetPagesHealthCheckBadRequest:
-		w.WriteHeader(400)
+		rw.WriteHeader(400)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetPagesHealthCheckUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/pages/health: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ParticipationStats:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11495,68 +12169,72 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	}
 }
 
-func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetPunchCardStatsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/stats/punch_card: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetReleaseResponse(response ReposGetReleaseRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11565,47 +12243,50 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	}
 }
 
-func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReleaseAsset:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Found:
-		w.WriteHeader(302)
+		rw.WriteHeader(302)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11614,31 +12295,33 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	}
 }
 
-func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11647,31 +12330,33 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	}
 }
 
-func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11680,30 +12365,32 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	}
 }
 
-func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11712,30 +12399,32 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	}
 }
 
-func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopPathsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11744,30 +12433,32 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	}
 }
 
-func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopReferrersOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11776,30 +12467,32 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	}
 }
 
-func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11808,31 +12501,33 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	}
 }
 
-func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetViewsResponse(response ReposGetViewsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ViewTraffic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11841,31 +12536,33 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 	}
 }
 
-func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetWebhookResponse(response ReposGetWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11874,67 +12571,71 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	}
 }
 
-func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListAutolinksResponse(response []Autolink, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListBranchesResponse(response ReposListBranchesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListBranchesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11943,30 +12644,32 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	}
 }
 
-func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCollaboratorsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -11975,74 +12678,78 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	}
 }
 
-func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListCommentsForCommitResponse(response []CommitComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(301)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12051,69 +12758,74 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	}
 }
 
-func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommitsResponse(response ReposListCommitsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONBadRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(400)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
+		rw.Header().Set("Content-Type", "application/scim+json")
+		rw.WriteHeader(400)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	case *ReposListCommitsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONConflict:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(409)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(500)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12122,44 +12834,47 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	}
 }
 
-func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListContributorsResponse(response ReposListContributorsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListContributorsOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListContributorsNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *ReposListContributorsApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListContributorsApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12168,52 +12883,55 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	}
 }
 
-func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListDeployKeysResponse(response []DeployKey, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12222,158 +12940,167 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	}
 }
 
-func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListForOrgResponse(response []MinimalRepository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListForUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListForUserResponse(response []MinimalRepository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListForksResponse(response ReposListForksRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListForksOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(400)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
+		rw.Header().Set("Content-Type", "application/scim+json")
+		rw.WriteHeader(400)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/forks: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListInvitationsResponse(response []RepositoryInvitation, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12382,111 +13109,117 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	}
 }
 
-func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListLanguagesResponse(response Language, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListPagesBuildsResponse(response []PageBuild, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	w.ArrStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(w)
+	}
+	w.ArrEnd()
+	more.Up()
+	if err := w.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func encodeReposListReleasesResponse(response ReposListReleasesRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListReleasesOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12495,74 +13228,78 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	}
 }
 
-func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListTagsResponse(response []Tag, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposListTeamsResponse(response []Team, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListWebhooksResponse(response ReposListWebhooksRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhooksOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12571,47 +13308,49 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	}
 }
 
-func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MergedUpstream:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposMergeUpstreamConflict:
-		w.WriteHeader(409)
+		rw.WriteHeader(409)
 		return nil
 	case *ReposMergeUpstreamUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/merge-upstream: unexpected response type: %T", response)
 	}
 }
 
-func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposPingWebhookResponse(response ReposPingWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposPingWebhookNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12620,67 +13359,71 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	}
 }
 
-func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12689,51 +13432,54 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	}
 }
 
-func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposRequestPagesBuildResponse(response PageBuildStatus, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposTestPushWebhookNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12742,70 +13488,75 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 	}
 }
 
-func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(202)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposTransferResponse(response MinimalRepository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(202)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranch:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(422)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12814,31 +13565,33 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	}
 }
 
-func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12847,46 +13600,49 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	}
 }
 
-func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposUpdateInvitationResponse(response RepositoryInvitation, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -12895,124 +13651,131 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	}
 }
 
-func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ScimDeleteUserFromOrgApplicationScimJSONForbidden:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
+		rw.Header().Set("Content-Type", "application/scim+json")
+		rw.WriteHeader(403)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ScimDeleteUserFromOrgApplicationScimJSONNotFound:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
+		rw.Header().Set("Content-Type", "application/scim+json")
+		rw.WriteHeader(404)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	default:
 		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSearchCommitsResponse(response SearchCommitsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCommitsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13021,34 +13784,36 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 	}
 }
 
-func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSearchTopicsResponse(response SearchTopicsRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchTopicsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13057,34 +13822,36 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 	}
 }
 
-func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *SecretScanningGetAlertNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13093,43 +13860,46 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	}
 }
 
-func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForOrgOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13138,33 +13908,35 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	}
 }
 
-func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForRepoOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *SecretScanningListAlertsForRepoNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13173,37 +13945,39 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 	}
 }
 
-func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *SecretScanningUpdateAlertNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *SecretScanningUpdateAlertUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(503)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13212,115 +13986,120 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	}
 }
 
-func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddMemberLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsAddMemberLegacyNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	case *TeamsAddMemberLegacyUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserInOrgForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserLegacyForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity:
-		w.WriteHeader(422)
+		rw.WriteHeader(422)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/memberships/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsInOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13329,234 +14108,245 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	}
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsCheckPermissionsForProjectInOrgNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsCheckPermissionsForProjectLegacyNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/projects/{project_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsCheckPermissionsForRepoInOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsCheckPermissionsForRepoInOrgNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsCheckPermissionsForRepoLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsCheckPermissionsForRepoLegacyNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/repos/{owner}/{repo}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13565,91 +14355,97 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	}
 }
 
-func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13658,67 +14454,70 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	}
 }
 
-func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsGetMemberLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsGetMemberLegacyNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsGetMembershipForUserInOrgNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13727,30 +14526,32 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	}
 }
 
-func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListResponse(response TeamsListRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13759,154 +14560,162 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListChildInOrgResponse(response []Team, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13915,42 +14724,45 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	}
 }
 
-func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GroupMapping:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -13959,82 +14771,87 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	}
 }
 
-func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListMembersInOrgResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListMembersLegacyOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14043,96 +14860,101 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	}
 }
 
-func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListProjectsInOrgResponse(response []TeamProject, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14141,52 +14963,55 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	}
 }
 
-func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsListReposInOrgResponse(response []MinimalRepository, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14195,176 +15020,184 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	}
 }
 
-func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMemberLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsRemoveMemberLegacyNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserInOrgNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsRemoveMembershipForUserInOrgForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserLegacyNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *TeamsRemoveMembershipForUserLegacyForbidden:
-		w.WriteHeader(403)
+		rw.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/memberships/{username}: unexpected response type: %T", response)
 	}
 }
 
-func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(204)
+func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, rw http.ResponseWriter, span trace.Span) error {
+	rw.WriteHeader(204)
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeTeamsUpdateInOrgResponse(response TeamFull, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(201)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
+	response.WriteJSON(w)
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckBlockedNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersCheckBlockedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckBlockedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckBlockedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14373,60 +15206,63 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	}
 }
 
-func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckFollowingForUserNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *UsersCheckFollowingForUserNotFound:
-		w.WriteHeader(404)
+		rw.WriteHeader(404)
 		return nil
 	default:
 		return fmt.Errorf("/users/{username}/following/{target_user}: unexpected response type: %T", response)
 	}
 }
 
-func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14435,47 +15271,50 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	}
 }
 
-func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14484,47 +15323,50 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	}
 }
 
-func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersFollowResponse(response UsersFollowRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersFollowNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersFollowApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersFollowApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersFollowApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14533,57 +15375,61 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GpgKey:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14592,57 +15438,61 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	}
 }
 
-func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Key:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14651,91 +15501,97 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	}
 }
 
-func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListResponse(response UsersListRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/users: unexpected response type: %T", response)
 	}
 }
 
-func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListBlockedByAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(415)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14744,56 +15600,60 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	}
 }
 
-func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14802,44 +15662,47 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	}
 }
 
-func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14848,44 +15711,47 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	}
 }
 
-func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14894,100 +15760,106 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	}
 }
 
-func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeUsersListFollowersForUserResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeUsersListFollowingForUserResponse(response []SimpleUser, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -14996,78 +15868,83 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	}
 }
 
-func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeUsersListGpgKeysForUserResponse(response []GpgKey, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -15076,78 +15953,83 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	}
 }
 
-func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
+func encodeUsersListPublicKeysForUserResponse(response []KeySimple, rw http.ResponseWriter, span trace.Span) error {
+	rw.Header().Set("Content-Type", "application/json")
+	rw.WriteHeader(200)
+	w := json.GetWriter()
+	w.Reset(rw)
+	defer json.PutWriter(w)
+	more := json.NewMore(w)
 	defer more.Reset()
 	more.More()
 	more.Down()
-	j.WriteArrayStart()
+	w.ArrStart()
 	for _, elem := range response {
 		more.More()
-		elem.WriteJSON(j)
+		elem.WriteJSON(w)
 	}
-	j.WriteArrayEnd()
+	w.ArrEnd()
 	more.Up()
-	if err := j.Flush(); err != nil {
+	if err := w.Flush(); err != nil {
 		return err
 	}
 	return nil
 }
 
-func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -15156,47 +16038,50 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	}
 }
 
-func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersUnblockResponse(response UsersUnblockRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersUnblockNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersUnblockApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnblockApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnblockApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -15205,47 +16090,50 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	}
 }
 
-func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersUnfollowResponse(response UsersUnfollowRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersUnfollowNoContent:
-		w.WriteHeader(204)
+		rw.WriteHeader(204)
 		return nil
 	case *NotModified:
-		w.WriteHeader(304)
+		rw.WriteHeader(304)
 		return nil
 	case *UsersUnfollowApplicationJSONUnauthorized:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(401)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnfollowApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(403)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnfollowApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(404)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := j.Flush(); err != nil {
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil

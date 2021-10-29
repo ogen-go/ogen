@@ -60,31 +60,33 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AnswerCallbackQueryPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -93,31 +95,33 @@ func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, 
 	}
 }
 
-func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AnswerPreCheckoutQueryPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -126,31 +130,33 @@ func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPos
 	}
 }
 
-func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AnswerShippingQueryPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -159,31 +165,33 @@ func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, 
 	}
 }
 
-func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeClosePostResponse(response ClosePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ClosePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -192,31 +200,33 @@ func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStickerFromSetPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -225,31 +235,33 @@ func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes
 	}
 }
 
-func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteWebhookPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -258,31 +270,33 @@ func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.Respo
 	}
 }
 
-func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetFilePostResponse(response GetFilePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFilePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -291,31 +305,33 @@ func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetGameHighScoresPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -324,31 +340,33 @@ func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w ht
 	}
 }
 
-func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetMePostResponse(response GetMePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetMePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -357,31 +375,33 @@ func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetMyCommandsPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -390,31 +410,33 @@ func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.Respo
 	}
 }
 
-func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStickerSetPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -423,31 +445,33 @@ func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.Respo
 	}
 }
 
-func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetUpdatesPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -456,31 +480,33 @@ func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWri
 	}
 }
 
-func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetUserProfilePhotosPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -489,31 +515,33 @@ func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes
 	}
 }
 
-func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetWebhookInfoPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -522,31 +550,33 @@ func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.Res
 	}
 }
 
-func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeLogOutPostResponse(response LogOutPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LogOutPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -555,31 +585,33 @@ func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter, spa
 	}
 }
 
-func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSendGamePostResponse(response SendGamePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SendGamePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -588,31 +620,33 @@ func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter,
 	}
 }
 
-func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSendInvoicePostResponse(response SendInvoicePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SendInvoicePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -621,31 +655,33 @@ func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseW
 	}
 }
 
-func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SetMyCommandsPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -654,31 +690,33 @@ func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.Respo
 	}
 }
 
-func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SetStickerPositionInSetPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -687,31 +725,33 @@ func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetP
 	}
 }
 
-func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeSetWebhookPostResponse(response SetWebhookPostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SetWebhookPostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -720,31 +760,33 @@ func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWri
 	}
 }
 
-func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, w http.ResponseWriter, span trace.Span) error {
+func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, rw http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UploadStickerFilePostOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(200)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.GetStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
+		rw.Header().Set("Content-Type", "application/json")
+		rw.WriteHeader(response.StatusCode)
+		w := json.GetWriter()
+		w.Reset(rw)
+		defer json.PutWriter(w)
+		more := json.NewMore(w)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
+		response.Response.WriteJSON(w)
+		if err := w.Flush(); err != nil {
 			return err
 		}
 		return nil

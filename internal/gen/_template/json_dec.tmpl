@@ -10,7 +10,7 @@ var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
 {{- define "dec_json_array" }}
 {{- $t := $.Type -}}
 {{ $.Var }} = nil
-if err := i.Array(func(i *json.Iter) error {
+if err := r.Array(func(r *json.Reader) error {
   var {{ $.NextVar }} {{ $t.Item.Go }}
   {{- template "dec_json" sub_array_elem $ $t.Item }}
   {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
@@ -27,11 +27,11 @@ if err := i.Array(func(i *json.Iter) error {
     {{ $.Var }}.Reset()
 {{- end }}
 {{- if $g.Format }}
-  if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSON.Format }}); err != nil {
+  if err := {{ $.Var }}.ReadJSON(r, json.Read{{ $g.JSON.Format }}); err != nil {
     return err
   }
 {{- else }}
-  if err := {{ $.Var }}.ReadJSON(i); err != nil {
+  if err := {{ $.Var }}.ReadJSON(r); err != nil {
     return err
   }
 {{- end }}
@@ -39,33 +39,33 @@ if err := i.Array(func(i *json.Iter) error {
 
 
 {{- define "dec_json" -}}
-    {{- $t := $.Type -}}
-    {{- $j := $t.JSON -}}
-    {{- if $t.IsPointer }}
-      {{- template "dec_json_pointer" $ }}
-    {{- else if $t.IsArray }}
-      {{ template "dec_json_array" $ }}
-    {{- else if $t.GenericOf }}
-      {{- template "dec_json_generic" $ }}
-    {{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
-      if err := {{ $.Var }}.ReadJSON(i); err != nil {
-        return err
-      }
-    {{- else if $j.Read }}
-      v, err := i.{{ $j.Read }}()
-      {{ $.Var }} = {{ $t.Go }}(v)
-      if err != nil {
-        return err
-      }
-    {{- else if $j.Format }}
-      v, err := json.Read{{ $j.Format }}(i)
-      {{ $.Var }} = v
-      if err != nil {
-         return err
-      }
-    {{- else  }}
-      if err := fmt.Errorf(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`); err != nil {
-        return err
-      }
-    {{- end }}
+  {{- $t := $.Type -}}
+  {{- $j := $t.JSON -}}
+  {{- if $t.IsPointer }}
+    {{- template "dec_json_pointer" $ }}
+  {{- else if $t.IsArray }}
+    {{ template "dec_json_array" $ }}
+  {{- else if $t.GenericOf }}
+    {{- template "dec_json_generic" $ }}
+  {{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
+    if err := {{ $.Var }}.ReadJSON(r); err != nil {
+      return err
+    }
+  {{- else if $j.Read }}
+    v, err := r.{{ $j.Read }}()
+    {{ $.Var }} = {{ $t.Go }}(v)
+    if err != nil {
+      return err
+    }
+  {{- else if $j.Format }}
+    v, err := json.Read{{ $j.Format }}(r)
+    {{ $.Var }} = v
+    if err != nil {
+       return err
+    }
+  {{- else  }}
+    if err := fmt.Errorf(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`); err != nil {
+      return err
+    }
+  {{- end }}
 {{- end -}}

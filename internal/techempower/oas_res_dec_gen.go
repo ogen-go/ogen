@@ -71,9 +71,9 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
 			if err := func() error {
@@ -105,13 +105,13 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response WorldObject
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
+				if err := response.ReadJSON(r); err != nil {
 					return err
 				}
 				return nil
@@ -139,13 +139,13 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response HelloWorld
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
+				if err := response.ReadJSON(r); err != nil {
 					return err
 				}
 				return nil
@@ -173,9 +173,9 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
 			if err := func() error {
@@ -207,9 +207,9 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			i := json.GetIter()
-			defer json.PutIter(i)
-			i.ResetBytes(buf.Bytes())
+			r := json.GetReader()
+			defer json.PutReader(r)
+			r.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
 			if err := func() error {

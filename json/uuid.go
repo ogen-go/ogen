@@ -4,7 +4,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func ReadUUID(i *Iter) (v uuid.UUID, err error) {
+func ReadUUID(i *Reader) (v uuid.UUID, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -12,6 +12,6 @@ func ReadUUID(i *Iter) (v uuid.UUID, err error) {
 	return uuid.Parse(s)
 }
 
-func WriteUUID(s *Stream, v uuid.UUID) {
-	s.WriteString(v.String())
+func WriteUUID(s *Writer, v uuid.UUID) {
+	s.Str(v.String())
 }

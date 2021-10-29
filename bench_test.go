@@ -162,11 +162,14 @@ func BenchmarkIntegration(b *testing.B) {
 	b.Run("Manual", func(b *testing.B) {
 		// Test with some manual optimizations.
 		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			js := jx.Default.GetStream(w)
-			js.WriteObjectStart()
-			js.WriteObjectField("message")
-			js.WriteString("Hello, world!")
-			js.WriteObjectEnd()
+			jw := jx.GetWriter()
+			jw.Reset(w)
+			jw.ObjStart()
+			jw.ObjField("message")
+			jw.Str("Hello, world!")
+			jw.ObjEnd()
+			_ = jw.Flush()
+			jx.PutWriter(jw)
 		}))
 		defer s.Close()
 
@@ -289,7 +292,8 @@ func BenchmarkJSON(b *testing.B) {
 
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.GetStream(buf)
+				s := json.GetWriter()
+				s.Reset(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -305,7 +309,7 @@ func BenchmarkJSON(b *testing.B) {
 				var v techempower.HelloWorld
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetIter()
+				j := json.GetReader()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
@@ -325,7 +329,8 @@ func BenchmarkJSON(b *testing.B) {
 
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.GetStream(buf)
+				s := json.GetWriter()
+				s.Reset(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -341,7 +346,7 @@ func BenchmarkJSON(b *testing.B) {
 				var v techempower.WorldObject
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetIter()
+				j := json.GetReader()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
@@ -375,7 +380,8 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.GetStream(buf)
+				s := json.GetWriter()
+				s.Reset(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 				for i := 0; i < b.N; i++ {

@@ -110,24 +110,14 @@ func (j JSON) f() string {
 	if !j.raw() {
 		return ""
 	}
+	if j.t.Primitive == String {
+		return "Str"
+	}
 	return capitalize(j.t.Primitive.String())
 }
 
 // JSONWrite returns function name from json package that writes value.
-func (j JSON) Write() string {
-	if j.f() == "" {
-		return ""
-	}
-	return "Write" + j.f()
-}
+func (j JSON) Write() string { return j.f() }
 
 // JSONRead returns function name from json package that reads value.
-func (j JSON) Read() string {
-	if j.f() == "" {
-		return ""
-	}
-	if j.t.Primitive == String {
-		return "Str"
-	}
-	return j.f()
-}
+func (j JSON) Read() string { return j.f() }

@@ -19,29 +19,30 @@ import (
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	i := json.GetIter()
-	i.ResetBytes(data)
-	defer json.PutIter(i)
+	r := json.GetReader()
+	r.ResetBytes(data)
+	defer json.PutReader(r)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	require.NoError(t, i.ObjectBytes(func(iterator *json.Iter, _ []byte) error {
-		return v.ReadJSON(i)
+	require.NoError(t, r.ObjBytes(func(r *json.Reader, _ []byte) error {
+		return v.ReadJSON(r)
 	}))
 }
 
 func encodeObject(v json.Marshaler) []byte {
 	buf := new(bytes.Buffer)
-	s := json.GetStream(buf)
-	s.WriteObjectStart()
+	s := json.GetWriter()
+	s.Reset(buf)
+	s.ObjStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
-		s.WriteObjectEnd()
+		s.ObjEnd()
 		_ = s.Flush()
 		return buf.Bytes()
 	}
-	s.WriteObjectField("key")
+	s.ObjField("key")
 	v.WriteJSON(s)
-	s.WriteObjectEnd()
+	s.ObjEnd()
 	_ = s.Flush()
 	return buf.Bytes()
 }
@@ -129,11 +130,12 @@ func TestTechEmpowerJSON(t *testing.T) {
 		RandomNumber: 2134,
 	}
 	buf := new(bytes.Buffer)
-	s := json.GetStream(buf)
+	s := json.GetWriter()
+	s.Reset(buf)
 	hw.WriteJSON(s)
 	require.NoError(t, s.Flush())
 	var parsed techempower.WorldObject
-	i := json.GetIter()
+	i := json.GetReader()
 	i.ResetBytes(buf.Bytes())
 	t.Log(buf.String())
 	require.NoError(t, parsed.ReadJSON(i))

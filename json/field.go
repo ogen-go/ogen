@@ -7,15 +7,15 @@ const MaxMoreLevel = 10
 // Up to MaxMoreLevel levels.
 type More struct {
 	idx  int
-	s    *Stream
+	w    *Writer
 	more [MaxMoreLevel]bool
 }
 
 func (f *More) Reset() {
-	f.s = nil
+	f.w = nil
 	f.more = [MaxMoreLevel]bool{}
 }
-func NewMore(s *Stream) More { return More{s: s} }
+func NewMore(w *Writer) More { return More{w: w} }
 
 func (f *More) Down() { f.idx++ }
 
@@ -24,10 +24,10 @@ func (f *More) Up() {
 	f.idx--
 }
 
-// More writes "more" (comma) if required and maintans state.
+// More writes "more" (comma) if required and maintains state.
 func (f *More) More() {
 	if f.more[f.idx] {
-		f.s.WriteMore()
+		f.w.More()
 	}
 	f.more[f.idx] = true
 }

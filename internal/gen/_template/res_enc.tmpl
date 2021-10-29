@@ -6,7 +6,7 @@
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
+func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, rw http.ResponseWriter, span trace.Span) error {
     {{- $typesCount := len $op.ListResponseTypes }}
     {{- if eq $typesCount 1 }}
 
@@ -33,24 +33,25 @@ func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.Re
 {{ define "respond" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.ResponseInfo*/ -}}
 {{- if not $.NoContent }}{{- /* Set content-type */}}
-w.Header().Set("Content-Type", "{{ $.ContentType }}")
+rw.Header().Set("Content-Type", "{{ $.ContentType }}")
 {{- end }}{{- /* Set content-type */}}
 
 {{- if $.Default }}{{- /* Set status code */}}
-w.WriteHeader(response.StatusCode)
+rw.WriteHeader(response.StatusCode)
 {{- else }}
-w.WriteHeader({{ $.StatusCode }})
+rw.WriteHeader({{ $.StatusCode }})
 {{- end }}{{- /* Set status code */}}
 
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if $.ContentType.JSON }}
-j := json.GetStream(w)
-defer json.PutStream(j)
-more := json.NewMore(j)
+w := json.GetWriter()
+w.Reset(rw)
+defer json.PutWriter(w)
+more := json.NewMore(w)
 defer more.Reset()
 {{ template "enc_json" res_elem $ }}
-if err := j.Flush(); err != nil {
+if err := w.Flush(); err != nil {
     return err
 }
 return nil

@@ -1,7 +1,6 @@
 package json
 
 import (
-	"bytes"
 	std "encoding/json"
 
 	"github.com/ogen-go/jx"
@@ -21,12 +20,12 @@ func Unmarshal(data []byte, val interface{}) error {
 
 // Unmarshaler implements json reading.
 type Unmarshaler interface {
-	ReadJSON(i *Iter) error
+	ReadJSON(i *Reader) error
 }
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	WriteJSON(s *Stream)
+	WriteJSON(s *Writer)
 }
 
 // Value represents a json value.
@@ -53,10 +52,7 @@ type Nullable interface {
 
 // Encode Marshaler to byte slice.
 func Encode(m Marshaler) []byte {
-	buf := new(bytes.Buffer)
-	s := jx.Default.GetStream(buf)
-	defer jx.Default.PutStream(s)
+	s := jx.GetWriter()
 	m.WriteJSON(s)
-	_ = s.Flush()
-	return buf.Bytes()
+	return s.Buf()
 }

@@ -20,9 +20,9 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
         var request {{ $t.Go }}
         {{- /* Decode json */ -}}
         {{- if $contentType.JSON }}
-        i := json.GetIter()
-        defer json.PutIter(i)
-        i.ResetBytes(buf.Bytes())
+        r := json.GetReader()
+        defer json.PutReader(r)
+        r.ResetBytes(buf.Bytes())
         if err := func() error {
             {{- template "dec_json" req_dec_elem $t }}
             return nil

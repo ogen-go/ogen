@@ -38,7 +38,7 @@ var errNullValue = xerrors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
-		iter = jx.ParseBytes(jx.Default, v)
+		iter = jx.ReadBytes(v)
 		next = iter.Next()
 	)
 	if next == jx.Nil {

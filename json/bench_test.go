@@ -91,30 +91,31 @@ func BenchmarkMarshal(b *testing.B) {
 			}
 		})
 		b.Run("jsoniter", func(b *testing.B) {
-			b.Run("Stream", func(b *testing.B) {
+			b.Run("Writer", func(b *testing.B) {
 				d.Setup(b)
 
 				var w bufferWriter
-				s := GetStream(&w)
+				s := GetWriter()
+				s.Reset(&w)
 
 				for i := 0; i < b.N; i++ {
-					s.WriteObjectStart()
+					s.ObjStart()
 
 					// "id": 10,
-					s.WriteObjectField("id")
-					s.WriteInt64(d.Value.ID)
-					s.WriteMore()
+					s.ObjField("id")
+					s.Int64(d.Value.ID)
+					s.More()
 
 					// "randomNumber": 12351,
-					s.WriteObjectField("randomNumber")
-					s.WriteInt64(d.Value.RandomNumber)
-					s.WriteMore()
+					s.ObjField("randomNumber")
+					s.Int64(d.Value.RandomNumber)
+					s.More()
 
 					// "message": "Hello, world!"
-					s.WriteObjectField("message")
-					s.WriteString(d.Value.Message)
+					s.ObjField("message")
+					s.Str(d.Value.Message)
 
-					s.WriteObjectEnd()
+					s.ObjEnd()
 
 					if err := s.Flush(); err != nil {
 						b.Fatal(err)
@@ -148,29 +149,29 @@ func BenchmarkUnmarshal(b *testing.B) {
 		b.Run("jsoniter", func(b *testing.B) {
 			d.Setup(b)
 
-			iter := jx.Default.GetIter(nil)
+			r := jx.GetReader()
 			data := d.Bytes()
 
 			for i := 0; i < b.N; i++ {
-				iter.ResetBytes(data)
+				r.ResetBytes(data)
 
 				var v World
-				if err := iter.ObjectBytes(func(iter *Iter, k []byte) error {
+				if err := r.ObjBytes(func(r *Reader, k []byte) error {
 					switch string(k) {
 					case "id":
-						n, err := iter.Int64()
+						n, err := r.Int64()
 						if err != nil {
 							return err
 						}
 						v.ID = n
 					case "randomNumber":
-						n, err := iter.Int64()
+						n, err := r.Int64()
 						if err != nil {
 							return err
 						}
 						v.RandomNumber = n
 					case "message":
-						s, err := iter.Str()
+						s, err := r.Str()
 						if err != nil {
 							return err
 						}
