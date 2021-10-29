@@ -30,6 +30,7 @@ type OperationResponse struct {
 
 // Response is an OpenAPI Response definition.
 type Response struct {
+	Ref      string
 	Contents map[string]*Schema
 }
 

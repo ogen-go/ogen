@@ -35,7 +35,7 @@ func (g *Generator) saveRef(ref string, typ *ir.Type) {
 		panic("unreachable")
 	}
 
-	if _, ok := g.refs[ref]; ok && !typ.IsGeneric() {
+	if _, ok := g.refs.schemas[ref]; ok && !typ.IsGeneric() {
 		panic(fmt.Sprintf("ref conflict: '%s'", ref))
 	}
 
@@ -43,6 +43,6 @@ func (g *Generator) saveRef(ref string, typ *ir.Type) {
 		panic(fmt.Sprintf("ref name conflict: '%s'", typ.Name))
 	}
 
-	g.refs[ref] = typ
+	g.refs.schemas[ref] = typ
 	g.types[typ.Name] = typ
 }

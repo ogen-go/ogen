@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"sort"
+	"strings"
 
 	"golang.org/x/xerrors"
 
@@ -48,15 +49,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 			return nil, xerrors.Errorf("default: %w", err)
 		}
 
-		for contentType, typ := range resp.Contents {
-			resp.Contents[contentType] = g.wrapStatusCode(typ)
-		}
-
-		if typ := resp.NoContent; typ != nil {
-			resp.NoContent = g.wrapStatusCode(typ)
-		}
-
-		result.Default = resp
+		result.Default = g.wrapResponseStatusCode(resp)
 	}
 
 	var (
@@ -92,7 +85,21 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 	return result, nil
 }
 
-func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.StatusResponse, error) {
+func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.StatusResponse, err error) {
+	if ref := resp.Ref; ref != "" {
+		if r, ok := g.refs.responses[ref]; ok {
+			return r, nil
+		}
+
+		name = pascal(strings.TrimPrefix(ref, "#/components/responses/"))
+		doc = fmt.Sprintf("Ref: %s", ref)
+		defer func() {
+			if err == nil {
+				g.refs.responses[ref] = ret
+			}
+		}()
+	}
+
 	if len(resp.Contents) == 0 {
 		typ := &ir.Type{
 			Kind: ir.KindStruct,
@@ -107,7 +114,7 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.Stat
 		}, nil
 	}
 
-	types := make(map[ir.ContentType]*ir.Type)
+	types := make(map[ir.ContentType]*ir.Type, len(resp.Contents))
 
 	contentTypes := make([]string, 0, len(resp.Contents))
 	for contentType := range resp.Contents {
@@ -135,26 +142,52 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.Stat
 	}, nil
 }
 
-func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
+func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.StatusResponse) {
+	if ref := resp.Spec.Ref; ref != "" {
+		if r, ok := g.wrapped.responses[ref]; ok {
+			return r
+		}
+		defer func() { g.wrapped.responses[ref] = ret }()
+	}
+
+	if noc := resp.NoContent; noc != nil {
+		if !noc.Is(ir.KindStruct, ir.KindAlias) {
+			panic("unreachable")
+		}
+
+		return &ir.StatusResponse{
+			NoContent: g.wrapStatusCode(noc),
+			Spec:      resp.Spec,
+		}
+	}
+
+	contents := make(map[ir.ContentType]*ir.Type, len(resp.Contents))
+	for contentType, typ := range resp.Contents {
+		contents[contentType] = g.wrapStatusCode(typ)
+	}
+
+	return &ir.StatusResponse{
+		Contents: contents,
+		Spec:     resp.Spec,
+	}
+}
+
+func (g *Generator) wrapStatusCode(typ *ir.Type) (ret *ir.Type) {
 	if !typ.Is(ir.KindStruct, ir.KindAlias) {
 		panic("unreachable")
 	}
 
-	isRef := func() (string, bool) {
-		if typ.Schema != nil && typ.Schema.Ref != "" {
-			return typ.Schema.Ref, true
-		}
-		return "", false
-	}
-
-	if ref, ok := isRef(); ok {
-		if t, ok := g.wrapped[ref]; ok {
+	if schema := typ.Schema; schema != nil && schema.Ref != "" {
+		if t, ok := g.wrapped.types[schema.Ref]; ok {
 			return t
 		}
+		defer func() { g.wrapped.types[schema.Ref] = ret }()
+	} else {
+		defer func() { g.saveType(ret) }()
 	}
 
 	name := typ.Name + "StatusCode"
-	t := &ir.Type{
+	return &ir.Type{
 		Kind: ir.KindStruct,
 		Name: name,
 		Doc:  fmt.Sprintf("%s wraps %s with StatusCode.", name, typ.Name),
@@ -169,11 +202,4 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 			},
 		},
 	}
-
-	if ref, ok := isRef(); ok {
-		g.wrapped[ref] = t
-	} else {
-		g.saveType(t)
-	}
-	return t
 }

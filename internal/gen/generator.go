@@ -17,8 +17,14 @@ type Generator struct {
 	operations []*ir.Operation
 	types      map[string]*ir.Type
 	interfaces map[string]*ir.Type
-	refs       map[string]*ir.Type
-	wrapped    map[string]*ir.Type
+	refs       struct {
+		schemas   map[string]*ir.Type
+		responses map[string]*ir.StatusResponse
+	}
+	wrapped struct {
+		types     map[string]*ir.Type
+		responses map[string]*ir.StatusResponse
+	}
 }
 
 type Options struct {
@@ -39,16 +45,27 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		opt:        opts,
 		types:      map[string]*ir.Type{},
 		interfaces: map[string]*ir.Type{},
-		refs:       map[string]*ir.Type{},
-		wrapped:    map[string]*ir.Type{},
+		refs: struct {
+			schemas   map[string]*ir.Type
+			responses map[string]*ir.StatusResponse
+		}{
+			schemas:   map[string]*ir.Type{},
+			responses: map[string]*ir.StatusResponse{},
+		},
+		wrapped: struct {
+			types     map[string]*ir.Type
+			responses map[string]*ir.StatusResponse
+		}{
+			types:     map[string]*ir.Type{},
+			responses: map[string]*ir.StatusResponse{},
+		},
 	}
 
 	if err := g.makeIR(operations); err != nil {
 		return nil, err
 	}
-
 	g.fix()
-	for _, w := range g.wrapped {
+	for _, w := range g.wrapped.types {
 		g.saveType(w)
 	}
 	return g, nil

@@ -8,7 +8,7 @@ import (
 func (g *Generator) generateSchema(name string, schema *oas.Schema) (*ir.Type, error) {
 	gen := &schemaGen{
 		localRefs:  map[string]*ir.Type{},
-		globalRefs: g.refs,
+		globalRefs: g.refs.schemas,
 	}
 
 	typ, err := gen.generate(name, schema)

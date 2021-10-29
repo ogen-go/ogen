@@ -19,6 +19,11 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 		return
 	}
 
+	// We can modify contents of operation response.
+	// To prevent changes affecting to other operations
+	// (in case of referenced responses), we copy the response.
+	op.Response = cloneResponse(op.Response)
+
 	var statusCodes []int
 	for code := range op.Response.StatusCode {
 		statusCodes = append(statusCodes, code)
@@ -111,4 +116,24 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 
 		candidate.response.Contents[ir.ContentType(candidate.replaceCtype)] = alias
 	}
+}
+
+func cloneResponse(r *ir.Response) *ir.Response {
+	newR := &ir.Response{
+		Type:       r.Type,
+		StatusCode: map[int]*ir.StatusResponse{},
+		Default:    r.Default,
+		Spec:       r.Spec,
+	}
+	for code, statResp := range r.StatusCode {
+		newStatResp := &ir.StatusResponse{
+			NoContent: statResp.NoContent,
+			Contents:  map[ir.ContentType]*ir.Type{},
+		}
+		for contentType, typ := range statResp.Contents {
+			newStatResp.Contents[contentType] = typ
+		}
+		newR.StatusCode[code] = newStatResp
+	}
+	return newR
 }

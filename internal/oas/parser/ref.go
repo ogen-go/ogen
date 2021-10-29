@@ -55,6 +55,7 @@ func (p *parser) resolveResponse(ref string) (*oas.Response, error) {
 		return nil, err
 	}
 
+	r.Ref = ref
 	p.refs.responses[ref] = r
 	return r, nil
 }
