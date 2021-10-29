@@ -3157,6 +3157,31 @@ func (s Import) Validate() error {
 	}
 	return nil
 }
+func (s InstallationToken) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Permissions // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "permissions",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.RepositorySelection // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "repository_selection",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s Integration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -3268,6 +3293,70 @@ func (s IssueEvent) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "performed_via_github_app",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s IssueSearchResultItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Assignees // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "assignees",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.AuthorAssociation // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Labels == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.Labels // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "labels",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Milestone // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "milestone",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.PerformedViaGithubApp // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "performed_via_github_app",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TextMatches // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text_matches",
 			Error: err,
 		})
 	}
@@ -3446,6 +3535,22 @@ func (s JobStepsItem) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s LabelSearchResultItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.TextMatches // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text_matches",
 			Error: err,
 		})
 	}
@@ -4375,6 +4480,22 @@ func (s ParticipationStats) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "owner",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PrivateUser) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Email // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "email",
 			Error: err,
 		})
 	}
@@ -5950,6 +6071,76 @@ func (s SearchCommitsResOK) Validate() error {
 	}
 	return nil
 }
+func (s SearchIssuesAndPullRequestsResOK) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Items == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Items {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "items",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s SearchLabelsResOK) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Items == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Items {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "items",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s SearchReposResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5989,6 +6180,41 @@ func (s SearchResultTextMatches) Validate() error {
 	return nil
 }
 func (s SearchTopicsResOK) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Items == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Items {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "items",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s SearchUsersResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -6445,6 +6671,31 @@ func (s UserMarketplacePurchase) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "plan",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s UserSearchResultItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Email // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TextMatches // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text_matches",
 			Error: err,
 		})
 	}

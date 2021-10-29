@@ -7196,6 +7196,84 @@ func (s *AppsCreateContentAttachmentReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s AppsCreateContentAttachmentResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsCreateContentAttachmentResNotModified from json stream.
+func (s *AppsCreateContentAttachmentResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsCreateContentAttachmentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsCreateContentAttachmentResUnsupportedMediaType from json stream.
+func (s *AppsCreateContentAttachmentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s AppsCreateFromManifestReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -7341,6 +7419,57 @@ func (s *AppsCreateInstallationAccessTokenReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s AppsCreateInstallationAccessTokenResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsCreateInstallationAccessTokenResUnsupportedMediaType from json stream.
+func (s *AppsCreateInstallationAccessTokenResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsCreateInstallationAccessTokenResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s AppsDeleteAuthorizationReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -7368,6 +7497,33 @@ func (s *AppsDeleteAuthorizationReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsDeleteAuthorizationResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads AppsDeleteAuthorizationResNoContent from json stream.
+func (s *AppsDeleteAuthorizationResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AppsDeleteAuthorizationResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -7496,57 +7652,6 @@ func (s AppsGetBySlugResUnsupportedMediaType) WriteJSON(j *json.Stream) {
 func (s *AppsGetBySlugResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode AppsGetBySlugResUnsupportedMediaType to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsGetInstallationResUnsupportedMediaType) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("documentation_url")
-	j.WriteString(s.DocumentationURL)
-	more.More()
-	j.WriteObjectField("message")
-	j.WriteString(s.Message)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AppsGetInstallationResUnsupportedMediaType from json stream.
-func (s *AppsGetInstallationResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsGetInstallationResUnsupportedMediaType to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7791,57 +7896,6 @@ func (s *AppsListInstallationReposForAuthenticatedUserResOK) ReadJSON(i *json.It
 		case "total_count":
 			if err := func() error {
 				s.TotalCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsListInstallationsForAuthenticatedUserResUnsupportedMediaType) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("documentation_url")
-	j.WriteString(s.DocumentationURL)
-	more.More()
-	j.WriteObjectField("message")
-	j.WriteString(s.Message)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads AppsListInstallationsForAuthenticatedUserResUnsupportedMediaType from json stream.
-func (s *AppsListInstallationsForAuthenticatedUserResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode AppsListInstallationsForAuthenticatedUserResUnsupportedMediaType to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -21400,522 +21454,6 @@ func (s *ContentTraffic) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ContentTree) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("_links")
-	s.Links.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("download_url")
-	s.DownloadURL.WriteJSON(j)
-	if s.Entries != nil {
-		more.More()
-		j.WriteObjectField("entries")
-		more.Down()
-		j.WriteArrayStart()
-		for _, elem := range s.Entries {
-			more.More()
-			elem.WriteJSON(j)
-		}
-		j.WriteArrayEnd()
-		more.Up()
-	}
-	more.More()
-	j.WriteObjectField("git_url")
-	s.GitURL.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("html_url")
-	s.HTMLURL.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("name")
-	j.WriteString(s.Name)
-	more.More()
-	j.WriteObjectField("path")
-	j.WriteString(s.Path)
-	more.More()
-	j.WriteObjectField("sha")
-	j.WriteString(s.Sha)
-	more.More()
-	j.WriteObjectField("size")
-	j.WriteInt(s.Size)
-	more.More()
-	j.WriteObjectField("type")
-	j.WriteString(s.Type)
-	more.More()
-	j.WriteObjectField("url")
-	json.WriteURI(j, s.URL)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ContentTree from json stream.
-func (s *ContentTree) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ContentTree to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "_links":
-			if err := func() error {
-				if err := s.Links.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "download_url":
-			if err := func() error {
-				if err := s.DownloadURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "entries":
-			if err := func() error {
-				s.Entries = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem ContentTreeEntriesItem
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Entries = append(s.Entries, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "git_url":
-			if err := func() error {
-				if err := s.GitURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "html_url":
-			if err := func() error {
-				if err := s.HTMLURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "path":
-			if err := func() error {
-				s.Path = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "sha":
-			if err := func() error {
-				s.Sha = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "size":
-			if err := func() error {
-				s.Size = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "type":
-			if err := func() error {
-				s.Type = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "url":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.URL = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ContentTreeEntriesItem) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("_links")
-	s.Links.WriteJSON(j)
-	if s.Content.Set {
-		more.More()
-		j.WriteObjectField("content")
-		s.Content.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("download_url")
-	s.DownloadURL.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("git_url")
-	s.GitURL.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("html_url")
-	s.HTMLURL.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("name")
-	j.WriteString(s.Name)
-	more.More()
-	j.WriteObjectField("path")
-	j.WriteString(s.Path)
-	more.More()
-	j.WriteObjectField("sha")
-	j.WriteString(s.Sha)
-	more.More()
-	j.WriteObjectField("size")
-	j.WriteInt(s.Size)
-	more.More()
-	j.WriteObjectField("type")
-	j.WriteString(s.Type)
-	more.More()
-	j.WriteObjectField("url")
-	json.WriteURI(j, s.URL)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ContentTreeEntriesItem from json stream.
-func (s *ContentTreeEntriesItem) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ContentTreeEntriesItem to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "_links":
-			if err := func() error {
-				if err := s.Links.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "content":
-			if err := func() error {
-				s.Content.Reset()
-				if err := s.Content.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "download_url":
-			if err := func() error {
-				if err := s.DownloadURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "git_url":
-			if err := func() error {
-				if err := s.GitURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "html_url":
-			if err := func() error {
-				if err := s.HTMLURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "path":
-			if err := func() error {
-				s.Path = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "sha":
-			if err := func() error {
-				s.Sha = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "size":
-			if err := func() error {
-				s.Size = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "type":
-			if err := func() error {
-				s.Type = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "url":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.URL = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ContentTreeEntriesItemLinks) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("git")
-	s.Git.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("html")
-	s.HTML.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("self")
-	json.WriteURI(j, s.Self)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ContentTreeEntriesItemLinks from json stream.
-func (s *ContentTreeEntriesItemLinks) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ContentTreeEntriesItemLinks to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "git":
-			if err := func() error {
-				if err := s.Git.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "html":
-			if err := func() error {
-				if err := s.HTML.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "self":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.Self = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ContentTreeLinks) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("git")
-	s.Git.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("html")
-	s.HTML.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("self")
-	json.WriteURI(j, s.Self)
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ContentTreeLinks from json stream.
-func (s *ContentTreeLinks) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ContentTreeLinks to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "git":
-			if err := func() error {
-				if err := s.Git.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "html":
-			if err := func() error {
-				if err := s.HTML.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "self":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.Self = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s Contributor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -31980,6 +31518,33 @@ func (GistsListOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (GistsListOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
 // WriteJSON implements json.Marshaler.
+func (s GistsListPublicResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads GistsListPublicResNotModified from json stream.
+func (s *GistsListPublicResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GistsListPublicResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s GistsListResNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -36878,6 +36443,215 @@ func (s *ImportStatus) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s InstallationToken) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("expires_at")
+	j.WriteString(s.ExpiresAt)
+	if s.HasMultipleSingleFiles.Set {
+		more.More()
+		j.WriteObjectField("has_multiple_single_files")
+		s.HasMultipleSingleFiles.WriteJSON(j)
+	}
+	if s.Permissions.Set {
+		more.More()
+		j.WriteObjectField("permissions")
+		s.Permissions.WriteJSON(j)
+	}
+	if s.Repositories != nil {
+		more.More()
+		j.WriteObjectField("repositories")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Repositories {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
+	if s.RepositorySelection.Set {
+		more.More()
+		j.WriteObjectField("repository_selection")
+		s.RepositorySelection.WriteJSON(j)
+	}
+	if s.SingleFile.Set {
+		more.More()
+		j.WriteObjectField("single_file")
+		s.SingleFile.WriteJSON(j)
+	}
+	if s.SingleFilePaths != nil {
+		more.More()
+		j.WriteObjectField("single_file_paths")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.SingleFilePaths {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
+	more.More()
+	j.WriteObjectField("token")
+	j.WriteString(s.Token)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads InstallationToken from json stream.
+func (s *InstallationToken) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode InstallationToken to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "expires_at":
+			if err := func() error {
+				s.ExpiresAt = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "has_multiple_single_files":
+			if err := func() error {
+				s.HasMultipleSingleFiles.Reset()
+				if err := s.HasMultipleSingleFiles.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "permissions":
+			if err := func() error {
+				s.Permissions.Reset()
+				if err := s.Permissions.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repositories":
+			if err := func() error {
+				s.Repositories = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem Repository
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Repositories = append(s.Repositories, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repository_selection":
+			if err := func() error {
+				s.RepositorySelection.Reset()
+				if err := s.RepositorySelection.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "single_file":
+			if err := func() error {
+				s.SingleFile.Reset()
+				if err := s.SingleFile.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "single_file_paths":
+			if err := func() error {
+				s.SingleFilePaths = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem string
+					if err := func() error {
+						elem = string(i.Str())
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.SingleFilePaths = append(s.SingleFilePaths, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "token":
+			if err := func() error {
+				s.Token = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InstallationTokenRepositorySelection from json stream.
+func (s *InstallationTokenRepositorySelection) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode InstallationTokenRepositorySelection to nil`)
+	}
+	*s = InstallationTokenRepositorySelection(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Integration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -38544,6 +38318,800 @@ func (s *IssueEventRename) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s IssueSearchResultItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ActiveLockReason.Set {
+		more.More()
+		j.WriteObjectField("active_lock_reason")
+		s.ActiveLockReason.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("assignee")
+	s.Assignee.WriteJSON(j)
+	if s.Assignees.Set {
+		more.More()
+		j.WriteObjectField("assignees")
+		s.Assignees.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("author_association")
+	s.AuthorAssociation.WriteJSON(j)
+	if s.Body.Set {
+		more.More()
+		j.WriteObjectField("body")
+		s.Body.WriteJSON(j)
+	}
+	if s.BodyHTML.Set {
+		more.More()
+		j.WriteObjectField("body_html")
+		s.BodyHTML.WriteJSON(j)
+	}
+	if s.BodyText.Set {
+		more.More()
+		j.WriteObjectField("body_text")
+		s.BodyText.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("closed_at")
+	s.ClosedAt.WriteJSON(j, json.WriteDateTime)
+	more.More()
+	j.WriteObjectField("comments")
+	j.WriteInt(s.Comments)
+	more.More()
+	j.WriteObjectField("comments_url")
+	json.WriteURI(j, s.CommentsURL)
+	more.More()
+	j.WriteObjectField("created_at")
+	json.WriteDateTime(j, s.CreatedAt)
+	if s.Draft.Set {
+		more.More()
+		j.WriteObjectField("draft")
+		s.Draft.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("events_url")
+	json.WriteURI(j, s.EventsURL)
+	more.More()
+	j.WriteObjectField("html_url")
+	json.WriteURI(j, s.HTMLURL)
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt(s.ID)
+	more.More()
+	j.WriteObjectField("labels")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Labels {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+	more.More()
+	j.WriteObjectField("labels_url")
+	j.WriteString(s.LabelsURL)
+	more.More()
+	j.WriteObjectField("locked")
+	j.WriteBool(s.Locked)
+	more.More()
+	j.WriteObjectField("milestone")
+	s.Milestone.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("node_id")
+	j.WriteString(s.NodeID)
+	more.More()
+	j.WriteObjectField("number")
+	j.WriteInt(s.Number)
+	if s.PerformedViaGithubApp.Set {
+		more.More()
+		j.WriteObjectField("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
+	if s.PullRequest.Set {
+		more.More()
+		j.WriteObjectField("pull_request")
+		s.PullRequest.WriteJSON(j)
+	}
+	if s.Repository.Set {
+		more.More()
+		j.WriteObjectField("repository")
+		s.Repository.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("repository_url")
+	json.WriteURI(j, s.RepositoryURL)
+	more.More()
+	j.WriteObjectField("score")
+	j.WriteFloat64(s.Score)
+	more.More()
+	j.WriteObjectField("state")
+	j.WriteString(s.State)
+	if s.TextMatches != nil {
+		more.More()
+		j.WriteObjectField("text_matches")
+		s.TextMatches.WriteJSON(j)
+	}
+	if s.TimelineURL.Set {
+		more.More()
+		j.WriteObjectField("timeline_url")
+		s.TimelineURL.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("title")
+	j.WriteString(s.Title)
+	more.More()
+	j.WriteObjectField("updated_at")
+	json.WriteDateTime(j, s.UpdatedAt)
+	more.More()
+	j.WriteObjectField("url")
+	json.WriteURI(j, s.URL)
+	more.More()
+	j.WriteObjectField("user")
+	s.User.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads IssueSearchResultItem from json stream.
+func (s *IssueSearchResultItem) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode IssueSearchResultItem to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "active_lock_reason":
+			if err := func() error {
+				s.ActiveLockReason.Reset()
+				if err := s.ActiveLockReason.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "assignee":
+			if err := func() error {
+				if err := s.Assignee.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "assignees":
+			if err := func() error {
+				s.Assignees.Reset()
+				if err := s.Assignees.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "author_association":
+			if err := func() error {
+				if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "body":
+			if err := func() error {
+				s.Body.Reset()
+				if err := s.Body.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "body_html":
+			if err := func() error {
+				s.BodyHTML.Reset()
+				if err := s.BodyHTML.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "body_text":
+			if err := func() error {
+				s.BodyText.Reset()
+				if err := s.BodyText.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "closed_at":
+			if err := func() error {
+				if err := s.ClosedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "comments":
+			if err := func() error {
+				s.Comments = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "comments_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.CommentsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "created_at":
+			if err := func() error {
+				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "draft":
+			if err := func() error {
+				s.Draft.Reset()
+				if err := s.Draft.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "events_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.EventsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "html_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.HTMLURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "labels":
+			if err := func() error {
+				s.Labels = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem IssueSearchResultItemLabelsItem
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Labels = append(s.Labels, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "labels_url":
+			if err := func() error {
+				s.LabelsURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "locked":
+			if err := func() error {
+				s.Locked = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "milestone":
+			if err := func() error {
+				if err := s.Milestone.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "node_id":
+			if err := func() error {
+				s.NodeID = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "number":
+			if err := func() error {
+				s.Number = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "performed_via_github_app":
+			if err := func() error {
+				s.PerformedViaGithubApp.Reset()
+				if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "pull_request":
+			if err := func() error {
+				s.PullRequest.Reset()
+				if err := s.PullRequest.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repository":
+			if err := func() error {
+				s.Repository.Reset()
+				if err := s.Repository.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repository_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.RepositoryURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "score":
+			if err := func() error {
+				s.Score = float64(i.Float64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "state":
+			if err := func() error {
+				s.State = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "text_matches":
+			if err := func() error {
+				s.TextMatches = nil
+				var elem SearchResultTextMatches
+				if err := func() error {
+					if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TextMatches = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "timeline_url":
+			if err := func() error {
+				s.TimelineURL.Reset()
+				if err := s.TimelineURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "title":
+			if err := func() error {
+				s.Title = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "updated_at":
+			if err := func() error {
+				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.URL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "user":
+			if err := func() error {
+				if err := s.User.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssueSearchResultItemLabelsItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Color.Set {
+		more.More()
+		j.WriteObjectField("color")
+		s.Color.WriteJSON(j)
+	}
+	if s.Default.Set {
+		more.More()
+		j.WriteObjectField("default")
+		s.Default.WriteJSON(j)
+	}
+	if s.Description.Set {
+		more.More()
+		j.WriteObjectField("description")
+		s.Description.WriteJSON(j)
+	}
+	if s.ID.Set {
+		more.More()
+		j.WriteObjectField("id")
+		s.ID.WriteJSON(j)
+	}
+	if s.Name.Set {
+		more.More()
+		j.WriteObjectField("name")
+		s.Name.WriteJSON(j)
+	}
+	if s.NodeID.Set {
+		more.More()
+		j.WriteObjectField("node_id")
+		s.NodeID.WriteJSON(j)
+	}
+	if s.URL.Set {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads IssueSearchResultItemLabelsItem from json stream.
+func (s *IssueSearchResultItemLabelsItem) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode IssueSearchResultItemLabelsItem to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "color":
+			if err := func() error {
+				s.Color.Reset()
+				if err := s.Color.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "default":
+			if err := func() error {
+				s.Default.Reset()
+				if err := s.Default.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "description":
+			if err := func() error {
+				s.Description.Reset()
+				if err := s.Description.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID.Reset()
+				if err := s.ID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "node_id":
+			if err := func() error {
+				s.NodeID.Reset()
+				if err := s.NodeID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				s.URL.Reset()
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssueSearchResultItemPullRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("diff_url")
+	s.DiffURL.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("html_url")
+	s.HTMLURL.WriteJSON(j)
+	if s.MergedAt.Set {
+		more.More()
+		j.WriteObjectField("merged_at")
+		s.MergedAt.WriteJSON(j, json.WriteDateTime)
+	}
+	more.More()
+	j.WriteObjectField("patch_url")
+	s.PatchURL.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("url")
+	s.URL.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads IssueSearchResultItemPullRequest from json stream.
+func (s *IssueSearchResultItemPullRequest) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode IssueSearchResultItemPullRequest to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "diff_url":
+			if err := func() error {
+				if err := s.DiffURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "html_url":
+			if err := func() error {
+				if err := s.HTMLURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "merged_at":
+			if err := func() error {
+				s.MergedAt.Reset()
+				if err := s.MergedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "patch_url":
+			if err := func() error {
+				if err := s.PatchURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s IssueSimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -39535,33 +40103,6 @@ func (IssuesGetEventApplicationJSONGone) ReadJSON(i *json.Iter) error { return n
 func (IssuesGetEventApplicationJSONNotFound) WriteJSON(j *json.Stream)    {}
 func (IssuesGetEventApplicationJSONNotFound) ReadJSON(i *json.Iter) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s IssuesGetResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads IssuesGetResNotModified from json stream.
-func (s *IssuesGetResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IssuesGetResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (IssuesListAssigneesOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (IssuesListAssigneesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
@@ -39918,6 +40459,33 @@ func (s *IssuesLockReqLockReason) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode IssuesLockReqLockReason to nil`)
 	}
 	*s = IssuesLockReqLockReason(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssuesLockResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads IssuesLockResNoContent from json stream.
+func (s *IssuesLockResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode IssuesLockResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -40908,6 +41476,159 @@ func (s *Label) ReadJSON(i *json.Iter) error {
 		case "node_id":
 			if err := func() error {
 				s.NodeID = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.URL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s LabelSearchResultItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("color")
+	j.WriteString(s.Color)
+	more.More()
+	j.WriteObjectField("default")
+	j.WriteBool(s.Default)
+	more.More()
+	j.WriteObjectField("description")
+	s.Description.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt(s.ID)
+	more.More()
+	j.WriteObjectField("name")
+	j.WriteString(s.Name)
+	more.More()
+	j.WriteObjectField("node_id")
+	j.WriteString(s.NodeID)
+	more.More()
+	j.WriteObjectField("score")
+	j.WriteFloat64(s.Score)
+	if s.TextMatches != nil {
+		more.More()
+		j.WriteObjectField("text_matches")
+		s.TextMatches.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("url")
+	json.WriteURI(j, s.URL)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads LabelSearchResultItem from json stream.
+func (s *LabelSearchResultItem) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode LabelSearchResultItem to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "color":
+			if err := func() error {
+				s.Color = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "default":
+			if err := func() error {
+				s.Default = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "description":
+			if err := func() error {
+				if err := s.Description.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				s.Name = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "node_id":
+			if err := func() error {
+				s.NodeID = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "score":
+			if err := func() error {
+				s.Score = float64(i.Float64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "text_matches":
+			if err := func() error {
+				s.TextMatches = nil
+				var elem SearchResultTextMatches
+				if err := func() error {
+					if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TextMatches = &elem
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -44147,6 +44868,33 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) ReadJSON(i *json.Ite
 		fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserReqExcludeItem to nil`)
 	}
 	*s = MigrationsStartForAuthenticatedUserReqExcludeItem(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsStartForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads MigrationsStartForAuthenticatedUserResNotModified from json stream.
+func (s *MigrationsStartForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -54702,6 +55450,33 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) ReadJSON(i *json.
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified from json stream.
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) ReadJSON(i *json.Iter) error {
 	return nil
@@ -56849,6 +57624,26 @@ func (o *OptGitCreateTreeReqTreeItemType) ReadJSON(i *json.Iter) error {
 	}
 }
 
+// WriteJSON writes json value of InstallationTokenRepositorySelection to json stream.
+func (o OptInstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of InstallationTokenRepositorySelection from json iterator.
+func (o *OptInstallationTokenRepositorySelection) ReadJSON(i *json.Iter) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInstallationTokenRepositorySelection to nil`)
+	}
+	switch i.WhatIsNext() {
+	case json.String:
+		o.Set = true
+		o.Value = InstallationTokenRepositorySelection(i.Str())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %q while reading OptInstallationTokenRepositorySelection", i.WhatIsNext())
+	}
+}
+
 // WriteJSON writes json value of int to json stream.
 func (o OptInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(int(o.Value))
@@ -57038,6 +57833,28 @@ func (o *OptIssueEventRename) ReadJSON(i *json.Iter) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %q while reading OptIssueEventRename", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of IssueSearchResultItemPullRequest to json stream.
+func (o OptIssueSearchResultItemPullRequest) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueSearchResultItemPullRequest from json iterator.
+func (o *OptIssueSearchResultItemPullRequest) ReadJSON(i *json.Iter) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptIssueSearchResultItemPullRequest to nil`)
+	}
+	switch i.WhatIsNext() {
+	case json.Object:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %q while reading OptIssueSearchResultItemPullRequest", i.WhatIsNext())
 	}
 }
 
@@ -58954,6 +59771,28 @@ func (o *OptPagesSourceHash) ReadJSON(i *json.Iter) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %q while reading OptPagesSourceHash", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of PrivateUserPlan to json stream.
+func (o OptPrivateUserPlan) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PrivateUserPlan from json iterator.
+func (o *OptPrivateUserPlan) ReadJSON(i *json.Iter) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPrivateUserPlan to nil`)
+	}
+	switch i.WhatIsNext() {
+	case json.Object:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %q while reading OptPrivateUserPlan", i.WhatIsNext())
 	}
 }
 
@@ -62842,6 +63681,33 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OrgsBlockUserResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsBlockUserResNoContent from json stream.
+func (s *OrgsBlockUserResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsBlockUserResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OrgsCancelInvitationResNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -63662,6 +64528,33 @@ func (s *OrgsListMembersFilter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OrgsListMembersResFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsListMembersResFound from json stream.
+func (s *OrgsListMembersResFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsListMembersResFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OrgsListMembersRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -63672,6 +64565,33 @@ func (s *OrgsListMembersRole) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode OrgsListMembersRole to nil`)
 	}
 	*s = OrgsListMembersRole(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsListMembershipsForAuthenticatedUserResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsListMembershipsForAuthenticatedUserResNotModified from json stream.
+func (s *OrgsListMembershipsForAuthenticatedUserResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -63751,6 +64671,33 @@ func (s OrgsPingWebhookResNoContent) WriteJSON(j *json.Stream) {
 func (s *OrgsPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode OrgsPingWebhookResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsRedeliverWebhookDeliveryResAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsRedeliverWebhookDeliveryResAccepted from json stream.
+func (s *OrgsRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsRedeliverWebhookDeliveryResAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64510,6 +65457,57 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(i *json.Ite
 		fmt.Errorf(`invalid: unable to decode OrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
 	}
 	*s = OrgsUpdateReqMembersAllowedRepositoryCreationType(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsUpdateResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads OrgsUpdateResUnsupportedMediaType from json stream.
+func (s *OrgsUpdateResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrgsUpdateResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -68492,6 +69490,693 @@ func (s *PorterLargeFile) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s PrivateUser) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("avatar_url")
+	json.WriteURI(j, s.AvatarURL)
+	more.More()
+	j.WriteObjectField("bio")
+	s.Bio.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("blog")
+	s.Blog.WriteJSON(j)
+	if s.BusinessPlus.Set {
+		more.More()
+		j.WriteObjectField("business_plus")
+		s.BusinessPlus.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("collaborators")
+	j.WriteInt(s.Collaborators)
+	more.More()
+	j.WriteObjectField("company")
+	s.Company.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("created_at")
+	json.WriteDateTime(j, s.CreatedAt)
+	more.More()
+	j.WriteObjectField("disk_usage")
+	j.WriteInt(s.DiskUsage)
+	more.More()
+	j.WriteObjectField("email")
+	s.Email.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("events_url")
+	j.WriteString(s.EventsURL)
+	more.More()
+	j.WriteObjectField("followers")
+	j.WriteInt(s.Followers)
+	more.More()
+	j.WriteObjectField("followers_url")
+	json.WriteURI(j, s.FollowersURL)
+	more.More()
+	j.WriteObjectField("following")
+	j.WriteInt(s.Following)
+	more.More()
+	j.WriteObjectField("following_url")
+	j.WriteString(s.FollowingURL)
+	more.More()
+	j.WriteObjectField("gists_url")
+	j.WriteString(s.GistsURL)
+	more.More()
+	j.WriteObjectField("gravatar_id")
+	s.GravatarID.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("hireable")
+	s.Hireable.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("html_url")
+	json.WriteURI(j, s.HTMLURL)
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt(s.ID)
+	if s.LdapDn.Set {
+		more.More()
+		j.WriteObjectField("ldap_dn")
+		s.LdapDn.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("location")
+	s.Location.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("login")
+	j.WriteString(s.Login)
+	more.More()
+	j.WriteObjectField("name")
+	s.Name.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("node_id")
+	j.WriteString(s.NodeID)
+	more.More()
+	j.WriteObjectField("organizations_url")
+	json.WriteURI(j, s.OrganizationsURL)
+	more.More()
+	j.WriteObjectField("owned_private_repos")
+	j.WriteInt(s.OwnedPrivateRepos)
+	if s.Plan.Set {
+		more.More()
+		j.WriteObjectField("plan")
+		s.Plan.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("private_gists")
+	j.WriteInt(s.PrivateGists)
+	more.More()
+	j.WriteObjectField("public_gists")
+	j.WriteInt(s.PublicGists)
+	more.More()
+	j.WriteObjectField("public_repos")
+	j.WriteInt(s.PublicRepos)
+	more.More()
+	j.WriteObjectField("received_events_url")
+	json.WriteURI(j, s.ReceivedEventsURL)
+	more.More()
+	j.WriteObjectField("repos_url")
+	json.WriteURI(j, s.ReposURL)
+	more.More()
+	j.WriteObjectField("site_admin")
+	j.WriteBool(s.SiteAdmin)
+	more.More()
+	j.WriteObjectField("starred_url")
+	j.WriteString(s.StarredURL)
+	more.More()
+	j.WriteObjectField("subscriptions_url")
+	json.WriteURI(j, s.SubscriptionsURL)
+	if s.SuspendedAt.Set {
+		more.More()
+		j.WriteObjectField("suspended_at")
+		s.SuspendedAt.WriteJSON(j, json.WriteDateTime)
+	}
+	more.More()
+	j.WriteObjectField("total_private_repos")
+	j.WriteInt(s.TotalPrivateRepos)
+	if s.TwitterUsername.Set {
+		more.More()
+		j.WriteObjectField("twitter_username")
+		s.TwitterUsername.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("two_factor_authentication")
+	j.WriteBool(s.TwoFactorAuthentication)
+	more.More()
+	j.WriteObjectField("type")
+	j.WriteString(s.Type)
+	more.More()
+	j.WriteObjectField("updated_at")
+	json.WriteDateTime(j, s.UpdatedAt)
+	more.More()
+	j.WriteObjectField("url")
+	json.WriteURI(j, s.URL)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PrivateUser from json stream.
+func (s *PrivateUser) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PrivateUser to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "avatar_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.AvatarURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "bio":
+			if err := func() error {
+				if err := s.Bio.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "blog":
+			if err := func() error {
+				if err := s.Blog.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "business_plus":
+			if err := func() error {
+				s.BusinessPlus.Reset()
+				if err := s.BusinessPlus.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "collaborators":
+			if err := func() error {
+				s.Collaborators = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "company":
+			if err := func() error {
+				if err := s.Company.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "created_at":
+			if err := func() error {
+				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "disk_usage":
+			if err := func() error {
+				s.DiskUsage = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "email":
+			if err := func() error {
+				if err := s.Email.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "events_url":
+			if err := func() error {
+				s.EventsURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "followers":
+			if err := func() error {
+				s.Followers = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "followers_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.FollowersURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "following":
+			if err := func() error {
+				s.Following = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "following_url":
+			if err := func() error {
+				s.FollowingURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "gists_url":
+			if err := func() error {
+				s.GistsURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "gravatar_id":
+			if err := func() error {
+				if err := s.GravatarID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "hireable":
+			if err := func() error {
+				if err := s.Hireable.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "html_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.HTMLURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "ldap_dn":
+			if err := func() error {
+				s.LdapDn.Reset()
+				if err := s.LdapDn.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "location":
+			if err := func() error {
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "login":
+			if err := func() error {
+				s.Login = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				if err := s.Name.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "node_id":
+			if err := func() error {
+				s.NodeID = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "organizations_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.OrganizationsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "owned_private_repos":
+			if err := func() error {
+				s.OwnedPrivateRepos = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "plan":
+			if err := func() error {
+				s.Plan.Reset()
+				if err := s.Plan.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "private_gists":
+			if err := func() error {
+				s.PrivateGists = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "public_gists":
+			if err := func() error {
+				s.PublicGists = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "public_repos":
+			if err := func() error {
+				s.PublicRepos = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "received_events_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.ReceivedEventsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repos_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.ReposURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "site_admin":
+			if err := func() error {
+				s.SiteAdmin = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "starred_url":
+			if err := func() error {
+				s.StarredURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "subscriptions_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.SubscriptionsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "suspended_at":
+			if err := func() error {
+				s.SuspendedAt.Reset()
+				if err := s.SuspendedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "total_private_repos":
+			if err := func() error {
+				s.TotalPrivateRepos = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "twitter_username":
+			if err := func() error {
+				s.TwitterUsername.Reset()
+				if err := s.TwitterUsername.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "two_factor_authentication":
+			if err := func() error {
+				s.TwoFactorAuthentication = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "type":
+			if err := func() error {
+				s.Type = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "updated_at":
+			if err := func() error {
+				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.URL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PrivateUserPlan) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("collaborators")
+	j.WriteInt(s.Collaborators)
+	more.More()
+	j.WriteObjectField("name")
+	j.WriteString(s.Name)
+	more.More()
+	j.WriteObjectField("private_repos")
+	j.WriteInt(s.PrivateRepos)
+	more.More()
+	j.WriteObjectField("space")
+	j.WriteInt(s.Space)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PrivateUserPlan from json stream.
+func (s *PrivateUserPlan) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PrivateUserPlan to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "collaborators":
+			if err := func() error {
+				s.Collaborators = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				s.Name = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "private_repos":
+			if err := func() error {
+				s.PrivateRepos = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "space":
+			if err := func() error {
+				s.Space = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Project) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -69175,6 +70860,60 @@ func (s *ProjectsAddCollaboratorReqPermission) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorReqPermission to nil`)
 	}
 	*s = ProjectsAddCollaboratorReqPermission(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsAddCollaboratorResNoContent from json stream.
+func (s *ProjectsAddCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsAddCollaboratorResNotModified from json stream.
+func (s *ProjectsAddCollaboratorResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -70105,6 +71844,33 @@ func (s *ProjectsListCollaboratorsAffiliation) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s ProjectsListCollaboratorsResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsListCollaboratorsResNotModified from json stream.
+func (s *ProjectsListCollaboratorsResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsListCollaboratorsResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (ProjectsListColumnsApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (ProjectsListColumnsApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -70506,184 +72272,6 @@ func (s *ProjectsMoveCardResNotModified) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResServiceUnavailable) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Errors != nil {
-		more.More()
-		j.WriteObjectField("errors")
-		more.Down()
-		j.WriteArrayStart()
-		for _, elem := range s.Errors {
-			more.More()
-			elem.WriteJSON(j)
-		}
-		j.WriteArrayEnd()
-		more.Up()
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsMoveCardResServiceUnavailable from json stream.
-func (s *ProjectsMoveCardResServiceUnavailable) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResServiceUnavailable to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "errors":
-			if err := func() error {
-				s.Errors = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem ProjectsMoveCardResServiceUnavailableErrorsItem
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Errors = append(s.Errors, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardResServiceUnavailableErrorsItem) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ProjectsMoveCardResServiceUnavailableErrorsItem from json stream.
-func (s *ProjectsMoveCardResServiceUnavailableErrorsItem) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ProjectsMoveCardResServiceUnavailableErrorsItem to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (ProjectsMoveColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (ProjectsMoveColumnApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -70768,6 +72356,60 @@ func (s ProjectsMoveColumnResNotModified) WriteJSON(j *json.Stream) {
 func (s *ProjectsMoveColumnResNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsRemoveCollaboratorResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsRemoveCollaboratorResNoContent from json stream.
+func (s *ProjectsRemoveCollaboratorResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsRemoveCollaboratorResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ProjectsRemoveCollaboratorResNotModified from json stream.
+func (s *ProjectsRemoveCollaboratorResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorResNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -82784,6 +84426,57 @@ func (s *ReactionsCreateForIssueCommentReqContent) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForIssueCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReactionsCreateForIssueCommentResUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForIssueCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueCommentResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForIssueReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -82941,6 +84634,57 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) ReadJSON(i *json.
 		fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReqContent to nil`)
 	}
 	*s = ReactionsCreateForPullRequestReviewCommentReqContent(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType from json stream.
+func (s *ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -88016,6 +89760,57 @@ func (s *ReposCreatePagesSiteReqSourcePath) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReposCreatePagesSiteResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposCreatePagesSiteResUnsupportedMediaType from json stream.
+func (s *ReposCreatePagesSiteResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReposCreateReleaseReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -89051,84 +90846,6 @@ func (s *ReposDeleteFileReqCommitter) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteFileResServiceUnavailable) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposDeleteFileResServiceUnavailable from json stream.
-func (s *ReposDeleteFileResServiceUnavailable) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposDeleteFileResServiceUnavailable to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s ReposDeleteInvitationResNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -89171,6 +90888,57 @@ func (s *ReposDeletePagesSiteResNoContent) ReadJSON(i *json.Iter) error {
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeletePagesSiteResUnsupportedMediaType) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("documentation_url")
+	j.WriteString(s.DocumentationURL)
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposDeletePagesSiteResUnsupportedMediaType from json stream.
+func (s *ReposDeletePagesSiteResUnsupportedMediaType) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteResUnsupportedMediaType to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -89874,33 +91642,6 @@ func (s *ReposGetCommitActivityStatsResNoContent) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ReposGetContentResFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ReposGetContentResFound from json stream.
-func (s *ReposGetContentResFound) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ReposGetContentResFound to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
 func (ReposGetContributorsStatsOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReposGetContributorsStatsOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
@@ -90510,6 +92251,33 @@ func (s *ReposListInvitationsForAuthenticatedUserResNotModified) ReadJSON(i *jso
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s ReposListPublicResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposListPublicResNotModified from json stream.
+func (s *ReposListPublicResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposListPublicResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (ReposListReleasesOKApplicationJSON) WriteJSON(j *json.Stream)    {}
 func (ReposListReleasesOKApplicationJSON) ReadJSON(i *json.Iter) error { return nil }
 
@@ -90573,6 +92341,87 @@ func (s *ReposMergeReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeResConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeResConflict from json stream.
+func (s *ReposMergeResConflict) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeResConflict to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeResNoContent from json stream.
+func (s *ReposMergeResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeResNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposMergeResNotFound from json stream.
+func (s *ReposMergeResNotFound) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposMergeResNotFound to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -90689,6 +92538,33 @@ func (s ReposPingWebhookResNoContent) WriteJSON(j *json.Stream) {
 func (s *ReposPingWebhookResNoContent) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode ReposPingWebhookResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposRedeliverWebhookDeliveryResAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ReposRedeliverWebhookDeliveryResAccepted from json stream.
+func (s *ReposRedeliverWebhookDeliveryResAccepted) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ReposRedeliverWebhookDeliveryResAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -99343,33 +101219,6 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iter) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimListProvisionedIdentitiesResNotModified) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ScimListProvisionedIdentitiesResNotModified from json stream.
-func (s *ScimListProvisionedIdentitiesResNotModified) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ScimListProvisionedIdentitiesResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -100861,84 +102710,6 @@ func (s *SearchCodeResOK) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCodeResServiceUnavailable) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SearchCodeResServiceUnavailable from json stream.
-func (s *SearchCodeResServiceUnavailable) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchCodeResServiceUnavailable to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SearchCodeSort) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -101161,41 +102932,93 @@ func (s *SearchIssuesAndPullRequestsOrder) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SearchIssuesAndPullRequestsResNotModified) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchIssuesAndPullRequestsResServiceUnavailable from json stream.
-func (s *SearchIssuesAndPullRequestsResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchIssuesAndPullRequestsResNotModified from json stream.
+func (s *SearchIssuesAndPullRequestsResNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsResNotModified to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
-		case "code":
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchIssuesAndPullRequestsResOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("incomplete_results")
+	j.WriteBool(s.IncompleteResults)
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+	more.More()
+	j.WriteObjectField("total_count")
+	j.WriteInt(s.TotalCount)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SearchIssuesAndPullRequestsResOK from json stream.
+func (s *SearchIssuesAndPullRequestsResOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsResOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "incomplete_results":
 			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
+				s.IncompleteResults = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "items":
+			if err := func() error {
+				s.Items = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem IssueSearchResultItem
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Items = append(s.Items, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
 				return i.Error
 			}(); err != nil {
@@ -101203,24 +103026,9 @@ func (s *SearchIssuesAndPullRequestsResServiceUnavailable) ReadJSON(i *json.Iter
 				return false
 			}
 			return true
-		case "documentation_url":
+		case "total_count":
 			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
+				s.TotalCount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -101267,6 +103075,121 @@ func (s *SearchLabelsOrder) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SearchLabelsResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SearchLabelsResNotModified from json stream.
+func (s *SearchLabelsResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchLabelsResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchLabelsResOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("incomplete_results")
+	j.WriteBool(s.IncompleteResults)
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+	more.More()
+	j.WriteObjectField("total_count")
+	j.WriteInt(s.TotalCount)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SearchLabelsResOK from json stream.
+func (s *SearchLabelsResOK) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchLabelsResOK to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "incomplete_results":
+			if err := func() error {
+				s.IncompleteResults = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "items":
+			if err := func() error {
+				s.Items = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem LabelSearchResultItem
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Items = append(s.Items, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "total_count":
+			if err := func() error {
+				s.TotalCount = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SearchLabelsSort) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
@@ -101291,6 +103214,33 @@ func (s *SearchReposOrder) ReadJSON(i *json.Iter) error {
 		fmt.Errorf(`invalid: unable to decode SearchReposOrder to nil`)
 	}
 	*s = SearchReposOrder(i.Str())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SearchReposResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads SearchReposResNotModified from json stream.
+func (s *SearchReposResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SearchReposResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -101365,84 +103315,6 @@ func (s *SearchReposResOK) ReadJSON(i *json.Iter) error {
 		case "total_count":
 			if err := func() error {
 				s.TotalCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchReposResServiceUnavailable) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	if s.Code.Set {
-		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
-	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads SearchReposResServiceUnavailable from json stream.
-func (s *SearchReposResServiceUnavailable) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchReposResServiceUnavailable to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "documentation_url":
-			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -101900,41 +103772,66 @@ func (s *SearchUsersResNotModified) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchUsersResServiceUnavailable) WriteJSON(j *json.Stream) {
+func (s SearchUsersResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.Code.Set {
+	more.More()
+	j.WriteObjectField("incomplete_results")
+	j.WriteBool(s.IncompleteResults)
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
 		more.More()
-		j.WriteObjectField("code")
-		s.Code.WriteJSON(j)
+		elem.WriteJSON(j)
 	}
-	if s.DocumentationURL.Set {
-		more.More()
-		j.WriteObjectField("documentation_url")
-		s.DocumentationURL.WriteJSON(j)
-	}
-	if s.Message.Set {
-		more.More()
-		j.WriteObjectField("message")
-		s.Message.WriteJSON(j)
-	}
+	j.WriteArrayEnd()
+	more.Up()
+	more.More()
+	j.WriteObjectField("total_count")
+	j.WriteInt(s.TotalCount)
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SearchUsersResServiceUnavailable from json stream.
-func (s *SearchUsersResServiceUnavailable) ReadJSON(i *json.Iter) error {
+// ReadJSON reads SearchUsersResOK from json stream.
+func (s *SearchUsersResOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode SearchUsersResServiceUnavailable to nil`)
+		fmt.Errorf(`invalid: unable to decode SearchUsersResOK to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
 		switch k {
-		case "code":
+		case "incomplete_results":
 			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.ReadJSON(i); err != nil {
-					return err
+				s.IncompleteResults = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "items":
+			if err := func() error {
+				s.Items = nil
+				var retErr error
+				i.Array(func(i *json.Iter) bool {
+					var elem UserSearchResultItem
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Items = append(s.Items, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
 				return i.Error
 			}(); err != nil {
@@ -101942,24 +103839,9 @@ func (s *SearchUsersResServiceUnavailable) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
-		case "documentation_url":
+		case "total_count":
 			if err := func() error {
-				s.DocumentationURL.Reset()
-				if err := s.DocumentationURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
+				s.TotalCount = int(i.Int())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -102845,6 +104727,57 @@ func (s *SelectedActions) ReadJSON(i *json.Iter) error {
 
 func (SelectedActionsURL) WriteJSON(j *json.Stream)    {}
 func (SelectedActionsURL) ReadJSON(i *json.Iter) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s ShortBlob) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("sha")
+	j.WriteString(s.Sha)
+	more.More()
+	j.WriteObjectField("url")
+	j.WriteString(s.URL)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads ShortBlob from json stream.
+func (s *ShortBlob) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ShortBlob to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "sha":
+			if err := func() error {
+				s.Sha = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				s.URL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ShortBranch) WriteJSON(j *json.Stream) {
@@ -107738,6 +109671,94 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyResForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.DocumentationURL.Set {
+		more.More()
+		j.WriteObjectField("documentation_url")
+		s.DocumentationURL.WriteJSON(j)
+	}
+	if s.Message.Set {
+		more.More()
+		j.WriteObjectField("message")
+		s.Message.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyResForbidden from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyResForbidden) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyResForbidden to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "documentation_url":
+			if err := func() error {
+				s.DocumentationURL.Reset()
+				if err := s.DocumentationURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "message":
+			if err := func() error {
+				s.Message.Reset()
+				if err := s.Message.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyResNoContent from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -111149,6 +113170,611 @@ func (s *UserMarketplacePurchase) ReadJSON(i *json.Iter) error {
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s UserSearchResultItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("avatar_url")
+	json.WriteURI(j, s.AvatarURL)
+	if s.Bio.Set {
+		more.More()
+		j.WriteObjectField("bio")
+		s.Bio.WriteJSON(j)
+	}
+	if s.Blog.Set {
+		more.More()
+		j.WriteObjectField("blog")
+		s.Blog.WriteJSON(j)
+	}
+	if s.Company.Set {
+		more.More()
+		j.WriteObjectField("company")
+		s.Company.WriteJSON(j)
+	}
+	if s.CreatedAt.Set {
+		more.More()
+		j.WriteObjectField("created_at")
+		s.CreatedAt.WriteJSON(j, json.WriteDateTime)
+	}
+	if s.Email.Set {
+		more.More()
+		j.WriteObjectField("email")
+		s.Email.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("events_url")
+	j.WriteString(s.EventsURL)
+	if s.Followers.Set {
+		more.More()
+		j.WriteObjectField("followers")
+		s.Followers.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("followers_url")
+	json.WriteURI(j, s.FollowersURL)
+	if s.Following.Set {
+		more.More()
+		j.WriteObjectField("following")
+		s.Following.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("following_url")
+	j.WriteString(s.FollowingURL)
+	more.More()
+	j.WriteObjectField("gists_url")
+	j.WriteString(s.GistsURL)
+	more.More()
+	j.WriteObjectField("gravatar_id")
+	s.GravatarID.WriteJSON(j)
+	if s.Hireable.Set {
+		more.More()
+		j.WriteObjectField("hireable")
+		s.Hireable.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("html_url")
+	json.WriteURI(j, s.HTMLURL)
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt(s.ID)
+	if s.Location.Set {
+		more.More()
+		j.WriteObjectField("location")
+		s.Location.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("login")
+	j.WriteString(s.Login)
+	if s.Name.Set {
+		more.More()
+		j.WriteObjectField("name")
+		s.Name.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("node_id")
+	j.WriteString(s.NodeID)
+	more.More()
+	j.WriteObjectField("organizations_url")
+	json.WriteURI(j, s.OrganizationsURL)
+	if s.PublicGists.Set {
+		more.More()
+		j.WriteObjectField("public_gists")
+		s.PublicGists.WriteJSON(j)
+	}
+	if s.PublicRepos.Set {
+		more.More()
+		j.WriteObjectField("public_repos")
+		s.PublicRepos.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("received_events_url")
+	json.WriteURI(j, s.ReceivedEventsURL)
+	more.More()
+	j.WriteObjectField("repos_url")
+	json.WriteURI(j, s.ReposURL)
+	more.More()
+	j.WriteObjectField("score")
+	j.WriteFloat64(s.Score)
+	more.More()
+	j.WriteObjectField("site_admin")
+	j.WriteBool(s.SiteAdmin)
+	more.More()
+	j.WriteObjectField("starred_url")
+	j.WriteString(s.StarredURL)
+	more.More()
+	j.WriteObjectField("subscriptions_url")
+	json.WriteURI(j, s.SubscriptionsURL)
+	if s.SuspendedAt.Set {
+		more.More()
+		j.WriteObjectField("suspended_at")
+		s.SuspendedAt.WriteJSON(j, json.WriteDateTime)
+	}
+	if s.TextMatches != nil {
+		more.More()
+		j.WriteObjectField("text_matches")
+		s.TextMatches.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("type")
+	j.WriteString(s.Type)
+	if s.UpdatedAt.Set {
+		more.More()
+		j.WriteObjectField("updated_at")
+		s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
+	}
+	more.More()
+	j.WriteObjectField("url")
+	json.WriteURI(j, s.URL)
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UserSearchResultItem from json stream.
+func (s *UserSearchResultItem) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UserSearchResultItem to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		case "avatar_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.AvatarURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "bio":
+			if err := func() error {
+				s.Bio.Reset()
+				if err := s.Bio.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "blog":
+			if err := func() error {
+				s.Blog.Reset()
+				if err := s.Blog.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "company":
+			if err := func() error {
+				s.Company.Reset()
+				if err := s.Company.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "email":
+			if err := func() error {
+				s.Email.Reset()
+				if err := s.Email.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "events_url":
+			if err := func() error {
+				s.EventsURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "followers":
+			if err := func() error {
+				s.Followers.Reset()
+				if err := s.Followers.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "followers_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.FollowersURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "following":
+			if err := func() error {
+				s.Following.Reset()
+				if err := s.Following.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "following_url":
+			if err := func() error {
+				s.FollowingURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "gists_url":
+			if err := func() error {
+				s.GistsURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "gravatar_id":
+			if err := func() error {
+				if err := s.GravatarID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "hireable":
+			if err := func() error {
+				s.Hireable.Reset()
+				if err := s.Hireable.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "html_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.HTMLURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID = int(i.Int())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "location":
+			if err := func() error {
+				s.Location.Reset()
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "login":
+			if err := func() error {
+				s.Login = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "node_id":
+			if err := func() error {
+				s.NodeID = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "organizations_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.OrganizationsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "public_gists":
+			if err := func() error {
+				s.PublicGists.Reset()
+				if err := s.PublicGists.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "public_repos":
+			if err := func() error {
+				s.PublicRepos.Reset()
+				if err := s.PublicRepos.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "received_events_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.ReceivedEventsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "repos_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.ReposURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "score":
+			if err := func() error {
+				s.Score = float64(i.Float64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "site_admin":
+			if err := func() error {
+				s.SiteAdmin = bool(i.Bool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "starred_url":
+			if err := func() error {
+				s.StarredURL = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "subscriptions_url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.SubscriptionsURL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "suspended_at":
+			if err := func() error {
+				s.SuspendedAt.Reset()
+				if err := s.SuspendedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "text_matches":
+			if err := func() error {
+				s.TextMatches = nil
+				var elem SearchResultTextMatches
+				if err := func() error {
+					if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TextMatches = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "type":
+			if err := func() error {
+				s.Type = string(i.Str())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "updated_at":
+			if err := func() error {
+				s.UpdatedAt.Reset()
+				if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "url":
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				s.URL = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersBlockResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersBlockResNoContent from json stream.
+func (s *UsersBlockResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersBlockResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersBlockResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersBlockResNotModified from json stream.
+func (s *UsersBlockResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersBlockResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (UsersCheckBlockedApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (UsersCheckBlockedApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -111376,6 +114002,33 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) ReadJSON(i *json.Iter) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s UsersCreateGpgKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersCreateGpgKeyForAuthenticatedResNotModified from json stream.
+func (s *UsersCreateGpgKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s UsersCreatePublicSSHKeyForAuthenticatedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -111420,6 +114073,87 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) ReadJSON(i *json.Iter) erro
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersCreatePublicSSHKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedResNotModified from json stream.
+func (s *UsersCreatePublicSSHKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersDeleteGpgKeyForAuthenticatedResNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedResNoContent from json stream.
+func (s *UsersDeleteGpgKeyForAuthenticatedResNoContent) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedResNoContent to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersDeleteGpgKeyForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedResNotModified from json stream.
+func (s *UsersDeleteGpgKeyForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -111548,33 +114282,6 @@ func (s UsersFollowResNotModified) WriteJSON(j *json.Stream) {
 func (s *UsersFollowResNotModified) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		fmt.Errorf(`invalid: unable to decode UsersFollowResNotModified to nil`)
-	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s UsersGetByUsernameResAccepted) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads UsersGetByUsernameResAccepted from json stream.
-func (s *UsersGetByUsernameResAccepted) ReadJSON(i *json.Iter) error {
-	if s == nil {
-		fmt.Errorf(`invalid: unable to decode UsersGetByUsernameResAccepted to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -112133,6 +114840,33 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) ReadJSON(i
 	return i.Error
 }
 
+// WriteJSON implements json.Marshaler.
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified from json stream.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
 func (UsersUnblockApplicationJSONForbidden) WriteJSON(j *json.Stream)    {}
 func (UsersUnblockApplicationJSONForbidden) ReadJSON(i *json.Iter) error { return nil }
 
@@ -112411,6 +115145,33 @@ func (s *UsersUpdateAuthenticatedReq) ReadJSON(i *json.Iter) error {
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersUpdateAuthenticatedResNotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads UsersUpdateAuthenticatedResNotModified from json stream.
+func (s *UsersUpdateAuthenticatedResNotModified) ReadJSON(i *json.Iter) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UsersUpdateAuthenticatedResNotModified to nil`)
+	}
+	var retErr error
+	i.Object(func(i *json.Iter, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true

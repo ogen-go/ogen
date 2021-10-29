@@ -1535,6 +1535,14 @@ type AppsCreateContentAttachmentReq struct {
 	Title string `json:"title"`
 }
 
+// AppsCreateContentAttachmentResNotModified is response for AppsCreateContentAttachment operation.
+type AppsCreateContentAttachmentResNotModified struct{}
+
+type AppsCreateContentAttachmentResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
 type AppsCreateFromManifestReq struct{}
 
 type AppsCreateInstallationAccessTokenReq struct {
@@ -1543,9 +1551,17 @@ type AppsCreateInstallationAccessTokenReq struct {
 	RepositoryIds []int             `json:"repository_ids"`
 }
 
+type AppsCreateInstallationAccessTokenResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
 type AppsDeleteAuthorizationReq struct {
 	AccessToken string `json:"access_token"`
 }
+
+// AppsDeleteAuthorizationResNoContent is response for AppsDeleteAuthorization operation.
+type AppsDeleteAuthorizationResNoContent struct{}
 
 // AppsDeleteInstallationResNoContent is response for AppsDeleteInstallation operation.
 type AppsDeleteInstallationResNoContent struct{}
@@ -1573,11 +1589,6 @@ type AppsGetBySlugResUnsupportedMediaType struct {
 }
 
 func (*AppsGetBySlugResUnsupportedMediaType) appsGetBySlugRes() {}
-
-type AppsGetInstallationResUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
 
@@ -1650,11 +1661,6 @@ type AppsListInstallationReposForAuthenticatedUserResOK struct {
 }
 
 func (*AppsListInstallationReposForAuthenticatedUserResOK) appsListInstallationReposForAuthenticatedUserRes() {
-}
-
-type AppsListInstallationsForAuthenticatedUserResUnsupportedMediaType struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
 }
 
 type AppsListPlansApplicationJSONNotFound BasicError
@@ -3277,47 +3283,6 @@ type ContentTraffic struct {
 	Uniques int    `json:"uniques"`
 }
 
-// Ref: #/components/schemas/content-tree
-type ContentTree struct {
-	Links       ContentTreeLinks         `json:"_links"`
-	DownloadURL NilURL                   `json:"download_url"`
-	Entries     []ContentTreeEntriesItem `json:"entries"`
-	GitURL      NilURL                   `json:"git_url"`
-	HTMLURL     NilURL                   `json:"html_url"`
-	Name        string                   `json:"name"`
-	Path        string                   `json:"path"`
-	Sha         string                   `json:"sha"`
-	Size        int                      `json:"size"`
-	Type        string                   `json:"type"`
-	URL         url.URL                  `json:"url"`
-}
-
-type ContentTreeEntriesItem struct {
-	Links       ContentTreeEntriesItemLinks `json:"_links"`
-	Content     OptString                   `json:"content"`
-	DownloadURL NilURL                      `json:"download_url"`
-	GitURL      NilURL                      `json:"git_url"`
-	HTMLURL     NilURL                      `json:"html_url"`
-	Name        string                      `json:"name"`
-	Path        string                      `json:"path"`
-	Sha         string                      `json:"sha"`
-	Size        int                         `json:"size"`
-	Type        string                      `json:"type"`
-	URL         url.URL                     `json:"url"`
-}
-
-type ContentTreeEntriesItemLinks struct {
-	Git  NilURL  `json:"git"`
-	HTML NilURL  `json:"html"`
-	Self url.URL `json:"self"`
-}
-
-type ContentTreeLinks struct {
-	Git  NilURL  `json:"git"`
-	HTML NilURL  `json:"html"`
-	Self url.URL `json:"self"`
-}
-
 // Ref: #/components/schemas/contributor
 type Contributor struct {
 	AvatarURL         OptURL       `json:"avatar_url"`
@@ -4278,6 +4243,9 @@ type GistsListOKApplicationJSON []BaseGist
 
 func (*GistsListOKApplicationJSON) gistsListRes() {}
 
+// GistsListPublicResNotModified is response for GistsListPublic operation.
+type GistsListPublicResNotModified struct{}
+
 // GistsListResNotModified is response for GistsList operation.
 type GistsListResNotModified struct{}
 
@@ -4769,6 +4737,25 @@ const (
 	ImportStatusDetectionNeedsAuth     ImportStatus = "detection_needs_auth"
 )
 
+// Ref: #/components/schemas/installation-token
+type InstallationToken struct {
+	ExpiresAt              string                                  `json:"expires_at"`
+	HasMultipleSingleFiles OptBool                                 `json:"has_multiple_single_files"`
+	Permissions            OptAppPermissions                       `json:"permissions"`
+	Repositories           []Repository                            `json:"repositories"`
+	RepositorySelection    OptInstallationTokenRepositorySelection `json:"repository_selection"`
+	SingleFile             OptString                               `json:"single_file"`
+	SingleFilePaths        []string                                `json:"single_file_paths"`
+	Token                  string                                  `json:"token"`
+}
+
+type InstallationTokenRepositorySelection string
+
+const (
+	InstallationTokenRepositorySelectionAll      InstallationTokenRepositorySelection = "all"
+	InstallationTokenRepositorySelectionSelected InstallationTokenRepositorySelection = "selected"
+)
+
 // Ref: #/components/schemas/integration
 type Integration struct {
 	ClientID           OptString              `json:"client_id"`
@@ -4940,6 +4927,61 @@ type IssueEventRename struct {
 	To   string `json:"to"`
 }
 
+// Ref: #/components/schemas/issue-search-result-item
+type IssueSearchResultItem struct {
+	ActiveLockReason      OptNilString                        `json:"active_lock_reason"`
+	Assignee              NilNullableSimpleUser               `json:"assignee"`
+	Assignees             OptNilSimpleUserArray               `json:"assignees"`
+	AuthorAssociation     AuthorAssociation                   `json:"author_association"`
+	Body                  OptString                           `json:"body"`
+	BodyHTML              OptString                           `json:"body_html"`
+	BodyText              OptString                           `json:"body_text"`
+	ClosedAt              NilTime                             `json:"closed_at"`
+	Comments              int                                 `json:"comments"`
+	CommentsURL           url.URL                             `json:"comments_url"`
+	CreatedAt             time.Time                           `json:"created_at"`
+	Draft                 OptBool                             `json:"draft"`
+	EventsURL             url.URL                             `json:"events_url"`
+	HTMLURL               url.URL                             `json:"html_url"`
+	ID                    int                                 `json:"id"`
+	Labels                []IssueSearchResultItemLabelsItem   `json:"labels"`
+	LabelsURL             string                              `json:"labels_url"`
+	Locked                bool                                `json:"locked"`
+	Milestone             NilNullableMilestone                `json:"milestone"`
+	NodeID                string                              `json:"node_id"`
+	Number                int                                 `json:"number"`
+	PerformedViaGithubApp OptNilNullableIntegration           `json:"performed_via_github_app"`
+	PullRequest           OptIssueSearchResultItemPullRequest `json:"pull_request"`
+	Repository            OptRepository                       `json:"repository"`
+	RepositoryURL         url.URL                             `json:"repository_url"`
+	Score                 float64                             `json:"score"`
+	State                 string                              `json:"state"`
+	TextMatches           *SearchResultTextMatches            `json:"text_matches"`
+	TimelineURL           OptURL                              `json:"timeline_url"`
+	Title                 string                              `json:"title"`
+	UpdatedAt             time.Time                           `json:"updated_at"`
+	URL                   url.URL                             `json:"url"`
+	User                  NilNullableSimpleUser               `json:"user"`
+}
+
+type IssueSearchResultItemLabelsItem struct {
+	Color       OptString    `json:"color"`
+	Default     OptBool      `json:"default"`
+	Description OptNilString `json:"description"`
+	ID          OptInt64     `json:"id"`
+	Name        OptString    `json:"name"`
+	NodeID      OptString    `json:"node_id"`
+	URL         OptString    `json:"url"`
+}
+
+type IssueSearchResultItemPullRequest struct {
+	DiffURL  NilURL     `json:"diff_url"`
+	HTMLURL  NilURL     `json:"html_url"`
+	MergedAt OptNilTime `json:"merged_at"`
+	PatchURL NilURL     `json:"patch_url"`
+	URL      NilURL     `json:"url"`
+}
+
 // Ref: #/components/schemas/issue-simple
 type IssueSimple struct {
 	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
@@ -5037,9 +5079,6 @@ func (*IssuesGetEventApplicationJSONGone) issuesGetEventRes() {}
 type IssuesGetEventApplicationJSONNotFound BasicError
 
 func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventRes() {}
-
-// IssuesGetResNotModified is response for IssuesGet operation.
-type IssuesGetResNotModified struct{}
 
 type IssuesListAssigneesOKApplicationJSON []SimpleUser
 
@@ -5243,6 +5282,9 @@ const (
 	IssuesLockReqLockReasonSpam          IssuesLockReqLockReason = "spam"
 )
 
+// IssuesLockResNoContent is response for IssuesLock operation.
+type IssuesLockResNoContent struct{}
+
 // IssuesRemoveAllLabelsResNoContent is response for IssuesRemoveAllLabels operation.
 type IssuesRemoveAllLabelsResNoContent struct{}
 
@@ -5375,6 +5417,19 @@ type Label struct {
 }
 
 func (*Label) issuesGetLabelRes() {}
+
+// Ref: #/components/schemas/label-search-result-item
+type LabelSearchResultItem struct {
+	Color       string                   `json:"color"`
+	Default     bool                     `json:"default"`
+	Description NilString                `json:"description"`
+	ID          int                      `json:"id"`
+	Name        string                   `json:"name"`
+	NodeID      string                   `json:"node_id"`
+	Score       float64                  `json:"score"`
+	TextMatches *SearchResultTextMatches `json:"text_matches"`
+	URL         url.URL                  `json:"url"`
+}
 
 // Ref: #/components/schemas/language
 type Language struct{}
@@ -5803,6 +5858,9 @@ type MigrationsStartForAuthenticatedUserReqExcludeItem string
 const (
 	MigrationsStartForAuthenticatedUserReqExcludeItemRepositories MigrationsStartForAuthenticatedUserReqExcludeItem = "repositories"
 )
+
+// MigrationsStartForAuthenticatedUserResNotModified is response for MigrationsStartForAuthenticatedUser operation.
+type MigrationsStartForAuthenticatedUserResNotModified struct{}
 
 type MigrationsStartForOrgReq struct {
 	Exclude              []MigrationsStartForOrgReqExcludeItem `json:"exclude"`
@@ -7548,6 +7606,9 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	NoteURL      OptString         `json:"note_url"`
 	Scopes       OptNilStringArray `json:"scopes"`
 }
+
+// OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified is response for OAuthAuthorizationsGetOrCreateAuthorizationForApp operation.
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppResNotModified struct{}
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
 
@@ -11105,6 +11166,44 @@ func (o OptGitCreateTreeReqTreeItemType) Get() (v GitCreateTreeReqTreeItemType, 
 	return o.Value, true
 }
 
+// NewOptInstallationTokenRepositorySelection returns new OptInstallationTokenRepositorySelection with value set to v.
+func NewOptInstallationTokenRepositorySelection(v InstallationTokenRepositorySelection) OptInstallationTokenRepositorySelection {
+	return OptInstallationTokenRepositorySelection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInstallationTokenRepositorySelection is optional InstallationTokenRepositorySelection.
+type OptInstallationTokenRepositorySelection struct {
+	Value InstallationTokenRepositorySelection
+	Set   bool
+}
+
+// IsSet returns true if OptInstallationTokenRepositorySelection was set.
+func (o OptInstallationTokenRepositorySelection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInstallationTokenRepositorySelection) Reset() {
+	var v InstallationTokenRepositorySelection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInstallationTokenRepositorySelection) SetTo(v InstallationTokenRepositorySelection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInstallationTokenRepositorySelection) Get() (v InstallationTokenRepositorySelection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -11441,6 +11540,44 @@ func (o *OptIssueEventRename) SetTo(v IssueEventRename) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIssueEventRename) Get() (v IssueEventRename, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssueSearchResultItemPullRequest returns new OptIssueSearchResultItemPullRequest with value set to v.
+func NewOptIssueSearchResultItemPullRequest(v IssueSearchResultItemPullRequest) OptIssueSearchResultItemPullRequest {
+	return OptIssueSearchResultItemPullRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssueSearchResultItemPullRequest is optional IssueSearchResultItemPullRequest.
+type OptIssueSearchResultItemPullRequest struct {
+	Value IssueSearchResultItemPullRequest
+	Set   bool
+}
+
+// IsSet returns true if OptIssueSearchResultItemPullRequest was set.
+func (o OptIssueSearchResultItemPullRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssueSearchResultItemPullRequest) Reset() {
+	var v IssueSearchResultItemPullRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssueSearchResultItemPullRequest) SetTo(v IssueSearchResultItemPullRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssueSearchResultItemPullRequest) Get() (v IssueSearchResultItemPullRequest, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -14423,6 +14560,44 @@ func (o *OptPagesSourceHash) SetTo(v PagesSourceHash) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPrivateUserPlan returns new OptPrivateUserPlan with value set to v.
+func NewOptPrivateUserPlan(v PrivateUserPlan) OptPrivateUserPlan {
+	return OptPrivateUserPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPrivateUserPlan is optional PrivateUserPlan.
+type OptPrivateUserPlan struct {
+	Value PrivateUserPlan
+	Set   bool
+}
+
+// IsSet returns true if OptPrivateUserPlan was set.
+func (o OptPrivateUserPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPrivateUserPlan) Reset() {
+	var v PrivateUserPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPrivateUserPlan) SetTo(v PrivateUserPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPrivateUserPlan) Get() (v PrivateUserPlan, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17956,6 +18131,9 @@ type OrganizationSimple struct {
 	URL              url.URL   `json:"url"`
 }
 
+// OrgsBlockUserResNoContent is response for OrgsBlockUser operation.
+type OrgsBlockUserResNoContent struct{}
+
 // OrgsCancelInvitationResNoContent is response for OrgsCancelInvitation operation.
 type OrgsCancelInvitationResNoContent struct{}
 
@@ -18118,6 +18296,9 @@ const (
 	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
 )
 
+// OrgsListMembersResFound is response for OrgsListMembers operation.
+type OrgsListMembersResFound struct{}
+
 type OrgsListMembersRole string
 
 const (
@@ -18125,6 +18306,9 @@ const (
 	OrgsListMembersRoleAdmin  OrgsListMembersRole = "admin"
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
+
+// OrgsListMembershipsForAuthenticatedUserResNotModified is response for OrgsListMembershipsForAuthenticatedUser operation.
+type OrgsListMembershipsForAuthenticatedUserResNotModified struct{}
 
 type OrgsListMembershipsForAuthenticatedUserState string
 
@@ -18161,6 +18345,8 @@ func (*OrgsListWebhooksOKApplicationJSON) orgsListWebhooksRes() {}
 type OrgsPingWebhookResNoContent struct{}
 
 func (*OrgsPingWebhookResNoContent) orgsPingWebhookRes() {}
+
+type OrgsRedeliverWebhookDeliveryResAccepted struct{}
 
 // OrgsRemoveMemberResNoContent is response for OrgsRemoveMember operation.
 type OrgsRemoveMemberResNoContent struct{}
@@ -18268,6 +18454,11 @@ const (
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate OrgsUpdateReqMembersAllowedRepositoryCreationType = "private"
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateReqMembersAllowedRepositoryCreationType = "none"
 )
+
+type OrgsUpdateResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -19174,6 +19365,59 @@ type PorterLargeFile struct {
 	Size    int    `json:"size"`
 }
 
+// Ref: #/components/schemas/private-user
+type PrivateUser struct {
+	AvatarURL               url.URL            `json:"avatar_url"`
+	Bio                     NilString          `json:"bio"`
+	Blog                    NilString          `json:"blog"`
+	BusinessPlus            OptBool            `json:"business_plus"`
+	Collaborators           int                `json:"collaborators"`
+	Company                 NilString          `json:"company"`
+	CreatedAt               time.Time          `json:"created_at"`
+	DiskUsage               int                `json:"disk_usage"`
+	Email                   NilString          `json:"email"`
+	EventsURL               string             `json:"events_url"`
+	Followers               int                `json:"followers"`
+	FollowersURL            url.URL            `json:"followers_url"`
+	Following               int                `json:"following"`
+	FollowingURL            string             `json:"following_url"`
+	GistsURL                string             `json:"gists_url"`
+	GravatarID              NilString          `json:"gravatar_id"`
+	Hireable                NilBool            `json:"hireable"`
+	HTMLURL                 url.URL            `json:"html_url"`
+	ID                      int                `json:"id"`
+	LdapDn                  OptString          `json:"ldap_dn"`
+	Location                NilString          `json:"location"`
+	Login                   string             `json:"login"`
+	Name                    NilString          `json:"name"`
+	NodeID                  string             `json:"node_id"`
+	OrganizationsURL        url.URL            `json:"organizations_url"`
+	OwnedPrivateRepos       int                `json:"owned_private_repos"`
+	Plan                    OptPrivateUserPlan `json:"plan"`
+	PrivateGists            int                `json:"private_gists"`
+	PublicGists             int                `json:"public_gists"`
+	PublicRepos             int                `json:"public_repos"`
+	ReceivedEventsURL       url.URL            `json:"received_events_url"`
+	ReposURL                url.URL            `json:"repos_url"`
+	SiteAdmin               bool               `json:"site_admin"`
+	StarredURL              string             `json:"starred_url"`
+	SubscriptionsURL        url.URL            `json:"subscriptions_url"`
+	SuspendedAt             OptNilTime         `json:"suspended_at"`
+	TotalPrivateRepos       int                `json:"total_private_repos"`
+	TwitterUsername         OptNilString       `json:"twitter_username"`
+	TwoFactorAuthentication bool               `json:"two_factor_authentication"`
+	Type                    string             `json:"type"`
+	UpdatedAt               time.Time          `json:"updated_at"`
+	URL                     url.URL            `json:"url"`
+}
+
+type PrivateUserPlan struct {
+	Collaborators int    `json:"collaborators"`
+	Name          string `json:"name"`
+	PrivateRepos  int    `json:"private_repos"`
+	Space         int    `json:"space"`
+}
+
 // Ref: #/components/schemas/project
 type Project struct {
 	Body                   NilString                        `json:"body"`
@@ -19255,6 +19499,12 @@ const (
 	ProjectsAddCollaboratorReqPermissionWrite ProjectsAddCollaboratorReqPermission = "write"
 	ProjectsAddCollaboratorReqPermissionAdmin ProjectsAddCollaboratorReqPermission = "admin"
 )
+
+// ProjectsAddCollaboratorResNoContent is response for ProjectsAddCollaborator operation.
+type ProjectsAddCollaboratorResNoContent struct{}
+
+// ProjectsAddCollaboratorResNotModified is response for ProjectsAddCollaborator operation.
+type ProjectsAddCollaboratorResNotModified struct{}
 
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
@@ -19500,6 +19750,9 @@ const (
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
 
+// ProjectsListCollaboratorsResNotModified is response for ProjectsListCollaborators operation.
+type ProjectsListCollaboratorsResNotModified struct{}
+
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
 func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
@@ -19588,18 +19841,6 @@ type ProjectsMoveCardResForbiddenErrorsItem struct {
 // ProjectsMoveCardResNotModified is response for ProjectsMoveCard operation.
 type ProjectsMoveCardResNotModified struct{}
 
-type ProjectsMoveCardResServiceUnavailable struct {
-	Code             OptString                                         `json:"code"`
-	DocumentationURL OptString                                         `json:"documentation_url"`
-	Errors           []ProjectsMoveCardResServiceUnavailableErrorsItem `json:"errors"`
-	Message          OptString                                         `json:"message"`
-}
-
-type ProjectsMoveCardResServiceUnavailableErrorsItem struct {
-	Code    OptString `json:"code"`
-	Message OptString `json:"message"`
-}
-
 type ProjectsMoveColumnApplicationJSONForbidden BasicError
 
 func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnRes() {}
@@ -19620,6 +19861,12 @@ func (*ProjectsMoveColumnResCreated) projectsMoveColumnRes() {}
 type ProjectsMoveColumnResNotModified struct{}
 
 func (*ProjectsMoveColumnResNotModified) projectsMoveColumnRes() {}
+
+// ProjectsRemoveCollaboratorResNoContent is response for ProjectsRemoveCollaborator operation.
+type ProjectsRemoveCollaboratorResNoContent struct{}
+
+// ProjectsRemoveCollaboratorResNotModified is response for ProjectsRemoveCollaborator operation.
+type ProjectsRemoveCollaboratorResNotModified struct{}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
@@ -20786,6 +21033,11 @@ const (
 	ReactionsCreateForIssueCommentReqContentEyes     ReactionsCreateForIssueCommentReqContent = "eyes"
 )
 
+type ReactionsCreateForIssueCommentResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
 type ReactionsCreateForIssueReq struct {
 	Content ReactionsCreateForIssueReqContent `json:"content"`
 }
@@ -20824,6 +21076,11 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentRocket   ReactionsCreateForPullRequestReviewCommentReqContent = "rocket"
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
+
+type ReactionsCreateForPullRequestReviewCommentResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
 
 type ReactionsCreateForReleaseReq struct {
 	Content ReactionsCreateForReleaseReqContent `json:"content"`
@@ -21547,6 +21804,11 @@ const (
 	ReposCreatePagesSiteReqSourcePathSlashDocs ReposCreatePagesSiteReqSourcePath = "/docs"
 )
 
+type ReposCreatePagesSiteResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
+
 type ReposCreateReleaseReq struct {
 	Body                   OptString `json:"body"`
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
@@ -21668,17 +21930,16 @@ type ReposDeleteFileReqCommitter struct {
 	Name  OptString `json:"name"`
 }
 
-type ReposDeleteFileResServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
 // ReposDeleteInvitationResNoContent is response for ReposDeleteInvitation operation.
 type ReposDeleteInvitationResNoContent struct{}
 
 // ReposDeletePagesSiteResNoContent is response for ReposDeletePagesSite operation.
 type ReposDeletePagesSiteResNoContent struct{}
+
+type ReposDeletePagesSiteResUnsupportedMediaType struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
+}
 
 // ReposDeletePullRequestReviewProtectionResNoContent is response for ReposDeletePullRequestReviewProtection operation.
 type ReposDeletePullRequestReviewProtectionResNoContent struct{}
@@ -21815,9 +22076,6 @@ func (*ReposGetCommitActivityStatsResAccepted) reposGetCommitActivityStatsRes() 
 type ReposGetCommitActivityStatsResNoContent struct{}
 
 func (*ReposGetCommitActivityStatsResNoContent) reposGetCommitActivityStatsRes() {}
-
-// ReposGetContentResFound is response for ReposGetContent operation.
-type ReposGetContentResFound struct{}
 
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
@@ -22085,6 +22343,9 @@ type ReposListInvitationsForAuthenticatedUserResNotModified struct{}
 func (*ReposListInvitationsForAuthenticatedUserResNotModified) reposListInvitationsForAuthenticatedUserRes() {
 }
 
+// ReposListPublicResNotModified is response for ReposListPublic operation.
+type ReposListPublicResNotModified struct{}
+
 type ReposListReleasesOKApplicationJSON []Release
 
 func (*ReposListReleasesOKApplicationJSON) reposListReleasesRes() {}
@@ -22098,6 +22359,15 @@ type ReposMergeReq struct {
 	CommitMessage OptString `json:"commit_message"`
 	Head          string    `json:"head"`
 }
+
+// ReposMergeResConflict is response for ReposMerge operation.
+type ReposMergeResConflict struct{}
+
+// ReposMergeResNoContent is response for ReposMerge operation.
+type ReposMergeResNoContent struct{}
+
+// ReposMergeResNotFound is response for ReposMerge operation.
+type ReposMergeResNotFound struct{}
 
 type ReposMergeUpstreamReq struct {
 	Branch string `json:"branch"`
@@ -22117,6 +22387,8 @@ func (*ReposMergeUpstreamResUnprocessableEntity) reposMergeUpstreamRes() {}
 type ReposPingWebhookResNoContent struct{}
 
 func (*ReposPingWebhookResNoContent) reposPingWebhookRes() {}
+
+type ReposRedeliverWebhookDeliveryResAccepted struct{}
 
 // ReposRemoveCollaboratorResNoContent is response for ReposRemoveCollaborator operation.
 type ReposRemoveCollaboratorResNoContent struct{}
@@ -22806,9 +23078,6 @@ type ScimGroupListEnterpriseResourcesItemMeta struct {
 	ResourceType OptString `json:"resourceType"`
 }
 
-// ScimListProvisionedIdentitiesResNotModified is response for ScimListProvisionedIdentities operation.
-type ScimListProvisionedIdentitiesResNotModified struct{}
-
 type ScimProvisionAndInviteUserReq struct {
 	Active      OptBool                                   `json:"active"`
 	DisplayName OptString                                 `json:"displayName"`
@@ -22914,12 +23183,6 @@ type SearchCodeResOK struct {
 	TotalCount        int                    `json:"total_count"`
 }
 
-type SearchCodeResServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
-}
-
 type SearchCodeSort string
 
 const (
@@ -22967,10 +23230,13 @@ const (
 	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
 )
 
-type SearchIssuesAndPullRequestsResServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
+// SearchIssuesAndPullRequestsResNotModified is response for SearchIssuesAndPullRequests operation.
+type SearchIssuesAndPullRequestsResNotModified struct{}
+
+type SearchIssuesAndPullRequestsResOK struct {
+	IncompleteResults bool                    `json:"incomplete_results"`
+	Items             []IssueSearchResultItem `json:"items"`
+	TotalCount        int                     `json:"total_count"`
 }
 
 type SearchIssuesAndPullRequestsSort string
@@ -22996,6 +23262,15 @@ const (
 	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
 )
 
+// SearchLabelsResNotModified is response for SearchLabels operation.
+type SearchLabelsResNotModified struct{}
+
+type SearchLabelsResOK struct {
+	IncompleteResults bool                    `json:"incomplete_results"`
+	Items             []LabelSearchResultItem `json:"items"`
+	TotalCount        int                     `json:"total_count"`
+}
+
 type SearchLabelsSort string
 
 const (
@@ -23010,16 +23285,13 @@ const (
 	SearchReposOrderAsc  SearchReposOrder = "asc"
 )
 
+// SearchReposResNotModified is response for SearchRepos operation.
+type SearchReposResNotModified struct{}
+
 type SearchReposResOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []RepoSearchResultItem `json:"items"`
 	TotalCount        int                    `json:"total_count"`
-}
-
-type SearchReposResServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
 }
 
 type SearchReposSort string
@@ -23076,10 +23348,10 @@ const (
 // SearchUsersResNotModified is response for SearchUsers operation.
 type SearchUsersResNotModified struct{}
 
-type SearchUsersResServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Message          OptString `json:"message"`
+type SearchUsersResOK struct {
+	IncompleteResults bool                   `json:"incomplete_results"`
+	Items             []UserSearchResultItem `json:"items"`
+	TotalCount        int                    `json:"total_count"`
 }
 
 type SearchUsersSort string
@@ -23213,6 +23485,12 @@ type SelectedActions struct {
 }
 
 type SelectedActionsURL string
+
+// Ref: #/components/schemas/short-blob
+type ShortBlob struct {
+	Sha string `json:"sha"`
+	URL string `json:"url"`
+}
 
 // Ref: #/components/schemas/short-branch
 type ShortBranch struct {
@@ -23702,6 +23980,14 @@ const (
 	TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyReqPermission = "admin"
 )
 
+type TeamsAddOrUpdateProjectPermissionsLegacyResForbidden struct {
+	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message"`
+}
+
+// TeamsAddOrUpdateProjectPermissionsLegacyResNoContent is response for TeamsAddOrUpdateProjectPermissionsLegacy operation.
+type TeamsAddOrUpdateProjectPermissionsLegacyResNoContent struct{}
+
 type TeamsAddOrUpdateRepoPermissionsInOrgReq struct {
 	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission `json:"permission"`
 }
@@ -24167,6 +24453,50 @@ type UserMarketplacePurchase struct {
 	UpdatedAt       NilTime                `json:"updated_at"`
 }
 
+// Ref: #/components/schemas/user-search-result-item
+type UserSearchResultItem struct {
+	AvatarURL         url.URL                  `json:"avatar_url"`
+	Bio               OptNilString             `json:"bio"`
+	Blog              OptNilString             `json:"blog"`
+	Company           OptNilString             `json:"company"`
+	CreatedAt         OptTime                  `json:"created_at"`
+	Email             OptNilString             `json:"email"`
+	EventsURL         string                   `json:"events_url"`
+	Followers         OptInt                   `json:"followers"`
+	FollowersURL      url.URL                  `json:"followers_url"`
+	Following         OptInt                   `json:"following"`
+	FollowingURL      string                   `json:"following_url"`
+	GistsURL          string                   `json:"gists_url"`
+	GravatarID        NilString                `json:"gravatar_id"`
+	Hireable          OptNilBool               `json:"hireable"`
+	HTMLURL           url.URL                  `json:"html_url"`
+	ID                int                      `json:"id"`
+	Location          OptNilString             `json:"location"`
+	Login             string                   `json:"login"`
+	Name              OptNilString             `json:"name"`
+	NodeID            string                   `json:"node_id"`
+	OrganizationsURL  url.URL                  `json:"organizations_url"`
+	PublicGists       OptInt                   `json:"public_gists"`
+	PublicRepos       OptInt                   `json:"public_repos"`
+	ReceivedEventsURL url.URL                  `json:"received_events_url"`
+	ReposURL          url.URL                  `json:"repos_url"`
+	Score             float64                  `json:"score"`
+	SiteAdmin         bool                     `json:"site_admin"`
+	StarredURL        string                   `json:"starred_url"`
+	SubscriptionsURL  url.URL                  `json:"subscriptions_url"`
+	SuspendedAt       OptNilTime               `json:"suspended_at"`
+	TextMatches       *SearchResultTextMatches `json:"text_matches"`
+	Type              string                   `json:"type"`
+	UpdatedAt         OptTime                  `json:"updated_at"`
+	URL               url.URL                  `json:"url"`
+}
+
+// UsersBlockResNoContent is response for UsersBlock operation.
+type UsersBlockResNoContent struct{}
+
+// UsersBlockResNotModified is response for UsersBlock operation.
+type UsersBlockResNotModified struct{}
+
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
 func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedRes() {}
@@ -24230,10 +24560,22 @@ type UsersCreateGpgKeyForAuthenticatedReq struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
 }
 
+// UsersCreateGpgKeyForAuthenticatedResNotModified is response for UsersCreateGpgKeyForAuthenticated operation.
+type UsersCreateGpgKeyForAuthenticatedResNotModified struct{}
+
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 	Key   string    `json:"key"`
 	Title OptString `json:"title"`
 }
+
+// UsersCreatePublicSSHKeyForAuthenticatedResNotModified is response for UsersCreatePublicSSHKeyForAuthenticated operation.
+type UsersCreatePublicSSHKeyForAuthenticatedResNotModified struct{}
+
+// UsersDeleteGpgKeyForAuthenticatedResNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
+type UsersDeleteGpgKeyForAuthenticatedResNoContent struct{}
+
+// UsersDeleteGpgKeyForAuthenticatedResNotModified is response for UsersDeleteGpgKeyForAuthenticated operation.
+type UsersDeleteGpgKeyForAuthenticatedResNotModified struct{}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -24283,8 +24625,6 @@ func (*UsersFollowResNoContent) usersFollowRes() {}
 type UsersFollowResNotModified struct{}
 
 func (*UsersFollowResNotModified) usersFollowRes() {}
-
-type UsersGetByUsernameResAccepted struct{}
 
 type UsersGetContextForUserSubjectType string
 
@@ -24523,6 +24863,9 @@ const (
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "private"
 )
 
+// UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified is response for UsersSetPrimaryEmailVisibilityForAuthenticated operation.
+type UsersSetPrimaryEmailVisibilityForAuthenticatedResNotModified struct{}
+
 type UsersUnblockApplicationJSONForbidden BasicError
 
 func (*UsersUnblockApplicationJSONForbidden) usersUnblockRes() {}
@@ -24577,6 +24920,9 @@ type UsersUpdateAuthenticatedReq struct {
 	Name            OptString    `json:"name"`
 	TwitterUsername OptNilString `json:"twitter_username"`
 }
+
+// UsersUpdateAuthenticatedResNotModified is response for UsersUpdateAuthenticated operation.
+type UsersUpdateAuthenticatedResNotModified struct{}
 
 // Ref: #/components/schemas/validation-error-simple
 type ValidationErrorSimple struct {
