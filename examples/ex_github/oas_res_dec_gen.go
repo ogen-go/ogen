@@ -127,7 +127,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -148,7 +148,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "ActionsApproveWorkflowRunApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -169,7 +169,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "ActionsApproveWorkflowRunApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -203,7 +203,7 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -237,7 +237,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -273,7 +273,7 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -309,7 +309,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -345,7 +345,7 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -379,7 +379,7 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response, sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -413,7 +413,7 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -447,7 +447,7 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -481,7 +481,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -725,7 +725,7 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -759,7 +759,7 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -793,7 +793,7 @@ func decodeActionsGetArtifactResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -827,7 +827,7 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -861,7 +861,7 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -895,7 +895,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -929,7 +929,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -963,7 +963,7 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -997,7 +997,7 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1031,7 +1031,7 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1065,7 +1065,7 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1099,7 +1099,7 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1131,25 +1131,17 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response, span trace.Span)
 			var response []EnvironmentApprovals
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem EnvironmentApprovals
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1183,7 +1175,7 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response, span tr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1217,7 +1209,7 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1251,7 +1243,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response, sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1285,7 +1277,7 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1319,7 +1311,7 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1353,7 +1345,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1387,7 +1379,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1421,7 +1413,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1455,7 +1447,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1489,7 +1481,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1523,7 +1515,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1557,7 +1549,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1589,25 +1581,17 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response, span
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem RunnerApplication
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1639,25 +1623,17 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response, spa
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem RunnerApplication
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1691,7 +1667,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1725,7 +1701,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1759,7 +1735,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1793,7 +1769,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1827,7 +1803,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1861,7 +1837,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1895,7 +1871,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1929,7 +1905,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1963,7 +1939,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2044,7 +2020,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2198,7 +2174,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2236,7 +2212,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2257,7 +2233,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2278,7 +2254,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2331,7 +2307,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2352,7 +2328,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "ActivityDeleteThreadSubscriptionApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2386,7 +2362,7 @@ func decodeActivityGetFeedsResponse(resp *http.Response, span trace.Span) (res F
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2420,7 +2396,7 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2441,7 +2417,7 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2477,7 +2453,7 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2500,7 +2476,7 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ActivityGetThreadApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2521,7 +2497,7 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ActivityGetThreadApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2555,7 +2531,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2578,7 +2554,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2599,7 +2575,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2631,25 +2607,17 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response, s
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2681,25 +2649,17 @@ func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2733,7 +2693,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "ActivityListPublicEventsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2756,7 +2716,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2777,7 +2737,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2811,7 +2771,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityListPublicEventsForRepoNetworkOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2832,7 +2792,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2855,7 +2815,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2876,7 +2836,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2908,25 +2868,17 @@ func decodeActivityListPublicEventsForUserResponse(resp *http.Response, span tra
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2958,25 +2910,17 @@ func decodeActivityListPublicOrgEventsResponse(resp *http.Response, span trace.S
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3008,25 +2952,17 @@ func decodeActivityListReceivedEventsForUserResponse(resp *http.Response, span t
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3058,25 +2994,17 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response, 
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3108,25 +3036,17 @@ func decodeActivityListRepoEventsResponse(resp *http.Response, span trace.Span) 
 			var response []Event
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Event
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3158,25 +3078,17 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 			var response []Thread
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Thread
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3210,7 +3122,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ActivityListReposStarredByAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3235,7 +3147,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3256,7 +3168,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3288,25 +3200,17 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response, span trac
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem MinimalRepository
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3340,7 +3244,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3363,7 +3267,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3384,7 +3288,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3416,25 +3320,17 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response, span trace.S
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3468,7 +3364,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3493,7 +3389,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "ActivityMarkNotificationsAsReadApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3514,7 +3410,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "ActivityMarkNotificationsAsReadApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3548,7 +3444,7 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3588,7 +3484,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3622,7 +3518,7 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3656,7 +3552,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3679,7 +3575,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ActivitySetThreadSubscriptionApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3700,7 +3596,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ActivitySetThreadSubscriptionApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3738,7 +3634,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3759,7 +3655,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3780,7 +3676,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3818,7 +3714,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3839,7 +3735,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3860,7 +3756,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3898,7 +3794,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "AppsAddRepoToInstallationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3919,7 +3815,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "AppsAddRepoToInstallationApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3955,7 +3851,7 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3989,7 +3885,7 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4023,7 +3919,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4044,7 +3940,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := fmt.Errorf(`decoding of "AppsGetBySlugApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4065,7 +3961,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := fmt.Errorf(`decoding of "AppsGetBySlugApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4086,7 +3982,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4120,7 +4016,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4141,7 +4037,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4162,7 +4058,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "AppsGetSubscriptionPlanForAccountApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4196,7 +4092,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4217,7 +4113,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4253,7 +4149,7 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4287,7 +4183,7 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "AppsListAccountsForPlanStubbedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4308,7 +4204,7 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4342,7 +4238,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4365,7 +4261,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4386,7 +4282,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4420,7 +4316,7 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := fmt.Errorf(`decoding of "AppsListPlansOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4441,7 +4337,7 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := fmt.Errorf(`decoding of "AppsListPlansApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4462,7 +4358,7 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 				if err := fmt.Errorf(`decoding of "AppsListPlansApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4496,7 +4392,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "AppsListPlansStubbedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4517,7 +4413,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4551,7 +4447,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4574,7 +4470,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "AppsListReposAccessibleToInstallationApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4595,7 +4491,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "AppsListReposAccessibleToInstallationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4629,7 +4525,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4652,7 +4548,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4673,7 +4569,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4707,7 +4603,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4730,7 +4626,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4768,7 +4664,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "AppsRemoveRepoFromInstallationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4789,7 +4685,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "AppsRemoveRepoFromInstallationApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4840,7 +4736,7 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4876,7 +4772,7 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4910,7 +4806,7 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4944,7 +4840,7 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4978,7 +4874,7 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5012,7 +4908,7 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5046,7 +4942,7 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5080,7 +4976,7 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5114,7 +5010,7 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5148,7 +5044,7 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5182,7 +5078,7 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5216,7 +5112,7 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5250,7 +5146,7 @@ func decodeChecksCreateResponse(resp *http.Response, span trace.Span) (res Check
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5284,7 +5180,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ChecksCreateSuiteApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5305,7 +5201,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ChecksCreateSuiteApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5339,7 +5235,7 @@ func decodeChecksGetResponse(resp *http.Response, span trace.Span) (res CheckRun
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5373,7 +5269,7 @@ func decodeChecksGetSuiteResponse(resp *http.Response, span trace.Span) (res Che
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5405,25 +5301,17 @@ func decodeChecksListAnnotationsResponse(resp *http.Response, span trace.Span) (
 			var response []CheckAnnotation
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem CheckAnnotation
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5457,7 +5345,7 @@ func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res C
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5491,7 +5379,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5525,7 +5413,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5559,7 +5447,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5593,7 +5481,7 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5627,7 +5515,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5648,7 +5536,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "CodeScanningDeleteAnalysisApplicationJSONBadRequest" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5671,7 +5559,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "CodeScanningDeleteAnalysisApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5692,7 +5580,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "CodeScanningDeleteAnalysisApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5713,7 +5601,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5747,7 +5635,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5768,7 +5656,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "CodeScanningGetAlertApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5789,7 +5677,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "CodeScanningGetAlertApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5810,7 +5698,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5844,7 +5732,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5867,7 +5755,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningGetAnalysisApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5888,7 +5776,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningGetAnalysisApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5909,7 +5797,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5943,7 +5831,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5964,7 +5852,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5987,7 +5875,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6021,7 +5909,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertInstancesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6042,7 +5930,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertInstancesApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6063,7 +5951,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertInstancesApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6084,7 +5972,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6118,7 +6006,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertsForRepoOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6139,7 +6027,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertsForRepoApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6160,7 +6048,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CodeScanningListAlertsForRepoApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6181,7 +6069,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6215,7 +6103,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListRecentAnalysesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6236,7 +6124,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListRecentAnalysesApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6257,7 +6145,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CodeScanningListRecentAnalysesApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6278,7 +6166,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6312,7 +6200,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6333,7 +6221,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningUpdateAlertApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6354,7 +6242,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningUpdateAlertApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6375,7 +6263,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6409,7 +6297,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6432,7 +6320,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningUploadSarifApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6453,7 +6341,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "CodeScanningUploadSarifApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6476,7 +6364,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6510,7 +6398,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "CodesOfConductGetAllCodesOfConductOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6546,7 +6434,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6569,7 +6457,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6603,7 +6491,7 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6669,7 +6557,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6703,7 +6591,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6737,7 +6625,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6861,7 +6749,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6893,25 +6781,17 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response, span trace.Sp
 			var response []AuditLogEvent
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem AuditLogEvent
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6945,7 +6825,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6979,7 +6859,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7013,7 +6893,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7047,7 +6927,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7081,7 +6961,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7115,7 +6995,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7149,7 +7029,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7183,7 +7063,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7215,25 +7095,17 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem RunnerApplication
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7267,7 +7139,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7301,7 +7173,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7335,7 +7207,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7369,7 +7241,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7403,7 +7275,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7437,7 +7309,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7531,7 +7403,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7565,7 +7437,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7644,7 +7516,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7678,7 +7550,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7716,7 +7588,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7737,7 +7609,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7771,7 +7643,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7794,7 +7666,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GistsCreateCommentApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7815,7 +7687,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GistsCreateCommentApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7853,7 +7725,7 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 				if err := fmt.Errorf(`decoding of "GistsDeleteApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7874,7 +7746,7 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 				if err := fmt.Errorf(`decoding of "GistsDeleteApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7912,7 +7784,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GistsDeleteCommentApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7933,7 +7805,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GistsDeleteCommentApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7967,7 +7839,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7990,7 +7862,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8011,7 +7883,7 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8045,7 +7917,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8068,7 +7940,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8089,7 +7961,7 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8123,7 +7995,7 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 				if err := fmt.Errorf(`decoding of "GistsListOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8146,7 +8018,7 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8180,7 +8052,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "GistsListCommentsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8203,7 +8075,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "GistsListCommentsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8224,7 +8096,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "GistsListCommentsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8258,7 +8130,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListCommitsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8281,7 +8153,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListCommitsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8302,7 +8174,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListCommitsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8336,7 +8208,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 				if err := fmt.Errorf(`decoding of "GistsListForksOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8359,7 +8231,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 				if err := fmt.Errorf(`decoding of "GistsListForksApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8380,7 +8252,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 				if err := fmt.Errorf(`decoding of "GistsListForksApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8414,7 +8286,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListStarredOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8437,7 +8309,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListStarredApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8458,7 +8330,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GistsListStarredApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8496,7 +8368,7 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 				if err := fmt.Errorf(`decoding of "GistsStarApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8517,7 +8389,7 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 				if err := fmt.Errorf(`decoding of "GistsStarApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8555,7 +8427,7 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 				if err := fmt.Errorf(`decoding of "GistsUnstarApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8576,7 +8448,7 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 				if err := fmt.Errorf(`decoding of "GistsUnstarApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8610,7 +8482,7 @@ func decodeGistsUpdateCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8631,7 +8503,7 @@ func decodeGistsUpdateCommentResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8665,7 +8537,7 @@ func decodeGitGetCommitResponse(resp *http.Response, span trace.Span) (res GitGe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8686,7 +8558,7 @@ func decodeGitGetCommitResponse(resp *http.Response, span trace.Span) (res GitGe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8720,7 +8592,7 @@ func decodeGitGetRefResponse(resp *http.Response, span trace.Span) (res GitGetRe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8741,7 +8613,7 @@ func decodeGitGetRefResponse(resp *http.Response, span trace.Span) (res GitGetRe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8775,7 +8647,7 @@ func decodeGitGetTagResponse(resp *http.Response, span trace.Span) (res GitGetTa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8796,7 +8668,7 @@ func decodeGitGetTagResponse(resp *http.Response, span trace.Span) (res GitGetTa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8828,25 +8700,17 @@ func decodeGitListMatchingRefsResponse(resp *http.Response, span trace.Span) (re
 			var response []GitRef
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem GitRef
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8880,7 +8744,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "GitignoreGetAllTemplatesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8916,7 +8780,7 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8999,7 +8863,7 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9035,7 +8899,7 @@ func decodeIssuesAddAssigneesResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9071,7 +8935,7 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9137,7 +9001,7 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9171,7 +9035,7 @@ func decodeIssuesGetCommentResponse(resp *http.Response, span trace.Span) (res I
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9192,7 +9056,7 @@ func decodeIssuesGetCommentResponse(resp *http.Response, span trace.Span) (res I
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9226,7 +9090,7 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9247,7 +9111,7 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := fmt.Errorf(`decoding of "IssuesGetEventApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9268,7 +9132,7 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := fmt.Errorf(`decoding of "IssuesGetEventApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9289,7 +9153,7 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := fmt.Errorf(`decoding of "IssuesGetEventApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9323,7 +9187,7 @@ func decodeIssuesGetLabelResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9344,7 +9208,7 @@ func decodeIssuesGetLabelResponse(resp *http.Response, span trace.Span) (res Iss
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9378,7 +9242,7 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9399,7 +9263,7 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9433,7 +9297,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "IssuesListAssigneesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9454,7 +9318,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9488,7 +9352,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "IssuesListCommentsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9509,7 +9373,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "IssuesListCommentsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9530,7 +9394,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "IssuesListCommentsApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9562,25 +9426,17 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response, span trace.
 			var response []Label
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Label
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9614,7 +9470,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "IssuesListLabelsForRepoOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9635,7 +9491,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9669,7 +9525,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "IssuesListLabelsOnIssueOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9690,7 +9546,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9724,7 +9580,7 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "IssuesListMilestonesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9745,7 +9601,7 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9781,7 +9637,7 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9815,7 +9671,7 @@ func decodeIssuesRemoveAssigneesResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9849,7 +9705,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "IssuesRemoveLabelOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9870,7 +9726,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "IssuesRemoveLabelApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9891,7 +9747,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "IssuesRemoveLabelApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9927,7 +9783,7 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 				if err := fmt.Errorf(`decoding of "IssuesUnlockApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9948,7 +9804,7 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 				if err := fmt.Errorf(`decoding of "IssuesUnlockApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9982,7 +9838,7 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10016,7 +9872,7 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10050,7 +9906,7 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10073,7 +9929,7 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 				if err := fmt.Errorf(`decoding of "LicensesGetApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10094,7 +9950,7 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 				if err := fmt.Errorf(`decoding of "LicensesGetApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10128,7 +9984,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "LicensesGetAllCommonlyUsedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10164,7 +10020,7 @@ func decodeLicensesGetForRepoResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10242,7 +10098,7 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10318,7 +10174,7 @@ func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootO
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10371,7 +10227,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10392,7 +10248,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10413,7 +10269,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10449,7 +10305,7 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10485,7 +10341,7 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10523,7 +10379,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10544,7 +10400,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10578,7 +10434,7 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "MigrationsGetCommitAuthorsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10599,7 +10455,7 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10633,7 +10489,7 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10654,7 +10510,7 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10686,25 +10542,17 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response, span trace.Span)
 			var response []PorterLargeFile
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PorterLargeFile
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10738,7 +10586,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10761,7 +10609,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10782,7 +10630,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10803,7 +10651,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10837,7 +10685,7 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10858,7 +10706,7 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10892,7 +10740,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "MigrationsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10915,7 +10763,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "MigrationsListForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10936,7 +10784,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "MigrationsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10968,25 +10816,17 @@ func decodeMigrationsListForOrgResponse(resp *http.Response, span trace.Span) (r
 			var response []Migration
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Migration
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11020,7 +10860,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "MigrationsListReposForOrgOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11041,7 +10881,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11075,7 +10915,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "MigrationsListReposForUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11096,7 +10936,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11134,7 +10974,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11155,7 +10995,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11176,7 +11016,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11212,7 +11052,7 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11246,7 +11086,7 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11284,7 +11124,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11305,7 +11145,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11343,7 +11183,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11364,7 +11204,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsDeleteGrantApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11398,7 +11238,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11421,7 +11261,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11442,7 +11282,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11476,7 +11316,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11499,7 +11339,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsGetGrantApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11520,7 +11360,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsGetGrantApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11554,7 +11394,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListAuthorizationsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11577,7 +11417,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11598,7 +11438,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11619,7 +11459,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11653,7 +11493,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListGrantsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11676,7 +11516,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11697,7 +11537,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11718,7 +11558,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11754,7 +11594,7 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11824,7 +11664,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11849,7 +11689,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11885,7 +11725,7 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11919,7 +11759,7 @@ func decodeOrgsGetResponse(resp *http.Response, span trace.Span) (res OrgsGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11940,7 +11780,7 @@ func decodeOrgsGetResponse(resp *http.Response, span trace.Span) (res OrgsGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11972,25 +11812,17 @@ func decodeOrgsGetAuditLogResponse(resp *http.Response, span trace.Span) (res []
 			var response []AuditLogEvent
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem AuditLogEvent
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12024,7 +11856,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12045,7 +11877,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12066,7 +11898,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12100,7 +11932,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12121,7 +11953,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "OrgsGetMembershipForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12142,7 +11974,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "OrgsGetMembershipForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12176,7 +12008,7 @@ func decodeOrgsGetWebhookResponse(resp *http.Response, span trace.Span) (res Org
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12197,7 +12029,7 @@ func decodeOrgsGetWebhookResponse(resp *http.Response, span trace.Span) (res Org
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12231,7 +12063,7 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12265,7 +12097,7 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 				if err := fmt.Errorf(`decoding of "OrgsListOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12301,7 +12133,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "OrgsListBlockedUsersOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12322,7 +12154,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12356,7 +12188,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "OrgsListFailedInvitationsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12377,7 +12209,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12411,7 +12243,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "OrgsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12434,7 +12266,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "OrgsListForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12455,7 +12287,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "OrgsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12487,25 +12319,17 @@ func decodeOrgsListForUserResponse(resp *http.Response, span trace.Span) (res []
 			var response []OrganizationSimple
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem OrganizationSimple
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12539,7 +12363,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "OrgsListInvitationTeamsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12560,7 +12384,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12592,25 +12416,17 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response, span trace.
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12644,7 +12460,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "OrgsListPendingInvitationsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12665,7 +12481,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12697,25 +12513,17 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response, span trace.Span) (
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12747,25 +12555,17 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response, span trace
 			var response []CredentialAuthorization
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem CredentialAuthorization
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12799,7 +12599,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 				if err := fmt.Errorf(`decoding of "OrgsListWebhooksOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12820,7 +12620,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12856,7 +12656,7 @@ func decodeOrgsPingWebhookResponse(resp *http.Response, span trace.Span) (res Or
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12892,7 +12692,7 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response, span trace.Span) (res O
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12928,7 +12728,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "OrgsRemoveMembershipForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12949,7 +12749,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "OrgsRemoveMembershipForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -12985,7 +12785,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13036,7 +12836,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13072,7 +12872,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13121,7 +12921,7 @@ func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13157,7 +12957,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13178,7 +12978,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13199,7 +12999,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13235,7 +13035,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13256,7 +13056,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13277,7 +13077,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13313,7 +13113,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13334,7 +13134,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13355,7 +13155,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13391,7 +13191,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13412,7 +13212,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13433,7 +13233,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13469,7 +13269,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13490,7 +13290,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13511,7 +13311,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13547,7 +13347,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13568,7 +13368,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13589,7 +13389,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13623,7 +13423,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13644,7 +13444,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13665,7 +13465,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13686,7 +13486,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13720,7 +13520,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13741,7 +13541,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13762,7 +13562,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13783,7 +13583,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13817,7 +13617,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13838,7 +13638,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13859,7 +13659,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13880,7 +13680,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				if err := fmt.Errorf(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13914,7 +13714,7 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13948,7 +13748,7 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -13982,7 +13782,7 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14016,7 +13816,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14050,7 +13850,7 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14084,7 +13884,7 @@ func decodePackagesGetPackageVersionForUserResponse(resp *http.Response, span tr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14116,25 +13916,17 @@ func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response,
 			var response []Package
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Package
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14168,7 +13960,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForOrganizationOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14189,7 +13981,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForOrganizationApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14210,7 +14002,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForOrganizationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14244,7 +14036,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14265,7 +14057,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14286,7 +14078,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "PackagesListPackagesForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14322,7 +14114,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14343,7 +14135,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14364,7 +14156,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14400,7 +14192,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14421,7 +14213,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14442,7 +14234,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14478,7 +14270,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14499,7 +14291,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14520,7 +14312,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14556,7 +14348,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14577,7 +14369,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14598,7 +14390,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14634,7 +14426,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14655,7 +14447,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14676,7 +14468,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14712,7 +14504,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14733,7 +14525,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14754,7 +14546,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14788,7 +14580,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14811,7 +14603,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateColumnApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14832,7 +14624,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateColumnApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14853,7 +14645,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14887,7 +14679,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14910,7 +14702,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14931,7 +14723,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14952,7 +14744,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -14973,7 +14765,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15007,7 +14799,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15028,7 +14820,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForOrgApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15049,7 +14841,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15070,7 +14862,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15091,7 +14883,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForOrgApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15112,7 +14904,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15146,7 +14938,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15167,7 +14959,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForRepoApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15188,7 +14980,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForRepoApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15209,7 +15001,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForRepoApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15230,7 +15022,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ProjectsCreateForRepoApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15251,7 +15043,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15289,7 +15081,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15310,7 +15102,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15331,7 +15123,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15352,7 +15144,7 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15390,7 +15182,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteCardApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15411,7 +15203,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15432,7 +15224,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteCardApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15470,7 +15262,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteColumnApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15491,7 +15283,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsDeleteColumnApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15525,7 +15317,7 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15548,7 +15340,7 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 				if err := fmt.Errorf(`decoding of "ProjectsGetApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15569,7 +15361,7 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 				if err := fmt.Errorf(`decoding of "ProjectsGetApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15603,7 +15395,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15626,7 +15418,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 				if err := fmt.Errorf(`decoding of "ProjectsGetCardApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15647,7 +15439,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 				if err := fmt.Errorf(`decoding of "ProjectsGetCardApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15668,7 +15460,7 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 				if err := fmt.Errorf(`decoding of "ProjectsGetCardApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15702,7 +15494,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15725,7 +15517,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsGetColumnApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15746,7 +15538,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsGetColumnApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15767,7 +15559,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsGetColumnApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15801,7 +15593,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsListCardsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15824,7 +15616,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsListCardsApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15845,7 +15637,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ProjectsListCardsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15879,7 +15671,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListColumnsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15902,7 +15694,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListColumnsApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15923,7 +15715,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListColumnsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15957,7 +15749,7 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsListForOrgOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -15978,7 +15770,7 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16012,7 +15804,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListForRepoOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16033,7 +15825,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListForRepoApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16054,7 +15846,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListForRepoApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16075,7 +15867,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListForRepoApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16096,7 +15888,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ProjectsListForRepoApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16117,7 +15909,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16151,7 +15943,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16174,7 +15966,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsMoveColumnApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16195,7 +15987,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsMoveColumnApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16216,7 +16008,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16250,7 +16042,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16273,7 +16065,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16294,7 +16086,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16317,7 +16109,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16338,7 +16130,7 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16372,7 +16164,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16395,7 +16187,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateCardApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16416,7 +16208,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateCardApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16437,7 +16229,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateCardApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16458,7 +16250,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16492,7 +16284,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16515,7 +16307,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateColumnApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16536,7 +16328,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ProjectsUpdateColumnApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16587,7 +16379,7 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response, span tr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16608,7 +16400,7 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response, span tr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16642,7 +16434,7 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16663,7 +16455,7 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16684,7 +16476,7 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16718,7 +16510,7 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16739,7 +16531,7 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16760,7 +16552,7 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16796,7 +16588,7 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16830,7 +16622,7 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16851,7 +16643,7 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16872,7 +16664,7 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16906,7 +16698,7 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16929,7 +16721,7 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 				if err := fmt.Errorf(`decoding of "PullsGetApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16950,7 +16742,7 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 				if err := fmt.Errorf(`decoding of "PullsGetApplicationJSONInternalServerError" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -16984,7 +16776,7 @@ func decodePullsGetReviewResponse(resp *http.Response, span trace.Span) (res Pul
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17005,7 +16797,7 @@ func decodePullsGetReviewResponse(resp *http.Response, span trace.Span) (res Pul
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17039,7 +16831,7 @@ func decodePullsGetReviewCommentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17060,7 +16852,7 @@ func decodePullsGetReviewCommentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17094,7 +16886,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "PullsListCommentsForReviewOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17115,7 +16907,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17147,25 +16939,17 @@ func decodePullsListCommitsResponse(resp *http.Response, span trace.Span) (res [
 			var response []Commit
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Commit
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17199,7 +16983,7 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17231,25 +17015,17 @@ func decodePullsListReviewCommentsResponse(resp *http.Response, span trace.Span)
 			var response []PullRequestReviewComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PullRequestReviewComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17281,25 +17057,17 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response, span trac
 			var response []PullRequestReviewComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PullRequestReviewComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17331,25 +17099,17 @@ func decodePullsListReviewsResponse(resp *http.Response, span trace.Span) (res [
 			var response []PullRequestReview
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PullRequestReview
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17383,7 +17143,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17404,7 +17164,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "PullsSubmitReviewApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17425,7 +17185,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "PullsSubmitReviewApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17446,7 +17206,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17480,7 +17240,7 @@ func decodePullsUpdateReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17501,7 +17261,7 @@ func decodePullsUpdateReviewResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17535,7 +17295,7 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17569,7 +17329,7 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17592,7 +17352,7 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17626,7 +17386,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17647,7 +17407,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17681,7 +17441,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17715,7 +17475,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17736,7 +17496,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17770,7 +17530,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17898,7 +17658,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsDeleteLegacyApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17919,7 +17679,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsDeleteLegacyApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17940,7 +17700,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsDeleteLegacyApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17961,7 +17721,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -17995,7 +17755,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ReactionsListForCommitCommentOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18016,7 +17776,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18037,7 +17797,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18071,7 +17831,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsListForIssueOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18092,7 +17852,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsListForIssueApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18113,7 +17873,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReactionsListForIssueApplicationJSONGone" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18134,7 +17894,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18168,7 +17928,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "ReactionsListForIssueCommentOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18189,7 +17949,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18210,7 +17970,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18244,7 +18004,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReactionsListForPullRequestReviewCommentOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18265,7 +18025,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18286,7 +18046,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18318,25 +18078,17 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Reaction
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18368,25 +18120,17 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Reaction
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18418,25 +18162,17 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response, span
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Reaction
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18468,25 +18204,17 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response, spa
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Reaction
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18524,7 +18252,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposAcceptInvitationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18545,7 +18273,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposAcceptInvitationApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18566,7 +18294,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposAcceptInvitationApplicationJSONConflict" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18634,7 +18362,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18655,7 +18383,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ReposCompareCommitsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18676,7 +18404,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ReposCompareCommitsApplicationJSONInternalServerError" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18710,7 +18438,7 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18731,7 +18459,7 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18765,7 +18493,7 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18799,7 +18527,7 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18837,7 +18565,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ReposDeclineInvitationApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18858,7 +18586,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ReposDeclineInvitationApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18879,7 +18607,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ReposDeclineInvitationApplicationJSONConflict" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18915,7 +18643,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 				if err := fmt.Errorf(`decoding of "ReposDeleteApplicationJSONTemporaryRedirect" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18936,7 +18664,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -18957,7 +18685,7 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 				if err := fmt.Errorf(`decoding of "ReposDeleteApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19008,7 +18736,7 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span tr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19059,7 +18787,7 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19095,7 +18823,7 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19131,7 +18859,7 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19167,7 +18895,7 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19218,7 +18946,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19239,7 +18967,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19290,7 +19018,7 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19356,7 +19084,7 @@ func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19480,7 +19208,7 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19531,7 +19259,7 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19552,7 +19280,7 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 				if err := fmt.Errorf(`decoding of "ReposGetApplicationJSONMovedPermanently" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19573,7 +19301,7 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 				if err := fmt.Errorf(`decoding of "ReposGetApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19594,7 +19322,7 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 				if err := fmt.Errorf(`decoding of "ReposGetApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19628,7 +19356,7 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19649,7 +19377,7 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19683,7 +19411,7 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19717,7 +19445,7 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "ReposGetAllStatusCheckContextsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19738,7 +19466,7 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19772,7 +19500,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19793,7 +19521,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19814,7 +19542,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19848,7 +19576,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19869,7 +19597,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19903,7 +19631,7 @@ func decodeReposGetAutolinkResponse(resp *http.Response, span trace.Span) (res R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19924,7 +19652,7 @@ func decodeReposGetAutolinkResponse(resp *http.Response, span trace.Span) (res R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19958,7 +19686,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -19979,7 +19707,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := fmt.Errorf(`decoding of "ReposGetBranchApplicationJSONMovedPermanently" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20000,7 +19728,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := fmt.Errorf(`decoding of "ReposGetBranchApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20021,7 +19749,7 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20055,7 +19783,7 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20076,7 +19804,7 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20110,7 +19838,7 @@ func decodeReposGetClonesResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20131,7 +19859,7 @@ func decodeReposGetClonesResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20165,7 +19893,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "ReposGetCodeFrequencyStatsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20186,7 +19914,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20222,7 +19950,7 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20243,7 +19971,7 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20277,7 +20005,7 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20298,7 +20026,7 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20332,7 +20060,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "ReposGetCommitActivityStatsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20353,7 +20081,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20389,7 +20117,7 @@ func decodeReposGetCommitCommentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20410,7 +20138,7 @@ func decodeReposGetCommitCommentResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20444,7 +20172,7 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20465,7 +20193,7 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20499,7 +20227,7 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20533,7 +20261,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "ReposGetContributorsStatsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20554,7 +20282,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20590,7 +20318,7 @@ func decodeReposGetDeployKeyResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20611,7 +20339,7 @@ func decodeReposGetDeployKeyResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20645,7 +20373,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20666,7 +20394,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20687,7 +20415,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20721,7 +20449,7 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20755,7 +20483,7 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20789,7 +20517,7 @@ func decodeReposGetPagesResponse(resp *http.Response, span trace.Span) (res Repo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20810,7 +20538,7 @@ func decodeReposGetPagesResponse(resp *http.Response, span trace.Span) (res Repo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20844,7 +20572,7 @@ func decodeReposGetPagesBuildResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20878,7 +20606,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20899,7 +20627,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20922,7 +20650,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20958,7 +20686,7 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -20979,7 +20707,7 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21013,7 +20741,7 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response, span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21047,7 +20775,7 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ReposGetPunchCardStatsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21083,7 +20811,7 @@ func decodeReposGetReleaseResponse(resp *http.Response, span trace.Span) (res Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21104,7 +20832,7 @@ func decodeReposGetReleaseResponse(resp *http.Response, span trace.Span) (res Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21138,7 +20866,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21161,7 +20889,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21182,7 +20910,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21216,7 +20944,7 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21237,7 +20965,7 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21271,7 +20999,7 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21292,7 +21020,7 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21326,7 +21054,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21347,7 +21075,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21381,7 +21109,7 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposGetTopPathsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21402,7 +21130,7 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21436,7 +21164,7 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ReposGetTopReferrersOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21457,7 +21185,7 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21491,7 +21219,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21512,7 +21240,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21546,7 +21274,7 @@ func decodeReposGetViewsResponse(resp *http.Response, span trace.Span) (res Repo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21567,7 +21295,7 @@ func decodeReposGetViewsResponse(resp *http.Response, span trace.Span) (res Repo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21601,7 +21329,7 @@ func decodeReposGetWebhookResponse(resp *http.Response, span trace.Span) (res Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21622,7 +21350,7 @@ func decodeReposGetWebhookResponse(resp *http.Response, span trace.Span) (res Re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21656,7 +21384,7 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21688,25 +21416,17 @@ func decodeReposListAutolinksResponse(resp *http.Response, span trace.Span) (res
 			var response []Autolink
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Autolink
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21740,7 +21460,7 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ReposListBranchesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21761,7 +21481,7 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21795,7 +21515,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ReposListCollaboratorsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21816,7 +21536,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21848,25 +21568,17 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response, span trace.Sp
 			var response []CommitComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem CommitComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21898,25 +21610,17 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response, span trac
 			var response []CommitComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem CommitComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21950,7 +21654,7 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ReposListCommitStatusesForRefOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -21971,7 +21675,7 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22005,7 +21709,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposListCommitsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22026,7 +21730,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposListCommitsApplicationJSONBadRequest" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22049,7 +21753,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposListCommitsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22070,7 +21774,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposListCommitsApplicationJSONConflict" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22091,7 +21795,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 				if err := fmt.Errorf(`decoding of "ReposListCommitsApplicationJSONInternalServerError" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22125,7 +21829,7 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposListContributorsOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22148,7 +21852,7 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposListContributorsApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22169,7 +21873,7 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ReposListContributorsApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22201,25 +21905,17 @@ func decodeReposListDeployKeysResponse(resp *http.Response, span trace.Span) (re
 			var response []DeployKey
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem DeployKey
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22253,7 +21949,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "ReposListDeploymentStatusesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22274,7 +21970,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22306,25 +22002,17 @@ func decodeReposListForOrgResponse(resp *http.Response, span trace.Span) (res []
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem MinimalRepository
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22356,25 +22044,17 @@ func decodeReposListForUserResponse(resp *http.Response, span trace.Span) (res [
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem MinimalRepository
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22408,7 +22088,7 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := fmt.Errorf(`decoding of "ReposListForksOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22429,7 +22109,7 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22463,25 +22143,17 @@ func decodeReposListInvitationsResponse(resp *http.Response, span trace.Span) (r
 			var response []RepositoryInvitation
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem RepositoryInvitation
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22515,7 +22187,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposListInvitationsForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22538,7 +22210,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22559,7 +22231,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22580,7 +22252,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22614,7 +22286,7 @@ func decodeReposListLanguagesResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22646,25 +22318,17 @@ func decodeReposListPagesBuildsResponse(resp *http.Response, span trace.Span) (r
 			var response []PageBuild
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PageBuild
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22696,25 +22360,17 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 			var response []PullRequestSimple
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem PullRequestSimple
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22746,25 +22402,17 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response, span trace.Span) 
 			var response []ReleaseAsset
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem ReleaseAsset
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22798,7 +22446,7 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ReposListReleasesOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22819,7 +22467,7 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22851,25 +22499,17 @@ func decodeReposListTagsResponse(resp *http.Response, span trace.Span) (res []Ta
 			var response []Tag
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Tag
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22901,25 +22541,17 @@ func decodeReposListTeamsResponse(resp *http.Response, span trace.Span) (res []T
 			var response []Team
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Team
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22953,7 +22585,7 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "ReposListWebhooksOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -22974,7 +22606,7 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23008,7 +22640,7 @@ func decodeReposMergeUpstreamResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23048,7 +22680,7 @@ func decodeReposPingWebhookResponse(resp *http.Response, span trace.Span) (res R
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23112,7 +22744,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23133,7 +22765,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23154,7 +22786,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23175,7 +22807,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23209,7 +22841,7 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23243,7 +22875,7 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response, span trace
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23279,7 +22911,7 @@ func decodeReposTestPushWebhookResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23313,7 +22945,7 @@ func decodeReposTransferResponse(resp *http.Response, span trace.Span) (res Mini
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23347,7 +22979,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23368,7 +23000,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "ReposUpdateBranchProtectionApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23389,7 +23021,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "ReposUpdateBranchProtectionApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23410,7 +23042,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23444,7 +23076,7 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23465,7 +23097,7 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23499,7 +23131,7 @@ func decodeReposUpdateInvitationResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23533,7 +23165,7 @@ func decodeReposUpdateReleaseResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23554,7 +23186,7 @@ func decodeReposUpdateReleaseResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23588,7 +23220,7 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23622,7 +23254,7 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23656,7 +23288,7 @@ func decodeReposUploadReleaseAssetResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23694,7 +23326,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ScimDeleteUserFromOrgApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23717,7 +23349,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "ScimDeleteUserFromOrgApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23753,7 +23385,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23776,7 +23408,7 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23810,7 +23442,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23833,7 +23465,7 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23867,7 +23499,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23890,7 +23522,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23924,7 +23556,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "SecretScanningListAlertsForOrgOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23945,7 +23577,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -23966,7 +23598,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24000,7 +23632,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "SecretScanningListAlertsForRepoOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24023,7 +23655,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24057,7 +23689,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24082,7 +23714,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24118,7 +23750,7 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24156,7 +23788,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response, s
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24194,7 +23826,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24217,7 +23849,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24255,7 +23887,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24304,7 +23936,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24340,7 +23972,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response, sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24376,7 +24008,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24414,7 +24046,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24452,7 +24084,7 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24486,7 +24118,7 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24520,7 +24152,7 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24554,7 +24186,7 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24588,7 +24220,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24697,7 +24329,7 @@ func decodeTeamsGetByNameResponse(resp *http.Response, span trace.Span) (res Tea
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24718,7 +24350,7 @@ func decodeTeamsGetByNameResponse(resp *http.Response, span trace.Span) (res Tea
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24752,7 +24384,7 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24786,7 +24418,7 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24820,7 +24452,7 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24854,7 +24486,7 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24888,7 +24520,7 @@ func decodeTeamsGetLegacyResponse(resp *http.Response, span trace.Span) (res Tea
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24909,7 +24541,7 @@ func decodeTeamsGetLegacyResponse(resp *http.Response, span trace.Span) (res Tea
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24960,7 +24592,7 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -24996,7 +24628,7 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25017,7 +24649,7 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25051,7 +24683,7 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 				if err := fmt.Errorf(`decoding of "TeamsListOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25072,7 +24704,7 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25104,25 +24736,17 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response, span trace.Span) (re
 			var response []Team
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem Team
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25154,25 +24778,17 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response, span tr
 			var response []TeamDiscussionComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem TeamDiscussionComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25204,25 +24820,17 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response, span t
 			var response []TeamDiscussionComment
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem TeamDiscussionComment
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25254,25 +24862,17 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response, span trace.Spa
 			var response []TeamDiscussion
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem TeamDiscussion
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25304,25 +24904,17 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response, span trace.Sp
 			var response []TeamDiscussion
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem TeamDiscussion
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25356,7 +24948,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "TeamsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25379,7 +24971,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "TeamsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25400,7 +24992,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "TeamsListForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25434,7 +25026,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25455,7 +25047,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "TeamsListIdpGroupsForLegacyApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25476,7 +25068,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "TeamsListIdpGroupsForLegacyApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25510,7 +25102,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response, span trace.Span
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25544,7 +25136,7 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25576,25 +25168,17 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response, span trace.Span) (
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25628,7 +25212,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "TeamsListMembersLegacyOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25649,7 +25233,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25681,25 +25265,17 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response, span tr
 			var response []OrganizationInvitation
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem OrganizationInvitation
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25731,25 +25307,17 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response, span t
 			var response []OrganizationInvitation
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem OrganizationInvitation
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25781,25 +25349,17 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response, span trace.Span) 
 			var response []TeamProject
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem TeamProject
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25833,7 +25393,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "TeamsListProjectsLegacyOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25854,7 +25414,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25886,25 +25446,17 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response, span trace.Span) (re
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem MinimalRepository
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25938,7 +25490,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "TeamsListReposLegacyOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -25959,7 +25511,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26089,7 +25641,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response, span t
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26123,7 +25675,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response, span 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26157,7 +25709,7 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response, span trace.Sp
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26191,7 +25743,7 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response, span trace.S
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26225,7 +25777,7 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response, span trace.Span) (res T
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26263,7 +25815,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "UsersCheckBlockedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26284,7 +25836,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "UsersCheckBlockedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26305,7 +25857,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "UsersCheckBlockedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26360,7 +25912,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26381,7 +25933,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26402,7 +25954,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26440,7 +25992,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26461,7 +26013,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26482,7 +26034,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26520,7 +26072,7 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 				if err := fmt.Errorf(`decoding of "UsersFollowApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26541,7 +26093,7 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 				if err := fmt.Errorf(`decoding of "UsersFollowApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26562,7 +26114,7 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 				if err := fmt.Errorf(`decoding of "UsersFollowApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26596,7 +26148,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26619,7 +26171,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26640,7 +26192,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26661,7 +26213,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26695,7 +26247,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26718,7 +26270,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26739,7 +26291,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26760,7 +26312,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26794,7 +26346,7 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 				if err := fmt.Errorf(`decoding of "UsersListOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26830,7 +26382,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListBlockedByAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26853,7 +26405,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26874,7 +26426,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26895,7 +26447,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26916,7 +26468,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26950,7 +26502,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListEmailsForAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26973,7 +26525,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -26994,7 +26546,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27015,7 +26567,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27049,7 +26601,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListFollowedByAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27072,7 +26624,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListFollowedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27093,7 +26645,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListFollowedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27127,7 +26679,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListFollowersForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27150,7 +26702,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27171,7 +26723,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListFollowersForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27203,25 +26755,17 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response, span trace.Spa
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27253,25 +26797,17 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response, span trace.Spa
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem SimpleUser
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27305,7 +26841,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListGpgKeysForAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27328,7 +26864,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27349,7 +26885,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27370,7 +26906,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27402,25 +26938,17 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response, span trace.Span)
 			var response []GpgKey
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem GpgKey
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27454,7 +26982,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "UsersListPublicEmailsForAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27477,7 +27005,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27498,7 +27026,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27519,7 +27047,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27551,25 +27079,17 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response, span trace.Sp
 			var response []KeySimple
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem KeySimple
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					if err := elem.ReadJSON(i); err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27603,7 +27123,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27626,7 +27146,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27647,7 +27167,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27668,7 +27188,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27706,7 +27226,7 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 				if err := fmt.Errorf(`decoding of "UsersUnblockApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27727,7 +27247,7 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 				if err := fmt.Errorf(`decoding of "UsersUnblockApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27748,7 +27268,7 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 				if err := fmt.Errorf(`decoding of "UsersUnblockApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27786,7 +27306,7 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 				if err := fmt.Errorf(`decoding of "UsersUnfollowApplicationJSONUnauthorized" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27807,7 +27327,7 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 				if err := fmt.Errorf(`decoding of "UsersUnfollowApplicationJSONForbidden" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -27828,7 +27348,7 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 				if err := fmt.Errorf(`decoding of "UsersUnfollowApplicationJSONNotFound" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

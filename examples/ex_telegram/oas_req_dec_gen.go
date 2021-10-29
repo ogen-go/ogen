@@ -77,7 +77,7 @@ func decodeAnswerCallbackQueryPostRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -112,7 +112,7 @@ func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request, span trace.Span) (
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -147,7 +147,7 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -190,7 +190,7 @@ func decodeDeleteStickerFromSetPostRequest(r *http.Request, span trace.Span) (re
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -225,7 +225,7 @@ func decodeDeleteWebhookPostRequest(r *http.Request, span trace.Span) (req Delet
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -260,7 +260,7 @@ func decodeGetFilePostRequest(r *http.Request, span trace.Span) (req GetFilePost
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -295,7 +295,7 @@ func decodeGetGameHighScoresPostRequest(r *http.Request, span trace.Span) (req G
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -330,7 +330,7 @@ func decodeGetStickerSetPostRequest(r *http.Request, span trace.Span) (req GetSt
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -365,7 +365,7 @@ func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdat
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -408,7 +408,7 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (re
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -451,7 +451,7 @@ func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePo
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -494,7 +494,7 @@ func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInv
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -537,7 +537,7 @@ func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMy
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -580,7 +580,7 @@ func decodeSetStickerPositionInSetPostRequest(r *http.Request, span trace.Span) 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}

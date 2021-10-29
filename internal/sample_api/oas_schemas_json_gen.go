@@ -90,68 +90,40 @@ func (s *Data) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Data to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "description":
-			if err := func() error {
-				s.Description.Reset()
-				if err := s.Description.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Description.Reset()
+			if err := s.Description.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "email":
-			if err := func() error {
-				s.Email = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Email = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "format":
-			if err := func() error {
-				s.Format = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Format = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "hostname":
-			if err := func() error {
-				s.Hostname = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Hostname = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				if err := s.ID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.ID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -173,36 +145,25 @@ func (s *Error) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Error to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "code":
-			if err := func() error {
-				s.Code = int64(i.Int64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int64()
+			s.Code = int64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -218,18 +179,13 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -245,18 +201,13 @@ func (s *FoobarPutDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode FoobarPutDef to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -272,18 +223,13 @@ func (s *FoobarPutDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode FoobarPutDefStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -301,20 +247,18 @@ func (s *ID) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ID to nil`)
 	}
-	switch t := i.WhatIsNext(); t {
+	switch t := i.Next(); t {
 	case json.String:
-		if err := func() error {
-			s.String = string(i.Str())
-			return i.Error
-		}(); err != nil {
+		v, err := i.Str()
+		s.String = string(v)
+		if err != nil {
 			return err
 		}
 		s.Type = StringID
 	case json.Number:
-		if err := func() error {
-			s.Int = int(i.Int())
-			return i.Error
-		}(); err != nil {
+		v, err := i.Int()
+		s.Int = int(v)
+		if err != nil {
 			return err
 		}
 		s.Type = IntID
@@ -338,19 +282,25 @@ func (o *NilString) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode NilString to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Null = false
-		o.Value = string(i.Str())
-		return i.Error
+		v, err := i.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = string(v)
+		return nil
 	case json.Nil:
+		if err := i.Null(); err != nil {
+			return err
+		}
 		var v string
 		o.Value = v
 		o.Null = true
-		i.Skip()
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading NilString", i.Next())
 	}
 }
 
@@ -367,18 +317,13 @@ func (s *NotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode NotFound to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON writes json value of Data to json stream.
@@ -391,15 +336,15 @@ func (o *OptData) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptData to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptData", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptData", i.Next())
 	}
 }
 
@@ -413,7 +358,7 @@ func (o *OptDuration) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptDuration to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
 		v, err := json.ReadDuration(i)
@@ -421,9 +366,9 @@ func (o *OptDuration) ReadJSON(i *json.Iter) error {
 			return err
 		}
 		o.Value = v
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDuration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptDuration", i.Next())
 	}
 }
 
@@ -437,13 +382,17 @@ func (o *OptFloat64) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Number:
 		o.Set = true
-		o.Value = float64(i.Float64())
-		return i.Error
+		v, err := i.Float64()
+		if err != nil {
+			return err
+		}
+		o.Value = float64(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptFloat64", i.Next())
 	}
 }
 
@@ -457,13 +406,17 @@ func (o *OptInt) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Number:
 		o.Set = true
-		o.Value = int(i.Int())
-		return i.Error
+		v, err := i.Int()
+		if err != nil {
+			return err
+		}
+		o.Value = int(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt", i.Next())
 	}
 }
 
@@ -481,21 +434,27 @@ func (o *OptNilString) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptNilString to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
 		o.Null = false
-		o.Value = string(i.Str())
-		return i.Error
+		v, err := i.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = string(v)
+		return nil
 	case json.Nil:
+		if err := i.Null(); err != nil {
+			return err
+		}
 		var v string
 		o.Value = v
 		o.Set = true
 		o.Null = true
-		i.Skip()
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptNilString", i.Next())
 	}
 }
 
@@ -509,13 +468,17 @@ func (o *OptPetType) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPetType to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
-		o.Value = PetType(i.Str())
-		return i.Error
+		v, err := i.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = PetType(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPetType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPetType", i.Next())
 	}
 }
 
@@ -529,13 +492,17 @@ func (o *OptString) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
-		o.Value = string(i.Str())
-		return i.Error
+		v, err := i.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = string(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", i.Next())
 	}
 }
 
@@ -549,7 +516,7 @@ func (o *OptTime) ReadJSON(i *json.Iter, format func(*json.Iter) (time.Time, err
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptTime to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
 		v, err := format(i)
@@ -557,9 +524,9 @@ func (o *OptTime) ReadJSON(i *json.Iter, format func(*json.Iter) (time.Time, err
 			return err
 		}
 		o.Value = v
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTime", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptTime", i.Next())
 	}
 }
 
@@ -573,7 +540,7 @@ func (o *OptUUID) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptUUID to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
 		v, err := json.ReadUUID(i)
@@ -581,9 +548,9 @@ func (o *OptUUID) ReadJSON(i *json.Iter) error {
 			return err
 		}
 		o.Value = v
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptUUID", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptUUID", i.Next())
 	}
 }
 
@@ -719,356 +686,166 @@ func (s *Pet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Pet to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "birthday":
-			if err := func() error {
-				v, err := json.ReadDate(i)
-				s.Birthday = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := json.ReadDate(i)
+			s.Birthday = v
+			if err != nil {
+				return err
 			}
-			return true
 		case "friends":
-			if err := func() error {
-				s.Friends = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem Pet
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Friends = append(s.Friends, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "id":
-			if err := func() error {
-				s.ID = int64(i.Int64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IP = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip_v4":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IPV4 = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip_v6":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IPV6 = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "kind":
-			if err := func() error {
-				if err := s.Kind.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "next":
-			if err := func() error {
-				s.Next.Reset()
-				if err := s.Next.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "nickname":
-			if err := func() error {
-				if err := s.Nickname.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "nullStr":
-			if err := func() error {
-				s.NullStr.Reset()
-				if err := s.NullStr.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "primary":
-			if err := func() error {
-				s.Primary = nil
+			s.Friends = nil
+			if err := i.Array(func(i *json.Iter) error {
 				var elem Pet
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
+				if err := elem.ReadJSON(i); err != nil {
+					return err
+				}
+				s.Friends = append(s.Friends, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "id":
+			v, err := i.Int64()
+			s.ID = int64(v)
+			if err != nil {
+				return err
+			}
+		case "ip":
+			v, err := json.ReadIP(i)
+			s.IP = v
+			if err != nil {
+				return err
+			}
+		case "ip_v4":
+			v, err := json.ReadIP(i)
+			s.IPV4 = v
+			if err != nil {
+				return err
+			}
+		case "ip_v6":
+			v, err := json.ReadIP(i)
+			s.IPV6 = v
+			if err != nil {
+				return err
+			}
+		case "kind":
+			if err := s.Kind.ReadJSON(i); err != nil {
+				return err
+			}
+		case "name":
+			v, err := i.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
+			}
+		case "next":
+			s.Next.Reset()
+			if err := s.Next.ReadJSON(i); err != nil {
+				return err
+			}
+		case "nickname":
+			if err := s.Nickname.ReadJSON(i); err != nil {
+				return err
+			}
+		case "nullStr":
+			s.NullStr.Reset()
+			if err := s.NullStr.ReadJSON(i); err != nil {
+				return err
+			}
+		case "primary":
+			s.Primary = nil
+			var elem Pet
+			if err := elem.ReadJSON(i); err != nil {
+				return err
+			}
+			s.Primary = &elem
+		case "rate":
+			v, err := json.ReadDuration(i)
+			s.Rate = v
+			if err != nil {
+				return err
+			}
+		case "tag":
+			s.Tag.Reset()
+			if err := s.Tag.ReadJSON(i); err != nil {
+				return err
+			}
+		case "testArray1":
+			s.TestArray1 = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem []string
+				elem = nil
+				if err := i.Array(func(i *json.Iter) error {
+					var elemElem string
+					v, err := i.Str()
+					elemElem = string(v)
+					if err != nil {
 						return err
 					}
-					return i.Error
-				}(); err != nil {
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
 					return err
 				}
-				s.Primary = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.TestArray1 = append(s.TestArray1, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
-		case "rate":
-			if err := func() error {
-				v, err := json.ReadDuration(i)
-				s.Rate = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "tag":
-			if err := func() error {
-				s.Tag.Reset()
-				if err := s.Tag.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testArray1":
-			if err := func() error {
-				s.TestArray1 = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem []string
-					if err := func() error {
-						elem = nil
-						var retErr error
-						i.Array(func(i *json.Iter) bool {
-							var elemElem string
-							if err := func() error {
-								elemElem = string(i.Str())
-								return i.Error
-							}(); err != nil {
-								retErr = err
-								return false
-							}
-							elem = append(elem, elemElem)
-							return true
-						})
-						if retErr != nil {
-							return retErr
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.TestArray1 = append(s.TestArray1, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		case "testDate":
-			if err := func() error {
-				s.TestDate.Reset()
-				if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestDate.Reset()
+			if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
+				return err
 			}
-			return true
 		case "testDateTime":
-			if err := func() error {
-				s.TestDateTime.Reset()
-				if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestDateTime.Reset()
+			if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
+				return err
 			}
-			return true
 		case "testDuration":
-			if err := func() error {
-				s.TestDuration.Reset()
-				if err := s.TestDuration.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestDuration.Reset()
+			if err := s.TestDuration.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "testFloat1":
-			if err := func() error {
-				s.TestFloat1.Reset()
-				if err := s.TestFloat1.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestFloat1.Reset()
+			if err := s.TestFloat1.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "testInteger1":
-			if err := func() error {
-				s.TestInteger1.Reset()
-				if err := s.TestInteger1.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestInteger1.Reset()
+			if err := s.TestInteger1.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "testTime":
-			if err := func() error {
-				s.TestTime.Reset()
-				if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.TestTime.Reset()
+			if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
+				return err
 			}
-			return true
 		case "type":
-			if err := func() error {
-				s.Type.Reset()
-				if err := s.Type.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "unique_id":
-			if err := func() error {
-				v, err := json.ReadUUID(i)
-				s.UniqueID = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := json.ReadUUID(i)
+			s.UniqueID = v
+			if err != nil {
+				return err
 			}
-			return true
 		case "uri":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.URI = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := json.ReadURI(i)
+			s.URI = v
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1084,18 +861,13 @@ func (s *PetCreateReqTextPlain) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetCreateReqTextPlain to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1114,27 +886,19 @@ func (s *PetGetDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetGetDef to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1150,18 +914,13 @@ func (s *PetGetDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetGetDefStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1174,8 +933,12 @@ func (s *PetKind) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetKind to nil`)
 	}
-	*s = PetKind(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = PetKind(v)
+	return nil
 }
 
 func (PetName) WriteJSON(j *json.Stream)    {}
@@ -1191,8 +954,12 @@ func (s *PetType) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetType to nil`)
 	}
-	*s = PetType(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = PetType(v)
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1208,18 +975,13 @@ func (s *PetUpdateNameAliasPostDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDef to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1235,18 +997,13 @@ func (s *PetUpdateNameAliasPostDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDefStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1262,18 +1019,13 @@ func (s *PetUpdateNamePostDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDef to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1289,16 +1041,11 @@ func (s *PetUpdateNamePostDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDefStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }

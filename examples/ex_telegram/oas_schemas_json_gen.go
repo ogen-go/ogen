@@ -108,111 +108,63 @@ func (s *Animation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Animation to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "duration":
-			if err := func() error {
-				s.Duration = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_name":
-			if err := func() error {
-				s.FileName.Reset()
-				if err := s.FileName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "height":
-			if err := func() error {
-				s.Height = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Height = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mime_type":
-			if err := func() error {
-				s.MimeType.Reset()
-				if err := s.MimeType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "width":
-			if err := func() error {
-				s.Width = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Width = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -234,36 +186,25 @@ func (s *AnswerCallbackQueryPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -302,75 +243,39 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iter) error
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "cache_time":
-			if err := func() error {
-				s.CacheTime.Reset()
-				if err := s.CacheTime.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "callback_query_id":
-			if err := func() error {
-				s.CallbackQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.CallbackQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "show_alert":
-			if err := func() error {
-				s.ShowAlert.Reset()
-				if err := s.ShowAlert.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "text":
-			if err := func() error {
-				s.Text.Reset()
-				if err := s.Text.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -409,75 +314,39 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "cache_time":
-			if err := func() error {
-				s.CacheTime.Reset()
-				if err := s.CacheTime.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "callback_query_id":
-			if err := func() error {
-				s.CallbackQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.CallbackQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "show_alert":
-			if err := func() error {
-				s.ShowAlert.Reset()
-				if err := s.ShowAlert.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "text":
-			if err := func() error {
-				s.Text.Reset()
-				if err := s.Text.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -516,75 +385,39 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) err
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "cache_time":
-			if err := func() error {
-				s.CacheTime.Reset()
-				if err := s.CacheTime.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "callback_query_id":
-			if err := func() error {
-				s.CallbackQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.CallbackQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "show_alert":
-			if err := func() error {
-				s.ShowAlert.Reset()
-				if err := s.ShowAlert.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "text":
-			if err := func() error {
-				s.Text.Reset()
-				if err := s.Text.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -606,36 +439,25 @@ func (s *AnswerPreCheckoutQueryPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -662,48 +484,30 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationJSON) ReadJSON(i *json.Iter) er
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "pre_checkout_query_id":
-			if err := func() error {
-				s.PreCheckoutQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -730,48 +534,30 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i 
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "pre_checkout_query_id":
-			if err := func() error {
-				s.PreCheckoutQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -798,48 +584,30 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) 
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "pre_checkout_query_id":
-			if err := func() error {
-				s.PreCheckoutQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -861,36 +629,25 @@ func (s *AnswerShippingQueryPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -929,75 +686,42 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(i *json.Iter) error
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
+			}
+		case "ok":
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
+			}
+		case "shipping_options":
+			s.ShippingOptions = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem ShippingOption
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.ShippingOptions = append(s.ShippingOptions, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "shipping_options":
-			if err := func() error {
-				s.ShippingOptions = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem ShippingOption
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.ShippingOptions = append(s.ShippingOptions, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		case "shipping_query_id":
-			if err := func() error {
-				s.ShippingQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1036,75 +760,42 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
+			}
+		case "ok":
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
+			}
+		case "shipping_options":
+			s.ShippingOptions = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem ShippingOption
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.ShippingOptions = append(s.ShippingOptions, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "shipping_options":
-			if err := func() error {
-				s.ShippingOptions = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem ShippingOption
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.ShippingOptions = append(s.ShippingOptions, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		case "shipping_query_id":
-			if err := func() error {
-				s.ShippingQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1143,75 +834,42 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iter) err
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "error_message":
-			if err := func() error {
-				s.ErrorMessage.Reset()
-				if err := s.ErrorMessage.ReadJSON(i); err != nil {
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				return err
+			}
+		case "ok":
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
+			}
+		case "shipping_options":
+			s.ShippingOptions = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem ShippingOption
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.ShippingOptions = append(s.ShippingOptions, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "shipping_options":
-			if err := func() error {
-				s.ShippingOptions = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem ShippingOption
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.ShippingOptions = append(s.ShippingOptions, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		case "shipping_query_id":
-			if err := func() error {
-				s.ShippingQueryID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1266,117 +924,61 @@ func (s *Audio) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Audio to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "duration":
-			if err := func() error {
-				s.Duration = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_name":
-			if err := func() error {
-				s.FileName.Reset()
-				if err := s.FileName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mime_type":
-			if err := func() error {
-				s.MimeType.Reset()
-				if err := s.MimeType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "performer":
-			if err := func() error {
-				s.Performer.Reset()
-				if err := s.Performer.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Performer.Reset()
+			if err := s.Performer.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title.Reset()
-				if err := s.Title.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Title.Reset()
+			if err := s.Title.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1398,36 +1000,25 @@ func (s *BotCommand) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode BotCommand to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "command":
-			if err := func() error {
-				s.Command = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Command = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 func (CallbackGame) WriteJSON(j *json.Stream)    {}
@@ -1475,95 +1066,49 @@ func (s *CallbackQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode CallbackQuery to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_instance":
-			if err := func() error {
-				s.ChatInstance = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ChatInstance = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "data":
-			if err := func() error {
-				s.Data.Reset()
-				if err := s.Data.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Data.Reset()
+			if err := s.Data.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "from":
-			if err := func() error {
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "game_short_name":
-			if err := func() error {
-				s.GameShortName.Reset()
-				if err := s.GameShortName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.GameShortName.Reset()
+			if err := s.GameShortName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Message.Reset()
+			if err := s.Message.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1660,218 +1205,98 @@ func (s *Chat) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Chat to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "bio":
-			if err := func() error {
-				s.Bio.Reset()
-				if err := s.Bio.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Bio.Reset()
+			if err := s.Bio.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_set_sticker_set":
-			if err := func() error {
-				s.CanSetStickerSet.Reset()
-				if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanSetStickerSet.Reset()
+			if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description.Reset()
-				if err := s.Description.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Description.Reset()
+			if err := s.Description.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "first_name":
-			if err := func() error {
-				s.FirstName.Reset()
-				if err := s.FirstName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FirstName.Reset()
+			if err := s.FirstName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "invite_link":
-			if err := func() error {
-				s.InviteLink.Reset()
-				if err := s.InviteLink.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InviteLink.Reset()
+			if err := s.InviteLink.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "last_name":
-			if err := func() error {
-				s.LastName.Reset()
-				if err := s.LastName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LastName.Reset()
+			if err := s.LastName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "linked_chat_id":
-			if err := func() error {
-				s.LinkedChatID.Reset()
-				if err := s.LinkedChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LinkedChatID.Reset()
+			if err := s.LinkedChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				s.Location.Reset()
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "permissions":
-			if err := func() error {
-				s.Permissions.Reset()
-				if err := s.Permissions.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo":
-			if err := func() error {
-				s.Photo.Reset()
-				if err := s.Photo.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Photo.Reset()
+			if err := s.Photo.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "pinned_message":
-			if err := func() error {
-				s.PinnedMessage.Reset()
-				if err := s.PinnedMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PinnedMessage.Reset()
+			if err := s.PinnedMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "slow_mode_delay":
-			if err := func() error {
-				s.SlowModeDelay.Reset()
-				if err := s.SlowModeDelay.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SlowModeDelay.Reset()
+			if err := s.SlowModeDelay.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "sticker_set_name":
-			if err := func() error {
-				s.StickerSetName.Reset()
-				if err := s.StickerSetName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.StickerSetName.Reset()
+			if err := s.StickerSetName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title.Reset()
-				if err := s.Title.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Title.Reset()
+			if err := s.Title.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "type":
-			if err := func() error {
-				if err := s.Type.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Type.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "username":
-			if err := func() error {
-				s.Username.Reset()
-				if err := s.Username.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Username.Reset()
+			if err := s.Username.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1893,38 +1318,23 @@ func (s *ChatLocation) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ChatLocation to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "address":
-			if err := func() error {
-				s.Address = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Address = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1980,114 +1390,53 @@ func (s *ChatPermissions) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ChatPermissions to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "can_add_web_page_previews":
-			if err := func() error {
-				s.CanAddWebPagePreviews.Reset()
-				if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanAddWebPagePreviews.Reset()
+			if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_change_info":
-			if err := func() error {
-				s.CanChangeInfo.Reset()
-				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanChangeInfo.Reset()
+			if err := s.CanChangeInfo.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_invite_users":
-			if err := func() error {
-				s.CanInviteUsers.Reset()
-				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanInviteUsers.Reset()
+			if err := s.CanInviteUsers.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_pin_messages":
-			if err := func() error {
-				s.CanPinMessages.Reset()
-				if err := s.CanPinMessages.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanPinMessages.Reset()
+			if err := s.CanPinMessages.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_send_media_messages":
-			if err := func() error {
-				s.CanSendMediaMessages.Reset()
-				if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanSendMediaMessages.Reset()
+			if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_send_messages":
-			if err := func() error {
-				s.CanSendMessages.Reset()
-				if err := s.CanSendMessages.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanSendMessages.Reset()
+			if err := s.CanSendMessages.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_send_other_messages":
-			if err := func() error {
-				s.CanSendOtherMessages.Reset()
-				if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanSendOtherMessages.Reset()
+			if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_send_polls":
-			if err := func() error {
-				s.CanSendPolls.Reset()
-				if err := s.CanSendPolls.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanSendPolls.Reset()
+			if err := s.CanSendPolls.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2115,54 +1464,37 @@ func (s *ChatPhoto) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ChatPhoto to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "big_file_id":
-			if err := func() error {
-				s.BigFileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.BigFileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "big_file_unique_id":
-			if err := func() error {
-				s.BigFileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.BigFileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "small_file_id":
-			if err := func() error {
-				s.SmallFileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.SmallFileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "small_file_unique_id":
-			if err := func() error {
-				s.SmallFileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.SmallFileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2175,8 +1507,12 @@ func (s *ChatType) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ChatType to nil`)
 	}
-	*s = ChatType(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = ChatType(v)
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2211,71 +1547,39 @@ func (s *ChosenInlineResult) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ChosenInlineResult to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "from":
-			if err := func() error {
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				s.Location.Reset()
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "query":
-			if err := func() error {
-				s.Query = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Query = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result_id":
-			if err := func() error {
-				s.ResultID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ResultID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2297,36 +1601,25 @@ func (s *ClosePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ClosePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2363,72 +1656,40 @@ func (s *Contact) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Contact to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "first_name":
-			if err := func() error {
-				s.FirstName = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FirstName = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "last_name":
-			if err := func() error {
-				s.LastName.Reset()
-				if err := s.LastName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LastName.Reset()
+			if err := s.LastName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "phone_number":
-			if err := func() error {
-				s.PhoneNumber = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.PhoneNumber = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID.Reset()
-				if err := s.UserID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.UserID.Reset()
+			if err := s.UserID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "vcard":
-			if err := func() error {
-				s.Vcard.Reset()
-				if err := s.Vcard.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Vcard.Reset()
+			if err := s.Vcard.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2450,36 +1711,25 @@ func (s *DeleteStickerFromSetPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2498,27 +1748,19 @@ func (s *DeleteStickerFromSetPostReqApplicationJSON) ReadJSON(i *json.Iter) erro
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2537,27 +1779,19 @@ func (s *DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *j
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2576,27 +1810,19 @@ func (s *DeleteStickerFromSetPostReqMultipartFormData) ReadJSON(i *json.Iter) er
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2618,36 +1844,25 @@ func (s *DeleteWebhookPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteWebhookPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2668,30 +1883,18 @@ func (s *DeleteWebhookPostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "drop_pending_updates":
-			if err := func() error {
-				s.DropPendingUpdates.Reset()
-				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2712,30 +1915,18 @@ func (s *DeleteWebhookPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Ite
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "drop_pending_updates":
-			if err := func() error {
-				s.DropPendingUpdates.Reset()
-				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2756,30 +1947,18 @@ func (s *DeleteWebhookPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "drop_pending_updates":
-			if err := func() error {
-				s.DropPendingUpdates.Reset()
-				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2801,36 +1980,25 @@ func (s *Dice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Dice to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "emoji":
-			if err := func() error {
-				s.Emoji = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Emoji = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "value":
-			if err := func() error {
-				s.Value = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Value = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2872,84 +2040,45 @@ func (s *Document) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Document to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_name":
-			if err := func() error {
-				s.FileName.Reset()
-				if err := s.FileName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mime_type":
-			if err := func() error {
-				s.MimeType.Reset()
-				if err := s.MimeType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -2974,45 +2103,31 @@ func (s *EncryptedCredentials) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode EncryptedCredentials to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "data":
-			if err := func() error {
-				s.Data = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Data = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "hash":
-			if err := func() error {
-				s.Hash = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Hash = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "secret":
-			if err := func() error {
-				s.Secret = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Secret = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3088,164 +2203,77 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode EncryptedPassportElement to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "data":
-			if err := func() error {
-				s.Data.Reset()
-				if err := s.Data.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Data.Reset()
+			if err := s.Data.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "email":
-			if err := func() error {
-				s.Email.Reset()
-				if err := s.Email.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Email.Reset()
+			if err := s.Email.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "files":
-			if err := func() error {
-				s.Files = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PassportFile
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Files = append(s.Files, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Files = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PassportFile
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Files = append(s.Files, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "front_side":
-			if err := func() error {
-				s.FrontSide.Reset()
-				if err := s.FrontSide.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FrontSide.Reset()
+			if err := s.FrontSide.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "hash":
-			if err := func() error {
-				s.Hash = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Hash = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "phone_number":
-			if err := func() error {
-				s.PhoneNumber.Reset()
-				if err := s.PhoneNumber.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhoneNumber.Reset()
+			if err := s.PhoneNumber.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reverse_side":
-			if err := func() error {
-				s.ReverseSide.Reset()
-				if err := s.ReverseSide.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReverseSide.Reset()
+			if err := s.ReverseSide.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "selfie":
-			if err := func() error {
-				s.Selfie.Reset()
-				if err := s.Selfie.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Selfie.Reset()
+			if err := s.Selfie.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "translation":
-			if err := func() error {
-				s.Translation = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PassportFile
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Translation = append(s.Translation, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "type":
-			if err := func() error {
-				if err := s.Type.ReadJSON(i); err != nil {
+			s.Translation = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PassportFile
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Translation = append(s.Translation, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
+		case "type":
+			if err := s.Type.ReadJSON(i); err != nil {
+				return err
+			}
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3258,8 +2286,12 @@ func (s *EncryptedPassportElementType) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode EncryptedPassportElementType to nil`)
 	}
-	*s = EncryptedPassportElementType(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = EncryptedPassportElementType(v)
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3289,57 +2321,36 @@ func (s *Error) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Error to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "error_code":
-			if err := func() error {
-				s.ErrorCode = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ErrorCode = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "parameters":
-			if err := func() error {
-				s.Parameters.Reset()
-				if err := s.Parameters.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Parameters.Reset()
+			if err := s.Parameters.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3355,18 +2366,13 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3398,60 +2404,35 @@ func (s *File) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode File to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_path":
-			if err := func() error {
-				s.FilePath.Reset()
-				if err := s.FilePath.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FilePath.Reset()
+			if err := s.FilePath.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3505,114 +2486,59 @@ func (s *Game) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Game to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "animation":
-			if err := func() error {
-				s.Animation.Reset()
-				if err := s.Animation.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Animation.Reset()
+			if err := s.Animation.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "photo":
-			if err := func() error {
-				s.Photo = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PhotoSize
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Photo = append(s.Photo, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "text":
-			if err := func() error {
-				s.Text.Reset()
-				if err := s.Text.ReadJSON(i); err != nil {
+			s.Photo = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PhotoSize
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Photo = append(s.Photo, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
+		case "text":
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				return err
+			}
 		case "text_entities":
-			if err := func() error {
-				s.TextEntities = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem MessageEntity
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.TextEntities = append(s.TextEntities, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.TextEntities = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.TextEntities = append(s.TextEntities, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3637,47 +2563,29 @@ func (s *GameHighScore) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GameHighScore to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "position":
-			if err := func() error {
-				s.Position = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Position = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "score":
-			if err := func() error {
-				s.Score = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Score = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "user":
-			if err := func() error {
-				if err := s.User.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.User.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3699,38 +2607,23 @@ func (s *GetFilePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetFilePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3749,27 +2642,19 @@ func (s *GetFilePostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetFilePostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3788,27 +2673,19 @@ func (s *GetFilePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter) err
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetFilePostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3827,27 +2704,19 @@ func (s *GetFilePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetFilePostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3876,54 +2745,31 @@ func (s *GetGameHighScoresPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem GameHighScore
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Result = append(s.Result, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Result = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem GameHighScore
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Result = append(s.Result, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3957,63 +2803,34 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4047,63 +2864,34 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4137,63 +2925,34 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iter) error
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4215,38 +2974,23 @@ func (s *GetMePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetMePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4275,54 +3019,31 @@ func (s *GetMyCommandsPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetMyCommandsPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem BotCommand
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Result = append(s.Result, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Result = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem BotCommand
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Result = append(s.Result, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4344,38 +3065,23 @@ func (s *GetStickerSetPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetStickerSetPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4394,27 +3100,19 @@ func (s *GetStickerSetPostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4433,27 +3131,19 @@ func (s *GetStickerSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Ite
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4472,27 +3162,19 @@ func (s *GetStickerSetPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4521,54 +3203,31 @@ func (s *GetUpdatesPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUpdatesPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem Update
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Result = append(s.Result, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Result = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem Update
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Result = append(s.Result, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4611,79 +3270,42 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allowed_updates":
-			if err := func() error {
-				s.AllowedUpdates = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.AllowedUpdates = append(s.AllowedUpdates, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.AllowedUpdates = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem string
+				v, err := i.Str()
+				elem = string(v)
+				if err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "timeout":
-			if err := func() error {
-				s.Timeout.Reset()
-				if err := s.Timeout.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4726,79 +3348,42 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter) 
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allowed_updates":
-			if err := func() error {
-				s.AllowedUpdates = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.AllowedUpdates = append(s.AllowedUpdates, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.AllowedUpdates = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem string
+				v, err := i.Str()
+				elem = string(v)
+				if err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "timeout":
-			if err := func() error {
-				s.Timeout.Reset()
-				if err := s.Timeout.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4841,79 +3426,42 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allowed_updates":
-			if err := func() error {
-				s.AllowedUpdates = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.AllowedUpdates = append(s.AllowedUpdates, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.AllowedUpdates = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem string
+				v, err := i.Str()
+				elem = string(v)
+				if err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "timeout":
-			if err := func() error {
-				s.Timeout.Reset()
-				if err := s.Timeout.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4935,38 +3483,23 @@ func (s *GetUserProfilePhotosPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -4995,51 +3528,29 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(i *json.Iter) erro
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5068,51 +3579,29 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *j
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5141,51 +3630,29 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iter) er
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "limit":
-			if err := func() error {
-				s.Limit.Reset()
-				if err := s.Limit.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset.Reset()
-				if err := s.Offset.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5207,38 +3674,23 @@ func (s *GetWebhookInfoPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetWebhookInfoPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5292,111 +3744,54 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode InlineKeyboardButton to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "callback_data":
-			if err := func() error {
-				s.CallbackData.Reset()
-				if err := s.CallbackData.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CallbackData.Reset()
+			if err := s.CallbackData.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "callback_game":
-			if err := func() error {
-				s.CallbackGame.Reset()
-				if err := s.CallbackGame.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CallbackGame.Reset()
+			if err := s.CallbackGame.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "login_url":
-			if err := func() error {
-				s.LoginURL.Reset()
-				if err := s.LoginURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LoginURL.Reset()
+			if err := s.LoginURL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "pay":
-			if err := func() error {
-				s.Pay.Reset()
-				if err := s.Pay.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Pay.Reset()
+			if err := s.Pay.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "switch_inline_query":
-			if err := func() error {
-				s.SwitchInlineQuery.Reset()
-				if err := s.SwitchInlineQuery.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SwitchInlineQuery.Reset()
+			if err := s.SwitchInlineQuery.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "switch_inline_query_current_chat":
-			if err := func() error {
-				s.SwitchInlineQueryCurrentChat.Reset()
-				if err := s.SwitchInlineQueryCurrentChat.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SwitchInlineQueryCurrentChat.Reset()
+			if err := s.SwitchInlineQueryCurrentChat.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "text":
-			if err := func() error {
-				s.Text = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Text = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5429,61 +3824,33 @@ func (s *InlineKeyboardMarkup) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode InlineKeyboardMarkup to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "inline_keyboard":
-			if err := func() error {
-				s.InlineKeyboard = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem []InlineKeyboardButton
-					if err := func() error {
-						elem = nil
-						var retErr error
-						i.Array(func(i *json.Iter) bool {
-							var elemElem InlineKeyboardButton
-							if err := func() error {
-								if err := elemElem.ReadJSON(i); err != nil {
-									return err
-								}
-								return i.Error
-							}(); err != nil {
-								retErr = err
-								return false
-							}
-							elem = append(elem, elemElem)
-							return true
-						})
-						if retErr != nil {
-							return retErr
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+			s.InlineKeyboard = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem []InlineKeyboardButton
+				elem = nil
+				if err := i.Array(func(i *json.Iter) error {
+					var elemElem InlineKeyboardButton
+					if err := elemElem.ReadJSON(i); err != nil {
+						return err
 					}
-					s.InlineKeyboard = append(s.InlineKeyboard, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.InlineKeyboard = append(s.InlineKeyboard, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5516,68 +3883,40 @@ func (s *InlineQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode InlineQuery to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "from":
-			if err := func() error {
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				s.Location.Reset()
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Offset = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "query":
-			if err := func() error {
-				s.Query = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Query = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 func (InputFile) WriteJSON(j *json.Stream)    {}
@@ -5611,63 +3950,43 @@ func (s *Invoice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Invoice to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "start_parameter":
-			if err := func() error {
-				s.StartParameter = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StartParameter = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "total_amount":
-			if err := func() error {
-				s.TotalAmount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.TotalAmount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5689,36 +4008,25 @@ func (s *LabeledPrice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode LabeledPrice to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "amount":
-			if err := func() error {
-				s.Amount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Amount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "label":
-			if err := func() error {
-				s.Label = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Label = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5760,84 +4068,45 @@ func (s *Location) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Location to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "heading":
-			if err := func() error {
-				s.Heading.Reset()
-				if err := s.Heading.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Heading.Reset()
+			if err := s.Heading.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "horizontal_accuracy":
-			if err := func() error {
-				s.HorizontalAccuracy.Reset()
-				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "latitude":
-			if err := func() error {
-				s.Latitude = float64(i.Float64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Float64()
+			s.Latitude = float64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "live_period":
-			if err := func() error {
-				s.LivePeriod.Reset()
-				if err := s.LivePeriod.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LivePeriod.Reset()
+			if err := s.LivePeriod.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "longitude":
-			if err := func() error {
-				s.Longitude = float64(i.Float64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Float64()
+			s.Longitude = float64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "proximity_alert_radius":
-			if err := func() error {
-				s.ProximityAlertRadius.Reset()
-				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ProximityAlertRadius.Reset()
+			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5859,36 +4128,25 @@ func (s *LogOutPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode LogOutPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -5922,63 +4180,34 @@ func (s *LoginUrl) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode LoginUrl to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "bot_username":
-			if err := func() error {
-				s.BotUsername.Reset()
-				if err := s.BotUsername.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.BotUsername.Reset()
+			if err := s.BotUsername.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "forward_text":
-			if err := func() error {
-				s.ForwardText.Reset()
-				if err := s.ForwardText.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardText.Reset()
+			if err := s.ForwardText.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "request_write_access":
-			if err := func() error {
-				s.RequestWriteAccess.Reset()
-				if err := s.RequestWriteAccess.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.RequestWriteAccess.Reset()
+			if err := s.RequestWriteAccess.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.URL = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -6006,56 +4235,35 @@ func (s *MaskPosition) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode MaskPosition to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "point":
-			if err := func() error {
-				if err := s.Point.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Point.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "scale":
-			if err := func() error {
-				s.Scale = float64(i.Float64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Float64()
+			s.Scale = float64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "x_shift":
-			if err := func() error {
-				s.XShift = float64(i.Float64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Float64()
+			s.XShift = float64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "y_shift":
-			if err := func() error {
-				s.YShift = float64(i.Float64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Float64()
+			s.YShift = float64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -6068,8 +4276,12 @@ func (s *MaskPositionPoint) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode MaskPositionPoint to nil`)
 	}
-	*s = MaskPositionPoint(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = MaskPositionPoint(v)
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -6371,734 +4583,315 @@ func (s *Message) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Message to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "animation":
-			if err := func() error {
-				s.Animation.Reset()
-				if err := s.Animation.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Animation.Reset()
+			if err := s.Animation.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "audio":
-			if err := func() error {
-				s.Audio.Reset()
-				if err := s.Audio.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Audio.Reset()
+			if err := s.Audio.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "author_signature":
-			if err := func() error {
-				s.AuthorSignature.Reset()
-				if err := s.AuthorSignature.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AuthorSignature.Reset()
+			if err := s.AuthorSignature.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "caption":
-			if err := func() error {
-				s.Caption.Reset()
-				if err := s.Caption.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "caption_entities":
-			if err := func() error {
-				s.CaptionEntities = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem MessageEntity
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.CaptionEntities = append(s.CaptionEntities, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.CaptionEntities = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.CaptionEntities = append(s.CaptionEntities, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "channel_chat_created":
-			if err := func() error {
-				s.ChannelChatCreated.Reset()
-				if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChannelChatCreated.Reset()
+			if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat":
-			if err := func() error {
-				s.Chat = nil
-				var elem Chat
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.Chat = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Chat = nil
+			var elem Chat
+			if err := elem.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
+			s.Chat = &elem
 		case "connected_website":
-			if err := func() error {
-				s.ConnectedWebsite.Reset()
-				if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ConnectedWebsite.Reset()
+			if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "contact":
-			if err := func() error {
-				s.Contact.Reset()
-				if err := s.Contact.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Contact.Reset()
+			if err := s.Contact.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "date":
-			if err := func() error {
-				s.Date = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Date = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "delete_chat_photo":
-			if err := func() error {
-				s.DeleteChatPhoto.Reset()
-				if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DeleteChatPhoto.Reset()
+			if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "dice":
-			if err := func() error {
-				s.Dice.Reset()
-				if err := s.Dice.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Dice.Reset()
+			if err := s.Dice.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "document":
-			if err := func() error {
-				s.Document.Reset()
-				if err := s.Document.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Document.Reset()
+			if err := s.Document.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "edit_date":
-			if err := func() error {
-				s.EditDate.Reset()
-				if err := s.EditDate.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.EditDate.Reset()
+			if err := s.EditDate.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "entities":
-			if err := func() error {
-				s.Entities = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem MessageEntity
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Entities = append(s.Entities, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Entities = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Entities = append(s.Entities, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "forward_date":
-			if err := func() error {
-				s.ForwardDate.Reset()
-				if err := s.ForwardDate.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardDate.Reset()
+			if err := s.ForwardDate.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "forward_from":
-			if err := func() error {
-				s.ForwardFrom.Reset()
-				if err := s.ForwardFrom.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardFrom.Reset()
+			if err := s.ForwardFrom.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "forward_from_chat":
-			if err := func() error {
-				s.ForwardFromChat = nil
-				var elem Chat
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.ForwardFromChat = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardFromChat = nil
+			var elem Chat
+			if err := elem.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
+			s.ForwardFromChat = &elem
 		case "forward_from_message_id":
-			if err := func() error {
-				s.ForwardFromMessageID.Reset()
-				if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardFromMessageID.Reset()
+			if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "forward_sender_name":
-			if err := func() error {
-				s.ForwardSenderName.Reset()
-				if err := s.ForwardSenderName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardSenderName.Reset()
+			if err := s.ForwardSenderName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "forward_signature":
-			if err := func() error {
-				s.ForwardSignature.Reset()
-				if err := s.ForwardSignature.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ForwardSignature.Reset()
+			if err := s.ForwardSignature.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "from":
-			if err := func() error {
-				s.From.Reset()
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.From.Reset()
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "game":
-			if err := func() error {
-				s.Game.Reset()
-				if err := s.Game.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Game.Reset()
+			if err := s.Game.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "group_chat_created":
-			if err := func() error {
-				s.GroupChatCreated.Reset()
-				if err := s.GroupChatCreated.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.GroupChatCreated.Reset()
+			if err := s.GroupChatCreated.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "invoice":
-			if err := func() error {
-				s.Invoice.Reset()
-				if err := s.Invoice.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Invoice.Reset()
+			if err := s.Invoice.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "left_chat_member":
-			if err := func() error {
-				s.LeftChatMember.Reset()
-				if err := s.LeftChatMember.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LeftChatMember.Reset()
+			if err := s.LeftChatMember.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				s.Location.Reset()
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "media_group_id":
-			if err := func() error {
-				s.MediaGroupID.Reset()
-				if err := s.MediaGroupID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MediaGroupID.Reset()
+			if err := s.MediaGroupID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.MessageID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "migrate_from_chat_id":
-			if err := func() error {
-				s.MigrateFromChatID.Reset()
-				if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MigrateFromChatID.Reset()
+			if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "migrate_to_chat_id":
-			if err := func() error {
-				s.MigrateToChatID.Reset()
-				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MigrateToChatID.Reset()
+			if err := s.MigrateToChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "new_chat_members":
-			if err := func() error {
-				s.NewChatMembers = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem User
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.NewChatMembers = append(s.NewChatMembers, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.NewChatMembers = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem User
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.NewChatMembers = append(s.NewChatMembers, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "new_chat_photo":
-			if err := func() error {
-				s.NewChatPhoto = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PhotoSize
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.NewChatPhoto = append(s.NewChatPhoto, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.NewChatPhoto = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PhotoSize
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.NewChatPhoto = append(s.NewChatPhoto, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "new_chat_title":
-			if err := func() error {
-				s.NewChatTitle.Reset()
-				if err := s.NewChatTitle.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NewChatTitle.Reset()
+			if err := s.NewChatTitle.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "passport_data":
-			if err := func() error {
-				s.PassportData.Reset()
-				if err := s.PassportData.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PassportData.Reset()
+			if err := s.PassportData.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo":
-			if err := func() error {
-				s.Photo = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PhotoSize
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Photo = append(s.Photo, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Photo = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PhotoSize
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Photo = append(s.Photo, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "pinned_message":
-			if err := func() error {
-				s.PinnedMessage = nil
-				var elem Message
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.PinnedMessage = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PinnedMessage = nil
+			var elem Message
+			if err := elem.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
+			s.PinnedMessage = &elem
 		case "poll":
-			if err := func() error {
-				s.Poll.Reset()
-				if err := s.Poll.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Poll.Reset()
+			if err := s.Poll.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "proximity_alert_triggered":
-			if err := func() error {
-				s.ProximityAlertTriggered.Reset()
-				if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ProximityAlertTriggered.Reset()
+			if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message":
-			if err := func() error {
-				s.ReplyToMessage = nil
-				var elem Message
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.ReplyToMessage = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessage = nil
+			var elem Message
+			if err := elem.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
+			s.ReplyToMessage = &elem
 		case "sender_chat":
-			if err := func() error {
-				s.SenderChat = nil
-				var elem Chat
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.SenderChat = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SenderChat = nil
+			var elem Chat
+			if err := elem.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
+			s.SenderChat = &elem
 		case "sticker":
-			if err := func() error {
-				s.Sticker.Reset()
-				if err := s.Sticker.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Sticker.Reset()
+			if err := s.Sticker.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "successful_payment":
-			if err := func() error {
-				s.SuccessfulPayment.Reset()
-				if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SuccessfulPayment.Reset()
+			if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "supergroup_chat_created":
-			if err := func() error {
-				s.SupergroupChatCreated.Reset()
-				if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SupergroupChatCreated.Reset()
+			if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "text":
-			if err := func() error {
-				s.Text.Reset()
-				if err := s.Text.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "venue":
-			if err := func() error {
-				s.Venue.Reset()
-				if err := s.Venue.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Venue.Reset()
+			if err := s.Venue.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "via_bot":
-			if err := func() error {
-				s.ViaBot.Reset()
-				if err := s.ViaBot.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ViaBot.Reset()
+			if err := s.ViaBot.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "video":
-			if err := func() error {
-				s.Video.Reset()
-				if err := s.Video.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Video.Reset()
+			if err := s.Video.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "video_note":
-			if err := func() error {
-				s.VideoNote.Reset()
-				if err := s.VideoNote.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.VideoNote.Reset()
+			if err := s.VideoNote.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "voice":
-			if err := func() error {
-				s.Voice.Reset()
-				if err := s.Voice.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Voice.Reset()
+			if err := s.Voice.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -7138,83 +4931,44 @@ func (s *MessageEntity) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode MessageEntity to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "language":
-			if err := func() error {
-				s.Language.Reset()
-				if err := s.Language.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Language.Reset()
+			if err := s.Language.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "length":
-			if err := func() error {
-				s.Length = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Length = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "offset":
-			if err := func() error {
-				s.Offset = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Offset = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "type":
-			if err := func() error {
-				if err := s.Type.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Type.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL.Reset()
-				if err := s.URL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "user":
-			if err := func() error {
-				s.User.Reset()
-				if err := s.User.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -7227,8 +4981,12 @@ func (s *MessageEntityType) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode MessageEntityType to nil`)
 	}
-	*s = MessageEntityType(i.Str())
-	return i.Error
+	v, err := i.Str()
+	if err != nil {
+		return err
+	}
+	*s = MessageEntityType(v)
+	return nil
 }
 
 // WriteJSON writes json value of Animation to json stream.
@@ -7241,15 +4999,15 @@ func (o *OptAnimation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptAnimation to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAnimation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptAnimation", i.Next())
 	}
 }
 
@@ -7263,15 +5021,15 @@ func (o *OptAudio) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptAudio to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAudio", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptAudio", i.Next())
 	}
 }
 
@@ -7285,13 +5043,17 @@ func (o *OptBool) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptBool to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Bool:
 		o.Set = true
-		o.Value = bool(i.Bool())
-		return i.Error
+		v, err := i.Bool()
+		if err != nil {
+			return err
+		}
+		o.Value = bool(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBool", i.Next())
 	}
 }
 
@@ -7304,12 +5066,12 @@ func (o *OptCallbackGame) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptCallbackGame to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCallbackGame", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptCallbackGame", i.Next())
 	}
 }
 
@@ -7323,15 +5085,15 @@ func (o *OptCallbackQuery) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptCallbackQuery to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCallbackQuery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptCallbackQuery", i.Next())
 	}
 }
 
@@ -7345,15 +5107,15 @@ func (o *OptChatLocation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptChatLocation to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatLocation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatLocation", i.Next())
 	}
 }
 
@@ -7367,15 +5129,15 @@ func (o *OptChatPermissions) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptChatPermissions to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatPermissions", i.Next())
 	}
 }
 
@@ -7389,15 +5151,15 @@ func (o *OptChatPhoto) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptChatPhoto to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChatPhoto", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatPhoto", i.Next())
 	}
 }
 
@@ -7411,15 +5173,15 @@ func (o *OptChosenInlineResult) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptChosenInlineResult to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChosenInlineResult", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChosenInlineResult", i.Next())
 	}
 }
 
@@ -7433,15 +5195,15 @@ func (o *OptContact) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptContact to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptContact", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptContact", i.Next())
 	}
 }
 
@@ -7455,15 +5217,15 @@ func (o *OptDice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptDice to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptDice", i.Next())
 	}
 }
 
@@ -7477,15 +5239,15 @@ func (o *OptDocument) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptDocument to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDocument", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptDocument", i.Next())
 	}
 }
 
@@ -7499,13 +5261,17 @@ func (o *OptFloat64) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Number:
 		o.Set = true
-		o.Value = float64(i.Float64())
-		return i.Error
+		v, err := i.Float64()
+		if err != nil {
+			return err
+		}
+		o.Value = float64(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptFloat64", i.Next())
 	}
 }
 
@@ -7519,15 +5285,15 @@ func (o *OptGame) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptGame to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGame", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptGame", i.Next())
 	}
 }
 
@@ -7541,15 +5307,15 @@ func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInlineKeyboardMarkup to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInlineKeyboardMarkup", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInlineKeyboardMarkup", i.Next())
 	}
 }
 
@@ -7563,15 +5329,15 @@ func (o *OptInlineQuery) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInlineQuery to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInlineQuery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInlineQuery", i.Next())
 	}
 }
 
@@ -7584,12 +5350,12 @@ func (o *OptInputFile) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInputFile to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInputFile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInputFile", i.Next())
 	}
 }
 
@@ -7603,13 +5369,17 @@ func (o *OptInt) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Number:
 		o.Set = true
-		o.Value = int(i.Int())
-		return i.Error
+		v, err := i.Int()
+		if err != nil {
+			return err
+		}
+		o.Value = int(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt", i.Next())
 	}
 }
 
@@ -7623,15 +5393,15 @@ func (o *OptInvoice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInvoice to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInvoice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInvoice", i.Next())
 	}
 }
 
@@ -7645,15 +5415,15 @@ func (o *OptLocation) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptLocation to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptLocation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptLocation", i.Next())
 	}
 }
 
@@ -7667,15 +5437,15 @@ func (o *OptLoginUrl) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptLoginUrl to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptLoginUrl", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptLoginUrl", i.Next())
 	}
 }
 
@@ -7689,15 +5459,15 @@ func (o *OptMaskPosition) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptMaskPosition to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMaskPosition", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMaskPosition", i.Next())
 	}
 }
 
@@ -7711,15 +5481,15 @@ func (o *OptMessage) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptMessage to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMessage", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMessage", i.Next())
 	}
 }
 
@@ -7733,15 +5503,15 @@ func (o *OptOrderInfo) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptOrderInfo to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrderInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptOrderInfo", i.Next())
 	}
 }
 
@@ -7755,15 +5525,15 @@ func (o *OptPassportData) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPassportData to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPassportData", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPassportData", i.Next())
 	}
 }
 
@@ -7777,15 +5547,15 @@ func (o *OptPassportFile) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPassportFile to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPassportFile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPassportFile", i.Next())
 	}
 }
 
@@ -7799,15 +5569,15 @@ func (o *OptPhotoSize) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPhotoSize to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPhotoSize", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPhotoSize", i.Next())
 	}
 }
 
@@ -7821,15 +5591,15 @@ func (o *OptPoll) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPoll to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPoll", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPoll", i.Next())
 	}
 }
 
@@ -7843,15 +5613,15 @@ func (o *OptPollAnswer) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPollAnswer to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPollAnswer", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPollAnswer", i.Next())
 	}
 }
 
@@ -7865,15 +5635,15 @@ func (o *OptPreCheckoutQuery) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptPreCheckoutQuery to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPreCheckoutQuery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPreCheckoutQuery", i.Next())
 	}
 }
 
@@ -7887,15 +5657,15 @@ func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptProximityAlertTriggered to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProximityAlertTriggered", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptProximityAlertTriggered", i.Next())
 	}
 }
 
@@ -7909,15 +5679,15 @@ func (o *OptResponseParameters) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptResponseParameters to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptResponseParameters", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptResponseParameters", i.Next())
 	}
 }
 
@@ -7931,15 +5701,15 @@ func (o *OptShippingAddress) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptShippingAddress to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptShippingAddress", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptShippingAddress", i.Next())
 	}
 }
 
@@ -7953,15 +5723,15 @@ func (o *OptShippingQuery) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptShippingQuery to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptShippingQuery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptShippingQuery", i.Next())
 	}
 }
 
@@ -7975,15 +5745,15 @@ func (o *OptSticker) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptSticker to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSticker", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptSticker", i.Next())
 	}
 }
 
@@ -7997,13 +5767,17 @@ func (o *OptString) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.String:
 		o.Set = true
-		o.Value = string(i.Str())
-		return i.Error
+		v, err := i.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = string(v)
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", i.Next())
 	}
 }
 
@@ -8017,15 +5791,15 @@ func (o *OptSuccessfulPayment) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptSuccessfulPayment to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSuccessfulPayment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptSuccessfulPayment", i.Next())
 	}
 }
 
@@ -8039,15 +5813,15 @@ func (o *OptUser) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptUser to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptUser", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptUser", i.Next())
 	}
 }
 
@@ -8061,15 +5835,15 @@ func (o *OptVenue) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptVenue to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVenue", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVenue", i.Next())
 	}
 }
 
@@ -8083,15 +5857,15 @@ func (o *OptVideo) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptVideo to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVideo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVideo", i.Next())
 	}
 }
 
@@ -8105,15 +5879,15 @@ func (o *OptVideoNote) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptVideoNote to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVideoNote", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVideoNote", i.Next())
 	}
 }
 
@@ -8127,15 +5901,15 @@ func (o *OptVoice) ReadJSON(i *json.Iter) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptVoice to nil`)
 	}
-	switch i.WhatIsNext() {
+	switch i.Next() {
 	case json.Object:
 		o.Set = true
 		if err := o.Value.ReadJSON(i); err != nil {
 			return err
 		}
-		return i.Error
+		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVoice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVoice", i.Next())
 	}
 }
 
@@ -8172,66 +5946,33 @@ func (s *OrderInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode OrderInfo to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "email":
-			if err := func() error {
-				s.Email.Reset()
-				if err := s.Email.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Email.Reset()
+			if err := s.Email.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "name":
-			if err := func() error {
-				s.Name.Reset()
-				if err := s.Name.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Name.Reset()
+			if err := s.Name.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "phone_number":
-			if err := func() error {
-				s.PhoneNumber.Reset()
-				if err := s.PhoneNumber.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhoneNumber.Reset()
+			if err := s.PhoneNumber.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "shipping_address":
-			if err := func() error {
-				s.ShippingAddress.Reset()
-				if err := s.ShippingAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShippingAddress.Reset()
+			if err := s.ShippingAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8260,56 +6001,29 @@ func (s *PassportData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PassportData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "credentials":
-			if err := func() error {
-				if err := s.Credentials.ReadJSON(i); err != nil {
+			if err := s.Credentials.ReadJSON(i); err != nil {
+				return err
+			}
+		case "data":
+			s.Data = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem EncryptedPassportElement
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Data = append(s.Data, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
-		case "data":
-			if err := func() error {
-				s.Data = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem EncryptedPassportElement
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Data = append(s.Data, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8337,54 +6051,37 @@ func (s *PassportFile) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PassportFile to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_date":
-			if err := func() error {
-				s.FileDate = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.FileDate = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.FileSize = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8417,66 +6114,42 @@ func (s *PhotoSize) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PhotoSize to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "height":
-			if err := func() error {
-				s.Height = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Height = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "width":
-			if err := func() error {
-				s.Width = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Width = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8555,183 +6228,99 @@ func (s *Poll) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Poll to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allows_multiple_answers":
-			if err := func() error {
-				s.AllowsMultipleAnswers = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.AllowsMultipleAnswers = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "close_date":
-			if err := func() error {
-				s.CloseDate.Reset()
-				if err := s.CloseDate.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CloseDate.Reset()
+			if err := s.CloseDate.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "correct_option_id":
-			if err := func() error {
-				s.CorrectOptionID.Reset()
-				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CorrectOptionID.Reset()
+			if err := s.CorrectOptionID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "explanation":
-			if err := func() error {
-				s.Explanation.Reset()
-				if err := s.Explanation.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Explanation.Reset()
+			if err := s.Explanation.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "explanation_entities":
-			if err := func() error {
-				s.ExplanationEntities = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem MessageEntity
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.ExplanationEntities = append(s.ExplanationEntities, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "is_anonymous":
-			if err := func() error {
-				s.IsAnonymous = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "is_closed":
-			if err := func() error {
-				s.IsClosed = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "open_period":
-			if err := func() error {
-				s.OpenPeriod.Reset()
-				if err := s.OpenPeriod.ReadJSON(i); err != nil {
+			s.ExplanationEntities = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.ExplanationEntities = append(s.ExplanationEntities, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
+		case "id":
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
+			}
+		case "is_anonymous":
+			v, err := i.Bool()
+			s.IsAnonymous = bool(v)
+			if err != nil {
+				return err
+			}
+		case "is_closed":
+			v, err := i.Bool()
+			s.IsClosed = bool(v)
+			if err != nil {
+				return err
+			}
+		case "open_period":
+			s.OpenPeriod.Reset()
+			if err := s.OpenPeriod.ReadJSON(i); err != nil {
+				return err
+			}
 		case "options":
-			if err := func() error {
-				s.Options = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem PollOption
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Options = append(s.Options, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Options = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem PollOption
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Options = append(s.Options, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "question":
-			if err := func() error {
-				s.Question = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Question = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "total_voter_count":
-			if err := func() error {
-				s.TotalVoterCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.TotalVoterCount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "type":
-			if err := func() error {
-				s.Type = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8763,63 +6352,37 @@ func (s *PollAnswer) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PollAnswer to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "option_ids":
-			if err := func() error {
-				s.OptionIds = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem int
-					if err := func() error {
-						elem = int(i.Int())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.OptionIds = append(s.OptionIds, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "poll_id":
-			if err := func() error {
-				s.PollID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "user":
-			if err := func() error {
-				if err := s.User.ReadJSON(i); err != nil {
+			s.OptionIds = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem int
+				v, err := i.Int()
+				elem = int(v)
+				if err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.OptionIds = append(s.OptionIds, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
+		case "poll_id":
+			v, err := i.Str()
+			s.PollID = string(v)
+			if err != nil {
+				return err
+			}
+		case "user":
+			if err := s.User.ReadJSON(i); err != nil {
+				return err
+			}
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8841,36 +6404,25 @@ func (s *PollOption) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PollOption to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "text":
-			if err := func() error {
-				s.Text = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Text = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "voter_count":
-			if err := func() error {
-				s.VoterCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.VoterCount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8911,89 +6463,51 @@ func (s *PreCheckoutQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PreCheckoutQuery to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "from":
-			if err := func() error {
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "invoice_payload":
-			if err := func() error {
-				s.InvoicePayload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.InvoicePayload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "order_info":
-			if err := func() error {
-				s.OrderInfo.Reset()
-				if err := s.OrderInfo.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.OrderInfo.Reset()
+			if err := s.OrderInfo.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "shipping_option_id":
-			if err := func() error {
-				s.ShippingOptionID.Reset()
-				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShippingOptionID.Reset()
+			if err := s.ShippingOptionID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "total_amount":
-			if err := func() error {
-				s.TotalAmount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.TotalAmount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9018,49 +6532,27 @@ func (s *ProximityAlertTriggered) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ProximityAlertTriggered to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "distance":
-			if err := func() error {
-				s.Distance = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Distance = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "traveler":
-			if err := func() error {
-				if err := s.Traveler.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Traveler.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "watcher":
-			if err := func() error {
-				if err := s.Watcher.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Watcher.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9086,42 +6578,23 @@ func (s *ResponseParameters) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ResponseParameters to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "migrate_to_chat_id":
-			if err := func() error {
-				s.MigrateToChatID.Reset()
-				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MigrateToChatID.Reset()
+			if err := s.MigrateToChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "retry_after":
-			if err := func() error {
-				s.RetryAfter.Reset()
-				if err := s.RetryAfter.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.RetryAfter.Reset()
+			if err := s.RetryAfter.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9143,38 +6616,23 @@ func (s *SendGamePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendGamePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9216,84 +6674,45 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendGamePostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "game_short_name":
-			if err := func() error {
-				s.GameShortName = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.GameShortName = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9335,84 +6754,45 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter) er
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendGamePostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "game_short_name":
-			if err := func() error {
-				s.GameShortName = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.GameShortName = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9454,84 +6834,45 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendGamePostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "game_short_name":
-			if err := func() error {
-				s.GameShortName = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.GameShortName = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9553,38 +6894,23 @@ func (s *SendInvoicePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendInvoicePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -9711,300 +7037,147 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendInvoicePostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "is_flexible":
-			if err := func() error {
-				s.IsFlexible.Reset()
-				if err := s.IsFlexible.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_email":
-			if err := func() error {
-				s.NeedEmail.Reset()
-				if err := s.NeedEmail.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_name":
-			if err := func() error {
-				s.NeedName.Reset()
-				if err := s.NeedName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_phone_number":
-			if err := func() error {
-				s.NeedPhoneNumber.Reset()
-				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_shipping_address":
-			if err := func() error {
-				s.NeedShippingAddress.Reset()
-				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "payload":
-			if err := func() error {
-				s.Payload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Payload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "photo_height":
-			if err := func() error {
-				s.PhotoHeight.Reset()
-				if err := s.PhotoHeight.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_size":
-			if err := func() error {
-				s.PhotoSize.Reset()
-				if err := s.PhotoSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_url":
-			if err := func() error {
-				s.PhotoURL.Reset()
-				if err := s.PhotoURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_width":
-			if err := func() error {
-				s.PhotoWidth.Reset()
-				if err := s.PhotoWidth.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "prices":
-			if err := func() error {
-				s.Prices = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem LabeledPrice
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Prices = append(s.Prices, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Prices = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem LabeledPrice
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Prices = append(s.Prices, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "provider_data":
-			if err := func() error {
-				s.ProviderData.Reset()
-				if err := s.ProviderData.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ProviderData.Reset()
+			if err := s.ProviderData.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "provider_token":
-			if err := func() error {
-				s.ProviderToken = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_email_to_provider":
-			if err := func() error {
-				s.SendEmailToProvider.Reset()
-				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_phone_number_to_provider":
-			if err := func() error {
-				s.SendPhoneNumberToProvider.Reset()
-				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendPhoneNumberToProvider.Reset()
+			if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "start_parameter":
-			if err := func() error {
-				s.StartParameter = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StartParameter = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -10131,300 +7304,147 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter)
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendInvoicePostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "is_flexible":
-			if err := func() error {
-				s.IsFlexible.Reset()
-				if err := s.IsFlexible.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_email":
-			if err := func() error {
-				s.NeedEmail.Reset()
-				if err := s.NeedEmail.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_name":
-			if err := func() error {
-				s.NeedName.Reset()
-				if err := s.NeedName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_phone_number":
-			if err := func() error {
-				s.NeedPhoneNumber.Reset()
-				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_shipping_address":
-			if err := func() error {
-				s.NeedShippingAddress.Reset()
-				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "payload":
-			if err := func() error {
-				s.Payload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Payload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "photo_height":
-			if err := func() error {
-				s.PhotoHeight.Reset()
-				if err := s.PhotoHeight.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_size":
-			if err := func() error {
-				s.PhotoSize.Reset()
-				if err := s.PhotoSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_url":
-			if err := func() error {
-				s.PhotoURL.Reset()
-				if err := s.PhotoURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_width":
-			if err := func() error {
-				s.PhotoWidth.Reset()
-				if err := s.PhotoWidth.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "prices":
-			if err := func() error {
-				s.Prices = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem LabeledPrice
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Prices = append(s.Prices, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Prices = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem LabeledPrice
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Prices = append(s.Prices, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "provider_data":
-			if err := func() error {
-				s.ProviderData.Reset()
-				if err := s.ProviderData.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ProviderData.Reset()
+			if err := s.ProviderData.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "provider_token":
-			if err := func() error {
-				s.ProviderToken = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_email_to_provider":
-			if err := func() error {
-				s.SendEmailToProvider.Reset()
-				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_phone_number_to_provider":
-			if err := func() error {
-				s.SendPhoneNumberToProvider.Reset()
-				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendPhoneNumberToProvider.Reset()
+			if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "start_parameter":
-			if err := func() error {
-				s.StartParameter = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StartParameter = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -10551,300 +7571,147 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SendInvoicePostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allow_sending_without_reply":
-			if err := func() error {
-				s.AllowSendingWithoutReply.Reset()
-				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chat_id":
-			if err := func() error {
-				s.ChatID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ChatID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "description":
-			if err := func() error {
-				s.Description = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Description = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "disable_notification":
-			if err := func() error {
-				s.DisableNotification.Reset()
-				if err := s.DisableNotification.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "is_flexible":
-			if err := func() error {
-				s.IsFlexible.Reset()
-				if err := s.IsFlexible.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_email":
-			if err := func() error {
-				s.NeedEmail.Reset()
-				if err := s.NeedEmail.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_name":
-			if err := func() error {
-				s.NeedName.Reset()
-				if err := s.NeedName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_phone_number":
-			if err := func() error {
-				s.NeedPhoneNumber.Reset()
-				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "need_shipping_address":
-			if err := func() error {
-				s.NeedShippingAddress.Reset()
-				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "payload":
-			if err := func() error {
-				s.Payload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Payload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "photo_height":
-			if err := func() error {
-				s.PhotoHeight.Reset()
-				if err := s.PhotoHeight.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_size":
-			if err := func() error {
-				s.PhotoSize.Reset()
-				if err := s.PhotoSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_url":
-			if err := func() error {
-				s.PhotoURL.Reset()
-				if err := s.PhotoURL.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "photo_width":
-			if err := func() error {
-				s.PhotoWidth.Reset()
-				if err := s.PhotoWidth.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "prices":
-			if err := func() error {
-				s.Prices = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem LabeledPrice
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Prices = append(s.Prices, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Prices = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem LabeledPrice
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Prices = append(s.Prices, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "provider_data":
-			if err := func() error {
-				s.ProviderData.Reset()
-				if err := s.ProviderData.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ProviderData.Reset()
+			if err := s.ProviderData.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "provider_token":
-			if err := func() error {
-				s.ProviderToken = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "reply_markup":
-			if err := func() error {
-				s.ReplyMarkup.Reset()
-				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "reply_to_message_id":
-			if err := func() error {
-				s.ReplyToMessageID.Reset()
-				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_email_to_provider":
-			if err := func() error {
-				s.SendEmailToProvider.Reset()
-				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "send_phone_number_to_provider":
-			if err := func() error {
-				s.SendPhoneNumberToProvider.Reset()
-				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SendPhoneNumberToProvider.Reset()
+			if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "start_parameter":
-			if err := func() error {
-				s.StartParameter = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StartParameter = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -10891,96 +7758,50 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetGameScorePostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "disable_edit_message":
-			if err := func() error {
-				s.DisableEditMessage.Reset()
-				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "force":
-			if err := func() error {
-				s.Force.Reset()
-				if err := s.Force.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "score":
-			if err := func() error {
-				s.Score = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Score = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11027,96 +7848,50 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetGameScorePostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "disable_edit_message":
-			if err := func() error {
-				s.DisableEditMessage.Reset()
-				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "force":
-			if err := func() error {
-				s.Force.Reset()
-				if err := s.Force.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "score":
-			if err := func() error {
-				s.Score = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Score = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11163,96 +7938,50 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetGameScorePostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "chat_id":
-			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "disable_edit_message":
-			if err := func() error {
-				s.DisableEditMessage.Reset()
-				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "force":
-			if err := func() error {
-				s.Force.Reset()
-				if err := s.Force.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_message_id":
-			if err := func() error {
-				s.InlineMessageID.Reset()
-				if err := s.InlineMessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message_id":
-			if err := func() error {
-				s.MessageID.Reset()
-				if err := s.MessageID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "score":
-			if err := func() error {
-				s.Score = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Score = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11274,36 +8003,25 @@ func (s *SetMyCommandsPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetMyCommandsPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11329,45 +8047,25 @@ func (s *SetMyCommandsPostReqApplicationJSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "commands":
-			if err := func() error {
-				s.Commands = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem BotCommand
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Commands = append(s.Commands, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Commands = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem BotCommand
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Commands = append(s.Commands, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11393,45 +8091,25 @@ func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Ite
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "commands":
-			if err := func() error {
-				s.Commands = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem BotCommand
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Commands = append(s.Commands, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Commands = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem BotCommand
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Commands = append(s.Commands, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11457,45 +8135,25 @@ func (s *SetMyCommandsPostReqMultipartFormData) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "commands":
-			if err := func() error {
-				s.Commands = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem BotCommand
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Commands = append(s.Commands, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Commands = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem BotCommand
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Commands = append(s.Commands, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11517,36 +8175,25 @@ func (s *SetStickerPositionInSetPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11568,36 +8215,25 @@ func (s *SetStickerPositionInSetPostReqApplicationJSON) ReadJSON(i *json.Iter) e
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqApplicationJSON to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "position":
-			if err := func() error {
-				s.Position = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Position = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11619,36 +8255,25 @@ func (s *SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "position":
-			if err := func() error {
-				s.Position = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Position = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11670,36 +8295,25 @@ func (s *SetStickerPositionInSetPostReqMultipartFormData) ReadJSON(i *json.Iter)
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqMultipartFormData to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "position":
-			if err := func() error {
-				s.Position = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Position = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "sticker":
-			if err := func() error {
-				s.Sticker = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Sticker = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11721,36 +8335,25 @@ func (s *SetWebhookPostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetWebhookPostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				s.Result = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Result = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11801,100 +8404,53 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SetWebhookPostReq to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allowed_updates":
-			if err := func() error {
-				s.AllowedUpdates = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.AllowedUpdates = append(s.AllowedUpdates, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.AllowedUpdates = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem string
+				v, err := i.Str()
+				elem = string(v)
+				if err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "certificate":
-			if err := func() error {
-				s.Certificate.Reset()
-				if err := s.Certificate.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Certificate.Reset()
+			if err := s.Certificate.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "drop_pending_updates":
-			if err := func() error {
-				s.DropPendingUpdates.Reset()
-				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "ip_address":
-			if err := func() error {
-				s.IPAddress.Reset()
-				if err := s.IPAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.IPAddress.Reset()
+			if err := s.IPAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "max_connections":
-			if err := func() error {
-				s.MaxConnections.Reset()
-				if err := s.MaxConnections.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MaxConnections.Reset()
+			if err := s.MaxConnections.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.URL = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -11928,72 +8484,49 @@ func (s *ShippingAddress) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ShippingAddress to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "city":
-			if err := func() error {
-				s.City = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.City = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "country_code":
-			if err := func() error {
-				s.CountryCode = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.CountryCode = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "post_code":
-			if err := func() error {
-				s.PostCode = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.PostCode = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "state":
-			if err := func() error {
-				s.State = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.State = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "street_line1":
-			if err := func() error {
-				s.StreetLine1 = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StreetLine1 = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "street_line2":
-			if err := func() error {
-				s.StreetLine2 = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.StreetLine2 = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12025,63 +8558,37 @@ func (s *ShippingOption) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ShippingOption to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "prices":
-			if err := func() error {
-				s.Prices = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem LabeledPrice
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Prices = append(s.Prices, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.Prices = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem LabeledPrice
+				if err := elem.ReadJSON(i); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Prices = append(s.Prices, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12109,58 +8616,33 @@ func (s *ShippingQuery) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ShippingQuery to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "from":
-			if err := func() error {
-				if err := s.From.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.From.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "invoice_payload":
-			if err := func() error {
-				s.InvoicePayload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.InvoicePayload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "shipping_address":
-			if err := func() error {
-				if err := s.ShippingAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.ShippingAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12216,123 +8698,68 @@ func (s *Sticker) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Sticker to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "emoji":
-			if err := func() error {
-				s.Emoji.Reset()
-				if err := s.Emoji.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Emoji.Reset()
+			if err := s.Emoji.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "height":
-			if err := func() error {
-				s.Height = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Height = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "is_animated":
-			if err := func() error {
-				s.IsAnimated = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.IsAnimated = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mask_position":
-			if err := func() error {
-				s.MaskPosition.Reset()
-				if err := s.MaskPosition.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MaskPosition.Reset()
+			if err := s.MaskPosition.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "set_name":
-			if err := func() error {
-				s.SetName.Reset()
-				if err := s.SetName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SetName.Reset()
+			if err := s.SetName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "width":
-			if err := func() error {
-				s.Width = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Width = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12375,93 +8802,54 @@ func (s *StickerSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode StickerSet to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "contains_masks":
-			if err := func() error {
-				s.ContainsMasks = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.ContainsMasks = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "is_animated":
-			if err := func() error {
-				s.IsAnimated = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.IsAnimated = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "name":
-			if err := func() error {
-				s.Name = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "stickers":
-			if err := func() error {
-				s.Stickers = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem Sticker
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Stickers = append(s.Stickers, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
+			s.Stickers = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem Sticker
+				if err := elem.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Stickers = append(s.Stickers, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
+			}
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12502,87 +8890,53 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SuccessfulPayment to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "currency":
-			if err := func() error {
-				s.Currency = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Currency = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "invoice_payload":
-			if err := func() error {
-				s.InvoicePayload = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.InvoicePayload = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "order_info":
-			if err := func() error {
-				s.OrderInfo.Reset()
-				if err := s.OrderInfo.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.OrderInfo.Reset()
+			if err := s.OrderInfo.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "provider_payment_charge_id":
-			if err := func() error {
-				s.ProviderPaymentChargeID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.ProviderPaymentChargeID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "shipping_option_id":
-			if err := func() error {
-				s.ShippingOptionID.Reset()
-				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShippingOptionID.Reset()
+			if err := s.ShippingOptionID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "telegram_payment_charge_id":
-			if err := func() error {
-				s.TelegramPaymentChargeID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.TelegramPaymentChargeID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "total_amount":
-			if err := func() error {
-				s.TotalAmount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.TotalAmount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12656,159 +9010,74 @@ func (s *Update) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Update to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "callback_query":
-			if err := func() error {
-				s.CallbackQuery.Reset()
-				if err := s.CallbackQuery.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CallbackQuery.Reset()
+			if err := s.CallbackQuery.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "channel_post":
-			if err := func() error {
-				s.ChannelPost.Reset()
-				if err := s.ChannelPost.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChannelPost.Reset()
+			if err := s.ChannelPost.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "chosen_inline_result":
-			if err := func() error {
-				s.ChosenInlineResult.Reset()
-				if err := s.ChosenInlineResult.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ChosenInlineResult.Reset()
+			if err := s.ChosenInlineResult.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "edited_channel_post":
-			if err := func() error {
-				s.EditedChannelPost.Reset()
-				if err := s.EditedChannelPost.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.EditedChannelPost.Reset()
+			if err := s.EditedChannelPost.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "edited_message":
-			if err := func() error {
-				s.EditedMessage.Reset()
-				if err := s.EditedMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.EditedMessage.Reset()
+			if err := s.EditedMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "inline_query":
-			if err := func() error {
-				s.InlineQuery.Reset()
-				if err := s.InlineQuery.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.InlineQuery.Reset()
+			if err := s.InlineQuery.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "message":
-			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Message.Reset()
+			if err := s.Message.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "poll":
-			if err := func() error {
-				s.Poll.Reset()
-				if err := s.Poll.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Poll.Reset()
+			if err := s.Poll.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "poll_answer":
-			if err := func() error {
-				s.PollAnswer.Reset()
-				if err := s.PollAnswer.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PollAnswer.Reset()
+			if err := s.PollAnswer.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "pre_checkout_query":
-			if err := func() error {
-				s.PreCheckoutQuery.Reset()
-				if err := s.PreCheckoutQuery.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.PreCheckoutQuery.Reset()
+			if err := s.PreCheckoutQuery.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "shipping_query":
-			if err := func() error {
-				s.ShippingQuery.Reset()
-				if err := s.ShippingQuery.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.ShippingQuery.Reset()
+			if err := s.ShippingQuery.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "update_id":
-			if err := func() error {
-				s.UpdateID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UpdateID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12830,38 +9099,23 @@ func (s *UploadStickerFilePostOK) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode UploadStickerFilePostOK to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.Ok = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "result":
-			if err := func() error {
-				if err := s.Result.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Result.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12881,38 +9135,23 @@ func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode UploadStickerFilePostReq to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "png_sticker":
-			if err := func() error {
-				if err := fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`); err != nil {
+				return err
 			}
-			return true
 		case "user_id":
-			if err := func() error {
-				s.UserID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -12967,117 +9206,61 @@ func (s *User) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode User to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "can_join_groups":
-			if err := func() error {
-				s.CanJoinGroups.Reset()
-				if err := s.CanJoinGroups.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanJoinGroups.Reset()
+			if err := s.CanJoinGroups.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "can_read_all_group_messages":
-			if err := func() error {
-				s.CanReadAllGroupMessages.Reset()
-				if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.CanReadAllGroupMessages.Reset()
+			if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "first_name":
-			if err := func() error {
-				s.FirstName = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FirstName = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "id":
-			if err := func() error {
-				s.ID = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.ID = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "is_bot":
-			if err := func() error {
-				s.IsBot = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.IsBot = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "language_code":
-			if err := func() error {
-				s.LanguageCode.Reset()
-				if err := s.LanguageCode.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "last_name":
-			if err := func() error {
-				s.LastName.Reset()
-				if err := s.LastName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LastName.Reset()
+			if err := s.LastName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "supports_inline_queries":
-			if err := func() error {
-				s.SupportsInlineQueries.Reset()
-				if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.SupportsInlineQueries.Reset()
+			if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "username":
-			if err := func() error {
-				s.Username.Reset()
-				if err := s.Username.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Username.Reset()
+			if err := s.Username.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13113,70 +9296,39 @@ func (s *UserProfilePhotos) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode UserProfilePhotos to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "photos":
-			if err := func() error {
-				s.Photos = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem []PhotoSize
-					if err := func() error {
-						elem = nil
-						var retErr error
-						i.Array(func(i *json.Iter) bool {
-							var elemElem PhotoSize
-							if err := func() error {
-								if err := elemElem.ReadJSON(i); err != nil {
-									return err
-								}
-								return i.Error
-							}(); err != nil {
-								retErr = err
-								return false
-							}
-							elem = append(elem, elemElem)
-							return true
-						})
-						if retErr != nil {
-							return retErr
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+			s.Photos = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem []PhotoSize
+				elem = nil
+				if err := i.Array(func(i *json.Iter) error {
+					var elemElem PhotoSize
+					if err := elemElem.ReadJSON(i); err != nil {
+						return err
 					}
-					s.Photos = append(s.Photos, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.Photos = append(s.Photos, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "total_count":
-			if err := func() error {
-				s.TotalCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.TotalCount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13221,95 +9373,49 @@ func (s *Venue) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Venue to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "address":
-			if err := func() error {
-				s.Address = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Address = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "foursquare_id":
-			if err := func() error {
-				s.FoursquareID.Reset()
-				if err := s.FoursquareID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FoursquareID.Reset()
+			if err := s.FoursquareID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "foursquare_type":
-			if err := func() error {
-				s.FoursquareType.Reset()
-				if err := s.FoursquareType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FoursquareType.Reset()
+			if err := s.FoursquareType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "google_place_id":
-			if err := func() error {
-				s.GooglePlaceID.Reset()
-				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.GooglePlaceID.Reset()
+			if err := s.GooglePlaceID.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "google_place_type":
-			if err := func() error {
-				s.GooglePlaceType.Reset()
-				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.GooglePlaceType.Reset()
+			if err := s.GooglePlaceType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "location":
-			if err := func() error {
-				if err := s.Location.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			if err := s.Location.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "title":
-			if err := func() error {
-				s.Title = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13360,111 +9466,63 @@ func (s *Video) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Video to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "duration":
-			if err := func() error {
-				s.Duration = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_name":
-			if err := func() error {
-				s.FileName.Reset()
-				if err := s.FileName.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileName.Reset()
+			if err := s.FileName.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "height":
-			if err := func() error {
-				s.Height = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Height = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mime_type":
-			if err := func() error {
-				s.MimeType.Reset()
-				if err := s.MimeType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "width":
-			if err := func() error {
-				s.Width = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Width = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13502,78 +9560,47 @@ func (s *VideoNote) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode VideoNote to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "duration":
-			if err := func() error {
-				s.Duration = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "length":
-			if err := func() error {
-				s.Length = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Length = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "thumb":
-			if err := func() error {
-				s.Thumb.Reset()
-				if err := s.Thumb.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13608,69 +9635,41 @@ func (s *Voice) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Voice to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "duration":
-			if err := func() error {
-				s.Duration = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_id":
-			if err := func() error {
-				s.FileID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "file_size":
-			if err := func() error {
-				s.FileSize.Reset()
-				if err := s.FileSize.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.FileSize.Reset()
+			if err := s.FileSize.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "file_unique_id":
-			if err := func() error {
-				s.FileUniqueID = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "mime_type":
-			if err := func() error {
-				s.MimeType.Reset()
-				if err := s.MimeType.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MimeType.Reset()
+			if err := s.MimeType.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -13727,116 +9726,63 @@ func (s *WebhookInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode WebhookInfo to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "allowed_updates":
-			if err := func() error {
-				s.AllowedUpdates = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.AllowedUpdates = append(s.AllowedUpdates, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+			s.AllowedUpdates = nil
+			if err := i.Array(func(i *json.Iter) error {
+				var elem string
+				v, err := i.Str()
+				elem = string(v)
+				if err != nil {
+					return err
 				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+				s.AllowedUpdates = append(s.AllowedUpdates, elem)
+				return nil
+			}); err != nil {
+				return err
 			}
-			return true
 		case "has_custom_certificate":
-			if err := func() error {
-				s.HasCustomCertificate = bool(i.Bool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Bool()
+			s.HasCustomCertificate = bool(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "ip_address":
-			if err := func() error {
-				s.IPAddress.Reset()
-				if err := s.IPAddress.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.IPAddress.Reset()
+			if err := s.IPAddress.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "last_error_date":
-			if err := func() error {
-				s.LastErrorDate.Reset()
-				if err := s.LastErrorDate.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LastErrorDate.Reset()
+			if err := s.LastErrorDate.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "last_error_message":
-			if err := func() error {
-				s.LastErrorMessage.Reset()
-				if err := s.LastErrorMessage.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.LastErrorMessage.Reset()
+			if err := s.LastErrorMessage.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "max_connections":
-			if err := func() error {
-				s.MaxConnections.Reset()
-				if err := s.MaxConnections.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			s.MaxConnections.Reset()
+			if err := s.MaxConnections.ReadJSON(i); err != nil {
+				return err
 			}
-			return true
 		case "pending_update_count":
-			if err := func() error {
-				s.PendingUpdateCount = int(i.Int())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int()
+			s.PendingUpdateCount = int(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "url":
-			if err := func() error {
-				s.URL = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.URL = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }

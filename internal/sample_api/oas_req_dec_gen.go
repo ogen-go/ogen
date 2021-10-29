@@ -77,7 +77,7 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -112,7 +112,7 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req PetCreateReq,
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -151,7 +151,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			if err := fmt.Errorf(`decoding of "PetName" (alias) is not implemented`); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -194,8 +194,12 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 		defer json.PutIter(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = string(i.Str())
-			return i.Error
+			v, err := i.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
 		}(); err != nil {
 			return req, err
 		}

@@ -80,7 +80,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -105,7 +105,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -130,7 +130,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -170,7 +170,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -195,7 +195,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -220,7 +220,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -260,7 +260,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -285,7 +285,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -310,7 +310,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -350,7 +350,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -375,7 +375,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -400,7 +400,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -440,7 +440,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -465,7 +465,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -490,7 +490,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -530,7 +530,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -555,7 +555,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -580,7 +580,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -620,7 +620,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -645,7 +645,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -670,7 +670,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -710,7 +710,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -735,7 +735,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -760,7 +760,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -800,7 +800,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -825,7 +825,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -850,7 +850,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -890,7 +890,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -915,7 +915,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -940,7 +940,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -980,7 +980,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1005,7 +1005,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1030,7 +1030,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1070,7 +1070,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1095,7 +1095,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1120,7 +1120,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1160,7 +1160,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1185,7 +1185,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1210,7 +1210,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1250,7 +1250,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1275,7 +1275,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1300,7 +1300,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1340,7 +1340,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1365,7 +1365,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1390,7 +1390,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1430,7 +1430,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1455,7 +1455,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1480,7 +1480,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1520,7 +1520,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1545,7 +1545,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1570,7 +1570,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1610,7 +1610,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1635,7 +1635,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1660,7 +1660,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1700,7 +1700,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1725,7 +1725,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1750,7 +1750,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1790,7 +1790,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1815,7 +1815,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1840,7 +1840,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1880,7 +1880,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1905,7 +1905,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1930,7 +1930,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1970,7 +1970,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1995,7 +1995,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2020,7 +2020,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2060,7 +2060,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2085,7 +2085,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2110,7 +2110,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2150,7 +2150,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2175,7 +2175,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2200,7 +2200,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2240,7 +2240,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2265,7 +2265,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2290,7 +2290,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2330,7 +2330,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2355,7 +2355,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2380,7 +2380,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2420,7 +2420,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2445,7 +2445,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2470,7 +2470,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2510,7 +2510,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2535,7 +2535,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2560,7 +2560,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2600,7 +2600,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2625,7 +2625,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONCreated" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2650,7 +2650,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONAccepted" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2690,7 +2690,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 				if err := fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2730,7 +2730,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				if err := fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2770,7 +2770,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 				if err := fmt.Errorf(`decoding of "DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2810,7 +2810,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2850,7 +2850,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 				if err := fmt.Errorf(`decoding of "DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2890,7 +2890,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "DeleteCoreV1CollectionNodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2930,7 +2930,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2970,7 +2970,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3010,7 +3010,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3050,7 +3050,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3090,7 +3090,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3130,7 +3130,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 				if err := fmt.Errorf(`decoding of "DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3170,7 +3170,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "DeleteNetworkingV1CollectionIngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3210,7 +3210,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "DeleteNodeV1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3250,7 +3250,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3290,7 +3290,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3330,7 +3330,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 				if err := fmt.Errorf(`decoding of "DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3370,7 +3370,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 				if err := fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3410,7 +3410,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 				if err := fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3450,7 +3450,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3490,7 +3490,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3530,7 +3530,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3570,7 +3570,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionStorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3610,7 +3610,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3650,7 +3650,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 				if err := fmt.Errorf(`decoding of "GetAPIVersionsApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3690,7 +3690,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "GetAdmissionregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3730,7 +3730,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "GetAdmissionregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3770,7 +3770,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "GetApiextensionsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3810,7 +3810,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "GetApiextensionsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3850,7 +3850,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "GetApiregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3890,7 +3890,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "GetApiregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3930,7 +3930,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 				if err := fmt.Errorf(`decoding of "GetAppsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3970,7 +3970,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "GetAppsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4010,7 +4010,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "GetAuthenticationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4050,7 +4050,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "GetAuthenticationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4090,7 +4090,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "GetAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4130,7 +4130,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "GetAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4170,7 +4170,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "GetAutoscalingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4210,7 +4210,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "GetAutoscalingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4250,7 +4250,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "GetAutoscalingV2beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4290,7 +4290,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "GetAutoscalingV2beta2APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4330,7 +4330,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 				if err := fmt.Errorf(`decoding of "GetBatchAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4370,7 +4370,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "GetBatchV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4410,7 +4410,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "GetBatchV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4450,7 +4450,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "GetCertificatesAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4490,7 +4490,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "GetCertificatesV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4530,7 +4530,7 @@ func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res Get
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4566,7 +4566,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "GetCoordinationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4606,7 +4606,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "GetCoordinationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4646,7 +4646,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GetCoreAPIVersionsApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4686,7 +4686,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "GetCoreV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4726,7 +4726,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "GetDiscoveryAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4766,7 +4766,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "GetDiscoveryV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4806,7 +4806,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "GetDiscoveryV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4846,7 +4846,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "GetEventsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4886,7 +4886,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "GetEventsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4926,7 +4926,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "GetEventsV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4966,7 +4966,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5006,7 +5006,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5046,7 +5046,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5086,7 +5086,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "GetInternalApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5126,7 +5126,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5166,7 +5166,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "GetNetworkingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5206,7 +5206,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "GetNetworkingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5246,7 +5246,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 				if err := fmt.Errorf(`decoding of "GetNodeAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5286,7 +5286,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "GetNodeV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5326,7 +5326,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "GetNodeV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5366,7 +5366,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "GetNodeV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5406,7 +5406,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 				if err := fmt.Errorf(`decoding of "GetPolicyAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5446,7 +5446,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 				if err := fmt.Errorf(`decoding of "GetPolicyV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5486,7 +5486,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "GetPolicyV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5526,7 +5526,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "GetRbacAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5566,7 +5566,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "GetRbacAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5606,7 +5606,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 				if err := fmt.Errorf(`decoding of "GetSchedulingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5646,7 +5646,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "GetSchedulingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5686,7 +5686,7 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5744,7 +5744,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 				if err := fmt.Errorf(`decoding of "GetStorageAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5784,7 +5784,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "GetStorageV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5824,7 +5824,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "GetStorageV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5864,7 +5864,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "GetStorageV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5904,7 +5904,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 				if err := fmt.Errorf(`decoding of "ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5948,7 +5948,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -5992,7 +5992,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6036,7 +6036,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "ListApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6080,7 +6080,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6124,7 +6124,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6168,7 +6168,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ListAppsV1DeploymentForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6212,7 +6212,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6256,7 +6256,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6300,7 +6300,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 				if err := fmt.Errorf(`decoding of "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6344,7 +6344,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 				if err := fmt.Errorf(`decoding of "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6388,7 +6388,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 				if err := fmt.Errorf(`decoding of "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6432,7 +6432,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "ListBatchV1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6476,7 +6476,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "ListBatchV1JobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6520,7 +6520,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6564,7 +6564,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ListCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6608,7 +6608,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6652,7 +6652,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "ListCoreV1ComponentStatusApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6696,7 +6696,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6740,7 +6740,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "ListCoreV1EndpointsForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6784,7 +6784,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "ListCoreV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6828,7 +6828,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6872,7 +6872,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "ListCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6916,7 +6916,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 				if err := fmt.Errorf(`decoding of "ListCoreV1NodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -6960,7 +6960,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 				if err := fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7004,7 +7004,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 				if err := fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7048,7 +7048,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ListCoreV1PodForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7092,7 +7092,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7136,7 +7136,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 				if err := fmt.Errorf(`decoding of "ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7180,7 +7180,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7224,7 +7224,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "ListCoreV1SecretForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7268,7 +7268,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7312,7 +7312,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "ListCoreV1ServiceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7356,7 +7356,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7400,7 +7400,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7444,7 +7444,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "ListEventsV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7488,7 +7488,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "ListEventsV1beta1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7532,7 +7532,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7576,7 +7576,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7620,7 +7620,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7664,7 +7664,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7708,7 +7708,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7752,7 +7752,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "ListNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7796,7 +7796,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "ListNetworkingV1IngressForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7840,7 +7840,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7884,7 +7884,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ListNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7928,7 +7928,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 				if err := fmt.Errorf(`decoding of "ListNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -7972,7 +7972,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "ListNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8016,7 +8016,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 				if err := fmt.Errorf(`decoding of "ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8060,7 +8060,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 				if err := fmt.Errorf(`decoding of "ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8104,7 +8104,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8148,7 +8148,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8192,7 +8192,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8236,7 +8236,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8280,7 +8280,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8324,7 +8324,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ListSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8368,7 +8368,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 				if err := fmt.Errorf(`decoding of "ListStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8412,7 +8412,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 				if err := fmt.Errorf(`decoding of "ListStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8456,7 +8456,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "ListStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8500,7 +8500,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 				if err := fmt.Errorf(`decoding of "ListStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8544,7 +8544,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 				if err := fmt.Errorf(`decoding of "ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8588,7 +8588,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 				if err := fmt.Errorf(`decoding of "ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8647,7 +8647,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 				if err := fmt.Errorf(`decoding of "WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8691,7 +8691,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 				if err := fmt.Errorf(`decoding of "WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8735,7 +8735,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8779,7 +8779,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "WatchApiregistrationV1APIServiceListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8823,7 +8823,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8867,7 +8867,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8911,7 +8911,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8955,7 +8955,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -8999,7 +8999,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9043,7 +9043,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 				if err := fmt.Errorf(`decoding of "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9087,7 +9087,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 				if err := fmt.Errorf(`decoding of "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9131,7 +9131,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 				if err := fmt.Errorf(`decoding of "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9175,7 +9175,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9219,7 +9219,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 				if err := fmt.Errorf(`decoding of "WatchBatchV1JobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9263,7 +9263,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9307,7 +9307,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9351,7 +9351,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9395,7 +9395,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9439,7 +9439,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 				if err := fmt.Errorf(`decoding of "WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9483,7 +9483,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 				if err := fmt.Errorf(`decoding of "WatchCoreV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9527,7 +9527,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 				if err := fmt.Errorf(`decoding of "WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9571,7 +9571,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 				if err := fmt.Errorf(`decoding of "WatchCoreV1NamespaceListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9615,7 +9615,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 				if err := fmt.Errorf(`decoding of "WatchCoreV1NodeListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9659,7 +9659,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 				if err := fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9703,7 +9703,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 				if err := fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9747,7 +9747,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "WatchCoreV1PodListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9791,7 +9791,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 				if err := fmt.Errorf(`decoding of "WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9835,7 +9835,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 				if err := fmt.Errorf(`decoding of "WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9879,7 +9879,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9923,7 +9923,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 				if err := fmt.Errorf(`decoding of "WatchCoreV1SecretListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -9967,7 +9967,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 				if err := fmt.Errorf(`decoding of "WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10011,7 +10011,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10055,7 +10055,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 				if err := fmt.Errorf(`decoding of "WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10099,7 +10099,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 				if err := fmt.Errorf(`decoding of "WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10143,7 +10143,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 				if err := fmt.Errorf(`decoding of "WatchEventsV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10187,7 +10187,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 				if err := fmt.Errorf(`decoding of "WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10231,7 +10231,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10275,7 +10275,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10319,7 +10319,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10363,7 +10363,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10407,7 +10407,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10451,7 +10451,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "WatchNetworkingV1IngressClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10495,7 +10495,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 				if err := fmt.Errorf(`decoding of "WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10539,7 +10539,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 				if err := fmt.Errorf(`decoding of "WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10583,7 +10583,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "WatchNodeV1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10627,7 +10627,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 				if err := fmt.Errorf(`decoding of "WatchNodeV1alpha1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10671,7 +10671,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 				if err := fmt.Errorf(`decoding of "WatchNodeV1beta1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10715,7 +10715,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 				if err := fmt.Errorf(`decoding of "WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10759,7 +10759,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 				if err := fmt.Errorf(`decoding of "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10803,7 +10803,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10847,7 +10847,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10891,7 +10891,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10935,7 +10935,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -10979,7 +10979,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11023,7 +11023,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "WatchSchedulingV1PriorityClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11067,7 +11067,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 				if err := fmt.Errorf(`decoding of "WatchStorageV1CSIDriverListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11111,7 +11111,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 				if err := fmt.Errorf(`decoding of "WatchStorageV1CSINodeListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11155,7 +11155,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 				if err := fmt.Errorf(`decoding of "WatchStorageV1StorageClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11199,7 +11199,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 				if err := fmt.Errorf(`decoding of "WatchStorageV1VolumeAttachmentListApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11243,7 +11243,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 				if err := fmt.Errorf(`decoding of "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -11287,7 +11287,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 				if err := fmt.Errorf(`decoding of "WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

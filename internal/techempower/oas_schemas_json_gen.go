@@ -76,27 +76,19 @@ func (s *HelloWorld) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode HelloWorld to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "message":
-			if err := func() error {
-				s.Message = string(i.Str())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -118,36 +110,25 @@ func (s *WorldObject) ReadJSON(i *json.Iter) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode WorldObject to nil`)
 	}
-	var retErr error
-	i.Object(func(i *json.Iter, k string) bool {
-		switch k {
+	return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+		switch string(k) {
 		case "id":
-			if err := func() error {
-				s.ID = int64(i.Int64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int64()
+			s.ID = int64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		case "randomNumber":
-			if err := func() error {
-				s.RandomNumber = int64(i.Int64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
+			v, err := i.Int64()
+			s.RandomNumber = int64(v)
+			if err != nil {
+				return err
 			}
-			return true
 		default:
-			i.Skip()
-			return true
+			return i.Skip()
 		}
+		return nil
 	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
 }
 
 func (WorldObjects) WriteJSON(j *json.Stream)    {}

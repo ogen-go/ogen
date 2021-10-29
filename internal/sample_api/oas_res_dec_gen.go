@@ -80,7 +80,7 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -116,7 +116,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -139,7 +139,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -185,7 +185,7 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -217,23 +217,19 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 			var response []string
 			if err := func() error {
 				response = nil
-				var retErr error
-				i.Array(func(i *json.Iter) bool {
+				if err := i.Array(func(i *json.Iter) error {
 					var elem string
-					if err := func() error {
-						elem = string(i.Str())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
+					v, err := i.Str()
+					elem = string(v)
+					if err != nil {
+						return err
 					}
 					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
+					return nil
+				}); err != nil {
+					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -267,7 +263,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -288,7 +284,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -321,7 +317,7 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -352,8 +348,12 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 
 			var response string
 			if err := func() error {
-				response = string(i.Str())
-				return i.Error
+				v, err := i.Str()
+				response = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
 			}(); err != nil {
 				return res, err
 			}

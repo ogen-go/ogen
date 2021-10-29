@@ -80,7 +80,7 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -182,7 +182,7 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 				if err := fmt.Errorf(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -218,7 +218,7 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 				if err := fmt.Errorf(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

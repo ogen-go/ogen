@@ -77,7 +77,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span t
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -112,7 +112,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -147,7 +147,7 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -182,7 +182,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -217,7 +217,7 @@ func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span tra
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -244,7 +244,7 @@ func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -271,7 +271,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -306,7 +306,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -341,7 +341,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -376,7 +376,7 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -411,7 +411,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -446,7 +446,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -481,7 +481,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -516,7 +516,7 @@ func decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Sp
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -543,7 +543,7 @@ func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trac
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -570,7 +570,7 @@ func decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -597,7 +597,7 @@ func decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -624,7 +624,7 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -651,7 +651,7 @@ func decodeChecksCreateRequest(r *http.Request, span trace.Span) (req ChecksCrea
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -678,7 +678,7 @@ func decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (req Check
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -705,7 +705,7 @@ func decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -732,7 +732,7 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -767,7 +767,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -802,7 +802,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -837,7 +837,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -872,7 +872,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -907,7 +907,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, sp
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -934,7 +934,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -969,7 +969,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1004,7 +1004,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1039,7 +1039,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1074,7 +1074,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1109,7 +1109,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1144,7 +1144,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1179,7 +1179,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1214,7 +1214,7 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1249,7 +1249,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1284,7 +1284,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1319,7 +1319,7 @@ func decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (req Issu
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1346,7 +1346,7 @@ func decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (req I
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1373,7 +1373,7 @@ func decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (req Issue
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1400,7 +1400,7 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req I
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1435,7 +1435,7 @@ func decodeMarkdownRenderRequest(r *http.Request, span trace.Span) (req Markdown
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1491,7 +1491,7 @@ func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1518,7 +1518,7 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1545,7 +1545,7 @@ func decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (req Pr
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1572,7 +1572,7 @@ func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1599,7 +1599,7 @@ func decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (req Pr
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1626,7 +1626,7 @@ func decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (req P
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1653,7 +1653,7 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1688,7 +1688,7 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req Projects
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1723,7 +1723,7 @@ func decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (req Proj
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1750,7 +1750,7 @@ func decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (req Pr
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1777,7 +1777,7 @@ func decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.S
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1804,7 +1804,7 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1839,7 +1839,7 @@ func decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (req Pull
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1866,7 +1866,7 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1901,7 +1901,7 @@ func decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1928,7 +1928,7 @@ func decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (re
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1955,7 +1955,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -1990,7 +1990,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2025,7 +2025,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2060,7 +2060,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2095,7 +2095,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2130,7 +2130,7 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (re
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2157,7 +2157,7 @@ func decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (req Repo
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2184,7 +2184,7 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2219,7 +2219,7 @@ func decodeReposTransferRequest(r *http.Request, span trace.Span) (req ReposTran
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2246,7 +2246,7 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2281,7 +2281,7 @@ func decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (re
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2308,7 +2308,7 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req R
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2343,7 +2343,7 @@ func decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (req Repo
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2370,7 +2370,7 @@ func decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (req
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2397,7 +2397,7 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2441,7 +2441,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2476,7 +2476,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2511,7 +2511,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2546,7 +2546,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2581,7 +2581,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2616,7 +2616,7 @@ func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2643,7 +2643,7 @@ func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2670,7 +2670,7 @@ func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2697,7 +2697,7 @@ func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2724,7 +2724,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, s
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2751,7 +2751,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2778,7 +2778,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2805,7 +2805,7 @@ func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2832,7 +2832,7 @@ func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}
@@ -2859,7 +2859,7 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req TeamsU
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
-			return i.Error
+			return nil
 		}(); err != nil {
 			return req, err
 		}

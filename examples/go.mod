@@ -12,6 +12,6 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 )
 
-require github.com/ogen-go/jir v0.2.1-0.20211028212240-56b9c2fcc714 // indirect
+require github.com/ogen-go/jx v0.3.2-0.20211029172847-7289775bcdad // indirect
 
 replace github.com/ogen-go/ogen v0.0.0 => ./..

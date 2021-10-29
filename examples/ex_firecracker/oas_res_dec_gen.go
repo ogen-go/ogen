@@ -82,7 +82,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -103,7 +103,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -138,7 +138,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -159,7 +159,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -192,7 +192,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -213,7 +213,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -234,7 +234,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -267,7 +267,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -288,7 +288,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -309,7 +309,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -342,7 +342,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -363,7 +363,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -396,7 +396,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -417,7 +417,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -450,7 +450,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -471,7 +471,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -506,7 +506,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -527,7 +527,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -562,7 +562,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -583,7 +583,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -616,7 +616,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -637,7 +637,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -658,7 +658,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -693,7 +693,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -714,7 +714,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -749,7 +749,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -770,7 +770,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -805,7 +805,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -826,7 +826,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -861,7 +861,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -882,7 +882,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -917,7 +917,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -938,7 +938,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -973,7 +973,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -994,7 +994,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1029,7 +1029,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1050,7 +1050,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1085,7 +1085,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1106,7 +1106,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1141,7 +1141,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1162,7 +1162,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1197,7 +1197,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1218,7 +1218,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1253,7 +1253,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1274,7 +1274,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1309,7 +1309,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1330,7 +1330,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1365,7 +1365,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1386,7 +1386,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1421,7 +1421,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1442,7 +1442,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1477,7 +1477,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1498,7 +1498,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1533,7 +1533,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1554,7 +1554,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

@@ -80,7 +80,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Ad
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -101,7 +101,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Ad
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -134,7 +134,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -155,7 +155,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -188,7 +188,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -209,7 +209,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -242,7 +242,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -263,7 +263,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -296,7 +296,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -317,7 +317,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -350,7 +350,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanC
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -371,7 +371,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanC
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -404,7 +404,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res CopyMe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -425,7 +425,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res CopyMe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -458,7 +458,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -479,7 +479,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -512,7 +512,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -533,7 +533,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -566,7 +566,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res De
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -587,7 +587,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res De
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -620,7 +620,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -641,7 +641,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -674,7 +674,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Dele
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -695,7 +695,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Dele
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -728,7 +728,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res D
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -749,7 +749,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res D
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -782,7 +782,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -803,7 +803,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -836,7 +836,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Dele
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -857,7 +857,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Dele
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -890,7 +890,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -911,7 +911,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -944,7 +944,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -965,7 +965,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -998,7 +998,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1019,7 +1019,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1052,7 +1052,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res E
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1073,7 +1073,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res E
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1106,7 +1106,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1127,7 +1127,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1160,7 +1160,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Ed
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1181,7 +1181,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Ed
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1214,7 +1214,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1235,7 +1235,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1268,7 +1268,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res For
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1289,7 +1289,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res For
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1322,7 +1322,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res GetChatRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1343,7 +1343,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res GetChatRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1376,7 +1376,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1397,7 +1397,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1430,7 +1430,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res GetC
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1451,7 +1451,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res GetC
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1484,7 +1484,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1505,7 +1505,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1538,7 +1538,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res GetFileRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1559,7 +1559,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res GetFileRes
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1592,7 +1592,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1613,7 +1613,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1646,7 +1646,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res GetMeRes, er
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1667,7 +1667,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res GetMeRes, er
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1700,7 +1700,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res GetM
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1721,7 +1721,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res GetM
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1754,7 +1754,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res GetS
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1775,7 +1775,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res GetS
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1808,7 +1808,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res GetUpda
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1829,7 +1829,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res GetUpda
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1862,7 +1862,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1883,7 +1883,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1916,7 +1916,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res LeaveCha
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1937,7 +1937,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res LeaveCha
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1970,7 +1970,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Pin
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1991,7 +1991,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Pin
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2024,7 +2024,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2045,7 +2045,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2078,7 +2078,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2099,7 +2099,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2132,7 +2132,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2153,7 +2153,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2186,7 +2186,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Send
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2207,7 +2207,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Send
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2240,7 +2240,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res SendAudi
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2261,7 +2261,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res SendAudi
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2294,7 +2294,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Sen
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2315,7 +2315,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Sen
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2348,7 +2348,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res SendCo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2369,7 +2369,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res SendCo
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2402,7 +2402,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res SendDiceR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2423,7 +2423,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res SendDiceR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2456,7 +2456,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res SendD
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2477,7 +2477,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res SendD
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2510,7 +2510,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res SendGameR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2531,7 +2531,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res SendGameR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2564,7 +2564,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res SendIn
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2585,7 +2585,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res SendIn
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2618,7 +2618,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res SendL
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2639,7 +2639,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res SendL
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2672,7 +2672,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Sen
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2693,7 +2693,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Sen
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2726,7 +2726,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res SendMe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2747,7 +2747,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res SendMe
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2780,7 +2780,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res SendPhot
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2801,7 +2801,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res SendPhot
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2834,7 +2834,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res SendPollR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2855,7 +2855,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res SendPollR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2888,7 +2888,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res SendSt
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2909,7 +2909,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res SendSt
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2942,7 +2942,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res SendVenu
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2963,7 +2963,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res SendVenu
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2996,7 +2996,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res SendVide
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3017,7 +3017,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res SendVide
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3050,7 +3050,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Send
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3071,7 +3071,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Send
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3104,7 +3104,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res SendVoic
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3125,7 +3125,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res SendVoic
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3158,7 +3158,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3179,7 +3179,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3212,7 +3212,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3233,7 +3233,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3266,7 +3266,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3287,7 +3287,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3320,7 +3320,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res SetCh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3341,7 +3341,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res SetCh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3374,7 +3374,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3395,7 +3395,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3428,7 +3428,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res SetCh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3449,7 +3449,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res SetCh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3482,7 +3482,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res SetGa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3503,7 +3503,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res SetGa
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3536,7 +3536,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res SetM
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3557,7 +3557,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res SetM
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3590,7 +3590,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3611,7 +3611,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3644,7 +3644,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3665,7 +3665,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3698,7 +3698,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3719,7 +3719,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3752,7 +3752,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res SetWebh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3773,7 +3773,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res SetWebh
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3806,7 +3806,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3827,7 +3827,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3860,7 +3860,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res StopPollR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3881,7 +3881,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res StopPollR
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3914,7 +3914,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Un
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3935,7 +3935,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Un
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3968,7 +3968,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -3989,7 +3989,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4022,7 +4022,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res U
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4043,7 +4043,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res U
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4076,7 +4076,7 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -4097,7 +4097,7 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 				if err := response.ReadJSON(i); err != nil {
 					return err
 				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
