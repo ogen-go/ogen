@@ -131,6 +131,10 @@ func NewIntID(v int) ID
 
 # Draft Roadmap
 
+* Client-side validation
+  * Validate request before sending
+  * Export Validate
+  * Validate float values (NaN or Inf)
 * Handle unexpected json keys
 * Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
