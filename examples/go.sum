@@ -17,8 +17,8 @@ github.com/kr/pretty v0.2.1/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfn
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
 github.com/kr/text v0.2.0/go.mod h1:eLer722TekiGuMkidMxC/pM04lWEeraHUUmBw8l2grE=
-github.com/ogen-go/jx v0.6.1-0.20211029215345-74bc198c5801 h1:cyo8W/svQLQmSSQh1MHoy5Xa8xIPI3xxKD9bnRKuDGk=
-github.com/ogen-go/jx v0.6.1-0.20211029215345-74bc198c5801/go.mod h1:VQwKIVG6Z7dqiufvEjzY1t/66pWKvJMro5dOx9t9PjU=
+github.com/ogen-go/jx v0.7.0 h1:DjY4dZpKd4euC79otWgE/IA1UcvcW7ocy8erOd5/1gI=
+github.com/ogen-go/jx v0.7.0/go.mod h1:VQwKIVG6Z7dqiufvEjzY1t/66pWKvJMro5dOx9t9PjU=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
