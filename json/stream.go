@@ -2,34 +2,19 @@ package json
 
 import (
 	"io"
-	"sync"
 
-	"github.com/ogen-go/jir"
+	"github.com/ogen-go/jx"
 )
 
-type Stream = jir.Stream
+// Stream is jx.Stream alias.
+type Stream = jx.Stream
 
-func NewStream(w io.Writer) *Stream {
-	return jir.NewStream(ConfigDefault, w, 1024)
+// GetStream returns new Stream from pool
+func GetStream(w io.Writer) *jx.Stream {
+	return jx.Default.GetStream(w)
 }
 
-func NewCustomStream(cfg API, out io.Writer, bufSize int) *Stream {
-	return jir.NewStream(cfg, out, bufSize)
-}
-
-var streamPool = sync.Pool{
-	New: func() interface{} {
-		return NewStream(nil)
-	},
-}
-
-func GetStream(w io.Writer) *Stream {
-	s := streamPool.Get().(*Stream)
-	s.Reset(w)
-	return s
-}
-
-func PutStream(s *Stream) {
-	s.Reset(nil)
-	streamPool.Put(s)
+// PutStream puts stream to pool.
+func PutStream(s *jx.Stream) {
+	jx.Default.PutStream(s)
 }

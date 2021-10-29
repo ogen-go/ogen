@@ -6,7 +6,11 @@ import (
 )
 
 func ReadIP(i *Iter) (v net.IP, err error) {
-	v = net.ParseIP(i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return nil, err
+	}
+	v = net.ParseIP(s)
 	if len(v) == 0 {
 		return nil, errors.New("bad ip format")
 	}

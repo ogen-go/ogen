@@ -5,7 +5,11 @@ import (
 )
 
 func ReadURI(i *Iter) (v url.URL, err error) {
-	u, err := url.ParseRequestURI(i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return v, err
+	}
+	u, err := url.ParseRequestURI(s)
 	if err != nil {
 		return url.URL{}, err
 	}

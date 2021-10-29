@@ -3,7 +3,7 @@ package parser
 import (
 	"encoding/json"
 
-	"github.com/ogen-go/jir"
+	"github.com/ogen-go/jx"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/oas"
@@ -38,39 +38,47 @@ var errNullValue = xerrors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
-		iter = jir.ParseBytes(jir.Default, v)
-		next = iter.WhatIsNext()
+		iter = jx.ParseBytes(jx.Default, v)
+		next = iter.Next()
 	)
-	if next == jir.Nil {
+	if next == jx.Nil {
 		return nil, errNullValue
 	}
 	switch typ {
 	case oas.String:
-		if next != jir.String {
+		if next != jx.String {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.Str(), nil
+		return iter.Str()
 	case oas.Integer:
-		if next != jir.Number {
+		if next != jx.Number {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		if _, err := iter.ReadNumber().Float64(); err == nil {
+		n, err := iter.Number()
+		if err != nil {
+			return nil, err
+		}
+		if _, err := n.Float64(); err == nil {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.ReadNumber().Int64()
+		return n.Int64()
 	case oas.Number:
-		if next != jir.Number {
+		if next != jx.Number {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		if _, err := iter.ReadNumber().Int64(); err == nil {
+		n, err := iter.Number()
+		if err != nil {
+			return nil, err
+		}
+		if _, err := n.Int64(); err == nil {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.ReadNumber().Float64()
+		return n.Float64()
 	case oas.Boolean:
-		if next != jir.Bool {
+		if next != jx.Bool {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.Bool(), nil
+		return iter.Bool()
 	default:
 		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
 	}

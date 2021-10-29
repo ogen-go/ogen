@@ -1,33 +1,20 @@
 package json
 
 import (
-	"sync"
-
-	"github.com/ogen-go/jir"
+	"github.com/ogen-go/jx"
 )
 
-// Iter is jir.Iterator alias.
-type Iter = jir.Iterator
-
-func newIter() *Iter {
-	return jir.NewIterator(ConfigDefault)
-}
-
-var iterPool = sync.Pool{
-	New: func() interface{} {
-		return newIter()
-	},
-}
+// Iter is jx.Iter alias.
+type Iter = jx.Iter
 
 // GetIter gets iterator from pool.
-func GetIter() *Iter {
-	return iterPool.Get().(*Iter)
+func GetIter() *jx.Iter {
+	return jx.Default.GetIter(nil)
 }
 
 // PutIter puts iterator to pool.
-func PutIter(i *Iter) {
+func PutIter(i *jx.Iter) {
 	i.Reset(nil)
 	i.ResetBytes(nil)
-	i.Error = nil
-	iterPool.Put(i)
+	jx.Default.PutIter(i)
 }

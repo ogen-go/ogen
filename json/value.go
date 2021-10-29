@@ -1,22 +1,20 @@
 package json
 
-import (
-	"github.com/ogen-go/jir"
-)
+import "github.com/ogen-go/jx"
 
 const (
 	// Invalid invalid JSON element.
-	Invalid = jir.Invalid
+	Invalid = jx.Invalid
 	// String JSON element "string".
-	String = jir.String
+	String = jx.String
 	// Number JSON element 100 or 0.10.
-	Number = jir.Number
+	Number = jx.Number
 	// Nil JSON element null.
-	Nil = jir.Nil
+	Nil = jx.Nil
 	// Bool JSON element true or false.
-	Bool = jir.Bool
+	Bool = jx.Bool
 	// Array JSON element [].
-	Array = jir.Array
+	Array = jx.Array
 	// Object JSON element {}.
-	Object = jir.Object
+	Object = jx.Object
 )

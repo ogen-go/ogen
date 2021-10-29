@@ -3,6 +3,8 @@ package json
 import (
 	"bytes"
 	std "encoding/json"
+
+	"github.com/ogen-go/jx"
 )
 
 type RawMessage = std.RawMessage
@@ -52,7 +54,8 @@ type Nullable interface {
 // Encode Marshaler to byte slice.
 func Encode(m Marshaler) []byte {
 	buf := new(bytes.Buffer)
-	s := NewStream(buf)
+	s := jx.Default.GetStream(buf)
+	defer jx.Default.PutStream(s)
 	m.WriteJSON(s)
 	_ = s.Flush()
 	return buf.Bytes()

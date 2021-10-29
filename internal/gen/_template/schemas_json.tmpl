@@ -22,28 +22,17 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iter) error {
     if s == nil {
         return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
-    var retErr error
-    i.Object(func(i *json.Iter, k string) bool {
-        switch k {
-{{- range $f := $t.JSON.Fields }}
+    return i.ObjectBytes(func(i *json.Iter, k []byte) error {
+        switch string(k) {
+    {{- range $f := $t.JSON.Fields }}
     case "{{ $f.Tag.JSON }}":
-    if err := func() error {
         {{- template "dec_json" field_elem $f }}
-    }(); err != nil {
-        retErr = err
-        return false
-    }
-    return true
-{{- end }}
+    {{- end }}
         default:
-            i.Skip()
-            return true
+            return i.Skip()
         }
+        return nil
     })
-    if retErr != nil {
-        return retErr
-    }
-    return i.Error
 }
 {{- else if $t.IsGeneric }}
 {{ $g := $t.GenericOf }}
@@ -72,7 +61,7 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iter{{ if $g.Format }}, format func(*js
     if o == nil {
         return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
-    switch i.WhatIsNext() {
+    switch i.Next() {
     case json.{{ $g.JSON.Type }}:
     {{- if $v.Optional }}
         o.Set = true
@@ -93,26 +82,32 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iter{{ if $g.Format }}, format func(*js
         }
         o.Value = v
     {{- else if $g.JSON.Read }}
-        o.Value = {{ $g.Go }}(i.{{ $g.JSON.Read }}())
+        v, err := i.{{ $g.JSON.Read }}()
+        if err != nil {
+            return err
+        }
+        o.Value = {{ $g.Go }}(v)
     {{- else if $g.IsStruct }}
         if err := o.Value.ReadJSON(i); err != nil {
             return err
         }
     {{- end }}
-        return i.Error
+        return nil
     {{- if $v.Nullable }}
     case json.Nil:
+        if err := i.Null(); err != nil {
+            return err
+        }
         var v {{ $g.Go }}
         o.Value = v
         {{- if $v.Optional }}
         o.Set = true
         {{- end }}
         o.Null = true
-        i.Skip()
-        return i.Error
+        return nil
     {{- end }}
     default:
-        return fmt.Errorf("unexpected type %q while reading {{ $t.Name }}", i.WhatIsNext())
+        return fmt.Errorf("unexpected type %q while reading {{ $t.Name }}", i.Next())
     }
 }
 {{- else if $t.IsEnum }}
@@ -126,8 +121,12 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iter) error {
     if s == nil {
         return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
-    *s = {{ $t.Name }}(i.{{ $t.JSON.Read }}())
-    return i.Error
+    v, err := i.{{ $t.JSON.Read }}()
+    if err != nil {
+        return err
+    }
+    *s = {{ $t.Name }}(v)
+    return nil
 }
 {{- else if $t.IsAlias }}
 func ({{ $t.Name }}) WriteJSON(j *json.Stream) {}
@@ -148,14 +147,10 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iter) error {
     if s == nil {
         return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
-    switch t := i.WhatIsNext(); t {
+    switch t := i.Next(); t {
     {{- range $s := $t.SumOf }}
     case json.{{ $s.JSON.Type }}:
-        if err := func() error {
         {{- template "dec_json" sum_elem $s }}
-        }(); err != nil {
-            return err
-        }
         s.Type = {{ $s.Name }}{{ $t.Name }}
     {{- end }}
     default:

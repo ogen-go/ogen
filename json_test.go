@@ -8,11 +8,13 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/ogen-go/jir"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/jx"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
+	"github.com/ogen-go/ogen/internal/techempower"
 	"github.com/ogen-go/ogen/json"
 )
 
@@ -23,16 +25,14 @@ func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	i.Object(func(iterator *json.Iter, s string) bool {
-		require.NoError(t, v.ReadJSON(i))
-		return true
-	})
-	require.NoError(t, i.Error)
+	require.NoError(t, i.ObjectBytes(func(iterator *json.Iter, _ []byte) error {
+		return v.ReadJSON(i)
+	}))
 }
 
 func encodeObject(v json.Marshaler) []byte {
 	buf := new(bytes.Buffer)
-	s := json.NewStream(buf)
+	s := json.GetStream(buf)
 	s.WriteObjectStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
 		s.WriteObjectEnd()
@@ -120,5 +120,22 @@ func TestJSONExample(t *testing.T) {
 		}),
 	}
 	t.Logf("%s", json.Encode(pet))
-	require.True(t, jir.Valid(json.Encode(pet)), "invalid json")
+	require.True(t, jx.Valid(json.Encode(pet)), "invalid json")
+}
+
+func TestTechEmpowerJSON(t *testing.T) {
+	hw := techempower.WorldObject{
+		ID:           10,
+		RandomNumber: 2134,
+	}
+	buf := new(bytes.Buffer)
+	s := json.GetStream(buf)
+	hw.WriteJSON(s)
+	require.NoError(t, s.Flush())
+	var parsed techempower.WorldObject
+	i := json.GetIter()
+	i.ResetBytes(buf.Bytes())
+	t.Log(buf.String())
+	require.NoError(t, parsed.ReadJSON(i))
+	require.Equal(t, hw, parsed)
 }

@@ -10,7 +10,11 @@ const (
 )
 
 func ReadDate(i *Iter) (v time.Time, err error) {
-	return time.Parse(dateLayout, i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return v, err
+	}
+	return time.Parse(dateLayout, s)
 }
 
 func WriteDate(s *Stream, v time.Time) {
@@ -18,7 +22,11 @@ func WriteDate(s *Stream, v time.Time) {
 }
 
 func ReadTime(i *Iter) (v time.Time, err error) {
-	return time.Parse(timeLayout, i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return v, err
+	}
+	return time.Parse(timeLayout, s)
 }
 
 func WriteTime(s *Stream, v time.Time) {
@@ -26,7 +34,11 @@ func WriteTime(s *Stream, v time.Time) {
 }
 
 func ReadDateTime(i *Iter) (v time.Time, err error) {
-	return time.Parse(time.RFC3339, i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return v, err
+	}
+	return time.Parse(time.RFC3339, s)
 }
 
 func WriteDateTime(s *Stream, v time.Time) {
@@ -34,7 +46,11 @@ func WriteDateTime(s *Stream, v time.Time) {
 }
 
 func ReadDuration(i *Iter) (v time.Duration, err error) {
-	return time.ParseDuration(i.Str())
+	s, err := i.Str()
+	if err != nil {
+		return v, err
+	}
+	return time.ParseDuration(s)
 }
 
 func WriteDuration(s *Stream, v time.Duration) {

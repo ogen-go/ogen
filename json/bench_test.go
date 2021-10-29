@@ -1,9 +1,11 @@
 package json
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 
+	"github.com/ogen-go/jx"
 	"github.com/stretchr/testify/require"
 )
 
@@ -93,7 +95,7 @@ func BenchmarkMarshal(b *testing.B) {
 				d.Setup(b)
 
 				var w bufferWriter
-				s := NewStream(&w)
+				s := GetStream(&w)
 
 				for i := 0; i < b.N; i++ {
 					s.WriteObjectStart()
@@ -146,27 +148,40 @@ func BenchmarkUnmarshal(b *testing.B) {
 		b.Run("jsoniter", func(b *testing.B) {
 			d.Setup(b)
 
-			iter := newIter()
+			iter := jx.Default.GetIter(nil)
 			data := d.Bytes()
 
 			for i := 0; i < b.N; i++ {
 				iter.ResetBytes(data)
 
 				var v World
-				iter.Object(func(iter *Iter, k string) bool {
-					switch k {
+				if err := iter.ObjectBytes(func(iter *Iter, k []byte) error {
+					switch string(k) {
 					case "id":
-						v.ID = iter.Int64()
+						n, err := iter.Int64()
+						if err != nil {
+							return err
+						}
+						v.ID = n
 					case "randomNumber":
-						v.RandomNumber = iter.Int64()
+						n, err := iter.Int64()
+						if err != nil {
+							return err
+						}
+						v.RandomNumber = n
 					case "message":
-						v.Message = iter.Str()
+						s, err := iter.Str()
+						if err != nil {
+							return err
+						}
+						v.Message = s
 					default:
-						b.Errorf("unexpected key %s", k)
-						return false
+						return errors.New("unexpected key")
 					}
-					return true
-				})
+					return nil
+				}); err != nil {
+					b.Fatal(err)
+				}
 
 				if v.Message == "" || v.ID == 0 || v.RandomNumber == 0 {
 					b.Errorf("bad read: %s", v)

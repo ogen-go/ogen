@@ -15,6 +15,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/jx"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel/trace"
@@ -161,7 +162,7 @@ func BenchmarkIntegration(b *testing.B) {
 	b.Run("Manual", func(b *testing.B) {
 		// Test with some manual optimizations.
 		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			js := json.NewCustomStream(json.ConfigFastest, w, 1024)
+			js := jx.Default.GetStream(w)
 			js.WriteObjectStart()
 			js.WriteObjectField("message")
 			js.WriteString("Hello, world!")
@@ -288,7 +289,7 @@ func BenchmarkJSON(b *testing.B) {
 
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.NewStream(buf)
+				s := json.GetStream(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -324,7 +325,7 @@ func BenchmarkJSON(b *testing.B) {
 
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.NewStream(buf)
+				s := json.GetStream(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -374,7 +375,7 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
 				buf := new(bytes.Buffer)
-				s := json.NewStream(buf)
+				s := json.GetStream(buf)
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 				for i := 0; i < b.N; i++ {
