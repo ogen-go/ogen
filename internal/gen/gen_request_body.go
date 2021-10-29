@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"sort"
+
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/ir"
@@ -8,11 +10,22 @@ import (
 )
 
 func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.Request, error) {
-	name := opName + "Req"
+	var (
+		name  = opName + "Req"
+		types = make(map[ir.ContentType]*ir.Type)
+	)
 
-	types := make(map[ir.ContentType]*ir.Type)
-	for contentType, schema := range body.Contents {
-		sName := name
+	contentTypes := make([]string, 0, len(body.Contents))
+	for contentType := range body.Contents {
+		contentTypes = append(contentTypes, contentType)
+	}
+	sort.Strings(contentTypes)
+
+	for _, contentType := range contentTypes {
+		var (
+			schema = body.Contents[contentType]
+			sName  = name
+		)
 		if len(body.Contents) > 1 {
 			sName = pascal(name, contentType)
 		}

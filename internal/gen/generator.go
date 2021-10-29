@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"sort"
 	"strings"
 
 	"golang.org/x/xerrors"
@@ -70,6 +71,11 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 
 		g.operations = append(g.operations, op)
 	}
+
+	sort.SliceStable(g.operations, func(i, j int) bool {
+		a, b := g.operations[i], g.operations[j]
+		return strings.Compare(a.Name, b.Name) < 0
+	})
 
 	return nil
 }

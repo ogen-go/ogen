@@ -3,6 +3,7 @@ package gen
 import (
 	"fmt"
 	"net/http"
+	"sort"
 
 	"golang.org/x/xerrors"
 
@@ -17,8 +18,15 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		StatusCode: map[int]*ir.StatusResponse{},
 	}
 
-	for code, resp := range responses.StatusCode {
+	statusCodes := make([]int, 0, len(responses.StatusCode))
+	for code := range responses.StatusCode {
+		statusCodes = append(statusCodes, code)
+	}
+	sort.Ints(statusCodes)
+
+	for _, code := range statusCodes {
 		var (
+			resp     = responses.StatusCode[code]
 			respName = pascal(name, http.StatusText(code))
 			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
@@ -100,7 +108,15 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.Stat
 	}
 
 	types := make(map[ir.ContentType]*ir.Type)
-	for contentType, schema := range resp.Contents {
+
+	contentTypes := make([]string, 0, len(resp.Contents))
+	for contentType := range resp.Contents {
+		contentTypes = append(contentTypes, contentType)
+	}
+	sort.Strings(contentTypes)
+
+	for _, contentType := range contentTypes {
+		schema := resp.Contents[contentType]
 		typeName := name
 		if len(resp.Contents) > 1 {
 			typeName = pascal(name, contentType)
