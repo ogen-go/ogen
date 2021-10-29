@@ -88,7 +88,7 @@ func (s Data) WriteJSON(j *json.Stream) {
 // ReadJSON reads Data from json stream.
 func (s *Data) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode Data to nil`)
+		return fmt.Errorf(`invalid: unable to decode Data to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -171,7 +171,7 @@ func (s Error) WriteJSON(j *json.Stream) {
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode Error to nil`)
+		return fmt.Errorf(`invalid: unable to decode Error to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -216,7 +216,7 @@ func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
+		return fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -243,7 +243,7 @@ func (s FoobarPutDef) WriteJSON(j *json.Stream) {
 // ReadJSON reads FoobarPutDef from json stream.
 func (s *FoobarPutDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPutDef to nil`)
+		return fmt.Errorf(`invalid: unable to decode FoobarPutDef to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -270,7 +270,7 @@ func (s FoobarPutDefStatusCode) WriteJSON(j *json.Stream) {
 // ReadJSON reads FoobarPutDefStatusCode from json stream.
 func (s *FoobarPutDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode FoobarPutDefStatusCode to nil`)
+		return fmt.Errorf(`invalid: unable to decode FoobarPutDefStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -299,7 +299,7 @@ func (s ID) WriteJSON(j *json.Stream) {
 // ReadJSON reads value from json stream.
 func (s *ID) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ID to nil`)
+		return fmt.Errorf(`invalid: unable to decode ID to nil`)
 	}
 	switch t := i.WhatIsNext(); t {
 	case json.String:
@@ -336,7 +336,7 @@ func (o NilString) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of string from json iterator.
 func (o *NilString) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode NilString to nil`)
+		return fmt.Errorf(`invalid: unable to decode NilString to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -365,7 +365,7 @@ func (s NotFound) WriteJSON(j *json.Stream) {
 // ReadJSON reads NotFound from json stream.
 func (s *NotFound) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode NotFound to nil`)
+		return fmt.Errorf(`invalid: unable to decode NotFound to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -389,7 +389,7 @@ func (o OptData) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of Data from json iterator.
 func (o *OptData) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptData to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptData to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -411,7 +411,7 @@ func (o OptDuration) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of time.Duration from json iterator.
 func (o *OptDuration) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptDuration to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptDuration to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -435,7 +435,7 @@ func (o OptFloat64) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptFloat64) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Number:
@@ -455,7 +455,7 @@ func (o OptInt) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of int from json iterator.
 func (o *OptInt) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptInt to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Number:
@@ -479,7 +479,7 @@ func (o OptNilString) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptNilString) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptNilString to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptNilString to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -507,7 +507,7 @@ func (o OptPetType) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of PetType from json iterator.
 func (o *OptPetType) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptPetType to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptPetType to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -527,7 +527,7 @@ func (o OptString) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -547,7 +547,7 @@ func (o OptTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time))
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *OptTime) ReadJSON(i *json.Iter, format func(*json.Iter) (time.Time, error)) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptTime to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptTime to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -571,7 +571,7 @@ func (o OptUUID) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *OptUUID) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptUUID to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptUUID to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -717,7 +717,7 @@ func (s Pet) WriteJSON(j *json.Stream) {
 // ReadJSON reads Pet from json stream.
 func (s *Pet) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode Pet to nil`)
+		return fmt.Errorf(`invalid: unable to decode Pet to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1082,7 +1082,7 @@ func (s PetCreateReqTextPlain) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetCreateReqTextPlain from json stream.
 func (s *PetCreateReqTextPlain) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetCreateReqTextPlain to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetCreateReqTextPlain to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1112,7 +1112,7 @@ func (s PetGetDef) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetGetDef from json stream.
 func (s *PetGetDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetGetDef to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetGetDef to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1148,7 +1148,7 @@ func (s PetGetDefStatusCode) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetGetDefStatusCode from json stream.
 func (s *PetGetDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetGetDefStatusCode to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetGetDefStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1172,7 +1172,7 @@ func (s PetKind) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetKind from json stream.
 func (s *PetKind) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetKind to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetKind to nil`)
 	}
 	*s = PetKind(i.Str())
 	return i.Error
@@ -1189,7 +1189,7 @@ func (s PetType) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetType from json stream.
 func (s *PetType) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetType to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetType to nil`)
 	}
 	*s = PetType(i.Str())
 	return i.Error
@@ -1206,7 +1206,7 @@ func (s PetUpdateNameAliasPostDef) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetUpdateNameAliasPostDef from json stream.
 func (s *PetUpdateNameAliasPostDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDef to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDef to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1233,7 +1233,7 @@ func (s PetUpdateNameAliasPostDefStatusCode) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetUpdateNameAliasPostDefStatusCode from json stream.
 func (s *PetUpdateNameAliasPostDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDefStatusCode to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetUpdateNameAliasPostDefStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1260,7 +1260,7 @@ func (s PetUpdateNamePostDef) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetUpdateNamePostDef from json stream.
 func (s *PetUpdateNamePostDef) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDef to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDef to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1287,7 +1287,7 @@ func (s PetUpdateNamePostDefStatusCode) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetUpdateNamePostDefStatusCode from json stream.
 func (s *PetUpdateNamePostDefStatusCode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDefStatusCode to nil`)
+		return fmt.Errorf(`invalid: unable to decode PetUpdateNamePostDefStatusCode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {

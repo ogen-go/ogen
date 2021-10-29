@@ -125,7 +125,7 @@ func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) W
 // ReadJSON reads CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
 func (s *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -206,7 +206,7 @@ func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized)
 // ReadJSON reads CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
 func (s *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -285,7 +285,7 @@ func (s CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *
 // ReadJSON reads CreateApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
 func (s *CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -356,7 +356,7 @@ func (s CreateApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads CreateApiregistrationV1APIServiceUnauthorized from json stream.
 func (s *CreateApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateApiregistrationV1APIServiceUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateApiregistrationV1APIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -427,7 +427,7 @@ func (s CreateAuthenticationV1TokenReviewUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads CreateAuthenticationV1TokenReviewUnauthorized from json stream.
 func (s *CreateAuthenticationV1TokenReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthenticationV1TokenReviewUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAuthenticationV1TokenReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -504,7 +504,7 @@ func (s CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSON(j *j
 // ReadJSON reads CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized from json stream.
 func (s *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -579,7 +579,7 @@ func (s CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSON(j *js
 // ReadJSON reads CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized from json stream.
 func (s *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -654,7 +654,7 @@ func (s CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSON(j *json.
 // ReadJSON reads CreateAuthorizationV1SubjectAccessReviewUnauthorized from json stream.
 func (s *CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SubjectAccessReviewUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateAuthorizationV1SubjectAccessReviewUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -733,7 +733,7 @@ func (s CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *
 // ReadJSON reads CreateCertificatesV1CertificateSigningRequestUnauthorized from json stream.
 func (s *CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCertificatesV1CertificateSigningRequestUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateCertificatesV1CertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -793,7 +793,7 @@ func (s CreateCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateCoreV1NamespaceUnauthorized from json stream.
 func (s *CreateCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1NamespaceUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateCoreV1NamespaceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -851,7 +851,7 @@ func (s CreateCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateCoreV1NodeUnauthorized from json stream.
 func (s *CreateCoreV1NodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1NodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateCoreV1NodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -913,7 +913,7 @@ func (s CreateCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateCoreV1PersistentVolumeUnauthorized from json stream.
 func (s *CreateCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateCoreV1PersistentVolumeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateCoreV1PersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -988,7 +988,7 @@ func (s CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *js
 // ReadJSON reads CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
 func (s *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1069,7 +1069,7 @@ func (s CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized)
 // ReadJSON reads CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
 func (s *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1144,7 +1144,7 @@ func (s CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *js
 // ReadJSON reads CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
 func (s *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1225,7 +1225,7 @@ func (s CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized)
 // ReadJSON reads CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
 func (s *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1304,7 +1304,7 @@ func (s CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *
 // ReadJSON reads CreateInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
 func (s *CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1366,7 +1366,7 @@ func (s CreateNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateNetworkingV1IngressClassUnauthorized from json stream.
 func (s *CreateNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNetworkingV1IngressClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateNetworkingV1IngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1426,7 +1426,7 @@ func (s CreateNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateNodeV1RuntimeClassUnauthorized from json stream.
 func (s *CreateNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateNodeV1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1488,7 +1488,7 @@ func (s CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateNodeV1alpha1RuntimeClassUnauthorized from json stream.
 func (s *CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1alpha1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateNodeV1alpha1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1550,7 +1550,7 @@ func (s CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateNodeV1beta1RuntimeClassUnauthorized from json stream.
 func (s *CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateNodeV1beta1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateNodeV1beta1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1621,7 +1621,7 @@ func (s CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads CreatePolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
 func (s *CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreatePolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreatePolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1740,7 +1740,7 @@ func (s CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *js
 // ReadJSON reads CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
 func (s *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1767,7 +1767,7 @@ func (s CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads CreateRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
 func (s *CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1833,7 +1833,7 @@ func (s CreateSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateSchedulingV1PriorityClassUnauthorized from json stream.
 func (s *CreateSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateSchedulingV1PriorityClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateSchedulingV1PriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1893,7 +1893,7 @@ func (s CreateStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateStorageV1CSIDriverUnauthorized from json stream.
 func (s *CreateStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSIDriverUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateStorageV1CSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -1953,7 +1953,7 @@ func (s CreateStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateStorageV1CSINodeUnauthorized from json stream.
 func (s *CreateStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1CSINodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateStorageV1CSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2014,7 +2014,7 @@ func (s CreateStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateStorageV1StorageClassUnauthorized from json stream.
 func (s *CreateStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1StorageClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateStorageV1StorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2080,7 +2080,7 @@ func (s CreateStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads CreateStorageV1VolumeAttachmentUnauthorized from json stream.
 func (s *CreateStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode CreateStorageV1VolumeAttachmentUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode CreateStorageV1VolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2125,7 +2125,7 @@ func (s DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnaut
 // ReadJSON reads DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized from json stream.
 func (s *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2170,7 +2170,7 @@ func (s DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUna
 // ReadJSON reads DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized from json stream.
 func (s *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2215,7 +2215,7 @@ func (s DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) Wri
 // ReadJSON reads DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized from json stream.
 func (s *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2258,7 +2258,7 @@ func (s DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSON(j *js
 // ReadJSON reads DeleteApiregistrationV1CollectionAPIServiceUnauthorized from json stream.
 func (s *DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteApiregistrationV1CollectionAPIServiceUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteApiregistrationV1CollectionAPIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2303,7 +2303,7 @@ func (s DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) Wri
 // ReadJSON reads DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized from json stream.
 func (s *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2341,7 +2341,7 @@ func (s DeleteCoreV1CollectionNodeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads DeleteCoreV1CollectionNodeUnauthorized from json stream.
 func (s *DeleteCoreV1CollectionNodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionNodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionNodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2384,7 +2384,7 @@ func (s DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSON(j *json.St
 // ReadJSON reads DeleteCoreV1CollectionPersistentVolumeUnauthorized from json stream.
 func (s *DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionPersistentVolumeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteCoreV1CollectionPersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2429,7 +2429,7 @@ func (s DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) Write
 // ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized from json stream.
 func (s *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2474,7 +2474,7 @@ func (s DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUna
 // ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized from json stream.
 func (s *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2519,7 +2519,7 @@ func (s DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) Write
 // ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized from json stream.
 func (s *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2564,7 +2564,7 @@ func (s DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUna
 // ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized from json stream.
 func (s *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2609,7 +2609,7 @@ func (s DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) Wri
 // ReadJSON reads DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized from json stream.
 func (s *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2652,7 +2652,7 @@ func (s DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSON(j *json.
 // ReadJSON reads DeleteNetworkingV1CollectionIngressClassUnauthorized from json stream.
 func (s *DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNetworkingV1CollectionIngressClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteNetworkingV1CollectionIngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2691,7 +2691,7 @@ func (s DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads DeleteNodeV1CollectionRuntimeClassUnauthorized from json stream.
 func (s *DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1CollectionRuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteNodeV1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2734,7 +2734,7 @@ func (s DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.
 // ReadJSON reads DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized from json stream.
 func (s *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2777,7 +2777,7 @@ func (s DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads DeleteNodeV1beta1CollectionRuntimeClassUnauthorized from json stream.
 func (s *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteNodeV1beta1CollectionRuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteNodeV1beta1CollectionRuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2820,7 +2820,7 @@ func (s DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSON(j 
 // ReadJSON reads DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized from json stream.
 func (s *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2881,7 +2881,7 @@ func (s DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) Write
 // ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized from json stream.
 func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2908,7 +2908,7 @@ func (s DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSON(j 
 // ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized from json stream.
 func (s *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2951,7 +2951,7 @@ func (s DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSON(j *json
 // ReadJSON reads DeleteSchedulingV1CollectionPriorityClassUnauthorized from json stream.
 func (s *DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteSchedulingV1CollectionPriorityClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteSchedulingV1CollectionPriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -2990,7 +2990,7 @@ func (s DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads DeleteStorageV1CollectionCSIDriverUnauthorized from json stream.
 func (s *DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSIDriverUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3028,7 +3028,7 @@ func (s DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSON(j *json.Stream) 
 // ReadJSON reads DeleteStorageV1CollectionCSINodeUnauthorized from json stream.
 func (s *DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSINodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionCSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3071,7 +3071,7 @@ func (s DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSON(j *json.Str
 // ReadJSON reads DeleteStorageV1CollectionStorageClassUnauthorized from json stream.
 func (s *DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionStorageClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionStorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3114,7 +3114,7 @@ func (s DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSON(j *json
 // ReadJSON reads DeleteStorageV1CollectionVolumeAttachmentUnauthorized from json stream.
 func (s *DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionVolumeAttachmentUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode DeleteStorageV1CollectionVolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3150,7 +3150,7 @@ func (s GetAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAPIVersionsUnauthorized from json stream.
 func (s *GetAPIVersionsUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAPIVersionsUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAPIVersionsUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3188,7 +3188,7 @@ func (s GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) 
 // ReadJSON reads GetAdmissionregistrationAPIGroupUnauthorized from json stream.
 func (s *GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3231,7 +3231,7 @@ func (s GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.St
 // ReadJSON reads GetAdmissionregistrationV1APIResourcesUnauthorized from json stream.
 func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAdmissionregistrationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3269,7 +3269,7 @@ func (s GetApiextensionsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetApiextensionsAPIGroupUnauthorized from json stream.
 func (s *GetApiextensionsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiextensionsAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetApiextensionsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3307,7 +3307,7 @@ func (s GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetApiextensionsV1APIResourcesUnauthorized from json stream.
 func (s *GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiextensionsV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetApiextensionsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3345,7 +3345,7 @@ func (s GetApiregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetApiregistrationAPIGroupUnauthorized from json stream.
 func (s *GetApiregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiregistrationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetApiregistrationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3383,7 +3383,7 @@ func (s GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) 
 // ReadJSON reads GetApiregistrationV1APIResourcesUnauthorized from json stream.
 func (s *GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetApiregistrationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetApiregistrationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3419,7 +3419,7 @@ func (s GetAppsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAppsAPIGroupUnauthorized from json stream.
 func (s *GetAppsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAppsAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAppsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3457,7 +3457,7 @@ func (s GetAppsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAppsV1APIResourcesUnauthorized from json stream.
 func (s *GetAppsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAppsV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAppsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3495,7 +3495,7 @@ func (s GetAuthenticationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAuthenticationAPIGroupUnauthorized from json stream.
 func (s *GetAuthenticationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthenticationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAuthenticationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3533,7 +3533,7 @@ func (s GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAuthenticationV1APIResourcesUnauthorized from json stream.
 func (s *GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthenticationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAuthenticationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3571,7 +3571,7 @@ func (s GetAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAuthorizationAPIGroupUnauthorized from json stream.
 func (s *GetAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthorizationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAuthorizationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3609,7 +3609,7 @@ func (s GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAuthorizationV1APIResourcesUnauthorized from json stream.
 func (s *GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAuthorizationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAuthorizationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3647,7 +3647,7 @@ func (s GetAutoscalingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAutoscalingAPIGroupUnauthorized from json stream.
 func (s *GetAutoscalingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAutoscalingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3685,7 +3685,7 @@ func (s GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetAutoscalingV1APIResourcesUnauthorized from json stream.
 func (s *GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAutoscalingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3724,7 +3724,7 @@ func (s GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads GetAutoscalingV2beta1APIResourcesUnauthorized from json stream.
 func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3763,7 +3763,7 @@ func (s GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads GetAutoscalingV2beta2APIResourcesUnauthorized from json stream.
 func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta2APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetAutoscalingV2beta2APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3799,7 +3799,7 @@ func (s GetBatchAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetBatchAPIGroupUnauthorized from json stream.
 func (s *GetBatchAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetBatchAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3837,7 +3837,7 @@ func (s GetBatchV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetBatchV1APIResourcesUnauthorized from json stream.
 func (s *GetBatchV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetBatchV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3875,7 +3875,7 @@ func (s GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetBatchV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetBatchV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetBatchV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3913,7 +3913,7 @@ func (s GetCertificatesAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCertificatesAPIGroupUnauthorized from json stream.
 func (s *GetCertificatesAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCertificatesAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCertificatesAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3951,7 +3951,7 @@ func (s GetCertificatesV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCertificatesV1APIResourcesUnauthorized from json stream.
 func (s *GetCertificatesV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCertificatesV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCertificatesV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -3978,7 +3978,7 @@ func (s GetCodeVersionUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCodeVersionUnauthorized from json stream.
 func (s *GetCodeVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCodeVersionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCodeVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4016,7 +4016,7 @@ func (s GetCoordinationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCoordinationAPIGroupUnauthorized from json stream.
 func (s *GetCoordinationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoordinationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCoordinationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4054,7 +4054,7 @@ func (s GetCoordinationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCoordinationV1APIResourcesUnauthorized from json stream.
 func (s *GetCoordinationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoordinationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCoordinationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4090,7 +4090,7 @@ func (s GetCoreAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCoreAPIVersionsUnauthorized from json stream.
 func (s *GetCoreAPIVersionsUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoreAPIVersionsUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCoreAPIVersionsUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4128,7 +4128,7 @@ func (s GetCoreV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetCoreV1APIResourcesUnauthorized from json stream.
 func (s *GetCoreV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetCoreV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetCoreV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4166,7 +4166,7 @@ func (s GetDiscoveryAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetDiscoveryAPIGroupUnauthorized from json stream.
 func (s *GetDiscoveryAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetDiscoveryAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4204,7 +4204,7 @@ func (s GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetDiscoveryV1APIResourcesUnauthorized from json stream.
 func (s *GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetDiscoveryV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4242,7 +4242,7 @@ func (s GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetDiscoveryV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetDiscoveryV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetDiscoveryV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4278,7 +4278,7 @@ func (s GetEventsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetEventsAPIGroupUnauthorized from json stream.
 func (s *GetEventsAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetEventsAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4316,7 +4316,7 @@ func (s GetEventsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetEventsV1APIResourcesUnauthorized from json stream.
 func (s *GetEventsV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetEventsV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4354,7 +4354,7 @@ func (s GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetEventsV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetEventsV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetEventsV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4392,7 +4392,7 @@ func (s GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetFlowcontrolApiserverAPIGroupUnauthorized from json stream.
 func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4435,7 +4435,7 @@ func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(j *jso
 // ReadJSON reads GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4478,7 +4478,7 @@ func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(j *jso
 // ReadJSON reads GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized from json stream.
 func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4516,7 +4516,7 @@ func (s GetInternalApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetInternalApiserverAPIGroupUnauthorized from json stream.
 func (s *GetInternalApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetInternalApiserverAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetInternalApiserverAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4559,7 +4559,7 @@ func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.
 // ReadJSON reads GetInternalApiserverV1alpha1APIResourcesUnauthorized from json stream.
 func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetInternalApiserverV1alpha1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetInternalApiserverV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4597,7 +4597,7 @@ func (s GetNetworkingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNetworkingAPIGroupUnauthorized from json stream.
 func (s *GetNetworkingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNetworkingAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNetworkingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4635,7 +4635,7 @@ func (s GetNetworkingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNetworkingV1APIResourcesUnauthorized from json stream.
 func (s *GetNetworkingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNetworkingV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNetworkingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4671,7 +4671,7 @@ func (s GetNodeAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNodeAPIGroupUnauthorized from json stream.
 func (s *GetNodeAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNodeAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4709,7 +4709,7 @@ func (s GetNodeV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNodeV1APIResourcesUnauthorized from json stream.
 func (s *GetNodeV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNodeV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4747,7 +4747,7 @@ func (s GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNodeV1alpha1APIResourcesUnauthorized from json stream.
 func (s *GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1alpha1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNodeV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4785,7 +4785,7 @@ func (s GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetNodeV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetNodeV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetNodeV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4821,7 +4821,7 @@ func (s GetPolicyAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetPolicyAPIGroupUnauthorized from json stream.
 func (s *GetPolicyAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetPolicyAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4859,7 +4859,7 @@ func (s GetPolicyV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetPolicyV1APIResourcesUnauthorized from json stream.
 func (s *GetPolicyV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetPolicyV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4897,7 +4897,7 @@ func (s GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetPolicyV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetPolicyV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetPolicyV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4935,7 +4935,7 @@ func (s GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetRbacAuthorizationAPIGroupUnauthorized from json stream.
 func (s *GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -4974,7 +4974,7 @@ func (s GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads GetRbacAuthorizationV1APIResourcesUnauthorized from json stream.
 func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetRbacAuthorizationV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5012,7 +5012,7 @@ func (s GetSchedulingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetSchedulingAPIGroupUnauthorized from json stream.
 func (s *GetSchedulingAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetSchedulingAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetSchedulingAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5050,7 +5050,7 @@ func (s GetSchedulingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetSchedulingV1APIResourcesUnauthorized from json stream.
 func (s *GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetSchedulingV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetSchedulingV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5082,7 +5082,7 @@ func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *jso
 // ReadJSON reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized from json stream.
 func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5114,7 +5114,7 @@ func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Strea
 // ReadJSON reads GetServiceAccountIssuerOpenIDKeysetUnauthorized from json stream.
 func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDKeysetUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetServiceAccountIssuerOpenIDKeysetUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5150,7 +5150,7 @@ func (s GetStorageAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetStorageAPIGroupUnauthorized from json stream.
 func (s *GetStorageAPIGroupUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageAPIGroupUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetStorageAPIGroupUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5188,7 +5188,7 @@ func (s GetStorageV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetStorageV1APIResourcesUnauthorized from json stream.
 func (s *GetStorageV1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetStorageV1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5226,7 +5226,7 @@ func (s GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetStorageV1alpha1APIResourcesUnauthorized from json stream.
 func (s *GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1alpha1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetStorageV1alpha1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5264,7 +5264,7 @@ func (s GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads GetStorageV1beta1APIResourcesUnauthorized from json stream.
 func (s *GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode GetStorageV1beta1APIResourcesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode GetStorageV1beta1APIResourcesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5352,7 +5352,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1MutatingWebhook from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhook to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhook to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5559,7 +5559,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(j
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5674,7 +5674,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJS
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5817,7 +5817,7 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1RuleWithOperations from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1RuleWithOperations to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1RuleWithOperations to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -5972,7 +5972,7 @@ func (s IoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1ServiceReference from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ServiceReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6097,7 +6097,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1ValidatingWebhook from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhook to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhook to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6292,7 +6292,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6407,7 +6407,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Write
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6518,7 +6518,7 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(j *json.St
 // ReadJSON reads IoK8sAPIAdmissionregistrationV1WebhookClientConfig from json stream.
 func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1WebhookClientConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAdmissionregistrationV1WebhookClientConfig to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6618,7 +6618,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6715,7 +6715,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersion from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersion to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersion to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6824,7 +6824,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSON(j *j
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -6939,7 +6939,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersionList from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7029,7 +7029,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7085,7 +7085,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus from json stream.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7201,7 +7201,7 @@ func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ControllerRevision from json stream.
 func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ControllerRevision to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ControllerRevision to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7317,7 +7317,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ControllerRevisionList from json stream.
 func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ControllerRevisionList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ControllerRevisionList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7432,7 +7432,7 @@ func (s IoK8sAPIAppsV1DaemonSet) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSet from json stream.
 func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSet to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSet to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7540,7 +7540,7 @@ func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSetCondition from json stream.
 func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7646,7 +7646,7 @@ func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSetList from json stream.
 func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7757,7 +7757,7 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSetSpec from json stream.
 func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -7891,7 +7891,7 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSetStatus from json stream.
 func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8051,7 +8051,7 @@ func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DaemonSetUpdateStrategy from json stream.
 func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetUpdateStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DaemonSetUpdateStrategy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8127,7 +8127,7 @@ func (s IoK8sAPIAppsV1Deployment) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1Deployment from json stream.
 func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1Deployment to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1Deployment to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8240,7 +8240,7 @@ func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DeploymentCondition from json stream.
 func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8358,7 +8358,7 @@ func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DeploymentList from json stream.
 func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8484,7 +8484,7 @@ func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DeploymentSpec from json stream.
 func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8652,7 +8652,7 @@ func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DeploymentStatus from json stream.
 func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8800,7 +8800,7 @@ func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1DeploymentStrategy from json stream.
 func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1DeploymentStrategy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8876,7 +8876,7 @@ func (s IoK8sAPIAppsV1ReplicaSet) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ReplicaSet from json stream.
 func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSet to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSet to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -8984,7 +8984,7 @@ func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ReplicaSetCondition from json stream.
 func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9090,7 +9090,7 @@ func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ReplicaSetList from json stream.
 func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9198,7 +9198,7 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ReplicaSetSpec from json stream.
 func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9307,7 +9307,7 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1ReplicaSetStatus from json stream.
 func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1ReplicaSetStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9428,7 +9428,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1RollingUpdateDaemonSet from json stream.
 func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateDaemonSet to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateDaemonSet to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9489,7 +9489,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1RollingUpdateDeployment from json stream.
 func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateDeployment to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateDeployment to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9545,7 +9545,7 @@ func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy from json stream.
 func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9609,7 +9609,7 @@ func (s IoK8sAPIAppsV1StatefulSet) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSet from json stream.
 func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSet to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSet to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9717,7 +9717,7 @@ func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSetCondition from json stream.
 func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9823,7 +9823,7 @@ func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSetList from json stream.
 func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -9959,7 +9959,7 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSetSpec from json stream.
 func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10157,7 +10157,7 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSetStatus from json stream.
 func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10323,7 +10323,7 @@ func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAppsV1StatefulSetUpdateStrategy from json stream.
 func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetUpdateStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAppsV1StatefulSetUpdateStrategy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10397,7 +10397,7 @@ func (s IoK8sAPIAuthenticationV1TokenReview) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthenticationV1TokenReview from json stream.
 func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReview to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReview to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10500,7 +10500,7 @@ func (s IoK8sAPIAuthenticationV1TokenReviewSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthenticationV1TokenReviewSpec from json stream.
 func (s *IoK8sAPIAuthenticationV1TokenReviewSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReviewSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReviewSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10591,7 +10591,7 @@ func (s IoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthenticationV1TokenReviewStatus from json stream.
 func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1TokenReviewStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10706,7 +10706,7 @@ func (s IoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthenticationV1UserInfo from json stream.
 func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1UserInfo to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1UserInfo to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10801,7 +10801,7 @@ func (s IoK8sAPIAuthenticationV1UserInfoExtra) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthenticationV1UserInfoExtra from json stream.
 func (s *IoK8sAPIAuthenticationV1UserInfoExtra) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1UserInfoExtra to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthenticationV1UserInfoExtra to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10838,7 +10838,7 @@ func (s IoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAuthorizationV1NonResourceAttributes from json stream.
 func (s *IoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1NonResourceAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1NonResourceAttributes to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -10911,7 +10911,7 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthorizationV1NonResourceRule from json stream.
 func (s *IoK8sAPIAuthorizationV1NonResourceRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1NonResourceRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1NonResourceRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11023,7 +11023,7 @@ func (s IoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthorizationV1ResourceAttributes from json stream.
 func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1ResourceAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1ResourceAttributes to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11180,7 +11180,7 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthorizationV1ResourceRule from json stream.
 func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1ResourceRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1ResourceRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11330,7 +11330,7 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReview) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAuthorizationV1SelfSubjectAccessReview from json stream.
 func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectAccessReview to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectAccessReview to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11426,7 +11426,7 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) WriteJSON(j *json.St
 // ReadJSON reads IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec from json stream.
 func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11500,7 +11500,7 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIAuthorizationV1SelfSubjectRulesReview from json stream.
 func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectRulesReview to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectRulesReview to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11591,7 +11591,7 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec from json stream.
 func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11653,7 +11653,7 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReview) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAuthorizationV1SubjectAccessReview from json stream.
 func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReview to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReview to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11776,7 +11776,7 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAuthorizationV1SubjectAccessReviewSpec from json stream.
 func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11895,7 +11895,7 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra from json stream.
 func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -11940,7 +11940,7 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIAuthorizationV1SubjectAccessReviewStatus from json stream.
 func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectAccessReviewStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12040,7 +12040,7 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIAuthorizationV1SubjectRulesReviewStatus from json stream.
 func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectRulesReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAuthorizationV1SubjectRulesReviewStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12153,7 +12153,7 @@ func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIAutoscalingV1CrossVersionObjectReference from json stream.
 func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1CrossVersionObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1CrossVersionObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12235,7 +12235,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAutoscalingV1HorizontalPodAutoscaler from json stream.
 func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscaler to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscaler to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12347,7 +12347,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList from json stream.
 func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12453,7 +12453,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec from json stream.
 func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12545,7 +12545,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.St
 // ReadJSON reads IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus from json stream.
 func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12642,7 +12642,7 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12723,7 +12723,7 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12802,7 +12802,7 @@ func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12877,7 +12877,7 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ExternalMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ExternalMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ExternalMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -12963,7 +12963,7 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ExternalMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ExternalMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ExternalMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13059,7 +13059,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13167,7 +13167,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSON(j 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13273,7 +13273,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13386,7 +13386,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13510,7 +13510,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13661,7 +13661,7 @@ func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1MetricSpec from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1MetricSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1MetricSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13785,7 +13785,7 @@ func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1MetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1MetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1MetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13898,7 +13898,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ObjectMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ObjectMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ObjectMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -13997,7 +13997,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ObjectMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ObjectMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ObjectMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14088,7 +14088,7 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1PodsMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1PodsMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1PodsMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14156,7 +14156,7 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1PodsMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1PodsMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1PodsMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14228,7 +14228,7 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ResourceMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ResourceMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14297,7 +14297,7 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta1ResourceMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta1ResourceMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14365,7 +14365,7 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14430,7 +14430,7 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14497,7 +14497,7 @@ func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14560,7 +14560,7 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ExternalMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ExternalMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ExternalMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14615,7 +14615,7 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ExternalMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ExternalMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ExternalMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14673,7 +14673,7 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HPAScalingPolicy from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HPAScalingPolicy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HPAScalingPolicy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14749,7 +14749,7 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HPAScalingRules from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HPAScalingRules to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HPAScalingRules to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14852,7 +14852,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -14949,7 +14949,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15021,7 +15021,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSON(j 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15127,7 +15127,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15245,7 +15245,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15381,7 +15381,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *js
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15512,7 +15512,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2MetricIdentifier from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricIdentifier to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricIdentifier to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15588,7 +15588,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2MetricSpec from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15712,7 +15712,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2MetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15826,7 +15826,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2MetricTarget from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricTarget to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricTarget to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15913,7 +15913,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2MetricValueStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricValueStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2MetricValueStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -15985,7 +15985,7 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ObjectMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ObjectMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ObjectMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16054,7 +16054,7 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ObjectMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ObjectMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ObjectMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16120,7 +16120,7 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2PodsMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2PodsMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2PodsMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16175,7 +16175,7 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2PodsMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2PodsMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2PodsMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16230,7 +16230,7 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ResourceMetricSource from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ResourceMetricSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16283,7 +16283,7 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIAutoscalingV2beta2ResourceMetricStatus from json stream.
 func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIAutoscalingV2beta2ResourceMetricStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16355,7 +16355,7 @@ func (s IoK8sAPIBatchV1CronJob) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1CronJob from json stream.
 func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJob to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJob to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16467,7 +16467,7 @@ func (s IoK8sAPIBatchV1CronJobList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1CronJobList from json stream.
 func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16588,7 +16588,7 @@ func (s IoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1CronJobSpec from json stream.
 func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16717,7 +16717,7 @@ func (s IoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1CronJobStatus from json stream.
 func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1CronJobStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16820,7 +16820,7 @@ func (s IoK8sAPIBatchV1Job) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1Job from json stream.
 func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1Job to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1Job to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -16933,7 +16933,7 @@ func (s IoK8sAPIBatchV1JobCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1JobCondition from json stream.
 func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17051,7 +17051,7 @@ func (s IoK8sAPIBatchV1JobList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1JobList from json stream.
 func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17189,7 +17189,7 @@ func (s IoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1JobSpec from json stream.
 func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17382,7 +17382,7 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1JobStatus from json stream.
 func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17530,7 +17530,7 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1JobTemplateSpec from json stream.
 func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobTemplateSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1JobTemplateSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17605,7 +17605,7 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1UncountedTerminatedPods from json stream.
 func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1UncountedTerminatedPods to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1UncountedTerminatedPods to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17707,7 +17707,7 @@ func (s IoK8sAPIBatchV1beta1CronJob) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1beta1CronJob from json stream.
 func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJob to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJob to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17819,7 +17819,7 @@ func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1beta1CronJobList from json stream.
 func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -17940,7 +17940,7 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1beta1CronJobSpec from json stream.
 func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18069,7 +18069,7 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1beta1CronJobStatus from json stream.
 func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1CronJobStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18157,7 +18157,7 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIBatchV1beta1JobTemplateSpec from json stream.
 func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1JobTemplateSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIBatchV1beta1JobTemplateSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18231,7 +18231,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequest from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequest to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequest to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18343,7 +18343,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSON(j *j
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestCondition from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18461,7 +18461,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestList from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18607,7 +18607,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestSpec from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18775,7 +18775,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) WriteJSON(j *j
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18825,7 +18825,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json
 // ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestStatus from json stream.
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -18926,7 +18926,7 @@ func (s IoK8sAPICoordinationV1Lease) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoordinationV1Lease from json stream.
 func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1Lease to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1Lease to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19026,7 +19026,7 @@ func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoordinationV1LeaseList from json stream.
 func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1LeaseList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1LeaseList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19141,7 +19141,7 @@ func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoordinationV1LeaseSpec from json stream.
 func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1LeaseSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoordinationV1LeaseSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19246,7 +19246,7 @@ func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource from json stream.
 func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19333,7 +19333,7 @@ func (s IoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Affinity from json stream.
 func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Affinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Affinity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19402,7 +19402,7 @@ func (s IoK8sAPICoreV1AttachedVolume) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1AttachedVolume from json stream.
 func (s *IoK8sAPICoreV1AttachedVolume) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AttachedVolume to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AttachedVolume to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19473,7 +19473,7 @@ func (s IoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1AzureDiskVolumeSource from json stream.
 func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureDiskVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19582,7 +19582,7 @@ func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPICoreV1AzureFilePersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureFilePersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureFilePersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19662,7 +19662,7 @@ func (s IoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1AzureFileVolumeSource from json stream.
 func (s *IoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureFileVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1AzureFileVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19760,7 +19760,7 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CSIPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19896,7 +19896,7 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) WriteJSON(j *js
 // ReadJSON reads IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes from json stream.
 func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -19946,7 +19946,7 @@ func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CSIVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20037,7 +20037,7 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes from json stream.
 func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20088,7 +20088,7 @@ func (s IoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Capabilities from json stream.
 func (s *IoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Capabilities to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Capabilities to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20200,7 +20200,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CephFSPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CephFSPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CephFSPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20347,7 +20347,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CephFSVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CephFSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CephFSVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20477,7 +20477,7 @@ func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CinderPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CinderPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CinderPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20567,7 +20567,7 @@ func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1CinderVolumeSource from json stream.
 func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CinderVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1CinderVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20644,7 +20644,7 @@ func (s IoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ClientIPConfig from json stream.
 func (s *IoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ClientIPConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ClientIPConfig to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20699,7 +20699,7 @@ func (s IoK8sAPICoreV1ComponentCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ComponentCondition from json stream.
 func (s *IoK8sAPICoreV1ComponentCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20795,7 +20795,7 @@ func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ComponentStatus from json stream.
 func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -20910,7 +20910,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ComponentStatusList from json stream.
 func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentStatusList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ComponentStatusList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21030,7 +21030,7 @@ func (s IoK8sAPICoreV1ConfigMap) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMap from json stream.
 func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMap to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMap to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21143,7 +21143,7 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapBinaryData from json stream.
 func (s *IoK8sAPICoreV1ConfigMapBinaryData) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapBinaryData to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapBinaryData to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21170,7 +21170,7 @@ func (s IoK8sAPICoreV1ConfigMapData) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapData from json stream.
 func (s *IoK8sAPICoreV1ConfigMapData) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapData to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapData to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21207,7 +21207,7 @@ func (s IoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapEnvSource from json stream.
 func (s *IoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapEnvSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapEnvSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21271,7 +21271,7 @@ func (s IoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapKeySelector from json stream.
 func (s *IoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapKeySelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapKeySelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21356,7 +21356,7 @@ func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapList from json stream.
 func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21465,7 +21465,7 @@ func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapNodeConfigSource from json stream.
 func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapNodeConfigSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapNodeConfigSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21565,7 +21565,7 @@ func (s IoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapProjection from json stream.
 func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapProjection to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21670,7 +21670,7 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ConfigMapVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ConfigMapVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -21917,7 +21917,7 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Container from json stream.
 func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Container to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Container to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22323,7 +22323,7 @@ func (s IoK8sAPICoreV1ContainerImage) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerImage from json stream.
 func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerImage to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerImage to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22410,7 +22410,7 @@ func (s IoK8sAPICoreV1ContainerPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerPort from json stream.
 func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22509,7 +22509,7 @@ func (s IoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerState from json stream.
 func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerState to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerState to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22577,7 +22577,7 @@ func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerStateRunning from json stream.
 func (s *IoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateRunning to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateRunning to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22649,7 +22649,7 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerStateTerminated from json stream.
 func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateTerminated to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateTerminated to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22767,7 +22767,7 @@ func (s IoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerStateWaiting from json stream.
 func (s *IoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateWaiting to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStateWaiting to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22853,7 +22853,7 @@ func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ContainerStatus from json stream.
 func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ContainerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -22976,7 +22976,7 @@ func (s IoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1DaemonEndpoint from json stream.
 func (s *IoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DaemonEndpoint to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DaemonEndpoint to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23024,7 +23024,7 @@ func (s IoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1DownwardAPIProjection from json stream.
 func (s *IoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIProjection to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23096,7 +23096,7 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1DownwardAPIVolumeFile from json stream.
 func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIVolumeFile to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIVolumeFile to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23185,7 +23185,7 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1DownwardAPIVolumeSource from json stream.
 func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1DownwardAPIVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23261,7 +23261,7 @@ func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EmptyDirVolumeSource from json stream.
 func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EmptyDirVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EmptyDirVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23330,7 +23330,7 @@ func (s IoK8sAPICoreV1EndpointAddress) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EndpointAddress from json stream.
 func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointAddress to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointAddress to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23420,7 +23420,7 @@ func (s IoK8sAPICoreV1EndpointPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EndpointPort from json stream.
 func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23528,7 +23528,7 @@ func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EndpointSubset from json stream.
 func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointSubset to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointSubset to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23663,7 +23663,7 @@ func (s IoK8sAPICoreV1Endpoints) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Endpoints from json stream.
 func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Endpoints to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Endpoints to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23778,7 +23778,7 @@ func (s IoK8sAPICoreV1EndpointsList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EndpointsList from json stream.
 func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointsList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EndpointsList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23883,7 +23883,7 @@ func (s IoK8sAPICoreV1EnvFromSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EnvFromSource from json stream.
 func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvFromSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvFromSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -23959,7 +23959,7 @@ func (s IoK8sAPICoreV1EnvVar) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EnvVar from json stream.
 func (s *IoK8sAPICoreV1EnvVar) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvVar to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvVar to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24039,7 +24039,7 @@ func (s IoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EnvVarSource from json stream.
 func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvVarSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EnvVarSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24276,7 +24276,7 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EphemeralContainer from json stream.
 func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EphemeralContainer to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EphemeralContainer to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24682,7 +24682,7 @@ func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EphemeralVolumeSource from json stream.
 func (s *IoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EphemeralVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EphemeralVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -24802,7 +24802,7 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Event from json stream.
 func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Event to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Event to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25056,7 +25056,7 @@ func (s IoK8sAPICoreV1EventList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EventList from json stream.
 func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25156,7 +25156,7 @@ func (s IoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EventSeries from json stream.
 func (s *IoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventSeries to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25217,7 +25217,7 @@ func (s IoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1EventSource from json stream.
 func (s *IoK8sAPICoreV1EventSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1EventSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25280,7 +25280,7 @@ func (s IoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ExecAction from json stream.
 func (s *IoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ExecAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ExecAction to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25371,7 +25371,7 @@ func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1FCVolumeSource from json stream.
 func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FCVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FCVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25507,7 +25507,7 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1FlexPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25598,7 +25598,7 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPICoreV1FlexPersistentVolumeSourceOptions from json stream.
 func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25648,7 +25648,7 @@ func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1FlexVolumeSource from json stream.
 func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25739,7 +25739,7 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1FlexVolumeSourceOptions from json stream.
 func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexVolumeSourceOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlexVolumeSourceOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25776,7 +25776,7 @@ func (s IoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1FlockerVolumeSource from json stream.
 func (s *IoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlockerVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1FlockerVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25845,7 +25845,7 @@ func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1GCEPersistentDiskVolumeSource from json stream.
 func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GCEPersistentDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GCEPersistentDiskVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -25930,7 +25930,7 @@ func (s IoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1GitRepoVolumeSource from json stream.
 func (s *IoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GitRepoVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GitRepoVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26006,7 +26006,7 @@ func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPICoreV1GlusterfsPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GlusterfsPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GlusterfsPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26086,7 +26086,7 @@ func (s IoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1GlusterfsVolumeSource from json stream.
 func (s *IoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GlusterfsVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1GlusterfsVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26171,7 +26171,7 @@ func (s IoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1HTTPGetAction from json stream.
 func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HTTPGetAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HTTPGetAction to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26278,7 +26278,7 @@ func (s IoK8sAPICoreV1HTTPHeader) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1HTTPHeader from json stream.
 func (s *IoK8sAPICoreV1HTTPHeader) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HTTPHeader to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HTTPHeader to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26338,7 +26338,7 @@ func (s IoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Handler from json stream.
 func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Handler to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Handler to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26418,7 +26418,7 @@ func (s IoK8sAPICoreV1HostAlias) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1HostAlias from json stream.
 func (s *IoK8sAPICoreV1HostAlias) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HostAlias to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HostAlias to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26490,7 +26490,7 @@ func (s IoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1HostPathVolumeSource from json stream.
 func (s *IoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HostPathVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1HostPathVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26594,7 +26594,7 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ISCSIPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ISCSIPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ISCSIPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26813,7 +26813,7 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ISCSIVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ISCSIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ISCSIVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -26987,7 +26987,7 @@ func (s IoK8sAPICoreV1KeyToPath) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1KeyToPath from json stream.
 func (s *IoK8sAPICoreV1KeyToPath) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1KeyToPath to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1KeyToPath to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27054,7 +27054,7 @@ func (s IoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Lifecycle from json stream.
 func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Lifecycle to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Lifecycle to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27125,7 +27125,7 @@ func (s IoK8sAPICoreV1LimitRange) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRange from json stream.
 func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRange to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRange to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27228,7 +27228,7 @@ func (s IoK8sAPICoreV1LimitRangeItem) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItem from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItem) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItem to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItem to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27359,7 +27359,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItemDefault from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItemDefault) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefault to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefault to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27386,7 +27386,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItemDefaultRequest from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefaultRequest to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefaultRequest to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27413,7 +27413,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItemMax from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItemMax) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMax to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMax to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27440,7 +27440,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27467,7 +27467,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeItemMin from json stream.
 func (s *IoK8sAPICoreV1LimitRangeItemMin) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMin to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMin to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27519,7 +27519,7 @@ func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeList from json stream.
 func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27619,7 +27619,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LimitRangeSpec from json stream.
 func (s *IoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LimitRangeSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27695,7 +27695,7 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LoadBalancerIngress from json stream.
 func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LoadBalancerIngress to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LoadBalancerIngress to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27785,7 +27785,7 @@ func (s IoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LoadBalancerStatus from json stream.
 func (s *IoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LoadBalancerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LoadBalancerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27844,7 +27844,7 @@ func (s IoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LocalObjectReference from json stream.
 func (s *IoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LocalObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LocalObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27891,7 +27891,7 @@ func (s IoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1LocalVolumeSource from json stream.
 func (s *IoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LocalVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1LocalVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -27950,7 +27950,7 @@ func (s IoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NFSVolumeSource from json stream.
 func (s *IoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NFSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NFSVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28032,7 +28032,7 @@ func (s IoK8sAPICoreV1Namespace) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Namespace from json stream.
 func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Namespace to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Namespace to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28140,7 +28140,7 @@ func (s IoK8sAPICoreV1NamespaceCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NamespaceCondition from json stream.
 func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28246,7 +28246,7 @@ func (s IoK8sAPICoreV1NamespaceList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NamespaceList from json stream.
 func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28348,7 +28348,7 @@ func (s IoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NamespaceSpec from json stream.
 func (s *IoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28417,7 +28417,7 @@ func (s IoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NamespaceStatus from json stream.
 func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NamespaceStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28508,7 +28508,7 @@ func (s IoK8sAPICoreV1Node) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Node from json stream.
 func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Node to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Node to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28601,7 +28601,7 @@ func (s IoK8sAPICoreV1NodeAddress) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeAddress from json stream.
 func (s *IoK8sAPICoreV1NodeAddress) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeAddress to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeAddress to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28663,7 +28663,7 @@ func (s IoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeAffinity from json stream.
 func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeAffinity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28755,7 +28755,7 @@ func (s IoK8sAPICoreV1NodeCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeCondition from json stream.
 func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28853,7 +28853,7 @@ func (s IoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeConfigSource from json stream.
 func (s *IoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeConfigSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeConfigSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28912,7 +28912,7 @@ func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeConfigStatus from json stream.
 func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeConfigStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeConfigStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -28992,7 +28992,7 @@ func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeDaemonEndpoints from json stream.
 func (s *IoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeDaemonEndpoints to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeDaemonEndpoints to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29056,7 +29056,7 @@ func (s IoK8sAPICoreV1NodeList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeList from json stream.
 func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29156,7 +29156,7 @@ func (s IoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeSelector from json stream.
 func (s *IoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29228,7 +29228,7 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeSelectorRequirement from json stream.
 func (s *IoK8sAPICoreV1NodeSelectorRequirement) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelectorRequirement to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelectorRequirement to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29322,7 +29322,7 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeSelectorTerm from json stream.
 func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelectorTerm to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSelectorTerm to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29452,7 +29452,7 @@ func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeSpec from json stream.
 func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29681,7 +29681,7 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeStatus from json stream.
 func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29927,7 +29927,7 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeStatusAllocatable from json stream.
 func (s *IoK8sAPICoreV1NodeStatusAllocatable) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatusAllocatable to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatusAllocatable to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -29954,7 +29954,7 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeStatusCapacity from json stream.
 func (s *IoK8sAPICoreV1NodeStatusCapacity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatusCapacity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeStatusCapacity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30011,7 +30011,7 @@ func (s IoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1NodeSystemInfo from json stream.
 func (s *IoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSystemInfo to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1NodeSystemInfo to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30136,7 +30136,7 @@ func (s IoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ObjectFieldSelector from json stream.
 func (s *IoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ObjectFieldSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ObjectFieldSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30219,7 +30219,7 @@ func (s IoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ObjectReference from json stream.
 func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30355,7 +30355,7 @@ func (s IoK8sAPICoreV1PersistentVolume) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolume from json stream.
 func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolume to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolume to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30467,7 +30467,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaim from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaim to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaim to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30580,7 +30580,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimCondition from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30698,7 +30698,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimList from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -30835,7 +30835,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimSpec from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31005,7 +31005,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimStatus from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31115,7 +31115,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31150,7 +31150,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimTemplate from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimTemplate to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimTemplate to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31208,7 +31208,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimVolumeSource from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31281,7 +31281,7 @@ func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeList from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31535,7 +31535,7 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeSpec from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31955,7 +31955,7 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeSpecCapacity from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpecCapacity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpecCapacity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -31997,7 +31997,7 @@ func (s IoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PersistentVolumeStatus from json stream.
 func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32068,7 +32068,7 @@ func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPICoreV1PhotonPersistentDiskVolumeSource from json stream.
 func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PhotonPersistentDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PhotonPersistentDiskVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32141,7 +32141,7 @@ func (s IoK8sAPICoreV1Pod) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Pod from json stream.
 func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Pod to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Pod to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32252,7 +32252,7 @@ func (s IoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodAffinity from json stream.
 func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAffinity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32358,7 +32358,7 @@ func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodAffinityTerm from json stream.
 func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAffinityTerm to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAffinityTerm to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32467,7 +32467,7 @@ func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodAntiAffinity from json stream.
 func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAntiAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodAntiAffinity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32574,7 +32574,7 @@ func (s IoK8sAPICoreV1PodCondition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodCondition from json stream.
 func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32703,7 +32703,7 @@ func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodDNSConfig from json stream.
 func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodDNSConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodDNSConfig to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32817,7 +32817,7 @@ func (s IoK8sAPICoreV1PodDNSConfigOption) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodDNSConfigOption from json stream.
 func (s *IoK8sAPICoreV1PodDNSConfigOption) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodDNSConfigOption to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodDNSConfigOption to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32873,7 +32873,7 @@ func (s IoK8sAPICoreV1PodIP) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodIP from json stream.
 func (s *IoK8sAPICoreV1PodIP) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodIP to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodIP to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -32937,7 +32937,7 @@ func (s IoK8sAPICoreV1PodList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodList from json stream.
 func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33030,7 +33030,7 @@ func (s IoK8sAPICoreV1PodReadinessGate) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodReadinessGate from json stream.
 func (s *IoK8sAPICoreV1PodReadinessGate) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodReadinessGate to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodReadinessGate to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33130,7 +33130,7 @@ func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodSecurityContext from json stream.
 func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSecurityContext to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSecurityContext to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -33541,7 +33541,7 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodSpec from json stream.
 func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34137,7 +34137,7 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodSpecNodeSelector from json stream.
 func (s *IoK8sAPICoreV1PodSpecNodeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpecNodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpecNodeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34164,7 +34164,7 @@ func (s IoK8sAPICoreV1PodSpecOverhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodSpecOverhead from json stream.
 func (s *IoK8sAPICoreV1PodSpecOverhead) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpecOverhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodSpecOverhead to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34291,7 +34291,7 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodStatus from json stream.
 func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34569,7 +34569,7 @@ func (s IoK8sAPICoreV1PodTemplate) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodTemplate from json stream.
 func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplate to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplate to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34669,7 +34669,7 @@ func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodTemplateList from json stream.
 func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplateList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplateList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34769,7 +34769,7 @@ func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PodTemplateSpec from json stream.
 func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplateSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PodTemplateSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34831,7 +34831,7 @@ func (s IoK8sAPICoreV1PortStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PortStatus from json stream.
 func (s *IoK8sAPICoreV1PortStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PortStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PortStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34901,7 +34901,7 @@ func (s IoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PortworxVolumeSource from json stream.
 func (s *IoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PortworxVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PortworxVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -34967,7 +34967,7 @@ func (s IoK8sAPICoreV1PreferredSchedulingTerm) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1PreferredSchedulingTerm from json stream.
 func (s *IoK8sAPICoreV1PreferredSchedulingTerm) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PreferredSchedulingTerm to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1PreferredSchedulingTerm to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35059,7 +35059,7 @@ func (s IoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Probe from json stream.
 func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Probe to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Probe to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35211,7 +35211,7 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ProjectedVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ProjectedVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ProjectedVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35303,7 +35303,7 @@ func (s IoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1QuobyteVolumeSource from json stream.
 func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1QuobyteVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1QuobyteVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35439,7 +35439,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1RBDPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1RBDPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1RBDPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35615,7 +35615,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1RBDVolumeSource from json stream.
 func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1RBDVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1RBDVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35773,7 +35773,7 @@ func (s IoK8sAPICoreV1ReplicationController) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ReplicationController from json stream.
 func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationController to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationController to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35881,7 +35881,7 @@ func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPICoreV1ReplicationControllerCondition from json stream.
 func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -35987,7 +35987,7 @@ func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ReplicationControllerList from json stream.
 func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36097,7 +36097,7 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ReplicationControllerSpec from json stream.
 func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36179,7 +36179,7 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPICoreV1ReplicationControllerSpecSelector from json stream.
 func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpecSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpecSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36241,7 +36241,7 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ReplicationControllerStatus from json stream.
 func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36365,7 +36365,7 @@ func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceFieldSelector from json stream.
 func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceFieldSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceFieldSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36450,7 +36450,7 @@ func (s IoK8sAPICoreV1ResourceQuota) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuota from json stream.
 func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuota to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuota to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36562,7 +36562,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaList from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36674,7 +36674,7 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaSpec from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36757,7 +36757,7 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaSpecHard from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpecHard to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpecHard to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36794,7 +36794,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaStatus from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36859,7 +36859,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaStatusHard from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusHard to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusHard to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36886,7 +36886,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceQuotaStatusUsed from json stream.
 func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusUsed to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusUsed to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36923,7 +36923,7 @@ func (s IoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceRequirements from json stream.
 func (s *IoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirements to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirements to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -36988,7 +36988,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceRequirementsLimits from json stream.
 func (s *IoK8sAPICoreV1ResourceRequirementsLimits) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsLimits to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsLimits to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37015,7 +37015,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ResourceRequirementsRequests from json stream.
 func (s *IoK8sAPICoreV1ResourceRequirementsRequests) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsRequests to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsRequests to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37062,7 +37062,7 @@ func (s IoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SELinuxOptions from json stream.
 func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SELinuxOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SELinuxOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37181,7 +37181,7 @@ func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ScaleIOPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScaleIOPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScaleIOPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37365,7 +37365,7 @@ func (s IoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ScaleIOVolumeSource from json stream.
 func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScaleIOVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScaleIOVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37517,7 +37517,7 @@ func (s IoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ScopeSelector from json stream.
 func (s *IoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScopeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScopeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37589,7 +37589,7 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPICoreV1ScopedResourceSelectorRequirement from json stream.
 func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScopedResourceSelectorRequirement to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ScopedResourceSelectorRequirement to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37667,7 +37667,7 @@ func (s IoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SeccompProfile from json stream.
 func (s *IoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SeccompProfile to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SeccompProfile to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37750,7 +37750,7 @@ func (s IoK8sAPICoreV1Secret) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Secret from json stream.
 func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Secret to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Secret to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37875,7 +37875,7 @@ func (s IoK8sAPICoreV1SecretData) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretData from json stream.
 func (s *IoK8sAPICoreV1SecretData) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretData to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretData to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37912,7 +37912,7 @@ func (s IoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretEnvSource from json stream.
 func (s *IoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretEnvSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretEnvSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -37976,7 +37976,7 @@ func (s IoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretKeySelector from json stream.
 func (s *IoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretKeySelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretKeySelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38061,7 +38061,7 @@ func (s IoK8sAPICoreV1SecretList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretList from json stream.
 func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38173,7 +38173,7 @@ func (s IoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretProjection from json stream.
 func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretProjection to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38261,7 +38261,7 @@ func (s IoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretReference from json stream.
 func (s *IoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38312,7 +38312,7 @@ func (s IoK8sAPICoreV1SecretStringData) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretStringData from json stream.
 func (s *IoK8sAPICoreV1SecretStringData) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretStringData to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretStringData to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38366,7 +38366,7 @@ func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecretVolumeSource from json stream.
 func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecretVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38511,7 +38511,7 @@ func (s IoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SecurityContext from json stream.
 func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecurityContext to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SecurityContext to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38695,7 +38695,7 @@ func (s IoK8sAPICoreV1Service) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Service from json stream.
 func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Service to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Service to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38826,7 +38826,7 @@ func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceAccount from json stream.
 func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccount to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccount to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -38980,7 +38980,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceAccountList from json stream.
 func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccountList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccountList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39083,7 +39083,7 @@ func (s IoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceAccountTokenProjection from json stream.
 func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccountTokenProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceAccountTokenProjection to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39168,7 +39168,7 @@ func (s IoK8sAPICoreV1ServiceList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceList from json stream.
 func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39286,7 +39286,7 @@ func (s IoK8sAPICoreV1ServicePort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServicePort from json stream.
 func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServicePort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServicePort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39512,7 +39512,7 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceSpec from json stream.
 func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39841,7 +39841,7 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceSpecSelector from json stream.
 func (s *IoK8sAPICoreV1ServiceSpecSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceSpecSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceSpecSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39885,7 +39885,7 @@ func (s IoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1ServiceStatus from json stream.
 func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1ServiceStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -39956,7 +39956,7 @@ func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1SessionAffinityConfig from json stream.
 func (s *IoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SessionAffinityConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1SessionAffinityConfig to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40020,7 +40020,7 @@ func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPICoreV1StorageOSPersistentVolumeSource from json stream.
 func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1StorageOSPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1StorageOSPersistentVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40132,7 +40132,7 @@ func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1StorageOSVolumeSource from json stream.
 func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1StorageOSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1StorageOSVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40225,7 +40225,7 @@ func (s IoK8sAPICoreV1Sysctl) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Sysctl from json stream.
 func (s *IoK8sAPICoreV1Sysctl) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Sysctl to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Sysctl to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40276,7 +40276,7 @@ func (s IoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1TCPSocketAction from json stream.
 func (s *IoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TCPSocketAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TCPSocketAction to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40342,7 +40342,7 @@ func (s IoK8sAPICoreV1Taint) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Taint from json stream.
 func (s *IoK8sAPICoreV1Taint) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Taint to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Taint to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40436,7 +40436,7 @@ func (s IoK8sAPICoreV1Toleration) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Toleration from json stream.
 func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Toleration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Toleration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40536,7 +40536,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPICoreV1TopologySelectorLabelRequirement from json stream.
 func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySelectorLabelRequirement to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySelectorLabelRequirement to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40609,7 +40609,7 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1TopologySelectorTerm from json stream.
 func (s *IoK8sAPICoreV1TopologySelectorTerm) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySelectorTerm to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySelectorTerm to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40677,7 +40677,7 @@ func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1TopologySpreadConstraint from json stream.
 func (s *IoK8sAPICoreV1TopologySpreadConstraint) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySpreadConstraint to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TopologySpreadConstraint to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40754,7 +40754,7 @@ func (s IoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1TypedLocalObjectReference from json stream.
 func (s *IoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TypedLocalObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1TypedLocalObjectReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -40959,7 +40959,7 @@ func (s IoK8sAPICoreV1Volume) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1Volume from json stream.
 func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Volume to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1Volume to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41349,7 +41349,7 @@ func (s IoK8sAPICoreV1VolumeDevice) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1VolumeDevice from json stream.
 func (s *IoK8sAPICoreV1VolumeDevice) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeDevice to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeDevice to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41420,7 +41420,7 @@ func (s IoK8sAPICoreV1VolumeMount) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1VolumeMount from json stream.
 func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeMount to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeMount to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41518,7 +41518,7 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1VolumeNodeAffinity from json stream.
 func (s *IoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeNodeAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeNodeAffinity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41577,7 +41577,7 @@ func (s IoK8sAPICoreV1VolumeProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1VolumeProjection from json stream.
 func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VolumeProjection to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41670,7 +41670,7 @@ func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPICoreV1VsphereVirtualDiskVolumeSource from json stream.
 func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VsphereVirtualDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1VsphereVirtualDiskVolumeSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41748,7 +41748,7 @@ func (s IoK8sAPICoreV1WeightedPodAffinityTerm) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1WeightedPodAffinityTerm from json stream.
 func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1WeightedPodAffinityTerm to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1WeightedPodAffinityTerm to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41815,7 +41815,7 @@ func (s IoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPICoreV1WindowsSecurityContextOptions from json stream.
 func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1WindowsSecurityContextOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPICoreV1WindowsSecurityContextOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -41935,7 +41935,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1Endpoint from json stream.
 func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1Endpoint to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1Endpoint to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42093,7 +42093,7 @@ func (s IoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointConditions from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointConditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointConditions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42156,7 +42156,7 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointDeprecatedTopology from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42195,7 +42195,7 @@ func (s IoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointHints from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointHints to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointHints to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42269,7 +42269,7 @@ func (s IoK8sAPIDiscoveryV1EndpointPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointPort from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42384,7 +42384,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointSlice from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointSlice to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointSlice to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42535,7 +42535,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1EndpointSliceList from json stream.
 func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointSliceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointSliceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42628,7 +42628,7 @@ func (s IoK8sAPIDiscoveryV1ForZone) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1ForZone from json stream.
 func (s *IoK8sAPIDiscoveryV1ForZone) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1ForZone to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1ForZone to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42704,7 +42704,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1Endpoint from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1Endpoint to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1Endpoint to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42850,7 +42850,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointConditions from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointConditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointConditions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42925,7 +42925,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointHints from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointHints to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointHints to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -42999,7 +42999,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointPort from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43114,7 +43114,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointSlice from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointSlice to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointSlice to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43265,7 +43265,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointSliceList from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointSliceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointSliceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43355,7 +43355,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointTopology from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointTopology to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointTopology to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43385,7 +43385,7 @@ func (s IoK8sAPIDiscoveryV1beta1ForZone) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIDiscoveryV1beta1ForZone from json stream.
 func (s *IoK8sAPIDiscoveryV1beta1ForZone) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1ForZone to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1ForZone to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43502,7 +43502,7 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1Event from json stream.
 func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1Event to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1Event to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43757,7 +43757,7 @@ func (s IoK8sAPIEventsV1EventList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1EventList from json stream.
 func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1EventList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1EventList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43851,7 +43851,7 @@ func (s IoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1EventSeries from json stream.
 func (s *IoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1EventSeries to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -43979,7 +43979,7 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1beta1Event from json stream.
 func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1Event to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1Event to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44234,7 +44234,7 @@ func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1beta1EventList from json stream.
 func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1EventList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1EventList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44328,7 +44328,7 @@ func (s IoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIEventsV1beta1EventSeries from json stream.
 func (s *IoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIEventsV1beta1EventSeries to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44378,7 +44378,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44439,7 +44439,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowSchema from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchema to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchema to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44551,7 +44551,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44663,7 +44663,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowSchemaList from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44778,7 +44778,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44879,7 +44879,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44936,7 +44936,7 @@ func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1GroupSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1GroupSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1GroupSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -44980,7 +44980,7 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1LimitResponse from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1LimitResponse to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1LimitResponse to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45038,7 +45038,7 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45109,7 +45109,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45220,7 +45220,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45353,7 +45353,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSON(j *json.
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45465,7 +45465,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSON
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45577,7 +45577,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(j *j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45670,7 +45670,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) WriteJSON
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45714,7 +45714,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45774,7 +45774,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j 
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45843,7 +45843,7 @@ func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1QueuingConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1QueuingConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1QueuingConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -45953,7 +45953,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46098,7 +46098,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46161,7 +46161,7 @@ func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1Subject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1Subject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1Subject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46236,7 +46236,7 @@ func (s IoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta1UserSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1UserSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta1UserSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46275,7 +46275,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46336,7 +46336,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowSchema from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchema to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchema to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46448,7 +46448,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46560,7 +46560,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowSchemaList from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46675,7 +46675,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46776,7 +46776,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46833,7 +46833,7 @@ func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2GroupSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2GroupSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2GroupSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46877,7 +46877,7 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2LimitResponse from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2LimitResponse to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2LimitResponse to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -46935,7 +46935,7 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47006,7 +47006,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47117,7 +47117,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(j *json.Str
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47250,7 +47250,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSON(j *json.
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47362,7 +47362,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSON
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47474,7 +47474,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(j *j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47567,7 +47567,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) WriteJSON
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47611,7 +47611,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *j
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47671,7 +47671,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j 
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47740,7 +47740,7 @@ func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2QueuingConfiguration from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2QueuingConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2QueuingConfiguration to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47850,7 +47850,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -47995,7 +47995,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Strea
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48058,7 +48058,7 @@ func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2Subject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2Subject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2Subject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48133,7 +48133,7 @@ func (s IoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIFlowcontrolV1beta2UserSubject from json stream.
 func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2UserSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIFlowcontrolV1beta2UserSubject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48180,7 +48180,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressPath) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1HTTPIngressPath from json stream.
 func (s *IoK8sAPINetworkingV1HTTPIngressPath) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1HTTPIngressPath to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1HTTPIngressPath to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48249,7 +48249,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1HTTPIngressRuleValue from json stream.
 func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1HTTPIngressRuleValue to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1HTTPIngressRuleValue to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48318,7 +48318,7 @@ func (s IoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IPBlock from json stream.
 func (s *IoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IPBlock to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IPBlock to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48404,7 +48404,7 @@ func (s IoK8sAPINetworkingV1Ingress) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1Ingress from json stream.
 func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1Ingress to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1Ingress to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48501,7 +48501,7 @@ func (s IoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressBackend from json stream.
 func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressBackend to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressBackend to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48572,7 +48572,7 @@ func (s IoK8sAPINetworkingV1IngressClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressClass from json stream.
 func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48672,7 +48672,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressClassList from json stream.
 func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48783,7 +48783,7 @@ func (s IoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.S
 // ReadJSON reads IoK8sAPINetworkingV1IngressClassParametersReference from json stream.
 func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassParametersReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassParametersReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48874,7 +48874,7 @@ func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressClassSpec from json stream.
 func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressClassSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -48950,7 +48950,7 @@ func (s IoK8sAPINetworkingV1IngressList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressList from json stream.
 func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49050,7 +49050,7 @@ func (s IoK8sAPINetworkingV1IngressRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressRule from json stream.
 func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49109,7 +49109,7 @@ func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressServiceBackend from json stream.
 func (s *IoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressServiceBackend to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressServiceBackend to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49191,7 +49191,7 @@ func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressSpec from json stream.
 func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49301,7 +49301,7 @@ func (s IoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressStatus from json stream.
 func (s *IoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49357,7 +49357,7 @@ func (s IoK8sAPINetworkingV1IngressTLS) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1IngressTLS from json stream.
 func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressTLS to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1IngressTLS to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49441,7 +49441,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicy from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49540,7 +49540,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicyEgressRule from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyEgressRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyEgressRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49645,7 +49645,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicyIngressRule from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyIngressRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyIngressRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49751,7 +49751,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicyList from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49856,7 +49856,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicyPeer from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyPeer to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyPeer to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -49934,7 +49934,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicyPort from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicyPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50036,7 +50036,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1NetworkPolicySpec from json stream.
 func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicySpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1NetworkPolicySpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50163,7 +50163,7 @@ func (s IoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINetworkingV1ServiceBackendPort from json stream.
 func (s *IoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1ServiceBackendPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINetworkingV1ServiceBackendPort to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50219,7 +50219,7 @@ func (s IoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1Overhead from json stream.
 func (s *IoK8sAPINodeV1Overhead) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1Overhead to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50265,7 +50265,7 @@ func (s IoK8sAPINodeV1OverheadPodFixed) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1OverheadPodFixed from json stream.
 func (s *IoK8sAPINodeV1OverheadPodFixed) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1OverheadPodFixed to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1OverheadPodFixed to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50320,7 +50320,7 @@ func (s IoK8sAPINodeV1RuntimeClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1RuntimeClass from json stream.
 func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1RuntimeClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1RuntimeClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50441,7 +50441,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1RuntimeClassList from json stream.
 func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1RuntimeClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1RuntimeClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50548,7 +50548,7 @@ func (s IoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1Scheduling from json stream.
 func (s *IoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1Scheduling to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50621,7 +50621,7 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1SchedulingNodeSelector from json stream.
 func (s *IoK8sAPINodeV1SchedulingNodeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1SchedulingNodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1SchedulingNodeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50653,7 +50653,7 @@ func (s IoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1Overhead from json stream.
 func (s *IoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1Overhead to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50699,7 +50699,7 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1OverheadPodFixed from json stream.
 func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1OverheadPodFixed to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1OverheadPodFixed to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50744,7 +50744,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1RuntimeClass from json stream.
 func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50843,7 +50843,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1RuntimeClassList from json stream.
 func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -50946,7 +50946,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1RuntimeClassSpec from json stream.
 func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClassSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1RuntimeClassSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51023,7 +51023,7 @@ func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1Scheduling from json stream.
 func (s *IoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1Scheduling to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51096,7 +51096,7 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1alpha1SchedulingNodeSelector from json stream.
 func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1SchedulingNodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1alpha1SchedulingNodeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51128,7 +51128,7 @@ func (s IoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1Overhead from json stream.
 func (s *IoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1Overhead to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51174,7 +51174,7 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1OverheadPodFixed from json stream.
 func (s *IoK8sAPINodeV1beta1OverheadPodFixed) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1OverheadPodFixed to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1OverheadPodFixed to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51229,7 +51229,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1RuntimeClass from json stream.
 func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1RuntimeClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1RuntimeClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51350,7 +51350,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1RuntimeClassList from json stream.
 func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1RuntimeClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1RuntimeClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51457,7 +51457,7 @@ func (s IoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1Scheduling from json stream.
 func (s *IoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1Scheduling to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51530,7 +51530,7 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPINodeV1beta1SchedulingNodeSelector from json stream.
 func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1SchedulingNodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPINodeV1beta1SchedulingNodeSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51582,7 +51582,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudget from json stream.
 func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudget to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudget to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51694,7 +51694,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudgetList from json stream.
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51799,7 +51799,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudgetSpec from json stream.
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -51896,7 +51896,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudgetStatus from json stream.
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52017,7 +52017,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(j *jso
 // ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods from json stream.
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52047,7 +52047,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1AllowedCSIDriver from json stream.
 func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedCSIDriver to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedCSIDriver to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52086,7 +52086,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1AllowedFlexVolume from json stream.
 func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedFlexVolume to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedFlexVolume to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52132,7 +52132,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedHostPath) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1AllowedHostPath from json stream.
 func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedHostPath to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1AllowedHostPath to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52200,7 +52200,7 @@ func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1FSGroupStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1FSGroupStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1FSGroupStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52272,7 +52272,7 @@ func (s IoK8sAPIPolicyV1beta1HostPortRange) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1HostPortRange from json stream.
 func (s *IoK8sAPIPolicyV1beta1HostPortRange) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1HostPortRange to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1HostPortRange to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52323,7 +52323,7 @@ func (s IoK8sAPIPolicyV1beta1IDRange) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1IDRange from json stream.
 func (s *IoK8sAPIPolicyV1beta1IDRange) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1IDRange to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1IDRange to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52393,7 +52393,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudget from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudget to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudget to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52505,7 +52505,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetList from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52610,7 +52610,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52707,7 +52707,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52828,7 +52828,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(j
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52875,7 +52875,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodSecurityPolicy from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicy to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicy to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -52975,7 +52975,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodSecurityPolicyList from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicyList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicyList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -53254,7 +53254,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1PodSecurityPolicySpec from json stream.
 func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicySpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodSecurityPolicySpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -53731,7 +53731,7 @@ func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -53809,7 +53809,7 @@ func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -53887,7 +53887,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -53959,7 +53959,7 @@ func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIPolicyV1beta1SELinuxStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1SELinuxStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1SELinuxStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54024,7 +54024,7 @@ func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) WriteJSON(j *jso
 // ReadJSON reads IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions from json stream.
 func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54102,7 +54102,7 @@ func (s IoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1AggregationRule from json stream.
 func (s *IoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1AggregationRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1AggregationRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54188,7 +54188,7 @@ func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1ClusterRole from json stream.
 func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRole to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRole to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54320,7 +54320,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1ClusterRoleBinding from json stream.
 func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleBinding to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleBinding to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54446,7 +54446,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1ClusterRoleBindingList from json stream.
 func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleBindingList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleBindingList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54561,7 +54561,7 @@ func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1ClusterRoleList from json stream.
 func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1ClusterRoleList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54709,7 +54709,7 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1PolicyRule from json stream.
 func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1PolicyRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1PolicyRule to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -54888,7 +54888,7 @@ func (s IoK8sAPIRbacV1Role) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1Role from json stream.
 func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1Role to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1Role to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55008,7 +55008,7 @@ func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1RoleBinding from json stream.
 func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleBinding to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleBinding to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55134,7 +55134,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1RoleBindingList from json stream.
 func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleBindingList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleBindingList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55249,7 +55249,7 @@ func (s IoK8sAPIRbacV1RoleList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1RoleList from json stream.
 func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55348,7 +55348,7 @@ func (s IoK8sAPIRbacV1RoleRef) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1RoleRef from json stream.
 func (s *IoK8sAPIRbacV1RoleRef) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleRef to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1RoleRef to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55418,7 +55418,7 @@ func (s IoK8sAPIRbacV1Subject) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIRbacV1Subject from json stream.
 func (s *IoK8sAPIRbacV1Subject) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1Subject to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIRbacV1Subject to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55520,7 +55520,7 @@ func (s IoK8sAPISchedulingV1PriorityClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPISchedulingV1PriorityClass from json stream.
 func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPISchedulingV1PriorityClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPISchedulingV1PriorityClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55653,7 +55653,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPISchedulingV1PriorityClassList from json stream.
 func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPISchedulingV1PriorityClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPISchedulingV1PriorityClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55761,7 +55761,7 @@ func (s IoK8sAPIStorageV1CSIDriver) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSIDriver from json stream.
 func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriver to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriver to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55860,7 +55860,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSIDriverList from json stream.
 func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriverList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriverList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -55999,7 +55999,7 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSIDriverSpec from json stream.
 func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriverSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSIDriverSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56156,7 +56156,7 @@ func (s IoK8sAPIStorageV1CSINode) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSINode from json stream.
 func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINode to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINode to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56253,7 +56253,7 @@ func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSINodeDriver from json stream.
 func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeDriver to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeDriver to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56360,7 +56360,7 @@ func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSINodeList from json stream.
 func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56460,7 +56460,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1CSINodeSpec from json stream.
 func (s *IoK8sAPIStorageV1CSINodeSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1CSINodeSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56576,7 +56576,7 @@ func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1StorageClass from json stream.
 func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClass to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClass to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56780,7 +56780,7 @@ func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1StorageClassList from json stream.
 func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClassList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClassList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56870,7 +56870,7 @@ func (s IoK8sAPIStorageV1StorageClassParameters) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1StorageClassParameters from json stream.
 func (s *IoK8sAPIStorageV1StorageClassParameters) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClassParameters to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1StorageClassParameters to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56905,7 +56905,7 @@ func (s IoK8sAPIStorageV1TokenRequest) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1TokenRequest from json stream.
 func (s *IoK8sAPIStorageV1TokenRequest) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1TokenRequest to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1TokenRequest to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -56976,7 +56976,7 @@ func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachment from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachment to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachment to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57087,7 +57087,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentList from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57187,7 +57187,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentSource from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentSource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57247,7 +57247,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentSpec from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57321,7 +57321,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentStatus from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57400,7 +57400,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) WriteJSON(j *
 // ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata from json stream.
 func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57437,7 +57437,7 @@ func (s IoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeError from json stream.
 func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeError to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeError to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57493,7 +57493,7 @@ func (s IoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1VolumeNodeResources from json stream.
 func (s *IoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeNodeResources to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1VolumeNodeResources to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57565,7 +57565,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1alpha1CSIStorageCapacity from json stream.
 func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1alpha1CSIStorageCapacity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1alpha1CSIStorageCapacity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57698,7 +57698,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sAPIStorageV1alpha1CSIStorageCapacityList from json stream.
 func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1alpha1CSIStorageCapacityList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1alpha1CSIStorageCapacityList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57821,7 +57821,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sAPIStorageV1beta1CSIStorageCapacity from json stream.
 func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1beta1CSIStorageCapacity to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1beta1CSIStorageCapacity to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -57954,7 +57954,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sAPIStorageV1beta1CSIStorageCapacityList from json stream.
 func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1beta1CSIStorageCapacityList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sAPIStorageV1beta1CSIStorageCapacityList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58068,7 +58068,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDef
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58166,7 +58166,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58237,7 +58237,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58344,7 +58344,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58450,7 +58450,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58580,7 +58580,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58728,7 +58728,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58864,7 +58864,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -58996,7 +58996,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59136,7 +59136,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59193,7 +59193,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59230,7 +59230,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59293,7 +59293,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59342,7 +59342,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) 
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59393,7 +59393,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSON(j *json
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -59677,7 +59677,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60376,7 +60376,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60403,7 +60403,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60430,7 +60430,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray)
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60457,7 +60457,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) 
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60484,7 +60484,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60511,7 +60511,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60554,7 +60554,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Write
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60644,7 +60644,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Wr
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60737,7 +60737,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Writ
 // ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion from json stream.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60844,7 +60844,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1APIGroup from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIGroup to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIGroup to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -60990,7 +60990,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1APIGroupList from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIGroupList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIGroupList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61129,7 +61129,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1APIResource from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIResource to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIResource to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61326,7 +61326,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSON(j *json.Stream)
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1APIResourceList from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIResourceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIResourceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61443,7 +61443,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1APIVersions from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIVersions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1APIVersions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61564,7 +61564,7 @@ func (s IoK8sApimachineryPkgApisMetaV1Condition) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1Condition from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1Condition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Condition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Condition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61692,7 +61692,7 @@ func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1DeleteOptions from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1DeleteOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1DeleteOptions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61816,7 +61816,7 @@ func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1FieldsV1 from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1FieldsV1 to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1FieldsV1 to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61849,7 +61849,7 @@ func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *jso
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61911,7 +61911,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1LabelSelector from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelector to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -61984,7 +61984,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) WriteJSON(j *jso
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62029,7 +62029,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSON(j *jso
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62119,7 +62119,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ListMeta from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ListMeta to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ListMeta to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62229,7 +62229,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(j *json.Stre
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62451,7 +62451,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ObjectMeta from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMeta to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMeta to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62727,7 +62727,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) WriteJSON(j *json.S
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62754,7 +62754,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) WriteJSON(j *json.Stream
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62803,7 +62803,7 @@ func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) WriteJSON(j *json.Stream) 
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1OwnerReference from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1OwnerReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1OwnerReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62900,7 +62900,7 @@ func (s IoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1Preconditions from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Preconditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Preconditions to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -62957,7 +62957,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) WriteJSON(j *js
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63042,7 +63042,7 @@ func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1Status from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Status to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Status to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63180,7 +63180,7 @@ func (s IoK8sApimachineryPkgApisMetaV1StatusCause) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1StatusCause from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1StatusCause) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1StatusCause to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1StatusCause to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63280,7 +63280,7 @@ func (s IoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1StatusDetails from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1StatusDetails to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1StatusDetails to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63403,7 +63403,7 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgApisMetaV1WatchEvent from json stream.
 func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1WatchEvent to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1WatchEvent to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63450,7 +63450,7 @@ func (s IoK8sApimachineryPkgRuntimeRawExtension) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgRuntimeRawExtension from json stream.
 func (s *IoK8sApimachineryPkgRuntimeRawExtension) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgRuntimeRawExtension to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgRuntimeRawExtension to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63507,7 +63507,7 @@ func (s IoK8sApimachineryPkgVersionInfo) WriteJSON(j *json.Stream) {
 // ReadJSON reads IoK8sApimachineryPkgVersionInfo from json stream.
 func (s *IoK8sApimachineryPkgVersionInfo) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgVersionInfo to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sApimachineryPkgVersionInfo to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63640,7 +63640,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSON(j *json
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1APIService from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIService to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIService to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63748,7 +63748,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSO
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63854,7 +63854,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(j *
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -63981,7 +63981,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64113,7 +64113,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64182,7 +64182,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j
 // ReadJSON reads IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference from json stream.
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64275,7 +64275,7 @@ func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Wri
 // ReadJSON reads ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
 func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64332,7 +64332,7 @@ func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) W
 // ReadJSON reads ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
 func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64387,7 +64387,7 @@ func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *js
 // ReadJSON reads ListApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
 func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListApiextensionsV1CustomResourceDefinitionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64436,7 +64436,7 @@ func (s ListApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListApiregistrationV1APIServiceUnauthorized from json stream.
 func (s *ListApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListApiregistrationV1APIServiceUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListApiregistrationV1APIServiceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64491,7 +64491,7 @@ func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads ListAppsV1ControllerRevisionForAllNamespacesUnauthorized from json stream.
 func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1ControllerRevisionForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAppsV1ControllerRevisionForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64541,7 +64541,7 @@ func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(j *json.Strea
 // ReadJSON reads ListAppsV1DaemonSetForAllNamespacesUnauthorized from json stream.
 func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1DaemonSetForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAppsV1DaemonSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64591,7 +64591,7 @@ func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads ListAppsV1DeploymentForAllNamespacesUnauthorized from json stream.
 func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1DeploymentForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAppsV1DeploymentForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64641,7 +64641,7 @@ func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads ListAppsV1ReplicaSetForAllNamespacesUnauthorized from json stream.
 func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1ReplicaSetForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAppsV1ReplicaSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64695,7 +64695,7 @@ func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(j *json.Str
 // ReadJSON reads ListAppsV1StatefulSetForAllNamespacesUnauthorized from json stream.
 func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAppsV1StatefulSetForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAppsV1StatefulSetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64752,7 +64752,7 @@ func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) Wr
 // ReadJSON reads ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
 func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64809,7 +64809,7 @@ func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorize
 // ReadJSON reads ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
 func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64866,7 +64866,7 @@ func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorize
 // ReadJSON reads ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
 func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64916,7 +64916,7 @@ func (s ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads ListBatchV1CronJobForAllNamespacesUnauthorized from json stream.
 func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1CronJobForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListBatchV1CronJobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -64965,7 +64965,7 @@ func (s ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListBatchV1JobForAllNamespacesUnauthorized from json stream.
 func (s *ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1JobForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListBatchV1JobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65020,7 +65020,7 @@ func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads ListBatchV1beta1CronJobForAllNamespacesUnauthorized from json stream.
 func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListBatchV1beta1CronJobForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListBatchV1beta1CronJobForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65075,7 +65075,7 @@ func (s ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *js
 // ReadJSON reads ListCertificatesV1CertificateSigningRequestUnauthorized from json stream.
 func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCertificatesV1CertificateSigningRequestUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCertificatesV1CertificateSigningRequestUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65130,7 +65130,7 @@ func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads ListCoordinationV1LeaseForAllNamespacesUnauthorized from json stream.
 func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoordinationV1LeaseForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoordinationV1LeaseForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65177,7 +65177,7 @@ func (s ListCoreV1ComponentStatusUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1ComponentStatusUnauthorized from json stream.
 func (s *ListCoreV1ComponentStatusUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ComponentStatusUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ComponentStatusUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65227,7 +65227,7 @@ func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(j *json.Strea
 // ReadJSON reads ListCoreV1ConfigMapForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ConfigMapForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ConfigMapForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65277,7 +65277,7 @@ func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(j *json.Strea
 // ReadJSON reads ListCoreV1EndpointsForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1EndpointsForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1EndpointsForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65326,7 +65326,7 @@ func (s ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1EventForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1EventForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65376,7 +65376,7 @@ func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads ListCoreV1LimitRangeForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1LimitRangeForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1LimitRangeForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65420,7 +65420,7 @@ func (s ListCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1NamespaceUnauthorized from json stream.
 func (s *ListCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1NamespaceUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1NamespaceUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65464,7 +65464,7 @@ func (s ListCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1NodeUnauthorized from json stream.
 func (s *ListCoreV1NodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1NodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1NodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65541,7 +65541,7 @@ func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(j
 // ReadJSON reads ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65568,7 +65568,7 @@ func (s ListCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1PersistentVolumeUnauthorized from json stream.
 func (s *ListCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1PersistentVolumeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65617,7 +65617,7 @@ func (s ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListCoreV1PodForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PodForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1PodForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65671,7 +65671,7 @@ func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(j *json.Str
 // ReadJSON reads ListCoreV1PodTemplateForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1PodTemplateForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1PodTemplateForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65726,7 +65726,7 @@ func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(j
 // ReadJSON reads ListCoreV1ReplicationControllerForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ReplicationControllerForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ReplicationControllerForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65781,7 +65781,7 @@ func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads ListCoreV1ResourceQuotaForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ResourceQuotaForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ResourceQuotaForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65830,7 +65830,7 @@ func (s ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) 
 // ReadJSON reads ListCoreV1SecretForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1SecretForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1SecretForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65885,7 +65885,7 @@ func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(j *json.
 // ReadJSON reads ListCoreV1ServiceAccountForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceAccountForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceAccountForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65935,7 +65935,7 @@ func (s ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads ListCoreV1ServiceForAllNamespacesUnauthorized from json stream.
 func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListCoreV1ServiceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -65990,7 +65990,7 @@ func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized from json stream.
 func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66045,7 +66045,7 @@ func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON
 // ReadJSON reads ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized from json stream.
 func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66095,7 +66095,7 @@ func (s ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads ListEventsV1EventForAllNamespacesUnauthorized from json stream.
 func (s *ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListEventsV1EventForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListEventsV1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66149,7 +66149,7 @@ func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(j *json.St
 // ReadJSON reads ListEventsV1beta1EventForAllNamespacesUnauthorized from json stream.
 func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListEventsV1beta1EventForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListEventsV1beta1EventForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66204,7 +66204,7 @@ func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json
 // ReadJSON reads ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
 func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66261,7 +66261,7 @@ func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) W
 // ReadJSON reads ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
 func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66316,7 +66316,7 @@ func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json
 // ReadJSON reads ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
 func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66373,7 +66373,7 @@ func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) W
 // ReadJSON reads ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
 func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66428,7 +66428,7 @@ func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *js
 // ReadJSON reads ListInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
 func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListInternalApiserverV1alpha1StorageVersionUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66477,7 +66477,7 @@ func (s ListNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListNetworkingV1IngressClassUnauthorized from json stream.
 func (s *ListNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66532,7 +66532,7 @@ func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads ListNetworkingV1IngressForAllNamespacesUnauthorized from json stream.
 func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNetworkingV1IngressForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66587,7 +66587,7 @@ func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(j *
 // ReadJSON reads ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized from json stream.
 func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66634,7 +66634,7 @@ func (s ListNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListNodeV1RuntimeClassUnauthorized from json stream.
 func (s *ListNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNodeV1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66683,7 +66683,7 @@ func (s ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListNodeV1alpha1RuntimeClassUnauthorized from json stream.
 func (s *ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1alpha1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNodeV1alpha1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66732,7 +66732,7 @@ func (s ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListNodeV1beta1RuntimeClassUnauthorized from json stream.
 func (s *ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListNodeV1beta1RuntimeClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListNodeV1beta1RuntimeClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66787,7 +66787,7 @@ func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j
 // ReadJSON reads ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
 func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66844,7 +66844,7 @@ func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJ
 // ReadJSON reads ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
 func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66894,7 +66894,7 @@ func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads ListPolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
 func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListPolicyV1beta1PodSecurityPolicyUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66972,7 +66972,7 @@ func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json
 // ReadJSON reads ListRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
 func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleBindingUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -66999,7 +66999,7 @@ func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads ListRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
 func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1ClusterRoleUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67056,7 +67056,7 @@ func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSO
 // ReadJSON reads ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized from json stream.
 func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67111,7 +67111,7 @@ func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(j *js
 // ReadJSON reads ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized from json stream.
 func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67160,7 +67160,7 @@ func (s ListSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListSchedulingV1PriorityClassUnauthorized from json stream.
 func (s *ListSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListSchedulingV1PriorityClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListSchedulingV1PriorityClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67207,7 +67207,7 @@ func (s ListStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListStorageV1CSIDriverUnauthorized from json stream.
 func (s *ListStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1CSIDriverUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1CSIDriverUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67253,7 +67253,7 @@ func (s ListStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListStorageV1CSINodeUnauthorized from json stream.
 func (s *ListStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1CSINodeUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1CSINodeUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67300,7 +67300,7 @@ func (s ListStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListStorageV1StorageClassUnauthorized from json stream.
 func (s *ListStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1StorageClassUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1StorageClassUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67349,7 +67349,7 @@ func (s ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads ListStorageV1VolumeAttachmentUnauthorized from json stream.
 func (s *ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1VolumeAttachmentUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1VolumeAttachmentUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67406,7 +67406,7 @@ func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) Write
 // ReadJSON reads ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
 func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67463,7 +67463,7 @@ func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJ
 // ReadJSON reads ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
 func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67490,7 +67490,7 @@ func (s LogFileListHandlerUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads LogFileListHandlerUnauthorized from json stream.
 func (s *LogFileListHandlerUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode LogFileListHandlerUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode LogFileListHandlerUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -67514,7 +67514,7 @@ func (o OptBool) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptBool) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptBool to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptBool to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Bool:
@@ -67534,7 +67534,7 @@ func (o OptFloat64) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptFloat64) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Number:
@@ -67554,7 +67554,7 @@ func (o OptInt32) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of int32 from json iterator.
 func (o *OptInt32) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptInt32 to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptInt32 to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Number:
@@ -67574,7 +67574,7 @@ func (o OptInt64) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of int64 from json iterator.
 func (o *OptInt64) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptInt64 to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptInt64 to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Number:
@@ -67594,7 +67594,7 @@ func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.St
 // ReadJSON reads json value of IoK8sAPIAdmissionregistrationV1ServiceReference from json iterator.
 func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAdmissionregistrationV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAdmissionregistrationV1ServiceReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67616,7 +67616,7 @@ func (o OptIoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetSpec from json iterator.
 func (o *OptIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67638,7 +67638,7 @@ func (o OptIoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetStatus from json iterator.
 func (o *OptIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67660,7 +67660,7 @@ func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetUpdateStrategy from json iterator.
 func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetUpdateStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetUpdateStrategy to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67682,7 +67682,7 @@ func (o OptIoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentSpec from json iterator.
 func (o *OptIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67704,7 +67704,7 @@ func (o OptIoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStatus from json iterator.
 func (o *OptIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67726,7 +67726,7 @@ func (o OptIoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStrategy from json iterator.
 func (o *OptIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStrategy to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67748,7 +67748,7 @@ func (o OptIoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetSpec from json iterator.
 func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67770,7 +67770,7 @@ func (o OptIoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetStatus from json iterator.
 func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67792,7 +67792,7 @@ func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDaemonSet from json iterator.
 func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDaemonSet to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDaemonSet to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67814,7 +67814,7 @@ func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDeployment from json iterator.
 func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDeployment to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDeployment to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67836,7 +67836,7 @@ func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy from json iterator.
 func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67858,7 +67858,7 @@ func (o OptIoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetSpec from json iterator.
 func (o *OptIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67880,7 +67880,7 @@ func (o OptIoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetStatus from json iterator.
 func (o *OptIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67902,7 +67902,7 @@ func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetUpdateStrategy from json iterator.
 func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetUpdateStrategy to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetUpdateStrategy to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67924,7 +67924,7 @@ func (o OptIoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPIAuthenticationV1TokenReviewStatus from json iterator.
 func (o *OptIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthenticationV1TokenReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthenticationV1TokenReviewStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67946,7 +67946,7 @@ func (o OptIoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIAuthenticationV1UserInfo from json iterator.
 func (o *OptIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthenticationV1UserInfo to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthenticationV1UserInfo to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67968,7 +67968,7 @@ func (o OptIoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1NonResourceAttributes from json iterator.
 func (o *OptIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1NonResourceAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1NonResourceAttributes to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -67990,7 +67990,7 @@ func (o OptIoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1ResourceAttributes from json iterator.
 func (o *OptIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1ResourceAttributes to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1ResourceAttributes to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68012,7 +68012,7 @@ func (o OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.S
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus from json iterator.
 func (o *OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68034,7 +68034,7 @@ func (o OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.St
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus from json iterator.
 func (o *OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68056,7 +68056,7 @@ func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.S
 // ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec from json iterator.
 func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68078,7 +68078,7 @@ func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json
 // ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68100,7 +68100,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68122,7 +68122,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68144,7 +68144,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68166,7 +68166,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68188,7 +68188,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *j
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68210,7 +68210,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68232,7 +68232,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68254,7 +68254,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68276,7 +68276,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68298,7 +68298,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68320,7 +68320,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68342,7 +68342,7 @@ func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68364,7 +68364,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68386,7 +68386,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68408,7 +68408,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68430,7 +68430,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68452,7 +68452,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HPAScalingRules from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HPAScalingRules to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HPAScalingRules to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68474,7 +68474,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68496,7 +68496,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *j
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68518,7 +68518,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68540,7 +68540,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68562,7 +68562,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68584,7 +68584,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68606,7 +68606,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68628,7 +68628,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricSource from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68650,7 +68650,7 @@ func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus from json iterator.
 func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68672,7 +68672,7 @@ func (o OptIoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1CronJobSpec from json iterator.
 func (o *OptIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1CronJobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1CronJobSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68694,7 +68694,7 @@ func (o OptIoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1CronJobStatus from json iterator.
 func (o *OptIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1CronJobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1CronJobStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68716,7 +68716,7 @@ func (o OptIoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1JobSpec from json iterator.
 func (o *OptIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1JobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1JobSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68738,7 +68738,7 @@ func (o OptIoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1JobStatus from json iterator.
 func (o *OptIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1JobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1JobStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68760,7 +68760,7 @@ func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1UncountedTerminatedPods from json iterator.
 func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1UncountedTerminatedPods to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1UncountedTerminatedPods to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68782,7 +68782,7 @@ func (o OptIoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobSpec from json iterator.
 func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68804,7 +68804,7 @@ func (o OptIoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobStatus from json iterator.
 func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68826,7 +68826,7 @@ func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *j
 // ReadJSON reads json value of IoK8sAPICertificatesV1CertificateSigningRequestStatus from json iterator.
 func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICertificatesV1CertificateSigningRequestStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICertificatesV1CertificateSigningRequestStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68848,7 +68848,7 @@ func (o OptIoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoordinationV1LeaseSpec from json iterator.
 func (o *OptIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoordinationV1LeaseSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoordinationV1LeaseSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68870,7 +68870,7 @@ func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68892,7 +68892,7 @@ func (o OptIoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1Affinity from json iterator.
 func (o *OptIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Affinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Affinity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68914,7 +68914,7 @@ func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1AzureDiskVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureDiskVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68936,7 +68936,7 @@ func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stre
 // ReadJSON reads json value of IoK8sAPICoreV1AzureFilePersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureFilePersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureFilePersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68958,7 +68958,7 @@ func (o OptIoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1AzureFileVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureFileVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1AzureFileVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -68980,7 +68980,7 @@ func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1CSIPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CSIPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CSIPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69002,7 +69002,7 @@ func (o OptIoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1CSIVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CSIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CSIVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69024,7 +69024,7 @@ func (o OptIoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1Capabilities from json iterator.
 func (o *OptIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Capabilities to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Capabilities to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69046,7 +69046,7 @@ func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPICoreV1CephFSPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CephFSPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CephFSPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69068,7 +69068,7 @@ func (o OptIoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1CephFSVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CephFSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CephFSVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69090,7 +69090,7 @@ func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPICoreV1CinderPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CinderPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CinderPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69112,7 +69112,7 @@ func (o OptIoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1CinderVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CinderVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1CinderVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69134,7 +69134,7 @@ func (o OptIoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ClientIPConfig from json iterator.
 func (o *OptIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ClientIPConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ClientIPConfig to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69156,7 +69156,7 @@ func (o OptIoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapEnvSource from json iterator.
 func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapEnvSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapEnvSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69178,7 +69178,7 @@ func (o OptIoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapKeySelector from json iterator.
 func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapKeySelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapKeySelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69200,7 +69200,7 @@ func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapNodeConfigSource from json iterator.
 func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapNodeConfigSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapNodeConfigSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69222,7 +69222,7 @@ func (o OptIoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapProjection from json iterator.
 func (o *OptIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapProjection to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69244,7 +69244,7 @@ func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69266,7 +69266,7 @@ func (o OptIoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerState from json iterator.
 func (o *OptIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerState to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerState to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69288,7 +69288,7 @@ func (o OptIoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateRunning from json iterator.
 func (o *OptIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateRunning to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateRunning to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69310,7 +69310,7 @@ func (o OptIoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateTerminated from json iterator.
 func (o *OptIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateTerminated to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateTerminated to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69332,7 +69332,7 @@ func (o OptIoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateWaiting from json iterator.
 func (o *OptIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateWaiting to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ContainerStateWaiting to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69354,7 +69354,7 @@ func (o OptIoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1DaemonEndpoint from json iterator.
 func (o *OptIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DaemonEndpoint to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DaemonEndpoint to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69376,7 +69376,7 @@ func (o OptIoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIProjection from json iterator.
 func (o *OptIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIProjection to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69398,7 +69398,7 @@ func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69420,7 +69420,7 @@ func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1EmptyDirVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EmptyDirVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EmptyDirVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69442,7 +69442,7 @@ func (o OptIoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1EnvVarSource from json iterator.
 func (o *OptIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EnvVarSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EnvVarSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69464,7 +69464,7 @@ func (o OptIoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1EphemeralVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EphemeralVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EphemeralVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69486,7 +69486,7 @@ func (o OptIoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1EventSeries from json iterator.
 func (o *OptIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EventSeries to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69508,7 +69508,7 @@ func (o OptIoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1EventSource from json iterator.
 func (o *OptIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EventSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1EventSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69530,7 +69530,7 @@ func (o OptIoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ExecAction from json iterator.
 func (o *OptIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ExecAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ExecAction to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69552,7 +69552,7 @@ func (o OptIoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1FCVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FCVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FCVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69574,7 +69574,7 @@ func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1FlexPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlexPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlexPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69596,7 +69596,7 @@ func (o OptIoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1FlexVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlexVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlexVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69618,7 +69618,7 @@ func (o OptIoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1FlockerVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlockerVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1FlockerVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69640,7 +69640,7 @@ func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sAPICoreV1GCEPersistentDiskVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69662,7 +69662,7 @@ func (o OptIoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1GitRepoVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GitRepoVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GitRepoVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69684,7 +69684,7 @@ func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stre
 // ReadJSON reads json value of IoK8sAPICoreV1GlusterfsPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69706,7 +69706,7 @@ func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1GlusterfsVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GlusterfsVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1GlusterfsVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69728,7 +69728,7 @@ func (o OptIoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1HTTPGetAction from json iterator.
 func (o *OptIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1HTTPGetAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1HTTPGetAction to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69750,7 +69750,7 @@ func (o OptIoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1Handler from json iterator.
 func (o *OptIoK8sAPICoreV1Handler) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Handler to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Handler to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69772,7 +69772,7 @@ func (o OptIoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1HostPathVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1HostPathVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1HostPathVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69794,7 +69794,7 @@ func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPICoreV1ISCSIPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ISCSIPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ISCSIPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69816,7 +69816,7 @@ func (o OptIoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ISCSIVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ISCSIVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ISCSIVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69838,7 +69838,7 @@ func (o OptIoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1Lifecycle from json iterator.
 func (o *OptIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Lifecycle to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Lifecycle to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69860,7 +69860,7 @@ func (o OptIoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1LimitRangeSpec from json iterator.
 func (o *OptIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69882,7 +69882,7 @@ func (o OptIoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1LoadBalancerStatus from json iterator.
 func (o *OptIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LoadBalancerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LoadBalancerStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69904,7 +69904,7 @@ func (o OptIoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1LocalObjectReference from json iterator.
 func (o *OptIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LocalObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LocalObjectReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69926,7 +69926,7 @@ func (o OptIoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1LocalVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LocalVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1LocalVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69948,7 +69948,7 @@ func (o OptIoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NFSVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NFSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NFSVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69970,7 +69970,7 @@ func (o OptIoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NamespaceSpec from json iterator.
 func (o *OptIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NamespaceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NamespaceSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -69992,7 +69992,7 @@ func (o OptIoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NamespaceStatus from json iterator.
 func (o *OptIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NamespaceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NamespaceStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70014,7 +70014,7 @@ func (o OptIoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeAffinity from json iterator.
 func (o *OptIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeAffinity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70036,7 +70036,7 @@ func (o OptIoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeConfigSource from json iterator.
 func (o *OptIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeConfigSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeConfigSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70058,7 +70058,7 @@ func (o OptIoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeConfigStatus from json iterator.
 func (o *OptIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeConfigStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeConfigStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70080,7 +70080,7 @@ func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeDaemonEndpoints from json iterator.
 func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeDaemonEndpoints to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeDaemonEndpoints to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70102,7 +70102,7 @@ func (o OptIoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSelector from json iterator.
 func (o *OptIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70124,7 +70124,7 @@ func (o OptIoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSpec from json iterator.
 func (o *OptIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70146,7 +70146,7 @@ func (o OptIoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeStatus from json iterator.
 func (o *OptIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70168,7 +70168,7 @@ func (o OptIoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSystemInfo from json iterator.
 func (o *OptIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSystemInfo to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1NodeSystemInfo to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70190,7 +70190,7 @@ func (o OptIoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ObjectFieldSelector from json iterator.
 func (o *OptIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ObjectFieldSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ObjectFieldSelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70212,7 +70212,7 @@ func (o OptIoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ObjectReference from json iterator.
 func (o *OptIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ObjectReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70234,7 +70234,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimSpec from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70256,7 +70256,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimStatus from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70278,7 +70278,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimTemplate from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimTemplate to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimTemplate to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70300,7 +70300,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.St
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70322,7 +70322,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeSpec from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70344,7 +70344,7 @@ func (o OptIoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeStatus from json iterator.
 func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70366,7 +70366,7 @@ func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70388,7 +70388,7 @@ func (o OptIoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodAffinity from json iterator.
 func (o *OptIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodAffinity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70410,7 +70410,7 @@ func (o OptIoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodAntiAffinity from json iterator.
 func (o *OptIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodAntiAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodAntiAffinity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70432,7 +70432,7 @@ func (o OptIoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodDNSConfig from json iterator.
 func (o *OptIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodDNSConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodDNSConfig to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70454,7 +70454,7 @@ func (o OptIoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodSecurityContext from json iterator.
 func (o *OptIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodSecurityContext to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodSecurityContext to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70476,7 +70476,7 @@ func (o OptIoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodSpec from json iterator.
 func (o *OptIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70498,7 +70498,7 @@ func (o OptIoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodStatus from json iterator.
 func (o *OptIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70520,7 +70520,7 @@ func (o OptIoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PodTemplateSpec from json iterator.
 func (o *OptIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodTemplateSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PodTemplateSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70542,7 +70542,7 @@ func (o OptIoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1PortworxVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PortworxVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1PortworxVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70564,7 +70564,7 @@ func (o OptIoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1Probe from json iterator.
 func (o *OptIoK8sAPICoreV1Probe) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Probe to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1Probe to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70586,7 +70586,7 @@ func (o OptIoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ProjectedVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ProjectedVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ProjectedVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70608,7 +70608,7 @@ func (o OptIoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1QuobyteVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1QuobyteVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1QuobyteVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70630,7 +70630,7 @@ func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1RBDPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1RBDPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1RBDPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70652,7 +70652,7 @@ func (o OptIoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1RBDVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1RBDVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1RBDVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70674,7 +70674,7 @@ func (o OptIoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerSpec from json iterator.
 func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70696,7 +70696,7 @@ func (o OptIoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerStatus from json iterator.
 func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70718,7 +70718,7 @@ func (o OptIoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceFieldSelector from json iterator.
 func (o *OptIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceFieldSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceFieldSelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70740,7 +70740,7 @@ func (o OptIoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaSpec from json iterator.
 func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70762,7 +70762,7 @@ func (o OptIoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaStatus from json iterator.
 func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70784,7 +70784,7 @@ func (o OptIoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceRequirements from json iterator.
 func (o *OptIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirements to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirements to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70806,7 +70806,7 @@ func (o OptIoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SELinuxOptions from json iterator.
 func (o *OptIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SELinuxOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SELinuxOptions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70828,7 +70828,7 @@ func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sAPICoreV1ScaleIOPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70850,7 +70850,7 @@ func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ScaleIOVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScaleIOVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScaleIOVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70872,7 +70872,7 @@ func (o OptIoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ScopeSelector from json iterator.
 func (o *OptIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScopeSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ScopeSelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70894,7 +70894,7 @@ func (o OptIoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SeccompProfile from json iterator.
 func (o *OptIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SeccompProfile to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SeccompProfile to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70916,7 +70916,7 @@ func (o OptIoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecretEnvSource from json iterator.
 func (o *OptIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretEnvSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretEnvSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70938,7 +70938,7 @@ func (o OptIoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecretKeySelector from json iterator.
 func (o *OptIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretKeySelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretKeySelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70960,7 +70960,7 @@ func (o OptIoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecretProjection from json iterator.
 func (o *OptIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretProjection to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -70982,7 +70982,7 @@ func (o OptIoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecretReference from json iterator.
 func (o *OptIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71004,7 +71004,7 @@ func (o OptIoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecretVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecretVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71026,7 +71026,7 @@ func (o OptIoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SecurityContext from json iterator.
 func (o *OptIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecurityContext to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SecurityContext to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71048,7 +71048,7 @@ func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceAccountTokenProjection from json iterator.
 func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceAccountTokenProjection to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceAccountTokenProjection to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71070,7 +71070,7 @@ func (o OptIoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceSpec from json iterator.
 func (o *OptIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71092,7 +71092,7 @@ func (o OptIoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceStatus from json iterator.
 func (o *OptIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1ServiceStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71114,7 +71114,7 @@ func (o OptIoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1SessionAffinityConfig from json iterator.
 func (o *OptIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SessionAffinityConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1SessionAffinityConfig to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71136,7 +71136,7 @@ func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stre
 // ReadJSON reads json value of IoK8sAPICoreV1StorageOSPersistentVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1StorageOSPersistentVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1StorageOSPersistentVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71158,7 +71158,7 @@ func (o OptIoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1StorageOSVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1StorageOSVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1StorageOSVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71180,7 +71180,7 @@ func (o OptIoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1TCPSocketAction from json iterator.
 func (o *OptIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1TCPSocketAction to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1TCPSocketAction to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71202,7 +71202,7 @@ func (o OptIoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1TypedLocalObjectReference from json iterator.
 func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1TypedLocalObjectReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1TypedLocalObjectReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71224,7 +71224,7 @@ func (o OptIoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPICoreV1VolumeNodeAffinity from json iterator.
 func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1VolumeNodeAffinity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1VolumeNodeAffinity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71246,7 +71246,7 @@ func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource from json iterator.
 func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71268,7 +71268,7 @@ func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sAPICoreV1WindowsSecurityContextOptions from json iterator.
 func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1WindowsSecurityContextOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPICoreV1WindowsSecurityContextOptions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71290,7 +71290,7 @@ func (o OptIoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointConditions from json iterator.
 func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointConditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointConditions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71312,7 +71312,7 @@ func (o OptIoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointHints from json iterator.
 func (o *OptIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointHints to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointHints to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71334,7 +71334,7 @@ func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointConditions from json iterator.
 func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointConditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointConditions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71356,7 +71356,7 @@ func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointHints from json iterator.
 func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointHints to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointHints to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71378,7 +71378,7 @@ func (o OptIoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIEventsV1EventSeries from json iterator.
 func (o *OptIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIEventsV1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIEventsV1EventSeries to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71400,7 +71400,7 @@ func (o OptIoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIEventsV1beta1EventSeries from json iterator.
 func (o *OptIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIEventsV1beta1EventSeries to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIEventsV1beta1EventSeries to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71422,7 +71422,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71444,7 +71444,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71466,7 +71466,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71488,7 +71488,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1GroupSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1GroupSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1GroupSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71510,7 +71510,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitResponse from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitResponse to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitResponse to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71532,7 +71532,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSO
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71554,7 +71554,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71576,7 +71576,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71598,7 +71598,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71620,7 +71620,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.St
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71642,7 +71642,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1UserSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1UserSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1UserSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71664,7 +71664,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71686,7 +71686,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71708,7 +71708,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71730,7 +71730,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2GroupSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2GroupSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2GroupSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71752,7 +71752,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitResponse from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitResponse to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitResponse to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71774,7 +71774,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSO
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71796,7 +71796,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71818,7 +71818,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71840,7 +71840,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71862,7 +71862,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.St
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71884,7 +71884,7 @@ func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2UserSubject from json iterator.
 func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2UserSubject to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2UserSubject to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71906,7 +71906,7 @@ func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1HTTPIngressRuleValue from json iterator.
 func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1HTTPIngressRuleValue to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1HTTPIngressRuleValue to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71928,7 +71928,7 @@ func (o OptIoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1IPBlock from json iterator.
 func (o *OptIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IPBlock to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IPBlock to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71950,7 +71950,7 @@ func (o OptIoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressBackend from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressBackend to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressBackend to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71972,7 +71972,7 @@ func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *jso
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassParametersReference from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassParametersReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassParametersReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -71994,7 +71994,7 @@ func (o OptIoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassSpec from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72016,7 +72016,7 @@ func (o OptIoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressServiceBackend from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressServiceBackend to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressServiceBackend to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72038,7 +72038,7 @@ func (o OptIoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressSpec from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72060,7 +72060,7 @@ func (o OptIoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressStatus from json iterator.
 func (o *OptIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1IngressStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72082,7 +72082,7 @@ func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1NetworkPolicySpec from json iterator.
 func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1NetworkPolicySpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1NetworkPolicySpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72104,7 +72104,7 @@ func (o OptIoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINetworkingV1ServiceBackendPort from json iterator.
 func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1ServiceBackendPort to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINetworkingV1ServiceBackendPort to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72126,7 +72126,7 @@ func (o OptIoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1Overhead from json iterator.
 func (o *OptIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1Overhead to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72148,7 +72148,7 @@ func (o OptIoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1Scheduling from json iterator.
 func (o *OptIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1Scheduling to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72170,7 +72170,7 @@ func (o OptIoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1alpha1Overhead from json iterator.
 func (o *OptIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1alpha1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1alpha1Overhead to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72192,7 +72192,7 @@ func (o OptIoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1alpha1Scheduling from json iterator.
 func (o *OptIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1alpha1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1alpha1Scheduling to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72214,7 +72214,7 @@ func (o OptIoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1beta1Overhead from json iterator.
 func (o *OptIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1beta1Overhead to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1beta1Overhead to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72236,7 +72236,7 @@ func (o OptIoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPINodeV1beta1Scheduling from json iterator.
 func (o *OptIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1beta1Scheduling to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPINodeV1beta1Scheduling to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72258,7 +72258,7 @@ func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetSpec from json iterator.
 func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72280,7 +72280,7 @@ func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetStatus from json iterator.
 func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72302,7 +72302,7 @@ func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Strea
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec from json iterator.
 func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72324,7 +72324,7 @@ func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus from json iterator.
 func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72346,7 +72346,7 @@ func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream)
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec from json iterator.
 func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72368,7 +72368,7 @@ func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Str
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions from json iterator.
 func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72390,7 +72390,7 @@ func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.S
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions from json iterator.
 func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72412,7 +72412,7 @@ func (o OptIoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIRbacV1AggregationRule from json iterator.
 func (o *OptIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIRbacV1AggregationRule to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIRbacV1AggregationRule to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72434,7 +72434,7 @@ func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeAttachmentStatus from json iterator.
 func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeAttachmentStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeAttachmentStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72456,7 +72456,7 @@ func (o OptIoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeError from json iterator.
 func (o *OptIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeError to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeError to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72478,7 +72478,7 @@ func (o OptIoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeNodeResources from json iterator.
 func (o *OptIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeNodeResources to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeNodeResources to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72500,7 +72500,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConver
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72522,7 +72522,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefini
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72544,7 +72544,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefini
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72566,7 +72566,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubres
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72588,7 +72588,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubres
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72610,7 +72610,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValida
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72632,7 +72632,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentatio
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72654,7 +72654,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Wri
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72676,7 +72676,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Wr
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72698,7 +72698,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig)
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72720,7 +72720,7 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) W
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion from json iterator.
 func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72741,7 +72741,7 @@ func (o OptIoK8sApimachineryPkgAPIResourceQuantity) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sApimachineryPkgAPIResourceQuantity from json iterator.
 func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgAPIResourceQuantity to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgAPIResourceQuantity to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -72760,7 +72760,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72782,7 +72782,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1LabelSelector from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1LabelSelector to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1LabelSelector to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72804,7 +72804,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ListMeta from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ListMeta to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ListMeta to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72825,7 +72825,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1MicroTime from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1MicroTime to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1MicroTime to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -72844,7 +72844,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMeta to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMeta to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72866,7 +72866,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1Preconditions from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1Preconditions to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1Preconditions to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72888,7 +72888,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1StatusDetails from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1StatusDetails to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1StatusDetails to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72909,7 +72909,7 @@ func (o OptIoK8sApimachineryPkgApisMetaV1Time) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1Time from json iterator.
 func (o *OptIoK8sApimachineryPkgApisMetaV1Time) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1Time to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1Time to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -72927,7 +72927,7 @@ func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) WriteJSON(j *json.Stream) 
 // ReadJSON reads json value of IoK8sApimachineryPkgUtilIntstrIntOrString from json iterator.
 func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgUtilIntstrIntOrString to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sApimachineryPkgUtilIntstrIntOrString to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -72946,7 +72946,7 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec from json iterator.
 func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72968,7 +72968,7 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSO
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus from json iterator.
 func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -72990,7 +72990,7 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSO
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference from json iterator.
 func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.Object:
@@ -73012,7 +73012,7 @@ func (o OptString) WriteJSON(j *json.Stream) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(i *json.Iter) error {
 	if o == nil {
-		fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
 	switch i.WhatIsNext() {
 	case json.String:
@@ -73065,7 +73065,7 @@ func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized
 // ReadJSON reads WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized from json stream.
 func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73122,7 +73122,7 @@ func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthoriz
 // ReadJSON reads WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized from json stream.
 func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73177,7 +73177,7 @@ func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(
 // ReadJSON reads WatchApiextensionsV1CustomResourceDefinitionListUnauthorized from json stream.
 func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchApiextensionsV1CustomResourceDefinitionListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchApiextensionsV1CustomResourceDefinitionListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73227,7 +73227,7 @@ func (s WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads WatchApiregistrationV1APIServiceListUnauthorized from json stream.
 func (s *WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchApiregistrationV1APIServiceListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchApiregistrationV1APIServiceListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73282,7 +73282,7 @@ func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON
 // ReadJSON reads WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73337,7 +73337,7 @@ func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(j *json.
 // ReadJSON reads WatchAppsV1DaemonSetListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1DaemonSetListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAppsV1DaemonSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73392,7 +73392,7 @@ func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(j *json
 // ReadJSON reads WatchAppsV1DeploymentListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1DeploymentListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAppsV1DeploymentListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73447,7 +73447,7 @@ func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(j *json
 // ReadJSON reads WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73502,7 +73502,7 @@ func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(j *jso
 // ReadJSON reads WatchAppsV1StatefulSetListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAppsV1StatefulSetListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAppsV1StatefulSetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73559,7 +73559,7 @@ func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorize
 // ReadJSON reads WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73616,7 +73616,7 @@ func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauth
 // ReadJSON reads WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73673,7 +73673,7 @@ func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauth
 // ReadJSON reads WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
 func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73728,7 +73728,7 @@ func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads WatchBatchV1CronJobListForAllNamespacesUnauthorized from json stream.
 func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1CronJobListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchBatchV1CronJobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73778,7 +73778,7 @@ func (s WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(j *json.Strea
 // ReadJSON reads WatchBatchV1JobListForAllNamespacesUnauthorized from json stream.
 func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1JobListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchBatchV1JobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73833,7 +73833,7 @@ func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized from json stream.
 func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73888,7 +73888,7 @@ func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(
 // ReadJSON reads WatchCertificatesV1CertificateSigningRequestListUnauthorized from json stream.
 func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCertificatesV1CertificateSigningRequestListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCertificatesV1CertificateSigningRequestListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73943,7 +73943,7 @@ func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads WatchCoordinationV1LeaseListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoordinationV1LeaseListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoordinationV1LeaseListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -73998,7 +73998,7 @@ func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(j *json.
 // ReadJSON reads WatchCoreV1ConfigMapListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ConfigMapListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1ConfigMapListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74053,7 +74053,7 @@ func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(j *json.
 // ReadJSON reads WatchCoreV1EndpointsListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1EndpointsListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1EndpointsListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74103,7 +74103,7 @@ func (s WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stre
 // ReadJSON reads WatchCoreV1EventListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1EventListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74158,7 +74158,7 @@ func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(j *json
 // ReadJSON reads WatchCoreV1LimitRangeListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1LimitRangeListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1LimitRangeListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74205,7 +74205,7 @@ func (s WatchCoreV1NamespaceListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchCoreV1NamespaceListUnauthorized from json stream.
 func (s *WatchCoreV1NamespaceListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1NamespaceListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1NamespaceListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74249,7 +74249,7 @@ func (s WatchCoreV1NodeListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchCoreV1NodeListUnauthorized from json stream.
 func (s *WatchCoreV1NodeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1NodeListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1NodeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74306,7 +74306,7 @@ func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJ
 // ReadJSON reads WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74355,7 +74355,7 @@ func (s WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchCoreV1PersistentVolumeListUnauthorized from json stream.
 func (s *WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1PersistentVolumeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74405,7 +74405,7 @@ func (s WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads WatchCoreV1PodListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1PodListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74460,7 +74460,7 @@ func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(j *jso
 // ReadJSON reads WatchCoreV1PodTemplateListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1PodTemplateListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1PodTemplateListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74517,7 +74517,7 @@ func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJ
 // ReadJSON reads WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74572,7 +74572,7 @@ func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74626,7 +74626,7 @@ func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(j *json.Str
 // ReadJSON reads WatchCoreV1SecretListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1SecretListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1SecretListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74681,7 +74681,7 @@ func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(j *
 // ReadJSON reads WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74735,7 +74735,7 @@ func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(j *json.St
 // ReadJSON reads WatchCoreV1ServiceListForAllNamespacesUnauthorized from json stream.
 func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchCoreV1ServiceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74790,7 +74790,7 @@ func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON
 // ReadJSON reads WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized from json stream.
 func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74847,7 +74847,7 @@ func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) Writ
 // ReadJSON reads WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized from json stream.
 func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74901,7 +74901,7 @@ func (s WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.St
 // ReadJSON reads WatchEventsV1EventListForAllNamespacesUnauthorized from json stream.
 func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchEventsV1EventListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchEventsV1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -74956,7 +74956,7 @@ func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(j *js
 // ReadJSON reads WatchEventsV1beta1EventListForAllNamespacesUnauthorized from json stream.
 func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchEventsV1beta1EventListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchEventsV1beta1EventListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75011,7 +75011,7 @@ func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(j 
 // ReadJSON reads WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized from json stream.
 func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75068,7 +75068,7 @@ func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthoriz
 // ReadJSON reads WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized from json stream.
 func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75123,7 +75123,7 @@ func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(j 
 // ReadJSON reads WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized from json stream.
 func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75180,7 +75180,7 @@ func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthoriz
 // ReadJSON reads WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized from json stream.
 func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75235,7 +75235,7 @@ func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(
 // ReadJSON reads WatchInternalApiserverV1alpha1StorageVersionListUnauthorized from json stream.
 func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchInternalApiserverV1alpha1StorageVersionListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchInternalApiserverV1alpha1StorageVersionListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75285,7 +75285,7 @@ func (s WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads WatchNetworkingV1IngressClassListUnauthorized from json stream.
 func (s *WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75340,7 +75340,7 @@ func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(j *j
 // ReadJSON reads WatchNetworkingV1IngressListForAllNamespacesUnauthorized from json stream.
 func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNetworkingV1IngressListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75397,7 +75397,7 @@ func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSO
 // ReadJSON reads WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized from json stream.
 func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75446,7 +75446,7 @@ func (s WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchNodeV1RuntimeClassListUnauthorized from json stream.
 func (s *WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1RuntimeClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNodeV1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75496,7 +75496,7 @@ func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)
 // ReadJSON reads WatchNodeV1alpha1RuntimeClassListUnauthorized from json stream.
 func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1alpha1RuntimeClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNodeV1alpha1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75545,7 +75545,7 @@ func (s WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) 
 // ReadJSON reads WatchNodeV1beta1RuntimeClassListUnauthorized from json stream.
 func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchNodeV1beta1RuntimeClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchNodeV1beta1RuntimeClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75602,7 +75602,7 @@ func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJ
 // ReadJSON reads WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
 func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75659,7 +75659,7 @@ func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) W
 // ReadJSON reads WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
 func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75714,7 +75714,7 @@ func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads WatchPolicyV1beta1PodSecurityPolicyListUnauthorized from json stream.
 func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodSecurityPolicyListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchPolicyV1beta1PodSecurityPolicyListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75769,7 +75769,7 @@ func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(j 
 // ReadJSON reads WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized from json stream.
 func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75824,7 +75824,7 @@ func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(j *json.S
 // ReadJSON reads WatchRbacAuthorizationV1ClusterRoleListUnauthorized from json stream.
 func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1ClusterRoleListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75881,7 +75881,7 @@ func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) Wri
 // ReadJSON reads WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized from json stream.
 func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75936,7 +75936,7 @@ func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(
 // ReadJSON reads WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized from json stream.
 func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -75986,7 +75986,7 @@ func (s WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads WatchSchedulingV1PriorityClassListUnauthorized from json stream.
 func (s *WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchSchedulingV1PriorityClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchSchedulingV1PriorityClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76035,7 +76035,7 @@ func (s WatchStorageV1CSIDriverListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchStorageV1CSIDriverListUnauthorized from json stream.
 func (s *WatchStorageV1CSIDriverListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSIDriverListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1CSIDriverListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76082,7 +76082,7 @@ func (s WatchStorageV1CSINodeListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchStorageV1CSINodeListUnauthorized from json stream.
 func (s *WatchStorageV1CSINodeListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1CSINodeListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1CSINodeListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76131,7 +76131,7 @@ func (s WatchStorageV1StorageClassListUnauthorized) WriteJSON(j *json.Stream) {
 // ReadJSON reads WatchStorageV1StorageClassListUnauthorized from json stream.
 func (s *WatchStorageV1StorageClassListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1StorageClassListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1StorageClassListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76181,7 +76181,7 @@ func (s WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(j *json.Stream
 // ReadJSON reads WatchStorageV1VolumeAttachmentListUnauthorized from json stream.
 func (s *WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1VolumeAttachmentListUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1VolumeAttachmentListUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76238,7 +76238,7 @@ func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) 
 // ReadJSON reads WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
 func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
@@ -76295,7 +76295,7 @@ func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) W
 // ReadJSON reads WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
 func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iter) error {
 	if s == nil {
-		fmt.Errorf(`invalid: unable to decode WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
+		return fmt.Errorf(`invalid: unable to decode WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized to nil`)
 	}
 	var retErr error
 	i.Object(func(i *json.Iter, k string) bool {
