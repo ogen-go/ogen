@@ -177,11 +177,15 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
                     return err
                 }
                 switch typ {
-                {{- range $k, $v := $t.SumSpec.Mapping }}
-                case "{{ $k }}":
-                    s.Type = {{ $v }}{{ $t.Name }}
+                {{- range $m:= $t.SumSpec.Mapping }}
+                case "{{ $m.Key }}":
+                    s.Type = {{ $m.Type }}{{ $t.Name }}
+                    found = true
                 {{- end }}
+                default:
+                    return fmt.Errorf("unknown type %s", typ)
                 }
+                return nil
             {{- else }}
             {{- range $s := $t.SumOf }}
             {{- range $f := $s.SumSpec.Unique }}

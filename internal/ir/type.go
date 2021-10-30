@@ -22,11 +22,16 @@ const (
 	KindSum       Kind = "sum"
 )
 
+type SumSpecMap struct {
+	Key  string
+	Type string
+}
+
 // SumSpec for KindSum.
 type SumSpec struct {
 	Unique        []*Field
 	Discriminator string
-	Mapping       map[string]string
+	Mapping       []SumSpecMap
 }
 
 type Type struct {

@@ -229,25 +229,29 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		}
 		if d := schema.Discriminator; d != nil {
 			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
-			sum.SumSpec.Mapping = schema.Discriminator.Mapping
-			for k, v := range sum.SumSpec.Mapping {
+			for k, v := range schema.Discriminator.Mapping {
 				// Explicit mapping.
 				var found bool
 				for _, s := range sum.SumOf {
 					if path.Base(s.Schema.Ref) == v {
 						found = true
-						sum.SumSpec.Mapping[k] = s.Name
+						sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+							Key:  k,
+							Type: s.Name,
+						})
 					}
 				}
 				if !found {
 					return nil, xerrors.Errorf("discriminator: unable to map %s to %s", k, v)
 				}
 			}
-			if sum.SumSpec.Mapping == nil {
+			if len(sum.SumSpec.Mapping) == 0 {
 				// Implicit mapping, defaults to type name.
-				sum.SumSpec.Mapping = map[string]string{}
 				for _, s := range sum.SumOf {
-					sum.SumSpec.Mapping[path.Base(s.Schema.Ref)] = s.Name
+					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+						Key:  path.Base(s.Schema.Ref),
+						Type: s.Name,
+					})
 				}
 			}
 			return side(sum), nil

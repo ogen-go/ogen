@@ -37462,44 +37462,6 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	return result, nil
 }
 
-// UsersGetAuthenticated implements users/get-authenticated operation.
-func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
-	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetAuthenticated`,
-		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
-		trace.WithSpanKind(trace.SpanKindClient),
-	)
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			c.errors.Add(ctx, 1)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
-		}
-		span.End()
-	}()
-	c.requests.Add(ctx, 1)
-	u := uri.Clone(c.serverURL)
-	u.Path += "/user"
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.cfg.Client.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeUsersGetAuthenticatedResponse(resp, span)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
 // UsersGetByUsername implements users/get-by-username operation.
 func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
 	startTime := time.Now()

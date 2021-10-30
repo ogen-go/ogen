@@ -619,7 +619,6 @@ func Register(r chi.Router, s Server, opts ...Option) {
 	r.MethodFunc("GET", "/user/following/{username}", NewUsersCheckPersonIsFollowedByAuthenticatedHandler(s, opts...))
 	r.MethodFunc("DELETE", "/user/keys/{key_id}", NewUsersDeletePublicSSHKeyForAuthenticatedHandler(s, opts...))
 	r.MethodFunc("PUT", "/user/following/{username}", NewUsersFollowHandler(s, opts...))
-	r.MethodFunc("GET", "/user", NewUsersGetAuthenticatedHandler(s, opts...))
 	r.MethodFunc("GET", "/users/{username}", NewUsersGetByUsernameHandler(s, opts...))
 	r.MethodFunc("GET", "/user/gpg_keys/{gpg_key_id}", NewUsersGetGpgKeyForAuthenticatedHandler(s, opts...))
 	r.MethodFunc("GET", "/user/keys/{key_id}", NewUsersGetPublicSSHKeyForAuthenticatedHandler(s, opts...))
