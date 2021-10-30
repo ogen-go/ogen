@@ -15375,6 +15375,56 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	}
 }
 
+func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersGetAuthenticatedOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersGetAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		// Unsupported kind "alias".
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
+		}
+
+		return nil
+	case *UsersGetAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		// Unsupported kind "alias".
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
+		}
+
+		return nil
+	default:
+		return fmt.Errorf("/user: unexpected response type: %T", response)
+	}
+}
+
 func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersGetByUsernameOK:

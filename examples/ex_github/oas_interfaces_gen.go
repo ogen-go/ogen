@@ -1141,6 +1141,10 @@ type UsersFollowRes interface {
 	usersFollowRes()
 }
 
+type UsersGetAuthenticatedRes interface {
+	usersGetAuthenticatedRes()
+}
+
 type UsersGetByUsernameRes interface {
 	usersGetByUsernameRes()
 }

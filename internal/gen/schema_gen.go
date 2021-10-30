@@ -254,6 +254,11 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					})
 				}
 			}
+			sort.SliceStable(sum.SumSpec.Mapping, func(i, j int) bool {
+				a := sum.SumSpec.Mapping[i]
+				b := sum.SumSpec.Mapping[j]
+				return strings.Compare(a.Key, b.Key) < 0
+			})
 			return side(sum), nil
 		}
 
