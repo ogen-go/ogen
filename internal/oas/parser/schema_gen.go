@@ -52,6 +52,12 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		s.Ref = ref
 		s.Description = schema.Description
 		s.Nullable = schema.Nullable
+		if d := schema.Discriminator; d != nil {
+			s.Discriminator = &oas.Discriminator{
+				PropertyName: d.PropertyName,
+				Mapping:      d.Mapping,
+			}
+		}
 		if ref != "" {
 			g.localRefs[ref] = s
 		}

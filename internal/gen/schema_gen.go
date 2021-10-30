@@ -3,6 +3,7 @@ package gen
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 	"unicode"
 
@@ -90,7 +91,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		if t.Schema.Format == oas.FormatHostname {
 			t.Validators.String.Hostname = true
 		}
-
 		if ref := t.Schema.Ref; ref != "" {
 			if t.Is(ir.KindPrimitive, ir.KindArray) {
 				t = ir.Alias(name, t)
@@ -210,11 +210,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			if err != nil {
 				return nil, xerrors.Errorf("oneOf[%d]: %w", i, err)
 			}
-			if !t.Is(ir.KindPrimitive) {
-				return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
-					Name: "sum types for non-primitives",
-				})
-			}
 			var result []rune
 			for i, c := range t.Go() {
 				if i == 0 {
@@ -230,6 +225,82 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			}
 			names[t.Name] = struct{}{}
 			sum.SumOf = append(sum.SumOf, t)
+		}
+		if d := schema.Discriminator; d != nil {
+			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
+			sum.SumSpec.Mapping = schema.Discriminator.Mapping
+			return side(sum), nil
+		}
+
+		// Determine unique fields for each SumOf variant.
+		uniq := map[string]map[string]struct{}{}
+		var isComplex bool
+		for _, s := range sum.SumOf {
+			uniq[s.Name] = map[string]struct{}{}
+			if !s.Is(ir.KindPrimitive) {
+				isComplex = true
+			}
+			for _, f := range s.Fields {
+				uniq[s.Name][f.Name] = struct{}{}
+			}
+		}
+		for k, f := range uniq {
+			for otherK, otherF := range uniq {
+				if otherK == k {
+					continue
+				}
+				for otherField := range otherF {
+					delete(f, otherField)
+				}
+			}
+			uniq[k] = f
+		}
+		type sumVariant struct {
+			Name   string
+			Unique []string
+		}
+		var variants []sumVariant
+		for k, f := range uniq {
+			v := sumVariant{
+				Name: k,
+			}
+			for fieldName := range f {
+				v.Unique = append(v.Unique, fieldName)
+			}
+			sort.Strings(v.Unique)
+			if isComplex && len(v.Unique) == 0 {
+				// Unable to deterministically select sub-schema only on fields.
+				return nil, xerrors.Errorf("oneOf %s: variant %s: no unique fields, "+
+					"unable to parse without discriminator: %w", sum.Name, k, &ErrNotImplemented{Name: "discriminator inference"},
+				)
+			}
+			variants = append(variants, v)
+		}
+		if !isComplex {
+			return side(sum), nil
+		}
+		for _, v := range variants {
+			for _, s := range sum.SumOf {
+				if s.Name != v.Name {
+					continue
+				}
+				if len(s.SumSpec.Unique) > 0 {
+					continue
+				}
+				for _, f := range s.Fields {
+					var skip bool
+					for _, n := range v.Unique {
+						if n == f.Name {
+							skip = true // not unique
+							break
+						}
+					}
+					if !skip {
+						continue
+					}
+					s.SumSpec.Unique = append(s.SumSpec.Unique, f)
+				}
+			}
 		}
 		return side(sum), nil
 	default:

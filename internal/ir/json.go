@@ -121,3 +121,52 @@ func (j JSON) Write() string { return j.f() }
 
 // JSONRead returns function name from json package that reads value.
 func (j JSON) Read() string { return j.f() }
+
+// Sum returns specification for parsing value as sum type.
+func (j JSON) Sum() SumJSON {
+	if j.t.SumSpec.Discriminator != "" {
+		return SumJSON{
+			Type: SumJSONDiscriminator,
+		}
+	}
+	for _, s := range j.t.SumOf {
+		if len(s.SumSpec.Unique) > 0 {
+			return SumJSON{
+				Type: SumJSONFields,
+			}
+		}
+	}
+	return SumJSON{
+		Type: SumJSONPrimitive,
+	}
+}
+
+type SumJSONType byte
+
+const (
+	SumJSONPrimitive SumJSONType = iota
+	SumJSONFields
+	SumJSONDiscriminator
+)
+
+// SumJSON specifies rules for parsing sum types in json.
+type SumJSON struct {
+	Type SumJSONType
+}
+
+func (s SumJSON) String() string {
+	switch s.Type {
+	case SumJSONFields:
+		return "fields"
+	case SumJSONPrimitive:
+		return "primitive"
+	case SumJSONDiscriminator:
+		return "discriminator"
+	default:
+		return "unknown"
+	}
+}
+
+func (s SumJSON) Primitive() bool     { return s.Type == SumJSONPrimitive }
+func (s SumJSON) Discriminator() bool { return s.Type == SumJSONDiscriminator }
+func (s SumJSON) Fields() bool        { return s.Type == SumJSONFields }

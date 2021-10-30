@@ -22,6 +22,13 @@ const (
 	KindSum       Kind = "sum"
 )
 
+// SumSpec for KindSum.
+type SumSpec struct {
+	Unique        []*Field
+	Discriminator string
+	Mapping       map[string]string
+}
+
 type Type struct {
 	Doc              string              // documentation
 	Kind             Kind                // kind
@@ -30,6 +37,7 @@ type Type struct {
 	AliasTo          *Type               // only for alias
 	PointerTo        *Type               // only for pointer
 	SumOf            []*Type             // only for sum
+	SumSpec          SumSpec             // only for sum
 	Item             *Type               // only for array
 	EnumVariants     []*EnumVariant      // only for enum
 	Fields           []*Field            // only for struct

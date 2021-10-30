@@ -142,11 +142,14 @@ func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
     }
 }
 
+{{ $d := $t.JSON.Sum -}}
 // ReadJSON reads value from json reader.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     if s == nil {
         return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
+    // Sum type {{ $d }}.
+    {{- if $d.Primitive }}
     switch t := d.Next(); t {
     {{- range $s := $t.SumOf }}
     case json.{{ $s.JSON.Type }}:
@@ -156,6 +159,57 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     default:
         return fmt.Errorf("unexpected json type %q", t)
     }
+    {{- else if or ($d.Fields) ($d.Discriminator) }}
+    if d.Next() != json.Object {
+        return fmt.Errorf("unexpected json type %q", d.Next())
+    }
+    var found bool
+    if err := d.Capture(func(d *json.Decoder) error {
+        return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+            if found {
+                return d.Skip()
+            }
+            switch string(key) {
+            {{- if $d.Discriminator -}}
+            case "{{ $t.SumSpec.Discriminator }}":
+                typ, err := d.Str()
+                if err != nil {
+                    return err
+                }
+                switch typ {
+                {{ range $k, $v := $t.SumSpec.Mapping }}
+                case "{{ $k }}": // {{ $k }} -> {{ $v }}
+                {{ end }}
+                }
+            {{- else }}
+            {{- range $s := $t.SumOf }}
+            {{- range $f := $s.SumSpec.Unique }}
+            case "{{ $f.Tag.JSON }}":
+                found = true
+                s.Type = {{ $s.Name }}{{ $t.Name }}
+            {{- end }}
+            {{- end }}
+            {{- end }}
+            }
+            return d.Skip()
+        })
+    }); err != nil {
+        return fmt.Errorf("capture: %w", err)
+    }
+    if !found {
+        return fmt.Errorf("unable to detect sum type variant")
+    }
+    switch s.Type {
+    {{- range $s := $t.SumOf }}
+    case {{ $s.Name }}{{ $t.Name }}:
+        {{- template "dec_json" sum_elem $s }}
+    {{- end}}
+    default:
+        return fmt.Errorf("inferred invalid type: %s", s.Type)
+    }
+    {{- else if $d.Discriminator  }}
+
+    {{- end }}
     return nil
 }
 {{- end }}

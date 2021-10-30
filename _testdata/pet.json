@@ -22,7 +22,9 @@
   "kind": "smol",
   "name": "SomePet",
   "next": {
-    "description": "Foo",
+    "description": {
+      "description": "foo"
+    },
     "id": 10,
     "email": "foo@example.com",
     "format": "1-2",

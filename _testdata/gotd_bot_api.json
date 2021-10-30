@@ -1858,6 +1858,17 @@
           "width",
           "height",
           "duration"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "width",
+          "height",
+          "duration",
+          "thumb",
+          "file_name",
+          "mime_type",
+          "file_size"
         ]
       },
       "Audio": {
@@ -1906,6 +1917,17 @@
           "file_id",
           "file_unique_id",
           "duration"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "duration",
+          "performer",
+          "title",
+          "file_name",
+          "mime_type",
+          "file_size",
+          "thumb"
         ]
       },
       "BotCommand": {
@@ -1928,6 +1950,10 @@
         "required": [
           "command",
           "description"
+        ],
+        "x-properties-order": [
+          "command",
+          "description"
         ]
       },
       "BotCommandScope": {
@@ -1946,6 +1972,9 @@
         },
         "required": [
           "type"
+        ],
+        "x-properties-order": [
+          "type"
         ]
       },
       "BotCommandScopeAllGroupChats": {
@@ -1960,6 +1989,9 @@
         },
         "required": [
           "type"
+        ],
+        "x-properties-order": [
+          "type"
         ]
       },
       "BotCommandScopeAllPrivateChats": {
@@ -1973,6 +2005,9 @@
           }
         },
         "required": [
+          "type"
+        ],
+        "x-properties-order": [
           "type"
         ]
       },
@@ -1992,6 +2027,10 @@
         "required": [
           "type",
           "chat_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "chat_id"
         ]
       },
       "BotCommandScopeChatAdministrators": {
@@ -2008,6 +2047,10 @@
           }
         },
         "required": [
+          "type",
+          "chat_id"
+        ],
+        "x-properties-order": [
           "type",
           "chat_id"
         ]
@@ -2033,6 +2076,11 @@
           "type",
           "chat_id",
           "user_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "chat_id",
+          "user_id"
         ]
       },
       "BotCommandScopeDefault": {
@@ -2046,6 +2094,9 @@
           }
         },
         "required": [
+          "type"
+        ],
+        "x-properties-order": [
           "type"
         ]
       },
@@ -2088,6 +2139,15 @@
           "id",
           "from",
           "chat_instance"
+        ],
+        "x-properties-order": [
+          "id",
+          "from",
+          "message",
+          "inline_message_id",
+          "chat_instance",
+          "data",
+          "game_short_name"
         ]
       },
       "Chat": {
@@ -2166,6 +2226,26 @@
         "required": [
           "id",
           "type"
+        ],
+        "x-properties-order": [
+          "id",
+          "type",
+          "title",
+          "username",
+          "first_name",
+          "last_name",
+          "photo",
+          "bio",
+          "description",
+          "invite_link",
+          "pinned_message",
+          "permissions",
+          "slow_mode_delay",
+          "message_auto_delete_time",
+          "sticker_set_name",
+          "can_set_sticker_set",
+          "linked_chat_id",
+          "location"
         ]
       },
       "ChatInviteLink": {
@@ -2201,6 +2281,14 @@
           "creator",
           "is_primary",
           "is_revoked"
+        ],
+        "x-properties-order": [
+          "invite_link",
+          "creator",
+          "is_primary",
+          "is_revoked",
+          "expire_date",
+          "member_limit"
         ]
       },
       "ChatLocation": {
@@ -2218,6 +2306,10 @@
           }
         },
         "required": [
+          "location",
+          "address"
+        ],
+        "x-properties-order": [
           "location",
           "address"
         ]
@@ -2302,6 +2394,23 @@
           "can_promote_members",
           "can_change_info",
           "can_invite_users"
+        ],
+        "x-properties-order": [
+          "status",
+          "user",
+          "can_be_edited",
+          "is_anonymous",
+          "can_manage_chat",
+          "can_delete_messages",
+          "can_manage_voice_chats",
+          "can_restrict_members",
+          "can_promote_members",
+          "can_change_info",
+          "can_invite_users",
+          "can_post_messages",
+          "can_edit_messages",
+          "can_pin_messages",
+          "custom_title"
         ]
       },
       "ChatMemberBanned": {
@@ -2324,6 +2433,11 @@
           "status",
           "user",
           "until_date"
+        ],
+        "x-properties-order": [
+          "status",
+          "user",
+          "until_date"
         ]
       },
       "ChatMemberLeft": {
@@ -2341,6 +2455,10 @@
         "required": [
           "status",
           "user"
+        ],
+        "x-properties-order": [
+          "status",
+          "user"
         ]
       },
       "ChatMemberMember": {
@@ -2356,6 +2474,10 @@
           }
         },
         "required": [
+          "status",
+          "user"
+        ],
+        "x-properties-order": [
           "status",
           "user"
         ]
@@ -2384,6 +2506,12 @@
           "status",
           "user",
           "is_anonymous"
+        ],
+        "x-properties-order": [
+          "status",
+          "user",
+          "is_anonymous",
+          "custom_title"
         ]
       },
       "ChatMemberRestricted": {
@@ -2451,6 +2579,20 @@
           "can_send_other_messages",
           "can_add_web_page_previews",
           "until_date"
+        ],
+        "x-properties-order": [
+          "status",
+          "user",
+          "is_member",
+          "can_change_info",
+          "can_invite_users",
+          "can_pin_messages",
+          "can_send_messages",
+          "can_send_media_messages",
+          "can_send_polls",
+          "can_send_other_messages",
+          "can_add_web_page_previews",
+          "until_date"
         ]
       },
       "ChatMemberUpdated": {
@@ -2483,6 +2625,14 @@
           "date",
           "old_chat_member",
           "new_chat_member"
+        ],
+        "x-properties-order": [
+          "chat",
+          "from",
+          "date",
+          "old_chat_member",
+          "new_chat_member",
+          "invite_link"
         ]
       },
       "ChatPermissions": {
@@ -2521,7 +2671,17 @@
             "description": "True, if the user is allowed to send polls, implies can_send_messages",
             "type": "boolean"
           }
-        }
+        },
+        "x-properties-order": [
+          "can_send_messages",
+          "can_send_media_messages",
+          "can_send_polls",
+          "can_send_other_messages",
+          "can_add_web_page_previews",
+          "can_change_info",
+          "can_invite_users",
+          "can_pin_messages"
+        ]
       },
       "ChatPhoto": {
         "description": "This object represents a chat photo.",
@@ -2545,6 +2705,12 @@
           }
         },
         "required": [
+          "small_file_id",
+          "small_file_unique_id",
+          "big_file_id",
+          "big_file_unique_id"
+        ],
+        "x-properties-order": [
           "small_file_id",
           "small_file_unique_id",
           "big_file_id",
@@ -2578,6 +2744,13 @@
           "result_id",
           "from",
           "query"
+        ],
+        "x-properties-order": [
+          "result_id",
+          "from",
+          "location",
+          "inline_message_id",
+          "query"
         ]
       },
       "Contact": {
@@ -2608,6 +2781,13 @@
         "required": [
           "phone_number",
           "first_name"
+        ],
+        "x-properties-order": [
+          "phone_number",
+          "first_name",
+          "last_name",
+          "user_id",
+          "vcard"
         ]
       },
       "Dice": {
@@ -2624,6 +2804,10 @@
           }
         },
         "required": [
+          "emoji",
+          "value"
+        ],
+        "x-properties-order": [
           "emoji",
           "value"
         ]
@@ -2659,6 +2843,14 @@
         "required": [
           "file_id",
           "file_unique_id"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "thumb",
+          "file_name",
+          "mime_type",
+          "file_size"
         ]
       },
       "EncryptedCredentials": {
@@ -2679,6 +2871,11 @@
           }
         },
         "required": [
+          "data",
+          "hash",
+          "secret"
+        ],
+        "x-properties-order": [
           "data",
           "hash",
           "secret"
@@ -2735,6 +2932,18 @@
         "required": [
           "type",
           "hash"
+        ],
+        "x-properties-order": [
+          "type",
+          "data",
+          "phone_number",
+          "email",
+          "files",
+          "front_side",
+          "reverse_side",
+          "selfie",
+          "translation",
+          "hash"
         ]
       },
       "Error": {
@@ -2784,6 +2993,12 @@
         "required": [
           "file_id",
           "file_unique_id"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "file_size",
+          "file_path"
         ]
       },
       "ForceReply": {
@@ -2807,6 +3022,11 @@
         },
         "required": [
           "force_reply"
+        ],
+        "x-properties-order": [
+          "force_reply",
+          "input_field_placeholder",
+          "selective"
         ]
       },
       "Game": {
@@ -2848,6 +3068,14 @@
           "title",
           "description",
           "photo"
+        ],
+        "x-properties-order": [
+          "title",
+          "description",
+          "photo",
+          "text",
+          "text_entities",
+          "animation"
         ]
       },
       "GameHighScore": {
@@ -2867,6 +3095,11 @@
           }
         },
         "required": [
+          "position",
+          "user",
+          "score"
+        ],
+        "x-properties-order": [
           "position",
           "user",
           "score"
@@ -2920,11 +3153,39 @@
         },
         "required": [
           "text"
+        ],
+        "x-properties-order": [
+          "text",
+          "url",
+          "login_url",
+          "callback_data",
+          "switch_inline_query",
+          "switch_inline_query_current_chat",
+          "callback_game",
+          "pay"
         ]
       },
       "InlineKeyboardMarkup": {
-        "description": "Hack",
-        "type": "string"
+        "description": "This object represents an inline keyboard that appears right next to the message it belongs to.",
+        "type": "object",
+        "properties": {
+          "inline_keyboard": {
+            "description": "Array of button rows, each represented by an Array of InlineKeyboardButton objects",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/InlineKeyboardButton"
+              }
+            }
+          }
+        },
+        "required": [
+          "inline_keyboard"
+        ],
+        "x-properties-order": [
+          "inline_keyboard"
+        ]
       },
       "InlineQuery": {
         "description": "This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.",
@@ -2958,6 +3219,14 @@
           "from",
           "query",
           "offset"
+        ],
+        "x-properties-order": [
+          "id",
+          "from",
+          "query",
+          "offset",
+          "chat_type",
+          "location"
         ]
       },
       "InlineQueryResult": {
@@ -3023,6 +3292,19 @@
           "id",
           "title",
           "input_message_content"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "title",
+          "input_message_content",
+          "reply_markup",
+          "url",
+          "hide_url",
+          "description",
+          "thumb_url",
+          "thumb_width",
+          "thumb_height"
         ]
       },
       "InlineQueryResultAudio": {
@@ -3085,6 +3367,19 @@
           "id",
           "audio_url",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "audio_url",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "performer",
+          "audio_duration",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedAudio": {
@@ -3131,6 +3426,16 @@
           "type",
           "id",
           "audio_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "audio_file_id",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedDocument": {
@@ -3186,6 +3491,18 @@
           "id",
           "title",
           "document_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "title",
+          "document_file_id",
+          "description",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedGif": {
@@ -3236,6 +3553,17 @@
           "type",
           "id",
           "gif_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "gif_file_id",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedMpeg4Gif": {
@@ -3286,6 +3614,17 @@
           "type",
           "id",
           "mpeg4_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "mpeg4_file_id",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedPhoto": {
@@ -3340,6 +3679,18 @@
           "type",
           "id",
           "photo_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "photo_file_id",
+          "title",
+          "description",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedSticker": {
@@ -3370,6 +3721,13 @@
           "type",
           "id",
           "sticker_file_id"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "sticker_file_id",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedVideo": {
@@ -3425,6 +3783,18 @@
           "id",
           "video_file_id",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "video_file_id",
+          "title",
+          "description",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultCachedVoice": {
@@ -3476,6 +3846,17 @@
           "id",
           "voice_file_id",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "voice_file_id",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultContact": {
@@ -3536,6 +3917,19 @@
           "id",
           "phone_number",
           "first_name"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "phone_number",
+          "first_name",
+          "last_name",
+          "vcard",
+          "reply_markup",
+          "input_message_content",
+          "thumb_url",
+          "thumb_width",
+          "thumb_height"
         ]
       },
       "InlineQueryResultDocument": {
@@ -3614,6 +4008,22 @@
           "title",
           "document_url",
           "mime_type"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "document_url",
+          "mime_type",
+          "description",
+          "reply_markup",
+          "input_message_content",
+          "thumb_url",
+          "thumb_width",
+          "thumb_height"
         ]
       },
       "InlineQueryResultGame": {
@@ -3641,6 +4051,12 @@
           "type",
           "id",
           "game_short_name"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "game_short_name",
+          "reply_markup"
         ]
       },
       "InlineQueryResultGif": {
@@ -3720,6 +4136,22 @@
           "id",
           "gif_url",
           "thumb_url"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "gif_url",
+          "gif_width",
+          "gif_height",
+          "gif_duration",
+          "thumb_url",
+          "thumb_mime_type",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultLocation": {
@@ -3793,6 +4225,22 @@
           "latitude",
           "longitude",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "latitude",
+          "longitude",
+          "title",
+          "horizontal_accuracy",
+          "live_period",
+          "heading",
+          "proximity_alert_radius",
+          "reply_markup",
+          "input_message_content",
+          "thumb_url",
+          "thumb_width",
+          "thumb_height"
         ]
       },
       "InlineQueryResultMpeg4Gif": {
@@ -3872,6 +4320,22 @@
           "id",
           "mpeg4_url",
           "thumb_url"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "mpeg4_url",
+          "mpeg4_width",
+          "mpeg4_height",
+          "mpeg4_duration",
+          "thumb_url",
+          "thumb_mime_type",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultPhoto": {
@@ -3945,6 +4409,21 @@
           "id",
           "photo_url",
           "thumb_url"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "photo_url",
+          "thumb_url",
+          "photo_width",
+          "photo_height",
+          "title",
+          "description",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultVenue": {
@@ -4023,6 +4502,23 @@
           "longitude",
           "title",
           "address"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "latitude",
+          "longitude",
+          "title",
+          "address",
+          "foursquare_id",
+          "foursquare_type",
+          "google_place_id",
+          "google_place_type",
+          "reply_markup",
+          "input_message_content",
+          "thumb_url",
+          "thumb_width",
+          "thumb_height"
         ]
       },
       "InlineQueryResultVideo": {
@@ -4108,6 +4604,23 @@
           "mime_type",
           "thumb_url",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "video_url",
+          "mime_type",
+          "thumb_url",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "video_width",
+          "video_height",
+          "video_duration",
+          "description",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InlineQueryResultVoice": {
@@ -4166,6 +4679,18 @@
           "id",
           "voice_url",
           "title"
+        ],
+        "x-properties-order": [
+          "type",
+          "id",
+          "voice_url",
+          "title",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "voice_duration",
+          "reply_markup",
+          "input_message_content"
         ]
       },
       "InputContactMessageContent": {
@@ -4192,6 +4717,12 @@
         "required": [
           "phone_number",
           "first_name"
+        ],
+        "x-properties-order": [
+          "phone_number",
+          "first_name",
+          "last_name",
+          "vcard"
         ]
       },
       "InputInvoiceMessageContent": {
@@ -4301,6 +4832,28 @@
           "provider_token",
           "currency",
           "prices"
+        ],
+        "x-properties-order": [
+          "title",
+          "description",
+          "payload",
+          "provider_token",
+          "currency",
+          "prices",
+          "max_tip_amount",
+          "suggested_tip_amounts",
+          "provider_data",
+          "photo_url",
+          "photo_size",
+          "photo_width",
+          "photo_height",
+          "need_name",
+          "need_phone_number",
+          "need_email",
+          "need_shipping_address",
+          "send_phone_number_to_provider",
+          "send_email_to_provider",
+          "is_flexible"
         ]
       },
       "InputLocationMessageContent": {
@@ -4335,6 +4888,14 @@
         "required": [
           "latitude",
           "longitude"
+        ],
+        "x-properties-order": [
+          "latitude",
+          "longitude",
+          "horizontal_accuracy",
+          "live_period",
+          "heading",
+          "proximity_alert_radius"
         ]
       },
       "InputMedia": {
@@ -4396,6 +4957,17 @@
         "required": [
           "type",
           "media"
+        ],
+        "x-properties-order": [
+          "type",
+          "media",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "width",
+          "height",
+          "duration"
         ]
       },
       "InputMediaAudio": {
@@ -4449,6 +5021,17 @@
         "required": [
           "type",
           "media"
+        ],
+        "x-properties-order": [
+          "type",
+          "media",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "duration",
+          "performer",
+          "title"
         ]
       },
       "InputMediaDocument": {
@@ -4492,6 +5075,15 @@
         "required": [
           "type",
           "media"
+        ],
+        "x-properties-order": [
+          "type",
+          "media",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "disable_content_type_detection"
         ]
       },
       "InputMediaPhoto": {
@@ -4527,6 +5119,13 @@
         "required": [
           "type",
           "media"
+        ],
+        "x-properties-order": [
+          "type",
+          "media",
+          "caption",
+          "parse_mode",
+          "caption_entities"
         ]
       },
       "InputMediaVideo": {
@@ -4588,6 +5187,18 @@
         "required": [
           "type",
           "media"
+        ],
+        "x-properties-order": [
+          "type",
+          "media",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "width",
+          "height",
+          "duration",
+          "supports_streaming"
         ]
       },
       "InputMessageContent": {
@@ -4622,6 +5233,12 @@
         },
         "required": [
           "message_text"
+        ],
+        "x-properties-order": [
+          "message_text",
+          "parse_mode",
+          "entities",
+          "disable_web_page_preview"
         ]
       },
       "InputVenueMessageContent": {
@@ -4666,6 +5283,16 @@
           "longitude",
           "title",
           "address"
+        ],
+        "x-properties-order": [
+          "latitude",
+          "longitude",
+          "title",
+          "address",
+          "foursquare_id",
+          "foursquare_type",
+          "google_place_id",
+          "google_place_type"
         ]
       },
       "Invoice": {
@@ -4699,6 +5326,13 @@
           "start_parameter",
           "currency",
           "total_amount"
+        ],
+        "x-properties-order": [
+          "title",
+          "description",
+          "start_parameter",
+          "currency",
+          "total_amount"
         ]
       },
       "KeyboardButton": {
@@ -4723,6 +5357,12 @@
         },
         "required": [
           "text"
+        ],
+        "x-properties-order": [
+          "text",
+          "request_contact",
+          "request_location",
+          "request_poll"
         ]
       },
       "KeyboardButtonPollType": {
@@ -4733,7 +5373,10 @@
             "description": "If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type",
             "type": "string"
           }
-        }
+        },
+        "x-properties-order": [
+          "type"
+        ]
       },
       "LabeledPrice": {
         "description": "This object represents a portion of the price for goods or services.",
@@ -4749,6 +5392,10 @@
           }
         },
         "required": [
+          "label",
+          "amount"
+        ],
+        "x-properties-order": [
           "label",
           "amount"
         ]
@@ -4785,6 +5432,14 @@
         "required": [
           "longitude",
           "latitude"
+        ],
+        "x-properties-order": [
+          "longitude",
+          "latitude",
+          "horizontal_accuracy",
+          "live_period",
+          "heading",
+          "proximity_alert_radius"
         ]
       },
       "LoginUrl": {
@@ -4811,6 +5466,12 @@
         },
         "required": [
           "url"
+        ],
+        "x-properties-order": [
+          "url",
+          "forward_text",
+          "bot_username",
+          "request_write_access"
         ]
       },
       "MaskPosition": {
@@ -4835,6 +5496,12 @@
           }
         },
         "required": [
+          "point",
+          "x_shift",
+          "y_shift",
+          "scale"
+        ],
+        "x-properties-order": [
           "point",
           "x_shift",
           "y_shift",
@@ -5059,6 +5726,64 @@
           "message_id",
           "date",
           "chat"
+        ],
+        "x-properties-order": [
+          "message_id",
+          "from",
+          "sender_chat",
+          "date",
+          "chat",
+          "forward_from",
+          "forward_from_chat",
+          "forward_from_message_id",
+          "forward_signature",
+          "forward_sender_name",
+          "forward_date",
+          "reply_to_message",
+          "via_bot",
+          "edit_date",
+          "media_group_id",
+          "author_signature",
+          "text",
+          "entities",
+          "animation",
+          "audio",
+          "document",
+          "photo",
+          "sticker",
+          "video",
+          "video_note",
+          "voice",
+          "caption",
+          "caption_entities",
+          "contact",
+          "dice",
+          "game",
+          "poll",
+          "venue",
+          "location",
+          "new_chat_members",
+          "left_chat_member",
+          "new_chat_title",
+          "new_chat_photo",
+          "delete_chat_photo",
+          "group_chat_created",
+          "supergroup_chat_created",
+          "channel_chat_created",
+          "message_auto_delete_timer_changed",
+          "migrate_to_chat_id",
+          "migrate_from_chat_id",
+          "pinned_message",
+          "invoice",
+          "successful_payment",
+          "connected_website",
+          "passport_data",
+          "proximity_alert_triggered",
+          "voice_chat_scheduled",
+          "voice_chat_started",
+          "voice_chat_ended",
+          "voice_chat_participants_invited",
+          "reply_markup"
         ]
       },
       "MessageAutoDeleteTimerChanged": {
@@ -5071,6 +5796,9 @@
           }
         },
         "required": [
+          "message_auto_delete_time"
+        ],
+        "x-properties-order": [
           "message_auto_delete_time"
         ]
       },
@@ -5108,6 +5836,14 @@
           "type",
           "offset",
           "length"
+        ],
+        "x-properties-order": [
+          "type",
+          "offset",
+          "length",
+          "url",
+          "user",
+          "language"
         ]
       },
       "MessageId": {
@@ -5120,6 +5856,9 @@
           }
         },
         "required": [
+          "message_id"
+        ],
+        "x-properties-order": [
           "message_id"
         ]
       },
@@ -5142,7 +5881,13 @@
           "shipping_address": {
             "$ref": "#/components/schemas/ShippingAddress"
           }
-        }
+        },
+        "x-properties-order": [
+          "name",
+          "phone_number",
+          "email",
+          "shipping_address"
+        ]
       },
       "PassportData": {
         "description": "Contains information about Telegram Passport data shared with the bot by the user.",
@@ -5160,6 +5905,10 @@
           }
         },
         "required": [
+          "data",
+          "credentials"
+        ],
+        "x-properties-order": [
           "data",
           "credentials"
         ]
@@ -5200,6 +5949,13 @@
           "field_name",
           "data_hash",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "field_name",
+          "data_hash",
+          "message"
         ]
       },
       "PassportElementErrorFile": {
@@ -5225,6 +5981,12 @@
           }
         },
         "required": [
+          "source",
+          "type",
+          "file_hash",
+          "message"
+        ],
+        "x-properties-order": [
           "source",
           "type",
           "file_hash",
@@ -5261,6 +6023,12 @@
           "type",
           "file_hashes",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "file_hashes",
+          "message"
         ]
       },
       "PassportElementErrorFrontSide": {
@@ -5286,6 +6054,12 @@
           }
         },
         "required": [
+          "source",
+          "type",
+          "file_hash",
+          "message"
+        ],
+        "x-properties-order": [
           "source",
           "type",
           "file_hash",
@@ -5319,6 +6093,12 @@
           "type",
           "file_hash",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "file_hash",
+          "message"
         ]
       },
       "PassportElementErrorSelfie": {
@@ -5348,6 +6128,12 @@
           "type",
           "file_hash",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "file_hash",
+          "message"
         ]
       },
       "PassportElementErrorTranslationFile": {
@@ -5373,6 +6159,12 @@
           }
         },
         "required": [
+          "source",
+          "type",
+          "file_hash",
+          "message"
+        ],
+        "x-properties-order": [
           "source",
           "type",
           "file_hash",
@@ -5409,6 +6201,12 @@
           "type",
           "file_hashes",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "file_hashes",
+          "message"
         ]
       },
       "PassportElementErrorUnspecified": {
@@ -5438,6 +6236,12 @@
           "type",
           "element_hash",
           "message"
+        ],
+        "x-properties-order": [
+          "source",
+          "type",
+          "element_hash",
+          "message"
         ]
       },
       "PassportFile": {
@@ -5462,6 +6266,12 @@
           }
         },
         "required": [
+          "file_id",
+          "file_unique_id",
+          "file_size",
+          "file_date"
+        ],
+        "x-properties-order": [
           "file_id",
           "file_unique_id",
           "file_size",
@@ -5502,6 +6312,13 @@
           "file_unique_id",
           "width",
           "height"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "width",
+          "height",
+          "file_size"
         ]
       },
       "Poll": {
@@ -5579,6 +6396,21 @@
           "is_anonymous",
           "type",
           "allows_multiple_answers"
+        ],
+        "x-properties-order": [
+          "id",
+          "question",
+          "options",
+          "total_voter_count",
+          "is_closed",
+          "is_anonymous",
+          "type",
+          "allows_multiple_answers",
+          "correct_option_id",
+          "explanation",
+          "explanation_entities",
+          "open_period",
+          "close_date"
         ]
       },
       "PollAnswer": {
@@ -5604,6 +6436,11 @@
           "poll_id",
           "user",
           "option_ids"
+        ],
+        "x-properties-order": [
+          "poll_id",
+          "user",
+          "option_ids"
         ]
       },
       "PollOption": {
@@ -5622,6 +6459,10 @@
           }
         },
         "required": [
+          "text",
+          "voter_count"
+        ],
+        "x-properties-order": [
           "text",
           "voter_count"
         ]
@@ -5663,6 +6504,15 @@
           "currency",
           "total_amount",
           "invoice_payload"
+        ],
+        "x-properties-order": [
+          "id",
+          "from",
+          "currency",
+          "total_amount",
+          "invoice_payload",
+          "shipping_option_id",
+          "order_info"
         ]
       },
       "ProximityAlertTriggered": {
@@ -5681,6 +6531,11 @@
           }
         },
         "required": [
+          "traveler",
+          "watcher",
+          "distance"
+        ],
+        "x-properties-order": [
           "traveler",
           "watcher",
           "distance"
@@ -5721,6 +6576,13 @@
         },
         "required": [
           "keyboard"
+        ],
+        "x-properties-order": [
+          "keyboard",
+          "resize_keyboard",
+          "one_time_keyboard",
+          "input_field_placeholder",
+          "selective"
         ]
       },
       "ReplyKeyboardRemove": {
@@ -5738,6 +6600,10 @@
         },
         "required": [
           "remove_keyboard"
+        ],
+        "x-properties-order": [
+          "remove_keyboard",
+          "selective"
         ]
       },
       "Response": {
@@ -5767,7 +6633,11 @@
             "description": "In case of exceeding flood control, the number of seconds left to wait before the request can be repeated",
             "type": "integer"
           }
-        }
+        },
+        "x-properties-order": [
+          "migrate_to_chat_id",
+          "retry_after"
+        ]
       },
       "Result": {
         "type": "object",
@@ -5865,6 +6735,14 @@
           "street_line1",
           "street_line2",
           "post_code"
+        ],
+        "x-properties-order": [
+          "country_code",
+          "state",
+          "city",
+          "street_line1",
+          "street_line2",
+          "post_code"
         ]
       },
       "ShippingOption": {
@@ -5891,6 +6769,11 @@
           "id",
           "title",
           "prices"
+        ],
+        "x-properties-order": [
+          "id",
+          "title",
+          "prices"
         ]
       },
       "ShippingQuery": {
@@ -5913,6 +6796,12 @@
           }
         },
         "required": [
+          "id",
+          "from",
+          "invoice_payload",
+          "shipping_address"
+        ],
+        "x-properties-order": [
           "id",
           "from",
           "invoice_payload",
@@ -5972,6 +6861,18 @@
           "width",
           "height",
           "is_animated"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "width",
+          "height",
+          "is_animated",
+          "thumb",
+          "emoji",
+          "set_name",
+          "mask_position",
+          "file_size"
         ]
       },
       "StickerSet": {
@@ -6011,6 +6912,14 @@
           "is_animated",
           "contains_masks",
           "stickers"
+        ],
+        "x-properties-order": [
+          "name",
+          "title",
+          "is_animated",
+          "contains_masks",
+          "stickers",
+          "thumb"
         ]
       },
       "SuccessfulPayment": {
@@ -6049,6 +6958,15 @@
           "currency",
           "total_amount",
           "invoice_payload",
+          "telegram_payment_charge_id",
+          "provider_payment_charge_id"
+        ],
+        "x-properties-order": [
+          "currency",
+          "total_amount",
+          "invoice_payload",
+          "shipping_option_id",
+          "order_info",
           "telegram_payment_charge_id",
           "provider_payment_charge_id"
         ]
@@ -6103,6 +7021,22 @@
         },
         "required": [
           "update_id"
+        ],
+        "x-properties-order": [
+          "update_id",
+          "message",
+          "edited_message",
+          "channel_post",
+          "edited_channel_post",
+          "inline_query",
+          "chosen_inline_result",
+          "callback_query",
+          "shipping_query",
+          "pre_checkout_query",
+          "poll",
+          "poll_answer",
+          "my_chat_member",
+          "chat_member"
         ]
       },
       "User": {
@@ -6150,6 +7084,17 @@
           "id",
           "is_bot",
           "first_name"
+        ],
+        "x-properties-order": [
+          "id",
+          "is_bot",
+          "first_name",
+          "last_name",
+          "username",
+          "language_code",
+          "can_join_groups",
+          "can_read_all_group_messages",
+          "supports_inline_queries"
         ]
       },
       "UserProfilePhotos": {
@@ -6172,6 +7117,10 @@
           }
         },
         "required": [
+          "total_count",
+          "photos"
+        ],
+        "x-properties-order": [
           "total_count",
           "photos"
         ]
@@ -6212,6 +7161,15 @@
           "location",
           "title",
           "address"
+        ],
+        "x-properties-order": [
+          "location",
+          "title",
+          "address",
+          "foursquare_id",
+          "foursquare_type",
+          "google_place_id",
+          "google_place_type"
         ]
       },
       "Video": {
@@ -6266,6 +7224,17 @@
           "width",
           "height",
           "duration"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "width",
+          "height",
+          "duration",
+          "thumb",
+          "file_name",
+          "mime_type",
+          "file_size"
         ]
       },
       "VideoNote": {
@@ -6303,6 +7272,14 @@
           "file_unique_id",
           "length",
           "duration"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "length",
+          "duration",
+          "thumb",
+          "file_size"
         ]
       },
       "Voice": {
@@ -6336,6 +7313,13 @@
           "file_id",
           "file_unique_id",
           "duration"
+        ],
+        "x-properties-order": [
+          "file_id",
+          "file_unique_id",
+          "duration",
+          "mime_type",
+          "file_size"
         ]
       },
       "VoiceChatEnded": {
@@ -6351,6 +7335,9 @@
         },
         "required": [
           "duration"
+        ],
+        "x-properties-order": [
+          "duration"
         ]
       },
       "VoiceChatParticipantsInvited": {
@@ -6364,7 +7351,10 @@
               "$ref": "#/components/schemas/User"
             }
           }
-        }
+        },
+        "x-properties-order": [
+          "users"
+        ]
       },
       "VoiceChatScheduled": {
         "description": "This object represents a service message about a voice chat scheduled in the chat.",
@@ -6376,6 +7366,9 @@
           }
         },
         "required": [
+          "start_date"
+        ],
+        "x-properties-order": [
           "start_date"
         ]
       },
@@ -6428,6 +7421,16 @@
           "url",
           "has_custom_certificate",
           "pending_update_count"
+        ],
+        "x-properties-order": [
+          "url",
+          "has_custom_certificate",
+          "pending_update_count",
+          "ip_address",
+          "last_error_date",
+          "last_error_message",
+          "max_connections",
+          "allowed_updates"
         ]
       },
       "addStickerToSet": {
@@ -6462,6 +7465,14 @@
           "user_id",
           "name",
           "emojis"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "name",
+          "png_sticker",
+          "tgs_sticker",
+          "emojis",
+          "mask_position"
         ]
       },
       "answerCallbackQuery": {
@@ -6493,6 +7504,13 @@
         },
         "required": [
           "callback_query_id"
+        ],
+        "x-properties-order": [
+          "callback_query_id",
+          "text",
+          "show_alert",
+          "url",
+          "cache_time"
         ]
       },
       "answerInlineQuery": {
@@ -6536,6 +7554,15 @@
         "required": [
           "inline_query_id",
           "results"
+        ],
+        "x-properties-order": [
+          "inline_query_id",
+          "results",
+          "cache_time",
+          "is_personal",
+          "next_offset",
+          "switch_pm_text",
+          "switch_pm_parameter"
         ]
       },
       "answerPreCheckoutQuery": {
@@ -6558,6 +7585,11 @@
         "required": [
           "pre_checkout_query_id",
           "ok"
+        ],
+        "x-properties-order": [
+          "pre_checkout_query_id",
+          "ok",
+          "error_message"
         ]
       },
       "answerShippingQuery": {
@@ -6587,6 +7619,12 @@
         "required": [
           "shipping_query_id",
           "ok"
+        ],
+        "x-properties-order": [
+          "shipping_query_id",
+          "ok",
+          "shipping_options",
+          "error_message"
         ]
       },
       "banChatMember": {
@@ -6612,6 +7650,12 @@
         "required": [
           "chat_id",
           "user_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id",
+          "until_date",
+          "revoke_messages"
         ]
       },
       "copyMessage": {
@@ -6652,6 +7696,23 @@
             "description": "Mode for parsing entities in the new caption. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -6661,6 +7722,18 @@
           "chat_id",
           "from_chat_id",
           "message_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "from_chat_id",
+          "message_id",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "createChatInviteLink": {
@@ -6681,6 +7754,11 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "expire_date",
+          "member_limit"
         ]
       },
       "createNewStickerSet": {
@@ -6728,6 +7806,16 @@
           "name",
           "title",
           "emojis"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "name",
+          "title",
+          "png_sticker",
+          "tgs_sticker",
+          "emojis",
+          "contains_masks",
+          "mask_position"
         ]
       },
       "deleteChatPhoto": {
@@ -6740,6 +7828,9 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id"
         ]
       },
       "deleteChatStickerSet": {
@@ -6751,6 +7842,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -6769,6 +7863,10 @@
         "required": [
           "chat_id",
           "message_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id"
         ]
       },
       "deleteMyCommands": {
@@ -6782,7 +7880,11 @@
           "scope": {
             "$ref": "#/components/schemas/BotCommandScope"
           }
-        }
+        },
+        "x-properties-order": [
+          "scope",
+          "language_code"
+        ]
       },
       "deleteStickerFromSet": {
         "description": "Input for deleteStickerFromSet",
@@ -6795,6 +7897,9 @@
         },
         "required": [
           "sticker"
+        ],
+        "x-properties-order": [
+          "sticker"
         ]
       },
       "deleteWebhook": {
@@ -6805,7 +7910,10 @@
             "description": "Pass True to drop all pending updates",
             "type": "boolean"
           }
-        }
+        },
+        "x-properties-order": [
+          "drop_pending_updates"
+        ]
       },
       "editChatInviteLink": {
         "description": "Input for editChatInviteLink",
@@ -6830,6 +7938,12 @@
         "required": [
           "chat_id",
           "invite_link"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "invite_link",
+          "expire_date",
+          "member_limit"
         ]
       },
       "editMessageCaption": {
@@ -6866,7 +7980,16 @@
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
-        }
+        },
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "reply_markup"
+        ]
       },
       "editMessageLiveLocation": {
         "description": "Input for editMessageLiveLocation",
@@ -6910,6 +8033,17 @@
         "required": [
           "latitude",
           "longitude"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "latitude",
+          "longitude",
+          "horizontal_accuracy",
+          "heading",
+          "proximity_alert_radius",
+          "reply_markup"
         ]
       },
       "editMessageMedia": {
@@ -6936,6 +8070,13 @@
         },
         "required": [
           "media"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "media",
+          "reply_markup"
         ]
       },
       "editMessageReplyMarkup": {
@@ -6956,7 +8097,13 @@
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
-        }
+        },
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "reply_markup"
+        ]
       },
       "editMessageText": {
         "description": "Input for editMessageText",
@@ -7000,6 +8147,16 @@
         },
         "required": [
           "text"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "text",
+          "parse_mode",
+          "entities",
+          "disable_web_page_preview",
+          "reply_markup"
         ]
       },
       "exportChatInviteLink": {
@@ -7011,6 +8168,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -7037,6 +8197,12 @@
           "chat_id",
           "from_chat_id",
           "message_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "from_chat_id",
+          "disable_notification",
+          "message_id"
         ]
       },
       "getChat": {
@@ -7049,6 +8215,9 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id"
         ]
       },
       "getChatAdministrators": {
@@ -7060,6 +8229,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -7078,6 +8250,10 @@
         "required": [
           "chat_id",
           "user_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id"
         ]
       },
       "getChatMemberCount": {
@@ -7089,6 +8265,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -7102,6 +8281,9 @@
           }
         },
         "required": [
+          "file_id"
+        ],
+        "x-properties-order": [
           "file_id"
         ]
       },
@@ -7128,6 +8310,12 @@
         },
         "required": [
           "user_id"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "chat_id",
+          "message_id",
+          "inline_message_id"
         ]
       },
       "getMyCommands": {
@@ -7141,7 +8329,11 @@
           "scope": {
             "$ref": "#/components/schemas/BotCommandScope"
           }
-        }
+        },
+        "x-properties-order": [
+          "scope",
+          "language_code"
+        ]
       },
       "getStickerSet": {
         "description": "Input for getStickerSet",
@@ -7153,6 +8345,9 @@
           }
         },
         "required": [
+          "name"
+        ],
+        "x-properties-order": [
           "name"
         ]
       },
@@ -7182,7 +8377,13 @@
             "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only",
             "type": "integer"
           }
-        }
+        },
+        "x-properties-order": [
+          "offset",
+          "limit",
+          "timeout",
+          "allowed_updates"
+        ]
       },
       "getUserProfilePhotos": {
         "description": "Input for getUserProfilePhotos",
@@ -7206,6 +8407,11 @@
         },
         "required": [
           "user_id"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "offset",
+          "limit"
         ]
       },
       "leaveChat": {
@@ -7217,6 +8423,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -7239,6 +8448,11 @@
         "required": [
           "chat_id",
           "message_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "disable_notification"
         ]
       },
       "promoteChatMember": {
@@ -7300,6 +8514,21 @@
         "required": [
           "chat_id",
           "user_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id",
+          "is_anonymous",
+          "can_manage_chat",
+          "can_post_messages",
+          "can_edit_messages",
+          "can_delete_messages",
+          "can_manage_voice_chats",
+          "can_restrict_members",
+          "can_promote_members",
+          "can_change_info",
+          "can_invite_users",
+          "can_pin_messages"
         ]
       },
       "restrictChatMember": {
@@ -7325,6 +8554,12 @@
           "chat_id",
           "user_id",
           "permissions"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id",
+          "permissions",
+          "until_date"
         ]
       },
       "revokeChatInviteLink": {
@@ -7340,6 +8575,10 @@
           }
         },
         "required": [
+          "chat_id",
+          "invite_link"
+        ],
+        "x-properties-order": [
           "chat_id",
           "invite_link"
         ]
@@ -7391,6 +8630,23 @@
             "description": "Mode for parsing entities in the animation caption. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7409,6 +8665,21 @@
         "required": [
           "chat_id",
           "animation"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "animation",
+          "duration",
+          "width",
+          "height",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendAudio": {
@@ -7456,6 +8727,23 @@
             "description": "Performer",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7472,6 +8760,21 @@
         "required": [
           "chat_id",
           "audio"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "audio",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "duration",
+          "performer",
+          "title",
+          "thumb",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendChatAction": {
@@ -7487,6 +8790,10 @@
           }
         },
         "required": [
+          "chat_id",
+          "action"
+        ],
+        "x-properties-order": [
           "chat_id",
           "action"
         ]
@@ -7518,6 +8825,23 @@
             "description": "Contact's phone number",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7531,6 +8855,17 @@
           "chat_id",
           "phone_number",
           "first_name"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "phone_number",
+          "first_name",
+          "last_name",
+          "vcard",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendDice": {
@@ -7552,6 +8887,23 @@
             "description": "Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”, and values 1-64 for “”. Defaults to “”",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7559,6 +8911,14 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "emoji",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendDocument": {
@@ -7600,6 +8960,23 @@
             "description": "Mode for parsing entities in the document caption. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7612,6 +8989,19 @@
         "required": [
           "chat_id",
           "document"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "document",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "disable_content_type_detection",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendGame": {
@@ -7645,6 +9035,14 @@
         "required": [
           "chat_id",
           "game_short_name"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "game_short_name",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendInvoice": {
@@ -7777,6 +9175,34 @@
           "provider_token",
           "currency",
           "prices"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "title",
+          "description",
+          "payload",
+          "provider_token",
+          "currency",
+          "prices",
+          "max_tip_amount",
+          "suggested_tip_amounts",
+          "start_parameter",
+          "provider_data",
+          "photo_url",
+          "photo_size",
+          "photo_width",
+          "photo_height",
+          "need_name",
+          "need_phone_number",
+          "need_email",
+          "need_shipping_address",
+          "send_phone_number_to_provider",
+          "send_email_to_provider",
+          "is_flexible",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendLocation": {
@@ -7818,6 +9244,23 @@
             "description": "For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified",
             "type": "integer"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7827,6 +9270,19 @@
           "chat_id",
           "latitude",
           "longitude"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "latitude",
+          "longitude",
+          "horizontal_accuracy",
+          "live_period",
+          "heading",
+          "proximity_alert_radius",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendMediaGroup": {
@@ -7846,7 +9302,32 @@
           },
           "media": {
             "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items",
-            "type": "array"
+            "type": "array",
+            "items": {
+              "discriminator": {
+                "propertyName": "type",
+                "mapping": {
+                  "audio": "InputMediaAudio",
+                  "document": "InputMediaDocument",
+                  "photo": "InputMediaPhoto",
+                  "video": "InputMediaVideo"
+                }
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/InputMediaAudio"
+                },
+                {
+                  "$ref": "#/components/schemas/InputMediaDocument"
+                },
+                {
+                  "$ref": "#/components/schemas/InputMediaPhoto"
+                },
+                {
+                  "$ref": "#/components/schemas/InputMediaVideo"
+                }
+              ]
+            }
           },
           "reply_to_message_id": {
             "description": "If the messages are a reply, ID of the original message",
@@ -7856,6 +9337,13 @@
         "required": [
           "chat_id",
           "media"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "media",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply"
         ]
       },
       "sendMessage": {
@@ -7888,6 +9376,23 @@
             "description": "Mode for parsing entities in the message text. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7902,6 +9407,17 @@
         "required": [
           "chat_id",
           "text"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "text",
+          "parse_mode",
+          "entities",
+          "disable_web_page_preview",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendPhoto": {
@@ -7939,6 +9455,23 @@
             "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7947,6 +9480,17 @@
         "required": [
           "chat_id",
           "photo"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "photo",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendPoll": {
@@ -8017,6 +9561,23 @@
             "maxLength": 300,
             "minLength": 1
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8030,6 +9591,25 @@
           "chat_id",
           "question",
           "options"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "question",
+          "options",
+          "is_anonymous",
+          "type",
+          "allows_multiple_answers",
+          "correct_option_id",
+          "explanation",
+          "explanation_parse_mode",
+          "explanation_entities",
+          "open_period",
+          "close_date",
+          "is_closed",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendSticker": {
@@ -8047,6 +9627,23 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8059,6 +9656,14 @@
         "required": [
           "chat_id",
           "sticker"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "sticker",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendVenue": {
@@ -8104,6 +9709,23 @@
             "description": "Longitude of the venue",
             "type": "number"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8119,6 +9741,21 @@
           "longitude",
           "title",
           "address"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "latitude",
+          "longitude",
+          "title",
+          "address",
+          "foursquare_id",
+          "foursquare_type",
+          "google_place_id",
+          "google_place_type",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendVideo": {
@@ -8164,6 +9801,23 @@
             "description": "Mode for parsing entities in the video caption. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8190,6 +9844,22 @@
         "required": [
           "chat_id",
           "video"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "video",
+          "duration",
+          "width",
+          "height",
+          "thumb",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "supports_streaming",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendVideoNote": {
@@ -8217,6 +9887,23 @@
             "description": "Video width and height, i.e. diameter of the video message",
             "type": "integer"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8233,6 +9920,17 @@
         "required": [
           "chat_id",
           "video_note"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "video_note",
+          "duration",
+          "length",
+          "thumb",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "sendVoice": {
@@ -8272,6 +9970,23 @@
             "description": "Mode for parsing entities in the voice message caption. See formatting options for more details",
             "type": "string"
           },
+          "reply_markup": {
+            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InlineKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+              },
+              {
+                "$ref": "#/components/schemas/ReplyKeyboardRemove"
+              },
+              {
+                "$ref": "#/components/schemas/ForceReply"
+              }
+            ]
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8284,6 +9999,18 @@
         "required": [
           "chat_id",
           "voice"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "voice",
+          "caption",
+          "parse_mode",
+          "caption_entities",
+          "duration",
+          "disable_notification",
+          "reply_to_message_id",
+          "allow_sending_without_reply",
+          "reply_markup"
         ]
       },
       "setChatAdministratorCustomTitle": {
@@ -8307,6 +10034,11 @@
           "chat_id",
           "user_id",
           "custom_title"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id",
+          "custom_title"
         ]
       },
       "setChatDescription": {
@@ -8324,6 +10056,10 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "description"
         ]
       },
       "setChatPermissions": {
@@ -8338,6 +10074,10 @@
           }
         },
         "required": [
+          "chat_id",
+          "permissions"
+        ],
+        "x-properties-order": [
           "chat_id",
           "permissions"
         ]
@@ -8357,6 +10097,10 @@
         "required": [
           "chat_id",
           "photo"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "photo"
         ]
       },
       "setChatStickerSet": {
@@ -8372,6 +10116,10 @@
           }
         },
         "required": [
+          "chat_id",
+          "sticker_set_name"
+        ],
+        "x-properties-order": [
           "chat_id",
           "sticker_set_name"
         ]
@@ -8391,6 +10139,10 @@
           }
         },
         "required": [
+          "chat_id",
+          "title"
+        ],
+        "x-properties-order": [
           "chat_id",
           "title"
         ]
@@ -8431,6 +10183,15 @@
         "required": [
           "user_id",
           "score"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "score",
+          "force",
+          "disable_edit_message",
+          "chat_id",
+          "message_id",
+          "inline_message_id"
         ]
       },
       "setMyCommands": {
@@ -8454,6 +10215,11 @@
         },
         "required": [
           "commands"
+        ],
+        "x-properties-order": [
+          "commands",
+          "scope",
+          "language_code"
         ]
       },
       "setPassportDataErrors": {
@@ -8475,6 +10241,10 @@
         "required": [
           "user_id",
           "errors"
+        ],
+        "x-properties-order": [
+          "user_id",
+          "errors"
         ]
       },
       "setStickerPositionInSet": {
@@ -8491,6 +10261,10 @@
           }
         },
         "required": [
+          "sticker",
+          "position"
+        ],
+        "x-properties-order": [
           "sticker",
           "position"
         ]
@@ -8515,6 +10289,11 @@
         "required": [
           "name",
           "user_id"
+        ],
+        "x-properties-order": [
+          "name",
+          "user_id",
+          "thumb"
         ]
       },
       "setWebhook": {
@@ -8552,6 +10331,14 @@
         },
         "required": [
           "url"
+        ],
+        "x-properties-order": [
+          "url",
+          "certificate",
+          "ip_address",
+          "max_connections",
+          "allowed_updates",
+          "drop_pending_updates"
         ]
       },
       "stopMessageLiveLocation": {
@@ -8572,7 +10359,13 @@
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
-        }
+        },
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "inline_message_id",
+          "reply_markup"
+        ]
       },
       "stopPoll": {
         "description": "Input for stopPoll",
@@ -8592,6 +10385,11 @@
         "required": [
           "chat_id",
           "message_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id",
+          "reply_markup"
         ]
       },
       "unbanChatMember": {
@@ -8613,6 +10411,11 @@
         "required": [
           "chat_id",
           "user_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "user_id",
+          "only_if_banned"
         ]
       },
       "unpinAllChatMessages": {
@@ -8624,6 +10427,9 @@
           }
         },
         "required": [
+          "chat_id"
+        ],
+        "x-properties-order": [
           "chat_id"
         ]
       },
@@ -8641,6 +10447,10 @@
         },
         "required": [
           "chat_id"
+        ],
+        "x-properties-order": [
+          "chat_id",
+          "message_id"
         ]
       },
       "uploadStickerFile": {
@@ -8658,6 +10468,10 @@
           }
         },
         "required": [
+          "user_id",
+          "png_sticker"
+        ],
+        "x-properties-order": [
           "user_id",
           "png_sticker"
         ]

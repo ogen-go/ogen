@@ -209,6 +209,12 @@ type Media struct {
 	Schema Schema `json:"schema"`
 }
 
+// Discriminator discriminates types for OneOf, AllOf, AnyOf.
+type Discriminator struct {
+	PropertyName string            `json:"propertyName"`
+	Mapping      map[string]string `json:"mapping,omitempty"`
+}
+
 // The Schema Object allows the definition of input and output data types.
 // These types can be objects, but also primitives and arrays.
 type Schema struct {
@@ -255,6 +261,9 @@ type Schema struct {
 
 	// AnyOf validates the value against any (one or more) of the subschemas
 	AnyOf []Schema `json:"anyOf,omitempty"` // TODO: implement.
+
+	// Discriminator for subschemas.
+	Discriminator *Discriminator `json:"discriminator,omitempty"`
 
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
@@ -405,6 +414,7 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 		AllOf            []Schema          `json:"allOf,omitempty"`
 		OneOf            []Schema          `json:"oneOf,omitempty"`
 		AnyOf            []Schema          `json:"anyOf,omitempty"`
+		Discriminator    *Discriminator    `json:"discriminator,omitempty"`
 		Enum             []json.RawMessage `json:"enum,omitempty"`
 		MultipleOf       *int              `json:"multipleOf,omitempty"`
 		Maximum          *int64            `json:"maximum,omitempty"`

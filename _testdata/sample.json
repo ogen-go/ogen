@@ -331,20 +331,54 @@
           }
         ]
       },
+      "DescriptionDetailed": {
+        "type": "object",
+        "required": [
+          "name",
+          "count"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "DescriptionSimple": {
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          }
+        }
+      },
       "Data": {
         "type": "object",
         "required": [
           "id",
           "email",
           "format",
-          "hostname"
+          "hostname",
+          "description"
         ],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/ID"
           },
           "description": {
-            "type": "string"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DescriptionDetailed"
+              },
+              {
+                "$ref": "#/components/schemas/DescriptionSimple"
+              }
+            ]
           },
           "email": {
             "type": "string",

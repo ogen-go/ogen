@@ -13,6 +13,12 @@ const (
 	Boolean SchemaType = "boolean"
 )
 
+// Discriminator discriminates types for OneOf, AllOf, AnyOf.
+type Discriminator struct {
+	PropertyName string
+	Mapping      map[string]string
+}
+
 // Schema is an OpenAPI JSON Schema.
 type Schema struct {
 	Type        SchemaType
@@ -26,9 +32,10 @@ type Schema struct {
 
 	Nullable bool // Whether schema is nullable or not. Any types.
 
-	OneOf []*Schema
-	AnyOf []*Schema
-	AllOf []*Schema
+	OneOf         []*Schema
+	AnyOf         []*Schema
+	AllOf         []*Schema
+	Discriminator *Discriminator
 
 	// Numeric validation (Integer, Number).
 	Maximum          *int64

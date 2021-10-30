@@ -111,8 +111,10 @@ func TestJSONExample(t *testing.T) {
 		IPV4:         net.IPv4(127, 0, 0, 1),
 		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 		Next: api.NewOptData(api.Data{
-			Description: api.NewOptString("Foo"),
-			ID:          api.NewIntID(10),
+			Description: api.NewDescriptionSimpleDataDescription(api.DescriptionSimple{
+				Description: "foo",
+			}),
+			ID: api.NewIntID(10),
 		}),
 	}
 	t.Logf("%s", json.Encode(pet))

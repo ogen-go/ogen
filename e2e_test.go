@@ -182,11 +182,13 @@ func TestIntegration(t *testing.T) {
 				{"Baz"},
 			},
 			Next: api.NewOptData(api.Data{
-				Description: api.NewOptString("Foo"),
-				ID:          api.NewIntID(10),
-				Email:       "foo@example.com",
-				Format:      "1-2",
-				Hostname:    "example.org",
+				Description: api.NewDescriptionSimpleDataDescription(api.DescriptionSimple{
+					Description: "foo",
+				}),
+				ID:       api.NewIntID(10),
+				Email:    "foo@example.com",
+				Format:   "1-2",
+				Hostname: "example.org",
 			}),
 		}
 
