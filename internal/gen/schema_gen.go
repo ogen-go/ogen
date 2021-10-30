@@ -274,12 +274,15 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				uniq[s.Name][f.Name] = struct{}{}
 			}
 		}
-		for k, f := range uniq {
-			for otherK, otherF := range uniq {
+		for _, s := range sum.SumOf {
+			k := s.Name
+			f := uniq[k]
+			for _, otherS := range sum.SumOf {
+				otherK := otherS.Name
 				if otherK == k {
 					continue
 				}
-				for otherField := range otherF {
+				for otherField := range uniq[otherK] {
 					delete(f, otherField)
 				}
 			}
@@ -290,7 +293,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			Unique []string
 		}
 		var variants []sumVariant
-		for k, f := range uniq {
+		for _, s := range sum.SumOf {
+			k := s.Name
+			f := uniq[k]
 			v := sumVariant{
 				Name: k,
 			}
