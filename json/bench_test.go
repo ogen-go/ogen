@@ -22,19 +22,6 @@ func (w World) String() string {
 	return fmt.Sprintf("id=%d n=%d msg=%s", w.ID, w.RandomNumber, w.Message)
 }
 
-type bufferWriter struct {
-	Data []byte
-}
-
-func (b *bufferWriter) Reset() {
-	b.Data = b.Data[:0]
-}
-
-func (b *bufferWriter) Write(p []byte) (n int, err error) {
-	b.Data = append(b.Data, p...)
-	return len(p), nil
-}
-
 type WorldData struct {
 	Value World
 	Raw   RawMessage
