@@ -9,100 +9,82 @@
 
 func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 	var params {{ $op.Name }}Params
-	{{- range $p := $op.Params }}
+	{{- range $p := $op.Params }}{{/* Range params */}}
 	// Decode param "{{ $p.Spec.Name }}" located in "{{ $p.Spec.In }}".
-	if err := func() error {
-		{{- if eq $p.Spec.In "Query" }}
+	{{- if eq $p.Spec.In "Query" }}{{/* Switch location */}}
+	{
 		values, ok := r.URL.Query()["{{ $p.Spec.Name }}"]
-		if !ok {
-			{{- if $p.Spec.Required }}
-			return fmt.Errorf("query parameter '{{ $p.Spec.Name}}' not specified")
-			{{- else }}
-			return nil
-			{{- end }}
-		}
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values: values,
+				Style: uri.QueryStyle{{ pascalMP $p.Spec.Style }},
+				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+			})
 
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values: values,
-			Style: uri.QueryStyle{{ pascalMP $p.Spec.Style }},
-			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-		})
-
-		{{ template "decode_param" $p.Type }}
-		{{- else if eq $p.Spec.In "Path" }}
+			{{ template "decode_param" $p.Type }}
+			params.{{ $p.Name }} = v
+		} {{- if $p.Spec.Required }} else {
+			return params, fmt.Errorf("query parameter '{{ $p.Spec.Name}}' not specified")
+		} {{- end }}
+	}
+	{{- else if eq $p.Spec.In "Path" }}
+	{
 		param := chi.URLParam(r, "{{ $p.Spec.Name }}")
-		if len(param) == 0 {
-			{{- if $p.Spec.Required }}
-			return fmt.Errorf("path parameter '{{ $p.Spec.Name}}' not specified")
-			{{- else }}
-			return nil
-			{{- end }}
-		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param: "{{ $p.Spec.Name}}",
+				Value: param,
+				Style: uri.PathStyle{{ pascalMP $p.Spec.Style }},
+				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+			})
 
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param: "{{ $p.Spec.Name}}",
-			Value: param,
-			Style: uri.PathStyle{{ pascalMP $p.Spec.Style }},
-			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-		})
-
-		{{ template "decode_param" $p.Type }}
-		{{- else if eq $p.Spec.In "Header" }}
-
+			{{ template "decode_param" $p.Type }}
+			params.{{ $p.Name }} = v
+		} {{ if $p.Spec.Required }} else {
+			return params, fmt.Errorf("path parameter '{{ $p.Spec.Name}}' not specified")
+		} {{ end }}
+	}
+	{{- else if eq $p.Spec.In "Header" }}
+	{
 		{{- if eq $p.Type.Kind "array" }}
 		param := r.Header.Values("{{ $p.Spec.Name }}")
-		{{- else if eq $p.Type.Kind "alias" }}
-			{{- if eq $p.Type.AliasTo.Kind "array" }}
-			param := r.Header.Values("{{ $p.Spec.Name }}")
-			{{- else }}
-			param := r.Header.Get("{{ $p.Spec.Name }}")
-			{{- end }}
 		{{- else }}
 		param := r.Header.Get("{{ $p.Spec.Name }}")
 		{{- end }}
+		if len(param) > 0 {
+			v, err := conv.{{ $p.Type.FromString }}(param)
+			if err != nil {
+				return params, fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
+			}
 
-		if len(param) == 0 {
-			{{- if $p.Spec.Required }}
-			return fmt.Errorf("header parameter '{{ $p.Spec.Name}}' not specified")
-			{{- else }}
-			return nil
-			{{- end }}
-		}
-
-		v, err := conv.{{ $p.Type.FromString }}(param)
-		if err != nil {
-			return fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
-		}
-		{{- else if eq $p.Spec.In "Cookie" }}
+			params.{{ $p.Name }} = v
+		} {{ if $p.Spec.Required }} else {
+			return params, fmt.Errorf("header parameter '{{ $p.Spec.Name}}' not specified")
+		} {{ end }}
+	}
+	{{- else if eq $p.Spec.In "Cookie" }}
+	{
 		c, err := r.Cookie("{{ $p.Spec.Name }}")
 		if err != nil {
-			return fmt.Errorf("get cookie '{{ $p.Spec.Name }}': %w", err)
+			return params, fmt.Errorf("get cookie '{{ $p.Spec.Name }}': %w", err)
 		}
 
 		param := c.Value
-		if len(param) == 0 {
-			{{- if $p.Spec.Required }}
-			return fmt.Errorf("cookie parameter '{{ $p.Spec.Name}}' not specified")
-			{{- else }}
-			return nil
-			{{- end }}
-		}
+		if len(param) > 0 {
+			v, err := conv.{{ $p.Type.FromString }}(param)
+			if err != nil {
+				return params, fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
+			}
 
-		v, err := conv.{{ $p.Type.FromString }}(param)
-		if err != nil {
-			return fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
-		}
-
-		{{- else }}
-		unsupported parameter location: {{ $p.Spec.In }}
-		{{- end }}
-
-		params.{{ $p.Name }} = {{ $p.Type.Go }}(v)
-		return nil
-	}(); err != nil {
-		return params, err
+			params.{{ $p.Name }} = v
+		} {{ if $p.Spec.Required }} else {
+			return params, fmt.Errorf("cookie parameter '{{ $p.Spec.Name}}' not specified")
+		} {{ end }}
 	}
-	{{- end }}
+	{{- else }}
+	unsupported parameter location: {{ $p.Spec.In }}
+	{{- end }}{{/* Switch location */}}
+	{{- end }}{{/* Range params */}}
 	return params, nil
 }
 
@@ -118,11 +100,11 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 	rawParam, err := d.DecodeString()
 	{{- end }}
 	if err != nil {
-		return err
+		return params, err
 	}
 
 	v, err := conv.{{ .FromString }}(rawParam)
 	if err != nil {
-		return err
+		return params, err
 	}
 {{- end }}
