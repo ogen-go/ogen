@@ -10,18 +10,21 @@ import (
 func TestQueryDecoder(t *testing.T) {
 	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
+			Param   string
 			Input   []string
 			Expect  string
 			Style   QueryStyle
 			Explode bool
 		}{
 			{
+				Param:   "id",
 				Input:   []string{"3"},
 				Expect:  "3",
 				Style:   QueryStyleForm,
 				Explode: true,
 			},
 			{
+				Param:   "id",
 				Input:   []string{"3"},
 				Expect:  "3",
 				Style:   QueryStyleForm,
@@ -31,6 +34,7 @@ func TestQueryDecoder(t *testing.T) {
 
 		for i, test := range tests {
 			result, err := NewQueryDecoder(QueryDecoderConfig{
+				Param:   test.Param,
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
@@ -42,24 +46,28 @@ func TestQueryDecoder(t *testing.T) {
 
 	t.Run("Array", func(t *testing.T) {
 		tests := []struct {
+			Param   string
 			Input   []string
 			Expect  []string
 			Style   QueryStyle
 			Explode bool
 		}{
 			{
+				Param:   "id",
 				Input:   []string{"a", "b", "c"},
 				Expect:  []string{"a", "b", "c"},
 				Style:   QueryStyleForm,
 				Explode: true,
 			},
 			{
+				Param:   "id",
 				Input:   []string{"a,b,c"},
 				Expect:  []string{"a", "b", "c"},
 				Style:   QueryStyleForm,
 				Explode: false,
 			},
 			{
+				Param:   "id",
 				Input:   []string{"a", "b", "c"},
 				Expect:  []string{"a", "b", "c"},
 				Style:   QueryStyleSpaceDelimited,
@@ -72,12 +80,14 @@ func TestQueryDecoder(t *testing.T) {
 			// 	Explode: false,
 			// },
 			{
+				Param:   "id",
 				Input:   []string{"a", "b", "c"},
 				Expect:  []string{"a", "b", "c"},
 				Style:   QueryStylePipeDelimited,
 				Explode: true,
 			},
 			{
+				Param:   "id",
 				Input:   []string{"a|b|c"},
 				Expect:  []string{"a", "b", "c"},
 				Style:   QueryStylePipeDelimited,
@@ -87,12 +97,69 @@ func TestQueryDecoder(t *testing.T) {
 
 		for i, test := range tests {
 			result, err := NewQueryDecoder(QueryDecoderConfig{
+				Param:   test.Param,
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
 			}).DecodeArray()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+		}
+	})
+
+	t.Run("Object", func(t *testing.T) {
+		tests := []struct {
+			Param   string
+			Input   []string
+			Expect  []Field
+			Style   QueryStyle
+			Explode bool
+		}{
+			{
+				Param:   "id",
+				Input:   []string{"role=admin", "firstName=Alex"},
+				Style:   QueryStyleForm,
+				Explode: true,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   []string{"id=role,admin,firstName,Alex"},
+				Style:   QueryStyleForm,
+				Explode: false,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   []string{"id[role]=admin", "id[firstName]=Alex"},
+				Style:   QueryStyleDeepObject,
+				Explode: true,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+		}
+
+		for i, test := range tests {
+			var fields []Field
+			err := NewQueryDecoder(QueryDecoderConfig{
+				Param:   test.Param,
+				Values:  test.Input,
+				Style:   test.Style,
+				Explode: test.Explode,
+			}).DecodeObject(func(field, value string) error {
+				fields = append(fields, Field{field, value})
+				return nil
+			})
+			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, fields, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }
