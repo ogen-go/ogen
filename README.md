@@ -39,6 +39,9 @@ go get github.com/ogen-go/ogen
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
 * Generated sum types for oneOf
+  * Primitive types (`string`, `number`) are detected by type
+  * Discriminator field is used if defined in schema
+  * Type is inferred by unique fields if possible
 * OpenTelemetry tracing and metrics
 
 Example generated structure from schema:
