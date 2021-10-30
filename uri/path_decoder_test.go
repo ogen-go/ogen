@@ -8,7 +8,7 @@ import (
 )
 
 func TestPathDecoder(t *testing.T) {
-	t.Run("String", func(t *testing.T) {
+	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   string
@@ -65,14 +65,14 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeString()
+			}).DecodeValue()
 
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
-	t.Run("Strings", func(t *testing.T) {
+	t.Run("Array", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   string
@@ -130,7 +130,7 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeStrings()
+			}).DecodeArray()
 
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))

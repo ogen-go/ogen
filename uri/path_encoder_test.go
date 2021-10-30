@@ -8,7 +8,7 @@ import (
 )
 
 func TestPathEncoder(t *testing.T) {
-	t.Run("String", func(t *testing.T) {
+	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   string
@@ -65,12 +65,12 @@ func TestPathEncoder(t *testing.T) {
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeString(test.Input)
+			}).EncodeValue(test.Input)
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
-	t.Run("Strings", func(t *testing.T) {
+	t.Run("Array", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   []string
@@ -127,7 +127,7 @@ func TestPathEncoder(t *testing.T) {
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeStrings(test.Input)
+			}).EncodeArray(test.Input)
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})

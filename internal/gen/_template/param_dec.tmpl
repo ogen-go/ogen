@@ -95,9 +95,9 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 {{ define "decode_param" }}
 	{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 	{{- if eq .Kind "array" }}
-	rawParam, err := d.DecodeStrings()
+	rawParam, err := d.DecodeArray()
 	{{- else }}
-	rawParam, err := d.DecodeString()
+	rawParam, err := d.DecodeValue()
 	{{- end }}
 	if err != nil {
 		return params, err

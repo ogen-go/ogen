@@ -14,9 +14,9 @@ u.Path += "{{ $part.Raw }}"
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
     {{- if eq $param.Type.Kind "array" }}
-    u.Path += e.EncodeStrings(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
+    u.Path += e.EncodeArray(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
     {{- else }}
-    u.Path += e.EncodeString(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
+    u.Path += e.EncodeValue(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
     {{- end }}
 }
 {{- end }}
@@ -35,9 +35,9 @@ q := u.Query()
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
     {{- if eq $param.Type.Kind "array" }}
-    q["{{ $param.Spec.Name }}"] = e.EncodeStrings(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
+    q["{{ $param.Spec.Name }}"] = e.EncodeArray(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
     {{- else }}
-    q.Set("{{ $param.Spec.Name }}", e.EncodeString(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})))
+    q.Set("{{ $param.Spec.Name }}", e.EncodeValue(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})))
     {{- end }}
 }
 {{- end }}{{/* Range over params */}}

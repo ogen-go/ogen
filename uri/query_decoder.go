@@ -35,7 +35,7 @@ func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
 	}
 }
 
-func (d *QueryDecoder) DecodeString() (string, error) {
+func (d *QueryDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case QueryStyleForm:
 		if len(d.src) != 1 {
@@ -51,7 +51,7 @@ func (d *QueryDecoder) DecodeString() (string, error) {
 	}
 }
 
-func (d *QueryDecoder) DecodeStrings() ([]string, error) {
+func (d *QueryDecoder) DecodeArray() ([]string, error) {
 	if len(d.src) < 1 {
 		return nil, fmt.Errorf("empty array")
 	}

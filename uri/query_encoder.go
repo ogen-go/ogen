@@ -22,7 +22,7 @@ func NewQueryEncoder(cfg QueryEncoderConfig) *QueryEncoder {
 	}
 }
 
-func (e *QueryEncoder) EncodeString(v string) string {
+func (e *QueryEncoder) EncodeValue(v string) string {
 	switch e.style {
 	case QueryStyleForm:
 		return v
@@ -35,7 +35,7 @@ func (e *QueryEncoder) EncodeString(v string) string {
 	}
 }
 
-func (e *QueryEncoder) EncodeStrings(vs []string) []string {
+func (e *QueryEncoder) EncodeArray(vs []string) []string {
 	switch e.style {
 	case QueryStyleForm:
 		if e.explode {

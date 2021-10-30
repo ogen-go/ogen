@@ -36,7 +36,7 @@ func NewPathDecoder(cfg PathDecoderConfig) PathDecoder {
 	}
 }
 
-func (d PathDecoder) DecodeString() (string, error) {
+func (d PathDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case PathStyleSimple:
 		return d.cur.readAll()
@@ -68,7 +68,7 @@ func (d PathDecoder) DecodeString() (string, error) {
 	}
 }
 
-func (d PathDecoder) DecodeStrings() ([]string, error) {
+func (d PathDecoder) DecodeArray() ([]string, error) {
 	var values []string
 	switch d.style {
 	case PathStyleSimple:

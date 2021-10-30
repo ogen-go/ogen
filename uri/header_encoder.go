@@ -10,11 +10,11 @@ type HeaderEncoderConfig struct {
 	Explode bool
 }
 
-func (e HeaderEncoder) EncodeString(v string) string {
+func (e HeaderEncoder) EncodeValue(v string) string {
 	return v
 }
 
-func (e HeaderEncoder) EncodeStrings(v []string) string {
+func (e HeaderEncoder) EncodeArray(v []string) string {
 	return strings.Join(v, ",")
 }
 

@@ -8,7 +8,7 @@ import (
 )
 
 func TestQueryDecoder(t *testing.T) {
-	t.Run("String", func(t *testing.T) {
+	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
 			Input   []string
 			Expect  string
@@ -34,13 +34,13 @@ func TestQueryDecoder(t *testing.T) {
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeString()
+			}).DecodeValue()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
-	t.Run("StringArray", func(t *testing.T) {
+	t.Run("Array", func(t *testing.T) {
 		tests := []struct {
 			Input   []string
 			Expect  []string
@@ -90,7 +90,7 @@ func TestQueryDecoder(t *testing.T) {
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeStrings()
+			}).DecodeArray()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}

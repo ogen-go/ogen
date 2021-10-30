@@ -12,11 +12,11 @@ type HeaderDecoderConfig struct {
 	Explode bool
 }
 
-func (d HeaderDecoder) DecodeString() (string, error) {
+func (d HeaderDecoder) DecodeValue() (string, error) {
 	return d.value, nil
 }
 
-func (d HeaderDecoder) DecodeStrings() ([]string, error) {
+func (d HeaderDecoder) DecodeArray() ([]string, error) {
 	return strings.Split(d.value, ","), nil
 }
 

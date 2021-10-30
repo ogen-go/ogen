@@ -22,7 +22,7 @@ func NewPathEncoder(cfg PathEncoderConfig) PathEncoder {
 	}
 }
 
-func (e PathEncoder) EncodeString(v string) string {
+func (e PathEncoder) EncodeValue(v string) string {
 	switch e.style {
 	case PathStyleSimple:
 		return v
@@ -35,7 +35,7 @@ func (e PathEncoder) EncodeString(v string) string {
 	}
 }
 
-func (e PathEncoder) EncodeStrings(vs []string) string {
+func (e PathEncoder) EncodeArray(vs []string) string {
 	switch e.style {
 	case PathStyleSimple:
 		var result []rune
