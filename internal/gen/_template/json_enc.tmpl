@@ -7,7 +7,7 @@
 more.More()
 {{- end -}}
 {{- if $.Tag.JSON  }}
-w.ObjField("{{ $.Tag.JSON }}")
+e.ObjField("{{ $.Tag.JSON }}")
 {{- end }}
 {{- end -}}
 
@@ -18,11 +18,11 @@ w.ObjField("{{ $.Tag.JSON }}")
 {{- if $v.Optional -}}
   if {{ $.Var }}.Set {
     {{- template "enc_json_start" $ }}
-    {{ $.Var }}.WriteJSON(w{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+    {{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
   }
 {{- else -}}
   {{- template "enc_json_start" $ }}
-  {{ $.Var }}.WriteJSON(w{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+  {{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
 {{- end -}}
 {{- end }}
 
@@ -30,11 +30,11 @@ w.ObjField("{{ $.Tag.JSON }}")
 {{/* Encode array with all elements */}}
 {{- define "enc_json_array_elems" }}
   more.Down()
-  w.ArrStart()
+  e.ArrStart()
   for _, elem := range {{ $.Var }} {
     {{- template "enc_json" array_elem $.Type.Item }}
   }
-  w.ArrEnd()
+  e.ArrEnd()
   more.Up()
 {{- end }}
 
@@ -52,7 +52,7 @@ w.ObjField("{{ $.Tag.JSON }}")
 {{- else if eq $t.NilSemantic "null" -}}
   {{- template "enc_json_start" $ }}
   if {{ $.Var }} == nil {
-    w.Null()
+    e.Null()
   } else {
     {{- template "enc_json_array_elems" $ -}}
   }
@@ -61,24 +61,24 @@ Unexpected nil semantic
 {{- end -}}
 {{- end }}
 
-{{/* Encode value that implements json.Writer with respect to nil semantic */}}
+{{/* Encode value that implements json.Encoder with respect to nil semantic */}}
 {{- define "enc_json_value" -}}
 {{- $t := $.Type -}}
 {{- if or (eq $t.NilSemantic "invalid") (eq $t.NilSemantic "optional") -}}
   if {{ $.Var }} != nil {
     {{- template "enc_json_start" $ }}
-    {{ $.Var }}.WriteJSON(w)
+    {{ $.Var }}.WriteJSON(e)
   }
 {{- else if eq $t.NilSemantic "null" -}}
   {{- template "enc_json_start" $ }}
   if {{ $.Var }} == nil {
-    w.Null()
+    e.Null()
   } else {
-    {{ $.Var }}.WriteJSON(w)
+    {{ $.Var }}.WriteJSON(e)
   }
 {{- else -}}
   {{- template "enc_json_start" $ }}
-  {{ $.Var }}.WriteJSON(w)
+  {{ $.Var }}.WriteJSON(e)
 {{- end -}}
 {{- end }}
 
@@ -94,10 +94,10 @@ Unexpected nil semantic
         {{- template "enc_json_array" $ }}
     {{- else if $j.Format -}}
         {{- template "enc_json_start" $ }}
-        json.Write{{ $j.Format }}(w, {{ $.Var }})
+        json.Write{{ $j.Format }}(e, {{ $.Var }})
     {{- else if $j.Write -}}
         {{- template "enc_json_start" $ }}
-        w.{{ $j.Write }}({{ $.Var }})
+        e.{{ $j.Write }}({{ $.Var }})
     {{- else -}}
         {{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
         // Unsupported kind "{{ $t.Kind  }}".

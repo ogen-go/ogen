@@ -1,7 +1,6 @@
 package ogen
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -162,14 +161,15 @@ func BenchmarkIntegration(b *testing.B) {
 	b.Run("Manual", func(b *testing.B) {
 		// Test with some manual optimizations.
 		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			jw := jx.GetWriter()
-			jw.Reset(w)
-			jw.ObjStart()
-			jw.ObjField("message")
-			jw.Str("Hello, world!")
-			jw.ObjEnd()
-			_ = jw.Flush()
-			jx.PutWriter(jw)
+			e := jx.GetEncoder()
+			e.ObjStart()
+			e.ObjField("message")
+			e.Str("Hello, world!")
+			e.ObjEnd()
+			if _, err := e.WriteTo(w); err != nil {
+				b.Error(err)
+			}
+			jx.PutEncoder(e)
 		}))
 		defer s.Close()
 
@@ -291,25 +291,20 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				buf := new(bytes.Buffer)
-				s := json.GetWriter()
-				s.Reset(buf)
+				e := json.GetEncoder()
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
 				for i := 0; i < b.N; i++ {
-					buf.Reset()
-					h.WriteJSON(s)
-					if err := s.Flush(); err != nil {
-						b.Fatal(err)
-					}
+					e.Reset()
+					h.WriteJSON(e)
 				}
 			})
 			b.Run("Decode", func(b *testing.B) {
 				var v techempower.HelloWorld
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetReader()
+				j := json.GetDecoder()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
@@ -328,25 +323,20 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				buf := new(bytes.Buffer)
-				s := json.GetWriter()
-				s.Reset(buf)
+				e := json.GetEncoder()
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
 				for i := 0; i < b.N; i++ {
-					buf.Reset()
-					h.WriteJSON(s)
-					if err := s.Flush(); err != nil {
-						b.Fatal(err)
-					}
+					e.Reset()
+					h.WriteJSON(e)
 				}
 			})
 			b.Run("Decode", func(b *testing.B) {
 				var v techempower.WorldObject
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetReader()
+				j := json.GetDecoder()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
@@ -379,17 +369,12 @@ func BenchmarkJSON(b *testing.B) {
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
-				buf := new(bytes.Buffer)
-				s := json.GetWriter()
-				s.Reset(buf)
+				e := json.GetEncoder()
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 				for i := 0; i < b.N; i++ {
-					buf.Reset()
-					pet.WriteJSON(s)
-					if err := s.Flush(); err != nil {
-						b.Fatal(err)
-					}
+					e.Reset()
+					pet.WriteJSON(e)
 				}
 			})
 		})

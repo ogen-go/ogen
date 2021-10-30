@@ -433,15 +433,15 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 	}
 
 	// Saving properties ordering.
-	if err := jx.ReadBytes(data).Obj(func(r *jx.Reader, key string) error {
+	if err := jx.DecodeBytes(data).Obj(func(d *jx.Decoder, key string) error {
 		switch key {
 		case "properties":
-			return r.Obj(func(r *jx.Reader, key string) error {
+			return d.Obj(func(d *jx.Decoder, key string) error {
 				s.XPropertiesOrder = append(s.XPropertiesOrder, key)
-				return r.Skip()
+				return d.Skip()
 			})
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 	}); err != nil {
 		return err

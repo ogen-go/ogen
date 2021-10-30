@@ -61,75 +61,75 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s HelloWorld) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s HelloWorld) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	more.More()
-	w.ObjField("message")
-	w.Str(s.Message)
-	w.ObjEnd()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
 }
 
 // ReadJSON reads HelloWorld from json stream.
-func (s *HelloWorld) ReadJSON(r *json.Reader) error {
+func (s *HelloWorld) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode HelloWorld to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
-			v, err := r.Str()
+			v, err := d.Str()
 			s.Message = string(v)
 			if err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s WorldObject) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s WorldObject) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	more.More()
-	w.ObjField("id")
-	w.Int64(s.ID)
+	e.ObjField("id")
+	e.Int64(s.ID)
 	more.More()
-	w.ObjField("randomNumber")
-	w.Int64(s.RandomNumber)
-	w.ObjEnd()
+	e.ObjField("randomNumber")
+	e.Int64(s.RandomNumber)
+	e.ObjEnd()
 }
 
 // ReadJSON reads WorldObject from json stream.
-func (s *WorldObject) ReadJSON(r *json.Reader) error {
+func (s *WorldObject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode WorldObject to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
-			v, err := r.Int64()
+			v, err := d.Int64()
 			s.ID = int64(v)
 			if err != nil {
 				return err
 			}
 		case "randomNumber":
-			v, err := r.Int64()
+			v, err := d.Int64()
 			s.RandomNumber = int64(v)
 			if err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (WorldObjects) WriteJSON(w *json.Writer)      {}
-func (WorldObjects) ReadJSON(r *json.Reader) error { return nil }
+func (WorldObjects) WriteJSON(e *json.Encoder)      {}
+func (WorldObjects) ReadJSON(d *json.Decoder) error { return nil }

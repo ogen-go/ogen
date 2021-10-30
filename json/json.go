@@ -20,12 +20,12 @@ func Unmarshal(data []byte, val interface{}) error {
 
 // Unmarshaler implements json reading.
 type Unmarshaler interface {
-	ReadJSON(i *Reader) error
+	ReadJSON(i *Decoder) error
 }
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	WriteJSON(s *Writer)
+	WriteJSON(s *Encoder)
 }
 
 // Value represents a json value.
@@ -52,7 +52,7 @@ type Nullable interface {
 
 // Encode Marshaler to byte slice.
 func Encode(m Marshaler) []byte {
-	s := jx.GetWriter()
-	m.WriteJSON(s)
-	return s.Buf()
+	e := jx.GetEncoder()
+	m.WriteJSON(e)
+	return e.Bytes()
 }

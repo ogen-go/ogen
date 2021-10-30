@@ -60,9398 +60,9398 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response CreateApiextensionsV1CustomResourceDefinitionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response CreateApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrationV1APIServiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateApiregistrationV1APIServiceApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiregistrationV1APIServiceApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiregistrationV1APIServiceApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiregistrationV1APIServiceApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiregistrationV1APIServiceApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateApiregistrationV1APIServiceApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiregistrationV1APIServiceUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/v1/apiservices: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticationV1TokenReviewRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticationV1TokenReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthenticationV1TokenReviewApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authentication.k8s.io/v1/tokenreviews: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateAuthorizationV1SelfSubjectAccessReviewRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateAuthorizationV1SelfSubjectAccessReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authorization.k8s.io/v1/selfsubjectaccessreviews: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAuthorizationV1SelfSubjectRulesReviewRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAuthorizationV1SelfSubjectRulesReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authorization.k8s.io/v1/selfsubjectrulesreviews: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAuthorizationV1SubjectAccessReviewRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAuthorizationV1SubjectAccessReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authorization.k8s.io/v1/subjectaccessreviews: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateCertificatesV1CertificateSigningRequestResponse(response CreateCertificatesV1CertificateSigningRequestRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateCertificatesV1CertificateSigningRequestResponse(response CreateCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1NamespaceApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NamespaceApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NamespaceApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NamespaceApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NamespaceApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NamespaceApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NamespaceUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/namespaces: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1NodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NodeApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NodeApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NodeApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NodeApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1NodeApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/nodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentVolumeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1PersistentVolumeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1PersistentVolumeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1PersistentVolumeApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1PersistentVolumeApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1PersistentVolumeApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateCoreV1PersistentVolumeApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1PersistentVolumeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/persistentvolumes: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta1FlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta2FlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response CreateInternalApiserverV1alpha1StorageVersionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response CreateInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateInternalApiserverV1alpha1StorageVersionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1IngressClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNetworkingV1IngressClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNetworkingV1IngressClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNetworkingV1IngressClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNetworkingV1IngressClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNetworkingV1IngressClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNetworkingV1IngressClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNetworkingV1IngressClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/ingressclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1RuntimeClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1RuntimeClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1RuntimeClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1RuntimeClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1alpha1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1beta1PodSecurityPolicyRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/podsecuritypolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAuthorizationV1ClusterRoleRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRbacAuthorizationV1ClusterRoleBindingRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1PriorityClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateSchedulingV1PriorityClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateSchedulingV1PriorityClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateSchedulingV1PriorityClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateSchedulingV1PriorityClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateSchedulingV1PriorityClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateSchedulingV1PriorityClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateSchedulingV1PriorityClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1CSIDriverApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSIDriverApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSIDriverApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSIDriverApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSIDriverApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSIDriverApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSIDriverUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csidrivers: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1CSINodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSINodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSINodeApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSINodeApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSINodeApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1CSINodeApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSINodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csinodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1StorageClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1StorageClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1StorageClassApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1StorageClassApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1StorageClassApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1StorageClassApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1StorageClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/storageclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1VolumeAttachmentRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1VolumeAttachmentApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentApplicationJSONCreated:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(201)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentApplicationYamlCreated:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(201)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentApplicationJSONAccepted:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(202)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentApplicationYamlAccepted:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(202)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/volumeattachments: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(response DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(response DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteApiregistrationV1CollectionAPIServiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteApiregistrationV1CollectionAPIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteApiregistrationV1CollectionAPIServiceUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/v1/apiservices: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(response DeleteCertificatesV1CollectionCertificateSigningRequestRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(response DeleteCertificatesV1CollectionCertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCoreV1CollectionNodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteCoreV1CollectionNodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteCoreV1CollectionNodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/nodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1CollectionPersistentVolumeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1CollectionPersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteCoreV1CollectionPersistentVolumeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/persistentvolumes: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(response DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(response DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetworkingV1CollectionIngressClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetworkingV1CollectionIngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNetworkingV1CollectionIngressClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteNetworkingV1CollectionIngressClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNetworkingV1CollectionIngressClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/ingressclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1CollectionRuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1CollectionRuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteNodeV1CollectionRuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1CollectionRuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV1alpha1CollectionRuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV1alpha1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1beta1CollectionRuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1beta1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response DeletePolicyV1beta1CollectionPodSecurityPolicyRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response DeletePolicyV1beta1CollectionPodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/podsecuritypolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSchedulingV1CollectionPriorityClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSchedulingV1CollectionPriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteSchedulingV1CollectionPriorityClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1CollectionCSIDriverRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1CollectionCSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionCSIDriverApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteStorageV1CollectionCSIDriverApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionCSIDriverUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csidrivers: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1CollectionCSINodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1CollectionCSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionCSINodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteStorageV1CollectionCSINodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionCSINodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csinodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV1CollectionStorageClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV1CollectionStorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionStorageClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteStorageV1CollectionStorageClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionStorageClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/storageclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStorageV1CollectionVolumeAttachmentRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStorageV1CollectionVolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionVolumeAttachmentUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/volumeattachments: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAPIVersionsApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAPIVersionsApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAPIVersionsApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAPIVersionsUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAdmissionregistrationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAdmissionregistrationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAdmissionregistrationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAdmissionregistrationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAdmissionregistrationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAdmissionregistrationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiextensionsAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetApiextensionsAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiextensionsAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiextensionsV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetApiextensionsV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiextensionsV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiregistrationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetApiregistrationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiregistrationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiregistrationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetApiregistrationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiregistrationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAppsAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAppsAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAppsAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAppsAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAppsV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAppsV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAppsV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthenticationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAuthenticationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthenticationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authentication.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthenticationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAuthenticationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthenticationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authentication.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthorizationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAuthorizationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthorizationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authorization.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthorizationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAuthorizationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthorizationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/authorization.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAutoscalingAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAutoscalingV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV2beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAutoscalingV2beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingV2beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV2beta2APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetAutoscalingV2beta2APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingV2beta2APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta2/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetBatchAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetBatchAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetBatchV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetBatchV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCertificatesAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCertificatesAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCertificatesAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCertificatesV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCertificatesV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCertificatesV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCodeVersionResponse(response GetCodeVersionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgVersionInfo:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCodeVersionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/version/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoordinationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCoordinationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoordinationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/coordination.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoordinationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCoordinationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoordinationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/coordination.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoreAPIVersionsApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCoreAPIVersionsApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCoreAPIVersionsApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoreAPIVersionsUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoreV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetCoreV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoreV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetDiscoveryAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetDiscoveryAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetDiscoveryV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetDiscoveryV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetDiscoveryV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetDiscoveryV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetEventsAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetEventsAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetEventsV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetEventsV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetFlowcontrolApiserverAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetFlowcontrolApiserverAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetInternalApiserverAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetInternalApiserverAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetInternalApiserverAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetInternalApiserverV1alpha1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNetworkingAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNetworkingAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNetworkingAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNetworkingV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNetworkingV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNetworkingV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNodeAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNodeAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNodeV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1alpha1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNodeV1alpha1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeV1alpha1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1alpha1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetNodeV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetPolicyAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetPolicyAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetPolicyV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetPolicyV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetRbacAuthorizationAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetRbacAuthorizationAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetRbacAuthorizationAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetRbacAuthorizationV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetRbacAuthorizationV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetRbacAuthorizationV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetSchedulingAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetSchedulingAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetSchedulingAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetSchedulingV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetSchedulingV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetSchedulingV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetServiceAccountIssuerOpenIDConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/.well-known/openid-configuration/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccountIssuerOpenIDKeysetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccountIssuerOpenIDKeysetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON:
-		rw.Header().Set("Content-Type", "application/jwk-set+json")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/jwk-set+json")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/jwk-set+json encoder not implemented")
 	case *GetServiceAccountIssuerOpenIDKeysetUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/openid/v1/jwks/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageAPIGroupApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetStorageAPIGroupApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetStorageAPIGroupApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageAPIGroupUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetStorageV1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1alpha1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetStorageV1alpha1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1alpha1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1alpha1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1beta1APIResourcesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *GetStorageV1beta1APIResourcesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1beta1APIResourcesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1beta1/: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListApiextensionsV1CustomResourceDefinitionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions: unexpected response type: %T", response)
 	}
 }
 
-func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListApiregistrationV1APIServiceApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListApiregistrationV1APIServiceApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListApiregistrationV1APIServiceUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/v1/apiservices: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/controllerrevisions: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1DaemonSetForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/daemonsets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAppsV1DeploymentForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1DeploymentForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/deployments: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1ReplicaSetForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/replicasets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1StatefulSetForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/statefulsets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v1/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta1/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta2/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1CronJobForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListBatchV1CronJobForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListBatchV1CronJobForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1/cronjobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1JobForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListBatchV1JobForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListBatchV1JobForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1/jobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListBatchV1beta1CronJobForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1beta1/cronjobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCertificatesV1CertificateSigningRequestApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCertificatesV1CertificateSigningRequestApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCertificatesV1CertificateSigningRequestUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoordinationV1LeaseForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/coordination.k8s.io/v1/leases: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ComponentStatusApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ComponentStatusApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ComponentStatusApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ComponentStatusUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/componentstatuses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ConfigMapForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/configmaps: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1EndpointsForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1EndpointsForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/endpoints: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1EventForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1EventForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1EventForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1LimitRangeForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/limitranges: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1NamespaceApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1NamespaceApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1NamespaceApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1NamespaceApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1NamespaceUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/namespaces: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1NodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1NodeApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1NodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1NodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1NodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/nodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PersistentVolumeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1PersistentVolumeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PersistentVolumeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/persistentvolumes: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/persistentvolumeclaims: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PodForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1PodForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PodForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/pods: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PodTemplateForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/podtemplates: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/replicationcontrollers: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/resourcequotas: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1SecretForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1SecretForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1SecretForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/secrets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ServiceAccountForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/serviceaccounts: unexpected response type: %T", response)
 	}
 }
 
-func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ServiceForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListCoreV1ServiceForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ServiceForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/services: unexpected response type: %T", response)
 	}
 }
 
-func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1/endpointslices: unexpected response type: %T", response)
 	}
 }
 
-func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1beta1/endpointslices: unexpected response type: %T", response)
 	}
 }
 
-func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListEventsV1EventForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListEventsV1EventForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListEventsV1EventForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListEventsV1beta1EventForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListEventsV1beta1EventForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1beta1/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListInternalApiserverV1alpha1StorageVersionUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1IngressClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNetworkingV1IngressClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNetworkingV1IngressClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1IngressClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/ingressclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNetworkingV1IngressForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1IngressForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/ingresses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/networkpolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNodeV1RuntimeClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNodeV1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1alpha1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNodeV1alpha1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1alpha1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1beta1RuntimeClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListNodeV1beta1RuntimeClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1beta1RuntimeClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1/poddisruptionbudgets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/poddisruptionbudgets: unexpected response type: %T", response)
 	}
 }
 
-func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1beta1PodSecurityPolicyUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/podsecuritypolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles: unexpected response type: %T", response)
 	}
 }
 
-func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/rolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/roles: unexpected response type: %T", response)
 	}
 }
 
-func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListSchedulingV1PriorityClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListSchedulingV1PriorityClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListSchedulingV1PriorityClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1CSIDriverApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1CSIDriverApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1CSIDriverApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1CSIDriverUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csidrivers: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1CSINodeApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1CSINodeApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1CSINodeApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1CSINodeApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1CSINodeUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/csinodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1StorageClassApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1StorageClassApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1StorageClassApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1StorageClassApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1StorageClassUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/storageclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1VolumeAttachmentApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1VolumeAttachmentApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1VolumeAttachmentUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/volumeattachments: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1alpha1/csistoragecapacities: unexpected response type: %T", response)
 	}
 }
 
-func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1beta1/csistoragecapacities: unexpected response type: %T", response)
 	}
 }
 
-func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, rw http.ResponseWriter, span trace.Span) error {
-	rw.WriteHeader(401)
+func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(401)
 	return nil
 }
 
-func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchApiregistrationV1APIServiceListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchApiregistrationV1APIServiceListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchApiregistrationV1APIServiceListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apiregistration.k8s.io/v1/watch/apiservices: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/watch/controllerrevisions: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/watch/daemonsets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1DeploymentListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/watch/deployments: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/watch/replicasets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/apps/v1/watch/statefulsets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v1/watch/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchBatchV1CronJobListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1/watch/cronjobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1JobListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchBatchV1JobListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchBatchV1JobListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1/watch/jobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/batch/v1beta1/watch/cronjobs: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCertificatesV1CertificateSigningRequestListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/coordination.k8s.io/v1/watch/leases: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/configmaps: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1EndpointsListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/endpoints: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1EventListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1EventListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1EventListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/limitranges: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1NamespaceListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1NamespaceListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1NamespaceListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1NamespaceListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/namespaces: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1NodeListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1NodeListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1NodeListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1NodeListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1NodeListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/nodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/persistentvolumeclaims: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PersistentVolumeListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1PersistentVolumeListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PersistentVolumeListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/persistentvolumes: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PodListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1PodListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PodListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/pods: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/podtemplates: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/replicationcontrollers: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/resourcequotas: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1SecretListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1SecretListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/secrets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/serviceaccounts: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ServiceListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/api/v1/watch/services: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1/watch/endpointslices: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/discovery.k8s.io/v1beta1/watch/endpointslices: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchEventsV1EventListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchEventsV1EventListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchEventsV1EventListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1/watch/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchEventsV1beta1EventListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/events.k8s.io/v1beta1/watch/events: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1IngressClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNetworkingV1IngressClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1IngressClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/watch/ingressclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1IngressListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/watch/ingresses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/networking.k8s.io/v1/watch/networkpolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1RuntimeClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNodeV1RuntimeClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1RuntimeClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1/watch/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNodeV1alpha1RuntimeClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1alpha1RuntimeClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1beta1RuntimeClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchNodeV1beta1RuntimeClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1beta1RuntimeClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/node.k8s.io/v1beta1/watch/runtimeclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1/watch/poddisruptionbudgets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/watch/poddisruptionbudgets: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/policy/v1beta1/watch/podsecuritypolicies: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/roles: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchSchedulingV1PriorityClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchSchedulingV1PriorityClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchSchedulingV1PriorityClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/scheduling.k8s.io/v1/watch/priorityclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1CSIDriverListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1CSIDriverListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1CSIDriverListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/watch/csidrivers: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1CSINodeListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1CSINodeListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1CSINodeListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1CSINodeListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/watch/csinodes: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1StorageClassListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1StorageClassListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1StorageClassListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1StorageClassListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/watch/storageclasses: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1VolumeAttachmentListApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1VolumeAttachmentListApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1VolumeAttachmentListUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1/watch/volumeattachments: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities: unexpected response type: %T", response)
 	}
 }
 
-func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/json;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
-		rw.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK:
-		rw.Header().Set("Content-Type", "application/yaml")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized:
-		rw.WriteHeader(401)
+		w.WriteHeader(401)
 		return nil
 	default:
 		return fmt.Errorf("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities: unexpected response type: %T", response)

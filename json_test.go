@@ -1,7 +1,6 @@
 package ogen
 
 import (
-	"bytes"
 	"net"
 	"net/url"
 	"testing"
@@ -19,32 +18,28 @@ import (
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	r := json.GetReader()
+	r := json.GetDecoder()
 	r.ResetBytes(data)
-	defer json.PutReader(r)
+	defer json.PutDecoder(r)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	require.NoError(t, r.ObjBytes(func(r *json.Reader, _ []byte) error {
+	require.NoError(t, r.ObjBytes(func(r *json.Decoder, _ []byte) error {
 		return v.ReadJSON(r)
 	}))
 }
 
 func encodeObject(v json.Marshaler) []byte {
-	buf := new(bytes.Buffer)
-	s := json.GetWriter()
-	s.Reset(buf)
+	s := json.GetEncoder()
 	s.ObjStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
 		s.ObjEnd()
-		_ = s.Flush()
-		return buf.Bytes()
+		return s.Bytes()
 	}
 	s.ObjField("key")
 	v.WriteJSON(s)
 	s.ObjEnd()
-	_ = s.Flush()
-	return buf.Bytes()
+	return s.Bytes()
 }
 
 func TestJSONGenerics(t *testing.T) {
@@ -129,15 +124,12 @@ func TestTechEmpowerJSON(t *testing.T) {
 		ID:           10,
 		RandomNumber: 2134,
 	}
-	buf := new(bytes.Buffer)
-	s := json.GetWriter()
-	s.Reset(buf)
-	hw.WriteJSON(s)
-	require.NoError(t, s.Flush())
+	e := json.GetEncoder()
+	hw.WriteJSON(e)
 	var parsed techempower.WorldObject
-	i := json.GetReader()
-	i.ResetBytes(buf.Bytes())
-	t.Log(buf.String())
+	i := json.GetDecoder()
+	i.ResetBytes(e.Bytes())
+	t.Log(e)
 	require.NoError(t, parsed.ReadJSON(i))
 	require.Equal(t, hw, parsed)
 }

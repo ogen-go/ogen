@@ -1,8 +1,8 @@
 {{ define "res_dec_json" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-r := json.GetReader()
-defer json.PutReader(r)
-r.ResetBytes(buf.Bytes())
+d := json.GetDecoder()
+defer json.PutDecoder(d)
+d.ResetBytes(buf.Bytes())
 
 var response {{ $.Go }}
 if err := func() error {

@@ -71,13 +71,13 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -107,13 +107,13 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -130,13 +130,13 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -176,13 +176,13 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -210,16 +210,16 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []string
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem string
-					v, err := r.Str()
+					v, err := d.Str()
 					elem = string(v)
 					if err != nil {
 						return err
@@ -254,13 +254,13 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -275,13 +275,13 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PetGetDefStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -308,13 +308,13 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -342,13 +342,13 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response string
 			if err := func() error {
-				v, err := r.Str()
+				v, err := d.Str()
 				response = string(v)
 				if err != nil {
 					return err

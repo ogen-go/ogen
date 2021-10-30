@@ -4,17 +4,15 @@ import (
 	"github.com/ogen-go/jx"
 )
 
-// Reader is jx.Reader alias.
-type Reader = jx.Reader
+// Decoder is jx.Decoder alias.
+type Decoder = jx.Decoder
 
-// GetReader gets iterator from pool.
-func GetReader() *jx.Reader {
-	return jx.GetReader()
+// GetDecoder gets iterator from pool.
+func GetDecoder() *jx.Decoder {
+	return jx.GetDecoder()
 }
 
-// PutReader puts iterator to pool.
-func PutReader(r *jx.Reader) {
-	r.Reset(nil)
-	r.ResetBytes(nil)
-	jx.PutReader(r)
+// PutDecoder puts iterator to pool.
+func PutDecoder(d *jx.Decoder) {
+	jx.PutDecoder(d)
 }

@@ -13,6 +13,6 @@ require (
 	go.opentelemetry.io/otel/trace v1.1.0
 )
 
-require github.com/ogen-go/jx v0.7.0 // indirect
+require github.com/ogen-go/jx v0.9.0 // indirect
 
 replace github.com/ogen-go/ogen v0.0.0 => ./..

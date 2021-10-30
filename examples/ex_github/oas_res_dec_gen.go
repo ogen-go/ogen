@@ -118,13 +118,13 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EmptyObject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -139,9 +139,9 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsApproveWorkflowRunApplicationJSONForbidden
 			if err := func() error {
@@ -160,9 +160,9 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsApproveWorkflowRunApplicationJSONNotFound
 			if err := func() error {
@@ -194,13 +194,13 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsCancelWorkflowRunAccepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -228,13 +228,13 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response, s
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EmptyObject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -264,13 +264,13 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response, span trac
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EmptyObject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -300,13 +300,13 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response, span tra
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsCreateOrUpdateRepoSecretCreated
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -336,13 +336,13 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response, spa
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -370,13 +370,13 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response, sp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -404,13 +404,13 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response, span trac
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -438,13 +438,13 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response, span tra
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -472,13 +472,13 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsOrg
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -716,13 +716,13 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SelectedActions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -750,13 +750,13 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SelectedActions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -784,13 +784,13 @@ func decodeActionsGetArtifactResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Artifact
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -818,13 +818,13 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsPublicKey
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -852,13 +852,13 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsSecret
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -886,13 +886,13 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsOrganizationPermissions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -920,13 +920,13 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsRepositoryPermissions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -954,13 +954,13 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Job
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -988,13 +988,13 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsPublicKey
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1022,13 +1022,13 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrganizationActionsSecret
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1056,13 +1056,13 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsPublicKey
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1090,13 +1090,13 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsSecret
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1124,16 +1124,16 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []EnvironmentApprovals
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem EnvironmentApprovals
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -1166,13 +1166,13 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Runner
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1200,13 +1200,13 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Runner
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1234,13 +1234,13 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsOrg
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1268,13 +1268,13 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WorkflowRun
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1302,13 +1302,13 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WorkflowRunUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1336,13 +1336,13 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListArtifactsForRepoOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1370,13 +1370,13 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListEnvironmentSecretsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1404,13 +1404,13 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListJobsForWorkflowRunOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1438,13 +1438,13 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListOrgSecretsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1472,13 +1472,13 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1506,13 +1506,13 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListRepoSecretsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1540,13 +1540,13 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListRepoWorkflowsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1574,16 +1574,16 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem RunnerApplication
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -1616,16 +1616,16 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem RunnerApplication
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -1658,13 +1658,13 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelectedReposForOrgSecretOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1692,13 +1692,13 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1726,13 +1726,13 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelfHostedRunnerGroupsForOrgOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1760,13 +1760,13 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelfHostedRunnersForOrgOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1794,13 +1794,13 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelfHostedRunnersForRepoOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1828,13 +1828,13 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListSelfHostedRunnersInGroupForOrgOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1862,13 +1862,13 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListWorkflowRunArtifactsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1896,13 +1896,13 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsListWorkflowRunsForRepoOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -1930,13 +1930,13 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsReRunWorkflowCreated
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2011,13 +2011,13 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsRetryWorkflowCreated
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2165,13 +2165,13 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsOrg
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2203,9 +2203,9 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -2224,9 +2224,9 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -2245,9 +2245,9 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -2298,9 +2298,9 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
@@ -2319,9 +2319,9 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
@@ -2353,13 +2353,13 @@ func decodeActivityGetFeedsResponse(resp *http.Response, span trace.Span) (res F
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Feed
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2387,13 +2387,13 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RepositorySubscription
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2408,13 +2408,13 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2444,13 +2444,13 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Thread
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2467,9 +2467,9 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityGetThreadApplicationJSONUnauthorized
 			if err := func() error {
@@ -2488,9 +2488,9 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityGetThreadApplicationJSONForbidden
 			if err := func() error {
@@ -2522,13 +2522,13 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ThreadSubscription
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2545,9 +2545,9 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -2566,9 +2566,9 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -2600,16 +2600,16 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -2642,16 +2642,16 @@ func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -2684,9 +2684,9 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListPublicEventsOKApplicationJSON
 			if err := func() error {
@@ -2707,13 +2707,13 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2728,13 +2728,13 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -2762,9 +2762,9 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListPublicEventsForRepoNetworkOKApplicationJSON
 			if err := func() error {
@@ -2783,9 +2783,9 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
 			if err := func() error {
@@ -2806,9 +2806,9 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
 			if err := func() error {
@@ -2827,9 +2827,9 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
 			if err := func() error {
@@ -2861,16 +2861,16 @@ func decodeActivityListPublicEventsForUserResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -2903,16 +2903,16 @@ func decodeActivityListPublicOrgEventsResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -2945,16 +2945,16 @@ func decodeActivityListReceivedEventsForUserResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -2987,16 +2987,16 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -3029,16 +3029,16 @@ func decodeActivityListRepoEventsResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Event
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Event
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -3071,16 +3071,16 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Thread
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Thread
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -3113,9 +3113,9 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -3138,9 +3138,9 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -3159,9 +3159,9 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -3193,16 +3193,16 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem MinimalRepository
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -3235,9 +3235,9 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -3258,9 +3258,9 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -3279,9 +3279,9 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -3313,16 +3313,16 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -3355,13 +3355,13 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityMarkNotificationsAsReadAccepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3380,9 +3380,9 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
 			if err := func() error {
@@ -3401,9 +3401,9 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONForbidden
 			if err := func() error {
@@ -3435,13 +3435,13 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response, span
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityMarkRepoNotificationsAsReadAccepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3475,13 +3475,13 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response, span trace.Span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3509,13 +3509,13 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RepositorySubscription
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3543,13 +3543,13 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ThreadSubscription
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3566,9 +3566,9 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivitySetThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
@@ -3587,9 +3587,9 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivitySetThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
@@ -3625,9 +3625,9 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -3646,9 +3646,9 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -3667,9 +3667,9 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -3705,9 +3705,9 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -3726,9 +3726,9 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -3747,9 +3747,9 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -3785,9 +3785,9 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsAddRepoToInstallationApplicationJSONForbidden
 			if err := func() error {
@@ -3806,9 +3806,9 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsAddRepoToInstallationApplicationJSONNotFound
 			if err := func() error {
@@ -3842,13 +3842,13 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response, span trace.Span) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3876,13 +3876,13 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Integration
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3910,13 +3910,13 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Integration
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -3931,9 +3931,9 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsGetBySlugApplicationJSONForbidden
 			if err := func() error {
@@ -3952,9 +3952,9 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsGetBySlugApplicationJSONNotFound
 			if err := func() error {
@@ -3973,13 +3973,13 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4007,13 +4007,13 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MarketplacePurchase
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4028,9 +4028,9 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
 			if err := func() error {
@@ -4049,9 +4049,9 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
 			if err := func() error {
@@ -4083,13 +4083,13 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MarketplacePurchase
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4104,13 +4104,13 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response,
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4140,13 +4140,13 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4174,9 +4174,9 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListAccountsForPlanStubbedOKApplicationJSON
 			if err := func() error {
@@ -4195,13 +4195,13 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4229,13 +4229,13 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListInstallationReposForAuthenticatedUserOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4252,9 +4252,9 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -4273,9 +4273,9 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -4307,9 +4307,9 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListPlansOKApplicationJSON
 			if err := func() error {
@@ -4328,9 +4328,9 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListPlansApplicationJSONUnauthorized
 			if err := func() error {
@@ -4349,9 +4349,9 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListPlansApplicationJSONNotFound
 			if err := func() error {
@@ -4383,9 +4383,9 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListPlansStubbedOKApplicationJSON
 			if err := func() error {
@@ -4404,13 +4404,13 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4438,13 +4438,13 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListReposAccessibleToInstallationOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4461,9 +4461,9 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
 			if err := func() error {
@@ -4482,9 +4482,9 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONForbidden
 			if err := func() error {
@@ -4516,9 +4516,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -4539,9 +4539,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -4560,9 +4560,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -4594,9 +4594,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
 			if err := func() error {
@@ -4617,13 +4617,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4655,9 +4655,9 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONForbidden
 			if err := func() error {
@@ -4676,9 +4676,9 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONNotFound
 			if err := func() error {
@@ -4727,13 +4727,13 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4763,13 +4763,13 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4797,13 +4797,13 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4831,13 +4831,13 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4865,13 +4865,13 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4899,13 +4899,13 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4933,13 +4933,13 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -4967,13 +4967,13 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5001,13 +5001,13 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5035,13 +5035,13 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CombinedBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5069,13 +5069,13 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CombinedBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5103,13 +5103,13 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CombinedBillingUsage
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5137,9 +5137,9 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksCreateSuiteApplicationJSONOK
 			if err := func() error {
@@ -5158,9 +5158,9 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksCreateSuiteApplicationJSONCreated
 			if err := func() error {
@@ -5192,13 +5192,13 @@ func decodeChecksGetResponse(resp *http.Response, span trace.Span) (res CheckRun
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CheckRun
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5226,13 +5226,13 @@ func decodeChecksGetSuiteResponse(resp *http.Response, span trace.Span) (res Che
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CheckSuite
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5260,16 +5260,16 @@ func decodeChecksListAnnotationsResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []CheckAnnotation
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem CheckAnnotation
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -5302,13 +5302,13 @@ func decodeChecksListForRefResponse(resp *http.Response, span trace.Span) (res C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksListForRefOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5336,13 +5336,13 @@ func decodeChecksListForSuiteResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksListForSuiteOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5370,13 +5370,13 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksListSuitesForRefOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5404,13 +5404,13 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ChecksRerequestSuiteCreated
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5438,13 +5438,13 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CheckSuitePreference
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5472,13 +5472,13 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningAnalysisDeletion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5493,9 +5493,9 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningDeleteAnalysisApplicationJSONBadRequest
 			if err := func() error {
@@ -5516,9 +5516,9 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningDeleteAnalysisApplicationJSONForbidden
 			if err := func() error {
@@ -5537,9 +5537,9 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningDeleteAnalysisApplicationJSONNotFound
 			if err := func() error {
@@ -5558,13 +5558,13 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5592,13 +5592,13 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningAlert
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5613,9 +5613,9 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningGetAlertApplicationJSONForbidden
 			if err := func() error {
@@ -5634,9 +5634,9 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningGetAlertApplicationJSONNotFound
 			if err := func() error {
@@ -5655,13 +5655,13 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5689,13 +5689,13 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningAnalysis
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5712,9 +5712,9 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningGetAnalysisApplicationJSONForbidden
 			if err := func() error {
@@ -5733,9 +5733,9 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningGetAnalysisApplicationJSONNotFound
 			if err := func() error {
@@ -5754,13 +5754,13 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5788,13 +5788,13 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningSarifsStatus
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5809,13 +5809,13 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5832,13 +5832,13 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response, span trace.Span) (r
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5866,9 +5866,9 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertInstancesOKApplicationJSON
 			if err := func() error {
@@ -5887,9 +5887,9 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertInstancesApplicationJSONForbidden
 			if err := func() error {
@@ -5908,9 +5908,9 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertInstancesApplicationJSONNotFound
 			if err := func() error {
@@ -5929,13 +5929,13 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -5963,9 +5963,9 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
@@ -5984,9 +5984,9 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertsForRepoApplicationJSONForbidden
 			if err := func() error {
@@ -6005,9 +6005,9 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListAlertsForRepoApplicationJSONNotFound
 			if err := func() error {
@@ -6026,13 +6026,13 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6060,9 +6060,9 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListRecentAnalysesOKApplicationJSON
 			if err := func() error {
@@ -6081,9 +6081,9 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListRecentAnalysesApplicationJSONForbidden
 			if err := func() error {
@@ -6102,9 +6102,9 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningListRecentAnalysesApplicationJSONNotFound
 			if err := func() error {
@@ -6123,13 +6123,13 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6157,13 +6157,13 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningAlert
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6178,9 +6178,9 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningUpdateAlertApplicationJSONForbidden
 			if err := func() error {
@@ -6199,9 +6199,9 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningUpdateAlertApplicationJSONNotFound
 			if err := func() error {
@@ -6220,13 +6220,13 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6254,13 +6254,13 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningSarifsReceipt
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6277,9 +6277,9 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningUploadSarifApplicationJSONForbidden
 			if err := func() error {
@@ -6298,9 +6298,9 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeScanningUploadSarifApplicationJSONNotFound
 			if err := func() error {
@@ -6321,13 +6321,13 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6355,9 +6355,9 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodesOfConductGetAllCodesOfConductOKApplicationJSON
 			if err := func() error {
@@ -6391,13 +6391,13 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CodeOfConduct
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6414,13 +6414,13 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6448,13 +6448,13 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EmojisGetOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6514,13 +6514,13 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6548,13 +6548,13 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response AuthenticationToken
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6582,13 +6582,13 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsEnterprise
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6706,13 +6706,13 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SelectedActions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6740,16 +6740,16 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []AuditLogEvent
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem AuditLogEvent
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -6782,13 +6782,13 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ActionsEnterprisePermissions
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6816,13 +6816,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseGroup
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6850,13 +6850,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseUser
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6884,13 +6884,13 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Runner
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6918,13 +6918,13 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsEnterprise
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6952,13 +6952,13 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -6986,13 +6986,13 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimGroupListEnterprise
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7020,13 +7020,13 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimUserListEnterprise
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7054,16 +7054,16 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []RunnerApplication
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem RunnerApplication
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -7096,13 +7096,13 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7130,13 +7130,13 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7164,13 +7164,13 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7198,13 +7198,13 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7232,13 +7232,13 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseGroup
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7266,13 +7266,13 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseUser
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7360,13 +7360,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseGroup
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7394,13 +7394,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseUser
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7473,13 +7473,13 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimEnterpriseUser
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7507,13 +7507,13 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RunnerGroupsEnterprise
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7545,13 +7545,13 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7566,13 +7566,13 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsCheckIsStarredNotFound
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7600,13 +7600,13 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7623,9 +7623,9 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsCreateCommentApplicationJSONForbidden
 			if err := func() error {
@@ -7644,9 +7644,9 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsCreateCommentApplicationJSONNotFound
 			if err := func() error {
@@ -7682,9 +7682,9 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsDeleteApplicationJSONForbidden
 			if err := func() error {
@@ -7703,9 +7703,9 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsDeleteApplicationJSONNotFound
 			if err := func() error {
@@ -7741,9 +7741,9 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsDeleteCommentApplicationJSONForbidden
 			if err := func() error {
@@ -7762,9 +7762,9 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsDeleteCommentApplicationJSONNotFound
 			if err := func() error {
@@ -7796,13 +7796,13 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7819,13 +7819,13 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ForbiddenGist
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7840,13 +7840,13 @@ func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetR
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7874,13 +7874,13 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7897,13 +7897,13 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ForbiddenGist
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7918,13 +7918,13 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -7952,9 +7952,9 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListOKApplicationJSON
 			if err := func() error {
@@ -7975,13 +7975,13 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8009,9 +8009,9 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommentsOKApplicationJSON
 			if err := func() error {
@@ -8032,9 +8032,9 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommentsApplicationJSONForbidden
 			if err := func() error {
@@ -8053,9 +8053,9 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommentsApplicationJSONNotFound
 			if err := func() error {
@@ -8087,9 +8087,9 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommitsOKApplicationJSON
 			if err := func() error {
@@ -8110,9 +8110,9 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommitsApplicationJSONForbidden
 			if err := func() error {
@@ -8131,9 +8131,9 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListCommitsApplicationJSONNotFound
 			if err := func() error {
@@ -8165,9 +8165,9 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListForksOKApplicationJSON
 			if err := func() error {
@@ -8188,9 +8188,9 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListForksApplicationJSONForbidden
 			if err := func() error {
@@ -8209,9 +8209,9 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListForksApplicationJSONNotFound
 			if err := func() error {
@@ -8243,9 +8243,9 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListStarredOKApplicationJSON
 			if err := func() error {
@@ -8266,9 +8266,9 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListStarredApplicationJSONUnauthorized
 			if err := func() error {
@@ -8287,9 +8287,9 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsListStarredApplicationJSONForbidden
 			if err := func() error {
@@ -8325,9 +8325,9 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsStarApplicationJSONForbidden
 			if err := func() error {
@@ -8346,9 +8346,9 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsStarApplicationJSONNotFound
 			if err := func() error {
@@ -8384,9 +8384,9 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsUnstarApplicationJSONForbidden
 			if err := func() error {
@@ -8405,9 +8405,9 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistsUnstarApplicationJSONNotFound
 			if err := func() error {
@@ -8439,13 +8439,13 @@ func decodeGistsUpdateCommentResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GistComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8460,13 +8460,13 @@ func decodeGistsUpdateCommentResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8494,13 +8494,13 @@ func decodeGitGetCommitResponse(resp *http.Response, span trace.Span) (res GitGe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GitCommit
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8515,13 +8515,13 @@ func decodeGitGetCommitResponse(resp *http.Response, span trace.Span) (res GitGe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8549,13 +8549,13 @@ func decodeGitGetRefResponse(resp *http.Response, span trace.Span) (res GitGetRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GitRef
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8570,13 +8570,13 @@ func decodeGitGetRefResponse(resp *http.Response, span trace.Span) (res GitGetRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8604,13 +8604,13 @@ func decodeGitGetTagResponse(resp *http.Response, span trace.Span) (res GitGetTa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GitTag
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8625,13 +8625,13 @@ func decodeGitGetTagResponse(resp *http.Response, span trace.Span) (res GitGetTa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8659,16 +8659,16 @@ func decodeGitListMatchingRefsResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []GitRef
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem GitRef
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -8701,9 +8701,9 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GitignoreGetAllTemplatesOKApplicationJSON
 			if err := func() error {
@@ -8737,13 +8737,13 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GitignoreTemplate
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8820,13 +8820,13 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response InteractionLimitResponse
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8856,13 +8856,13 @@ func decodeIssuesAddAssigneesResponse(resp *http.Response, span trace.Span) (res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssueSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8892,13 +8892,13 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8958,13 +8958,13 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -8992,13 +8992,13 @@ func decodeIssuesGetCommentResponse(resp *http.Response, span trace.Span) (res I
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssueComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9013,13 +9013,13 @@ func decodeIssuesGetCommentResponse(resp *http.Response, span trace.Span) (res I
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9047,13 +9047,13 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssueEvent
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9068,9 +9068,9 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesGetEventApplicationJSONForbidden
 			if err := func() error {
@@ -9089,9 +9089,9 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesGetEventApplicationJSONNotFound
 			if err := func() error {
@@ -9110,9 +9110,9 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesGetEventApplicationJSONGone
 			if err := func() error {
@@ -9144,13 +9144,13 @@ func decodeIssuesGetLabelResponse(resp *http.Response, span trace.Span) (res Iss
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Label
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9165,13 +9165,13 @@ func decodeIssuesGetLabelResponse(resp *http.Response, span trace.Span) (res Iss
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9199,13 +9199,13 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Milestone
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9220,13 +9220,13 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9254,9 +9254,9 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListAssigneesOKApplicationJSON
 			if err := func() error {
@@ -9275,13 +9275,13 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9309,9 +9309,9 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListCommentsOKApplicationJSON
 			if err := func() error {
@@ -9330,9 +9330,9 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListCommentsApplicationJSONNotFound
 			if err := func() error {
@@ -9351,9 +9351,9 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListCommentsApplicationJSONGone
 			if err := func() error {
@@ -9385,16 +9385,16 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Label
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Label
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -9427,9 +9427,9 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListLabelsForRepoOKApplicationJSON
 			if err := func() error {
@@ -9448,13 +9448,13 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9482,9 +9482,9 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListLabelsOnIssueOKApplicationJSON
 			if err := func() error {
@@ -9503,13 +9503,13 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9537,9 +9537,9 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesListMilestonesOKApplicationJSON
 			if err := func() error {
@@ -9558,13 +9558,13 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9594,13 +9594,13 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response, span trace.Span) (
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9628,13 +9628,13 @@ func decodeIssuesRemoveAssigneesResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssueSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9662,9 +9662,9 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesRemoveLabelOKApplicationJSON
 			if err := func() error {
@@ -9683,9 +9683,9 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesRemoveLabelApplicationJSONNotFound
 			if err := func() error {
@@ -9704,9 +9704,9 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesRemoveLabelApplicationJSONGone
 			if err := func() error {
@@ -9740,9 +9740,9 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesUnlockApplicationJSONForbidden
 			if err := func() error {
@@ -9761,9 +9761,9 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response IssuesUnlockApplicationJSONNotFound
 			if err := func() error {
@@ -9795,13 +9795,13 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Label
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9829,13 +9829,13 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Milestone
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9863,13 +9863,13 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response License
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -9886,9 +9886,9 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response LicensesGetApplicationJSONForbidden
 			if err := func() error {
@@ -9907,9 +9907,9 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response LicensesGetApplicationJSONNotFound
 			if err := func() error {
@@ -9941,9 +9941,9 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response LicensesGetAllCommonlyUsedOKApplicationJSON
 			if err := func() error {
@@ -9977,13 +9977,13 @@ func decodeLicensesGetForRepoResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response LicenseContent
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10055,13 +10055,13 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response APIOverview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10131,13 +10131,13 @@ func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootO
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MetaRootOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10184,9 +10184,9 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -10205,9 +10205,9 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -10226,9 +10226,9 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -10262,13 +10262,13 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10298,13 +10298,13 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response, span tra
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10336,9 +10336,9 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -10357,9 +10357,9 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -10391,9 +10391,9 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetCommitAuthorsOKApplicationJSON
 			if err := func() error {
@@ -10412,13 +10412,13 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10446,13 +10446,13 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Import
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10467,13 +10467,13 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10501,16 +10501,16 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PorterLargeFile
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PorterLargeFile
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -10543,13 +10543,13 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Migration
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10566,9 +10566,9 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -10587,9 +10587,9 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -10608,9 +10608,9 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -10642,13 +10642,13 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Migration
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10663,13 +10663,13 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10697,9 +10697,9 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -10720,9 +10720,9 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -10741,9 +10741,9 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -10775,16 +10775,16 @@ func decodeMigrationsListForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Migration
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Migration
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -10817,9 +10817,9 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsListReposForOrgOKApplicationJSON
 			if err := func() error {
@@ -10838,13 +10838,13 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10872,9 +10872,9 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsListReposForUserOKApplicationJSON
 			if err := func() error {
@@ -10893,13 +10893,13 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -10931,9 +10931,9 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -10952,9 +10952,9 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -10973,9 +10973,9 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -11009,13 +11009,13 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11043,13 +11043,13 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Import
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11081,9 +11081,9 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
@@ -11102,9 +11102,9 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
 			if err := func() error {
@@ -11140,9 +11140,9 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
 			if err := func() error {
@@ -11161,9 +11161,9 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
 			if err := func() error {
@@ -11195,13 +11195,13 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Authorization
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11218,9 +11218,9 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
@@ -11239,9 +11239,9 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
 			if err := func() error {
@@ -11273,13 +11273,13 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ApplicationGrant
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11296,9 +11296,9 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
 			if err := func() error {
@@ -11317,9 +11317,9 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONForbidden
 			if err := func() error {
@@ -11351,9 +11351,9 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListAuthorizationsOKApplicationJSON
 			if err := func() error {
@@ -11374,9 +11374,9 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
 			if err := func() error {
@@ -11395,9 +11395,9 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
 			if err := func() error {
@@ -11416,9 +11416,9 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
 			if err := func() error {
@@ -11450,9 +11450,9 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListGrantsOKApplicationJSON
 			if err := func() error {
@@ -11473,9 +11473,9 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
 			if err := func() error {
@@ -11494,9 +11494,9 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONForbidden
 			if err := func() error {
@@ -11515,9 +11515,9 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONNotFound
 			if err := func() error {
@@ -11551,13 +11551,13 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11621,13 +11621,13 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsConvertMemberToOutsideCollaboratorAccepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11646,13 +11646,13 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11682,13 +11682,13 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11716,13 +11716,13 @@ func decodeOrgsGetResponse(resp *http.Response, span trace.Span) (res OrgsGetRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrganizationFull
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11737,13 +11737,13 @@ func decodeOrgsGetResponse(resp *http.Response, span trace.Span) (res OrgsGetRes
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11771,16 +11771,16 @@ func decodeOrgsGetAuditLogResponse(resp *http.Response, span trace.Span) (res []
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []AuditLogEvent
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem AuditLogEvent
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -11813,13 +11813,13 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11834,9 +11834,9 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -11855,9 +11855,9 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -11889,13 +11889,13 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11910,9 +11910,9 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsGetMembershipForUserApplicationJSONForbidden
 			if err := func() error {
@@ -11931,9 +11931,9 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsGetMembershipForUserApplicationJSONNotFound
 			if err := func() error {
@@ -11965,13 +11965,13 @@ func decodeOrgsGetWebhookResponse(resp *http.Response, span trace.Span) (res Org
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgHook
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -11986,13 +11986,13 @@ func decodeOrgsGetWebhookResponse(resp *http.Response, span trace.Span) (res Org
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12020,13 +12020,13 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12054,9 +12054,9 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListOKApplicationJSON
 			if err := func() error {
@@ -12090,9 +12090,9 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListBlockedUsersOKApplicationJSON
 			if err := func() error {
@@ -12111,13 +12111,13 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12145,9 +12145,9 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListFailedInvitationsOKApplicationJSON
 			if err := func() error {
@@ -12166,13 +12166,13 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12200,9 +12200,9 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -12223,9 +12223,9 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -12244,9 +12244,9 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -12278,16 +12278,16 @@ func decodeOrgsListForUserResponse(resp *http.Response, span trace.Span) (res []
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []OrganizationSimple
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem OrganizationSimple
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -12320,9 +12320,9 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListInvitationTeamsOKApplicationJSON
 			if err := func() error {
@@ -12341,13 +12341,13 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12375,16 +12375,16 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -12417,9 +12417,9 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListPendingInvitationsOKApplicationJSON
 			if err := func() error {
@@ -12438,13 +12438,13 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12472,16 +12472,16 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -12514,16 +12514,16 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []CredentialAuthorization
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem CredentialAuthorization
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -12556,9 +12556,9 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsListWebhooksOKApplicationJSON
 			if err := func() error {
@@ -12577,13 +12577,13 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12613,13 +12613,13 @@ func decodeOrgsPingWebhookResponse(resp *http.Response, span trace.Span) (res Or
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12649,13 +12649,13 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response, span trace.Span) (res O
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12685,9 +12685,9 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsRemoveMembershipForUserApplicationJSONForbidden
 			if err := func() error {
@@ -12706,9 +12706,9 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsRemoveMembershipForUserApplicationJSONNotFound
 			if err := func() error {
@@ -12742,13 +12742,13 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response OrgsRemoveOutsideCollaboratorUnprocessableEntity
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12793,13 +12793,13 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12829,13 +12829,13 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12878,13 +12878,13 @@ func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -12914,9 +12914,9 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -12935,9 +12935,9 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -12956,9 +12956,9 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -12992,9 +12992,9 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -13013,9 +13013,9 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForOrgApplicationJSONForbidden
 			if err := func() error {
@@ -13034,9 +13034,9 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForOrgApplicationJSONNotFound
 			if err := func() error {
@@ -13070,9 +13070,9 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -13091,9 +13091,9 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForUserApplicationJSONForbidden
 			if err := func() error {
@@ -13112,9 +13112,9 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageForUserApplicationJSONNotFound
 			if err := func() error {
@@ -13148,9 +13148,9 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -13169,9 +13169,9 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -13190,9 +13190,9 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -13226,9 +13226,9 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -13247,9 +13247,9 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
@@ -13268,9 +13268,9 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
@@ -13304,9 +13304,9 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -13325,9 +13325,9 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
@@ -13346,9 +13346,9 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
@@ -13380,9 +13380,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -13401,9 +13401,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -13422,9 +13422,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -13443,9 +13443,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -13477,9 +13477,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON
 			if err := func() error {
@@ -13498,9 +13498,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -13519,9 +13519,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
 			if err := func() error {
@@ -13540,9 +13540,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
 			if err := func() error {
@@ -13574,9 +13574,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON
 			if err := func() error {
@@ -13595,9 +13595,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -13616,9 +13616,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
 			if err := func() error {
@@ -13637,9 +13637,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
 			if err := func() error {
@@ -13671,13 +13671,13 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Package
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13705,13 +13705,13 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Package
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13739,13 +13739,13 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Package
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13773,13 +13773,13 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackageVersion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13807,13 +13807,13 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackageVersion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13841,13 +13841,13 @@ func decodePackagesGetPackageVersionForUserResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackageVersion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -13875,16 +13875,16 @@ func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Package
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Package
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -13917,9 +13917,9 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForOrganizationOKApplicationJSON
 			if err := func() error {
@@ -13938,9 +13938,9 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForOrganizationApplicationJSONUnauthorized
 			if err := func() error {
@@ -13959,9 +13959,9 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForOrganizationApplicationJSONForbidden
 			if err := func() error {
@@ -13993,9 +13993,9 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForUserOKApplicationJSON
 			if err := func() error {
@@ -14014,9 +14014,9 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14035,9 +14035,9 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesListPackagesForUserApplicationJSONForbidden
 			if err := func() error {
@@ -14071,9 +14071,9 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14092,9 +14092,9 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -14113,9 +14113,9 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -14149,9 +14149,9 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -14170,9 +14170,9 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForOrgApplicationJSONForbidden
 			if err := func() error {
@@ -14191,9 +14191,9 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForOrgApplicationJSONNotFound
 			if err := func() error {
@@ -14227,9 +14227,9 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14248,9 +14248,9 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForUserApplicationJSONForbidden
 			if err := func() error {
@@ -14269,9 +14269,9 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageForUserApplicationJSONNotFound
 			if err := func() error {
@@ -14305,9 +14305,9 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14326,9 +14326,9 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -14347,9 +14347,9 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -14383,9 +14383,9 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -14404,9 +14404,9 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
@@ -14425,9 +14425,9 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
@@ -14461,9 +14461,9 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14482,9 +14482,9 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
@@ -14503,9 +14503,9 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
@@ -14537,13 +14537,13 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectColumn
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14560,9 +14560,9 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateColumnApplicationJSONUnauthorized
 			if err := func() error {
@@ -14581,9 +14581,9 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateColumnApplicationJSONForbidden
 			if err := func() error {
@@ -14602,13 +14602,13 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14636,13 +14636,13 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Project
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14659,9 +14659,9 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -14680,9 +14680,9 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -14701,13 +14701,13 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14722,13 +14722,13 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14756,13 +14756,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Project
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14777,9 +14777,9 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForOrgApplicationJSONUnauthorized
 			if err := func() error {
@@ -14798,9 +14798,9 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForOrgApplicationJSONForbidden
 			if err := func() error {
@@ -14819,9 +14819,9 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForOrgApplicationJSONNotFound
 			if err := func() error {
@@ -14840,9 +14840,9 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForOrgApplicationJSONGone
 			if err := func() error {
@@ -14861,13 +14861,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14895,13 +14895,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Project
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -14916,9 +14916,9 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForRepoApplicationJSONUnauthorized
 			if err := func() error {
@@ -14937,9 +14937,9 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForRepoApplicationJSONForbidden
 			if err := func() error {
@@ -14958,9 +14958,9 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForRepoApplicationJSONNotFound
 			if err := func() error {
@@ -14979,9 +14979,9 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsCreateForRepoApplicationJSONGone
 			if err := func() error {
@@ -15000,13 +15000,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15038,9 +15038,9 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteApplicationJSONUnauthorized
 			if err := func() error {
@@ -15059,13 +15059,13 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteForbidden
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15080,9 +15080,9 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteApplicationJSONNotFound
 			if err := func() error {
@@ -15101,9 +15101,9 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteApplicationJSONGone
 			if err := func() error {
@@ -15139,9 +15139,9 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteCardApplicationJSONUnauthorized
 			if err := func() error {
@@ -15160,13 +15160,13 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteCardForbidden
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15181,9 +15181,9 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteCardApplicationJSONNotFound
 			if err := func() error {
@@ -15219,9 +15219,9 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteColumnApplicationJSONUnauthorized
 			if err := func() error {
@@ -15240,9 +15240,9 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsDeleteColumnApplicationJSONForbidden
 			if err := func() error {
@@ -15274,13 +15274,13 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Project
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15297,9 +15297,9 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetApplicationJSONUnauthorized
 			if err := func() error {
@@ -15318,9 +15318,9 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetApplicationJSONForbidden
 			if err := func() error {
@@ -15352,13 +15352,13 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectCard
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15375,9 +15375,9 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetCardApplicationJSONUnauthorized
 			if err := func() error {
@@ -15396,9 +15396,9 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetCardApplicationJSONForbidden
 			if err := func() error {
@@ -15417,9 +15417,9 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetCardApplicationJSONNotFound
 			if err := func() error {
@@ -15451,13 +15451,13 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectColumn
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15474,9 +15474,9 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetColumnApplicationJSONUnauthorized
 			if err := func() error {
@@ -15495,9 +15495,9 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetColumnApplicationJSONForbidden
 			if err := func() error {
@@ -15516,9 +15516,9 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsGetColumnApplicationJSONNotFound
 			if err := func() error {
@@ -15550,9 +15550,9 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListCardsOKApplicationJSON
 			if err := func() error {
@@ -15573,9 +15573,9 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListCardsApplicationJSONUnauthorized
 			if err := func() error {
@@ -15594,9 +15594,9 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListCardsApplicationJSONForbidden
 			if err := func() error {
@@ -15628,9 +15628,9 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListColumnsOKApplicationJSON
 			if err := func() error {
@@ -15651,9 +15651,9 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListColumnsApplicationJSONUnauthorized
 			if err := func() error {
@@ -15672,9 +15672,9 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListColumnsApplicationJSONForbidden
 			if err := func() error {
@@ -15706,9 +15706,9 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForOrgOKApplicationJSON
 			if err := func() error {
@@ -15727,13 +15727,13 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15761,9 +15761,9 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForRepoOKApplicationJSON
 			if err := func() error {
@@ -15782,9 +15782,9 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForRepoApplicationJSONUnauthorized
 			if err := func() error {
@@ -15803,9 +15803,9 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForRepoApplicationJSONForbidden
 			if err := func() error {
@@ -15824,9 +15824,9 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForRepoApplicationJSONNotFound
 			if err := func() error {
@@ -15845,9 +15845,9 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsListForRepoApplicationJSONGone
 			if err := func() error {
@@ -15866,13 +15866,13 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15900,13 +15900,13 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsMoveColumnCreated
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15923,9 +15923,9 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsMoveColumnApplicationJSONUnauthorized
 			if err := func() error {
@@ -15944,9 +15944,9 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsMoveColumnApplicationJSONForbidden
 			if err := func() error {
@@ -15965,13 +15965,13 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -15999,13 +15999,13 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Project
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16022,9 +16022,9 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateApplicationJSONUnauthorized
 			if err := func() error {
@@ -16043,13 +16043,13 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateForbidden
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16066,9 +16066,9 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateApplicationJSONGone
 			if err := func() error {
@@ -16087,13 +16087,13 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16121,13 +16121,13 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectCard
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16144,9 +16144,9 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateCardApplicationJSONUnauthorized
 			if err := func() error {
@@ -16165,9 +16165,9 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateCardApplicationJSONForbidden
 			if err := func() error {
@@ -16186,9 +16186,9 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateCardApplicationJSONNotFound
 			if err := func() error {
@@ -16207,13 +16207,13 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16241,13 +16241,13 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectColumn
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16264,9 +16264,9 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateColumnApplicationJSONUnauthorized
 			if err := func() error {
@@ -16285,9 +16285,9 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProjectsUpdateColumnApplicationJSONForbidden
 			if err := func() error {
@@ -16336,13 +16336,13 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response, span tr
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReviewComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16357,13 +16357,13 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response, span tr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16391,13 +16391,13 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16412,13 +16412,13 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16433,13 +16433,13 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16467,13 +16467,13 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16488,13 +16488,13 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16509,13 +16509,13 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response, span trace.Span
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16545,13 +16545,13 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16579,13 +16579,13 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16600,13 +16600,13 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16621,13 +16621,13 @@ func decodePullsDismissReviewResponse(resp *http.Response, span trace.Span) (res
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16655,13 +16655,13 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequest
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16678,9 +16678,9 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullsGetApplicationJSONNotFound
 			if err := func() error {
@@ -16699,9 +16699,9 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullsGetApplicationJSONInternalServerError
 			if err := func() error {
@@ -16733,13 +16733,13 @@ func decodePullsGetReviewResponse(resp *http.Response, span trace.Span) (res Pul
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16754,13 +16754,13 @@ func decodePullsGetReviewResponse(resp *http.Response, span trace.Span) (res Pul
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16788,13 +16788,13 @@ func decodePullsGetReviewCommentResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReviewComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16809,13 +16809,13 @@ func decodePullsGetReviewCommentResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16843,9 +16843,9 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullsListCommentsForReviewOKApplicationJSON
 			if err := func() error {
@@ -16864,13 +16864,13 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16898,16 +16898,16 @@ func decodePullsListCommitsResponse(resp *http.Response, span trace.Span) (res [
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Commit
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Commit
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -16940,13 +16940,13 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReviewRequest
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -16974,16 +16974,16 @@ func decodePullsListReviewCommentsResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PullRequestReviewComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PullRequestReviewComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -17016,16 +17016,16 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PullRequestReviewComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PullRequestReviewComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -17058,16 +17058,16 @@ func decodePullsListReviewsResponse(resp *http.Response, span trace.Span) (res [
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PullRequestReview
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PullRequestReview
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -17100,13 +17100,13 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17121,9 +17121,9 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullsSubmitReviewApplicationJSONForbidden
 			if err := func() error {
@@ -17142,9 +17142,9 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullsSubmitReviewApplicationJSONNotFound
 			if err := func() error {
@@ -17163,13 +17163,13 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17197,13 +17197,13 @@ func decodePullsUpdateReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17218,13 +17218,13 @@ func decodePullsUpdateReviewResponse(resp *http.Response, span trace.Span) (res 
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17252,13 +17252,13 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PullRequestReviewComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17286,13 +17286,13 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RateLimitOverview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17309,13 +17309,13 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17343,9 +17343,9 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
 			if err := func() error {
@@ -17364,9 +17364,9 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
 			if err := func() error {
@@ -17398,13 +17398,13 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Reaction
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17432,9 +17432,9 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
 			if err := func() error {
@@ -17453,9 +17453,9 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
 			if err := func() error {
@@ -17487,13 +17487,13 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response, s
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Reaction
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17615,9 +17615,9 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsDeleteLegacyApplicationJSONUnauthorized
 			if err := func() error {
@@ -17636,9 +17636,9 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsDeleteLegacyApplicationJSONForbidden
 			if err := func() error {
@@ -17657,9 +17657,9 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsDeleteLegacyApplicationJSONGone
 			if err := func() error {
@@ -17678,13 +17678,13 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17712,9 +17712,9 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForCommitCommentOKApplicationJSON
 			if err := func() error {
@@ -17733,13 +17733,13 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17754,13 +17754,13 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17788,9 +17788,9 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForIssueOKApplicationJSON
 			if err := func() error {
@@ -17809,9 +17809,9 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForIssueApplicationJSONNotFound
 			if err := func() error {
@@ -17830,9 +17830,9 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForIssueApplicationJSONGone
 			if err := func() error {
@@ -17851,13 +17851,13 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17885,9 +17885,9 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForIssueCommentOKApplicationJSON
 			if err := func() error {
@@ -17906,13 +17906,13 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17927,13 +17927,13 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -17961,9 +17961,9 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReactionsListForPullRequestReviewCommentOKApplicationJSON
 			if err := func() error {
@@ -17982,13 +17982,13 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18003,13 +18003,13 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18037,16 +18037,16 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Reaction
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18079,16 +18079,16 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Reaction
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18121,16 +18121,16 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Reaction
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18163,16 +18163,16 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Reaction
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Reaction
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18209,9 +18209,9 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposAcceptInvitationApplicationJSONForbidden
 			if err := func() error {
@@ -18230,9 +18230,9 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposAcceptInvitationApplicationJSONNotFound
 			if err := func() error {
@@ -18251,9 +18251,9 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposAcceptInvitationApplicationJSONConflict
 			if err := func() error {
@@ -18319,13 +18319,13 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CommitComparison
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18340,9 +18340,9 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposCompareCommitsApplicationJSONNotFound
 			if err := func() error {
@@ -18361,9 +18361,9 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposCompareCommitsApplicationJSONInternalServerError
 			if err := func() error {
@@ -18395,13 +18395,13 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranchAdminEnforced
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18416,13 +18416,13 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response, spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18450,13 +18450,13 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response, span trace.Span)
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Status
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18484,13 +18484,13 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response, span trace.Span
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Repository
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18522,9 +18522,9 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeclineInvitationApplicationJSONForbidden
 			if err := func() error {
@@ -18543,9 +18543,9 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeclineInvitationApplicationJSONNotFound
 			if err := func() error {
@@ -18564,9 +18564,9 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeclineInvitationApplicationJSONConflict
 			if err := func() error {
@@ -18600,9 +18600,9 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 	case 307:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeleteApplicationJSONTemporaryRedirect
 			if err := func() error {
@@ -18621,13 +18621,13 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeleteForbidden
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18642,9 +18642,9 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposDeleteApplicationJSONNotFound
 			if err := func() error {
@@ -18693,13 +18693,13 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span tr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18744,13 +18744,13 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18780,13 +18780,13 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18816,13 +18816,13 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18852,13 +18852,13 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response, spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18903,13 +18903,13 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18924,13 +18924,13 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -18975,13 +18975,13 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response, s
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19041,13 +19041,13 @@ func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19165,13 +19165,13 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Accepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19216,13 +19216,13 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response FullRepository
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19237,9 +19237,9 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetApplicationJSONMovedPermanently
 			if err := func() error {
@@ -19258,9 +19258,9 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetApplicationJSONForbidden
 			if err := func() error {
@@ -19279,9 +19279,9 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetApplicationJSONNotFound
 			if err := func() error {
@@ -19313,13 +19313,13 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BranchRestrictionPolicy
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19334,13 +19334,13 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19368,13 +19368,13 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranchAdminEnforced
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19402,9 +19402,9 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetAllStatusCheckContextsOKApplicationJSON
 			if err := func() error {
@@ -19423,13 +19423,13 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19457,13 +19457,13 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Topic
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19478,13 +19478,13 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19499,13 +19499,13 @@ func decodeReposGetAllTopicsResponse(resp *http.Response, span trace.Span) (res 
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19533,9 +19533,9 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
@@ -19554,13 +19554,13 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19588,13 +19588,13 @@ func decodeReposGetAutolinkResponse(resp *http.Response, span trace.Span) (res R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Autolink
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19609,13 +19609,13 @@ func decodeReposGetAutolinkResponse(resp *http.Response, span trace.Span) (res R
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19643,13 +19643,13 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BranchWithProtection
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19664,9 +19664,9 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetBranchApplicationJSONMovedPermanently
 			if err := func() error {
@@ -19685,9 +19685,9 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetBranchApplicationJSONNotFound
 			if err := func() error {
@@ -19706,13 +19706,13 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19740,13 +19740,13 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BranchProtection
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19761,13 +19761,13 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19795,13 +19795,13 @@ func decodeReposGetClonesResponse(resp *http.Response, span trace.Span) (res Rep
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CloneTraffic
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19816,13 +19816,13 @@ func decodeReposGetClonesResponse(resp *http.Response, span trace.Span) (res Rep
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19850,9 +19850,9 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetCodeFrequencyStatsOKApplicationJSON
 			if err := func() error {
@@ -19871,13 +19871,13 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Accepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19907,13 +19907,13 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RepositoryCollaboratorPermission
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19928,13 +19928,13 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response, span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19962,13 +19962,13 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CombinedCommitStatus
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -19983,13 +19983,13 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response, span trace.
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20017,9 +20017,9 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetCommitActivityStatsOKApplicationJSON
 			if err := func() error {
@@ -20038,13 +20038,13 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Accepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20074,13 +20074,13 @@ func decodeReposGetCommitCommentResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CommitComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20095,13 +20095,13 @@ func decodeReposGetCommitCommentResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20129,13 +20129,13 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranchAdminEnforced
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20150,13 +20150,13 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response, span t
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20184,13 +20184,13 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CommunityProfile
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20218,9 +20218,9 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetContributorsStatsOKApplicationJSON
 			if err := func() error {
@@ -20239,13 +20239,13 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Accepted
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20275,13 +20275,13 @@ func decodeReposGetDeployKeyResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response DeployKey
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20296,13 +20296,13 @@ func decodeReposGetDeployKeyResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20330,13 +20330,13 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response DeploymentStatus
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20351,13 +20351,13 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20372,13 +20372,13 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response, span trace.Span
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20406,13 +20406,13 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PageBuild
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20440,13 +20440,13 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Release
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20474,13 +20474,13 @@ func decodeReposGetPagesResponse(resp *http.Response, span trace.Span) (res Repo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Page
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20495,13 +20495,13 @@ func decodeReposGetPagesResponse(resp *http.Response, span trace.Span) (res Repo
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20529,13 +20529,13 @@ func decodeReposGetPagesBuildResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PageBuild
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20563,13 +20563,13 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PagesHealthCheck
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20584,13 +20584,13 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response EmptyObject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20607,13 +20607,13 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20643,13 +20643,13 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ParticipationStats
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20664,13 +20664,13 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response, span trace.Sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20698,13 +20698,13 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranchPullRequestReview
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20732,9 +20732,9 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetPunchCardStatsOKApplicationJSON
 			if err := func() error {
@@ -20768,13 +20768,13 @@ func decodeReposGetReleaseResponse(resp *http.Response, span trace.Span) (res Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Release
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20789,13 +20789,13 @@ func decodeReposGetReleaseResponse(resp *http.Response, span trace.Span) (res Re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20823,13 +20823,13 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReleaseAsset
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20846,13 +20846,13 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20867,13 +20867,13 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response, span trace.Span) (r
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20901,13 +20901,13 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Release
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20922,13 +20922,13 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20956,13 +20956,13 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response StatusCheckPolicy
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -20977,13 +20977,13 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21011,9 +21011,9 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
@@ -21032,13 +21032,13 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21066,9 +21066,9 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetTopPathsOKApplicationJSON
 			if err := func() error {
@@ -21087,13 +21087,13 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21121,9 +21121,9 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetTopReferrersOKApplicationJSON
 			if err := func() error {
@@ -21142,13 +21142,13 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21176,9 +21176,9 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
@@ -21197,13 +21197,13 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21231,13 +21231,13 @@ func decodeReposGetViewsResponse(resp *http.Response, span trace.Span) (res Repo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ViewTraffic
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21252,13 +21252,13 @@ func decodeReposGetViewsResponse(resp *http.Response, span trace.Span) (res Repo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21286,13 +21286,13 @@ func decodeReposGetWebhookResponse(resp *http.Response, span trace.Span) (res Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Hook
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21307,13 +21307,13 @@ func decodeReposGetWebhookResponse(resp *http.Response, span trace.Span) (res Re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21341,13 +21341,13 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response, span trace.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21375,16 +21375,16 @@ func decodeReposListAutolinksResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Autolink
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Autolink
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21417,9 +21417,9 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListBranchesOKApplicationJSON
 			if err := func() error {
@@ -21438,13 +21438,13 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21472,9 +21472,9 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCollaboratorsOKApplicationJSON
 			if err := func() error {
@@ -21493,13 +21493,13 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21527,16 +21527,16 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []CommitComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem CommitComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21569,16 +21569,16 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []CommitComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem CommitComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21611,9 +21611,9 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitStatusesForRefOKApplicationJSON
 			if err := func() error {
@@ -21632,13 +21632,13 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21666,9 +21666,9 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitsOKApplicationJSON
 			if err := func() error {
@@ -21687,9 +21687,9 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitsApplicationJSONBadRequest
 			if err := func() error {
@@ -21710,9 +21710,9 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitsApplicationJSONNotFound
 			if err := func() error {
@@ -21731,9 +21731,9 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitsApplicationJSONConflict
 			if err := func() error {
@@ -21752,9 +21752,9 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListCommitsApplicationJSONInternalServerError
 			if err := func() error {
@@ -21786,9 +21786,9 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListContributorsOKApplicationJSON
 			if err := func() error {
@@ -21809,9 +21809,9 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListContributorsApplicationJSONForbidden
 			if err := func() error {
@@ -21830,9 +21830,9 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListContributorsApplicationJSONNotFound
 			if err := func() error {
@@ -21864,16 +21864,16 @@ func decodeReposListDeployKeysResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []DeployKey
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem DeployKey
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21906,9 +21906,9 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListDeploymentStatusesOKApplicationJSON
 			if err := func() error {
@@ -21927,13 +21927,13 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -21961,16 +21961,16 @@ func decodeReposListForOrgResponse(resp *http.Response, span trace.Span) (res []
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem MinimalRepository
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22003,16 +22003,16 @@ func decodeReposListForUserResponse(resp *http.Response, span trace.Span) (res [
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem MinimalRepository
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22045,9 +22045,9 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListForksOKApplicationJSON
 			if err := func() error {
@@ -22066,13 +22066,13 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22102,16 +22102,16 @@ func decodeReposListInvitationsResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []RepositoryInvitation
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem RepositoryInvitation
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22144,9 +22144,9 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListInvitationsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -22167,9 +22167,9 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -22188,9 +22188,9 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -22209,9 +22209,9 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -22243,13 +22243,13 @@ func decodeReposListLanguagesResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Language
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22277,16 +22277,16 @@ func decodeReposListPagesBuildsResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PageBuild
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PageBuild
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22319,16 +22319,16 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []PullRequestSimple
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem PullRequestSimple
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22361,16 +22361,16 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []ReleaseAsset
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem ReleaseAsset
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22403,9 +22403,9 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListReleasesOKApplicationJSON
 			if err := func() error {
@@ -22424,13 +22424,13 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22458,16 +22458,16 @@ func decodeReposListTagsResponse(resp *http.Response, span trace.Span) (res []Ta
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Tag
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Tag
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22500,16 +22500,16 @@ func decodeReposListTeamsResponse(resp *http.Response, span trace.Span) (res []T
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Team
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Team
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22542,9 +22542,9 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposListWebhooksOKApplicationJSON
 			if err := func() error {
@@ -22563,13 +22563,13 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22597,13 +22597,13 @@ func decodeReposMergeUpstreamResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MergedUpstream
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22637,13 +22637,13 @@ func decodeReposPingWebhookResponse(resp *http.Response, span trace.Span) (res R
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22701,13 +22701,13 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Topic
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22722,13 +22722,13 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22743,13 +22743,13 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22764,13 +22764,13 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response, span trace.Span) (
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22798,13 +22798,13 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response, span trace.Span) 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PageBuildStatus
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22832,13 +22832,13 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranchAdminEnforced
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22868,13 +22868,13 @@ func decodeReposTestPushWebhookResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22902,13 +22902,13 @@ func decodeReposTransferResponse(resp *http.Response, span trace.Span) (res Mini
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response MinimalRepository
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22936,13 +22936,13 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ProtectedBranch
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -22957,9 +22957,9 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposUpdateBranchProtectionApplicationJSONForbidden
 			if err := func() error {
@@ -22978,9 +22978,9 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReposUpdateBranchProtectionApplicationJSONNotFound
 			if err := func() error {
@@ -22999,13 +22999,13 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23033,13 +23033,13 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response CommitComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23054,13 +23054,13 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response, span trace.Span
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23088,13 +23088,13 @@ func decodeReposUpdateInvitationResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response RepositoryInvitation
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23122,13 +23122,13 @@ func decodeReposUpdateReleaseResponse(resp *http.Response, span trace.Span) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Release
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23143,13 +23143,13 @@ func decodeReposUpdateReleaseResponse(resp *http.Response, span trace.Span) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23177,13 +23177,13 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReleaseAsset
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23211,13 +23211,13 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response WebhookConfig
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23245,13 +23245,13 @@ func decodeReposUploadReleaseAssetResponse(resp *http.Response, span trace.Span)
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ReleaseAsset
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23283,9 +23283,9 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimDeleteUserFromOrgApplicationJSONForbidden
 			if err := func() error {
@@ -23306,9 +23306,9 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ScimDeleteUserFromOrgApplicationJSONNotFound
 			if err := func() error {
@@ -23342,13 +23342,13 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SearchCommitsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23365,13 +23365,13 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23399,13 +23399,13 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SearchTopicsOK
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23422,13 +23422,13 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23456,13 +23456,13 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SecretScanningAlert
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23479,13 +23479,13 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response, span trace.Span) 
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23513,9 +23513,9 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SecretScanningListAlertsForOrgOKApplicationJSON
 			if err := func() error {
@@ -23534,13 +23534,13 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23555,13 +23555,13 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23589,9 +23589,9 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SecretScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
@@ -23612,13 +23612,13 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23646,13 +23646,13 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response SecretScanningAlert
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23671,13 +23671,13 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response, span trace.Spa
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response ServiceUnavailable
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23707,13 +23707,13 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response, span trace.Span) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23745,13 +23745,13 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23783,13 +23783,13 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23806,13 +23806,13 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23844,13 +23844,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsAddOrUpdateProjectPermissionsInOrgForbidden
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23893,13 +23893,13 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamProject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23929,13 +23929,13 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamProject
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -23965,13 +23965,13 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamRepository
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24003,13 +24003,13 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamRepository
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24041,13 +24041,13 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response, span t
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24075,13 +24075,13 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response, span 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24109,13 +24109,13 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response, span trace.Sp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24143,13 +24143,13 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response, span trace.S
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24177,13 +24177,13 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GroupMapping
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24286,13 +24286,13 @@ func decodeTeamsGetByNameResponse(resp *http.Response, span trace.Span) (res Tea
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamFull
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24307,13 +24307,13 @@ func decodeTeamsGetByNameResponse(resp *http.Response, span trace.Span) (res Tea
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24341,13 +24341,13 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24375,13 +24375,13 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24409,13 +24409,13 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24443,13 +24443,13 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24477,13 +24477,13 @@ func decodeTeamsGetLegacyResponse(resp *http.Response, span trace.Span) (res Tea
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamFull
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24498,13 +24498,13 @@ func decodeTeamsGetLegacyResponse(resp *http.Response, span trace.Span) (res Tea
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24549,13 +24549,13 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24585,13 +24585,13 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamMembership
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24606,13 +24606,13 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response, span tra
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24640,9 +24640,9 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListOKApplicationJSON
 			if err := func() error {
@@ -24661,13 +24661,13 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -24695,16 +24695,16 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []Team
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem Team
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24737,16 +24737,16 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []TeamDiscussionComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem TeamDiscussionComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24779,16 +24779,16 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []TeamDiscussionComment
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem TeamDiscussionComment
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24821,16 +24821,16 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []TeamDiscussion
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem TeamDiscussion
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24863,16 +24863,16 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []TeamDiscussion
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem TeamDiscussion
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24905,9 +24905,9 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -24928,9 +24928,9 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -24949,9 +24949,9 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
@@ -24983,13 +24983,13 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GroupMapping
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25004,9 +25004,9 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONForbidden
 			if err := func() error {
@@ -25025,9 +25025,9 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONNotFound
 			if err := func() error {
@@ -25059,13 +25059,13 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response, span trace.Span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GroupMapping
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25093,13 +25093,13 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GroupMapping
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25127,16 +25127,16 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25169,9 +25169,9 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListMembersLegacyOKApplicationJSON
 			if err := func() error {
@@ -25190,13 +25190,13 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25224,16 +25224,16 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []OrganizationInvitation
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem OrganizationInvitation
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25266,16 +25266,16 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []OrganizationInvitation
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem OrganizationInvitation
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25308,16 +25308,16 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response, span trace.Span) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []TeamProject
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem TeamProject
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25350,9 +25350,9 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListProjectsLegacyOKApplicationJSON
 			if err := func() error {
@@ -25371,13 +25371,13 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25405,16 +25405,16 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []MinimalRepository
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem MinimalRepository
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25447,9 +25447,9 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamsListReposLegacyOKApplicationJSON
 			if err := func() error {
@@ -25468,13 +25468,13 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25598,13 +25598,13 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response, span t
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25632,13 +25632,13 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response, span 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussionComment
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25666,13 +25666,13 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25700,13 +25700,13 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response, span trace.S
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamDiscussion
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25734,13 +25734,13 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response, span trace.Span) (res T
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response TeamFull
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -25772,9 +25772,9 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckBlockedApplicationJSONUnauthorized
 			if err := func() error {
@@ -25793,9 +25793,9 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckBlockedApplicationJSONForbidden
 			if err := func() error {
@@ -25814,9 +25814,9 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckBlockedApplicationJSONNotFound
 			if err := func() error {
@@ -25869,9 +25869,9 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -25890,9 +25890,9 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -25911,9 +25911,9 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -25949,9 +25949,9 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -25970,9 +25970,9 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -25991,9 +25991,9 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26029,9 +26029,9 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersFollowApplicationJSONUnauthorized
 			if err := func() error {
@@ -26050,9 +26050,9 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersFollowApplicationJSONForbidden
 			if err := func() error {
@@ -26071,9 +26071,9 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersFollowApplicationJSONNotFound
 			if err := func() error {
@@ -26105,13 +26105,13 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response GpgKey
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -26128,9 +26128,9 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26149,9 +26149,9 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26170,9 +26170,9 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26204,13 +26204,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response Key
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -26227,9 +26227,9 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26248,9 +26248,9 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26269,9 +26269,9 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26303,9 +26303,9 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListOKApplicationJSON
 			if err := func() error {
@@ -26339,9 +26339,9 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListBlockedByAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -26362,9 +26362,9 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26383,9 +26383,9 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26404,9 +26404,9 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26425,13 +26425,13 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
 			if err := func() error {
-				if err := response.ReadJSON(r); err != nil {
+				if err := response.ReadJSON(d); err != nil {
 					return err
 				}
 				return nil
@@ -26459,9 +26459,9 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -26482,9 +26482,9 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26503,9 +26503,9 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26524,9 +26524,9 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26558,9 +26558,9 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowedByAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -26581,9 +26581,9 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26602,9 +26602,9 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26636,9 +26636,9 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowersForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
@@ -26659,9 +26659,9 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
@@ -26680,9 +26680,9 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
@@ -26714,16 +26714,16 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -26756,16 +26756,16 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response, span trace.Spa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []SimpleUser
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem SimpleUser
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -26798,9 +26798,9 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListGpgKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -26821,9 +26821,9 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26842,9 +26842,9 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -26863,9 +26863,9 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -26897,16 +26897,16 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response, span trace.Span)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []GpgKey
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem GpgKey
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -26939,9 +26939,9 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -26962,9 +26962,9 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -26983,9 +26983,9 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -27004,9 +27004,9 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -27038,16 +27038,16 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response, span trace.Sp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response []KeySimple
 			if err := func() error {
 				response = nil
-				if err := r.Array(func(r *json.Reader) error {
+				if err := d.Arr(func(d *json.Decoder) error {
 					var elem KeySimple
-					if err := elem.ReadJSON(r); err != nil {
+					if err := elem.ReadJSON(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -27080,9 +27080,9 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
@@ -27103,9 +27103,9 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
@@ -27124,9 +27124,9 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
@@ -27145,9 +27145,9 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
@@ -27183,9 +27183,9 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnblockApplicationJSONUnauthorized
 			if err := func() error {
@@ -27204,9 +27204,9 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnblockApplicationJSONForbidden
 			if err := func() error {
@@ -27225,9 +27225,9 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnblockApplicationJSONNotFound
 			if err := func() error {
@@ -27263,9 +27263,9 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnfollowApplicationJSONUnauthorized
 			if err := func() error {
@@ -27284,9 +27284,9 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnfollowApplicationJSONForbidden
 			if err := func() error {
@@ -27305,9 +27305,9 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			r := json.GetReader()
-			defer json.PutReader(r)
-			r.ResetBytes(buf.Bytes())
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
 
 			var response UsersUnfollowApplicationJSONNotFound
 			if err := func() error {

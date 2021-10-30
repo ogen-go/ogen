@@ -9,7 +9,7 @@ const (
 	timeLayout = "15:04:05"
 )
 
-func ReadDate(i *Reader) (v time.Time, err error) {
+func ReadDate(i *Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -17,11 +17,11 @@ func ReadDate(i *Reader) (v time.Time, err error) {
 	return time.Parse(dateLayout, s)
 }
 
-func WriteDate(s *Writer, v time.Time) {
+func WriteDate(s *Encoder, v time.Time) {
 	s.Str(v.Format(dateLayout))
 }
 
-func ReadTime(i *Reader) (v time.Time, err error) {
+func ReadTime(i *Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -29,11 +29,11 @@ func ReadTime(i *Reader) (v time.Time, err error) {
 	return time.Parse(timeLayout, s)
 }
 
-func WriteTime(s *Writer, v time.Time) {
+func WriteTime(s *Encoder, v time.Time) {
 	s.Str(v.Format(timeLayout))
 }
 
-func ReadDateTime(i *Reader) (v time.Time, err error) {
+func ReadDateTime(i *Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -41,11 +41,11 @@ func ReadDateTime(i *Reader) (v time.Time, err error) {
 	return time.Parse(time.RFC3339, s)
 }
 
-func WriteDateTime(s *Writer, v time.Time) {
+func WriteDateTime(s *Encoder, v time.Time) {
 	s.Str(v.Format(time.RFC3339))
 }
 
-func ReadDuration(i *Reader) (v time.Duration, err error) {
+func ReadDuration(i *Decoder) (v time.Duration, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -53,6 +53,6 @@ func ReadDuration(i *Reader) (v time.Duration, err error) {
 	return time.ParseDuration(s)
 }
 
-func WriteDuration(s *Writer, v time.Duration) {
+func WriteDuration(s *Encoder, v time.Duration) {
 	s.Str(v.String())
 }

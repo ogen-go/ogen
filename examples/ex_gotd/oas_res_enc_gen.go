@@ -60,2625 +60,2625 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeAddStickerToSetResponse(response AddStickerToSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/addStickerToSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/answerCallbackQuery: unexpected response type: %T", response)
 	}
 }
 
-func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/answerInlineQuery: unexpected response type: %T", response)
 	}
 }
 
-func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/answerPreCheckoutQuery: unexpected response type: %T", response)
 	}
 }
 
-func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/answerShippingQuery: unexpected response type: %T", response)
 	}
 }
 
-func encodeBanChatMemberResponse(response BanChatMemberRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/banChatMember: unexpected response type: %T", response)
 	}
 }
 
-func encodeCopyMessageResponse(response CopyMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/copyMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/createChatInviteLink: unexpected response type: %T", response)
 	}
 }
 
-func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/createNewStickerSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteChatPhoto: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteChatStickerSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteMessageResponse(response DeleteMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteMyCommands: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteStickerFromSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeDeleteWebhookResponse(response DeleteWebhookRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/deleteWebhook: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editChatInviteLink: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editMessageCaption: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editMessageLiveLocation: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditMessageMediaResponse(response EditMessageMediaRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editMessageMedia: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editMessageReplyMarkup: unexpected response type: %T", response)
 	}
 }
 
-func encodeEditMessageTextResponse(response EditMessageTextRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/editMessageText: unexpected response type: %T", response)
 	}
 }
 
-func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/exportChatInviteLink: unexpected response type: %T", response)
 	}
 }
 
-func encodeForwardMessageResponse(response ForwardMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/forwardMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetChatResponse(response GetChatRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getChat: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getChatAdministrators: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetChatMemberResponse(response GetChatMemberRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getChatMember: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getChatMemberCount: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetFileResponse(response GetFileRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getFile: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getGameHighScores: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetMeResponse(response GetMeRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultUsr:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getMe: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetMyCommandsResponse(response GetMyCommandsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getMyCommands: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetStickerSetResponse(response GetStickerSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getStickerSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetUpdatesResponse(response GetUpdatesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getUpdates: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/getUserProfilePhotos: unexpected response type: %T", response)
 	}
 }
 
-func encodeLeaveChatResponse(response LeaveChatRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/leaveChat: unexpected response type: %T", response)
 	}
 }
 
-func encodePinChatMessageResponse(response PinChatMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/pinChatMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodePromoteChatMemberResponse(response PromoteChatMemberRes, rw http.ResponseWriter, span trace.Span) error {
+func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/promoteChatMember: unexpected response type: %T", response)
 	}
 }
 
-func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/restrictChatMember: unexpected response type: %T", response)
 	}
 }
 
-func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/revokeChatInviteLink: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendAnimationResponse(response SendAnimationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendAnimation: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendAudioResponse(response SendAudioRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendAudio: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendChatActionResponse(response SendChatActionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendChatAction: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendContactResponse(response SendContactRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendContact: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendDiceResponse(response SendDiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendDice: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendDocumentResponse(response SendDocumentRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendDocument: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendGameResponse(response SendGameRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendGame: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendInvoiceResponse(response SendInvoiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendInvoice: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendLocationResponse(response SendLocationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendLocation: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendMediaGroupResponse(response SendMediaGroupRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendMediaGroup: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendMessageResponse(response SendMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendPhotoResponse(response SendPhotoRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendPhoto: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendPollResponse(response SendPollRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendPoll: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendStickerResponse(response SendStickerRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendSticker: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendVenueResponse(response SendVenueRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendVenue: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendVideoResponse(response SendVideoRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendVideo: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendVideoNoteResponse(response SendVideoNoteRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendVideoNote: unexpected response type: %T", response)
 	}
 }
 
-func encodeSendVoiceResponse(response SendVoiceRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ResultMsg:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/sendVoice: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatAdministratorCustomTitle: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatDescription: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatPermissions: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatPhotoResponse(response SetChatPhotoRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatPhoto: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatStickerSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetChatTitleResponse(response SetChatTitleRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setChatTitle: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetGameScoreResponse(response SetGameScoreRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setGameScore: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetMyCommandsResponse(response SetMyCommandsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setMyCommands: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setPassportDataErrors: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setStickerPositionInSet: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setStickerSetThumb: unexpected response type: %T", response)
 	}
 }
 
-func encodeSetWebhookResponse(response SetWebhookRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/setWebhook: unexpected response type: %T", response)
 	}
 }
 
-func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/stopMessageLiveLocation: unexpected response type: %T", response)
 	}
 }
 
-func encodeStopPollResponse(response StopPollRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/stopPoll: unexpected response type: %T", response)
 	}
 }
 
-func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/unbanChatMember: unexpected response type: %T", response)
 	}
 }
 
-func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/unpinAllChatMessages: unexpected response type: %T", response)
 	}
 }
 
-func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/unpinChatMessage: unexpected response type: %T", response)
 	}
 }
 
-func encodeUploadStickerFileResponse(response UploadStickerFileRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *ErrorStatusCode:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(response.StatusCode)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.Response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	default:
 		return fmt.Errorf("/uploadStickerFile: unexpected response type: %T", response)

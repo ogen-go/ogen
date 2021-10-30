@@ -61,97 +61,97 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s Book) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s Book) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.ID.Set {
 		more.More()
-		w.ObjField("id")
-		s.ID.WriteJSON(w)
+		e.ObjField("id")
+		s.ID.WriteJSON(e)
 	}
 	if s.MediaID.Set {
 		more.More()
-		w.ObjField("media_id")
-		s.MediaID.WriteJSON(w)
+		e.ObjField("media_id")
+		s.MediaID.WriteJSON(e)
 	}
 	if s.Images.Set {
 		more.More()
-		w.ObjField("images")
-		s.Images.WriteJSON(w)
+		e.ObjField("images")
+		s.Images.WriteJSON(e)
 	}
 	if s.Title.Set {
 		more.More()
-		w.ObjField("title")
-		s.Title.WriteJSON(w)
+		e.ObjField("title")
+		s.Title.WriteJSON(e)
 	}
 	if s.Tags != nil {
 		more.More()
-		w.ObjField("tags")
+		e.ObjField("tags")
 		more.Down()
-		w.ArrStart()
+		e.ArrStart()
 		for _, elem := range s.Tags {
 			more.More()
-			elem.WriteJSON(w)
+			elem.WriteJSON(e)
 		}
-		w.ArrEnd()
+		e.ArrEnd()
 		more.Up()
 	}
 	if s.Scanlator.Set {
 		more.More()
-		w.ObjField("scanlator")
-		s.Scanlator.WriteJSON(w)
+		e.ObjField("scanlator")
+		s.Scanlator.WriteJSON(e)
 	}
 	if s.UploadDate.Set {
 		more.More()
-		w.ObjField("upload_date")
-		s.UploadDate.WriteJSON(w)
+		e.ObjField("upload_date")
+		s.UploadDate.WriteJSON(e)
 	}
 	if s.NumPages.Set {
 		more.More()
-		w.ObjField("num_pages")
-		s.NumPages.WriteJSON(w)
+		e.ObjField("num_pages")
+		s.NumPages.WriteJSON(e)
 	}
 	if s.NumFavorites.Set {
 		more.More()
-		w.ObjField("num_favorites")
-		s.NumFavorites.WriteJSON(w)
+		e.ObjField("num_favorites")
+		s.NumFavorites.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads Book from json stream.
-func (s *Book) ReadJSON(r *json.Reader) error {
+func (s *Book) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Book to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
 			s.ID.Reset()
-			if err := s.ID.ReadJSON(r); err != nil {
+			if err := s.ID.ReadJSON(d); err != nil {
 				return err
 			}
 		case "media_id":
 			s.MediaID.Reset()
-			if err := s.MediaID.ReadJSON(r); err != nil {
+			if err := s.MediaID.ReadJSON(d); err != nil {
 				return err
 			}
 		case "images":
 			s.Images.Reset()
-			if err := s.Images.ReadJSON(r); err != nil {
+			if err := s.Images.ReadJSON(d); err != nil {
 				return err
 			}
 		case "title":
 			s.Title.Reset()
-			if err := s.Title.ReadJSON(r); err != nil {
+			if err := s.Title.ReadJSON(d); err != nil {
 				return err
 			}
 		case "tags":
 			s.Tags = nil
-			if err := r.Array(func(r *json.Reader) error {
+			if err := d.Arr(func(d *json.Decoder) error {
 				var elem Tag
-				if err := elem.ReadJSON(r); err != nil {
+				if err := elem.ReadJSON(d); err != nil {
 					return err
 				}
 				s.Tags = append(s.Tags, elem)
@@ -161,222 +161,222 @@ func (s *Book) ReadJSON(r *json.Reader) error {
 			}
 		case "scanlator":
 			s.Scanlator.Reset()
-			if err := s.Scanlator.ReadJSON(r); err != nil {
+			if err := s.Scanlator.ReadJSON(d); err != nil {
 				return err
 			}
 		case "upload_date":
 			s.UploadDate.Reset()
-			if err := s.UploadDate.ReadJSON(r); err != nil {
+			if err := s.UploadDate.ReadJSON(d); err != nil {
 				return err
 			}
 		case "num_pages":
 			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(r); err != nil {
+			if err := s.NumPages.ReadJSON(d); err != nil {
 				return err
 			}
 		case "num_favorites":
 			s.NumFavorites.Reset()
-			if err := s.NumFavorites.ReadJSON(r); err != nil {
+			if err := s.NumFavorites.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetBookForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s GetBookForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads GetBookForbidden from json stream.
-func (s *GetBookForbidden) ReadJSON(r *json.Reader) error {
+func (s *GetBookForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetBookForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPageCoverImageForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s GetPageCoverImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads GetPageCoverImageForbidden from json stream.
-func (s *GetPageCoverImageForbidden) ReadJSON(r *json.Reader) error {
+func (s *GetPageCoverImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (GetPageCoverImageOKImage) WriteJSON(w *json.Writer)      {}
-func (GetPageCoverImageOKImage) ReadJSON(r *json.Reader) error { return nil }
+func (GetPageCoverImageOKImage) WriteJSON(e *json.Encoder)      {}
+func (GetPageCoverImageOKImage) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPageImageForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s GetPageImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads GetPageImageForbidden from json stream.
-func (s *GetPageImageForbidden) ReadJSON(r *json.Reader) error {
+func (s *GetPageImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetPageImageForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (GetPageImageOKImage) WriteJSON(w *json.Writer)      {}
-func (GetPageImageOKImage) ReadJSON(r *json.Reader) error { return nil }
+func (GetPageImageOKImage) WriteJSON(e *json.Encoder)      {}
+func (GetPageImageOKImage) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GetPageThumbnailImageForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s GetPageThumbnailImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads GetPageThumbnailImageForbidden from json stream.
-func (s *GetPageThumbnailImageForbidden) ReadJSON(r *json.Reader) error {
+func (s *GetPageThumbnailImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (GetPageThumbnailImageOKImage) WriteJSON(w *json.Writer)      {}
-func (GetPageThumbnailImageOKImage) ReadJSON(r *json.Reader) error { return nil }
+func (GetPageThumbnailImageOKImage) WriteJSON(e *json.Encoder)      {}
+func (GetPageThumbnailImageOKImage) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s Image) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s Image) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.T.Set {
 		more.More()
-		w.ObjField("t")
-		s.T.WriteJSON(w)
+		e.ObjField("t")
+		s.T.WriteJSON(e)
 	}
 	if s.W.Set {
 		more.More()
-		w.ObjField("w")
-		s.W.WriteJSON(w)
+		e.ObjField("w")
+		s.W.WriteJSON(e)
 	}
 	if s.H.Set {
 		more.More()
-		w.ObjField("h")
-		s.H.WriteJSON(w)
+		e.ObjField("h")
+		s.H.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads Image from json stream.
-func (s *Image) ReadJSON(r *json.Reader) error {
+func (s *Image) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Image to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "t":
 			s.T.Reset()
-			if err := s.T.ReadJSON(r); err != nil {
+			if err := s.T.ReadJSON(d); err != nil {
 				return err
 			}
 		case "w":
 			s.W.Reset()
-			if err := s.W.ReadJSON(r); err != nil {
+			if err := s.W.ReadJSON(d); err != nil {
 				return err
 			}
 		case "h":
 			s.H.Reset()
-			if err := s.H.ReadJSON(r); err != nil {
+			if err := s.H.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s Images) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s Images) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.Pages != nil {
 		more.More()
-		w.ObjField("pages")
+		e.ObjField("pages")
 		more.Down()
-		w.ArrStart()
+		e.ArrStart()
 		for _, elem := range s.Pages {
 			more.More()
-			elem.WriteJSON(w)
+			elem.WriteJSON(e)
 		}
-		w.ArrEnd()
+		e.ArrEnd()
 		more.Up()
 	}
 	if s.Cover.Set {
 		more.More()
-		w.ObjField("cover")
-		s.Cover.WriteJSON(w)
+		e.ObjField("cover")
+		s.Cover.WriteJSON(e)
 	}
 	if s.Thumbnail.Set {
 		more.More()
-		w.ObjField("thumbnail")
-		s.Thumbnail.WriteJSON(w)
+		e.ObjField("thumbnail")
+		s.Thumbnail.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads Images from json stream.
-func (s *Images) ReadJSON(r *json.Reader) error {
+func (s *Images) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Images to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "pages":
 			s.Pages = nil
-			if err := r.Array(func(r *json.Reader) error {
+			if err := d.Arr(func(d *json.Decoder) error {
 				var elem Image
-				if err := elem.ReadJSON(r); err != nil {
+				if err := elem.ReadJSON(d); err != nil {
 					return err
 				}
 				s.Pages = append(s.Pages, elem)
@@ -386,251 +386,251 @@ func (s *Images) ReadJSON(r *json.Reader) error {
 			}
 		case "cover":
 			s.Cover.Reset()
-			if err := s.Cover.ReadJSON(r); err != nil {
+			if err := s.Cover.ReadJSON(d); err != nil {
 				return err
 			}
 		case "thumbnail":
 			s.Thumbnail.Reset()
-			if err := s.Thumbnail.ReadJSON(r); err != nil {
+			if err := s.Thumbnail.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON writes json value of Image to json stream.
-func (o OptImage) WriteJSON(w *json.Writer) {
-	o.Value.WriteJSON(w)
+func (o OptImage) WriteJSON(e *json.Encoder) {
+	o.Value.WriteJSON(e)
 }
 
 // ReadJSON reads json value of Image from json iterator.
-func (o *OptImage) ReadJSON(r *json.Reader) error {
+func (o *OptImage) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptImage to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(r); err != nil {
+		if err := o.Value.ReadJSON(d); err != nil {
 			return err
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptImage", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptImage", d.Next())
 	}
 }
 
 // WriteJSON writes json value of Images to json stream.
-func (o OptImages) WriteJSON(w *json.Writer) {
-	o.Value.WriteJSON(w)
+func (o OptImages) WriteJSON(e *json.Encoder) {
+	o.Value.WriteJSON(e)
 }
 
 // ReadJSON reads json value of Images from json iterator.
-func (o *OptImages) ReadJSON(r *json.Reader) error {
+func (o *OptImages) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptImages to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(r); err != nil {
+		if err := o.Value.ReadJSON(d); err != nil {
 			return err
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptImages", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptImages", d.Next())
 	}
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptInt) WriteJSON(w *json.Writer) {
-	w.Int(int(o.Value))
+func (o OptInt) WriteJSON(e *json.Encoder) {
+	e.Int(int(o.Value))
 }
 
 // ReadJSON reads json value of int from json iterator.
-func (o *OptInt) ReadJSON(r *json.Reader) error {
+func (o *OptInt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.Number:
 		o.Set = true
-		v, err := r.Int()
+		v, err := d.Int()
 		if err != nil {
 			return err
 		}
 		o.Value = int(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptInt", d.Next())
 	}
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptString) WriteJSON(w *json.Writer) {
-	w.Str(string(o.Value))
+func (o OptString) WriteJSON(e *json.Encoder) {
+	e.Str(string(o.Value))
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptString) ReadJSON(r *json.Reader) error {
+func (o *OptString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.String:
 		o.Set = true
-		v, err := r.Str()
+		v, err := d.Str()
 		if err != nil {
 			return err
 		}
 		o.Value = string(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
 	}
 }
 
 // WriteJSON writes json value of TagType to json stream.
-func (o OptTagType) WriteJSON(w *json.Writer) {
-	w.Str(string(o.Value))
+func (o OptTagType) WriteJSON(e *json.Encoder) {
+	e.Str(string(o.Value))
 }
 
 // ReadJSON reads json value of TagType from json iterator.
-func (o *OptTagType) ReadJSON(r *json.Reader) error {
+func (o *OptTagType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptTagType to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.String:
 		o.Set = true
-		v, err := r.Str()
+		v, err := d.Str()
 		if err != nil {
 			return err
 		}
 		o.Value = TagType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTagType", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptTagType", d.Next())
 	}
 }
 
 // WriteJSON writes json value of Title to json stream.
-func (o OptTitle) WriteJSON(w *json.Writer) {
-	o.Value.WriteJSON(w)
+func (o OptTitle) WriteJSON(e *json.Encoder) {
+	o.Value.WriteJSON(e)
 }
 
 // ReadJSON reads json value of Title from json iterator.
-func (o *OptTitle) ReadJSON(r *json.Reader) error {
+func (o *OptTitle) ReadJSON(d *json.Decoder) error {
 	if o == nil {
 		return fmt.Errorf(`invalid: unable to decode OptTitle to nil`)
 	}
-	switch r.Next() {
+	switch d.Next() {
 	case json.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(r); err != nil {
+		if err := o.Value.ReadJSON(d); err != nil {
 			return err
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTitle", r.Next())
+		return fmt.Errorf("unexpected type %q while reading OptTitle", d.Next())
 	}
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchByTagIDForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s SearchByTagIDForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads SearchByTagIDForbidden from json stream.
-func (s *SearchByTagIDForbidden) ReadJSON(r *json.Reader) error {
+func (s *SearchByTagIDForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SearchByTagIDForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (SearchByTagIDOKApplicationJSON) WriteJSON(w *json.Writer)      {}
-func (SearchByTagIDOKApplicationJSON) ReadJSON(r *json.Reader) error { return nil }
+func (SearchByTagIDOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
+func (SearchByTagIDOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchForbidden) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s SearchForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads SearchForbidden from json stream.
-func (s *SearchForbidden) ReadJSON(r *json.Reader) error {
+func (s *SearchForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SearchForbidden to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
-func (SearchOKApplicationJSON) WriteJSON(w *json.Writer)      {}
-func (SearchOKApplicationJSON) ReadJSON(r *json.Reader) error { return nil }
+func (SearchOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
+func (SearchOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchResponse) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s SearchResponse) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.Result != nil {
 		more.More()
-		w.ObjField("result")
+		e.ObjField("result")
 		more.Down()
-		w.ArrStart()
+		e.ArrStart()
 		for _, elem := range s.Result {
 			more.More()
-			elem.WriteJSON(w)
+			elem.WriteJSON(e)
 		}
-		w.ArrEnd()
+		e.ArrEnd()
 		more.Up()
 	}
 	if s.NumPages.Set {
 		more.More()
-		w.ObjField("num_pages")
-		s.NumPages.WriteJSON(w)
+		e.ObjField("num_pages")
+		s.NumPages.WriteJSON(e)
 	}
 	if s.PerPage.Set {
 		more.More()
-		w.ObjField("per_page")
-		s.PerPage.WriteJSON(w)
+		e.ObjField("per_page")
+		s.PerPage.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads SearchResponse from json stream.
-func (s *SearchResponse) ReadJSON(r *json.Reader) error {
+func (s *SearchResponse) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode SearchResponse to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
 			s.Result = nil
-			if err := r.Array(func(r *json.Reader) error {
+			if err := d.Arr(func(d *json.Decoder) error {
 				var elem Book
-				if err := elem.ReadJSON(r); err != nil {
+				if err := elem.ReadJSON(d); err != nil {
 					return err
 				}
 				s.Result = append(s.Result, elem)
@@ -640,104 +640,104 @@ func (s *SearchResponse) ReadJSON(r *json.Reader) error {
 			}
 		case "num_pages":
 			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(r); err != nil {
+			if err := s.NumPages.ReadJSON(d); err != nil {
 				return err
 			}
 		case "per_page":
 			s.PerPage.Reset()
-			if err := s.PerPage.ReadJSON(r); err != nil {
+			if err := s.PerPage.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s Tag) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s Tag) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.ID.Set {
 		more.More()
-		w.ObjField("id")
-		s.ID.WriteJSON(w)
+		e.ObjField("id")
+		s.ID.WriteJSON(e)
 	}
 	if s.Type.Set {
 		more.More()
-		w.ObjField("type")
-		s.Type.WriteJSON(w)
+		e.ObjField("type")
+		s.Type.WriteJSON(e)
 	}
 	if s.Name.Set {
 		more.More()
-		w.ObjField("name")
-		s.Name.WriteJSON(w)
+		e.ObjField("name")
+		s.Name.WriteJSON(e)
 	}
 	if s.URL.Set {
 		more.More()
-		w.ObjField("url")
-		s.URL.WriteJSON(w)
+		e.ObjField("url")
+		s.URL.WriteJSON(e)
 	}
 	if s.Count.Set {
 		more.More()
-		w.ObjField("count")
-		s.Count.WriteJSON(w)
+		e.ObjField("count")
+		s.Count.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads Tag from json stream.
-func (s *Tag) ReadJSON(r *json.Reader) error {
+func (s *Tag) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Tag to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
 			s.ID.Reset()
-			if err := s.ID.ReadJSON(r); err != nil {
+			if err := s.ID.ReadJSON(d); err != nil {
 				return err
 			}
 		case "type":
 			s.Type.Reset()
-			if err := s.Type.ReadJSON(r); err != nil {
+			if err := s.Type.ReadJSON(d); err != nil {
 				return err
 			}
 		case "name":
 			s.Name.Reset()
-			if err := s.Name.ReadJSON(r); err != nil {
+			if err := s.Name.ReadJSON(d); err != nil {
 				return err
 			}
 		case "url":
 			s.URL.Reset()
-			if err := s.URL.ReadJSON(r); err != nil {
+			if err := s.URL.ReadJSON(d); err != nil {
 				return err
 			}
 		case "count":
 			s.Count.Reset()
-			if err := s.Count.ReadJSON(r); err != nil {
+			if err := s.Count.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TagType) WriteJSON(w *json.Writer) {
-	w.Str(string(s))
+func (s TagType) WriteJSON(e *json.Encoder) {
+	e.Str(string(s))
 }
 
 // ReadJSON reads TagType from json reader.
-func (s *TagType) ReadJSON(r *json.Reader) error {
+func (s *TagType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode TagType to nil`)
 	}
-	v, err := r.Str()
+	v, err := d.Str()
 	if err != nil {
 		return err
 	}
@@ -746,52 +746,52 @@ func (s *TagType) ReadJSON(r *json.Reader) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s Title) WriteJSON(w *json.Writer) {
-	w.ObjStart()
-	more := json.NewMore(w)
+func (s Title) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
 	defer more.Reset()
 	if s.English.Set {
 		more.More()
-		w.ObjField("english")
-		s.English.WriteJSON(w)
+		e.ObjField("english")
+		s.English.WriteJSON(e)
 	}
 	if s.Japanese.Set {
 		more.More()
-		w.ObjField("japanese")
-		s.Japanese.WriteJSON(w)
+		e.ObjField("japanese")
+		s.Japanese.WriteJSON(e)
 	}
 	if s.Pretty.Set {
 		more.More()
-		w.ObjField("pretty")
-		s.Pretty.WriteJSON(w)
+		e.ObjField("pretty")
+		s.Pretty.WriteJSON(e)
 	}
-	w.ObjEnd()
+	e.ObjEnd()
 }
 
 // ReadJSON reads Title from json stream.
-func (s *Title) ReadJSON(r *json.Reader) error {
+func (s *Title) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode Title to nil`)
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "english":
 			s.English.Reset()
-			if err := s.English.ReadJSON(r); err != nil {
+			if err := s.English.ReadJSON(d); err != nil {
 				return err
 			}
 		case "japanese":
 			s.Japanese.Reset()
-			if err := s.Japanese.ReadJSON(r); err != nil {
+			if err := s.Japanese.ReadJSON(d); err != nil {
 				return err
 			}
 		case "pretty":
 			s.Pretty.Reset()
-			if err := s.Pretty.ReadJSON(r); err != nil {
+			if err := s.Pretty.ReadJSON(d); err != nil {
 				return err
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})

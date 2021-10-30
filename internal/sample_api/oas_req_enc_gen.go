@@ -62,14 +62,13 @@ var (
 
 func encodeFoobarPostRequest(req Pet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -81,14 +80,13 @@ func encodePetCreateRequest(req PetCreateReq, span trace.Span) (data *bytes.Buff
 	switch req := req.(type) {
 	case *Pet:
 		buf := json.GetBuffer()
-		w := json.GetWriter()
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
-		w.Reset(buf)
 		more.More()
-		req.WriteJSON(w)
-		if err := w.Flush(); err != nil {
+		req.WriteJSON(e)
+		if _, err := e.WriteTo(buf); err != nil {
 			json.PutBuffer(buf)
 			return nil, "", err
 		}
@@ -103,13 +101,12 @@ func encodePetCreateRequest(req PetCreateReq, span trace.Span) (data *bytes.Buff
 
 func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	// Unsupported kind "alias".
-	if err := w.Flush(); err != nil {
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -119,14 +116,13 @@ func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *by
 
 func encodePetUpdateNamePostRequest(req string, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	w.Str(req)
-	if err := w.Flush(); err != nil {
+	e.Str(req)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}

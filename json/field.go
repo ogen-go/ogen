@@ -7,7 +7,7 @@ const MaxMoreLevel = 10
 // Up to MaxMoreLevel levels.
 type More struct {
 	idx  int
-	w    *Writer
+	w    *Encoder
 	more [MaxMoreLevel]bool
 }
 
@@ -15,7 +15,7 @@ func (f *More) Reset() {
 	f.w = nil
 	f.more = [MaxMoreLevel]bool{}
 }
-func NewMore(w *Writer) More { return More{w: w} }
+func NewMore(w *Encoder) More { return More{w: w} }
 
 func (f *More) Down() { f.idx++ }
 

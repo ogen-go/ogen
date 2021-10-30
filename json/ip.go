@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-func ReadIP(i *Reader) (v net.IP, err error) {
+func ReadIP(i *Decoder) (v net.IP, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return nil, err
@@ -17,6 +17,6 @@ func ReadIP(i *Reader) (v net.IP, err error) {
 	return v, nil
 }
 
-func WriteIP(s *Writer, v net.IP) {
+func WriteIP(s *Encoder, v net.IP) {
 	s.Str(v.String())
 }

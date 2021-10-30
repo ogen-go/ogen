@@ -62,14 +62,13 @@ var (
 
 func encodeCreateSnapshotRequest(req SnapshotCreateParams, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -79,14 +78,13 @@ func encodeCreateSnapshotRequest(req SnapshotCreateParams, span trace.Span) (dat
 
 func encodeCreateSyncActionRequest(req InstanceActionInfo, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -96,14 +94,13 @@ func encodeCreateSyncActionRequest(req InstanceActionInfo, span trace.Span) (dat
 
 func encodeLoadSnapshotRequest(req SnapshotLoadParams, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -113,14 +110,13 @@ func encodeLoadSnapshotRequest(req SnapshotLoadParams, span trace.Span) (data *b
 
 func encodeMmdsConfigPutRequest(req MmdsConfig, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -130,14 +126,13 @@ func encodeMmdsConfigPutRequest(req MmdsConfig, span trace.Span) (data *bytes.Bu
 
 func encodeMmdsPatchRequest(req MmdsPatchReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -147,14 +142,13 @@ func encodeMmdsPatchRequest(req MmdsPatchReq, span trace.Span) (data *bytes.Buff
 
 func encodeMmdsPutRequest(req MmdsPutReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -164,14 +158,13 @@ func encodeMmdsPutRequest(req MmdsPutReq, span trace.Span) (data *bytes.Buffer, 
 
 func encodePatchBalloonRequest(req BalloonUpdate, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -181,14 +174,13 @@ func encodePatchBalloonRequest(req BalloonUpdate, span trace.Span) (data *bytes.
 
 func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -198,14 +190,13 @@ func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate, span trace.S
 
 func encodePatchGuestDriveByIDRequest(req PartialDrive, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -215,14 +206,13 @@ func encodePatchGuestDriveByIDRequest(req PartialDrive, span trace.Span) (data *
 
 func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -232,14 +222,13 @@ func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface, sp
 
 func encodePatchMachineConfigurationRequest(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -249,14 +238,13 @@ func encodePatchMachineConfigurationRequest(req MachineConfiguration, span trace
 
 func encodePatchVmRequest(req VM, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -266,14 +254,13 @@ func encodePatchVmRequest(req VM, span trace.Span) (data *bytes.Buffer, contentT
 
 func encodePutBalloonRequest(req Balloon, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -283,14 +270,13 @@ func encodePutBalloonRequest(req Balloon, span trace.Span) (data *bytes.Buffer, 
 
 func encodePutGuestBootSourceRequest(req BootSource, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -300,14 +286,13 @@ func encodePutGuestBootSourceRequest(req BootSource, span trace.Span) (data *byt
 
 func encodePutGuestDriveByIDRequest(req Drive, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -317,14 +302,13 @@ func encodePutGuestDriveByIDRequest(req Drive, span trace.Span) (data *bytes.Buf
 
 func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -334,14 +318,13 @@ func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface, span trace.
 
 func encodePutGuestVsockRequest(req Vsock, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -351,14 +334,13 @@ func encodePutGuestVsockRequest(req Vsock, span trace.Span) (data *bytes.Buffer,
 
 func encodePutLoggerRequest(req Logger, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -368,14 +350,13 @@ func encodePutLoggerRequest(req Logger, span trace.Span) (data *bytes.Buffer, co
 
 func encodePutMachineConfigurationRequest(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}
@@ -385,14 +366,13 @@ func encodePutMachineConfigurationRequest(req MachineConfiguration, span trace.S
 
 func encodePutMetricsRequest(req Metrics, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
-	w := json.GetWriter()
-	defer json.PutWriter(w)
-	more := json.NewMore(w)
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
 	defer more.Reset()
-	w.Reset(buf)
 	more.More()
-	req.WriteJSON(w)
-	if err := w.Flush(); err != nil {
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
 		return nil, "", err
 	}

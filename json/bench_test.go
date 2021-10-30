@@ -91,37 +91,31 @@ func BenchmarkMarshal(b *testing.B) {
 			}
 		})
 		b.Run("jsoniter", func(b *testing.B) {
-			b.Run("Writer", func(b *testing.B) {
+			b.Run("Encoder", func(b *testing.B) {
 				d.Setup(b)
 
-				var w bufferWriter
-				s := GetWriter()
-				s.Reset(&w)
+				e := GetEncoder()
+				defer PutEncoder(e)
 
 				for i := 0; i < b.N; i++ {
-					s.ObjStart()
+					e.Reset()
+					e.ObjStart()
 
 					// "id": 10,
-					s.ObjField("id")
-					s.Int64(d.Value.ID)
-					s.More()
+					e.ObjField("id")
+					e.Int64(d.Value.ID)
+					e.More()
 
 					// "randomNumber": 12351,
-					s.ObjField("randomNumber")
-					s.Int64(d.Value.RandomNumber)
-					s.More()
+					e.ObjField("randomNumber")
+					e.Int64(d.Value.RandomNumber)
+					e.More()
 
 					// "message": "Hello, world!"
-					s.ObjField("message")
-					s.Str(d.Value.Message)
+					e.ObjField("message")
+					e.Str(d.Value.Message)
 
-					s.ObjEnd()
-
-					if err := s.Flush(); err != nil {
-						b.Fatal(err)
-					}
-
-					w.Reset()
+					e.ObjEnd()
 				}
 			})
 		})
@@ -149,14 +143,14 @@ func BenchmarkUnmarshal(b *testing.B) {
 		b.Run("jsoniter", func(b *testing.B) {
 			d.Setup(b)
 
-			r := jx.GetReader()
+			r := jx.GetDecoder()
 			data := d.Bytes()
 
 			for i := 0; i < b.N; i++ {
 				r.ResetBytes(data)
 
 				var v World
-				if err := r.ObjBytes(func(r *Reader, k []byte) error {
+				if err := r.ObjBytes(func(r *Decoder, k []byte) error {
 					switch string(k) {
 					case "id":
 						n, err := r.Int64()

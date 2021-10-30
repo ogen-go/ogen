@@ -70,11 +70,11 @@ func decodeAnswerCallbackQueryPostRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerCallbackQueryPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -105,11 +105,11 @@ func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request, span trace.Span) (
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerPreCheckoutQueryPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -140,11 +140,11 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerShippingQueryPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -183,11 +183,11 @@ func decodeDeleteStickerFromSetPostRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request DeleteStickerFromSetPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -218,11 +218,11 @@ func decodeDeleteWebhookPostRequest(r *http.Request, span trace.Span) (req Delet
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request DeleteWebhookPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -253,11 +253,11 @@ func decodeGetFilePostRequest(r *http.Request, span trace.Span) (req GetFilePost
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetFilePostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -288,11 +288,11 @@ func decodeGetGameHighScoresPostRequest(r *http.Request, span trace.Span) (req G
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetGameHighScoresPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -323,11 +323,11 @@ func decodeGetStickerSetPostRequest(r *http.Request, span trace.Span) (req GetSt
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetStickerSetPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -358,11 +358,11 @@ func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdat
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetUpdatesPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -401,11 +401,11 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetUserProfilePhotosPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -444,11 +444,11 @@ func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePo
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SendGamePostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -487,11 +487,11 @@ func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInv
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SendInvoicePostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -530,11 +530,11 @@ func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMy
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SetMyCommandsPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil
@@ -573,11 +573,11 @@ func decodeSetStickerPositionInSetPostRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SetStickerPositionInSetPostReqApplicationJSON
-		r := json.GetReader()
-		defer json.PutReader(r)
-		r.ResetBytes(buf.Bytes())
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(r); err != nil {
+			if err := request.ReadJSON(d); err != nil {
 				return err
 			}
 			return nil

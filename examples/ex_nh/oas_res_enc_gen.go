@@ -60,112 +60,112 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeGetBookResponse(response GetBookRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Book:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		more.More()
-		response.WriteJSON(w)
-		if err := w.Flush(); err != nil {
-			return err
+		response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *GetBookForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/api/gallery/{book_id}: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageCoverImageOKImage:
-		rw.Header().Set("Content-Type", "image/*")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
 	case *GetPageCoverImageForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/galleries/{media_id}/cover.{format}: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPageImageResponse(response GetPageImageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageImageOKImage:
-		rw.Header().Set("Content-Type", "image/*")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
 	case *GetPageImageForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/galleries/{media_id}/{page}.{format}: unexpected response type: %T", response)
 	}
 }
 
-func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageThumbnailImageOKImage:
-		rw.Header().Set("Content-Type", "image/*")
-		rw.WriteHeader(200)
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
 		return fmt.Errorf("image/* encoder not implemented")
 	case *GetPageThumbnailImageForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/galleries/{media_id}/{page}t.{format}: unexpected response type: %T", response)
 	}
 }
 
-func encodeSearchResponse(response SearchRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchOKApplicationJSON:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *SearchForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/api/galleries/search: unexpected response type: %T", response)
 	}
 }
 
-func encodeSearchByTagIDResponse(response SearchByTagIDRes, rw http.ResponseWriter, span trace.Span) error {
+func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchByTagIDOKApplicationJSON:
-		rw.Header().Set("Content-Type", "application/json")
-		rw.WriteHeader(200)
-		w := json.GetWriter()
-		w.Reset(rw)
-		defer json.PutWriter(w)
-		more := json.NewMore(w)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
 		defer more.Reset()
 		// Unsupported kind "alias".
-		if err := w.Flush(); err != nil {
-			return err
+		if _, err := e.WriteTo(w); err != nil {
+			return fmt.Errorf("write: %w", err)
 		}
+
 		return nil
 	case *SearchByTagIDForbidden:
-		rw.WriteHeader(403)
+		w.WriteHeader(403)
 		return nil
 	default:
 		return fmt.Errorf("/api/galleries/tagged: unexpected response type: %T", response)

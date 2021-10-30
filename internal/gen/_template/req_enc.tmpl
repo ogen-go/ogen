@@ -1,12 +1,11 @@
 {{ define "req_enc_json"}}
 buf := json.GetBuffer()
-w := json.GetWriter()
-defer json.PutWriter(w)
-more := json.NewMore(w)
+e := json.GetEncoder()
+defer json.PutEncoder(e)
+more := json.NewMore(e)
 defer more.Reset()
-w.Reset(buf)
 {{ template "enc_json" req_enc_elem $ }}
-if err := w.Flush(); err != nil {
+if _, err := e.WriteTo(buf); err != nil {
     json.PutBuffer(buf)
     return nil, "", err
 }

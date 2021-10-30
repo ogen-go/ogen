@@ -38,8 +38,8 @@ var errNullValue = xerrors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
-		iter = jx.ReadBytes(v)
-		next = iter.Next()
+		d    = jx.DecodeBytes(v)
+		next = d.Next()
 	)
 	if next == jx.Nil {
 		return nil, errNullValue
@@ -49,12 +49,12 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		if next != jx.String {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.Str()
+		return d.Str()
 	case oas.Integer:
 		if next != jx.Number {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		n, err := iter.Number()
+		n, err := d.Number()
 		if err != nil {
 			return nil, err
 		}
@@ -66,7 +66,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		if next != jx.Number {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		n, err := iter.Number()
+		n, err := d.Number()
 		if err != nil {
 			return nil, err
 		}
@@ -78,7 +78,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		if next != jx.Bool {
 			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
 		}
-		return iter.Bool()
+		return d.Bool()
 	default:
 		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
 	}
