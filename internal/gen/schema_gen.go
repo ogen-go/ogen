@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"path"
 	"regexp"
 	"sort"
 	"strings"
@@ -229,6 +230,26 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		if d := schema.Discriminator; d != nil {
 			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
 			sum.SumSpec.Mapping = schema.Discriminator.Mapping
+			for k, v := range sum.SumSpec.Mapping {
+				// Explicit mapping.
+				var found bool
+				for _, s := range sum.SumOf {
+					if path.Base(s.Schema.Ref) == v {
+						found = true
+						sum.SumSpec.Mapping[k] = s.Name
+					}
+				}
+				if !found {
+					return nil, xerrors.Errorf("discriminator: unable to map %s to %s", k, v)
+				}
+			}
+			if sum.SumSpec.Mapping == nil {
+				// Implicit mapping, defaults to type name.
+				sum.SumSpec.Mapping = map[string]string{}
+				for _, s := range sum.SumOf {
+					sum.SumSpec.Mapping[path.Base(s.Schema.Ref)] = s.Name
+				}
+			}
 			return side(sum), nil
 		}
 

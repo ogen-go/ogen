@@ -177,9 +177,10 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
                     return err
                 }
                 switch typ {
-                {{ range $k, $v := $t.SumSpec.Mapping }}
-                case "{{ $k }}": // {{ $k }} -> {{ $v }}
-                {{ end }}
+                {{- range $k, $v := $t.SumSpec.Mapping }}
+                case "{{ $k }}":
+                    s.Type = {{ $v }}{{ $t.Name }}
+                {{- end }}
                 }
             {{- else }}
             {{- range $s := $t.SumOf }}

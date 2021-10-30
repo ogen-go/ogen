@@ -9158,15 +9158,14 @@ func (s *SendMediaGroupMediaItem) ReadJSON(d *json.Decoder) error {
 					return err
 				}
 				switch typ {
-
-				case "audio": // audio -> InputMediaAudio
-
-				case "document": // document -> InputMediaDocument
-
-				case "photo": // photo -> InputMediaPhoto
-
-				case "video": // video -> InputMediaVideo
-
+				case "audio":
+					s.Type = InputMediaAudioSendMediaGroupMediaItem
+				case "document":
+					s.Type = InputMediaDocumentSendMediaGroupMediaItem
+				case "photo":
+					s.Type = InputMediaPhotoSendMediaGroupMediaItem
+				case "video":
+					s.Type = InputMediaVideoSendMediaGroupMediaItem
 				}
 			}
 			return d.Skip()
