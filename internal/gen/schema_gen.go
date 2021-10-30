@@ -276,6 +276,11 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			}
 			variants = append(variants, v)
 		}
+		sort.SliceStable(variants, func(i, j int) bool {
+			a := variants[i]
+			b := variants[j]
+			return strings.Compare(a.Name, b.Name) < 0
+		})
 		if !isComplex {
 			return side(sum), nil
 		}
