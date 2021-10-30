@@ -63,60 +63,52 @@ var (
 func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	var params FoobarGetParams
 	// Decode param "inlinedParam" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["inlinedParam"]
-		if !ok {
-			return fmt.Errorf("query parameter 'inlinedParam' not specified")
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt64(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.InlinedParam = v
+		} else {
+			return params, fmt.Errorf("query parameter 'inlinedParam' not specified")
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt64(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.InlinedParam = int64(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "skip" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["skip"]
-		if !ok {
-			return fmt.Errorf("query parameter 'skip' not specified")
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt32(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Skip = v
+		} else {
+			return params, fmt.Errorf("query parameter 'skip' not specified")
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt32(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Skip = int32(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -124,33 +116,29 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
 	var params PetFriendsNamesByIDParams
 	// Decode param "id" located in "Path".
-	if err := func() error {
+	{
 		param := chi.URLParam(r, "id")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'id' not specified")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ID = v
+		} else {
+			return params, fmt.Errorf("path parameter 'id' not specified")
 		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "id",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ID = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -158,90 +146,73 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
 	// Decode param "petID" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["petID"]
-		if !ok {
-			return fmt.Errorf("query parameter 'petID' not specified")
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt64(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PetID = v
+		} else {
+			return params, fmt.Errorf("query parameter 'petID' not specified")
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt64(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PetID = int64(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "x-tags" located in "Header".
-	if err := func() error {
+	{
 		param := r.Header.Values("x-tags")
+		if len(param) > 0 {
+			v, err := conv.ToUUIDArray(param)
+			if err != nil {
+				return params, fmt.Errorf("parse header param 'x-tags': %w", err)
+			}
 
-		if len(param) == 0 {
-			return nil
+			params.XTags = v
 		}
-
-		v, err := conv.ToUUIDArray(param)
-		if err != nil {
-			return fmt.Errorf("parse header param 'x-tags': %w", err)
-		}
-
-		params.XTags = []uuid.UUID(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "x-scope" located in "Header".
-	if err := func() error {
+	{
 		param := r.Header.Values("x-scope")
+		if len(param) > 0 {
+			v, err := conv.ToStringArray(param)
+			if err != nil {
+				return params, fmt.Errorf("parse header param 'x-scope': %w", err)
+			}
 
-		if len(param) == 0 {
-			return fmt.Errorf("header parameter 'x-scope' not specified")
+			params.XScope = v
+		} else {
+			return params, fmt.Errorf("header parameter 'x-scope' not specified")
 		}
-
-		v, err := conv.ToStringArray(param)
-		if err != nil {
-			return fmt.Errorf("parse header param 'x-scope': %w", err)
-		}
-
-		params.XScope = []string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "token" located in "Cookie".
-	if err := func() error {
+	{
 		c, err := r.Cookie("token")
 		if err != nil {
-			return fmt.Errorf("get cookie 'token': %w", err)
+			return params, fmt.Errorf("get cookie 'token': %w", err)
 		}
 
 		param := c.Value
-		if len(param) == 0 {
-			return fmt.Errorf("cookie parameter 'token' not specified")
-		}
+		if len(param) > 0 {
+			v, err := conv.ToString(param)
+			if err != nil {
+				return params, fmt.Errorf("parse cookie param 'token': %w", err)
+			}
 
-		v, err := conv.ToString(param)
-		if err != nil {
-			return fmt.Errorf("parse cookie param 'token': %w", err)
+			params.Token = v
+		} else {
+			return params, fmt.Errorf("cookie parameter 'token' not specified")
 		}
-
-		params.Token = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -249,33 +220,29 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	var params PetGetByNameParams
 	// Decode param "name" located in "Path".
-	if err := func() error {
+	{
 		param := chi.URLParam(r, "name")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'name' not specified")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Name = v
+		} else {
+			return params, fmt.Errorf("path parameter 'name' not specified")
 		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "name",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Name = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -283,33 +250,29 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 	var params PetNameByIDParams
 	// Decode param "id" located in "Path".
-	if err := func() error {
+	{
 		param := chi.URLParam(r, "id")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'id' not specified")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ID = v
+		} else {
+			return params, fmt.Errorf("path parameter 'id' not specified")
 		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "id",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ID = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }

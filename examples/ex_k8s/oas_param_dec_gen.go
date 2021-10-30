@@ -63,60 +63,48 @@ var (
 func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http.Request) (CreateAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
 	var params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -124,60 +112,48 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *ht
 func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *http.Request) (CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
 	var params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -185,60 +161,48 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *
 func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (CreateApiextensionsV1CustomResourceDefinitionParams, error) {
 	var params CreateApiextensionsV1CustomResourceDefinitionParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -246,60 +210,48 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) 
 func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApiregistrationV1APIServiceParams, error) {
 	var params CreateApiregistrationV1APIServiceParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -307,60 +259,48 @@ func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApire
 func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) (CreateCertificatesV1CertificateSigningRequestParams, error) {
 	var params CreateCertificatesV1CertificateSigningRequestParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -368,60 +308,48 @@ func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) 
 func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespaceParams, error) {
 	var params CreateCoreV1NamespaceParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -429,60 +357,48 @@ func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespacePa
 func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, error) {
 	var params CreateCoreV1NodeParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -490,60 +406,48 @@ func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, erro
 func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1PersistentVolumeParams, error) {
 	var params CreateCoreV1PersistentVolumeParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -551,60 +455,48 @@ func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1Pers
 func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (CreateFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
 	var params CreateFlowcontrolApiserverV1beta1FlowSchemaParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -612,60 +504,48 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (C
 func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *http.Request) (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
 	var params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -673,60 +553,48 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *
 func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (CreateFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
 	var params CreateFlowcontrolApiserverV1beta2FlowSchemaParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -734,60 +602,48 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (C
 func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *http.Request) (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
 	var params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -795,60 +651,48 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *
 func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (CreateInternalApiserverV1alpha1StorageVersionParams, error) {
 	var params CreateInternalApiserverV1alpha1StorageVersionParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -856,60 +700,48 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) 
 func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworkingV1IngressClassParams, error) {
 	var params CreateNetworkingV1IngressClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -917,60 +749,48 @@ func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworki
 func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeClassParams, error) {
 	var params CreateNodeV1RuntimeClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -978,60 +798,48 @@ func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeC
 func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1alpha1RuntimeClassParams, error) {
 	var params CreateNodeV1alpha1RuntimeClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1039,60 +847,48 @@ func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1al
 func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1beta1RuntimeClassParams, error) {
 	var params CreateNodeV1beta1RuntimeClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1100,60 +896,48 @@ func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1bet
 func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePolicyV1beta1PodSecurityPolicyParams, error) {
 	var params CreatePolicyV1beta1PodSecurityPolicyParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1161,60 +945,48 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePo
 func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRbacAuthorizationV1ClusterRoleParams, error) {
 	var params CreateRbacAuthorizationV1ClusterRoleParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1222,60 +994,48 @@ func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRb
 func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (CreateRbacAuthorizationV1ClusterRoleBindingParams, error) {
 	var params CreateRbacAuthorizationV1ClusterRoleBindingParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1283,60 +1043,48 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (C
 func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedulingV1PriorityClassParams, error) {
 	var params CreateSchedulingV1PriorityClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1344,60 +1092,48 @@ func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedul
 func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDriverParams, error) {
 	var params CreateStorageV1CSIDriverParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1405,60 +1141,48 @@ func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDr
 func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINodeParams, error) {
 	var params CreateStorageV1CSINodeParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1466,60 +1190,48 @@ func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINode
 func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1StorageClassParams, error) {
 	var params CreateStorageV1StorageClassParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1527,60 +1239,48 @@ func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1St
 func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorageV1VolumeAttachmentParams, error) {
 	var params CreateStorageV1VolumeAttachmentParams
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldManager" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldManager"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldManager = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldManager = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1588,312 +1288,246 @@ func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorage
 func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams(r *http.Request) (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams, error) {
 	var params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -1901,312 +1535,246 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams(r *http.Request) (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams, error) {
 	var params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -2214,312 +1782,246 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http.Request) (DeleteApiextensionsV1CollectionCustomResourceDefinitionParams, error) {
 	var params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -2527,312 +2029,246 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (DeleteApiregistrationV1CollectionAPIServiceParams, error) {
 	var params DeleteApiregistrationV1CollectionAPIServiceParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -2840,312 +2276,246 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http.Request) (DeleteCertificatesV1CollectionCertificateSigningRequestParams, error) {
 	var params DeleteCertificatesV1CollectionCertificateSigningRequestParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -3153,312 +2523,246 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1CollectionNodeParams, error) {
 	var params DeleteCoreV1CollectionNodeParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -3466,312 +2770,246 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (DeleteCoreV1CollectionPersistentVolumeParams, error) {
 	var params DeleteCoreV1CollectionPersistentVolumeParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -3779,312 +3017,246 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.Request) (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams, error) {
 	var params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -4092,312 +3264,246 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams(r *http.Request) (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams, error) {
 	var params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -4405,312 +3511,246 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.Request) (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams, error) {
 	var params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -4718,312 +3758,246 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams(r *http.Request) (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams, error) {
 	var params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -5031,312 +4005,246 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http.Request) (DeleteInternalApiserverV1alpha1CollectionStorageVersionParams, error) {
 	var params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -5344,312 +4252,246 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (DeleteNetworkingV1CollectionIngressClassParams, error) {
 	var params DeleteNetworkingV1CollectionIngressClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -5657,312 +4499,246 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNodeV1CollectionRuntimeClassParams, error) {
 	var params DeleteNodeV1CollectionRuntimeClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -5970,312 +4746,246 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (DeleteNodeV1alpha1CollectionRuntimeClassParams, error) {
 	var params DeleteNodeV1alpha1CollectionRuntimeClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -6283,312 +4993,246 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (DeleteNodeV1beta1CollectionRuntimeClassParams, error) {
 	var params DeleteNodeV1beta1CollectionRuntimeClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -6596,312 +5240,246 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request) (DeletePolicyV1beta1CollectionPodSecurityPolicyParams, error) {
 	var params DeletePolicyV1beta1CollectionPodSecurityPolicyParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -6909,312 +5487,246 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request) (DeleteRbacAuthorizationV1CollectionClusterRoleParams, error) {
 	var params DeleteRbacAuthorizationV1CollectionClusterRoleParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -7222,312 +5734,246 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.Request) (DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams, error) {
 	var params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -7535,312 +5981,246 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (DeleteSchedulingV1CollectionPriorityClassParams, error) {
 	var params DeleteSchedulingV1CollectionPriorityClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -7848,312 +6228,246 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStorageV1CollectionCSIDriverParams, error) {
 	var params DeleteStorageV1CollectionCSIDriverParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -8161,312 +6475,246 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorageV1CollectionCSINodeParams, error) {
 	var params DeleteStorageV1CollectionCSINodeParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -8474,312 +6722,246 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteStorageV1CollectionStorageClassParams, error) {
 	var params DeleteStorageV1CollectionStorageClassParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -8787,312 +6969,246 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (DeleteStorageV1CollectionVolumeAttachmentParams, error) {
 	var params DeleteStorageV1CollectionVolumeAttachmentParams
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "dryRun" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["dryRun"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.DryRun = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.DryRun = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "gracePeriodSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["gracePeriodSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.GracePeriodSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.GracePeriodSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "orphanDependents" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["orphanDependents"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.OrphanDependents = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.OrphanDependents = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "propagationPolicy" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["propagationPolicy"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.PropagationPolicy = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.PropagationPolicy = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -9100,256 +7216,202 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http.Request) (ListAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
 	var params ListAdmissionregistrationV1MutatingWebhookConfigurationParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -9357,256 +7419,202 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *http.Request) (ListAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
 	var params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -9614,256 +7622,202 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (ListApiextensionsV1CustomResourceDefinitionParams, error) {
 	var params ListApiextensionsV1CustomResourceDefinitionParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -9871,256 +7825,202 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregistrationV1APIServiceParams, error) {
 	var params ListApiregistrationV1APIServiceParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -10128,256 +8028,202 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (ListCertificatesV1CertificateSigningRequestParams, error) {
 	var params ListCertificatesV1CertificateSigningRequestParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -10385,256 +8231,202 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams, error) {
 	var params ListCoreV1NamespaceParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -10642,256 +8434,202 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 	var params ListCoreV1NodeParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -10899,256 +8637,202 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1PersistentVolumeParams, error) {
 	var params ListCoreV1PersistentVolumeParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -11156,256 +8840,202 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (ListFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
 	var params ListFlowcontrolApiserverV1beta1FlowSchemaParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -11413,256 +9043,202 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *http.Request) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
 	var params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -11670,256 +9246,202 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (ListFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
 	var params ListFlowcontrolApiserverV1beta2FlowSchemaParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -11927,256 +9449,202 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *http.Request) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
 	var params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -12184,256 +9652,202 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (ListInternalApiserverV1alpha1StorageVersionParams, error) {
 	var params ListInternalApiserverV1alpha1StorageVersionParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -12441,256 +9855,202 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1IngressClassParams, error) {
 	var params ListNetworkingV1IngressClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -12698,256 +10058,202 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClassParams, error) {
 	var params ListNodeV1RuntimeClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -12955,256 +10261,202 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1RuntimeClassParams, error) {
 	var params ListNodeV1alpha1RuntimeClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -13212,256 +10464,202 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1RuntimeClassParams, error) {
 	var params ListNodeV1beta1RuntimeClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -13469,256 +10667,202 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicyV1beta1PodSecurityPolicyParams, error) {
 	var params ListPolicyV1beta1PodSecurityPolicyParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -13726,256 +10870,202 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAuthorizationV1ClusterRoleParams, error) {
 	var params ListRbacAuthorizationV1ClusterRoleParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -13983,256 +11073,202 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (ListRbacAuthorizationV1ClusterRoleBindingParams, error) {
 	var params ListRbacAuthorizationV1ClusterRoleBindingParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -14240,256 +11276,202 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV1PriorityClassParams, error) {
 	var params ListSchedulingV1PriorityClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -14497,256 +11479,202 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriverParams, error) {
 	var params ListStorageV1CSIDriverParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -14754,256 +11682,202 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodeParams, error) {
 	var params ListStorageV1CSINodeParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -15011,256 +11885,202 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1StorageClassParams, error) {
 	var params ListStorageV1StorageClassParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
@@ -15268,256 +12088,202 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1VolumeAttachmentParams, error) {
 	var params ListStorageV1VolumeAttachmentParams
 	// Decode param "allowWatchBookmarks" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["allowWatchBookmarks"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.AllowWatchBookmarks = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.AllowWatchBookmarks = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "continue" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["continue"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Continue = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Continue = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "fieldSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["fieldSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.FieldSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.FieldSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "labelSelector" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["labelSelector"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.LabelSelector = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.LabelSelector = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "limit" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["limit"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Limit = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Limit = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersion" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersion"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersion = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersion = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "resourceVersionMatch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["resourceVersionMatch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.ResourceVersionMatch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToString(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.ResourceVersionMatch = string(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "timeoutSeconds" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["timeoutSeconds"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToInt(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.TimeoutSeconds = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToInt(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.TimeoutSeconds = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	// Decode param "watch" located in "Query".
-	if err := func() error {
+	{
 		values, ok := r.URL.Query()["watch"]
-		if !ok {
-			return nil
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			rawParam, err := d.DecodeString()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToBool(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Watch = v
 		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		rawParam, err := d.DecodeString()
-		if err != nil {
-			return err
-		}
-
-		v, err := conv.ToBool(rawParam)
-		if err != nil {
-			return err
-		}
-
-		params.Watch = bool(v)
-		return nil
-	}(); err != nil {
-		return params, err
 	}
 	return params, nil
 }
