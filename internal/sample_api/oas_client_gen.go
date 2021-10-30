@@ -122,7 +122,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("inlinedParam", e.EncodeString(conv.Int64ToString(params.InlinedParam)))
+		q.Set("inlinedParam", e.EncodeValue(conv.Int64ToString(params.InlinedParam)))
 	}
 	{
 		// Encode "skip" parameter.
@@ -130,7 +130,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("skip", e.EncodeString(conv.Int32ToString(params.Skip)))
+		q.Set("skip", e.EncodeValue(conv.Int32ToString(params.Skip)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -332,7 +332,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -380,7 +380,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("petID", e.EncodeString(conv.Int64ToString(params.PetID)))
+		q.Set("petID", e.EncodeValue(conv.Int64ToString(params.PetID)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -450,7 +450,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -497,7 +497,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)

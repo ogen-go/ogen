@@ -122,7 +122,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("count", e.EncodeString(conv.Int64ToString(params.Count)))
+		q.Set("count", e.EncodeValue(conv.Int64ToString(params.Count)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -247,7 +247,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("queries", e.EncodeString(conv.Int64ToString(params.Queries)))
+		q.Set("queries", e.EncodeValue(conv.Int64ToString(params.Queries)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -296,7 +296,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("queries", e.EncodeString(conv.Int64ToString(params.Queries)))
+		q.Set("queries", e.EncodeValue(conv.Int64ToString(params.Queries)))
 	}
 	u.RawQuery = q.Encode()
 

@@ -72,7 +72,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -96,7 +96,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -126,7 +126,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -155,7 +155,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -230,7 +230,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -260,7 +260,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}

@@ -742,7 +742,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.DriveID))
+		u.Path += e.EncodeValue(conv.StringToString(params.DriveID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -806,7 +806,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.IfaceID))
+		u.Path += e.EncodeValue(conv.StringToString(params.IfaceID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -1072,7 +1072,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.DriveID))
+		u.Path += e.EncodeValue(conv.StringToString(params.DriveID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -1136,7 +1136,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.IfaceID))
+		u.Path += e.EncodeValue(conv.StringToString(params.IfaceID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)

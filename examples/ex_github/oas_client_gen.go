@@ -121,7 +121,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -131,7 +131,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/repositories/"
 	{
@@ -141,7 +141,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -188,7 +188,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -198,7 +198,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 	u.Path += "/repositories/"
 	{
@@ -208,7 +208,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -255,7 +255,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -265,7 +265,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners/"
 	{
@@ -275,7 +275,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -322,7 +322,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -332,7 +332,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -342,7 +342,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/approve"
 
@@ -390,7 +390,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -400,7 +400,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -410,7 +410,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/cancel"
 
@@ -473,7 +473,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 	u.Path += "/environments/"
 	{
@@ -483,7 +483,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 	u.Path += "/secrets/"
 	{
@@ -493,7 +493,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -557,7 +557,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -567,7 +567,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -631,7 +631,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -641,7 +641,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -651,7 +651,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -700,7 +700,7 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners/registration-token"
 
@@ -748,7 +748,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -758,7 +758,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners/registration-token"
 
@@ -806,7 +806,7 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners/remove-token"
 
@@ -854,7 +854,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -864,7 +864,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners/remove-token"
 
@@ -927,7 +927,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups"
 
@@ -977,7 +977,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -987,7 +987,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/artifacts/"
 	{
@@ -997,7 +997,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ArtifactID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ArtifactID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1044,7 +1044,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 	u.Path += "/environments/"
 	{
@@ -1054,7 +1054,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 	u.Path += "/secrets/"
 	{
@@ -1064,7 +1064,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1111,7 +1111,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -1121,7 +1121,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1168,7 +1168,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1178,7 +1178,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -1188,7 +1188,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1235,7 +1235,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -1245,7 +1245,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1292,7 +1292,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1302,7 +1302,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -1312,7 +1312,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1359,7 +1359,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -1369,7 +1369,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1416,7 +1416,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1426,7 +1426,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -1436,7 +1436,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1483,7 +1483,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1493,7 +1493,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -1503,7 +1503,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/logs"
 
@@ -1551,7 +1551,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/repositories/"
 	{
@@ -1561,7 +1561,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -1608,7 +1608,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1618,7 +1618,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/artifacts/"
 	{
@@ -1628,7 +1628,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ArtifactID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ArtifactID))
 	}
 	u.Path += "/"
 	{
@@ -1638,7 +1638,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ArchiveFormat))
+		u.Path += e.EncodeValue(conv.StringToString(params.ArchiveFormat))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -1685,7 +1685,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1695,7 +1695,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/jobs/"
 	{
@@ -1705,7 +1705,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.JobID))
+		u.Path += e.EncodeValue(conv.IntToString(params.JobID))
 	}
 	u.Path += "/logs"
 
@@ -1753,7 +1753,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1763,7 +1763,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -1773,7 +1773,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/logs"
 
@@ -1821,7 +1821,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/repositories/"
 	{
@@ -1831,7 +1831,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -1878,7 +1878,7 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -1926,7 +1926,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1936,7 +1936,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -1984,7 +1984,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -1994,7 +1994,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/artifacts/"
 	{
@@ -2004,7 +2004,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ArtifactID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ArtifactID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2051,7 +2051,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 	u.Path += "/environments/"
 	{
@@ -2061,7 +2061,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 	u.Path += "/secrets/public-key"
 
@@ -2109,7 +2109,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 	u.Path += "/environments/"
 	{
@@ -2119,7 +2119,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 	u.Path += "/secrets/"
 	{
@@ -2129,7 +2129,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2176,7 +2176,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions"
 
@@ -2224,7 +2224,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2234,7 +2234,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/permissions"
 
@@ -2282,7 +2282,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2292,7 +2292,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/jobs/"
 	{
@@ -2302,7 +2302,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.JobID))
+		u.Path += e.EncodeValue(conv.IntToString(params.JobID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2349,7 +2349,7 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/public-key"
 
@@ -2397,7 +2397,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -2407,7 +2407,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2454,7 +2454,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2464,7 +2464,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/secrets/public-key"
 
@@ -2512,7 +2512,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2522,7 +2522,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -2532,7 +2532,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2579,7 +2579,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2589,7 +2589,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -2599,7 +2599,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/approvals"
 
@@ -2647,7 +2647,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -2657,7 +2657,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2704,7 +2704,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2714,7 +2714,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -2724,7 +2724,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2771,7 +2771,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -2781,7 +2781,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2828,7 +2828,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2838,7 +2838,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -2848,7 +2848,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -2895,7 +2895,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2905,7 +2905,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -2915,7 +2915,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/timing"
 
@@ -2963,7 +2963,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -2973,7 +2973,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/artifacts"
 
@@ -2984,7 +2984,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -2992,7 +2992,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3040,7 +3040,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 	u.Path += "/environments/"
 	{
@@ -3050,7 +3050,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 	u.Path += "/secrets"
 
@@ -3061,7 +3061,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3069,7 +3069,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3117,7 +3117,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -3127,7 +3127,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -3137,7 +3137,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/jobs"
 
@@ -3148,7 +3148,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -3156,7 +3156,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3164,7 +3164,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3212,7 +3212,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets"
 
@@ -3223,7 +3223,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3231,7 +3231,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3279,7 +3279,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -3289,7 +3289,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/repositories"
 
@@ -3300,7 +3300,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -3308,7 +3308,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3356,7 +3356,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -3366,7 +3366,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/secrets"
 
@@ -3377,7 +3377,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3385,7 +3385,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3433,7 +3433,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -3443,7 +3443,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/workflows"
 
@@ -3454,7 +3454,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3462,7 +3462,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3510,7 +3510,7 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners/downloads"
 
@@ -3558,7 +3558,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -3568,7 +3568,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners/downloads"
 
@@ -3616,7 +3616,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -3626,7 +3626,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 	u.Path += "/repositories"
 
@@ -3637,7 +3637,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -3645,7 +3645,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3693,7 +3693,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/repositories"
 
@@ -3704,7 +3704,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3712,7 +3712,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3760,7 +3760,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups"
 
@@ -3771,7 +3771,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3779,7 +3779,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3827,7 +3827,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runners"
 
@@ -3838,7 +3838,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3846,7 +3846,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3894,7 +3894,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -3904,7 +3904,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runners"
 
@@ -3915,7 +3915,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -3923,7 +3923,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -3971,7 +3971,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -3981,7 +3981,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners"
 
@@ -3992,7 +3992,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -4000,7 +4000,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -4048,7 +4048,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4058,7 +4058,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -4068,7 +4068,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/artifacts"
 
@@ -4079,7 +4079,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -4087,7 +4087,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -4135,7 +4135,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4145,7 +4145,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs"
 
@@ -4156,7 +4156,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("actor", e.EncodeString(conv.StringToString(params.Actor)))
+		q.Set("actor", e.EncodeValue(conv.StringToString(params.Actor)))
 	}
 	{
 		// Encode "branch" parameter.
@@ -4164,7 +4164,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("branch", e.EncodeString(conv.StringToString(params.Branch)))
+		q.Set("branch", e.EncodeValue(conv.StringToString(params.Branch)))
 	}
 	{
 		// Encode "event" parameter.
@@ -4172,7 +4172,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("event", e.EncodeString(conv.StringToString(params.Event)))
+		q.Set("event", e.EncodeValue(conv.StringToString(params.Event)))
 	}
 	{
 		// Encode "status" parameter.
@@ -4180,7 +4180,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("status", e.EncodeString(conv.StringToString(params.Status)))
+		q.Set("status", e.EncodeValue(conv.StringToString(params.Status)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -4188,7 +4188,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -4196,7 +4196,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "created" parameter.
@@ -4204,7 +4204,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("created", e.EncodeString(conv.TimeToString(params.Created)))
+		q.Set("created", e.EncodeValue(conv.TimeToString(params.Created)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -4252,7 +4252,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4262,7 +4262,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -4272,7 +4272,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/rerun"
 
@@ -4320,7 +4320,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -4330,7 +4330,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/repositories/"
 	{
@@ -4340,7 +4340,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -4387,7 +4387,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -4397,7 +4397,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 	u.Path += "/repositories/"
 	{
@@ -4407,7 +4407,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -4454,7 +4454,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -4464,7 +4464,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners/"
 	{
@@ -4474,7 +4474,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -4521,7 +4521,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4531,7 +4531,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/runs/"
 	{
@@ -4541,7 +4541,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunID))
 	}
 	u.Path += "/retry"
 
@@ -4595,7 +4595,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -4651,7 +4651,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4661,7 +4661,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -4726,7 +4726,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions"
 
@@ -4791,7 +4791,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -4801,7 +4801,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/actions/permissions"
 
@@ -4866,7 +4866,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -4876,7 +4876,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/repositories"
 
@@ -4941,7 +4941,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/secrets/"
 	{
@@ -4951,7 +4951,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SecretName))
+		u.Path += e.EncodeValue(conv.StringToString(params.SecretName))
 	}
 	u.Path += "/repositories"
 
@@ -5016,7 +5016,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/permissions/repositories"
 
@@ -5081,7 +5081,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -5091,7 +5091,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners"
 
@@ -5156,7 +5156,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -5166,7 +5166,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -5215,7 +5215,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -5225,7 +5225,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -5272,7 +5272,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -5282,7 +5282,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/subscription"
 
@@ -5330,7 +5330,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ThreadID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ThreadID))
 	}
 	u.Path += "/subscription"
 
@@ -5416,7 +5416,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -5426,7 +5426,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/subscription"
 
@@ -5474,7 +5474,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ThreadID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ThreadID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -5521,7 +5521,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ThreadID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ThreadID))
 	}
 	u.Path += "/subscription"
 
@@ -5569,7 +5569,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/events"
 
@@ -5580,7 +5580,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5588,7 +5588,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5636,7 +5636,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/events/orgs/"
 	{
@@ -5646,7 +5646,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 
 	q := u.Query()
@@ -5656,7 +5656,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5664,7 +5664,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5713,7 +5713,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5721,7 +5721,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5769,7 +5769,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -5779,7 +5779,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/events"
 
@@ -5790,7 +5790,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5798,7 +5798,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5846,7 +5846,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/events/public"
 
@@ -5857,7 +5857,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5865,7 +5865,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5913,7 +5913,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/events"
 
@@ -5924,7 +5924,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5932,7 +5932,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -5980,7 +5980,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/received_events"
 
@@ -5991,7 +5991,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -5999,7 +5999,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6047,7 +6047,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/received_events/public"
 
@@ -6058,7 +6058,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6066,7 +6066,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6114,7 +6114,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6124,7 +6124,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/events"
 
@@ -6135,7 +6135,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6143,7 +6143,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6191,7 +6191,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6201,7 +6201,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/notifications"
 
@@ -6212,7 +6212,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("all", e.EncodeString(conv.BoolToString(params.All)))
+		q.Set("all", e.EncodeValue(conv.BoolToString(params.All)))
 	}
 	{
 		// Encode "participating" parameter.
@@ -6220,7 +6220,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("participating", e.EncodeString(conv.BoolToString(params.Participating)))
+		q.Set("participating", e.EncodeValue(conv.BoolToString(params.Participating)))
 	}
 	{
 		// Encode "since" parameter.
@@ -6228,7 +6228,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "before" parameter.
@@ -6236,7 +6236,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("before", e.EncodeString(conv.TimeToString(params.Before)))
+		q.Set("before", e.EncodeValue(conv.TimeToString(params.Before)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -6244,7 +6244,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6252,7 +6252,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6301,7 +6301,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -6309,7 +6309,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -6317,7 +6317,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6325,7 +6325,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6373,7 +6373,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/subscriptions"
 
@@ -6384,7 +6384,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6392,7 +6392,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6441,7 +6441,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6449,7 +6449,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6497,7 +6497,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6507,7 +6507,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/subscribers"
 
@@ -6518,7 +6518,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -6526,7 +6526,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -6626,7 +6626,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6636,7 +6636,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/notifications"
 
@@ -6686,7 +6686,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ThreadID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ThreadID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -6739,7 +6739,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6749,7 +6749,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/subscription"
 
@@ -6805,7 +6805,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ThreadID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ThreadID))
 	}
 	u.Path += "/subscription"
 
@@ -6855,7 +6855,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6865,7 +6865,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -6912,7 +6912,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -6922,7 +6922,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -6969,7 +6969,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 	u.Path += "/repositories/"
 	{
@@ -6979,7 +6979,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -7026,7 +7026,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -7111,7 +7111,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.AppSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.AppSlug))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -7158,7 +7158,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AccountID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AccountID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -7205,7 +7205,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AccountID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AccountID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -7290,7 +7290,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PlanID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PlanID))
 	}
 	u.Path += "/accounts"
 
@@ -7301,7 +7301,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -7309,7 +7309,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -7317,7 +7317,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7325,7 +7325,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7373,7 +7373,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 	u.Path += "/repositories"
 
@@ -7384,7 +7384,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7392,7 +7392,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7441,7 +7441,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7449,7 +7449,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7498,7 +7498,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7506,7 +7506,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7555,7 +7555,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7563,7 +7563,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7612,7 +7612,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7620,7 +7620,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7669,7 +7669,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -7677,7 +7677,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -7725,7 +7725,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 	u.Path += "/repositories/"
 	{
@@ -7735,7 +7735,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RepositoryID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RepositoryID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -7820,7 +7820,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 	u.Path += "/suspended"
 
@@ -7868,7 +7868,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InstallationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InstallationID))
 	}
 	u.Path += "/suspended"
 
@@ -7962,7 +7962,7 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/settings/billing/actions"
 
@@ -8010,7 +8010,7 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/settings/billing/actions"
 
@@ -8058,7 +8058,7 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/settings/billing/actions"
 
@@ -8106,7 +8106,7 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/settings/billing/packages"
 
@@ -8154,7 +8154,7 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/settings/billing/packages"
 
@@ -8202,7 +8202,7 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/settings/billing/packages"
 
@@ -8250,7 +8250,7 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/settings/billing/shared-storage"
 
@@ -8298,7 +8298,7 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/settings/billing/shared-storage"
 
@@ -8346,7 +8346,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/settings/billing/shared-storage"
 
@@ -8400,7 +8400,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8410,7 +8410,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-suites"
 
@@ -8460,7 +8460,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8470,7 +8470,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-runs/"
 	{
@@ -8480,7 +8480,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CheckRunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CheckRunID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -8527,7 +8527,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8537,7 +8537,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-suites/"
 	{
@@ -8547,7 +8547,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CheckSuiteID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -8594,7 +8594,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8604,7 +8604,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-runs/"
 	{
@@ -8614,7 +8614,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CheckRunID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CheckRunID))
 	}
 	u.Path += "/annotations"
 
@@ -8625,7 +8625,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -8633,7 +8633,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -8681,7 +8681,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8691,7 +8691,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -8701,7 +8701,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 	u.Path += "/check-runs"
 
@@ -8712,7 +8712,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("check_name", e.EncodeString(conv.StringToString(params.CheckName)))
+		q.Set("check_name", e.EncodeValue(conv.StringToString(params.CheckName)))
 	}
 	{
 		// Encode "status" parameter.
@@ -8720,7 +8720,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("status", e.EncodeString(conv.StringToString(params.Status)))
+		q.Set("status", e.EncodeValue(conv.StringToString(params.Status)))
 	}
 	{
 		// Encode "filter" parameter.
@@ -8728,7 +8728,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -8736,7 +8736,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -8744,7 +8744,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "app_id" parameter.
@@ -8752,7 +8752,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("app_id", e.EncodeString(conv.IntToString(params.AppID)))
+		q.Set("app_id", e.EncodeValue(conv.IntToString(params.AppID)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -8800,7 +8800,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8810,7 +8810,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-suites/"
 	{
@@ -8820,7 +8820,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CheckSuiteID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 	}
 	u.Path += "/check-runs"
 
@@ -8831,7 +8831,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("check_name", e.EncodeString(conv.StringToString(params.CheckName)))
+		q.Set("check_name", e.EncodeValue(conv.StringToString(params.CheckName)))
 	}
 	{
 		// Encode "status" parameter.
@@ -8839,7 +8839,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("status", e.EncodeString(conv.StringToString(params.Status)))
+		q.Set("status", e.EncodeValue(conv.StringToString(params.Status)))
 	}
 	{
 		// Encode "filter" parameter.
@@ -8847,7 +8847,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -8855,7 +8855,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -8863,7 +8863,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -8911,7 +8911,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -8921,7 +8921,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -8931,7 +8931,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 	u.Path += "/check-suites"
 
@@ -8942,7 +8942,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("app_id", e.EncodeString(conv.IntToString(params.AppID)))
+		q.Set("app_id", e.EncodeValue(conv.IntToString(params.AppID)))
 	}
 	{
 		// Encode "check_name" parameter.
@@ -8950,7 +8950,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("check_name", e.EncodeString(conv.StringToString(params.CheckName)))
+		q.Set("check_name", e.EncodeValue(conv.StringToString(params.CheckName)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -8958,7 +8958,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -8966,7 +8966,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -9014,7 +9014,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9024,7 +9024,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-suites/"
 	{
@@ -9034,7 +9034,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CheckSuiteID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 	}
 	u.Path += "/rerequest"
 
@@ -9088,7 +9088,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9098,7 +9098,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/check-suites/preferences"
 
@@ -9148,7 +9148,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9158,7 +9158,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/analyses/"
 	{
@@ -9168,7 +9168,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AnalysisID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AnalysisID))
 	}
 
 	q := u.Query()
@@ -9178,7 +9178,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("confirm_delete", e.EncodeString(conv.StringToString(params.ConfirmDelete)))
+		q.Set("confirm_delete", e.EncodeValue(conv.StringToString(params.ConfirmDelete)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -9226,7 +9226,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9236,7 +9236,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/alerts/"
 	{
@@ -9246,7 +9246,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AlertNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.AlertNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -9293,7 +9293,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9303,7 +9303,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/analyses/"
 	{
@@ -9313,7 +9313,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AnalysisID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AnalysisID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -9360,7 +9360,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9370,7 +9370,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/sarifs/"
 	{
@@ -9380,7 +9380,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.SarifID))
+		u.Path += e.EncodeValue(conv.StringToString(params.SarifID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -9427,7 +9427,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9437,7 +9437,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/alerts/"
 	{
@@ -9447,7 +9447,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AlertNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.AlertNumber))
 	}
 	u.Path += "/instances"
 
@@ -9458,7 +9458,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -9466,7 +9466,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "ref" parameter.
@@ -9474,7 +9474,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("ref", e.EncodeString(conv.StringToString(params.Ref)))
+		q.Set("ref", e.EncodeValue(conv.StringToString(params.Ref)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -9522,7 +9522,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9532,7 +9532,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/alerts"
 
@@ -9543,7 +9543,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tool_name", e.EncodeString(conv.StringToString(params.ToolName)))
+		q.Set("tool_name", e.EncodeValue(conv.StringToString(params.ToolName)))
 	}
 	{
 		// Encode "tool_guid" parameter.
@@ -9551,7 +9551,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tool_guid", e.EncodeString(conv.StringToString(params.ToolGUID)))
+		q.Set("tool_guid", e.EncodeValue(conv.StringToString(params.ToolGUID)))
 	}
 	{
 		// Encode "page" parameter.
@@ -9559,7 +9559,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -9567,7 +9567,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "ref" parameter.
@@ -9575,7 +9575,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("ref", e.EncodeString(conv.StringToString(params.Ref)))
+		q.Set("ref", e.EncodeValue(conv.StringToString(params.Ref)))
 	}
 	{
 		// Encode "state" parameter.
@@ -9583,7 +9583,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -9631,7 +9631,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9641,7 +9641,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/analyses"
 
@@ -9652,7 +9652,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tool_name", e.EncodeString(conv.StringToString(params.ToolName)))
+		q.Set("tool_name", e.EncodeValue(conv.StringToString(params.ToolName)))
 	}
 	{
 		// Encode "tool_guid" parameter.
@@ -9660,7 +9660,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tool_guid", e.EncodeString(conv.StringToString(params.ToolGUID)))
+		q.Set("tool_guid", e.EncodeValue(conv.StringToString(params.ToolGUID)))
 	}
 	{
 		// Encode "page" parameter.
@@ -9668,7 +9668,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -9676,7 +9676,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "ref" parameter.
@@ -9684,7 +9684,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("ref", e.EncodeString(conv.StringToString(params.Ref)))
+		q.Set("ref", e.EncodeValue(conv.StringToString(params.Ref)))
 	}
 	{
 		// Encode "sarif_id" parameter.
@@ -9692,7 +9692,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sarif_id", e.EncodeString(conv.StringToString(params.SarifID)))
+		q.Set("sarif_id", e.EncodeValue(conv.StringToString(params.SarifID)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -9755,7 +9755,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9765,7 +9765,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/alerts/"
 	{
@@ -9775,7 +9775,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AlertNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.AlertNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -9839,7 +9839,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -9849,7 +9849,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/code-scanning/sarifs"
 
@@ -9937,7 +9937,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Key))
+		u.Path += e.EncodeValue(conv.StringToString(params.Key))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -10022,7 +10022,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -10032,7 +10032,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/organizations/"
 	{
@@ -10042,7 +10042,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.OrgID))
+		u.Path += e.EncodeValue(conv.IntToString(params.OrgID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -10089,7 +10089,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -10099,7 +10099,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners/"
 	{
@@ -10109,7 +10109,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -10156,7 +10156,7 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners/registration-token"
 
@@ -10204,7 +10204,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners/remove-token"
 
@@ -10267,7 +10267,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups"
 
@@ -10317,7 +10317,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Groups/"
 	{
@@ -10327,7 +10327,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimGroupID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10374,7 +10374,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -10384,7 +10384,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10431,7 +10431,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -10441,7 +10441,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10488,7 +10488,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users/"
 	{
@@ -10498,7 +10498,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimUserID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimUserID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10545,7 +10545,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/organizations/"
 	{
@@ -10555,7 +10555,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.OrgID))
+		u.Path += e.EncodeValue(conv.IntToString(params.OrgID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -10602,7 +10602,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/organizations/"
 	{
@@ -10612,7 +10612,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.OrgID))
+		u.Path += e.EncodeValue(conv.IntToString(params.OrgID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -10659,7 +10659,7 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -10707,7 +10707,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/audit-log"
 
@@ -10718,7 +10718,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("phrase", e.EncodeString(conv.StringToString(params.Phrase)))
+		q.Set("phrase", e.EncodeValue(conv.StringToString(params.Phrase)))
 	}
 	{
 		// Encode "include" parameter.
@@ -10726,7 +10726,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("include", e.EncodeString(conv.StringToString(params.Include)))
+		q.Set("include", e.EncodeValue(conv.StringToString(params.Include)))
 	}
 	{
 		// Encode "after" parameter.
@@ -10734,7 +10734,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("after", e.EncodeString(conv.StringToString(params.After)))
+		q.Set("after", e.EncodeValue(conv.StringToString(params.After)))
 	}
 	{
 		// Encode "before" parameter.
@@ -10742,7 +10742,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("before", e.EncodeString(conv.StringToString(params.Before)))
+		q.Set("before", e.EncodeValue(conv.StringToString(params.Before)))
 	}
 	{
 		// Encode "order" parameter.
@@ -10750,7 +10750,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("order", e.EncodeString(conv.StringToString(params.Order)))
+		q.Set("order", e.EncodeValue(conv.StringToString(params.Order)))
 	}
 	{
 		// Encode "page" parameter.
@@ -10758,7 +10758,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -10766,7 +10766,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -10814,7 +10814,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions"
 
@@ -10862,7 +10862,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Groups/"
 	{
@@ -10872,7 +10872,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimGroupID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimGroupID))
 	}
 
 	q := u.Query()
@@ -10882,7 +10882,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("excludedAttributes", e.EncodeString(conv.StringToString(params.ExcludedAttributes)))
+		q.Set("excludedAttributes", e.EncodeValue(conv.StringToString(params.ExcludedAttributes)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -10930,7 +10930,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users/"
 	{
@@ -10940,7 +10940,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimUserID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimUserID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -10987,7 +10987,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners/"
 	{
@@ -10997,7 +10997,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -11044,7 +11044,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -11054,7 +11054,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -11101,7 +11101,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -11111,7 +11111,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/organizations"
 
@@ -11122,7 +11122,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -11130,7 +11130,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11178,7 +11178,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Groups"
 
@@ -11189,7 +11189,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("startIndex", e.EncodeString(conv.IntToString(params.StartIndex)))
+		q.Set("startIndex", e.EncodeValue(conv.IntToString(params.StartIndex)))
 	}
 	{
 		// Encode "count" parameter.
@@ -11197,7 +11197,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("count", e.EncodeString(conv.IntToString(params.Count)))
+		q.Set("count", e.EncodeValue(conv.IntToString(params.Count)))
 	}
 	{
 		// Encode "filter" parameter.
@@ -11205,7 +11205,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	{
 		// Encode "excludedAttributes" parameter.
@@ -11213,7 +11213,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("excludedAttributes", e.EncodeString(conv.StringToString(params.ExcludedAttributes)))
+		q.Set("excludedAttributes", e.EncodeValue(conv.StringToString(params.ExcludedAttributes)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11261,7 +11261,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users"
 
@@ -11272,7 +11272,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("startIndex", e.EncodeString(conv.IntToString(params.StartIndex)))
+		q.Set("startIndex", e.EncodeValue(conv.IntToString(params.StartIndex)))
 	}
 	{
 		// Encode "count" parameter.
@@ -11280,7 +11280,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("count", e.EncodeString(conv.IntToString(params.Count)))
+		q.Set("count", e.EncodeValue(conv.IntToString(params.Count)))
 	}
 	{
 		// Encode "filter" parameter.
@@ -11288,7 +11288,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11336,7 +11336,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners/downloads"
 
@@ -11384,7 +11384,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/organizations"
 
@@ -11395,7 +11395,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -11403,7 +11403,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11451,7 +11451,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups"
 
@@ -11462,7 +11462,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -11470,7 +11470,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11518,7 +11518,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runners"
 
@@ -11529,7 +11529,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -11537,7 +11537,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11585,7 +11585,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -11595,7 +11595,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners"
 
@@ -11606,7 +11606,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -11614,7 +11614,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -11677,7 +11677,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Groups"
 
@@ -11742,7 +11742,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users"
 
@@ -11792,7 +11792,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -11802,7 +11802,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/organizations/"
 	{
@@ -11812,7 +11812,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.OrgID))
+		u.Path += e.EncodeValue(conv.IntToString(params.OrgID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -11859,7 +11859,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -11869,7 +11869,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners/"
 	{
@@ -11879,7 +11879,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -11932,7 +11932,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
@@ -11997,7 +11997,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions"
 
@@ -12062,7 +12062,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Groups/"
 	{
@@ -12072,7 +12072,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimGroupID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -12136,7 +12136,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users/"
 	{
@@ -12146,7 +12146,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimUserID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimUserID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -12210,7 +12210,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -12220,7 +12220,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/organizations"
 
@@ -12285,7 +12285,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/permissions/organizations"
 
@@ -12350,7 +12350,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -12360,7 +12360,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 	u.Path += "/runners"
 
@@ -12425,7 +12425,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/Users/"
 	{
@@ -12435,7 +12435,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimUserID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimUserID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -12499,7 +12499,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Enterprise))
+		u.Path += e.EncodeValue(conv.StringToString(params.Enterprise))
 	}
 	u.Path += "/actions/runner-groups/"
 	{
@@ -12509,7 +12509,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.RunnerGroupID))
+		u.Path += e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -12558,7 +12558,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/star"
 
@@ -12621,7 +12621,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/comments"
 
@@ -12671,7 +12671,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -12718,7 +12718,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/comments/"
 	{
@@ -12728,7 +12728,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -12775,7 +12775,7 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -12822,7 +12822,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/comments/"
 	{
@@ -12832,7 +12832,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -12880,7 +12880,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -12888,7 +12888,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -12896,7 +12896,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -12944,7 +12944,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/comments"
 
@@ -12955,7 +12955,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -12963,7 +12963,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -13011,7 +13011,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/commits"
 
@@ -13022,7 +13022,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -13030,7 +13030,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -13078,7 +13078,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/forks"
 
@@ -13089,7 +13089,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -13097,7 +13097,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -13146,7 +13146,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -13154,7 +13154,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -13162,7 +13162,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -13210,7 +13210,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/star"
 
@@ -13258,7 +13258,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/star"
 
@@ -13321,7 +13321,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.GistID))
+		u.Path += e.EncodeValue(conv.StringToString(params.GistID))
 	}
 	u.Path += "/comments/"
 	{
@@ -13331,7 +13331,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -13380,7 +13380,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13390,7 +13390,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/git/commits/"
 	{
@@ -13400,7 +13400,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.CommitSha))
+		u.Path += e.EncodeValue(conv.StringToString(params.CommitSha))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -13447,7 +13447,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13457,7 +13457,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/git/ref/"
 	{
@@ -13467,7 +13467,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -13514,7 +13514,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13524,7 +13524,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/git/tags/"
 	{
@@ -13534,7 +13534,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TagSha))
+		u.Path += e.EncodeValue(conv.StringToString(params.TagSha))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -13581,7 +13581,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13591,7 +13591,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/git/matching-refs/"
 	{
@@ -13601,7 +13601,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 
 	q := u.Query()
@@ -13611,7 +13611,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -13619,7 +13619,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -13705,7 +13705,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -13790,7 +13790,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/interaction-limits"
 
@@ -13838,7 +13838,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13848,7 +13848,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/interaction-limits"
 
@@ -13911,7 +13911,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13921,7 +13921,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/interaction-limits"
 
@@ -13977,7 +13977,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -13987,7 +13987,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -13997,7 +13997,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/assignees"
 
@@ -14047,7 +14047,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14057,7 +14057,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/assignees/"
 	{
@@ -14067,7 +14067,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Assignee))
+		u.Path += e.EncodeValue(conv.StringToString(params.Assignee))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -14114,7 +14114,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14124,7 +14124,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/comments/"
 	{
@@ -14134,7 +14134,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -14181,7 +14181,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14191,7 +14191,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/labels/"
 	{
@@ -14201,7 +14201,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -14248,7 +14248,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14258,7 +14258,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/milestones/"
 	{
@@ -14268,7 +14268,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MilestoneNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -14315,7 +14315,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14325,7 +14325,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/comments/"
 	{
@@ -14335,7 +14335,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -14382,7 +14382,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14392,7 +14392,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/events/"
 	{
@@ -14402,7 +14402,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.EventID))
+		u.Path += e.EncodeValue(conv.IntToString(params.EventID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -14449,7 +14449,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14459,7 +14459,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/labels/"
 	{
@@ -14469,7 +14469,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -14516,7 +14516,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14526,7 +14526,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/milestones/"
 	{
@@ -14536,7 +14536,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MilestoneNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -14583,7 +14583,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14593,7 +14593,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/assignees"
 
@@ -14604,7 +14604,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -14612,7 +14612,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -14660,7 +14660,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14670,7 +14670,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -14680,7 +14680,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/comments"
 
@@ -14691,7 +14691,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -14699,7 +14699,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -14707,7 +14707,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -14755,7 +14755,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14765,7 +14765,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/milestones/"
 	{
@@ -14775,7 +14775,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MilestoneNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 	}
 	u.Path += "/labels"
 
@@ -14786,7 +14786,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -14794,7 +14794,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -14842,7 +14842,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14852,7 +14852,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/labels"
 
@@ -14863,7 +14863,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -14871,7 +14871,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -14919,7 +14919,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -14929,7 +14929,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -14939,7 +14939,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/labels"
 
@@ -14950,7 +14950,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -14958,7 +14958,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -15006,7 +15006,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15016,7 +15016,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/milestones"
 
@@ -15027,7 +15027,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	{
 		// Encode "sort" parameter.
@@ -15035,7 +15035,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -15043,7 +15043,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -15051,7 +15051,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -15059,7 +15059,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -15107,7 +15107,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15117,7 +15117,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -15127,7 +15127,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/labels"
 
@@ -15181,7 +15181,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15191,7 +15191,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -15201,7 +15201,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/assignees"
 
@@ -15251,7 +15251,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15261,7 +15261,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -15271,7 +15271,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/labels/"
 	{
@@ -15281,7 +15281,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -15328,7 +15328,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15338,7 +15338,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -15348,7 +15348,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/lock"
 
@@ -15402,7 +15402,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15412,7 +15412,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/labels/"
 	{
@@ -15422,7 +15422,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Name))
+		u.Path += e.EncodeValue(conv.StringToString(params.Name))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -15486,7 +15486,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15496,7 +15496,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/milestones/"
 	{
@@ -15506,7 +15506,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MilestoneNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -15555,7 +15555,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.License))
+		u.Path += e.EncodeValue(conv.StringToString(params.License))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -15603,7 +15603,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("featured", e.EncodeString(conv.BoolToString(params.Featured)))
+		q.Set("featured", e.EncodeValue(conv.BoolToString(params.Featured)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -15611,7 +15611,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -15619,7 +15619,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -15667,7 +15667,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -15677,7 +15677,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/license"
 
@@ -15874,7 +15874,7 @@ func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("s", e.EncodeString(conv.StringToString(params.S)))
+		q.Set("s", e.EncodeValue(conv.StringToString(params.S)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -15998,7 +15998,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -16008,7 +16008,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/import"
 
@@ -16056,7 +16056,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/archive"
 
@@ -16104,7 +16104,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations/"
 	{
@@ -16114,7 +16114,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/archive"
 
@@ -16162,7 +16162,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations/"
 	{
@@ -16172,7 +16172,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/archive"
 
@@ -16220,7 +16220,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/archive"
 
@@ -16268,7 +16268,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -16278,7 +16278,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/import/authors"
 
@@ -16289,7 +16289,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.IntToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.IntToString(params.Since)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16337,7 +16337,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -16347,7 +16347,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/import"
 
@@ -16395,7 +16395,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -16405,7 +16405,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/import/large_files"
 
@@ -16453,7 +16453,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 
 	q := u.Query()
@@ -16463,7 +16463,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q["exclude"] = e.EncodeStrings(conv.StringArrayToString(params.Exclude))
+		q["exclude"] = e.EncodeArray(conv.StringArrayToString(params.Exclude))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16511,7 +16511,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations/"
 	{
@@ -16521,7 +16521,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 
 	q := u.Query()
@@ -16531,7 +16531,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q["exclude"] = e.EncodeStrings(conv.StringArrayToString(params.Exclude))
+		q["exclude"] = e.EncodeArray(conv.StringArrayToString(params.Exclude))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16580,7 +16580,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -16588,7 +16588,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16636,7 +16636,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations"
 
@@ -16647,7 +16647,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -16655,7 +16655,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "exclude" parameter.
@@ -16663,7 +16663,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q["exclude"] = e.EncodeStrings(conv.StringArrayToString(params.Exclude))
+		q["exclude"] = e.EncodeArray(conv.StringArrayToString(params.Exclude))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16711,7 +16711,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations/"
 	{
@@ -16721,7 +16721,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/repositories"
 
@@ -16732,7 +16732,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -16740,7 +16740,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16788,7 +16788,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/repositories"
 
@@ -16799,7 +16799,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -16807,7 +16807,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -16855,7 +16855,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/repos/"
 	{
@@ -16865,7 +16865,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.RepoName))
+		u.Path += e.EncodeValue(conv.StringToString(params.RepoName))
 	}
 	u.Path += "/lock"
 
@@ -16913,7 +16913,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/migrations/"
 	{
@@ -16923,7 +16923,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MigrationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MigrationID))
 	}
 	u.Path += "/repos/"
 	{
@@ -16933,7 +16933,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.RepoName))
+		u.Path += e.EncodeValue(conv.StringToString(params.RepoName))
 	}
 	u.Path += "/lock"
 
@@ -16987,7 +16987,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -16997,7 +16997,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/import"
 
@@ -17047,7 +17047,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AuthorizationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AuthorizationID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -17094,7 +17094,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.GrantID))
+		u.Path += e.EncodeValue(conv.IntToString(params.GrantID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -17141,7 +17141,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AuthorizationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AuthorizationID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17188,7 +17188,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.GrantID))
+		u.Path += e.EncodeValue(conv.IntToString(params.GrantID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17236,7 +17236,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -17244,7 +17244,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "client_id" parameter.
@@ -17252,7 +17252,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("client_id", e.EncodeString(conv.StringToString(params.ClientID)))
+		q.Set("client_id", e.EncodeValue(conv.StringToString(params.ClientID)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -17301,7 +17301,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -17309,7 +17309,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "client_id" parameter.
@@ -17317,7 +17317,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("client_id", e.EncodeString(conv.StringToString(params.ClientID)))
+		q.Set("client_id", e.EncodeValue(conv.StringToString(params.ClientID)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -17365,7 +17365,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/blocks/"
 	{
@@ -17375,7 +17375,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17422,7 +17422,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/members/"
 	{
@@ -17432,7 +17432,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17479,7 +17479,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/public_members/"
 	{
@@ -17489,7 +17489,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17536,7 +17536,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/outside_collaborators/"
 	{
@@ -17546,7 +17546,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -17593,7 +17593,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks/"
 	{
@@ -17603,7 +17603,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -17650,7 +17650,7 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17697,7 +17697,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/audit-log"
 
@@ -17708,7 +17708,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("phrase", e.EncodeString(conv.StringToString(params.Phrase)))
+		q.Set("phrase", e.EncodeValue(conv.StringToString(params.Phrase)))
 	}
 	{
 		// Encode "include" parameter.
@@ -17716,7 +17716,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("include", e.EncodeString(conv.StringToString(params.Include)))
+		q.Set("include", e.EncodeValue(conv.StringToString(params.Include)))
 	}
 	{
 		// Encode "after" parameter.
@@ -17724,7 +17724,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("after", e.EncodeString(conv.StringToString(params.After)))
+		q.Set("after", e.EncodeValue(conv.StringToString(params.After)))
 	}
 	{
 		// Encode "before" parameter.
@@ -17732,7 +17732,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("before", e.EncodeString(conv.StringToString(params.Before)))
+		q.Set("before", e.EncodeValue(conv.StringToString(params.Before)))
 	}
 	{
 		// Encode "order" parameter.
@@ -17740,7 +17740,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("order", e.EncodeString(conv.StringToString(params.Order)))
+		q.Set("order", e.EncodeValue(conv.StringToString(params.Order)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -17748,7 +17748,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -17756,7 +17756,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -17804,7 +17804,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17851,7 +17851,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/memberships/"
 	{
@@ -17861,7 +17861,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17908,7 +17908,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks/"
 	{
@@ -17918,7 +17918,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -17965,7 +17965,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks/"
 	{
@@ -17975,7 +17975,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/config"
 
@@ -18024,7 +18024,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.IntToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.IntToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -18032,7 +18032,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18080,7 +18080,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/blocks"
 
@@ -18128,7 +18128,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/failed_invitations"
 
@@ -18139,7 +18139,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18147,7 +18147,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18196,7 +18196,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18204,7 +18204,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18252,7 +18252,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/orgs"
 
@@ -18263,7 +18263,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18271,7 +18271,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18319,7 +18319,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/invitations/"
 	{
@@ -18329,7 +18329,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InvitationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InvitationID))
 	}
 	u.Path += "/teams"
 
@@ -18340,7 +18340,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18348,7 +18348,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18396,7 +18396,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/outside_collaborators"
 
@@ -18407,7 +18407,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("filter", e.EncodeString(conv.StringToString(params.Filter)))
+		q.Set("filter", e.EncodeValue(conv.StringToString(params.Filter)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -18415,7 +18415,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18423,7 +18423,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18471,7 +18471,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/invitations"
 
@@ -18482,7 +18482,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18490,7 +18490,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18538,7 +18538,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/public_members"
 
@@ -18549,7 +18549,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18557,7 +18557,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18605,7 +18605,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/credential-authorizations"
 
@@ -18653,7 +18653,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks"
 
@@ -18664,7 +18664,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -18672,7 +18672,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -18720,7 +18720,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks/"
 	{
@@ -18730,7 +18730,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/pings"
 
@@ -18778,7 +18778,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/members/"
 	{
@@ -18788,7 +18788,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -18835,7 +18835,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/memberships/"
 	{
@@ -18845,7 +18845,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -18892,7 +18892,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/outside_collaborators/"
 	{
@@ -18902,7 +18902,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -18949,7 +18949,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/public_members/"
 	{
@@ -18959,7 +18959,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19006,7 +19006,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/credential-authorizations/"
 	{
@@ -19016,7 +19016,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CredentialID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CredentialID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19063,7 +19063,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/public_members/"
 	{
@@ -19073,7 +19073,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -19120,7 +19120,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/blocks/"
 	{
@@ -19130,7 +19130,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19183,7 +19183,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/hooks/"
 	{
@@ -19193,7 +19193,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/config"
 
@@ -19243,7 +19243,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19253,7 +19253,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19300,7 +19300,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -19310,7 +19310,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19320,7 +19320,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19367,7 +19367,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -19377,7 +19377,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19387,7 +19387,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19434,7 +19434,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19444,7 +19444,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -19454,7 +19454,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19501,7 +19501,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -19511,7 +19511,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19521,7 +19521,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -19531,7 +19531,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19578,7 +19578,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -19588,7 +19588,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19598,7 +19598,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -19608,7 +19608,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -19655,7 +19655,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19665,7 +19665,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions"
 
@@ -19676,7 +19676,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -19684,7 +19684,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "state" parameter.
@@ -19692,7 +19692,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -19740,7 +19740,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -19750,7 +19750,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19760,7 +19760,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions"
 
@@ -19771,7 +19771,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -19779,7 +19779,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "state" parameter.
@@ -19787,7 +19787,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -19835,7 +19835,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -19845,7 +19845,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19855,7 +19855,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions"
 
@@ -19903,7 +19903,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19913,7 +19913,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -19960,7 +19960,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -19970,7 +19970,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -19980,7 +19980,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -20027,7 +20027,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -20037,7 +20037,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20047,7 +20047,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -20094,7 +20094,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20104,7 +20104,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20114,7 +20114,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -20161,7 +20161,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -20171,7 +20171,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20181,7 +20181,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20191,7 +20191,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -20238,7 +20238,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -20248,7 +20248,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20258,7 +20258,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20268,7 +20268,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -20316,7 +20316,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("package_type", e.EncodeString(conv.StringToString(params.PackageType)))
+		q.Set("package_type", e.EncodeValue(conv.StringToString(params.PackageType)))
 	}
 	{
 		// Encode "visibility" parameter.
@@ -20324,7 +20324,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("visibility", e.EncodeString(conv.StringToString(params.Visibility)))
+		q.Set("visibility", e.EncodeValue(conv.StringToString(params.Visibility)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20372,7 +20372,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages"
 
@@ -20383,7 +20383,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("package_type", e.EncodeString(conv.StringToString(params.PackageType)))
+		q.Set("package_type", e.EncodeValue(conv.StringToString(params.PackageType)))
 	}
 	{
 		// Encode "visibility" parameter.
@@ -20391,7 +20391,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("visibility", e.EncodeString(conv.StringToString(params.Visibility)))
+		q.Set("visibility", e.EncodeValue(conv.StringToString(params.Visibility)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20439,7 +20439,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages"
 
@@ -20450,7 +20450,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("package_type", e.EncodeString(conv.StringToString(params.PackageType)))
+		q.Set("package_type", e.EncodeValue(conv.StringToString(params.PackageType)))
 	}
 	{
 		// Encode "visibility" parameter.
@@ -20458,7 +20458,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("visibility", e.EncodeString(conv.StringToString(params.Visibility)))
+		q.Set("visibility", e.EncodeValue(conv.StringToString(params.Visibility)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20506,7 +20506,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20516,7 +20516,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/restore"
 
@@ -20527,7 +20527,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("token", e.EncodeString(conv.StringToString(params.Token)))
+		q.Set("token", e.EncodeValue(conv.StringToString(params.Token)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20575,7 +20575,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -20585,7 +20585,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20595,7 +20595,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/restore"
 
@@ -20606,7 +20606,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("token", e.EncodeString(conv.StringToString(params.Token)))
+		q.Set("token", e.EncodeValue(conv.StringToString(params.Token)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20654,7 +20654,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -20664,7 +20664,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20674,7 +20674,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/restore"
 
@@ -20685,7 +20685,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("token", e.EncodeString(conv.StringToString(params.Token)))
+		q.Set("token", e.EncodeValue(conv.StringToString(params.Token)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -20733,7 +20733,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20743,7 +20743,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20753,7 +20753,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 	u.Path += "/restore"
 
@@ -20801,7 +20801,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/packages/"
 	{
@@ -20811,7 +20811,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20821,7 +20821,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20831,7 +20831,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 	u.Path += "/restore"
 
@@ -20879,7 +20879,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/packages/"
 	{
@@ -20889,7 +20889,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageType))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageType))
 	}
 	u.Path += "/"
 	{
@@ -20899,7 +20899,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.PackageName))
+		u.Path += e.EncodeValue(conv.StringToString(params.PackageName))
 	}
 	u.Path += "/versions/"
 	{
@@ -20909,7 +20909,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PackageVersionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.PackageVersionID))
 	}
 	u.Path += "/restore"
 
@@ -20963,7 +20963,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 	u.Path += "/columns"
 
@@ -21065,7 +21065,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/projects"
 
@@ -21121,7 +21121,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -21131,7 +21131,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/projects"
 
@@ -21181,7 +21181,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21228,7 +21228,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CardID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CardID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21275,7 +21275,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ColumnID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ColumnID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -21322,7 +21322,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -21369,7 +21369,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CardID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CardID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -21416,7 +21416,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ColumnID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ColumnID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -21463,7 +21463,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ColumnID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ColumnID))
 	}
 	u.Path += "/cards"
 
@@ -21474,7 +21474,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("archived_state", e.EncodeString(conv.StringToString(params.ArchivedState)))
+		q.Set("archived_state", e.EncodeValue(conv.StringToString(params.ArchivedState)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -21482,7 +21482,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -21490,7 +21490,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -21538,7 +21538,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 	u.Path += "/columns"
 
@@ -21549,7 +21549,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -21557,7 +21557,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -21605,7 +21605,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/projects"
 
@@ -21616,7 +21616,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -21624,7 +21624,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -21632,7 +21632,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -21680,7 +21680,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -21690,7 +21690,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/projects"
 
@@ -21701,7 +21701,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -21709,7 +21709,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -21717,7 +21717,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -21780,7 +21780,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ColumnID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ColumnID))
 	}
 	u.Path += "/moves"
 
@@ -21845,7 +21845,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -21900,7 +21900,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CardID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CardID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -21955,7 +21955,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ColumnID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ColumnID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -22004,7 +22004,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22014,7 +22014,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22024,7 +22024,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/merge"
 
@@ -22078,7 +22078,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22088,7 +22088,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22098,7 +22098,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -22108,7 +22108,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/replies"
 
@@ -22173,7 +22173,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22183,7 +22183,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22193,7 +22193,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews"
 
@@ -22243,7 +22243,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22253,7 +22253,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22263,7 +22263,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -22273,7 +22273,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -22320,7 +22320,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22330,7 +22330,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments/"
 	{
@@ -22340,7 +22340,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -22393,7 +22393,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22403,7 +22403,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22413,7 +22413,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -22423,7 +22423,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 	u.Path += "/dismissals"
 
@@ -22473,7 +22473,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22483,7 +22483,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22493,7 +22493,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -22540,7 +22540,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22550,7 +22550,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22560,7 +22560,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -22570,7 +22570,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -22617,7 +22617,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22627,7 +22627,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments/"
 	{
@@ -22637,7 +22637,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -22684,7 +22684,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22694,7 +22694,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22704,7 +22704,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -22714,7 +22714,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 	u.Path += "/comments"
 
@@ -22725,7 +22725,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -22733,7 +22733,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -22781,7 +22781,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22791,7 +22791,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22801,7 +22801,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/commits"
 
@@ -22812,7 +22812,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -22820,7 +22820,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -22868,7 +22868,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22878,7 +22878,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22888,7 +22888,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/requested_reviewers"
 
@@ -22899,7 +22899,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -22907,7 +22907,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -22955,7 +22955,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -22965,7 +22965,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -22975,7 +22975,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/comments"
 
@@ -22986,7 +22986,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -22994,7 +22994,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "since" parameter.
@@ -23002,7 +23002,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -23010,7 +23010,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -23018,7 +23018,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -23066,7 +23066,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23076,7 +23076,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments"
 
@@ -23087,7 +23087,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -23095,7 +23095,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "since" parameter.
@@ -23103,7 +23103,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -23111,7 +23111,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -23119,7 +23119,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -23167,7 +23167,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23177,7 +23177,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -23187,7 +23187,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews"
 
@@ -23198,7 +23198,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -23206,7 +23206,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -23269,7 +23269,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23279,7 +23279,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -23289,7 +23289,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -23299,7 +23299,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 	u.Path += "/events"
 
@@ -23355,7 +23355,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23365,7 +23365,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/"
 	{
@@ -23375,7 +23375,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.PullNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.PullNumber))
 	}
 	u.Path += "/reviews/"
 	{
@@ -23385,7 +23385,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReviewID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReviewID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -23440,7 +23440,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23450,7 +23450,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments/"
 	{
@@ -23460,7 +23460,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -23562,7 +23562,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -23572,7 +23572,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -23582,7 +23582,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -23592,7 +23592,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 	u.Path += "/reactions"
 
@@ -23657,7 +23657,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -23667,7 +23667,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -23677,7 +23677,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 	u.Path += "/reactions"
 
@@ -23742,7 +23742,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -23752,7 +23752,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -23762,7 +23762,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/reactions"
 
@@ -23827,7 +23827,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -23837,7 +23837,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/reactions"
 
@@ -23887,7 +23887,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23897,7 +23897,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments/"
 	{
@@ -23907,7 +23907,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions/"
 	{
@@ -23917,7 +23917,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -23964,7 +23964,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -23974,7 +23974,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -23984,7 +23984,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/reactions/"
 	{
@@ -23994,7 +23994,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24041,7 +24041,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24051,7 +24051,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/comments/"
 	{
@@ -24061,7 +24061,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions/"
 	{
@@ -24071,7 +24071,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24118,7 +24118,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24128,7 +24128,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments/"
 	{
@@ -24138,7 +24138,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions/"
 	{
@@ -24148,7 +24148,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24195,7 +24195,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -24205,7 +24205,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -24215,7 +24215,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/reactions/"
 	{
@@ -24225,7 +24225,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24272,7 +24272,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -24282,7 +24282,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -24292,7 +24292,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -24302,7 +24302,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 	u.Path += "/reactions/"
 	{
@@ -24312,7 +24312,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24359,7 +24359,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReactionID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReactionID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -24406,7 +24406,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24416,7 +24416,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments/"
 	{
@@ -24426,7 +24426,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions"
 
@@ -24437,7 +24437,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24445,7 +24445,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24453,7 +24453,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24501,7 +24501,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24511,7 +24511,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/"
 	{
@@ -24521,7 +24521,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.IssueNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.IssueNumber))
 	}
 	u.Path += "/reactions"
 
@@ -24532,7 +24532,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24540,7 +24540,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24548,7 +24548,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24596,7 +24596,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24606,7 +24606,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/issues/comments/"
 	{
@@ -24616,7 +24616,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions"
 
@@ -24627,7 +24627,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24635,7 +24635,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24643,7 +24643,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24691,7 +24691,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -24701,7 +24701,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pulls/comments/"
 	{
@@ -24711,7 +24711,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 	u.Path += "/reactions"
 
@@ -24722,7 +24722,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24730,7 +24730,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24738,7 +24738,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24786,7 +24786,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -24796,7 +24796,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -24806,7 +24806,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -24816,7 +24816,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 	u.Path += "/reactions"
 
@@ -24827,7 +24827,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24835,7 +24835,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24843,7 +24843,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24891,7 +24891,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -24901,7 +24901,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -24911,7 +24911,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 	u.Path += "/reactions"
 
@@ -24922,7 +24922,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -24930,7 +24930,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -24938,7 +24938,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -24986,7 +24986,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -24996,7 +24996,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -25006,7 +25006,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/reactions"
 
@@ -25017,7 +25017,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -25025,7 +25025,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -25033,7 +25033,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -25081,7 +25081,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -25091,7 +25091,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/reactions"
 
@@ -25102,7 +25102,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("content", e.EncodeString(conv.StringToString(params.Content)))
+		q.Set("content", e.EncodeValue(conv.StringToString(params.Content)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -25110,7 +25110,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -25118,7 +25118,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -25166,7 +25166,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InvitationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InvitationID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
@@ -25213,7 +25213,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25223,7 +25223,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/collaborators/"
 	{
@@ -25233,7 +25233,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -25280,7 +25280,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25290,7 +25290,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/vulnerability-alerts"
 
@@ -25338,7 +25338,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25348,7 +25348,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/compare/"
 	{
@@ -25358,7 +25358,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Basehead))
+		u.Path += e.EncodeValue(conv.StringToString(params.Basehead))
 	}
 
 	q := u.Query()
@@ -25368,7 +25368,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -25376,7 +25376,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -25424,7 +25424,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25434,7 +25434,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -25444,7 +25444,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_signatures"
 
@@ -25507,7 +25507,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25517,7 +25517,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/statuses/"
 	{
@@ -25527,7 +25527,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Sha))
+		u.Path += e.EncodeValue(conv.StringToString(params.Sha))
 	}
 
 	r := ht.NewRequest(ctx, "POST", u, buf)
@@ -25582,7 +25582,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TemplateOwner))
+		u.Path += e.EncodeValue(conv.StringToString(params.TemplateOwner))
 	}
 	u.Path += "/"
 	{
@@ -25592,7 +25592,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TemplateRepo))
+		u.Path += e.EncodeValue(conv.StringToString(params.TemplateRepo))
 	}
 	u.Path += "/generate"
 
@@ -25642,7 +25642,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InvitationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InvitationID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -25689,7 +25689,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25699,7 +25699,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -25746,7 +25746,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25756,7 +25756,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -25766,7 +25766,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/restrictions"
 
@@ -25814,7 +25814,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25824,7 +25824,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -25834,7 +25834,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/enforce_admins"
 
@@ -25882,7 +25882,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25892,7 +25892,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/environments/"
 	{
@@ -25902,7 +25902,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.EnvironmentName))
+		u.Path += e.EncodeValue(conv.StringToString(params.EnvironmentName))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -25949,7 +25949,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -25959,7 +25959,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/autolinks/"
 	{
@@ -25969,7 +25969,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AutolinkID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AutolinkID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26016,7 +26016,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26026,7 +26026,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -26036,7 +26036,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection"
 
@@ -26084,7 +26084,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26094,7 +26094,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments/"
 	{
@@ -26104,7 +26104,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26151,7 +26151,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26161,7 +26161,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -26171,7 +26171,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_signatures"
 
@@ -26219,7 +26219,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26229,7 +26229,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/keys/"
 	{
@@ -26239,7 +26239,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.KeyID))
+		u.Path += e.EncodeValue(conv.IntToString(params.KeyID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26286,7 +26286,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26296,7 +26296,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/deployments/"
 	{
@@ -26306,7 +26306,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DeploymentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.DeploymentID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26353,7 +26353,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26363,7 +26363,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/invitations/"
 	{
@@ -26373,7 +26373,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InvitationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InvitationID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26420,7 +26420,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26430,7 +26430,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -26440,7 +26440,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_pull_request_reviews"
 
@@ -26488,7 +26488,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26498,7 +26498,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/"
 	{
@@ -26508,7 +26508,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReleaseID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReleaseID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26555,7 +26555,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26565,7 +26565,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/assets/"
 	{
@@ -26575,7 +26575,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AssetID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AssetID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26622,7 +26622,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26632,7 +26632,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -26642,7 +26642,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -26689,7 +26689,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26699,7 +26699,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/automated-security-fixes"
 
@@ -26747,7 +26747,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26757,7 +26757,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/lfs"
 
@@ -26805,7 +26805,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26815,7 +26815,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/vulnerability-alerts"
 
@@ -26863,7 +26863,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26873,7 +26873,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/tarball/"
 	{
@@ -26883,7 +26883,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -26930,7 +26930,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -26940,7 +26940,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/zipball/"
 	{
@@ -26950,7 +26950,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -26997,7 +26997,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27007,7 +27007,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/automated-security-fixes"
 
@@ -27055,7 +27055,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27065,7 +27065,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/lfs"
 
@@ -27113,7 +27113,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27123,7 +27123,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/vulnerability-alerts"
 
@@ -27171,7 +27171,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27181,7 +27181,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -27228,7 +27228,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27238,7 +27238,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27248,7 +27248,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/restrictions"
 
@@ -27296,7 +27296,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27306,7 +27306,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27316,7 +27316,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/enforce_admins"
 
@@ -27364,7 +27364,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27374,7 +27374,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27384,7 +27384,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
@@ -27432,7 +27432,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27442,7 +27442,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/topics"
 
@@ -27453,7 +27453,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -27461,7 +27461,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -27509,7 +27509,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27519,7 +27519,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27529,7 +27529,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/restrictions/apps"
 
@@ -27577,7 +27577,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27587,7 +27587,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/autolinks/"
 	{
@@ -27597,7 +27597,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AutolinkID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AutolinkID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -27644,7 +27644,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27654,7 +27654,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27664,7 +27664,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -27711,7 +27711,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27721,7 +27721,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -27731,7 +27731,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection"
 
@@ -27779,7 +27779,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27789,7 +27789,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/traffic/clones"
 
@@ -27800,7 +27800,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per", e.EncodeString(conv.StringToString(params.Per)))
+		q.Set("per", e.EncodeValue(conv.StringToString(params.Per)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -27848,7 +27848,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27858,7 +27858,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/stats/code_frequency"
 
@@ -27906,7 +27906,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27916,7 +27916,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/collaborators/"
 	{
@@ -27926,7 +27926,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/permission"
 
@@ -27974,7 +27974,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -27984,7 +27984,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -27994,7 +27994,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 	u.Path += "/status"
 
@@ -28005,7 +28005,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -28013,7 +28013,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -28061,7 +28061,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28071,7 +28071,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/stats/commit_activity"
 
@@ -28119,7 +28119,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28129,7 +28129,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments/"
 	{
@@ -28139,7 +28139,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -28186,7 +28186,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28196,7 +28196,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -28206,7 +28206,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_signatures"
 
@@ -28254,7 +28254,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28264,7 +28264,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/community/profile"
 
@@ -28312,7 +28312,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28322,7 +28322,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/stats/contributors"
 
@@ -28370,7 +28370,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28380,7 +28380,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/keys/"
 	{
@@ -28390,7 +28390,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.KeyID))
+		u.Path += e.EncodeValue(conv.IntToString(params.KeyID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -28437,7 +28437,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28447,7 +28447,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/deployments/"
 	{
@@ -28457,7 +28457,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DeploymentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.DeploymentID))
 	}
 	u.Path += "/statuses/"
 	{
@@ -28467,7 +28467,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.StatusID))
+		u.Path += e.EncodeValue(conv.IntToString(params.StatusID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -28514,7 +28514,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28524,7 +28524,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages/builds/latest"
 
@@ -28572,7 +28572,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28582,7 +28582,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/latest"
 
@@ -28630,7 +28630,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28640,7 +28640,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages"
 
@@ -28688,7 +28688,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28698,7 +28698,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages/builds/"
 	{
@@ -28708,7 +28708,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.BuildID))
+		u.Path += e.EncodeValue(conv.IntToString(params.BuildID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -28755,7 +28755,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28765,7 +28765,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages/health"
 
@@ -28813,7 +28813,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28823,7 +28823,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/stats/participation"
 
@@ -28871,7 +28871,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28881,7 +28881,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -28891,7 +28891,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_pull_request_reviews"
 
@@ -28939,7 +28939,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -28949,7 +28949,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/stats/punch_card"
 
@@ -28997,7 +28997,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29007,7 +29007,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/"
 	{
@@ -29017,7 +29017,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReleaseID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReleaseID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -29064,7 +29064,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29074,7 +29074,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/assets/"
 	{
@@ -29084,7 +29084,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AssetID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AssetID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -29131,7 +29131,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29141,7 +29141,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/tags/"
 	{
@@ -29151,7 +29151,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Tag))
+		u.Path += e.EncodeValue(conv.StringToString(params.Tag))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -29198,7 +29198,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29208,7 +29208,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -29218,7 +29218,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_status_checks"
 
@@ -29266,7 +29266,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29276,7 +29276,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -29286,7 +29286,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/restrictions/teams"
 
@@ -29334,7 +29334,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29344,7 +29344,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/traffic/popular/paths"
 
@@ -29392,7 +29392,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29402,7 +29402,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/traffic/popular/referrers"
 
@@ -29450,7 +29450,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29460,7 +29460,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -29470,7 +29470,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/restrictions/users"
 
@@ -29518,7 +29518,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29528,7 +29528,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/traffic/views"
 
@@ -29539,7 +29539,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per", e.EncodeString(conv.StringToString(params.Per)))
+		q.Set("per", e.EncodeValue(conv.StringToString(params.Per)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -29587,7 +29587,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29597,7 +29597,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -29607,7 +29607,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -29654,7 +29654,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29664,7 +29664,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -29674,7 +29674,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/config"
 
@@ -29722,7 +29722,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29732,7 +29732,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/autolinks"
 
@@ -29743,7 +29743,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -29791,7 +29791,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29801,7 +29801,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches"
 
@@ -29812,7 +29812,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("protected", e.EncodeString(conv.BoolToString(params.Protected)))
+		q.Set("protected", e.EncodeValue(conv.BoolToString(params.Protected)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -29820,7 +29820,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -29828,7 +29828,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -29876,7 +29876,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29886,7 +29886,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/collaborators"
 
@@ -29897,7 +29897,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("affiliation", e.EncodeString(conv.StringToString(params.Affiliation)))
+		q.Set("affiliation", e.EncodeValue(conv.StringToString(params.Affiliation)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -29905,7 +29905,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -29913,7 +29913,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -29961,7 +29961,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -29971,7 +29971,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -29981,7 +29981,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.CommitSha))
+		u.Path += e.EncodeValue(conv.StringToString(params.CommitSha))
 	}
 	u.Path += "/comments"
 
@@ -29992,7 +29992,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30000,7 +30000,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30048,7 +30048,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30058,7 +30058,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments"
 
@@ -30069,7 +30069,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30077,7 +30077,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30125,7 +30125,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30135,7 +30135,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -30145,7 +30145,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Ref))
+		u.Path += e.EncodeValue(conv.StringToString(params.Ref))
 	}
 	u.Path += "/statuses"
 
@@ -30156,7 +30156,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30164,7 +30164,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30212,7 +30212,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30222,7 +30222,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits"
 
@@ -30233,7 +30233,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sha", e.EncodeString(conv.StringToString(params.Sha)))
+		q.Set("sha", e.EncodeValue(conv.StringToString(params.Sha)))
 	}
 	{
 		// Encode "path" parameter.
@@ -30241,7 +30241,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("path", e.EncodeString(conv.StringToString(params.Path)))
+		q.Set("path", e.EncodeValue(conv.StringToString(params.Path)))
 	}
 	{
 		// Encode "author" parameter.
@@ -30249,7 +30249,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("author", e.EncodeString(conv.StringToString(params.Author)))
+		q.Set("author", e.EncodeValue(conv.StringToString(params.Author)))
 	}
 	{
 		// Encode "since" parameter.
@@ -30257,7 +30257,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.TimeToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.TimeToString(params.Since)))
 	}
 	{
 		// Encode "until" parameter.
@@ -30265,7 +30265,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("until", e.EncodeString(conv.TimeToString(params.Until)))
+		q.Set("until", e.EncodeValue(conv.TimeToString(params.Until)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -30273,7 +30273,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30281,7 +30281,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30329,7 +30329,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30339,7 +30339,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/contributors"
 
@@ -30350,7 +30350,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("anon", e.EncodeString(conv.StringToString(params.Anon)))
+		q.Set("anon", e.EncodeValue(conv.StringToString(params.Anon)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -30358,7 +30358,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30366,7 +30366,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30414,7 +30414,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30424,7 +30424,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/keys"
 
@@ -30435,7 +30435,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30443,7 +30443,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30491,7 +30491,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30501,7 +30501,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/deployments/"
 	{
@@ -30511,7 +30511,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DeploymentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.DeploymentID))
 	}
 	u.Path += "/statuses"
 
@@ -30522,7 +30522,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30530,7 +30530,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30578,7 +30578,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/repos"
 
@@ -30589,7 +30589,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("type", e.EncodeString(conv.StringToString(params.Type)))
+		q.Set("type", e.EncodeValue(conv.StringToString(params.Type)))
 	}
 	{
 		// Encode "sort" parameter.
@@ -30597,7 +30597,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -30605,7 +30605,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -30613,7 +30613,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30621,7 +30621,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30669,7 +30669,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/repos"
 
@@ -30680,7 +30680,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("type", e.EncodeString(conv.StringToString(params.Type)))
+		q.Set("type", e.EncodeValue(conv.StringToString(params.Type)))
 	}
 	{
 		// Encode "sort" parameter.
@@ -30688,7 +30688,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "direction" parameter.
@@ -30696,7 +30696,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -30704,7 +30704,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30712,7 +30712,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30760,7 +30760,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30770,7 +30770,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/forks"
 
@@ -30781,7 +30781,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -30789,7 +30789,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30797,7 +30797,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30845,7 +30845,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30855,7 +30855,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/invitations"
 
@@ -30866,7 +30866,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30874,7 +30874,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30923,7 +30923,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -30931,7 +30931,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -30979,7 +30979,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -30989,7 +30989,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/languages"
 
@@ -31037,7 +31037,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31047,7 +31047,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages/builds"
 
@@ -31058,7 +31058,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31066,7 +31066,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31114,7 +31114,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31124,7 +31124,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/commits/"
 	{
@@ -31134,7 +31134,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.CommitSha))
+		u.Path += e.EncodeValue(conv.StringToString(params.CommitSha))
 	}
 	u.Path += "/pulls"
 
@@ -31145,7 +31145,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31153,7 +31153,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31201,7 +31201,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31211,7 +31211,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/"
 	{
@@ -31221,7 +31221,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReleaseID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReleaseID))
 	}
 	u.Path += "/assets"
 
@@ -31232,7 +31232,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31240,7 +31240,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31288,7 +31288,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31298,7 +31298,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases"
 
@@ -31309,7 +31309,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31317,7 +31317,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31365,7 +31365,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31375,7 +31375,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/tags"
 
@@ -31386,7 +31386,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31394,7 +31394,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31442,7 +31442,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31452,7 +31452,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/teams"
 
@@ -31463,7 +31463,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31471,7 +31471,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31519,7 +31519,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31529,7 +31529,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks"
 
@@ -31540,7 +31540,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -31548,7 +31548,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -31602,7 +31602,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31612,7 +31612,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/merge-upstream"
 
@@ -31662,7 +31662,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31672,7 +31672,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -31682,7 +31682,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/pings"
 
@@ -31730,7 +31730,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31740,7 +31740,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/collaborators/"
 	{
@@ -31750,7 +31750,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -31797,7 +31797,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31807,7 +31807,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -31817,7 +31817,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/required_status_checks"
 
@@ -31880,7 +31880,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31890,7 +31890,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/topics"
 
@@ -31940,7 +31940,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -31950,7 +31950,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/pages/builds"
 
@@ -31998,7 +31998,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32008,7 +32008,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -32018,7 +32018,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection/enforce_admins"
 
@@ -32066,7 +32066,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32076,7 +32076,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -32086,7 +32086,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/tests"
 
@@ -32140,7 +32140,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32150,7 +32150,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/transfer"
 
@@ -32215,7 +32215,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32225,7 +32225,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/branches/"
 	{
@@ -32235,7 +32235,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Branch))
+		u.Path += e.EncodeValue(conv.StringToString(params.Branch))
 	}
 	u.Path += "/protection"
 
@@ -32291,7 +32291,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32301,7 +32301,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/comments/"
 	{
@@ -32311,7 +32311,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentID))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -32375,7 +32375,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32385,7 +32385,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/invitations/"
 	{
@@ -32395,7 +32395,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.InvitationID))
+		u.Path += e.EncodeValue(conv.IntToString(params.InvitationID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -32450,7 +32450,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32460,7 +32460,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/"
 	{
@@ -32470,7 +32470,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReleaseID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReleaseID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -32525,7 +32525,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32535,7 +32535,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/assets/"
 	{
@@ -32545,7 +32545,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AssetID))
+		u.Path += e.EncodeValue(conv.IntToString(params.AssetID))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -32600,7 +32600,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32610,7 +32610,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/hooks/"
 	{
@@ -32620,7 +32620,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.HookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.HookID))
 	}
 	u.Path += "/config"
 
@@ -32676,7 +32676,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32686,7 +32686,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/releases/"
 	{
@@ -32696,7 +32696,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ReleaseID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ReleaseID))
 	}
 	u.Path += "/assets"
 
@@ -32707,7 +32707,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("name", e.EncodeString(conv.StringToString(params.Name)))
+		q.Set("name", e.EncodeValue(conv.StringToString(params.Name)))
 	}
 	{
 		// Encode "label" parameter.
@@ -32715,7 +32715,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("label", e.EncodeString(conv.StringToString(params.Label)))
+		q.Set("label", e.EncodeValue(conv.StringToString(params.Label)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -32765,7 +32765,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/Users/"
 	{
@@ -32775,7 +32775,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.ScimUserID))
+		u.Path += e.EncodeValue(conv.StringToString(params.ScimUserID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -32823,7 +32823,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("q", e.EncodeString(conv.StringToString(params.Q)))
+		q.Set("q", e.EncodeValue(conv.StringToString(params.Q)))
 	}
 	{
 		// Encode "sort" parameter.
@@ -32831,7 +32831,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("sort", e.EncodeString(conv.StringToString(params.Sort)))
+		q.Set("sort", e.EncodeValue(conv.StringToString(params.Sort)))
 	}
 	{
 		// Encode "order" parameter.
@@ -32839,7 +32839,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("order", e.EncodeString(conv.StringToString(params.Order)))
+		q.Set("order", e.EncodeValue(conv.StringToString(params.Order)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -32847,7 +32847,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -32855,7 +32855,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -32904,7 +32904,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("q", e.EncodeString(conv.StringToString(params.Q)))
+		q.Set("q", e.EncodeValue(conv.StringToString(params.Q)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -32912,7 +32912,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -32920,7 +32920,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -32968,7 +32968,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -32978,7 +32978,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/secret-scanning/alerts/"
 	{
@@ -32988,7 +32988,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AlertNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.AlertNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -33035,7 +33035,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/secret-scanning/alerts"
 
@@ -33046,7 +33046,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	{
 		// Encode "secret_type" parameter.
@@ -33054,7 +33054,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("secret_type", e.EncodeString(conv.StringToString(params.SecretType)))
+		q.Set("secret_type", e.EncodeValue(conv.StringToString(params.SecretType)))
 	}
 	{
 		// Encode "page" parameter.
@@ -33062,7 +33062,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -33070,7 +33070,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -33118,7 +33118,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -33128,7 +33128,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/secret-scanning/alerts"
 
@@ -33139,7 +33139,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("state", e.EncodeString(conv.StringToString(params.State)))
+		q.Set("state", e.EncodeValue(conv.StringToString(params.State)))
 	}
 	{
 		// Encode "secret_type" parameter.
@@ -33147,7 +33147,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("secret_type", e.EncodeString(conv.StringToString(params.SecretType)))
+		q.Set("secret_type", e.EncodeValue(conv.StringToString(params.SecretType)))
 	}
 	{
 		// Encode "page" parameter.
@@ -33155,7 +33155,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -33163,7 +33163,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -33226,7 +33226,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -33236,7 +33236,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 	u.Path += "/secret-scanning/alerts/"
 	{
@@ -33246,7 +33246,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.AlertNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.AlertNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -33295,7 +33295,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/members/"
 	{
@@ -33305,7 +33305,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -33367,7 +33367,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33377,7 +33377,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/memberships/"
 	{
@@ -33387,7 +33387,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -33451,7 +33451,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/memberships/"
 	{
@@ -33461,7 +33461,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -33525,7 +33525,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33535,7 +33535,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/projects/"
 	{
@@ -33545,7 +33545,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -33609,7 +33609,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33619,7 +33619,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/repos/"
 	{
@@ -33629,7 +33629,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -33639,7 +33639,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, buf)
@@ -33688,7 +33688,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33698,7 +33698,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/projects/"
 	{
@@ -33708,7 +33708,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -33755,7 +33755,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/projects/"
 	{
@@ -33765,7 +33765,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -33812,7 +33812,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33822,7 +33822,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/repos/"
 	{
@@ -33832,7 +33832,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -33842,7 +33842,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -33889,7 +33889,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/repos/"
 	{
@@ -33899,7 +33899,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -33909,7 +33909,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -33962,7 +33962,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -33972,7 +33972,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -33982,7 +33982,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments"
 
@@ -34038,7 +34038,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34048,7 +34048,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments"
 
@@ -34104,7 +34104,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34114,7 +34114,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions"
 
@@ -34170,7 +34170,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions"
 
@@ -34226,7 +34226,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34236,7 +34236,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/team-sync/group-mappings"
 
@@ -34286,7 +34286,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34296,7 +34296,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34306,7 +34306,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -34316,7 +34316,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34363,7 +34363,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34373,7 +34373,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -34383,7 +34383,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34430,7 +34430,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34440,7 +34440,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34450,7 +34450,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34497,7 +34497,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34507,7 +34507,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34554,7 +34554,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34564,7 +34564,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -34611,7 +34611,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34621,7 +34621,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34668,7 +34668,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34678,7 +34678,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34688,7 +34688,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -34698,7 +34698,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34745,7 +34745,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34755,7 +34755,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -34765,7 +34765,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34812,7 +34812,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -34822,7 +34822,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34832,7 +34832,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34879,7 +34879,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -34889,7 +34889,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34936,7 +34936,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -34983,7 +34983,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/members/"
 	{
@@ -34993,7 +34993,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -35040,7 +35040,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35050,7 +35050,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/memberships/"
 	{
@@ -35060,7 +35060,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -35107,7 +35107,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/memberships/"
 	{
@@ -35117,7 +35117,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -35164,7 +35164,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams"
 
@@ -35175,7 +35175,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35183,7 +35183,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35231,7 +35231,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35241,7 +35241,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/teams"
 
@@ -35252,7 +35252,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35260,7 +35260,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35308,7 +35308,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35318,7 +35318,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -35328,7 +35328,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments"
 
@@ -35339,7 +35339,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35347,7 +35347,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35355,7 +35355,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35403,7 +35403,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -35413,7 +35413,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments"
 
@@ -35424,7 +35424,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35432,7 +35432,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35440,7 +35440,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35488,7 +35488,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35498,7 +35498,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions"
 
@@ -35509,7 +35509,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35517,7 +35517,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35525,7 +35525,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	{
 		// Encode "pinned" parameter.
@@ -35533,7 +35533,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("pinned", e.EncodeString(conv.StringToString(params.Pinned)))
+		q.Set("pinned", e.EncodeValue(conv.StringToString(params.Pinned)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35581,7 +35581,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions"
 
@@ -35592,7 +35592,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("direction", e.EncodeString(conv.StringToString(params.Direction)))
+		q.Set("direction", e.EncodeValue(conv.StringToString(params.Direction)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35600,7 +35600,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35608,7 +35608,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35657,7 +35657,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35665,7 +35665,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35713,7 +35713,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/team-sync/group-mappings"
 
@@ -35761,7 +35761,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/team-sync/groups"
 
@@ -35772,7 +35772,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35780,7 +35780,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.StringToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.StringToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35828,7 +35828,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35838,7 +35838,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/team-sync/group-mappings"
 
@@ -35886,7 +35886,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -35896,7 +35896,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/members"
 
@@ -35907,7 +35907,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("role", e.EncodeString(conv.StringToString(params.Role)))
+		q.Set("role", e.EncodeValue(conv.StringToString(params.Role)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35915,7 +35915,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35923,7 +35923,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -35971,7 +35971,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/members"
 
@@ -35982,7 +35982,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("role", e.EncodeString(conv.StringToString(params.Role)))
+		q.Set("role", e.EncodeValue(conv.StringToString(params.Role)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -35990,7 +35990,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -35998,7 +35998,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36046,7 +36046,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36056,7 +36056,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/invitations"
 
@@ -36067,7 +36067,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36075,7 +36075,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36123,7 +36123,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/invitations"
 
@@ -36134,7 +36134,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36142,7 +36142,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36190,7 +36190,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36200,7 +36200,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/projects"
 
@@ -36211,7 +36211,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36219,7 +36219,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36267,7 +36267,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/projects"
 
@@ -36278,7 +36278,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36286,7 +36286,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36334,7 +36334,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36344,7 +36344,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/repos"
 
@@ -36355,7 +36355,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36363,7 +36363,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36411,7 +36411,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/repos"
 
@@ -36422,7 +36422,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -36430,7 +36430,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -36478,7 +36478,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/members/"
 	{
@@ -36488,7 +36488,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36535,7 +36535,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36545,7 +36545,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/memberships/"
 	{
@@ -36555,7 +36555,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36602,7 +36602,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/memberships/"
 	{
@@ -36612,7 +36612,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36659,7 +36659,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36669,7 +36669,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/projects/"
 	{
@@ -36679,7 +36679,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.ProjectID))
+		u.Path += e.EncodeValue(conv.IntToString(params.ProjectID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36726,7 +36726,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36736,7 +36736,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/repos/"
 	{
@@ -36746,7 +36746,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -36756,7 +36756,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36803,7 +36803,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/repos/"
 	{
@@ -36813,7 +36813,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Owner))
+		u.Path += e.EncodeValue(conv.StringToString(params.Owner))
 	}
 	u.Path += "/"
 	{
@@ -36823,7 +36823,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Repo))
+		u.Path += e.EncodeValue(conv.StringToString(params.Repo))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -36876,7 +36876,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -36886,7 +36886,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -36896,7 +36896,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -36906,7 +36906,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -36961,7 +36961,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -36971,7 +36971,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 	u.Path += "/comments/"
 	{
@@ -36981,7 +36981,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.CommentNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.CommentNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -37036,7 +37036,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -37046,7 +37046,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 	u.Path += "/discussions/"
 	{
@@ -37056,7 +37056,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -37111,7 +37111,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.TeamID))
+		u.Path += e.EncodeValue(conv.IntToString(params.TeamID))
 	}
 	u.Path += "/discussions/"
 	{
@@ -37121,7 +37121,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.DiscussionNumber))
+		u.Path += e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -37185,7 +37185,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Org))
+		u.Path += e.EncodeValue(conv.StringToString(params.Org))
 	}
 	u.Path += "/teams/"
 	{
@@ -37195,7 +37195,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TeamSlug))
+		u.Path += e.EncodeValue(conv.StringToString(params.TeamSlug))
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, buf)
@@ -37244,7 +37244,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -37291,7 +37291,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/following/"
 	{
@@ -37301,7 +37301,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.TargetUser))
+		u.Path += e.EncodeValue(conv.StringToString(params.TargetUser))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -37348,7 +37348,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -37395,7 +37395,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.KeyID))
+		u.Path += e.EncodeValue(conv.IntToString(params.KeyID))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -37442,7 +37442,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
@@ -37489,7 +37489,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.GpgKeyID))
+		u.Path += e.EncodeValue(conv.IntToString(params.GpgKeyID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -37536,7 +37536,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.KeyID))
+		u.Path += e.EncodeValue(conv.IntToString(params.KeyID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -37584,7 +37584,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("since", e.EncodeString(conv.IntToString(params.Since)))
+		q.Set("since", e.EncodeValue(conv.IntToString(params.Since)))
 	}
 	{
 		// Encode "per_page" parameter.
@@ -37592,7 +37592,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37679,7 +37679,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37687,7 +37687,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37736,7 +37736,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37744,7 +37744,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37793,7 +37793,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37801,7 +37801,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37849,7 +37849,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/followers"
 
@@ -37860,7 +37860,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37868,7 +37868,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37916,7 +37916,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/following"
 
@@ -37927,7 +37927,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37935,7 +37935,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -37984,7 +37984,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -37992,7 +37992,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -38040,7 +38040,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/gpg_keys"
 
@@ -38051,7 +38051,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -38059,7 +38059,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -38108,7 +38108,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -38116,7 +38116,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -38164,7 +38164,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 	u.Path += "/keys"
 
@@ -38175,7 +38175,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -38183,7 +38183,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -38232,7 +38232,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("per_page", e.EncodeString(conv.IntToString(params.PerPage)))
+		q.Set("per_page", e.EncodeValue(conv.IntToString(params.PerPage)))
 	}
 	{
 		// Encode "page" parameter.
@@ -38240,7 +38240,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -38288,7 +38288,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -38335,7 +38335,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Username))
+		u.Path += e.EncodeValue(conv.StringToString(params.Username))
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)

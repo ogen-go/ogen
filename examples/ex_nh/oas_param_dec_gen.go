@@ -73,7 +73,7 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -103,7 +103,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -128,7 +128,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -158,7 +158,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -183,7 +183,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -208,7 +208,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -238,7 +238,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -263,7 +263,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -288,7 +288,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -317,7 +317,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -341,7 +341,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -368,7 +368,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}
@@ -392,7 +392,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeString()
+			rawParam, err := d.DecodeValue()
 			if err != nil {
 				return params, err
 			}

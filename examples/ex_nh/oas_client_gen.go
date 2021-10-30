@@ -121,7 +121,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.BookID))
+		u.Path += e.EncodeValue(conv.IntToString(params.BookID))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -168,7 +168,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/cover."
 	{
@@ -178,7 +178,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Format))
+		u.Path += e.EncodeValue(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -225,7 +225,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/"
 	{
@@ -235,7 +235,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.Page))
+		u.Path += e.EncodeValue(conv.IntToString(params.Page))
 	}
 	u.Path += "."
 	{
@@ -245,7 +245,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Format))
+		u.Path += e.EncodeValue(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -292,7 +292,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.MediaID))
+		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
 	}
 	u.Path += "/"
 	{
@@ -302,7 +302,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.IntToString(params.Page))
+		u.Path += e.EncodeValue(conv.IntToString(params.Page))
 	}
 	u.Path += "t."
 	{
@@ -312,7 +312,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeString(conv.StringToString(params.Format))
+		u.Path += e.EncodeValue(conv.StringToString(params.Format))
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -360,7 +360,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("query", e.EncodeString(conv.StringToString(params.Query)))
+		q.Set("query", e.EncodeValue(conv.StringToString(params.Query)))
 	}
 	{
 		// Encode "page" parameter.
@@ -368,7 +368,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
@@ -417,7 +417,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tag_id", e.EncodeString(conv.IntToString(params.TagID)))
+		q.Set("tag_id", e.EncodeValue(conv.IntToString(params.TagID)))
 	}
 	{
 		// Encode "page" parameter.
@@ -425,7 +425,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeString(conv.IntToString(params.Page)))
+		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
 	}
 	u.RawQuery = q.Encode()
 
