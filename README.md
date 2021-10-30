@@ -23,7 +23,7 @@ go get github.com/ogen-go/ogen
 # Features
 
 * No reflection or `interface{}`
-  * The json encoding is code-generated, optimized and uses `jsoniter` for speed and overcoming `encoding/json` limitations
+  * The json encoding is code-generated, optimized and uses [jx](https://github.com/ogen-go/jx) for speed and overcoming `encoding/json` limitations
   * Validation is code-generated according to spec
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification
@@ -127,6 +127,37 @@ type ID struct {
 // Also, some helpers:
 func NewStringID(v string) ID
 func NewIntID(v int) ID
+```
+
+## JSON
+
+Code generation provides very efficient and flexible encoding and decoding of json:
+```go
+// ReadJSON reads Error from json stream.
+func (s *Error) ReadJSON(r *json.Reader) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode Error to nil`)
+	}
+	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+		switch string(k) {
+		case "code":
+			v, err := r.Int64()
+			s.Code = int64(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := r.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return r.Skip()
+		}
+		return nil
+	})
+}
 ```
 
 # Draft Roadmap
