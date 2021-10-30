@@ -1,7 +1,5 @@
 package uri
 
-import "strings"
-
 type PathEncoder struct {
 	param   string    // immutable
 	style   PathStyle // immutable
@@ -93,11 +91,6 @@ func (e PathEncoder) EncodeArray(vs []string) string {
 	}
 }
 
-type Field struct {
-	Name  string
-	Value string
-}
-
 func (e PathEncoder) EncodeObject(fields []Field) string {
 	switch e.style {
 	case PathStyleSimple:
@@ -133,12 +126,4 @@ func (e PathEncoder) EncodeObject(fields []Field) string {
 	default:
 		panic("unreachable")
 	}
-}
-
-func encodeObject(kvSep, fieldSep rune, fields []Field) string {
-	var elems []string
-	for _, f := range fields {
-		elems = append(elems, f.Name+string(kvSep)+f.Value)
-	}
-	return strings.Join(elems, string(fieldSep))
 }

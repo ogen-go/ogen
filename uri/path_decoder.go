@@ -211,36 +211,4 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 	}
 }
 
-func decodeObject(cur *cursor, kvSep, fieldSep rune, f func(field, value string) error) error {
-	var (
-		fname string
-		field = true
-	)
 
-	for {
-		until := fieldSep
-		if field {
-			until = kvSep
-		}
-
-		v, hasNext, err := cur.readValue(until)
-		if err != nil {
-			return err
-		}
-
-		if field {
-			fname = v
-			field = false
-			continue
-		}
-
-		field = true
-		if err := f(fname, v); err != nil {
-			return err
-		}
-
-		if !hasNext {
-			return nil
-		}
-	}
-}
