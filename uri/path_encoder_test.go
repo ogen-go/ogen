@@ -135,14 +135,14 @@ func TestPathEncoder(t *testing.T) {
 	t.Run("Object", func(t *testing.T) {
 		tests := []struct {
 			Param   string
-			Input   []PathObjectField
+			Input   []Field
 			Expect  string
 			Style   PathStyle
 			Explode bool
 		}{
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -152,7 +152,7 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -162,7 +162,7 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -172,7 +172,7 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -182,7 +182,7 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -192,7 +192,7 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param: "id",
-				Input: []PathObjectField{
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},

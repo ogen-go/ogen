@@ -165,11 +165,11 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 	case PathStyleSimple:
 		if d.explode {
 			const kvSep, fieldSep = '=', ','
-			return d.decodeObject(kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, f)
 		}
 
 		const kvSep, fieldSep = ',', ','
-		return d.decodeObject(kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, f)
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
@@ -178,11 +178,11 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 
 		if d.explode {
 			const kvSep, fieldSep = '=', '.'
-			return d.decodeObject(kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, f)
 		}
 
 		const kvSep, fieldSep = ',', ','
-		return d.decodeObject(kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, f)
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
@@ -200,18 +200,18 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 			}
 
 			const kvSep, fieldSep = ',', ','
-			return d.decodeObject(kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, f)
 		}
 
 		const kvSep, fieldSep = '=', ';'
-		return d.decodeObject(kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, f)
 
 	default:
 		panic("unreachable")
 	}
 }
 
-func (d PathDecoder) decodeObject(kvSep, fieldSep rune, f func(field, value string) error) error {
+func decodeObject(cur *cursor, kvSep, fieldSep rune, f func(field, value string) error) error {
 	var (
 		fname string
 		field = true
@@ -223,7 +223,7 @@ func (d PathDecoder) decodeObject(kvSep, fieldSep rune, f func(field, value stri
 			until = kvSep
 		}
 
-		v, hasNext, err := d.cur.readValue(until)
+		v, hasNext, err := cur.readValue(until)
 		if err != nil {
 			return err
 		}

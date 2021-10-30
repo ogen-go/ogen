@@ -93,28 +93,28 @@ func (e PathEncoder) EncodeStrings(vs []string) string {
 	}
 }
 
-type PathObjectField struct {
+type Field struct {
 	Name  string
 	Value string
 }
 
-func (e PathEncoder) EncodeObject(fields []PathObjectField) string {
+func (e PathEncoder) EncodeObject(fields []Field) string {
 	switch e.style {
 	case PathStyleSimple:
 		if e.explode {
 			const kvSep, fieldSep = '=', ','
-			return e.encodeObject(kvSep, fieldSep, fields)
+			return encodeObject(kvSep, fieldSep, fields)
 		}
 
 		const kvSep, fieldSep = ',', ','
-		return e.encodeObject(kvSep, fieldSep, fields)
+		return encodeObject(kvSep, fieldSep, fields)
 
 	case PathStyleLabel:
 		kvSep, fieldSep := ',', ','
 		if e.explode {
 			kvSep, fieldSep = '=', '.'
 		}
-		return "." + e.encodeObject(kvSep, fieldSep, fields)
+		return "." + encodeObject(kvSep, fieldSep, fields)
 
 	case PathStyleMatrix:
 		var result string
@@ -122,10 +122,10 @@ func (e PathEncoder) EncodeObject(fields []PathObjectField) string {
 		if !e.explode {
 			result += e.param + "="
 			const kvSep, fieldSep = ',', ','
-			result += e.encodeObject(kvSep, fieldSep, fields)
+			result += encodeObject(kvSep, fieldSep, fields)
 		} else {
 			const kvSep, fieldSep = '=', ';'
-			result += e.encodeObject(kvSep, fieldSep, fields)
+			result += encodeObject(kvSep, fieldSep, fields)
 		}
 
 		return ";" + result
@@ -135,7 +135,7 @@ func (e PathEncoder) EncodeObject(fields []PathObjectField) string {
 	}
 }
 
-func (e PathEncoder) encodeObject(kvSep, fieldSep rune, fields []PathObjectField) string {
+func encodeObject(kvSep, fieldSep rune, fields []Field) string {
 	var elems []string
 	for _, f := range fields {
 		elems = append(elems, f.Name+string(kvSep)+f.Value)
