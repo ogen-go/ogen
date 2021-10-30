@@ -1435,16 +1435,16 @@ func (s *CopyMessageReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveCopyMessageReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveCopyMessageReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplyCopyMessageReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplyCopyMessageReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplyCopyMessageReplyMarkup
 			}
@@ -7520,16 +7520,16 @@ func (s *SendAnimationReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendAnimationReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendAnimationReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendAnimationReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendAnimationReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendAnimationReplyMarkup
 			}
@@ -7770,16 +7770,16 @@ func (s *SendAudioReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendAudioReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendAudioReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendAudioReplyMarkup
 			}
@@ -8003,16 +8003,16 @@ func (s *SendContactReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendContactReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendContactReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendContactReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendContactReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendContactReplyMarkup
 			}
@@ -8170,16 +8170,16 @@ func (s *SendDiceReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendDiceReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendDiceReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendDiceReplyMarkup
 			}
@@ -8400,16 +8400,16 @@ func (s *SendDocumentReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendDocumentReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendDocumentReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendDocumentReplyMarkup
 			}
@@ -8997,16 +8997,16 @@ func (s *SendLocationReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendLocationReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendLocationReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendLocationReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendLocationReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendLocationReplyMarkup
 			}
@@ -9366,16 +9366,16 @@ func (s *SendMessageReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendMessageReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendMessageReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendMessageReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendMessageReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendMessageReplyMarkup
 			}
@@ -9576,16 +9576,16 @@ func (s *SendPhotoReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendPhotoReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendPhotoReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendPhotoReplyMarkup
 			}
@@ -9880,16 +9880,16 @@ func (s *SendPollReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendPollReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendPollReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendPollReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendPollReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendPollReplyMarkup
 			}
@@ -10046,16 +10046,16 @@ func (s *SendStickerReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendStickerReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendStickerReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendStickerReplyMarkup
 			}
@@ -10279,16 +10279,16 @@ func (s *SendVenueReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendVenueReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendVenueReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendVenueReplyMarkup
 			}
@@ -10649,16 +10649,16 @@ func (s *SendVideoNoteReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVideoNoteReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendVideoNoteReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendVideoNoteReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendVideoNoteReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendVideoNoteReplyMarkup
 			}
@@ -10735,16 +10735,16 @@ func (s *SendVideoReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendVideoReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendVideoReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendVideoReplyMarkup
 			}
@@ -10955,16 +10955,16 @@ func (s *SendVoiceReplyMarkup) ReadJSON(d *json.Decoder) error {
 			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
 			case "remove_keyboard":
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
 			case "force_reply":
+				found = true
+				s.Type = ForceReplySendVoiceReplyMarkup
+			case "input_field_placeholder":
+				found = true
+				s.Type = ForceReplySendVoiceReplyMarkup
+			case "selective":
 				found = true
 				s.Type = ForceReplySendVoiceReplyMarkup
 			}
