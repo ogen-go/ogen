@@ -588,6 +588,14 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -615,6 +623,14 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -641,6 +657,14 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
 	default:
@@ -1276,6 +1300,14 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1302,6 +1334,14 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
 	default:
@@ -1365,6 +1405,14 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1426,6 +1474,14 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
 	default:
@@ -1594,6 +1650,14 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1620,6 +1684,14 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
 	default:
@@ -2117,6 +2189,14 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2143,6 +2223,14 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
 	default:

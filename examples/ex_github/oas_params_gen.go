@@ -3241,6 +3241,10 @@ type UsersFollowParams struct {
 	Username string
 }
 
+type UsersGetByUsernameParams struct {
+	Username string
+}
+
 type UsersGetGpgKeyForAuthenticatedParams struct {
 	GpgKeyID int
 }

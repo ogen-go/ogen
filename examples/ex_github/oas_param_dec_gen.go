@@ -40488,6 +40488,36 @@ func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 	return params, nil
 }
 
+func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, error) {
+	var params UsersGetByUsernameParams
+	// Decode param "username" located in "Path".
+	{
+		param := chi.URLParam(r, "username")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			rawParam, err := d.DecodeValue()
+			if err != nil {
+				return params, err
+			}
+
+			v, err := conv.ToString(rawParam)
+			if err != nil {
+				return params, err
+			}
+			params.Username = v
+		} else {
+			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	return params, nil
+}
+
 func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
 	var params UsersGetGpgKeyForAuthenticatedParams
 	// Decode param "gpg_key_id" located in "Path".

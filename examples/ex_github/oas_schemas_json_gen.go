@@ -1032,6 +1032,7 @@ func (s *ActionsCreateWorkflowDispatchWorkflowID) ReadJSON(d *json.Decoder) erro
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsCreateWorkflowDispatchWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -1288,6 +1289,7 @@ func (s *ActionsDisableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsDisableWorkflowWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -1412,6 +1414,7 @@ func (s *ActionsEnableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsEnableWorkflowWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -1510,6 +1513,7 @@ func (s *ActionsGetWorkflowUsageWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsGetWorkflowUsageWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -1546,6 +1550,7 @@ func (s *ActionsGetWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsGetWorkflowWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -2413,6 +2418,7 @@ func (s *ActionsListWorkflowRunsWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsWorkflowID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.Number:
 		v, err := d.Int()
@@ -50190,6 +50196,134 @@ func (s *ProjectsAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
+// WriteJSON implements json.Marshaler.
+func (s ProjectsCreateCardReq) WriteJSON(e *json.Encoder) {
+	switch s.Type {
+	case ProjectsCreateCardReq0ProjectsCreateCardReq:
+		s.ProjectsCreateCardReq0.WriteJSON(e)
+	case ProjectsCreateCardReq1ProjectsCreateCardReq:
+		s.ProjectsCreateCardReq1.WriteJSON(e)
+	}
+}
+
+// ReadJSON reads value from json reader.
+func (s *ProjectsCreateCardReq) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "note":
+				found = true
+				s.Type = ProjectsCreateCardReq0ProjectsCreateCardReq
+			case "content_id":
+				found = true
+				s.Type = ProjectsCreateCardReq1ProjectsCreateCardReq
+			case "content_type":
+				found = true
+				s.Type = ProjectsCreateCardReq1ProjectsCreateCardReq
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case ProjectsCreateCardReq0ProjectsCreateCardReq:
+		if err := s.ProjectsCreateCardReq0.ReadJSON(d); err != nil {
+			return err
+		}
+	case ProjectsCreateCardReq1ProjectsCreateCardReq:
+		if err := s.ProjectsCreateCardReq1.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsCreateCardReq0) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("note")
+	s.Note.WriteJSON(e)
+	e.ObjEnd()
+}
+
+// ReadJSON reads ProjectsCreateCardReq0 from json stream.
+func (s *ProjectsCreateCardReq0) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq0 to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "note":
+			if err := s.Note.ReadJSON(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsCreateCardReq1) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("content_id")
+	e.Int(s.ContentID)
+	more.More()
+	e.ObjField("content_type")
+	e.Str(s.ContentType)
+	e.ObjEnd()
+}
+
+// ReadJSON reads ProjectsCreateCardReq1 from json stream.
+func (s *ProjectsCreateCardReq1) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq1 to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "content_id":
+			v, err := d.Int()
+			s.ContentID = int(v)
+			if err != nil {
+				return err
+			}
+		case "content_type":
+			v, err := d.Str()
+			s.ContentType = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
 func (ProjectsCreateColumnApplicationJSONForbidden) WriteJSON(e *json.Encoder)      {}
 func (ProjectsCreateColumnApplicationJSONForbidden) ReadJSON(d *json.Decoder) error { return nil }
 
@@ -78673,6 +78807,364 @@ func (s *UsersFollowNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
+func (UsersGetAuthenticatedApplicationJSONForbidden) WriteJSON(e *json.Encoder)      {}
+func (UsersGetAuthenticatedApplicationJSONForbidden) ReadJSON(d *json.Decoder) error { return nil }
+
+func (UsersGetAuthenticatedApplicationJSONUnauthorized) WriteJSON(e *json.Encoder)      {}
+func (UsersGetAuthenticatedApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s UsersGetAuthenticatedOK) WriteJSON(e *json.Encoder) {
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		s.PrivateUser.WriteJSON(e)
+	case PublicUserUsersGetAuthenticatedOK:
+		s.PublicUser.WriteJSON(e)
+	}
+}
+
+// ReadJSON reads value from json reader.
+func (s *UsersGetAuthenticatedOK) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode UsersGetAuthenticatedOK to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "two_factor_authentication":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			case "business_plus":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			case "ldap_dn":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			case "login":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "id":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "node_id":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "avatar_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "gravatar_id":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "html_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "followers_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "following_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "gists_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "starred_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "subscriptions_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "organizations_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "repos_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "events_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "received_events_url":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "type":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "site_admin":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "name":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "company":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "blog":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "location":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "email":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "hireable":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "bio":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "twitter_username":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "public_repos":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "public_gists":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "followers":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "following":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "created_at":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "updated_at":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "plan":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "suspended_at":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "private_gists":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "total_private_repos":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "owned_private_repos":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "disk_usage":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			case "collaborators":
+				found = true
+				s.Type = PublicUserUsersGetAuthenticatedOK
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		if err := s.PrivateUser.ReadJSON(d); err != nil {
+			return err
+		}
+	case PublicUserUsersGetAuthenticatedOK:
+		if err := s.PublicUser.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersGetByUsernameOK) WriteJSON(e *json.Encoder) {
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		s.PrivateUser.WriteJSON(e)
+	case PublicUserUsersGetByUsernameOK:
+		s.PublicUser.WriteJSON(e)
+	}
+}
+
+// ReadJSON reads value from json reader.
+func (s *UsersGetByUsernameOK) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode UsersGetByUsernameOK to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "two_factor_authentication":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			case "business_plus":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			case "ldap_dn":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			case "login":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "id":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "node_id":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "avatar_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "gravatar_id":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "html_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "followers_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "following_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "gists_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "starred_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "subscriptions_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "organizations_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "repos_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "events_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "received_events_url":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "type":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "site_admin":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "name":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "company":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "blog":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "location":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "email":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "hireable":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "bio":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "twitter_username":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "public_repos":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "public_gists":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "followers":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "following":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "created_at":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "updated_at":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "plan":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "suspended_at":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "private_gists":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "total_private_repos":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "owned_private_repos":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "disk_usage":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			case "collaborators":
+				found = true
+				s.Type = PublicUserUsersGetByUsernameOK
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		if err := s.PrivateUser.ReadJSON(d); err != nil {
+			return err
+		}
+	case PublicUserUsersGetByUsernameOK:
+		if err := s.PublicUser.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s UsersGetContextForUserSubjectType) WriteJSON(e *json.Encoder) {
 	e.Str(string(s))
@@ -79324,6 +79816,7 @@ func (s *WebhookConfigInsecureSsl) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode WebhookConfigInsecureSsl to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.String:
 		v, err := d.Str()

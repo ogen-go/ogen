@@ -932,6 +932,15 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 
 // EditMessageLiveLocation implements editMessageLiveLocation operation.
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
@@ -978,6 +987,15 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 
 // EditMessageMedia implements editMessageMedia operation.
 func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res EditMessageMediaRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
@@ -1024,6 +1042,15 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 
 // EditMessageReplyMarkup implements editMessageReplyMarkup operation.
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
 		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
@@ -2119,6 +2146,15 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 
 // SendContact implements sendContact operation.
 func (c *Client) SendContact(ctx context.Context, request SendContact) (res SendContactRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
 		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
@@ -2165,6 +2201,15 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 
 // SendDice implements sendDice operation.
 func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
 		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
@@ -2266,6 +2311,15 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 
 // SendGame implements sendGame operation.
 func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
 		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
@@ -2367,6 +2421,15 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 
 // SendLocation implements sendLocation operation.
 func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res SendLocationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
 		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
@@ -2633,6 +2696,15 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 
 // SendSticker implements sendSticker operation.
 func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res SendStickerRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
 		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
@@ -2679,6 +2751,15 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 
 // SendVenue implements sendVenue operation.
 func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenueRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
 		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
@@ -3487,6 +3568,15 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 
 // StopMessageLiveLocation implements stopMessageLiveLocation operation.
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
 		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
@@ -3533,6 +3623,15 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 
 // StopPoll implements stopPoll operation.
 func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRes, err error) {
+	if verr := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); verr != nil {
+		err = fmt.Errorf("validate: %w", verr)
+		return
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
 		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),

@@ -1178,6 +1178,10 @@ type Server interface {
 	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error)
 	// UsersFollow implements users/follow operation.
 	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error)
+	// UsersGetAuthenticated implements users/get-authenticated operation.
+	UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error)
+	// UsersGetByUsername implements users/get-by-username operation.
+	UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error)
 	// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
 	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
 	// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.

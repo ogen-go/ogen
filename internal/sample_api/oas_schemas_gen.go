@@ -62,11 +62,90 @@ var (
 
 // Ref: #/components/schemas/Data
 type Data struct {
-	ID          ID        `json:"id"`
-	Description OptString `json:"description"`
-	Email       string    `json:"email"`
-	Hostname    string    `json:"hostname"`
-	Format      string    `json:"format"`
+	ID          ID              `json:"id"`
+	Description DataDescription `json:"description"`
+	Email       string          `json:"email"`
+	Hostname    string          `json:"hostname"`
+	Format      string          `json:"format"`
+}
+
+// DataDescription represents sum type.
+type DataDescription struct {
+	Type                DataDescriptionType // switch on this field
+	DescriptionDetailed DescriptionDetailed
+	DescriptionSimple   DescriptionSimple
+}
+
+// DataDescriptionType is oneOf type of DataDescription.
+type DataDescriptionType string
+
+// Possible values for DataDescriptionType.
+const (
+	DescriptionDetailedDataDescription DataDescriptionType = "DescriptionDetailed"
+	DescriptionSimpleDataDescription   DataDescriptionType = "DescriptionSimple"
+)
+
+// IsDescriptionDetailed reports whether DataDescription is DescriptionDetailed.
+func (s DataDescription) IsDescriptionDetailed() bool {
+	return s.Type == DescriptionDetailedDataDescription
+}
+
+// IsDescriptionSimple reports whether DataDescription is DescriptionSimple.
+func (s DataDescription) IsDescriptionSimple() bool {
+	return s.Type == DescriptionSimpleDataDescription
+}
+
+// SetDescriptionDetailed sets DataDescription to DescriptionDetailed.
+func (s *DataDescription) SetDescriptionDetailed(v DescriptionDetailed) {
+	s.Type = DescriptionDetailedDataDescription
+	s.DescriptionDetailed = v
+}
+
+// GetDescriptionDetailed returns DescriptionDetailed and true boolean if DataDescription is DescriptionDetailed.
+func (s DataDescription) GetDescriptionDetailed() (v DescriptionDetailed, ok bool) {
+	if !s.IsDescriptionDetailed() {
+		return v, false
+	}
+	return s.DescriptionDetailed, true
+}
+
+// NewDescriptionDetailedDataDescription returns new DataDescription from DescriptionDetailed.
+func NewDescriptionDetailedDataDescription(v DescriptionDetailed) DataDescription {
+	var s DataDescription
+	s.SetDescriptionDetailed(v)
+	return s
+}
+
+// SetDescriptionSimple sets DataDescription to DescriptionSimple.
+func (s *DataDescription) SetDescriptionSimple(v DescriptionSimple) {
+	s.Type = DescriptionSimpleDataDescription
+	s.DescriptionSimple = v
+}
+
+// GetDescriptionSimple returns DescriptionSimple and true boolean if DataDescription is DescriptionSimple.
+func (s DataDescription) GetDescriptionSimple() (v DescriptionSimple, ok bool) {
+	if !s.IsDescriptionSimple() {
+		return v, false
+	}
+	return s.DescriptionSimple, true
+}
+
+// NewDescriptionSimpleDataDescription returns new DataDescription from DescriptionSimple.
+func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
+	var s DataDescription
+	s.SetDescriptionSimple(v)
+	return s
+}
+
+// Ref: #/components/schemas/DescriptionDetailed
+type DescriptionDetailed struct {
+	Name  string `json:"name"`
+	Count int    `json:"count"`
+}
+
+// Ref: #/components/schemas/DescriptionSimple
+type DescriptionSimple struct {
+	Description string `json:"description"`
 }
 
 type Error struct {
@@ -423,44 +502,6 @@ func (o *OptPetType) SetTo(v PetType) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPetType) Get() (v PetType, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptString returns new OptString with value set to v.
-func NewOptString(v string) OptString {
-	return OptString{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptString is optional string.
-type OptString struct {
-	Value string
-	Set   bool
-}
-
-// IsSet returns true if OptString was set.
-func (o OptString) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptString) Reset() {
-	var v string
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptString) SetTo(v string) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptString) Get() (v string, ok bool) {
 	if !o.Set {
 		return v, false
 	}

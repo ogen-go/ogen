@@ -68,11 +68,9 @@ func (s Data) WriteJSON(e *json.Encoder) {
 	more.More()
 	e.ObjField("id")
 	s.ID.WriteJSON(e)
-	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
-		s.Description.WriteJSON(e)
-	}
+	more.More()
+	e.ObjField("description")
+	s.Description.WriteJSON(e)
 	more.More()
 	e.ObjField("email")
 	e.Str(s.Email)
@@ -97,7 +95,6 @@ func (s *Data) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "description":
-			s.Description.Reset()
 			if err := s.Description.ReadJSON(d); err != nil {
 				return err
 			}
@@ -116,6 +113,136 @@ func (s *Data) ReadJSON(d *json.Decoder) error {
 		case "format":
 			v, err := d.Str()
 			s.Format = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DataDescription) WriteJSON(e *json.Encoder) {
+	switch s.Type {
+	case DescriptionDetailedDataDescription:
+		s.DescriptionDetailed.WriteJSON(e)
+	case DescriptionSimpleDataDescription:
+		s.DescriptionSimple.WriteJSON(e)
+	}
+}
+
+// ReadJSON reads value from json reader.
+func (s *DataDescription) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode DataDescription to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "name":
+				found = true
+				s.Type = DescriptionDetailedDataDescription
+			case "count":
+				found = true
+				s.Type = DescriptionDetailedDataDescription
+			case "description":
+				found = true
+				s.Type = DescriptionSimpleDataDescription
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case DescriptionDetailedDataDescription:
+		if err := s.DescriptionDetailed.ReadJSON(d); err != nil {
+			return err
+		}
+	case DescriptionSimpleDataDescription:
+		if err := s.DescriptionSimple.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DescriptionDetailed) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("name")
+	e.Str(s.Name)
+	more.More()
+	e.ObjField("count")
+	e.Int(s.Count)
+	e.ObjEnd()
+}
+
+// ReadJSON reads DescriptionDetailed from json stream.
+func (s *DescriptionDetailed) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode DescriptionDetailed to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "name":
+			v, err := d.Str()
+			s.Name = string(v)
+			if err != nil {
+				return err
+			}
+		case "count":
+			v, err := d.Int()
+			s.Count = int(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DescriptionSimple) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("description")
+	e.Str(s.Description)
+	e.ObjEnd()
+}
+
+// ReadJSON reads DescriptionSimple from json stream.
+func (s *DescriptionSimple) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode DescriptionSimple to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "description":
+			v, err := d.Str()
+			s.Description = string(v)
 			if err != nil {
 				return err
 			}
@@ -247,6 +374,7 @@ func (s *ID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode ID to nil`)
 	}
+	// Sum type primitive.
 	switch t := d.Next(); t {
 	case json.String:
 		v, err := d.Str()
@@ -479,30 +607,6 @@ func (o *OptPetType) ReadJSON(d *json.Decoder) error {
 		return nil
 	default:
 		return fmt.Errorf("unexpected type %q while reading OptPetType", d.Next())
-	}
-}
-
-// WriteJSON writes json value of string to json stream.
-func (o OptString) WriteJSON(e *json.Encoder) {
-	e.Str(string(o.Value))
-}
-
-// ReadJSON reads json value of string from json iterator.
-func (o *OptString) ReadJSON(d *json.Decoder) error {
-	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
-	}
-	switch d.Next() {
-	case json.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
 	}
 }
 
