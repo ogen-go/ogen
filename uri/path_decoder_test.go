@@ -72,7 +72,7 @@ func TestPathDecoder(t *testing.T) {
 		}
 	})
 
-	t.Run("StringArray", func(t *testing.T) {
+	t.Run("Strings", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   string
@@ -134,6 +134,96 @@ func TestPathDecoder(t *testing.T) {
 
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))
+		}
+	})
+
+	t.Run("Object", func(t *testing.T) {
+		type field struct {
+			Field string
+			Value string
+		}
+		tests := []struct {
+			Param   string
+			Input   string
+			Expect  []field
+			Style   PathStyle
+			Explode bool
+		}{
+			{
+				Param:   "id",
+				Input:   "role,admin,firstName,Alex",
+				Style:   PathStyleSimple,
+				Explode: false,
+				Expect: []field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   "role=admin,firstName=Alex",
+				Style:   PathStyleSimple,
+				Explode: true,
+				Expect: []field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			// {
+			// 	Param:   "id",
+			// 	Input:   ".role,admin,firstName,Alex",
+			// 	Style:   PathStyleLabel,
+			// 	Explode: false,
+			// 	Expect: []field{
+			// 		{"role", "admin"},
+			// 		{"firstName", "Alex"},
+			// 	},
+			// },
+			// {
+			// 	Param:   "id",
+			// 	Input:   ".role=admin.firstName=Alex",
+			// 	Style:   PathStyleLabel,
+			// 	Explode: true,
+			// 	Expect: []field{
+			// 		{"role", "admin"},
+			// 		{"firstName", "Alex"},
+			// 	},
+			// },
+			// {
+			// 	Param:   "id",
+			// 	Input:   ";id=role,admin,firstName,Alex",
+			// 	Style:   PathStyleMatrix,
+			// 	Explode: false,
+			// 	Expect: []field{
+			// 		{"role", "admin"},
+			// 		{"firstName", "Alex"},
+			// 	},
+			// },
+			// {
+			// 	Param:   "id",
+			// 	Input:   ";role=admin;firstName=Alex",
+			// 	Style:   PathStyleMatrix,
+			// 	Explode: true,
+			// 	Expect: []field{
+			// 		{"role", "admin"},
+			// 		{"firstName", "Alex"},
+			// 	},
+			// },
+		}
+
+		for i, test := range tests {
+			var fields []field
+			err := NewPathDecoder(PathDecoderConfig{
+				Param:   test.Param,
+				Value:   test.Input,
+				Style:   test.Style,
+				Explode: test.Explode,
+			}).DecodeObject(func(fieldName, value string) error {
+				fields = append(fields, field{fieldName, value})
+				return nil
+			})
+			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, fields, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }

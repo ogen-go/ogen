@@ -159,3 +159,88 @@ func (d PathDecoder) DecodeStrings() ([]string, error) {
 		panic("unreachable")
 	}
 }
+
+func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
+	switch d.style {
+	case PathStyleSimple:
+		if d.explode {
+			const kvSep, fieldSep = '=', ','
+			return d.decodeObject(kvSep, fieldSep, f)
+		}
+
+		const kvSep, fieldSep = ',', ','
+		return d.decodeObject(kvSep, fieldSep, f)
+
+	case PathStyleLabel:
+		if !d.cur.eat('.') {
+			return fmt.Errorf("value must begin with '.'")
+		}
+
+		if d.explode {
+			const kvSep, fieldSep = '=', '.'
+			return d.decodeObject(kvSep, fieldSep, f)
+		}
+
+		const kvSep, fieldSep = ',', ','
+		return d.decodeObject(kvSep, fieldSep, f)
+
+	case PathStyleMatrix:
+		if !d.cur.eat(';') {
+			return fmt.Errorf("value must begin with ';'")
+		}
+
+		if !d.explode {
+			name, err := d.cur.readAt('=')
+			if err != nil {
+				return err
+			}
+
+			if name != d.param {
+				return fmt.Errorf("expect param '%s', got '%s'", d.param, name)
+			}
+
+			const kvSep, fieldSep = ',', ','
+			return d.decodeObject(kvSep, fieldSep, f)
+		}
+
+		const kvSep, fieldSep = '=', ';'
+		return d.decodeObject(kvSep, fieldSep, f)
+
+	default:
+		panic("unreachable")
+	}
+}
+
+func (d PathDecoder) decodeObject(kvSep, fieldSep rune, f func(field, value string) error) error {
+	var (
+		fname string
+		field = true
+	)
+
+	for {
+		until := fieldSep
+		if field {
+			until = kvSep
+		}
+
+		v, hasNext, err := d.cur.readValue(until)
+		if err != nil {
+			return err
+		}
+
+		if field {
+			fname = v
+			field = false
+			continue
+		}
+
+		field = true
+		if err := f(fname, v); err != nil {
+			return err
+		}
+
+		if !hasNext {
+			return nil
+		}
+	}
+}

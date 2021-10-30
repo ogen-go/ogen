@@ -70,7 +70,7 @@ func TestPathEncoder(t *testing.T) {
 		}
 	})
 
-	t.Run("StringArray", func(t *testing.T) {
+	t.Run("Strings", func(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   []string
@@ -128,6 +128,86 @@ func TestPathEncoder(t *testing.T) {
 				Style:   test.Style,
 				Explode: test.Explode,
 			}).EncodeStrings(test.Input)
+			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+		}
+	})
+
+	t.Run("Object", func(t *testing.T) {
+		tests := []struct {
+			Param   string
+			Input   []PathObjectField
+			Expect  string
+			Style   PathStyle
+			Explode bool
+		}{
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleSimple,
+				Explode: false,
+				Expect:  "role,admin,firstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleSimple,
+				Explode: true,
+				Expect:  "role=admin,firstName=Alex",
+			},
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleLabel,
+				Explode: false,
+				Expect:  ".role,admin,firstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleLabel,
+				Explode: true,
+				Expect:  ".role=admin.firstName=Alex",
+			},
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleMatrix,
+				Explode: false,
+				Expect:  ";id=role,admin,firstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []PathObjectField{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+				Style:   PathStyleMatrix,
+				Explode: true,
+				Expect:  ";role=admin;firstName=Alex",
+			},
+		}
+
+		for i, test := range tests {
+			result := NewPathEncoder(PathEncoderConfig{
+				Param:   test.Param,
+				Style:   test.Style,
+				Explode: test.Explode,
+			}).EncodeObject(test.Input)
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})

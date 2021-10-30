@@ -23,7 +23,7 @@ func (c *cursor) readAt(at rune) (string, error) {
 	}
 }
 
-func (c *cursor) readValue(delim rune) (v string, hasNext bool, err error) {
+func (c *cursor) readValue(until rune) (v string, hasNext bool, err error) {
 	var data []rune
 	for {
 		r, ok := c.read()
@@ -34,7 +34,7 @@ func (c *cursor) readValue(delim rune) (v string, hasNext bool, err error) {
 			return string(data), false, nil
 		}
 
-		if r == delim {
+		if r == until {
 			return string(data), len(c.src) != c.pos, nil
 		}
 

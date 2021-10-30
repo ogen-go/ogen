@@ -1,5 +1,7 @@
 package uri
 
+import "strings"
+
 type PathEncoder struct {
 	param   string    // immutable
 	style   PathStyle // immutable
@@ -89,4 +91,54 @@ func (e PathEncoder) EncodeStrings(vs []string) string {
 	default:
 		panic("unreachable")
 	}
+}
+
+type PathObjectField struct {
+	Name  string
+	Value string
+}
+
+func (e PathEncoder) EncodeObject(fields []PathObjectField) string {
+	switch e.style {
+	case PathStyleSimple:
+		if e.explode {
+			const kvSep, fieldSep = '=', ','
+			return e.encodeObject(kvSep, fieldSep, fields)
+		}
+
+		const kvSep, fieldSep = ',', ','
+		return e.encodeObject(kvSep, fieldSep, fields)
+
+	case PathStyleLabel:
+		kvSep, fieldSep := ',', ','
+		if e.explode {
+			kvSep, fieldSep = '=', '.'
+		}
+		return "." + e.encodeObject(kvSep, fieldSep, fields)
+
+	case PathStyleMatrix:
+		var result string
+
+		if !e.explode {
+			result += e.param + "="
+			const kvSep, fieldSep = ',', ','
+			result += e.encodeObject(kvSep, fieldSep, fields)
+		} else {
+			const kvSep, fieldSep = '=', ';'
+			result += e.encodeObject(kvSep, fieldSep, fields)
+		}
+
+		return ";" + result
+
+	default:
+		panic("unreachable")
+	}
+}
+
+func (e PathEncoder) encodeObject(kvSep, fieldSep rune, fields []PathObjectField) string {
+	var elems []string
+	for _, f := range fields {
+		elems = append(elems, f.Name+string(kvSep)+f.Value)
+	}
+	return strings.Join(elems, string(fieldSep))
 }
