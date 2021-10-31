@@ -35,16 +35,21 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 	}
 	for _, s := range ignore {
 		if s == "unspecified params" {
+			t.Log("IgnoreUnspecifiedParams: true")
 			opt.IgnoreUnspecifiedParams = true
 		}
 	}
-	if len(ignore) > 0 {
-		t.Logf("Ignoring: %s", ignore)
-	}
-	g, err := gen.NewGenerator(spec, opt)
-	require.NoError(t, err)
+	t.Run("Gen", func(t *testing.T) {
+		g, err := gen.NewGenerator(spec, opt)
+		require.NoError(t, err)
 
-	require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+		require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+	})
+	if len(opt.IgnoreNotImplemented) > 0 {
+		t.Run("Full", func(t *testing.T) {
+			t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+		})
+	}
 }
 
 func TestGenerate(t *testing.T) {
