@@ -118,7 +118,8 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 		s = side(s)
 
-		for _, prop := range schema.Properties {
+		for i := range schema.Properties {
+			prop := schema.Properties[i]
 			typ, err := g.generate(pascalMP(name, prop.Name), prop.Schema)
 			if err != nil {
 				return nil, xerrors.Errorf("field '%s': %w", prop.Name, err)
@@ -169,7 +170,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				Tag: ir.Tag{
 					JSON: prop.Name,
 				},
-				Spec: prop,
+				Spec: &prop,
 			})
 		}
 

@@ -95,7 +95,7 @@ type Field struct {
 	Name string
 	Type *Type
 	Tag  Tag
-	Spec oas.Property
+	Spec *oas.Property
 }
 
 func (t *Type) Is(vs ...Kind) bool {

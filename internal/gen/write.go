@@ -15,6 +15,7 @@ type TemplateConfig struct {
 	Package    string
 	Operations []*ir.Operation
 	Types      map[string]*ir.Type
+	URITypes   map[*ir.Type]struct{}
 	Interfaces map[string]*ir.Type
 }
 
@@ -62,10 +63,13 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Package:    pkgName,
 		Operations: g.operations,
 		Types:      g.types,
+		URITypes:   g.uritypes,
 		Interfaces: g.interfaces,
 	}
 	for _, name := range []string{
 		"schemas",
+		"uri_decoders",
+		"uri_encoders",
 		"schemas_json",
 		"interfaces",
 		"params",
@@ -81,6 +85,11 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"client",
 		"cfg",
 	} {
+		// hack
+		if name == "uri_encoders" || name == "uri_decoders" && len(g.uritypes) == 0 {
+			continue
+		}
+
 		fileName := fmt.Sprintf("oas_%s_gen.go", name)
 		if err := w.Generate(name, fileName, cfg); err != nil {
 			return xerrors.Errorf("%s: %w", name, err)

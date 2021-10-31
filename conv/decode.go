@@ -1,6 +1,9 @@
 package conv
 
 import (
+	"fmt"
+	"net"
+	"net/url"
 	"strconv"
 	"time"
 
@@ -48,6 +51,26 @@ func ToBool(s string) (bool, error) {
 
 func ToUUID(s string) (uuid.UUID, error) {
 	return uuid.Parse(s)
+}
+
+func ToIP(s string) (net.IP, error) {
+	ip := net.ParseIP(s)
+	if ip == nil {
+		return nil, fmt.Errorf("invalid ip: '%s'", s)
+	}
+	return ip, nil
+}
+
+func ToURL(s string) (url.URL, error) {
+	u, err := url.Parse(s)
+	if err != nil {
+		return url.URL{}, err
+	}
+	return *u, nil
+}
+
+func ToDuration(s string) (time.Duration, error) {
+	return time.ParseDuration(s)
 }
 
 func ToInt32Array(a []string) ([]int32, error) {

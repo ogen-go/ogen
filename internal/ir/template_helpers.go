@@ -31,7 +31,7 @@ func (t *Type) EncodeFn() string {
 	switch t.Primitive {
 	case Int, Int64, Int32, String, Bool, Float32, Float64:
 		return capitalize(t.Primitive.String())
-	case UUID, Time:
+	case UUID, Time, IP, Duration, URL:
 		return afterDot(t.Primitive.String())
 	default:
 		return ""

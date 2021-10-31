@@ -1,6 +1,8 @@
 package conv
 
 import (
+	"net"
+	"net/url"
 	"strconv"
 	"time"
 
@@ -26,6 +28,12 @@ func TimeToString(v time.Time) string { return v.Format(time.RFC3339) }
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
 
 func UUIDToString(v uuid.UUID) string { return v.String() }
+
+func IPToString(v net.IP) string { return v.String() }
+
+func URLToString(v url.URL) string { return v.String() }
+
+func DurationToString(v time.Duration) string { return v.String() }
 
 func Int32ArrayToString(vs []int32) []string {
 	strs := make([]string, 0, len(vs))

@@ -1,0 +1,91 @@
+{{- define "uri_encoders" }}
+{{- template "header" $ }}
+
+{{- range $t, $_ := $.URITypes }}
+{{- if eq $t.Kind "struct" }}
+func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
+    if v == nil {
+        return fmt.Errorf("unable to encode nil {{ $t.Go }}")
+    }
+    {{- range $f := $t.Fields }}
+    {{- if $f.Spec }}
+        if err := e.Field("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
+            {{- template "encode_uri" dict
+                "type" $f.Type
+                "var" (sprintf "v.%s" $f.Name)
+            }}
+        }); err != nil {
+            return fmt.Errorf("field '{{ $f.Spec.Name }}': %w", err)
+        }
+    {{- end }}
+    {{- end }}
+    return nil
+}
+
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "encode_uri" }}
+{{- $t := index . "type" }}
+{{- $var := index . "var" }}
+{{- if eq $t.Kind "primitive" }}
+    return e.Value(conv.{{ $t.ToString }}({{ $var }}))
+{{- else if eq $t.Kind "enum" }}
+    return e.Value(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
+{{- else if eq $t.Kind "array" }}
+    return e.Array(func(e uri.Encoder) error {
+        for i, item := range {{ $var }} {
+            if err := func() error {
+                {{- template "encode_uri" dict
+                    "type" $t.Item
+                    "var" "item"
+                }}
+            }(); err != nil {
+                return fmt.Errorf("[%d]: %w", i, err)
+            }
+        }
+        return nil
+    })
+{{- else if eq $t.Kind "alias" }}
+    if unwrapped := {{ $var }}.unwrap(); true {
+        {{- template "encode_uri" dict
+            "type" $t.AliasTo
+            "var" "unwrapped"
+        }}
+    }
+    return nil
+{{- else if eq $t.Kind "generic" }}
+    if val, ok := {{ $var }}.Get(); ok {
+        {{- template "encode_uri" dict
+            "type" $t.GenericOf
+            "var" "val"
+        }}
+    }
+    return nil
+{{- else if eq $t.Kind "pointer" }}
+    if v := {{ $var }}; v != nil {
+        {{- template "encode_uri" dict
+            "type" $t.PointerTo
+            "var" "(*v)"
+        }}
+    }
+    return nil
+{{- else if eq $t.Kind "struct" }}
+    return {{ $var }}.encodeURI(e)
+{{- else if eq $t.Kind "sum" }}
+    switch t := {{ $var }}.Type; t {
+    {{- range $of := $t.SumOf }}
+    case {{ $of.Name }}{{ $t.Name }}:
+        {{- template "encode_uri" dict
+            "type" $of
+            "var" (sprintf "%s.%s" $var $of.Name)
+        }}
+    {{- end }}
+    default:
+        panic(fmt.Sprintf("unexpected type: %T", t))
+    }
+{{- else }}
+Unexpected kind {{ $t.Kind }}
+{{- end }}
+{{- end }}
