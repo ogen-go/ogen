@@ -71,6 +71,7 @@
           {
             "name": "queries",
             "in": "query",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -102,6 +103,7 @@
           {
             "name": "queries",
             "in": "query",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -133,6 +135,7 @@
           {
             "name": "count",
             "in": "query",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int64"

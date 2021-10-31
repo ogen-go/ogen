@@ -391,34 +391,6 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 			return params, fmt.Errorf("query parameter 'query' not specified")
 		}
 	}
-	// Decode param "page" located in "Query".
-	{
-		values, ok := r.URL.Query()["page"]
-		if ok {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
-
-			if err := func() error {
-				s, err := d.Value()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.Page = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		}
-	}
 	return params, nil
 }
 
@@ -452,34 +424,6 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'tag_id' not specified")
-		}
-	}
-	// Decode param "page" located in "Query".
-	{
-		values, ok := r.URL.Query()["page"]
-		if ok {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
-
-			if err := func() error {
-				s, err := d.Value()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.Page = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
 		}
 	}
 	return params, nil

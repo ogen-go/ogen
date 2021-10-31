@@ -233,7 +233,7 @@ type Server interface {
 	// ActivityListOrgEventsForAuthenticatedUser implements activity/list-org-events-for-authenticated-user operation.
 	ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error)
 	// ActivityListPublicEvents implements activity/list-public-events operation.
-	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error)
+	ActivityListPublicEvents(ctx context.Context) (ActivityListPublicEventsRes, error)
 	// ActivityListPublicEventsForRepoNetwork implements activity/list-public-events-for-repo-network operation.
 	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error)
 	// ActivityListPublicEventsForUser implements activity/list-public-events-for-user operation.
@@ -249,11 +249,11 @@ type Server interface {
 	// ActivityListRepoNotificationsForAuthenticatedUser implements activity/list-repo-notifications-for-authenticated-user operation.
 	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) ([]Thread, error)
 	// ActivityListReposStarredByAuthenticatedUser implements activity/list-repos-starred-by-authenticated-user operation.
-	ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error)
+	ActivityListReposStarredByAuthenticatedUser(ctx context.Context) (ActivityListReposStarredByAuthenticatedUserRes, error)
 	// ActivityListReposWatchedByUser implements activity/list-repos-watched-by-user operation.
 	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) ([]MinimalRepository, error)
 	// ActivityListWatchedReposForAuthenticatedUser implements activity/list-watched-repos-for-authenticated-user operation.
-	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error)
+	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context) (ActivityListWatchedReposForAuthenticatedUserRes, error)
 	// ActivityListWatchersForRepo implements activity/list-watchers-for-repo operation.
 	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) ([]SimpleUser, error)
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
@@ -289,15 +289,15 @@ type Server interface {
 	// AppsListInstallationReposForAuthenticatedUser implements apps/list-installation-repos-for-authenticated-user operation.
 	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error)
 	// AppsListPlans implements apps/list-plans operation.
-	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error)
+	AppsListPlans(ctx context.Context) (AppsListPlansRes, error)
 	// AppsListPlansStubbed implements apps/list-plans-stubbed operation.
-	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error)
+	AppsListPlansStubbed(ctx context.Context) (AppsListPlansStubbedRes, error)
 	// AppsListReposAccessibleToInstallation implements apps/list-repos-accessible-to-installation operation.
-	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error)
+	AppsListReposAccessibleToInstallation(ctx context.Context) (AppsListReposAccessibleToInstallationRes, error)
 	// AppsListSubscriptionsForAuthenticatedUser implements apps/list-subscriptions-for-authenticated-user operation.
-	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error)
+	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context) (AppsListSubscriptionsForAuthenticatedUserRes, error)
 	// AppsListSubscriptionsForAuthenticatedUserStubbed implements apps/list-subscriptions-for-authenticated-user-stubbed operation.
-	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
+	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
 	// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
 	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
 	// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
@@ -459,7 +459,7 @@ type Server interface {
 	// GistsGetComment implements gists/get-comment operation.
 	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
 	// GistsList implements gists/list operation.
-	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
+	GistsList(ctx context.Context) (GistsListRes, error)
 	// GistsListComments implements gists/list-comments operation.
 	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
 	// GistsListCommits implements gists/list-commits operation.
@@ -467,7 +467,7 @@ type Server interface {
 	// GistsListForks implements gists/list-forks operation.
 	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
 	// GistsListStarred implements gists/list-starred operation.
-	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
+	GistsListStarred(ctx context.Context) (GistsListStarredRes, error)
 	// GistsStar implements gists/star operation.
 	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
 	// GistsUnstar implements gists/unstar operation.
@@ -539,7 +539,7 @@ type Server interface {
 	// LicensesGet implements licenses/get operation.
 	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
 	// LicensesGetAllCommonlyUsed implements licenses/get-all-commonly-used operation.
-	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
+	LicensesGetAllCommonlyUsed(ctx context.Context) (LicensesGetAllCommonlyUsedRes, error)
 	// LicensesGetForRepo implements licenses/get-for-repo operation.
 	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (LicenseContent, error)
 	// MarkdownRender implements markdown/render operation.
@@ -549,7 +549,7 @@ type Server interface {
 	// MetaGet implements meta/get operation.
 	MetaGet(ctx context.Context) (MetaGetRes, error)
 	// MetaGetOctocat implements meta/get-octocat operation.
-	MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (string, error)
+	MetaGetOctocat(ctx context.Context) (string, error)
 	// MetaGetZen implements meta/get-zen operation.
 	MetaGetZen(ctx context.Context) (string, error)
 	// MetaRoot implements meta/root operation.
@@ -575,7 +575,7 @@ type Server interface {
 	// MigrationsGetStatusForOrg implements migrations/get-status-for-org operation.
 	MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error)
 	// MigrationsListForAuthenticatedUser implements migrations/list-for-authenticated-user operation.
-	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
+	MigrationsListForAuthenticatedUser(ctx context.Context) (MigrationsListForAuthenticatedUserRes, error)
 	// MigrationsListForOrg implements migrations/list-for-org operation.
 	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) ([]Migration, error)
 	// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
@@ -597,9 +597,9 @@ type Server interface {
 	// OAuthAuthorizationsGetGrant implements oauth-authorizations/get-grant operation.
 	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
 	// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
-	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
+	OAuthAuthorizationsListAuthorizations(ctx context.Context) (OAuthAuthorizationsListAuthorizationsRes, error)
 	// OAuthAuthorizationsListGrants implements oauth-authorizations/list-grants operation.
-	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
+	OAuthAuthorizationsListGrants(ctx context.Context) (OAuthAuthorizationsListGrantsRes, error)
 	// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
 	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
 	// OrgsCheckMembershipForUser implements orgs/check-membership-for-user operation.
@@ -623,13 +623,13 @@ type Server interface {
 	// OrgsGetWebhookConfigForOrg implements orgs/get-webhook-config-for-org operation.
 	OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (WebhookConfig, error)
 	// OrgsList implements orgs/list operation.
-	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error)
+	OrgsList(ctx context.Context) (OrgsListRes, error)
 	// OrgsListBlockedUsers implements orgs/list-blocked-users operation.
 	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error)
 	// OrgsListFailedInvitations implements orgs/list-failed-invitations operation.
 	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error)
 	// OrgsListForAuthenticatedUser implements orgs/list-for-authenticated-user operation.
-	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error)
+	OrgsListForAuthenticatedUser(ctx context.Context) (OrgsListForAuthenticatedUserRes, error)
 	// OrgsListForUser implements orgs/list-for-user operation.
 	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) ([]OrganizationSimple, error)
 	// OrgsListInvitationTeams implements orgs/list-invitation-teams operation.
@@ -991,7 +991,7 @@ type Server interface {
 	// ReposListInvitations implements repos/list-invitations operation.
 	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) ([]RepositoryInvitation, error)
 	// ReposListInvitationsForAuthenticatedUser implements repos/list-invitations-for-authenticated-user operation.
-	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error)
+	ReposListInvitationsForAuthenticatedUser(ctx context.Context) (ReposListInvitationsForAuthenticatedUserRes, error)
 	// ReposListLanguages implements repos/list-languages operation.
 	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
 	// ReposListPagesBuilds implements repos/list-pages-builds operation.
@@ -1123,7 +1123,7 @@ type Server interface {
 	// TeamsListDiscussionsLegacy implements teams/list-discussions-legacy operation.
 	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) ([]TeamDiscussion, error)
 	// TeamsListForAuthenticatedUser implements teams/list-for-authenticated-user operation.
-	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error)
+	TeamsListForAuthenticatedUser(ctx context.Context) (TeamsListForAuthenticatedUserRes, error)
 	// TeamsListIdpGroupsForLegacy implements teams/list-idp-groups-for-legacy operation.
 	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
 	// TeamsListIdpGroupsForOrg implements teams/list-idp-groups-for-org operation.
@@ -1187,29 +1187,29 @@ type Server interface {
 	// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.
 	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error)
 	// UsersList implements users/list operation.
-	UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error)
+	UsersList(ctx context.Context) (UsersListRes, error)
 	// UsersListBlockedByAuthenticated implements users/list-blocked-by-authenticated operation.
 	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error)
 	// UsersListEmailsForAuthenticated implements users/list-emails-for-authenticated operation.
-	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error)
+	UsersListEmailsForAuthenticated(ctx context.Context) (UsersListEmailsForAuthenticatedRes, error)
 	// UsersListFollowedByAuthenticated implements users/list-followed-by-authenticated operation.
-	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error)
+	UsersListFollowedByAuthenticated(ctx context.Context) (UsersListFollowedByAuthenticatedRes, error)
 	// UsersListFollowersForAuthenticatedUser implements users/list-followers-for-authenticated-user operation.
-	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error)
+	UsersListFollowersForAuthenticatedUser(ctx context.Context) (UsersListFollowersForAuthenticatedUserRes, error)
 	// UsersListFollowersForUser implements users/list-followers-for-user operation.
 	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) ([]SimpleUser, error)
 	// UsersListFollowingForUser implements users/list-following-for-user operation.
 	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) ([]SimpleUser, error)
 	// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
-	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
+	UsersListGpgKeysForAuthenticated(ctx context.Context) (UsersListGpgKeysForAuthenticatedRes, error)
 	// UsersListGpgKeysForUser implements users/list-gpg-keys-for-user operation.
 	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) ([]GpgKey, error)
 	// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
-	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error)
+	UsersListPublicEmailsForAuthenticated(ctx context.Context) (UsersListPublicEmailsForAuthenticatedRes, error)
 	// UsersListPublicKeysForUser implements users/list-public-keys-for-user operation.
 	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) ([]KeySimple, error)
 	// UsersListPublicSSHKeysForAuthenticated implements users/list-public-ssh-keys-for-authenticated operation.
-	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
+	UsersListPublicSSHKeysForAuthenticated(ctx context.Context) (UsersListPublicSSHKeysForAuthenticatedRes, error)
 	// UsersUnblock implements users/unblock operation.
 	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)
 	// UsersUnfollow implements users/unfollow operation.

@@ -1679,24 +1679,6 @@ func (s *ActionsListEnvironmentSecretsOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsListJobsForWorkflowRunFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActionsListJobsForWorkflowRunFilter from json reader.
-func (s *ActionsListJobsForWorkflowRunFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListJobsForWorkflowRunFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActionsListJobsForWorkflowRunFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s ActionsListJobsForWorkflowRunOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -2383,24 +2365,6 @@ func (s *ActionsListWorkflowRunsForRepoOK) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActionsListWorkflowRunsForRepoStatus) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActionsListWorkflowRunsForRepoStatus from json reader.
-func (s *ActionsListWorkflowRunsForRepoStatus) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsForRepoStatus to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActionsListWorkflowRunsForRepoStatus(v)
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -3552,24 +3516,6 @@ func (ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Re
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ActivityListReposStarredByAuthenticatedUserDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActivityListReposStarredByAuthenticatedUserDirection from json reader.
-func (s *ActivityListReposStarredByAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActivityListReposStarredByAuthenticatedUserDirection(v)
-	return nil
-}
-
 func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) WriteJSON(e *json.Encoder) {}
 func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -3578,60 +3524,6 @@ func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) ReadJSON(d *
 func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) WriteJSON(e *json.Encoder) {
 }
 func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) ReadJSON(d *json.Decoder) error {
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityListReposStarredByAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActivityListReposStarredByAuthenticatedUserSort from json reader.
-func (s *ActivityListReposStarredByAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActivityListReposStarredByAuthenticatedUserSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityListReposStarredByUserDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActivityListReposStarredByUserDirection from json reader.
-func (s *ActivityListReposStarredByUserDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByUserDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActivityListReposStarredByUserDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ActivityListReposStarredByUserSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ActivityListReposStarredByUserSort from json reader.
-func (s *ActivityListReposStarredByUserSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByUserSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ActivityListReposStarredByUserSort(v)
 	return nil
 }
 
@@ -5551,80 +5443,8 @@ func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSON(d *json.Deco
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s AppsListAccountsForPlanDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads AppsListAccountsForPlanDirection from json reader.
-func (s *AppsListAccountsForPlanDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = AppsListAccountsForPlanDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsListAccountsForPlanSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads AppsListAccountsForPlanSort from json reader.
-func (s *AppsListAccountsForPlanSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = AppsListAccountsForPlanSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s AppsListAccountsForPlanStubbedDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads AppsListAccountsForPlanStubbedDirection from json reader.
-func (s *AppsListAccountsForPlanStubbedDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanStubbedDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = AppsListAccountsForPlanStubbedDirection(v)
-	return nil
-}
-
 func (AppsListAccountsForPlanStubbedOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (AppsListAccountsForPlanStubbedOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s AppsListAccountsForPlanStubbedSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads AppsListAccountsForPlanStubbedSort from json reader.
-func (s *AppsListAccountsForPlanStubbedSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanStubbedSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = AppsListAccountsForPlanStubbedSort(v)
-	return nil
-}
 
 func (AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {
 }
@@ -9962,24 +9782,6 @@ func (s *ChecksCreateSuiteReq) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksListForRefFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ChecksListForRefFilter from json reader.
-func (s *ChecksListForRefFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForRefFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ChecksListForRefFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s ChecksListForRefOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -10033,42 +9835,6 @@ func (s *ChecksListForRefOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksListForRefStatus) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ChecksListForRefStatus from json reader.
-func (s *ChecksListForRefStatus) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForRefStatus to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ChecksListForRefStatus(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ChecksListForSuiteFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ChecksListForSuiteFilter from json reader.
-func (s *ChecksListForSuiteFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForSuiteFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ChecksListForSuiteFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s ChecksListForSuiteOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -10119,24 +9885,6 @@ func (s *ChecksListForSuiteOK) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ChecksListForSuiteStatus) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ChecksListForSuiteStatus from json reader.
-func (s *ChecksListForSuiteStatus) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForSuiteStatus to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ChecksListForSuiteStatus(v)
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -15636,42 +15384,6 @@ func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoConte
 		}
 		return nil
 	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminGetAuditLogInclude) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads EnterpriseAdminGetAuditLogInclude from json reader.
-func (s *EnterpriseAdminGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminGetAuditLogInclude to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = EnterpriseAdminGetAuditLogInclude(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminGetAuditLogOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads EnterpriseAdminGetAuditLogOrder from json reader.
-func (s *EnterpriseAdminGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminGetAuditLogOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = EnterpriseAdminGetAuditLogOrder(v)
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -26373,278 +26085,8 @@ func (IssuesListCommentsApplicationJSONGone) ReadJSON(d *json.Decoder) error { r
 func (IssuesListCommentsApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (IssuesListCommentsApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s IssuesListCommentsForRepoDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListCommentsForRepoDirection from json reader.
-func (s *IssuesListCommentsForRepoDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListCommentsForRepoDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListCommentsForRepoDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListCommentsForRepoSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListCommentsForRepoSort from json reader.
-func (s *IssuesListCommentsForRepoSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListCommentsForRepoSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListCommentsForRepoSort(v)
-	return nil
-}
-
 func (IssuesListCommentsOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (IssuesListCommentsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListDirection from json reader.
-func (s *IssuesListDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListFilter from json reader.
-func (s *IssuesListFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForAuthenticatedUserDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForAuthenticatedUserDirection from json reader.
-func (s *IssuesListForAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForAuthenticatedUserDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForAuthenticatedUserFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForAuthenticatedUserFilter from json reader.
-func (s *IssuesListForAuthenticatedUserFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForAuthenticatedUserFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForAuthenticatedUserSort from json reader.
-func (s *IssuesListForAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForAuthenticatedUserSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForAuthenticatedUserState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForAuthenticatedUserState from json reader.
-func (s *IssuesListForAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForAuthenticatedUserState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForOrgDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForOrgDirection from json reader.
-func (s *IssuesListForOrgDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForOrgDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForOrgFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForOrgFilter from json reader.
-func (s *IssuesListForOrgFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForOrgFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForOrgSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForOrgSort from json reader.
-func (s *IssuesListForOrgSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForOrgSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForOrgState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForOrgState from json reader.
-func (s *IssuesListForOrgState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForOrgState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForRepoDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForRepoDirection from json reader.
-func (s *IssuesListForRepoDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForRepoDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForRepoSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForRepoSort from json reader.
-func (s *IssuesListForRepoSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForRepoSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListForRepoState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListForRepoState from json reader.
-func (s *IssuesListForRepoState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListForRepoState(v)
-	return nil
-}
 
 func (IssuesListLabelsForRepoOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (IssuesListLabelsForRepoOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
@@ -26652,98 +26094,8 @@ func (IssuesListLabelsForRepoOKApplicationJSON) ReadJSON(d *json.Decoder) error 
 func (IssuesListLabelsOnIssueOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (IssuesListLabelsOnIssueOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s IssuesListMilestonesDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListMilestonesDirection from json reader.
-func (s *IssuesListMilestonesDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListMilestonesDirection(v)
-	return nil
-}
-
 func (IssuesListMilestonesOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (IssuesListMilestonesOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListMilestonesSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListMilestonesSort from json reader.
-func (s *IssuesListMilestonesSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListMilestonesSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListMilestonesState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListMilestonesState from json reader.
-func (s *IssuesListMilestonesState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListMilestonesState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListSort from json reader.
-func (s *IssuesListSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IssuesListState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads IssuesListState from json reader.
-func (s *IssuesListState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = IssuesListState(v)
-	return nil
-}
 
 // WriteJSON implements json.Marshaler.
 func (s IssuesLockNoContent) WriteJSON(e *json.Encoder) {
@@ -29535,24 +28887,6 @@ func (MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) ReadJS
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MigrationsGetStatusForOrgExcludeItem) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads MigrationsGetStatusForOrgExcludeItem from json reader.
-func (s *MigrationsGetStatusForOrgExcludeItem) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsGetStatusForOrgExcludeItem to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = MigrationsGetStatusForOrgExcludeItem(v)
-	return nil
-}
-
 func (MigrationsListForAuthenticatedUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (MigrationsListForAuthenticatedUserApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -29565,24 +28899,6 @@ func (MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(d 
 
 func (MigrationsListForAuthenticatedUserOKApplicationJSON) WriteJSON(e *json.Encoder) {}
 func (MigrationsListForAuthenticatedUserOKApplicationJSON) ReadJSON(d *json.Decoder) error {
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s MigrationsListForOrgExcludeItem) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads MigrationsListForOrgExcludeItem from json reader.
-func (s *MigrationsListForOrgExcludeItem) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsListForOrgExcludeItem to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = MigrationsListForOrgExcludeItem(v)
 	return nil
 }
 
@@ -45411,42 +44727,6 @@ func (s *OrgsDeleteWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s OrgsGetAuditLogInclude) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsGetAuditLogInclude from json reader.
-func (s *OrgsGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsGetAuditLogInclude to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsGetAuditLogInclude(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s OrgsGetAuditLogOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsGetAuditLogOrder from json reader.
-func (s *OrgsGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsGetAuditLogOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsGetAuditLogOrder(v)
-	return nil
-}
-
 func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -45486,24 +44766,6 @@ func (OrgsListInvitationTeamsOKApplicationJSON) WriteJSON(e *json.Encoder)      
 func (OrgsListInvitationTeamsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsListMembersFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsListMembersFilter from json reader.
-func (s *OrgsListMembersFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembersFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsListMembersFilter(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s OrgsListMembersFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -45525,62 +44787,8 @@ func (s *OrgsListMembersFound) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s OrgsListMembersRole) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsListMembersRole from json reader.
-func (s *OrgsListMembersRole) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembersRole to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsListMembersRole(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s OrgsListMembershipsForAuthenticatedUserState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsListMembershipsForAuthenticatedUserState from json reader.
-func (s *OrgsListMembershipsForAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsListMembershipsForAuthenticatedUserState(v)
-	return nil
-}
-
 func (OrgsListOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (OrgsListOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s OrgsListOutsideCollaboratorsFilter) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads OrgsListOutsideCollaboratorsFilter from json reader.
-func (s *OrgsListOutsideCollaboratorsFilter) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListOutsideCollaboratorsFilter to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = OrgsListOutsideCollaboratorsFilter(v)
-	return nil
-}
 
 func (OrgsListPendingInvitationsOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (OrgsListPendingInvitationsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
@@ -47225,24 +46433,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageT
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState from json reader.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v)
-	return nil
-}
-
 func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) WriteJSON(e *json.Encoder) {
 }
 func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
@@ -47282,24 +46472,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) ReadJSON(
 		return err
 	}
 	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByOrgState from json reader.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v)
 	return nil
 }
 
@@ -47471,24 +46643,6 @@ func (s *PackagesListPackagesForAuthenticatedUserPackageType) ReadJSON(d *json.D
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PackagesListPackagesForAuthenticatedUserVisibility) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PackagesListPackagesForAuthenticatedUserVisibility from json reader.
-func (s *PackagesListPackagesForAuthenticatedUserVisibility) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserVisibility to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PackagesListPackagesForAuthenticatedUserVisibility(v)
-	return nil
-}
-
 func (PackagesListPackagesForOrganizationApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (PackagesListPackagesForOrganizationApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -47522,24 +46676,6 @@ func (s *PackagesListPackagesForOrganizationPackageType) ReadJSON(d *json.Decode
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PackagesListPackagesForOrganizationVisibility) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PackagesListPackagesForOrganizationVisibility from json reader.
-func (s *PackagesListPackagesForOrganizationVisibility) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForOrganizationVisibility to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PackagesListPackagesForOrganizationVisibility(v)
-	return nil
-}
-
 func (PackagesListPackagesForUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (PackagesListPackagesForUserApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -47568,24 +46704,6 @@ func (s *PackagesListPackagesForUserPackageType) ReadJSON(d *json.Decoder) error
 		return err
 	}
 	*s = PackagesListPackagesForUserPackageType(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PackagesListPackagesForUserVisibility) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PackagesListPackagesForUserVisibility from json reader.
-func (s *PackagesListPackagesForUserVisibility) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForUserVisibility to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PackagesListPackagesForUserVisibility(v)
 	return nil
 }
 
@@ -50771,44 +49889,8 @@ func (ProjectsListCardsApplicationJSONForbidden) ReadJSON(d *json.Decoder) error
 func (ProjectsListCardsApplicationJSONUnauthorized) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListCardsApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s ProjectsListCardsArchivedState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ProjectsListCardsArchivedState from json reader.
-func (s *ProjectsListCardsArchivedState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListCardsArchivedState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ProjectsListCardsArchivedState(v)
-	return nil
-}
-
 func (ProjectsListCardsOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListCardsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsListCollaboratorsAffiliation) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ProjectsListCollaboratorsAffiliation from json reader.
-func (s *ProjectsListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListCollaboratorsAffiliation to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ProjectsListCollaboratorsAffiliation(v)
-	return nil
-}
 
 func (ProjectsListColumnsApplicationJSONForbidden) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListColumnsApplicationJSONForbidden) ReadJSON(d *json.Decoder) error { return nil }
@@ -50821,24 +49903,6 @@ func (ProjectsListColumnsOKApplicationJSON) ReadJSON(d *json.Decoder) error { re
 
 func (ProjectsListForOrgOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListForOrgOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsListForOrgState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ProjectsListForOrgState from json reader.
-func (s *ProjectsListForOrgState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForOrgState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ProjectsListForOrgState(v)
-	return nil
-}
 
 func (ProjectsListForRepoApplicationJSONForbidden) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListForRepoApplicationJSONForbidden) ReadJSON(d *json.Decoder) error { return nil }
@@ -50854,42 +49918,6 @@ func (ProjectsListForRepoApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) 
 
 func (ProjectsListForRepoOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ProjectsListForRepoOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsListForRepoState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ProjectsListForRepoState from json reader.
-func (s *ProjectsListForRepoState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForRepoState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ProjectsListForRepoState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ProjectsListForUserState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ProjectsListForUserState from json reader.
-func (s *ProjectsListForUserState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForUserState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ProjectsListForUserState(v)
-	return nil
-}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardCreated) WriteJSON(e *json.Encoder) {
@@ -58029,132 +57057,6 @@ func (PullsListCommentsForReviewOKApplicationJSON) WriteJSON(e *json.Encoder)   
 func (PullsListCommentsForReviewOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsListDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListDirection from json reader.
-func (s *PullsListDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListReviewCommentsDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListReviewCommentsDirection from json reader.
-func (s *PullsListReviewCommentsDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListReviewCommentsDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListReviewCommentsForRepoDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListReviewCommentsForRepoDirection from json reader.
-func (s *PullsListReviewCommentsForRepoDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsForRepoDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListReviewCommentsForRepoDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListReviewCommentsForRepoSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListReviewCommentsForRepoSort from json reader.
-func (s *PullsListReviewCommentsForRepoSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsForRepoSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListReviewCommentsForRepoSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListReviewCommentsSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListReviewCommentsSort from json reader.
-func (s *PullsListReviewCommentsSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListReviewCommentsSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListSort from json reader.
-func (s *PullsListSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PullsListState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads PullsListState from json reader.
-func (s *PullsListState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = PullsListState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s PullsMergeConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -59659,24 +58561,6 @@ func (s *ReactionsDeleteLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForCommitCommentContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForCommitCommentContent from json reader.
-func (s *ReactionsListForCommitCommentContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForCommitCommentContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForCommitCommentContent(v)
-	return nil
-}
-
 func (ReactionsListForCommitCommentOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReactionsListForCommitCommentOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
@@ -59686,140 +58570,14 @@ func (ReactionsListForIssueApplicationJSONGone) ReadJSON(d *json.Decoder) error 
 func (ReactionsListForIssueApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (ReactionsListForIssueApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForIssueCommentContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForIssueCommentContent from json reader.
-func (s *ReactionsListForIssueCommentContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForIssueCommentContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForIssueCommentContent(v)
-	return nil
-}
-
 func (ReactionsListForIssueCommentOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReactionsListForIssueCommentOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForIssueContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForIssueContent from json reader.
-func (s *ReactionsListForIssueContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForIssueContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForIssueContent(v)
-	return nil
-}
 
 func (ReactionsListForIssueOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReactionsListForIssueOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForPullRequestReviewCommentContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForPullRequestReviewCommentContent from json reader.
-func (s *ReactionsListForPullRequestReviewCommentContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForPullRequestReviewCommentContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForPullRequestReviewCommentContent(v)
-	return nil
-}
-
 func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) WriteJSON(e *json.Encoder) {}
 func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) ReadJSON(d *json.Decoder) error {
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForTeamDiscussionCommentInOrgContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForTeamDiscussionCommentInOrgContent from json reader.
-func (s *ReactionsListForTeamDiscussionCommentInOrgContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionCommentInOrgContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForTeamDiscussionCommentInOrgContent(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForTeamDiscussionCommentLegacyContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForTeamDiscussionCommentLegacyContent from json reader.
-func (s *ReactionsListForTeamDiscussionCommentLegacyContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionCommentLegacyContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForTeamDiscussionCommentLegacyContent(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForTeamDiscussionInOrgContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForTeamDiscussionInOrgContent from json reader.
-func (s *ReactionsListForTeamDiscussionInOrgContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionInOrgContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForTeamDiscussionInOrgContent(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReactionsListForTeamDiscussionLegacyContent) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReactionsListForTeamDiscussionLegacyContent from json reader.
-func (s *ReactionsListForTeamDiscussionLegacyContent) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionLegacyContent to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReactionsListForTeamDiscussionLegacyContent(v)
 	return nil
 }
 
@@ -63706,24 +62464,6 @@ func (ReposGetBranchApplicationJSONMovedPermanently) ReadJSON(d *json.Decoder) e
 func (ReposGetBranchApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (ReposGetBranchApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s ReposGetClonesPer) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposGetClonesPer from json reader.
-func (s *ReposGetClonesPer) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetClonesPer to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposGetClonesPer(v)
-	return nil
-}
-
 func (ReposGetCodeFrequencyStatsOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReposGetCodeFrequencyStatsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
@@ -63796,44 +62536,8 @@ func (ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) ReadJSON(d *jso
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ReposGetViewsPer) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposGetViewsPer from json reader.
-func (s *ReposGetViewsPer) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetViewsPer to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposGetViewsPer(v)
-	return nil
-}
-
 func (ReposListBranchesOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReposListBranchesOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListCollaboratorsAffiliation) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListCollaboratorsAffiliation from json reader.
-func (s *ReposListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListCollaboratorsAffiliation to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListCollaboratorsAffiliation(v)
-	return nil
-}
 
 func (ReposListCollaboratorsOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReposListCollaboratorsOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
@@ -63890,206 +62594,8 @@ func (ReposListContributorsOKApplicationJSON) ReadJSON(d *json.Decoder) error { 
 func (ReposListDeploymentStatusesOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReposListDeploymentStatusesOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s ReposListForAuthenticatedUserDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForAuthenticatedUserDirection from json reader.
-func (s *ReposListForAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForAuthenticatedUserDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForAuthenticatedUserSort from json reader.
-func (s *ReposListForAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForAuthenticatedUserSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForAuthenticatedUserType) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForAuthenticatedUserType from json reader.
-func (s *ReposListForAuthenticatedUserType) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserType to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForAuthenticatedUserType(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForAuthenticatedUserVisibility) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForAuthenticatedUserVisibility from json reader.
-func (s *ReposListForAuthenticatedUserVisibility) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserVisibility to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForAuthenticatedUserVisibility(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForOrgDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForOrgDirection from json reader.
-func (s *ReposListForOrgDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForOrgDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForOrgSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForOrgSort from json reader.
-func (s *ReposListForOrgSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForOrgSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForOrgType) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForOrgType from json reader.
-func (s *ReposListForOrgType) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgType to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForOrgType(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForUserDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForUserDirection from json reader.
-func (s *ReposListForUserDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForUserDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForUserSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForUserSort from json reader.
-func (s *ReposListForUserSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForUserSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForUserType) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForUserType from json reader.
-func (s *ReposListForUserType) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserType to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForUserType(v)
-	return nil
-}
-
 func (ReposListForksOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (ReposListForksOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s ReposListForksSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads ReposListForksSort from json reader.
-func (s *ReposListForksSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForksSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = ReposListForksSort(v)
-	return nil
-}
 
 func (ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
@@ -70977,42 +69483,6 @@ func (s *SearchCodeOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchCodeOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchCodeOrder from json reader.
-func (s *SearchCodeOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCodeOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchCodeOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchCodeSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchCodeSort from json reader.
-func (s *SearchCodeSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCodeSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchCodeSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SearchCommitsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -71072,42 +69542,6 @@ func (s *SearchCommitsOK) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchCommitsOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchCommitsOrder from json reader.
-func (s *SearchCommitsOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCommitsOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchCommitsOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchCommitsSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchCommitsSort from json reader.
-func (s *SearchCommitsSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCommitsSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchCommitsSort(v)
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -71173,42 +69607,6 @@ func (s *SearchIssuesAndPullRequestsOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchIssuesAndPullRequestsOrder from json reader.
-func (s *SearchIssuesAndPullRequestsOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchIssuesAndPullRequestsOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchIssuesAndPullRequestsSort from json reader.
-func (s *SearchIssuesAndPullRequestsSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchIssuesAndPullRequestsSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SearchLabelsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -71271,42 +69669,6 @@ func (s *SearchLabelsOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchLabelsOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchLabelsOrder from json reader.
-func (s *SearchLabelsOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchLabelsOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchLabelsOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchLabelsSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchLabelsSort from json reader.
-func (s *SearchLabelsSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchLabelsSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchLabelsSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SearchReposOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -71366,42 +69728,6 @@ func (s *SearchReposOK) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchReposOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchReposOrder from json reader.
-func (s *SearchReposOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchReposOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchReposOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchReposSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchReposSort from json reader.
-func (s *SearchReposSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchReposSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchReposSort(v)
-	return nil
 }
 
 func (SearchResultTextMatches) WriteJSON(e *json.Encoder)      {}
@@ -71676,42 +70002,6 @@ func (s *SearchUsersOK) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SearchUsersOrder) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchUsersOrder from json reader.
-func (s *SearchUsersOrder) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchUsersOrder to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchUsersOrder(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s SearchUsersSort) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SearchUsersSort from json reader.
-func (s *SearchUsersSort) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchUsersSort to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SearchUsersSort(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SecretScanningAlert) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -71905,24 +70195,6 @@ func (SecretScanningListAlertsForOrgOKApplicationJSON) WriteJSON(e *json.Encoder
 func (SecretScanningListAlertsForOrgOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningListAlertsForOrgState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SecretScanningListAlertsForOrgState from json reader.
-func (s *SecretScanningListAlertsForOrgState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForOrgState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SecretScanningListAlertsForOrgState(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s SecretScanningListAlertsForRepoNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -71946,24 +70218,6 @@ func (s *SecretScanningListAlertsForRepoNotFound) ReadJSON(d *json.Decoder) erro
 
 func (SecretScanningListAlertsForRepoOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (SecretScanningListAlertsForRepoOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s SecretScanningListAlertsForRepoState) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads SecretScanningListAlertsForRepoState from json reader.
-func (s *SecretScanningListAlertsForRepoState) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoState to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = SecretScanningListAlertsForRepoState(v)
-	return nil
-}
 
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertNotFound) WriteJSON(e *json.Encoder) {
@@ -76678,78 +74932,6 @@ func (s *TeamsGetMembershipForUserInOrgNotFound) ReadJSON(d *json.Decoder) error
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s TeamsListDiscussionCommentsInOrgDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListDiscussionCommentsInOrgDirection from json reader.
-func (s *TeamsListDiscussionCommentsInOrgDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionCommentsInOrgDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListDiscussionCommentsInOrgDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsListDiscussionCommentsLegacyDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListDiscussionCommentsLegacyDirection from json reader.
-func (s *TeamsListDiscussionCommentsLegacyDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionCommentsLegacyDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListDiscussionCommentsLegacyDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsListDiscussionsInOrgDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListDiscussionsInOrgDirection from json reader.
-func (s *TeamsListDiscussionsInOrgDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionsInOrgDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListDiscussionsInOrgDirection(v)
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsListDiscussionsLegacyDirection) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListDiscussionsLegacyDirection from json reader.
-func (s *TeamsListDiscussionsLegacyDirection) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionsLegacyDirection to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListDiscussionsLegacyDirection(v)
-	return nil
-}
-
 func (TeamsListForAuthenticatedUserApplicationJSONForbidden) WriteJSON(e *json.Encoder) {}
 func (TeamsListForAuthenticatedUserApplicationJSONForbidden) ReadJSON(d *json.Decoder) error {
 	return nil
@@ -76771,44 +74953,8 @@ func (TeamsListIdpGroupsForLegacyApplicationJSONForbidden) ReadJSON(d *json.Deco
 func (TeamsListIdpGroupsForLegacyApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (TeamsListIdpGroupsForLegacyApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
 
-// WriteJSON implements json.Marshaler.
-func (s TeamsListMembersInOrgRole) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListMembersInOrgRole from json reader.
-func (s *TeamsListMembersInOrgRole) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListMembersInOrgRole to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListMembersInOrgRole(v)
-	return nil
-}
-
 func (TeamsListMembersLegacyOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (TeamsListMembersLegacyOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
-
-// WriteJSON implements json.Marshaler.
-func (s TeamsListMembersLegacyRole) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads TeamsListMembersLegacyRole from json reader.
-func (s *TeamsListMembersLegacyRole) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListMembersLegacyRole to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = TeamsListMembersLegacyRole(v)
-	return nil
-}
 
 func (TeamsListOKApplicationJSON) WriteJSON(e *json.Encoder)      {}
 func (TeamsListOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
@@ -79162,24 +77308,6 @@ func (s *UsersGetByUsernameOK) ReadJSON(d *json.Decoder) error {
 	default:
 		return fmt.Errorf("inferred invalid type: %s", s.Type)
 	}
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s UsersGetContextForUserSubjectType) WriteJSON(e *json.Encoder) {
-	e.Str(string(s))
-}
-
-// ReadJSON reads UsersGetContextForUserSubjectType from json reader.
-func (s *UsersGetContextForUserSubjectType) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersGetContextForUserSubjectType to nil`)
-	}
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	*s = UsersGetContextForUserSubjectType(v)
 	return nil
 }
 

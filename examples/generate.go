@@ -6,12 +6,12 @@ import (
 	_ "github.com/ogen-go/ogen"
 )
 
-// Fully supported:
+// Almost fully supported, except optional params:
 
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/petstore.yaml --target ex_petstore --clean
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/firecracker.json --target ex_firecracker --clean
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/gotd_bot_api.json --target ex_gotd --clean
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/manga.json --target ex_manga --clean
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/petstore.yaml --target ex_petstore --clean --debug.noerr "optional params"
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/firecracker.json --target ex_firecracker --clean --debug.noerr "optional params"
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/gotd_bot_api.json --target ex_gotd --clean --debug.noerr "optional params"
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/manga.json --target ex_manga --clean --debug.noerr "optional params"
 
 // Partially supported:
 

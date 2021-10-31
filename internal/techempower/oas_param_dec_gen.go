@@ -88,6 +88,8 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 			}(); err != nil {
 				return params, err
 			}
+		} else {
+			return params, fmt.Errorf("query parameter 'count' not specified")
 		}
 	}
 	return params, nil
@@ -121,6 +123,8 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 			}(); err != nil {
 				return params, err
 			}
+		} else {
+			return params, fmt.Errorf("query parameter 'queries' not specified")
 		}
 	}
 	return params, nil
@@ -154,6 +158,8 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 			}(); err != nil {
 				return params, err
 			}
+		} else {
+			return params, fmt.Errorf("query parameter 'queries' not specified")
 		}
 	}
 	return params, nil

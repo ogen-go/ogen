@@ -606,13 +606,6 @@ type ActionsListEnvironmentSecretsOK struct {
 	Secrets    []ActionsSecret `json:"secrets"`
 }
 
-type ActionsListJobsForWorkflowRunFilter string
-
-const (
-	ActionsListJobsForWorkflowRunFilterLatest ActionsListJobsForWorkflowRunFilter = "latest"
-	ActionsListJobsForWorkflowRunFilterAll    ActionsListJobsForWorkflowRunFilter = "all"
-)
-
 type ActionsListJobsForWorkflowRunOK struct {
 	TotalCount int   `json:"total_count"`
 	Jobs       []Job `json:"jobs"`
@@ -677,24 +670,6 @@ type ActionsListWorkflowRunsForRepoOK struct {
 	TotalCount   int           `json:"total_count"`
 	WorkflowRuns []WorkflowRun `json:"workflow_runs"`
 }
-
-type ActionsListWorkflowRunsForRepoStatus string
-
-const (
-	ActionsListWorkflowRunsForRepoStatusCompleted      ActionsListWorkflowRunsForRepoStatus = "completed"
-	ActionsListWorkflowRunsForRepoStatusActionRequired ActionsListWorkflowRunsForRepoStatus = "action_required"
-	ActionsListWorkflowRunsForRepoStatusCancelled      ActionsListWorkflowRunsForRepoStatus = "cancelled"
-	ActionsListWorkflowRunsForRepoStatusFailure        ActionsListWorkflowRunsForRepoStatus = "failure"
-	ActionsListWorkflowRunsForRepoStatusNeutral        ActionsListWorkflowRunsForRepoStatus = "neutral"
-	ActionsListWorkflowRunsForRepoStatusSkipped        ActionsListWorkflowRunsForRepoStatus = "skipped"
-	ActionsListWorkflowRunsForRepoStatusStale          ActionsListWorkflowRunsForRepoStatus = "stale"
-	ActionsListWorkflowRunsForRepoStatusSuccess        ActionsListWorkflowRunsForRepoStatus = "success"
-	ActionsListWorkflowRunsForRepoStatusTimedOut       ActionsListWorkflowRunsForRepoStatus = "timed_out"
-	ActionsListWorkflowRunsForRepoStatusInProgress     ActionsListWorkflowRunsForRepoStatus = "in_progress"
-	ActionsListWorkflowRunsForRepoStatusQueued         ActionsListWorkflowRunsForRepoStatus = "queued"
-	ActionsListWorkflowRunsForRepoStatusRequested      ActionsListWorkflowRunsForRepoStatus = "requested"
-	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
-)
 
 // ActionsListWorkflowRunsWorkflowID represents sum type.
 type ActionsListWorkflowRunsWorkflowID struct {
@@ -1094,13 +1069,6 @@ func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
 }
 
-type ActivityListReposStarredByAuthenticatedUserDirection string
-
-const (
-	ActivityListReposStarredByAuthenticatedUserDirectionAsc  ActivityListReposStarredByAuthenticatedUserDirection = "asc"
-	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
-)
-
 type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
 
 func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) wrap(v []Repository) {
@@ -1124,27 +1092,6 @@ func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3Star
 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserRes() {
 }
-
-type ActivityListReposStarredByAuthenticatedUserSort string
-
-const (
-	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
-	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
-)
-
-type ActivityListReposStarredByUserDirection string
-
-const (
-	ActivityListReposStarredByUserDirectionAsc  ActivityListReposStarredByUserDirection = "asc"
-	ActivityListReposStarredByUserDirectionDesc ActivityListReposStarredByUserDirection = "desc"
-)
-
-type ActivityListReposStarredByUserSort string
-
-const (
-	ActivityListReposStarredByUserSortCreated ActivityListReposStarredByUserSort = "created"
-	ActivityListReposStarredByUserSortUpdated ActivityListReposStarredByUserSort = "updated"
-)
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1779,27 +1726,6 @@ type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
-type AppsListAccountsForPlanDirection string
-
-const (
-	AppsListAccountsForPlanDirectionAsc  AppsListAccountsForPlanDirection = "asc"
-	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
-)
-
-type AppsListAccountsForPlanSort string
-
-const (
-	AppsListAccountsForPlanSortCreated AppsListAccountsForPlanSort = "created"
-	AppsListAccountsForPlanSortUpdated AppsListAccountsForPlanSort = "updated"
-)
-
-type AppsListAccountsForPlanStubbedDirection string
-
-const (
-	AppsListAccountsForPlanStubbedDirectionAsc  AppsListAccountsForPlanStubbedDirection = "asc"
-	AppsListAccountsForPlanStubbedDirectionDesc AppsListAccountsForPlanStubbedDirection = "desc"
-)
-
 type AppsListAccountsForPlanStubbedOKApplicationJSON []MarketplacePurchase
 
 func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) wrap(v []MarketplacePurchase) {
@@ -1810,13 +1736,6 @@ func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) unwrap() []Marketplace
 }
 
 func (*AppsListAccountsForPlanStubbedOKApplicationJSON) appsListAccountsForPlanStubbedRes() {}
-
-type AppsListAccountsForPlanStubbedSort string
-
-const (
-	AppsListAccountsForPlanStubbedSortCreated AppsListAccountsForPlanStubbedSort = "created"
-	AppsListAccountsForPlanStubbedSortUpdated AppsListAccountsForPlanStubbedSort = "updated"
-)
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -2668,45 +2587,15 @@ type ChecksCreateSuiteReq struct {
 	HeadSha string `json:"head_sha"`
 }
 
-type ChecksListForRefFilter string
-
-const (
-	ChecksListForRefFilterLatest ChecksListForRefFilter = "latest"
-	ChecksListForRefFilterAll    ChecksListForRefFilter = "all"
-)
-
 type ChecksListForRefOK struct {
 	TotalCount int        `json:"total_count"`
 	CheckRuns  []CheckRun `json:"check_runs"`
 }
 
-type ChecksListForRefStatus string
-
-const (
-	ChecksListForRefStatusQueued     ChecksListForRefStatus = "queued"
-	ChecksListForRefStatusInProgress ChecksListForRefStatus = "in_progress"
-	ChecksListForRefStatusCompleted  ChecksListForRefStatus = "completed"
-)
-
-type ChecksListForSuiteFilter string
-
-const (
-	ChecksListForSuiteFilterLatest ChecksListForSuiteFilter = "latest"
-	ChecksListForSuiteFilterAll    ChecksListForSuiteFilter = "all"
-)
-
 type ChecksListForSuiteOK struct {
 	TotalCount int        `json:"total_count"`
 	CheckRuns  []CheckRun `json:"check_runs"`
 }
-
-type ChecksListForSuiteStatus string
-
-const (
-	ChecksListForSuiteStatusQueued     ChecksListForSuiteStatus = "queued"
-	ChecksListForSuiteStatusInProgress ChecksListForSuiteStatus = "in_progress"
-	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
-)
 
 type ChecksListSuitesForRefOK struct {
 	TotalCount  int          `json:"total_count"`
@@ -3806,21 +3695,6 @@ type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent 
 
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent is response for EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise operation.
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent struct{}
-
-type EnterpriseAdminGetAuditLogInclude string
-
-const (
-	EnterpriseAdminGetAuditLogIncludeWeb EnterpriseAdminGetAuditLogInclude = "web"
-	EnterpriseAdminGetAuditLogIncludeGit EnterpriseAdminGetAuditLogInclude = "git"
-	EnterpriseAdminGetAuditLogIncludeAll EnterpriseAdminGetAuditLogInclude = "all"
-)
-
-type EnterpriseAdminGetAuditLogOrder string
-
-const (
-	EnterpriseAdminGetAuditLogOrderDesc EnterpriseAdminGetAuditLogOrder = "desc"
-	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
-)
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK struct {
 	TotalCount    float64              `json:"total_count"`
@@ -5434,20 +5308,6 @@ func (a *IssuesListCommentsApplicationJSONNotFound) unwrap() BasicError { return
 
 func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsRes() {}
 
-type IssuesListCommentsForRepoDirection string
-
-const (
-	IssuesListCommentsForRepoDirectionAsc  IssuesListCommentsForRepoDirection = "asc"
-	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
-)
-
-type IssuesListCommentsForRepoSort string
-
-const (
-	IssuesListCommentsForRepoSortCreated IssuesListCommentsForRepoSort = "created"
-	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
-)
-
 type IssuesListCommentsOKApplicationJSON []IssueComment
 
 func (a *IssuesListCommentsOKApplicationJSON) wrap(v []IssueComment) {
@@ -5456,115 +5316,6 @@ func (a *IssuesListCommentsOKApplicationJSON) wrap(v []IssueComment) {
 func (a *IssuesListCommentsOKApplicationJSON) unwrap() []IssueComment { return []IssueComment(*a) }
 
 func (*IssuesListCommentsOKApplicationJSON) issuesListCommentsRes() {}
-
-type IssuesListDirection string
-
-const (
-	IssuesListDirectionAsc  IssuesListDirection = "asc"
-	IssuesListDirectionDesc IssuesListDirection = "desc"
-)
-
-type IssuesListFilter string
-
-const (
-	IssuesListFilterAssigned   IssuesListFilter = "assigned"
-	IssuesListFilterCreated    IssuesListFilter = "created"
-	IssuesListFilterMentioned  IssuesListFilter = "mentioned"
-	IssuesListFilterSubscribed IssuesListFilter = "subscribed"
-	IssuesListFilterRepos      IssuesListFilter = "repos"
-	IssuesListFilterAll        IssuesListFilter = "all"
-)
-
-type IssuesListForAuthenticatedUserDirection string
-
-const (
-	IssuesListForAuthenticatedUserDirectionAsc  IssuesListForAuthenticatedUserDirection = "asc"
-	IssuesListForAuthenticatedUserDirectionDesc IssuesListForAuthenticatedUserDirection = "desc"
-)
-
-type IssuesListForAuthenticatedUserFilter string
-
-const (
-	IssuesListForAuthenticatedUserFilterAssigned   IssuesListForAuthenticatedUserFilter = "assigned"
-	IssuesListForAuthenticatedUserFilterCreated    IssuesListForAuthenticatedUserFilter = "created"
-	IssuesListForAuthenticatedUserFilterMentioned  IssuesListForAuthenticatedUserFilter = "mentioned"
-	IssuesListForAuthenticatedUserFilterSubscribed IssuesListForAuthenticatedUserFilter = "subscribed"
-	IssuesListForAuthenticatedUserFilterRepos      IssuesListForAuthenticatedUserFilter = "repos"
-	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
-)
-
-type IssuesListForAuthenticatedUserSort string
-
-const (
-	IssuesListForAuthenticatedUserSortCreated  IssuesListForAuthenticatedUserSort = "created"
-	IssuesListForAuthenticatedUserSortUpdated  IssuesListForAuthenticatedUserSort = "updated"
-	IssuesListForAuthenticatedUserSortComments IssuesListForAuthenticatedUserSort = "comments"
-)
-
-type IssuesListForAuthenticatedUserState string
-
-const (
-	IssuesListForAuthenticatedUserStateOpen   IssuesListForAuthenticatedUserState = "open"
-	IssuesListForAuthenticatedUserStateClosed IssuesListForAuthenticatedUserState = "closed"
-	IssuesListForAuthenticatedUserStateAll    IssuesListForAuthenticatedUserState = "all"
-)
-
-type IssuesListForOrgDirection string
-
-const (
-	IssuesListForOrgDirectionAsc  IssuesListForOrgDirection = "asc"
-	IssuesListForOrgDirectionDesc IssuesListForOrgDirection = "desc"
-)
-
-type IssuesListForOrgFilter string
-
-const (
-	IssuesListForOrgFilterAssigned   IssuesListForOrgFilter = "assigned"
-	IssuesListForOrgFilterCreated    IssuesListForOrgFilter = "created"
-	IssuesListForOrgFilterMentioned  IssuesListForOrgFilter = "mentioned"
-	IssuesListForOrgFilterSubscribed IssuesListForOrgFilter = "subscribed"
-	IssuesListForOrgFilterRepos      IssuesListForOrgFilter = "repos"
-	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
-)
-
-type IssuesListForOrgSort string
-
-const (
-	IssuesListForOrgSortCreated  IssuesListForOrgSort = "created"
-	IssuesListForOrgSortUpdated  IssuesListForOrgSort = "updated"
-	IssuesListForOrgSortComments IssuesListForOrgSort = "comments"
-)
-
-type IssuesListForOrgState string
-
-const (
-	IssuesListForOrgStateOpen   IssuesListForOrgState = "open"
-	IssuesListForOrgStateClosed IssuesListForOrgState = "closed"
-	IssuesListForOrgStateAll    IssuesListForOrgState = "all"
-)
-
-type IssuesListForRepoDirection string
-
-const (
-	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
-	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
-)
-
-type IssuesListForRepoSort string
-
-const (
-	IssuesListForRepoSortCreated  IssuesListForRepoSort = "created"
-	IssuesListForRepoSortUpdated  IssuesListForRepoSort = "updated"
-	IssuesListForRepoSortComments IssuesListForRepoSort = "comments"
-)
-
-type IssuesListForRepoState string
-
-const (
-	IssuesListForRepoStateOpen   IssuesListForRepoState = "open"
-	IssuesListForRepoStateClosed IssuesListForRepoState = "closed"
-	IssuesListForRepoStateAll    IssuesListForRepoState = "all"
-)
 
 type IssuesListLabelsForRepoOKApplicationJSON []Label
 
@@ -5584,13 +5335,6 @@ func (a *IssuesListLabelsOnIssueOKApplicationJSON) unwrap() []Label { return []L
 
 func (*IssuesListLabelsOnIssueOKApplicationJSON) issuesListLabelsOnIssueRes() {}
 
-type IssuesListMilestonesDirection string
-
-const (
-	IssuesListMilestonesDirectionAsc  IssuesListMilestonesDirection = "asc"
-	IssuesListMilestonesDirectionDesc IssuesListMilestonesDirection = "desc"
-)
-
 type IssuesListMilestonesOKApplicationJSON []Milestone
 
 func (a *IssuesListMilestonesOKApplicationJSON) wrap(v []Milestone) {
@@ -5599,37 +5343,6 @@ func (a *IssuesListMilestonesOKApplicationJSON) wrap(v []Milestone) {
 func (a *IssuesListMilestonesOKApplicationJSON) unwrap() []Milestone { return []Milestone(*a) }
 
 func (*IssuesListMilestonesOKApplicationJSON) issuesListMilestonesRes() {}
-
-type IssuesListMilestonesSort string
-
-const (
-	IssuesListMilestonesSortDueOn        IssuesListMilestonesSort = "due_on"
-	IssuesListMilestonesSortCompleteness IssuesListMilestonesSort = "completeness"
-)
-
-type IssuesListMilestonesState string
-
-const (
-	IssuesListMilestonesStateOpen   IssuesListMilestonesState = "open"
-	IssuesListMilestonesStateClosed IssuesListMilestonesState = "closed"
-	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
-)
-
-type IssuesListSort string
-
-const (
-	IssuesListSortCreated  IssuesListSort = "created"
-	IssuesListSortUpdated  IssuesListSort = "updated"
-	IssuesListSortComments IssuesListSort = "comments"
-)
-
-type IssuesListState string
-
-const (
-	IssuesListStateOpen   IssuesListState = "open"
-	IssuesListStateClosed IssuesListState = "closed"
-	IssuesListStateAll    IssuesListState = "all"
-)
 
 // IssuesLockNoContent is response for IssuesLock operation.
 type IssuesLockNoContent struct{}
@@ -6224,12 +5937,6 @@ func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) unw
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-type MigrationsGetStatusForOrgExcludeItem string
-
-const (
-	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
-)
-
 type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *MigrationsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -6264,12 +5971,6 @@ func (a *MigrationsListForAuthenticatedUserOKApplicationJSON) unwrap() []Migrati
 }
 
 func (*MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
-
-type MigrationsListForOrgExcludeItem string
-
-const (
-	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
-)
 
 type MigrationsListReposForOrgOKApplicationJSON []MinimalRepository
 
@@ -18837,21 +18538,6 @@ type OrgsDeleteWebhookNoContent struct{}
 
 func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
-type OrgsGetAuditLogInclude string
-
-const (
-	OrgsGetAuditLogIncludeWeb OrgsGetAuditLogInclude = "web"
-	OrgsGetAuditLogIncludeGit OrgsGetAuditLogInclude = "git"
-	OrgsGetAuditLogIncludeAll OrgsGetAuditLogInclude = "all"
-)
-
-type OrgsGetAuditLogOrder string
-
-const (
-	OrgsGetAuditLogOrderDesc OrgsGetAuditLogOrder = "desc"
-	OrgsGetAuditLogOrderAsc  OrgsGetAuditLogOrder = "asc"
-)
-
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -18956,30 +18642,8 @@ func (a *OrgsListInvitationTeamsOKApplicationJSON) unwrap() []Team { return []Te
 
 func (*OrgsListInvitationTeamsOKApplicationJSON) orgsListInvitationTeamsRes() {}
 
-type OrgsListMembersFilter string
-
-const (
-	OrgsListMembersFilter2FADisabled OrgsListMembersFilter = "2fa_disabled"
-	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
-)
-
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct{}
-
-type OrgsListMembersRole string
-
-const (
-	OrgsListMembersRoleAll    OrgsListMembersRole = "all"
-	OrgsListMembersRoleAdmin  OrgsListMembersRole = "admin"
-	OrgsListMembersRoleMember OrgsListMembersRole = "member"
-)
-
-type OrgsListMembershipsForAuthenticatedUserState string
-
-const (
-	OrgsListMembershipsForAuthenticatedUserStateActive  OrgsListMembershipsForAuthenticatedUserState = "active"
-	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
-)
 
 type OrgsListOKApplicationJSON []OrganizationSimple
 
@@ -18987,13 +18651,6 @@ func (a *OrgsListOKApplicationJSON) wrap(v []OrganizationSimple)  { *a = OrgsLis
 func (a *OrgsListOKApplicationJSON) unwrap() []OrganizationSimple { return []OrganizationSimple(*a) }
 
 func (*OrgsListOKApplicationJSON) orgsListRes() {}
-
-type OrgsListOutsideCollaboratorsFilter string
-
-const (
-	OrgsListOutsideCollaboratorsFilter2FADisabled OrgsListOutsideCollaboratorsFilter = "2fa_disabled"
-	OrgsListOutsideCollaboratorsFilterAll         OrgsListOutsideCollaboratorsFilter = "all"
-)
 
 type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
 
@@ -19609,13 +19266,6 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "container"
 )
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState string
-
-const (
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "active"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "deleted"
-)
-
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
 
 func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) wrap(v BasicError) {
@@ -19673,13 +19323,6 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker    PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "docker"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "nuget"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "container"
-)
-
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgState string
-
-const (
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive  PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "active"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "deleted"
 )
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
@@ -19818,14 +19461,6 @@ const (
 	PackagesListPackagesForAuthenticatedUserPackageTypeContainer PackagesListPackagesForAuthenticatedUserPackageType = "container"
 )
 
-type PackagesListPackagesForAuthenticatedUserVisibility string
-
-const (
-	PackagesListPackagesForAuthenticatedUserVisibilityPublic   PackagesListPackagesForAuthenticatedUserVisibility = "public"
-	PackagesListPackagesForAuthenticatedUserVisibilityPrivate  PackagesListPackagesForAuthenticatedUserVisibility = "private"
-	PackagesListPackagesForAuthenticatedUserVisibilityInternal PackagesListPackagesForAuthenticatedUserVisibility = "internal"
-)
-
 type PackagesListPackagesForOrganizationApplicationJSONForbidden BasicError
 
 func (a *PackagesListPackagesForOrganizationApplicationJSONForbidden) wrap(v BasicError) {
@@ -19873,14 +19508,6 @@ const (
 	PackagesListPackagesForOrganizationPackageTypeContainer PackagesListPackagesForOrganizationPackageType = "container"
 )
 
-type PackagesListPackagesForOrganizationVisibility string
-
-const (
-	PackagesListPackagesForOrganizationVisibilityPublic   PackagesListPackagesForOrganizationVisibility = "public"
-	PackagesListPackagesForOrganizationVisibilityPrivate  PackagesListPackagesForOrganizationVisibility = "private"
-	PackagesListPackagesForOrganizationVisibilityInternal PackagesListPackagesForOrganizationVisibility = "internal"
-)
-
 type PackagesListPackagesForUserApplicationJSONForbidden BasicError
 
 func (a *PackagesListPackagesForUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -19921,14 +19548,6 @@ const (
 	PackagesListPackagesForUserPackageTypeDocker    PackagesListPackagesForUserPackageType = "docker"
 	PackagesListPackagesForUserPackageTypeNuget     PackagesListPackagesForUserPackageType = "nuget"
 	PackagesListPackagesForUserPackageTypeContainer PackagesListPackagesForUserPackageType = "container"
-)
-
-type PackagesListPackagesForUserVisibility string
-
-const (
-	PackagesListPackagesForUserVisibilityPublic   PackagesListPackagesForUserVisibility = "public"
-	PackagesListPackagesForUserVisibilityPrivate  PackagesListPackagesForUserVisibility = "private"
-	PackagesListPackagesForUserVisibilityInternal PackagesListPackagesForUserVisibility = "internal"
 )
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden BasicError
@@ -20976,14 +20595,6 @@ func (a *ProjectsListCardsApplicationJSONUnauthorized) unwrap() BasicError { ret
 
 func (*ProjectsListCardsApplicationJSONUnauthorized) projectsListCardsRes() {}
 
-type ProjectsListCardsArchivedState string
-
-const (
-	ProjectsListCardsArchivedStateAll         ProjectsListCardsArchivedState = "all"
-	ProjectsListCardsArchivedStateArchived    ProjectsListCardsArchivedState = "archived"
-	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
-)
-
 type ProjectsListCardsOKApplicationJSON []ProjectCard
 
 func (a *ProjectsListCardsOKApplicationJSON) wrap(v []ProjectCard) {
@@ -20992,14 +20603,6 @@ func (a *ProjectsListCardsOKApplicationJSON) wrap(v []ProjectCard) {
 func (a *ProjectsListCardsOKApplicationJSON) unwrap() []ProjectCard { return []ProjectCard(*a) }
 
 func (*ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
-
-type ProjectsListCollaboratorsAffiliation string
-
-const (
-	ProjectsListCollaboratorsAffiliationOutside ProjectsListCollaboratorsAffiliation = "outside"
-	ProjectsListCollaboratorsAffiliationDirect  ProjectsListCollaboratorsAffiliation = "direct"
-	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
-)
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
@@ -21036,14 +20639,6 @@ func (a *ProjectsListForOrgOKApplicationJSON) wrap(v []Project) {
 func (a *ProjectsListForOrgOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForOrgOKApplicationJSON) projectsListForOrgRes() {}
-
-type ProjectsListForOrgState string
-
-const (
-	ProjectsListForOrgStateOpen   ProjectsListForOrgState = "open"
-	ProjectsListForOrgStateClosed ProjectsListForOrgState = "closed"
-	ProjectsListForOrgStateAll    ProjectsListForOrgState = "all"
-)
 
 type ProjectsListForRepoApplicationJSONForbidden BasicError
 
@@ -21089,22 +20684,6 @@ func (a *ProjectsListForRepoOKApplicationJSON) wrap(v []Project) {
 func (a *ProjectsListForRepoOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForRepoOKApplicationJSON) projectsListForRepoRes() {}
-
-type ProjectsListForRepoState string
-
-const (
-	ProjectsListForRepoStateOpen   ProjectsListForRepoState = "open"
-	ProjectsListForRepoStateClosed ProjectsListForRepoState = "closed"
-	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
-)
-
-type ProjectsListForUserState string
-
-const (
-	ProjectsListForUserStateOpen   ProjectsListForUserState = "open"
-	ProjectsListForUserStateClosed ProjectsListForUserState = "closed"
-	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
-)
 
 type ProjectsMoveCardCreated struct{}
 
@@ -22105,59 +21684,6 @@ func (a *PullsListCommentsForReviewOKApplicationJSON) unwrap() []ReviewComment {
 
 func (*PullsListCommentsForReviewOKApplicationJSON) pullsListCommentsForReviewRes() {}
 
-type PullsListDirection string
-
-const (
-	PullsListDirectionAsc  PullsListDirection = "asc"
-	PullsListDirectionDesc PullsListDirection = "desc"
-)
-
-type PullsListReviewCommentsDirection string
-
-const (
-	PullsListReviewCommentsDirectionAsc  PullsListReviewCommentsDirection = "asc"
-	PullsListReviewCommentsDirectionDesc PullsListReviewCommentsDirection = "desc"
-)
-
-type PullsListReviewCommentsForRepoDirection string
-
-const (
-	PullsListReviewCommentsForRepoDirectionAsc  PullsListReviewCommentsForRepoDirection = "asc"
-	PullsListReviewCommentsForRepoDirectionDesc PullsListReviewCommentsForRepoDirection = "desc"
-)
-
-type PullsListReviewCommentsForRepoSort string
-
-const (
-	PullsListReviewCommentsForRepoSortCreated   PullsListReviewCommentsForRepoSort = "created"
-	PullsListReviewCommentsForRepoSortUpdated   PullsListReviewCommentsForRepoSort = "updated"
-	PullsListReviewCommentsForRepoSortCreatedAt PullsListReviewCommentsForRepoSort = "created_at"
-)
-
-type PullsListReviewCommentsSort string
-
-const (
-	PullsListReviewCommentsSortCreated PullsListReviewCommentsSort = "created"
-	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
-)
-
-type PullsListSort string
-
-const (
-	PullsListSortCreated          PullsListSort = "created"
-	PullsListSortUpdated          PullsListSort = "updated"
-	PullsListSortPopularity       PullsListSort = "popularity"
-	PullsListSortLongMinusRunning PullsListSort = "long-running"
-)
-
-type PullsListState string
-
-const (
-	PullsListStateOpen   PullsListState = "open"
-	PullsListStateClosed PullsListState = "closed"
-	PullsListStateAll    PullsListState = "all"
-)
-
 type PullsMergeConflict struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
@@ -22562,19 +22088,6 @@ type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
-type ReactionsListForCommitCommentContent string
-
-const (
-	ReactionsListForCommitCommentContentPlus1    ReactionsListForCommitCommentContent = "+1"
-	ReactionsListForCommitCommentContentMinus1   ReactionsListForCommitCommentContent = "-1"
-	ReactionsListForCommitCommentContentLaugh    ReactionsListForCommitCommentContent = "laugh"
-	ReactionsListForCommitCommentContentConfused ReactionsListForCommitCommentContent = "confused"
-	ReactionsListForCommitCommentContentHeart    ReactionsListForCommitCommentContent = "heart"
-	ReactionsListForCommitCommentContentHooray   ReactionsListForCommitCommentContent = "hooray"
-	ReactionsListForCommitCommentContentRocket   ReactionsListForCommitCommentContent = "rocket"
-	ReactionsListForCommitCommentContentEyes     ReactionsListForCommitCommentContent = "eyes"
-)
-
 type ReactionsListForCommitCommentOKApplicationJSON []Reaction
 
 func (a *ReactionsListForCommitCommentOKApplicationJSON) wrap(v []Reaction) {
@@ -22602,19 +22115,6 @@ func (a *ReactionsListForIssueApplicationJSONNotFound) unwrap() BasicError { ret
 
 func (*ReactionsListForIssueApplicationJSONNotFound) reactionsListForIssueRes() {}
 
-type ReactionsListForIssueCommentContent string
-
-const (
-	ReactionsListForIssueCommentContentPlus1    ReactionsListForIssueCommentContent = "+1"
-	ReactionsListForIssueCommentContentMinus1   ReactionsListForIssueCommentContent = "-1"
-	ReactionsListForIssueCommentContentLaugh    ReactionsListForIssueCommentContent = "laugh"
-	ReactionsListForIssueCommentContentConfused ReactionsListForIssueCommentContent = "confused"
-	ReactionsListForIssueCommentContentHeart    ReactionsListForIssueCommentContent = "heart"
-	ReactionsListForIssueCommentContentHooray   ReactionsListForIssueCommentContent = "hooray"
-	ReactionsListForIssueCommentContentRocket   ReactionsListForIssueCommentContent = "rocket"
-	ReactionsListForIssueCommentContentEyes     ReactionsListForIssueCommentContent = "eyes"
-)
-
 type ReactionsListForIssueCommentOKApplicationJSON []Reaction
 
 func (a *ReactionsListForIssueCommentOKApplicationJSON) wrap(v []Reaction) {
@@ -22624,19 +22124,6 @@ func (a *ReactionsListForIssueCommentOKApplicationJSON) unwrap() []Reaction { re
 
 func (*ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
 
-type ReactionsListForIssueContent string
-
-const (
-	ReactionsListForIssueContentPlus1    ReactionsListForIssueContent = "+1"
-	ReactionsListForIssueContentMinus1   ReactionsListForIssueContent = "-1"
-	ReactionsListForIssueContentLaugh    ReactionsListForIssueContent = "laugh"
-	ReactionsListForIssueContentConfused ReactionsListForIssueContent = "confused"
-	ReactionsListForIssueContentHeart    ReactionsListForIssueContent = "heart"
-	ReactionsListForIssueContentHooray   ReactionsListForIssueContent = "hooray"
-	ReactionsListForIssueContentRocket   ReactionsListForIssueContent = "rocket"
-	ReactionsListForIssueContentEyes     ReactionsListForIssueContent = "eyes"
-)
-
 type ReactionsListForIssueOKApplicationJSON []Reaction
 
 func (a *ReactionsListForIssueOKApplicationJSON) wrap(v []Reaction) {
@@ -22645,19 +22132,6 @@ func (a *ReactionsListForIssueOKApplicationJSON) wrap(v []Reaction) {
 func (a *ReactionsListForIssueOKApplicationJSON) unwrap() []Reaction { return []Reaction(*a) }
 
 func (*ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
-
-type ReactionsListForPullRequestReviewCommentContent string
-
-const (
-	ReactionsListForPullRequestReviewCommentContentPlus1    ReactionsListForPullRequestReviewCommentContent = "+1"
-	ReactionsListForPullRequestReviewCommentContentMinus1   ReactionsListForPullRequestReviewCommentContent = "-1"
-	ReactionsListForPullRequestReviewCommentContentLaugh    ReactionsListForPullRequestReviewCommentContent = "laugh"
-	ReactionsListForPullRequestReviewCommentContentConfused ReactionsListForPullRequestReviewCommentContent = "confused"
-	ReactionsListForPullRequestReviewCommentContentHeart    ReactionsListForPullRequestReviewCommentContent = "heart"
-	ReactionsListForPullRequestReviewCommentContentHooray   ReactionsListForPullRequestReviewCommentContent = "hooray"
-	ReactionsListForPullRequestReviewCommentContentRocket   ReactionsListForPullRequestReviewCommentContent = "rocket"
-	ReactionsListForPullRequestReviewCommentContentEyes     ReactionsListForPullRequestReviewCommentContent = "eyes"
-)
 
 type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
 
@@ -22670,58 +22144,6 @@ func (a *ReactionsListForPullRequestReviewCommentOKApplicationJSON) unwrap() []R
 
 func (*ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
 }
-
-type ReactionsListForTeamDiscussionCommentInOrgContent string
-
-const (
-	ReactionsListForTeamDiscussionCommentInOrgContentPlus1    ReactionsListForTeamDiscussionCommentInOrgContent = "+1"
-	ReactionsListForTeamDiscussionCommentInOrgContentMinus1   ReactionsListForTeamDiscussionCommentInOrgContent = "-1"
-	ReactionsListForTeamDiscussionCommentInOrgContentLaugh    ReactionsListForTeamDiscussionCommentInOrgContent = "laugh"
-	ReactionsListForTeamDiscussionCommentInOrgContentConfused ReactionsListForTeamDiscussionCommentInOrgContent = "confused"
-	ReactionsListForTeamDiscussionCommentInOrgContentHeart    ReactionsListForTeamDiscussionCommentInOrgContent = "heart"
-	ReactionsListForTeamDiscussionCommentInOrgContentHooray   ReactionsListForTeamDiscussionCommentInOrgContent = "hooray"
-	ReactionsListForTeamDiscussionCommentInOrgContentRocket   ReactionsListForTeamDiscussionCommentInOrgContent = "rocket"
-	ReactionsListForTeamDiscussionCommentInOrgContentEyes     ReactionsListForTeamDiscussionCommentInOrgContent = "eyes"
-)
-
-type ReactionsListForTeamDiscussionCommentLegacyContent string
-
-const (
-	ReactionsListForTeamDiscussionCommentLegacyContentPlus1    ReactionsListForTeamDiscussionCommentLegacyContent = "+1"
-	ReactionsListForTeamDiscussionCommentLegacyContentMinus1   ReactionsListForTeamDiscussionCommentLegacyContent = "-1"
-	ReactionsListForTeamDiscussionCommentLegacyContentLaugh    ReactionsListForTeamDiscussionCommentLegacyContent = "laugh"
-	ReactionsListForTeamDiscussionCommentLegacyContentConfused ReactionsListForTeamDiscussionCommentLegacyContent = "confused"
-	ReactionsListForTeamDiscussionCommentLegacyContentHeart    ReactionsListForTeamDiscussionCommentLegacyContent = "heart"
-	ReactionsListForTeamDiscussionCommentLegacyContentHooray   ReactionsListForTeamDiscussionCommentLegacyContent = "hooray"
-	ReactionsListForTeamDiscussionCommentLegacyContentRocket   ReactionsListForTeamDiscussionCommentLegacyContent = "rocket"
-	ReactionsListForTeamDiscussionCommentLegacyContentEyes     ReactionsListForTeamDiscussionCommentLegacyContent = "eyes"
-)
-
-type ReactionsListForTeamDiscussionInOrgContent string
-
-const (
-	ReactionsListForTeamDiscussionInOrgContentPlus1    ReactionsListForTeamDiscussionInOrgContent = "+1"
-	ReactionsListForTeamDiscussionInOrgContentMinus1   ReactionsListForTeamDiscussionInOrgContent = "-1"
-	ReactionsListForTeamDiscussionInOrgContentLaugh    ReactionsListForTeamDiscussionInOrgContent = "laugh"
-	ReactionsListForTeamDiscussionInOrgContentConfused ReactionsListForTeamDiscussionInOrgContent = "confused"
-	ReactionsListForTeamDiscussionInOrgContentHeart    ReactionsListForTeamDiscussionInOrgContent = "heart"
-	ReactionsListForTeamDiscussionInOrgContentHooray   ReactionsListForTeamDiscussionInOrgContent = "hooray"
-	ReactionsListForTeamDiscussionInOrgContentRocket   ReactionsListForTeamDiscussionInOrgContent = "rocket"
-	ReactionsListForTeamDiscussionInOrgContentEyes     ReactionsListForTeamDiscussionInOrgContent = "eyes"
-)
-
-type ReactionsListForTeamDiscussionLegacyContent string
-
-const (
-	ReactionsListForTeamDiscussionLegacyContentPlus1    ReactionsListForTeamDiscussionLegacyContent = "+1"
-	ReactionsListForTeamDiscussionLegacyContentMinus1   ReactionsListForTeamDiscussionLegacyContent = "-1"
-	ReactionsListForTeamDiscussionLegacyContentLaugh    ReactionsListForTeamDiscussionLegacyContent = "laugh"
-	ReactionsListForTeamDiscussionLegacyContentConfused ReactionsListForTeamDiscussionLegacyContent = "confused"
-	ReactionsListForTeamDiscussionLegacyContentHeart    ReactionsListForTeamDiscussionLegacyContent = "heart"
-	ReactionsListForTeamDiscussionLegacyContentHooray   ReactionsListForTeamDiscussionLegacyContent = "hooray"
-	ReactionsListForTeamDiscussionLegacyContentRocket   ReactionsListForTeamDiscussionLegacyContent = "rocket"
-	ReactionsListForTeamDiscussionLegacyContentEyes     ReactionsListForTeamDiscussionLegacyContent = "eyes"
-)
 
 // Ref: #/components/schemas/referrer-traffic
 type ReferrerTraffic struct {
@@ -23416,14 +22838,6 @@ func (a *ReposGetBranchApplicationJSONNotFound) unwrap() BasicError { return Bas
 
 func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
-type ReposGetClonesPer string
-
-const (
-	ReposGetClonesPerEmpty ReposGetClonesPer = ""
-	ReposGetClonesPerDay   ReposGetClonesPer = "day"
-	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
-)
-
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (a *ReposGetCodeFrequencyStatsOKApplicationJSON) wrap(v []CodeFrequencyStat) {
@@ -23522,14 +22936,6 @@ func (a *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) unwrap() []S
 func (*ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
 }
 
-type ReposGetViewsPer string
-
-const (
-	ReposGetViewsPerEmpty ReposGetViewsPer = ""
-	ReposGetViewsPerDay   ReposGetViewsPer = "day"
-	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
-)
-
 type ReposListBranchesOKApplicationJSON []ShortBranch
 
 func (a *ReposListBranchesOKApplicationJSON) wrap(v []ShortBranch) {
@@ -23538,14 +22944,6 @@ func (a *ReposListBranchesOKApplicationJSON) wrap(v []ShortBranch) {
 func (a *ReposListBranchesOKApplicationJSON) unwrap() []ShortBranch { return []ShortBranch(*a) }
 
 func (*ReposListBranchesOKApplicationJSON) reposListBranchesRes() {}
-
-type ReposListCollaboratorsAffiliation string
-
-const (
-	ReposListCollaboratorsAffiliationOutside ReposListCollaboratorsAffiliation = "outside"
-	ReposListCollaboratorsAffiliationDirect  ReposListCollaboratorsAffiliation = "direct"
-	ReposListCollaboratorsAffiliationAll     ReposListCollaboratorsAffiliation = "all"
-)
 
 type ReposListCollaboratorsOKApplicationJSON []Collaborator
 
@@ -23655,92 +23053,6 @@ func (a *ReposListDeploymentStatusesOKApplicationJSON) unwrap() []DeploymentStat
 
 func (*ReposListDeploymentStatusesOKApplicationJSON) reposListDeploymentStatusesRes() {}
 
-type ReposListForAuthenticatedUserDirection string
-
-const (
-	ReposListForAuthenticatedUserDirectionAsc  ReposListForAuthenticatedUserDirection = "asc"
-	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
-)
-
-type ReposListForAuthenticatedUserSort string
-
-const (
-	ReposListForAuthenticatedUserSortCreated  ReposListForAuthenticatedUserSort = "created"
-	ReposListForAuthenticatedUserSortUpdated  ReposListForAuthenticatedUserSort = "updated"
-	ReposListForAuthenticatedUserSortPushed   ReposListForAuthenticatedUserSort = "pushed"
-	ReposListForAuthenticatedUserSortFullName ReposListForAuthenticatedUserSort = "full_name"
-)
-
-type ReposListForAuthenticatedUserType string
-
-const (
-	ReposListForAuthenticatedUserTypeAll     ReposListForAuthenticatedUserType = "all"
-	ReposListForAuthenticatedUserTypeOwner   ReposListForAuthenticatedUserType = "owner"
-	ReposListForAuthenticatedUserTypePublic  ReposListForAuthenticatedUserType = "public"
-	ReposListForAuthenticatedUserTypePrivate ReposListForAuthenticatedUserType = "private"
-	ReposListForAuthenticatedUserTypeMember  ReposListForAuthenticatedUserType = "member"
-)
-
-type ReposListForAuthenticatedUserVisibility string
-
-const (
-	ReposListForAuthenticatedUserVisibilityAll     ReposListForAuthenticatedUserVisibility = "all"
-	ReposListForAuthenticatedUserVisibilityPublic  ReposListForAuthenticatedUserVisibility = "public"
-	ReposListForAuthenticatedUserVisibilityPrivate ReposListForAuthenticatedUserVisibility = "private"
-)
-
-type ReposListForOrgDirection string
-
-const (
-	ReposListForOrgDirectionAsc  ReposListForOrgDirection = "asc"
-	ReposListForOrgDirectionDesc ReposListForOrgDirection = "desc"
-)
-
-type ReposListForOrgSort string
-
-const (
-	ReposListForOrgSortCreated  ReposListForOrgSort = "created"
-	ReposListForOrgSortUpdated  ReposListForOrgSort = "updated"
-	ReposListForOrgSortPushed   ReposListForOrgSort = "pushed"
-	ReposListForOrgSortFullName ReposListForOrgSort = "full_name"
-)
-
-type ReposListForOrgType string
-
-const (
-	ReposListForOrgTypeAll      ReposListForOrgType = "all"
-	ReposListForOrgTypePublic   ReposListForOrgType = "public"
-	ReposListForOrgTypePrivate  ReposListForOrgType = "private"
-	ReposListForOrgTypeForks    ReposListForOrgType = "forks"
-	ReposListForOrgTypeSources  ReposListForOrgType = "sources"
-	ReposListForOrgTypeMember   ReposListForOrgType = "member"
-	ReposListForOrgTypeInternal ReposListForOrgType = "internal"
-)
-
-type ReposListForUserDirection string
-
-const (
-	ReposListForUserDirectionAsc  ReposListForUserDirection = "asc"
-	ReposListForUserDirectionDesc ReposListForUserDirection = "desc"
-)
-
-type ReposListForUserSort string
-
-const (
-	ReposListForUserSortCreated  ReposListForUserSort = "created"
-	ReposListForUserSortUpdated  ReposListForUserSort = "updated"
-	ReposListForUserSortPushed   ReposListForUserSort = "pushed"
-	ReposListForUserSortFullName ReposListForUserSort = "full_name"
-)
-
-type ReposListForUserType string
-
-const (
-	ReposListForUserTypeAll    ReposListForUserType = "all"
-	ReposListForUserTypeOwner  ReposListForUserType = "owner"
-	ReposListForUserTypeMember ReposListForUserType = "member"
-)
-
 type ReposListForksOKApplicationJSON []MinimalRepository
 
 func (a *ReposListForksOKApplicationJSON) wrap(v []MinimalRepository) {
@@ -23751,15 +23063,6 @@ func (a *ReposListForksOKApplicationJSON) unwrap() []MinimalRepository {
 }
 
 func (*ReposListForksOKApplicationJSON) reposListForksRes() {}
-
-type ReposListForksSort string
-
-const (
-	ReposListForksSortNewest     ReposListForksSort = "newest"
-	ReposListForksSortOldest     ReposListForksSort = "oldest"
-	ReposListForksSortStargazers ReposListForksSort = "stargazers"
-	ReposListForksSortWatchers   ReposListForksSort = "watchers"
-)
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -24666,19 +23969,6 @@ type SearchCodeOK struct {
 	Items             []CodeSearchResultItem `json:"items"`
 }
 
-type SearchCodeOrder string
-
-const (
-	SearchCodeOrderDesc SearchCodeOrder = "desc"
-	SearchCodeOrderAsc  SearchCodeOrder = "asc"
-)
-
-type SearchCodeSort string
-
-const (
-	SearchCodeSortIndexed SearchCodeSort = "indexed"
-)
-
 type SearchCommitsOK struct {
 	TotalCount        int                      `json:"total_count"`
 	IncompleteResults bool                     `json:"incomplete_results"`
@@ -24687,48 +23977,11 @@ type SearchCommitsOK struct {
 
 func (*SearchCommitsOK) searchCommitsRes() {}
 
-type SearchCommitsOrder string
-
-const (
-	SearchCommitsOrderDesc SearchCommitsOrder = "desc"
-	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
-)
-
-type SearchCommitsSort string
-
-const (
-	SearchCommitsSortAuthorMinusDate    SearchCommitsSort = "author-date"
-	SearchCommitsSortCommitterMinusDate SearchCommitsSort = "committer-date"
-)
-
 type SearchIssuesAndPullRequestsOK struct {
 	TotalCount        int                     `json:"total_count"`
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []IssueSearchResultItem `json:"items"`
 }
-
-type SearchIssuesAndPullRequestsOrder string
-
-const (
-	SearchIssuesAndPullRequestsOrderDesc SearchIssuesAndPullRequestsOrder = "desc"
-	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
-)
-
-type SearchIssuesAndPullRequestsSort string
-
-const (
-	SearchIssuesAndPullRequestsSortComments                   SearchIssuesAndPullRequestsSort = "comments"
-	SearchIssuesAndPullRequestsSortReactions                  SearchIssuesAndPullRequestsSort = "reactions"
-	SearchIssuesAndPullRequestsSortReactionsMinusPlus1        SearchIssuesAndPullRequestsSort = "reactions-+1"
-	SearchIssuesAndPullRequestsSortReactionsMinusMinus1       SearchIssuesAndPullRequestsSort = "reactions--1"
-	SearchIssuesAndPullRequestsSortReactionsMinusSmile        SearchIssuesAndPullRequestsSort = "reactions-smile"
-	SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace SearchIssuesAndPullRequestsSort = "reactions-thinking_face"
-	SearchIssuesAndPullRequestsSortReactionsMinusHeart        SearchIssuesAndPullRequestsSort = "reactions-heart"
-	SearchIssuesAndPullRequestsSortReactionsMinusTada         SearchIssuesAndPullRequestsSort = "reactions-tada"
-	SearchIssuesAndPullRequestsSortInteractions               SearchIssuesAndPullRequestsSort = "interactions"
-	SearchIssuesAndPullRequestsSortCreated                    SearchIssuesAndPullRequestsSort = "created"
-	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
-)
 
 type SearchLabelsOK struct {
 	TotalCount        int                     `json:"total_count"`
@@ -24736,41 +23989,11 @@ type SearchLabelsOK struct {
 	Items             []LabelSearchResultItem `json:"items"`
 }
 
-type SearchLabelsOrder string
-
-const (
-	SearchLabelsOrderDesc SearchLabelsOrder = "desc"
-	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
-)
-
-type SearchLabelsSort string
-
-const (
-	SearchLabelsSortCreated SearchLabelsSort = "created"
-	SearchLabelsSortUpdated SearchLabelsSort = "updated"
-)
-
 type SearchReposOK struct {
 	TotalCount        int                    `json:"total_count"`
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []RepoSearchResultItem `json:"items"`
 }
-
-type SearchReposOrder string
-
-const (
-	SearchReposOrderDesc SearchReposOrder = "desc"
-	SearchReposOrderAsc  SearchReposOrder = "asc"
-)
-
-type SearchReposSort string
-
-const (
-	SearchReposSortStars                      SearchReposSort = "stars"
-	SearchReposSortForks                      SearchReposSort = "forks"
-	SearchReposSortHelpMinusWantedMinusIssues SearchReposSort = "help-wanted-issues"
-	SearchReposSortUpdated                    SearchReposSort = "updated"
-)
 
 type SearchResultTextMatches []SearchResultTextMatchesItem
 
@@ -24807,21 +24030,6 @@ type SearchUsersOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []UserSearchResultItem `json:"items"`
 }
-
-type SearchUsersOrder string
-
-const (
-	SearchUsersOrderDesc SearchUsersOrder = "desc"
-	SearchUsersOrderAsc  SearchUsersOrder = "asc"
-)
-
-type SearchUsersSort string
-
-const (
-	SearchUsersSortFollowers    SearchUsersSort = "followers"
-	SearchUsersSortRepositories SearchUsersSort = "repositories"
-	SearchUsersSortJoined       SearchUsersSort = "joined"
-)
 
 // Ref: #/components/schemas/secret-scanning-alert
 type SecretScanningAlert struct {
@@ -24875,13 +24083,6 @@ func (a *SecretScanningListAlertsForOrgOKApplicationJSON) unwrap() []Organizatio
 
 func (*SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
 
-type SecretScanningListAlertsForOrgState string
-
-const (
-	SecretScanningListAlertsForOrgStateOpen     SecretScanningListAlertsForOrgState = "open"
-	SecretScanningListAlertsForOrgStateResolved SecretScanningListAlertsForOrgState = "resolved"
-)
-
 // SecretScanningListAlertsForRepoNotFound is response for SecretScanningListAlertsForRepo operation.
 type SecretScanningListAlertsForRepoNotFound struct{}
 
@@ -24897,13 +24098,6 @@ func (a *SecretScanningListAlertsForRepoOKApplicationJSON) unwrap() []SecretScan
 }
 
 func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
-
-type SecretScanningListAlertsForRepoState string
-
-const (
-	SecretScanningListAlertsForRepoStateOpen     SecretScanningListAlertsForRepoState = "open"
-	SecretScanningListAlertsForRepoStateResolved SecretScanningListAlertsForRepoState = "resolved"
-)
 
 // SecretScanningUpdateAlertNotFound is response for SecretScanningUpdateAlert operation.
 type SecretScanningUpdateAlertNotFound struct{}
@@ -25618,34 +24812,6 @@ type TeamsGetMembershipForUserInOrgNotFound struct{}
 
 func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
 
-type TeamsListDiscussionCommentsInOrgDirection string
-
-const (
-	TeamsListDiscussionCommentsInOrgDirectionAsc  TeamsListDiscussionCommentsInOrgDirection = "asc"
-	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
-)
-
-type TeamsListDiscussionCommentsLegacyDirection string
-
-const (
-	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
-	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
-)
-
-type TeamsListDiscussionsInOrgDirection string
-
-const (
-	TeamsListDiscussionsInOrgDirectionAsc  TeamsListDiscussionsInOrgDirection = "asc"
-	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
-)
-
-type TeamsListDiscussionsLegacyDirection string
-
-const (
-	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
-	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
-)
-
 type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *TeamsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -25699,14 +24865,6 @@ func (a *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) unwrap() BasicError
 
 func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
 
-type TeamsListMembersInOrgRole string
-
-const (
-	TeamsListMembersInOrgRoleMember     TeamsListMembersInOrgRole = "member"
-	TeamsListMembersInOrgRoleMaintainer TeamsListMembersInOrgRole = "maintainer"
-	TeamsListMembersInOrgRoleAll        TeamsListMembersInOrgRole = "all"
-)
-
 type TeamsListMembersLegacyOKApplicationJSON []SimpleUser
 
 func (a *TeamsListMembersLegacyOKApplicationJSON) wrap(v []SimpleUser) {
@@ -25715,14 +24873,6 @@ func (a *TeamsListMembersLegacyOKApplicationJSON) wrap(v []SimpleUser) {
 func (a *TeamsListMembersLegacyOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
 
 func (*TeamsListMembersLegacyOKApplicationJSON) teamsListMembersLegacyRes() {}
-
-type TeamsListMembersLegacyRole string
-
-const (
-	TeamsListMembersLegacyRoleMember     TeamsListMembersLegacyRole = "member"
-	TeamsListMembersLegacyRoleMaintainer TeamsListMembersLegacyRole = "maintainer"
-	TeamsListMembersLegacyRoleAll        TeamsListMembersLegacyRole = "all"
-)
 
 type TeamsListOKApplicationJSON []Team
 
@@ -26326,15 +25476,6 @@ func NewPublicUserUsersGetByUsernameOK(v PublicUser) UsersGetByUsernameOK {
 }
 
 func (*UsersGetByUsernameOK) usersGetByUsernameRes() {}
-
-type UsersGetContextForUserSubjectType string
-
-const (
-	UsersGetContextForUserSubjectTypeOrganization UsersGetContextForUserSubjectType = "organization"
-	UsersGetContextForUserSubjectTypeRepository   UsersGetContextForUserSubjectType = "repository"
-	UsersGetContextForUserSubjectTypeIssue        UsersGetContextForUserSubjectType = "issue"
-	UsersGetContextForUserSubjectTypePullRequest  UsersGetContextForUserSubjectType = "pull_request"
-)
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
 

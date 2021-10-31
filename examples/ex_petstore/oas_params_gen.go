@@ -60,10 +60,6 @@ var (
 	_ = regexp.MustCompile
 )
 
-type ListPetsParams struct {
-	Limit int32
-}
-
 type ShowPetByIdParams struct {
 	PetId string
 }

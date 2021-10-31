@@ -203,6 +203,8 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			}
 
 			params.XTags = v
+		} else {
+			return params, fmt.Errorf("header parameter 'x-tags' not specified")
 		}
 	}
 	// Decode param "x-scope" located in "Header".

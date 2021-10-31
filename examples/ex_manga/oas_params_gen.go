@@ -83,10 +83,8 @@ type GetPageThumbnailImageParams struct {
 
 type SearchParams struct {
 	Query string
-	Page  int
 }
 
 type SearchByTagIDParams struct {
 	TagID int
-	Page  int
 }

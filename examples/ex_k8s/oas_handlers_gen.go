@@ -68,12 +68,6 @@ func NewCreateAdmissionregistrationV1MutatingWebhookConfigurationHandler(s Serve
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -81,7 +75,7 @@ func NewCreateAdmissionregistrationV1MutatingWebhookConfigurationHandler(s Serve
 			return
 		}
 
-		response, err := s.CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx, request, params)
+		response, err := s.CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -103,12 +97,6 @@ func NewCreateAdmissionregistrationV1ValidatingWebhookConfigurationHandler(s Ser
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -116,7 +104,7 @@ func NewCreateAdmissionregistrationV1ValidatingWebhookConfigurationHandler(s Ser
 			return
 		}
 
-		response, err := s.CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, request, params)
+		response, err := s.CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -138,12 +126,6 @@ func NewCreateApiextensionsV1CustomResourceDefinitionHandler(s Server, opts ...O
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateApiextensionsV1CustomResourceDefinitionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -151,7 +133,7 @@ func NewCreateApiextensionsV1CustomResourceDefinitionHandler(s Server, opts ...O
 			return
 		}
 
-		response, err := s.CreateApiextensionsV1CustomResourceDefinition(ctx, request, params)
+		response, err := s.CreateApiextensionsV1CustomResourceDefinition(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -173,12 +155,6 @@ func NewCreateApiregistrationV1APIServiceHandler(s Server, opts ...Option) func(
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateApiregistrationV1APIServiceParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateApiregistrationV1APIServiceRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -186,7 +162,7 @@ func NewCreateApiregistrationV1APIServiceHandler(s Server, opts ...Option) func(
 			return
 		}
 
-		response, err := s.CreateApiregistrationV1APIService(ctx, request, params)
+		response, err := s.CreateApiregistrationV1APIService(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -324,12 +300,6 @@ func NewCreateCertificatesV1CertificateSigningRequestHandler(s Server, opts ...O
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateCertificatesV1CertificateSigningRequestParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateCertificatesV1CertificateSigningRequestRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -337,7 +307,7 @@ func NewCreateCertificatesV1CertificateSigningRequestHandler(s Server, opts ...O
 			return
 		}
 
-		response, err := s.CreateCertificatesV1CertificateSigningRequest(ctx, request, params)
+		response, err := s.CreateCertificatesV1CertificateSigningRequest(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -359,12 +329,6 @@ func NewCreateCoreV1NamespaceHandler(s Server, opts ...Option) func(w http.Respo
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateCoreV1NamespaceParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateCoreV1NamespaceRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -372,7 +336,7 @@ func NewCreateCoreV1NamespaceHandler(s Server, opts ...Option) func(w http.Respo
 			return
 		}
 
-		response, err := s.CreateCoreV1Namespace(ctx, request, params)
+		response, err := s.CreateCoreV1Namespace(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -394,12 +358,6 @@ func NewCreateCoreV1NodeHandler(s Server, opts ...Option) func(w http.ResponseWr
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateCoreV1NodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateCoreV1NodeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -407,7 +365,7 @@ func NewCreateCoreV1NodeHandler(s Server, opts ...Option) func(w http.ResponseWr
 			return
 		}
 
-		response, err := s.CreateCoreV1Node(ctx, request, params)
+		response, err := s.CreateCoreV1Node(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -429,12 +387,6 @@ func NewCreateCoreV1PersistentVolumeHandler(s Server, opts ...Option) func(w htt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateCoreV1PersistentVolumeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateCoreV1PersistentVolumeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -442,7 +394,7 @@ func NewCreateCoreV1PersistentVolumeHandler(s Server, opts ...Option) func(w htt
 			return
 		}
 
-		response, err := s.CreateCoreV1PersistentVolume(ctx, request, params)
+		response, err := s.CreateCoreV1PersistentVolume(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -464,12 +416,6 @@ func NewCreateFlowcontrolApiserverV1beta1FlowSchemaHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -477,7 +423,7 @@ func NewCreateFlowcontrolApiserverV1beta1FlowSchemaHandler(s Server, opts ...Opt
 			return
 		}
 
-		response, err := s.CreateFlowcontrolApiserverV1beta1FlowSchema(ctx, request, params)
+		response, err := s.CreateFlowcontrolApiserverV1beta1FlowSchema(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -499,12 +445,6 @@ func NewCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationHandler(s Ser
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -512,7 +452,7 @@ func NewCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationHandler(s Ser
 			return
 		}
 
-		response, err := s.CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, request, params)
+		response, err := s.CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -534,12 +474,6 @@ func NewCreateFlowcontrolApiserverV1beta2FlowSchemaHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -547,7 +481,7 @@ func NewCreateFlowcontrolApiserverV1beta2FlowSchemaHandler(s Server, opts ...Opt
 			return
 		}
 
-		response, err := s.CreateFlowcontrolApiserverV1beta2FlowSchema(ctx, request, params)
+		response, err := s.CreateFlowcontrolApiserverV1beta2FlowSchema(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -569,12 +503,6 @@ func NewCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationHandler(s Ser
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -582,7 +510,7 @@ func NewCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationHandler(s Ser
 			return
 		}
 
-		response, err := s.CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, request, params)
+		response, err := s.CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -604,12 +532,6 @@ func NewCreateInternalApiserverV1alpha1StorageVersionHandler(s Server, opts ...O
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateInternalApiserverV1alpha1StorageVersionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -617,7 +539,7 @@ func NewCreateInternalApiserverV1alpha1StorageVersionHandler(s Server, opts ...O
 			return
 		}
 
-		response, err := s.CreateInternalApiserverV1alpha1StorageVersion(ctx, request, params)
+		response, err := s.CreateInternalApiserverV1alpha1StorageVersion(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -639,12 +561,6 @@ func NewCreateNetworkingV1IngressClassHandler(s Server, opts ...Option) func(w h
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateNetworkingV1IngressClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateNetworkingV1IngressClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -652,7 +568,7 @@ func NewCreateNetworkingV1IngressClassHandler(s Server, opts ...Option) func(w h
 			return
 		}
 
-		response, err := s.CreateNetworkingV1IngressClass(ctx, request, params)
+		response, err := s.CreateNetworkingV1IngressClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -674,12 +590,6 @@ func NewCreateNodeV1RuntimeClassHandler(s Server, opts ...Option) func(w http.Re
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateNodeV1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateNodeV1RuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -687,7 +597,7 @@ func NewCreateNodeV1RuntimeClassHandler(s Server, opts ...Option) func(w http.Re
 			return
 		}
 
-		response, err := s.CreateNodeV1RuntimeClass(ctx, request, params)
+		response, err := s.CreateNodeV1RuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -709,12 +619,6 @@ func NewCreateNodeV1alpha1RuntimeClassHandler(s Server, opts ...Option) func(w h
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateNodeV1alpha1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateNodeV1alpha1RuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -722,7 +626,7 @@ func NewCreateNodeV1alpha1RuntimeClassHandler(s Server, opts ...Option) func(w h
 			return
 		}
 
-		response, err := s.CreateNodeV1alpha1RuntimeClass(ctx, request, params)
+		response, err := s.CreateNodeV1alpha1RuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -744,12 +648,6 @@ func NewCreateNodeV1beta1RuntimeClassHandler(s Server, opts ...Option) func(w ht
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateNodeV1beta1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateNodeV1beta1RuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -757,7 +655,7 @@ func NewCreateNodeV1beta1RuntimeClassHandler(s Server, opts ...Option) func(w ht
 			return
 		}
 
-		response, err := s.CreateNodeV1beta1RuntimeClass(ctx, request, params)
+		response, err := s.CreateNodeV1beta1RuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -779,12 +677,6 @@ func NewCreatePolicyV1beta1PodSecurityPolicyHandler(s Server, opts ...Option) fu
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreatePolicyV1beta1PodSecurityPolicyParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -792,7 +684,7 @@ func NewCreatePolicyV1beta1PodSecurityPolicyHandler(s Server, opts ...Option) fu
 			return
 		}
 
-		response, err := s.CreatePolicyV1beta1PodSecurityPolicy(ctx, request, params)
+		response, err := s.CreatePolicyV1beta1PodSecurityPolicy(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -814,12 +706,6 @@ func NewCreateRbacAuthorizationV1ClusterRoleHandler(s Server, opts ...Option) fu
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateRbacAuthorizationV1ClusterRoleParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateRbacAuthorizationV1ClusterRoleRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -827,7 +713,7 @@ func NewCreateRbacAuthorizationV1ClusterRoleHandler(s Server, opts ...Option) fu
 			return
 		}
 
-		response, err := s.CreateRbacAuthorizationV1ClusterRole(ctx, request, params)
+		response, err := s.CreateRbacAuthorizationV1ClusterRole(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -849,12 +735,6 @@ func NewCreateRbacAuthorizationV1ClusterRoleBindingHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -862,7 +742,7 @@ func NewCreateRbacAuthorizationV1ClusterRoleBindingHandler(s Server, opts ...Opt
 			return
 		}
 
-		response, err := s.CreateRbacAuthorizationV1ClusterRoleBinding(ctx, request, params)
+		response, err := s.CreateRbacAuthorizationV1ClusterRoleBinding(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -884,12 +764,6 @@ func NewCreateSchedulingV1PriorityClassHandler(s Server, opts ...Option) func(w 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateSchedulingV1PriorityClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateSchedulingV1PriorityClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -897,7 +771,7 @@ func NewCreateSchedulingV1PriorityClassHandler(s Server, opts ...Option) func(w 
 			return
 		}
 
-		response, err := s.CreateSchedulingV1PriorityClass(ctx, request, params)
+		response, err := s.CreateSchedulingV1PriorityClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -919,12 +793,6 @@ func NewCreateStorageV1CSIDriverHandler(s Server, opts ...Option) func(w http.Re
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateStorageV1CSIDriverParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateStorageV1CSIDriverRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -932,7 +800,7 @@ func NewCreateStorageV1CSIDriverHandler(s Server, opts ...Option) func(w http.Re
 			return
 		}
 
-		response, err := s.CreateStorageV1CSIDriver(ctx, request, params)
+		response, err := s.CreateStorageV1CSIDriver(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -954,12 +822,6 @@ func NewCreateStorageV1CSINodeHandler(s Server, opts ...Option) func(w http.Resp
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateStorageV1CSINodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateStorageV1CSINodeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -967,7 +829,7 @@ func NewCreateStorageV1CSINodeHandler(s Server, opts ...Option) func(w http.Resp
 			return
 		}
 
-		response, err := s.CreateStorageV1CSINode(ctx, request, params)
+		response, err := s.CreateStorageV1CSINode(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -989,12 +851,6 @@ func NewCreateStorageV1StorageClassHandler(s Server, opts ...Option) func(w http
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateStorageV1StorageClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateStorageV1StorageClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1002,7 +858,7 @@ func NewCreateStorageV1StorageClassHandler(s Server, opts ...Option) func(w http
 			return
 		}
 
-		response, err := s.CreateStorageV1StorageClass(ctx, request, params)
+		response, err := s.CreateStorageV1StorageClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1024,12 +880,6 @@ func NewCreateStorageV1VolumeAttachmentHandler(s Server, opts ...Option) func(w 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeCreateStorageV1VolumeAttachmentParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeCreateStorageV1VolumeAttachmentRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1037,7 +887,7 @@ func NewCreateStorageV1VolumeAttachmentHandler(s Server, opts ...Option) func(w 
 			return
 		}
 
-		response, err := s.CreateStorageV1VolumeAttachment(ctx, request, params)
+		response, err := s.CreateStorageV1VolumeAttachment(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1059,12 +909,6 @@ func NewDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationHandl
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1072,7 +916,7 @@ func NewDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationHandl
 			return
 		}
 
-		response, err := s.DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx, request, params)
+		response, err := s.DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1094,12 +938,6 @@ func NewDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationHan
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1107,7 +945,7 @@ func NewDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationHan
 			return
 		}
 
-		response, err := s.DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx, request, params)
+		response, err := s.DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1129,12 +967,6 @@ func NewDeleteApiextensionsV1CollectionCustomResourceDefinitionHandler(s Server,
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1142,7 +974,7 @@ func NewDeleteApiextensionsV1CollectionCustomResourceDefinitionHandler(s Server,
 			return
 		}
 
-		response, err := s.DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx, request, params)
+		response, err := s.DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1164,12 +996,6 @@ func NewDeleteApiregistrationV1CollectionAPIServiceHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteApiregistrationV1CollectionAPIServiceParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1177,7 +1003,7 @@ func NewDeleteApiregistrationV1CollectionAPIServiceHandler(s Server, opts ...Opt
 			return
 		}
 
-		response, err := s.DeleteApiregistrationV1CollectionAPIService(ctx, request, params)
+		response, err := s.DeleteApiregistrationV1CollectionAPIService(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1199,12 +1025,6 @@ func NewDeleteCertificatesV1CollectionCertificateSigningRequestHandler(s Server,
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1212,7 +1032,7 @@ func NewDeleteCertificatesV1CollectionCertificateSigningRequestHandler(s Server,
 			return
 		}
 
-		response, err := s.DeleteCertificatesV1CollectionCertificateSigningRequest(ctx, request, params)
+		response, err := s.DeleteCertificatesV1CollectionCertificateSigningRequest(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1234,12 +1054,6 @@ func NewDeleteCoreV1CollectionNodeHandler(s Server, opts ...Option) func(w http.
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteCoreV1CollectionNodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteCoreV1CollectionNodeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1247,7 +1061,7 @@ func NewDeleteCoreV1CollectionNodeHandler(s Server, opts ...Option) func(w http.
 			return
 		}
 
-		response, err := s.DeleteCoreV1CollectionNode(ctx, request, params)
+		response, err := s.DeleteCoreV1CollectionNode(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1269,12 +1083,6 @@ func NewDeleteCoreV1CollectionPersistentVolumeHandler(s Server, opts ...Option) 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteCoreV1CollectionPersistentVolumeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteCoreV1CollectionPersistentVolumeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1282,7 +1090,7 @@ func NewDeleteCoreV1CollectionPersistentVolumeHandler(s Server, opts ...Option) 
 			return
 		}
 
-		response, err := s.DeleteCoreV1CollectionPersistentVolume(ctx, request, params)
+		response, err := s.DeleteCoreV1CollectionPersistentVolume(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1304,12 +1112,6 @@ func NewDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaHandler(s Server, o
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1317,7 +1119,7 @@ func NewDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaHandler(s Server, o
 			return
 		}
 
-		response, err := s.DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx, request, params)
+		response, err := s.DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1339,12 +1141,6 @@ func NewDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationHan
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1352,7 +1148,7 @@ func NewDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationHan
 			return
 		}
 
-		response, err := s.DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx, request, params)
+		response, err := s.DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1374,12 +1170,6 @@ func NewDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaHandler(s Server, o
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1387,7 +1177,7 @@ func NewDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaHandler(s Server, o
 			return
 		}
 
-		response, err := s.DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx, request, params)
+		response, err := s.DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1409,12 +1199,6 @@ func NewDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationHan
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1422,7 +1206,7 @@ func NewDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationHan
 			return
 		}
 
-		response, err := s.DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx, request, params)
+		response, err := s.DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1444,12 +1228,6 @@ func NewDeleteInternalApiserverV1alpha1CollectionStorageVersionHandler(s Server,
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1457,7 +1235,7 @@ func NewDeleteInternalApiserverV1alpha1CollectionStorageVersionHandler(s Server,
 			return
 		}
 
-		response, err := s.DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx, request, params)
+		response, err := s.DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1479,12 +1257,6 @@ func NewDeleteNetworkingV1CollectionIngressClassHandler(s Server, opts ...Option
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteNetworkingV1CollectionIngressClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteNetworkingV1CollectionIngressClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1492,7 +1264,7 @@ func NewDeleteNetworkingV1CollectionIngressClassHandler(s Server, opts ...Option
 			return
 		}
 
-		response, err := s.DeleteNetworkingV1CollectionIngressClass(ctx, request, params)
+		response, err := s.DeleteNetworkingV1CollectionIngressClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1514,12 +1286,6 @@ func NewDeleteNodeV1CollectionRuntimeClassHandler(s Server, opts ...Option) func
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteNodeV1CollectionRuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteNodeV1CollectionRuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1527,7 +1293,7 @@ func NewDeleteNodeV1CollectionRuntimeClassHandler(s Server, opts ...Option) func
 			return
 		}
 
-		response, err := s.DeleteNodeV1CollectionRuntimeClass(ctx, request, params)
+		response, err := s.DeleteNodeV1CollectionRuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1549,12 +1315,6 @@ func NewDeleteNodeV1alpha1CollectionRuntimeClassHandler(s Server, opts ...Option
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1562,7 +1322,7 @@ func NewDeleteNodeV1alpha1CollectionRuntimeClassHandler(s Server, opts ...Option
 			return
 		}
 
-		response, err := s.DeleteNodeV1alpha1CollectionRuntimeClass(ctx, request, params)
+		response, err := s.DeleteNodeV1alpha1CollectionRuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1584,12 +1344,6 @@ func NewDeleteNodeV1beta1CollectionRuntimeClassHandler(s Server, opts ...Option)
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1597,7 +1351,7 @@ func NewDeleteNodeV1beta1CollectionRuntimeClassHandler(s Server, opts ...Option)
 			return
 		}
 
-		response, err := s.DeleteNodeV1beta1CollectionRuntimeClass(ctx, request, params)
+		response, err := s.DeleteNodeV1beta1CollectionRuntimeClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1619,12 +1373,6 @@ func NewDeletePolicyV1beta1CollectionPodSecurityPolicyHandler(s Server, opts ...
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1632,7 +1380,7 @@ func NewDeletePolicyV1beta1CollectionPodSecurityPolicyHandler(s Server, opts ...
 			return
 		}
 
-		response, err := s.DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx, request, params)
+		response, err := s.DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1654,12 +1402,6 @@ func NewDeleteRbacAuthorizationV1CollectionClusterRoleHandler(s Server, opts ...
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1667,7 +1409,7 @@ func NewDeleteRbacAuthorizationV1CollectionClusterRoleHandler(s Server, opts ...
 			return
 		}
 
-		response, err := s.DeleteRbacAuthorizationV1CollectionClusterRole(ctx, request, params)
+		response, err := s.DeleteRbacAuthorizationV1CollectionClusterRole(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1689,12 +1431,6 @@ func NewDeleteRbacAuthorizationV1CollectionClusterRoleBindingHandler(s Server, o
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1702,7 +1438,7 @@ func NewDeleteRbacAuthorizationV1CollectionClusterRoleBindingHandler(s Server, o
 			return
 		}
 
-		response, err := s.DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx, request, params)
+		response, err := s.DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1724,12 +1460,6 @@ func NewDeleteSchedulingV1CollectionPriorityClassHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteSchedulingV1CollectionPriorityClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteSchedulingV1CollectionPriorityClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1737,7 +1467,7 @@ func NewDeleteSchedulingV1CollectionPriorityClassHandler(s Server, opts ...Optio
 			return
 		}
 
-		response, err := s.DeleteSchedulingV1CollectionPriorityClass(ctx, request, params)
+		response, err := s.DeleteSchedulingV1CollectionPriorityClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1759,12 +1489,6 @@ func NewDeleteStorageV1CollectionCSIDriverHandler(s Server, opts ...Option) func
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteStorageV1CollectionCSIDriverParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteStorageV1CollectionCSIDriverRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1772,7 +1496,7 @@ func NewDeleteStorageV1CollectionCSIDriverHandler(s Server, opts ...Option) func
 			return
 		}
 
-		response, err := s.DeleteStorageV1CollectionCSIDriver(ctx, request, params)
+		response, err := s.DeleteStorageV1CollectionCSIDriver(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1794,12 +1518,6 @@ func NewDeleteStorageV1CollectionCSINodeHandler(s Server, opts ...Option) func(w
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteStorageV1CollectionCSINodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteStorageV1CollectionCSINodeRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1807,7 +1525,7 @@ func NewDeleteStorageV1CollectionCSINodeHandler(s Server, opts ...Option) func(w
 			return
 		}
 
-		response, err := s.DeleteStorageV1CollectionCSINode(ctx, request, params)
+		response, err := s.DeleteStorageV1CollectionCSINode(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1829,12 +1547,6 @@ func NewDeleteStorageV1CollectionStorageClassHandler(s Server, opts ...Option) f
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteStorageV1CollectionStorageClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteStorageV1CollectionStorageClassRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1842,7 +1554,7 @@ func NewDeleteStorageV1CollectionStorageClassHandler(s Server, opts ...Option) f
 			return
 		}
 
-		response, err := s.DeleteStorageV1CollectionStorageClass(ctx, request, params)
+		response, err := s.DeleteStorageV1CollectionStorageClass(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -1864,12 +1576,6 @@ func NewDeleteStorageV1CollectionVolumeAttachmentHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeDeleteStorageV1CollectionVolumeAttachmentParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 		request, err := decodeDeleteStorageV1CollectionVolumeAttachmentRequest(r, span)
 		if err != nil {
 			span.RecordError(err)
@@ -1877,7 +1583,7 @@ func NewDeleteStorageV1CollectionVolumeAttachmentHandler(s Server, opts ...Optio
 			return
 		}
 
-		response, err := s.DeleteStorageV1CollectionVolumeAttachment(ctx, request, params)
+		response, err := s.DeleteStorageV1CollectionVolumeAttachment(ctx, request)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3210,14 +2916,8 @@ func NewListAdmissionregistrationV1MutatingWebhookConfigurationHandler(s Server,
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+		response, err := s.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3239,14 +2939,8 @@ func NewListAdmissionregistrationV1ValidatingWebhookConfigurationHandler(s Serve
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+		response, err := s.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3268,14 +2962,8 @@ func NewListApiextensionsV1CustomResourceDefinitionHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListApiextensionsV1CustomResourceDefinition(ctx, params)
+		response, err := s.ListApiextensionsV1CustomResourceDefinition(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3297,14 +2985,8 @@ func NewListApiregistrationV1APIServiceHandler(s Server, opts ...Option) func(w 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListApiregistrationV1APIServiceParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListApiregistrationV1APIService(ctx, params)
+		response, err := s.ListApiregistrationV1APIService(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3579,14 +3261,8 @@ func NewListCertificatesV1CertificateSigningRequestHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListCertificatesV1CertificateSigningRequestParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListCertificatesV1CertificateSigningRequest(ctx, params)
+		response, err := s.ListCertificatesV1CertificateSigningRequest(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3746,14 +3422,8 @@ func NewListCoreV1NamespaceHandler(s Server, opts ...Option) func(w http.Respons
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListCoreV1NamespaceParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListCoreV1Namespace(ctx, params)
+		response, err := s.ListCoreV1Namespace(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3775,14 +3445,8 @@ func NewListCoreV1NodeHandler(s Server, opts ...Option) func(w http.ResponseWrit
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListCoreV1NodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListCoreV1Node(ctx, params)
+		response, err := s.ListCoreV1Node(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3804,14 +3468,8 @@ func NewListCoreV1PersistentVolumeHandler(s Server, opts ...Option) func(w http.
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListCoreV1PersistentVolumeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListCoreV1PersistentVolume(ctx, params)
+		response, err := s.ListCoreV1PersistentVolume(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4109,14 +3767,8 @@ func NewListFlowcontrolApiserverV1beta1FlowSchemaHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+		response, err := s.ListFlowcontrolApiserverV1beta1FlowSchema(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4138,14 +3790,8 @@ func NewListFlowcontrolApiserverV1beta1PriorityLevelConfigurationHandler(s Serve
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+		response, err := s.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4167,14 +3813,8 @@ func NewListFlowcontrolApiserverV1beta2FlowSchemaHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+		response, err := s.ListFlowcontrolApiserverV1beta2FlowSchema(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4196,14 +3836,8 @@ func NewListFlowcontrolApiserverV1beta2PriorityLevelConfigurationHandler(s Serve
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+		response, err := s.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4225,14 +3859,8 @@ func NewListInternalApiserverV1alpha1StorageVersionHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
+		response, err := s.ListInternalApiserverV1alpha1StorageVersion(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4254,14 +3882,8 @@ func NewListNetworkingV1IngressClassHandler(s Server, opts ...Option) func(w htt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListNetworkingV1IngressClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListNetworkingV1IngressClass(ctx, params)
+		response, err := s.ListNetworkingV1IngressClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4329,14 +3951,8 @@ func NewListNodeV1RuntimeClassHandler(s Server, opts ...Option) func(w http.Resp
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListNodeV1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListNodeV1RuntimeClass(ctx, params)
+		response, err := s.ListNodeV1RuntimeClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4358,14 +3974,8 @@ func NewListNodeV1alpha1RuntimeClassHandler(s Server, opts ...Option) func(w htt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListNodeV1alpha1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListNodeV1alpha1RuntimeClass(ctx, params)
+		response, err := s.ListNodeV1alpha1RuntimeClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4387,14 +3997,8 @@ func NewListNodeV1beta1RuntimeClassHandler(s Server, opts ...Option) func(w http
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListNodeV1beta1RuntimeClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListNodeV1beta1RuntimeClass(ctx, params)
+		response, err := s.ListNodeV1beta1RuntimeClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4462,14 +4066,8 @@ func NewListPolicyV1beta1PodSecurityPolicyHandler(s Server, opts ...Option) func
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
+		response, err := s.ListPolicyV1beta1PodSecurityPolicy(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4491,14 +4089,8 @@ func NewListRbacAuthorizationV1ClusterRoleHandler(s Server, opts ...Option) func
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListRbacAuthorizationV1ClusterRoleParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListRbacAuthorizationV1ClusterRole(ctx, params)
+		response, err := s.ListRbacAuthorizationV1ClusterRole(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4520,14 +4112,8 @@ func NewListRbacAuthorizationV1ClusterRoleBindingHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+		response, err := s.ListRbacAuthorizationV1ClusterRoleBinding(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4595,14 +4181,8 @@ func NewListSchedulingV1PriorityClassHandler(s Server, opts ...Option) func(w ht
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListSchedulingV1PriorityClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListSchedulingV1PriorityClass(ctx, params)
+		response, err := s.ListSchedulingV1PriorityClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4624,14 +4204,8 @@ func NewListStorageV1CSIDriverHandler(s Server, opts ...Option) func(w http.Resp
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListStorageV1CSIDriverParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListStorageV1CSIDriver(ctx, params)
+		response, err := s.ListStorageV1CSIDriver(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4653,14 +4227,8 @@ func NewListStorageV1CSINodeHandler(s Server, opts ...Option) func(w http.Respon
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListStorageV1CSINodeParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListStorageV1CSINode(ctx, params)
+		response, err := s.ListStorageV1CSINode(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4682,14 +4250,8 @@ func NewListStorageV1StorageClassHandler(s Server, opts ...Option) func(w http.R
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListStorageV1StorageClassParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListStorageV1StorageClass(ctx, params)
+		response, err := s.ListStorageV1StorageClass(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -4711,14 +4273,8 @@ func NewListStorageV1VolumeAttachmentHandler(s Server, opts ...Option) func(w ht
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		params, err := decodeListStorageV1VolumeAttachmentParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.ListStorageV1VolumeAttachment(ctx, params)
+		response, err := s.ListStorageV1VolumeAttachment(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)

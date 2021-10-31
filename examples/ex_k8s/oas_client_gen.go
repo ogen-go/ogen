@@ -95,7 +95,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 }
 
 // CreateAdmissionregistrationV1MutatingWebhookConfiguration implements createAdmissionregistrationV1MutatingWebhookConfiguration operation.
-func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -130,37 +130,6 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -181,7 +150,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 }
 
 // CreateAdmissionregistrationV1ValidatingWebhookConfiguration implements createAdmissionregistrationV1ValidatingWebhookConfiguration operation.
-func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -216,37 +185,6 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -267,7 +205,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 }
 
 // CreateApiextensionsV1CustomResourceDefinition implements createApiextensionsV1CustomResourceDefinition operation.
-func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
+func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -302,37 +240,6 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -353,7 +260,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 }
 
 // CreateApiregistrationV1APIService implements createApiregistrationV1APIService operation.
-func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
+func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) (res CreateApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`createApiregistrationV1APIService`)),
@@ -378,37 +285,6 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
-
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
@@ -623,7 +499,7 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 }
 
 // CreateCertificatesV1CertificateSigningRequest implements createCertificatesV1CertificateSigningRequest operation.
-func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, request IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
+func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, request IoK8sAPICertificatesV1CertificateSigningRequest) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -658,37 +534,6 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -709,7 +554,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 }
 
 // CreateCoreV1Namespace implements createCoreV1Namespace operation.
-func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
+func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICoreV1Namespace) (res CreateCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Namespace`)),
@@ -735,37 +580,6 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -786,7 +600,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 }
 
 // CreateCoreV1Node implements createCoreV1Node operation.
-func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
+func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Node) (res CreateCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Node`)),
@@ -812,37 +626,6 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -863,7 +646,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 }
 
 // CreateCoreV1PersistentVolume implements createCoreV1PersistentVolume operation.
-func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
+func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8sAPICoreV1PersistentVolume) (res CreateCoreV1PersistentVolumeRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -898,37 +681,6 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -949,7 +701,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 }
 
 // CreateFlowcontrolApiserverV1beta1FlowSchema implements createFlowcontrolApiserverV1beta1FlowSchema operation.
-func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1FlowSchema) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -984,37 +736,6 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1035,7 +756,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 }
 
 // CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements createFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
-func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
@@ -1061,37 +782,6 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1112,7 +802,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 }
 
 // CreateFlowcontrolApiserverV1beta2FlowSchema implements createFlowcontrolApiserverV1beta2FlowSchema operation.
-func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2FlowSchema) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1147,37 +837,6 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1198,7 +857,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 }
 
 // CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements createFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
-func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
@@ -1224,37 +883,6 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1275,7 +903,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 }
 
 // CreateInternalApiserverV1alpha1StorageVersion implements createInternalApiserverV1alpha1StorageVersion operation.
-func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, request IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
+func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, request IoK8sAPIApiserverinternalV1alpha1StorageVersion) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`createInternalApiserverV1alpha1StorageVersion`)),
@@ -1301,37 +929,6 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1352,7 +949,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 }
 
 // CreateNetworkingV1IngressClass implements createNetworkingV1IngressClass operation.
-func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
+func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK8sAPINetworkingV1IngressClass) (res CreateNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNetworkingV1IngressClass`)),
@@ -1378,37 +975,6 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1429,7 +995,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 }
 
 // CreateNodeV1RuntimeClass implements createNodeV1RuntimeClass operation.
-func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1RuntimeClass) (res CreateNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1RuntimeClass`)),
@@ -1455,37 +1021,6 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1506,7 +1041,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 }
 
 // CreateNodeV1alpha1RuntimeClass implements createNodeV1alpha1RuntimeClass operation.
-func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1alpha1RuntimeClass) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1alpha1RuntimeClass`)),
@@ -1532,37 +1067,6 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1583,7 +1087,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 }
 
 // CreateNodeV1beta1RuntimeClass implements createNodeV1beta1RuntimeClass operation.
-func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
+func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8sAPINodeV1beta1RuntimeClass) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1beta1RuntimeClass`)),
@@ -1609,37 +1113,6 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1660,7 +1133,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 }
 
 // CreatePolicyV1beta1PodSecurityPolicy implements createPolicyV1beta1PodSecurityPolicy operation.
-func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, request IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
+func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, request IoK8sAPIPolicyV1beta1PodSecurityPolicy) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1695,37 +1168,6 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1746,7 +1188,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 }
 
 // CreateRbacAuthorizationV1ClusterRole implements createRbacAuthorizationV1ClusterRole operation.
-func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, request IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, request IoK8sAPIRbacV1ClusterRole) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1781,37 +1223,6 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1832,7 +1243,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 }
 
 // CreateRbacAuthorizationV1ClusterRoleBinding implements createRbacAuthorizationV1ClusterRoleBinding operation.
-func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, request IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, request IoK8sAPIRbacV1ClusterRoleBinding) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRoleBinding`)),
@@ -1858,37 +1269,6 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1909,7 +1289,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 }
 
 // CreateSchedulingV1PriorityClass implements createSchedulingV1PriorityClass operation.
-func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
+func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request IoK8sAPISchedulingV1PriorityClass) (res CreateSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`createSchedulingV1PriorityClass`)),
@@ -1935,37 +1315,6 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -1986,7 +1335,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 }
 
 // CreateStorageV1CSIDriver implements createStorageV1CSIDriver operation.
-func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
+func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIStorageV1CSIDriver) (res CreateStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSIDriver`)),
@@ -2012,37 +1361,6 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2063,7 +1381,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 }
 
 // CreateStorageV1CSINode implements createStorageV1CSINode operation.
-func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
+func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPIStorageV1CSINode) (res CreateStorageV1CSINodeRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -2098,37 +1416,6 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2149,7 +1436,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 }
 
 // CreateStorageV1StorageClass implements createStorageV1StorageClass operation.
-func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
+func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sAPIStorageV1StorageClass) (res CreateStorageV1StorageClassRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -2184,37 +1471,6 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2235,7 +1491,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 }
 
 // CreateStorageV1VolumeAttachment implements createStorageV1VolumeAttachment operation.
-func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
+func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request IoK8sAPIStorageV1VolumeAttachment) (res CreateStorageV1VolumeAttachmentRes, err error) {
 	if verr := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -2270,37 +1526,6 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
-	q := u.Query()
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldManager" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldManager))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldManager"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2321,7 +1546,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 }
 
 // DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration implements deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration operation.
-func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`)),
@@ -2347,163 +1572,6 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2524,7 +1592,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 }
 
 // DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration implements deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration operation.
-func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`)),
@@ -2550,163 +1618,6 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2727,7 +1638,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 }
 
 // DeleteApiextensionsV1CollectionCustomResourceDefinition implements deleteApiextensionsV1CollectionCustomResourceDefinition operation.
-func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
+func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiextensionsV1CollectionCustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiextensionsV1CollectionCustomResourceDefinition`)),
@@ -2753,163 +1664,6 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -2930,7 +1684,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 }
 
 // DeleteApiregistrationV1CollectionAPIService implements deleteApiregistrationV1CollectionAPIService operation.
-func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
+func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteApiregistrationV1CollectionAPIService`,
 		trace.WithAttributes(otelogen.OperationID(`deleteApiregistrationV1CollectionAPIService`)),
@@ -2956,163 +1710,6 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -3133,7 +1730,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 }
 
 // DeleteCertificatesV1CollectionCertificateSigningRequest implements deleteCertificatesV1CollectionCertificateSigningRequest operation.
-func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
+func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCertificatesV1CollectionCertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCertificatesV1CollectionCertificateSigningRequest`)),
@@ -3159,163 +1756,6 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -3336,7 +1776,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 }
 
 // DeleteCoreV1CollectionNode implements deleteCoreV1CollectionNode operation.
-func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
+func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteCoreV1CollectionNodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionNode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionNode`)),
@@ -3362,163 +1802,6 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -3539,7 +1822,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 }
 
 // DeleteCoreV1CollectionPersistentVolume implements deleteCoreV1CollectionPersistentVolume operation.
-func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
+func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteCoreV1CollectionPersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionPersistentVolume`)),
@@ -3565,163 +1848,6 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -3742,7 +1868,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 }
 
 // DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema implements deleteFlowcontrolApiserverV1beta1CollectionFlowSchema operation.
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionFlowSchema`)),
@@ -3768,163 +1894,6 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -3945,7 +1914,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 }
 
 // DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration implements deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration operation.
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`)),
@@ -3971,163 +1940,6 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -4148,7 +1960,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 }
 
 // DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema implements deleteFlowcontrolApiserverV1beta2CollectionFlowSchema operation.
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionFlowSchema`)),
@@ -4174,163 +1986,6 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -4351,7 +2006,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 }
 
 // DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration implements deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration operation.
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`)),
@@ -4377,163 +2032,6 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -4554,7 +2052,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 }
 
 // DeleteInternalApiserverV1alpha1CollectionStorageVersion implements deleteInternalApiserverV1alpha1CollectionStorageVersion operation.
-func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
+func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteInternalApiserverV1alpha1CollectionStorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`deleteInternalApiserverV1alpha1CollectionStorageVersion`)),
@@ -4580,163 +2078,6 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -4757,7 +2098,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 }
 
 // DeleteNetworkingV1CollectionIngressClass implements deleteNetworkingV1CollectionIngressClass operation.
-func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
+func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNetworkingV1CollectionIngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNetworkingV1CollectionIngressClass`)),
@@ -4783,163 +2124,6 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -4960,7 +2144,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 }
 
 // DeleteNodeV1CollectionRuntimeClass implements deleteNodeV1CollectionRuntimeClass operation.
-func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1CollectionRuntimeClass`)),
@@ -4986,163 +2170,6 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -5163,7 +2190,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 }
 
 // DeleteNodeV1alpha1CollectionRuntimeClass implements deleteNodeV1alpha1CollectionRuntimeClass operation.
-func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1alpha1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1alpha1CollectionRuntimeClass`)),
@@ -5189,163 +2216,6 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -5366,7 +2236,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 }
 
 // DeleteNodeV1beta1CollectionRuntimeClass implements deleteNodeV1beta1CollectionRuntimeClass operation.
-func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
+func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteNodeV1beta1CollectionRuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1beta1CollectionRuntimeClass`)),
@@ -5392,163 +2262,6 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -5569,7 +2282,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 }
 
 // DeletePolicyV1beta1CollectionPodSecurityPolicy implements deletePolicyV1beta1CollectionPodSecurityPolicy operation.
-func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
+func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePolicyV1beta1CollectionPodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`deletePolicyV1beta1CollectionPodSecurityPolicy`)),
@@ -5595,163 +2308,6 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -5772,7 +2328,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 }
 
 // DeleteRbacAuthorizationV1CollectionClusterRole implements deleteRbacAuthorizationV1CollectionClusterRole operation.
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRole`)),
@@ -5798,163 +2354,6 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -5975,7 +2374,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 }
 
 // DeleteRbacAuthorizationV1CollectionClusterRoleBinding implements deleteRbacAuthorizationV1CollectionClusterRoleBinding operation.
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteRbacAuthorizationV1CollectionClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRoleBinding`)),
@@ -6001,163 +2400,6 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -6178,7 +2420,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 }
 
 // DeleteSchedulingV1CollectionPriorityClass implements deleteSchedulingV1CollectionPriorityClass operation.
-func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
+func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteSchedulingV1CollectionPriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteSchedulingV1CollectionPriorityClass`)),
@@ -6204,163 +2446,6 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -6381,7 +2466,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 }
 
 // DeleteStorageV1CollectionCSIDriver implements deleteStorageV1CollectionCSIDriver operation.
-func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
+func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSIDriver`)),
@@ -6407,163 +2492,6 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -6584,7 +2512,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 }
 
 // DeleteStorageV1CollectionCSINode implements deleteStorageV1CollectionCSINode operation.
-func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
+func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionCSINode`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSINode`)),
@@ -6610,163 +2538,6 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -6787,7 +2558,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 }
 
 // DeleteStorageV1CollectionStorageClass implements deleteStorageV1CollectionStorageClass operation.
-func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
+func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionStorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionStorageClass`)),
@@ -6813,163 +2584,6 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
@@ -6990,7 +2604,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 }
 
 // DeleteStorageV1CollectionVolumeAttachment implements deleteStorageV1CollectionVolumeAttachment operation.
-func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
+func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, request IoK8sApimachineryPkgApisMetaV1DeleteOptions) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStorageV1CollectionVolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionVolumeAttachment`)),
@@ -7015,163 +2629,6 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
-
-	q := u.Query()
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "dryRun" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DryRun))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["dryRun"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "gracePeriodSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GracePeriodSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["gracePeriodSeconds"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "orphanDependents" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.OrphanDependents))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["orphanDependents"] = e.Result()
-	}
-	{
-		// Encode "propagationPolicy" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PropagationPolicy))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["propagationPolicy"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
@@ -9359,7 +4816,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 }
 
 // ListAdmissionregistrationV1MutatingWebhookConfiguration implements listAdmissionregistrationV1MutatingWebhookConfiguration operation.
-func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1MutatingWebhookConfiguration`)),
@@ -9379,135 +4836,6 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -9526,7 +4854,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 }
 
 // ListAdmissionregistrationV1ValidatingWebhookConfiguration implements listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
-func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1ValidatingWebhookConfiguration`)),
@@ -9546,135 +4874,6 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -9693,7 +4892,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 }
 
 // ListApiextensionsV1CustomResourceDefinition implements listApiextensionsV1CustomResourceDefinition operation.
-func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
+func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`listApiextensionsV1CustomResourceDefinition`)),
@@ -9713,135 +4912,6 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -9860,7 +4930,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 }
 
 // ListApiregistrationV1APIService implements listApiregistrationV1APIService operation.
-func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
+func (c *Client) ListApiregistrationV1APIService(ctx context.Context) (res ListApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`listApiregistrationV1APIService`)),
@@ -9879,135 +4949,6 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -10445,7 +5386,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 }
 
 // ListCertificatesV1CertificateSigningRequest implements listCertificatesV1CertificateSigningRequest operation.
-func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
+func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`listCertificatesV1CertificateSigningRequest`)),
@@ -10464,135 +5405,6 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -10840,7 +5652,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 }
 
 // ListCoreV1Namespace implements listCoreV1Namespace operation.
-func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
+func (c *Client) ListCoreV1Namespace(ctx context.Context) (res ListCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Namespace`)),
@@ -10860,135 +5672,6 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -11007,7 +5690,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 }
 
 // ListCoreV1Node implements listCoreV1Node operation.
-func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
+func (c *Client) ListCoreV1Node(ctx context.Context) (res ListCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Node`)),
@@ -11027,135 +5710,6 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -11174,7 +5728,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 }
 
 // ListCoreV1PersistentVolume implements listCoreV1PersistentVolume operation.
-func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
+func (c *Client) ListCoreV1PersistentVolume(ctx context.Context) (res ListCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolume`)),
@@ -11193,135 +5747,6 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -11797,7 +6222,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 }
 
 // ListFlowcontrolApiserverV1beta1FlowSchema implements listFlowcontrolApiserverV1beta1FlowSchema operation.
-func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1FlowSchema`)),
@@ -11817,135 +6242,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -11964,7 +6260,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 }
 
 // ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
-func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
@@ -11984,135 +6280,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -12131,7 +6298,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 }
 
 // ListFlowcontrolApiserverV1beta2FlowSchema implements listFlowcontrolApiserverV1beta2FlowSchema operation.
-func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2FlowSchema`)),
@@ -12151,135 +6318,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -12298,7 +6336,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 }
 
 // ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
-func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
@@ -12318,135 +6356,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -12465,7 +6374,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 }
 
 // ListInternalApiserverV1alpha1StorageVersion implements listInternalApiserverV1alpha1StorageVersion operation.
-func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
+func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`listInternalApiserverV1alpha1StorageVersion`)),
@@ -12485,135 +6394,6 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -12632,7 +6412,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 }
 
 // ListNetworkingV1IngressClass implements listNetworkingV1IngressClass operation.
-func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
+func (c *Client) ListNetworkingV1IngressClass(ctx context.Context) (res ListNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressClass`)),
@@ -12651,135 +6431,6 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -12875,7 +6526,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 }
 
 // ListNodeV1RuntimeClass implements listNodeV1RuntimeClass operation.
-func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
+func (c *Client) ListNodeV1RuntimeClass(ctx context.Context) (res ListNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1RuntimeClass`)),
@@ -12895,135 +6546,6 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -13042,7 +6564,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 }
 
 // ListNodeV1alpha1RuntimeClass implements listNodeV1alpha1RuntimeClass operation.
-func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
+func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1alpha1RuntimeClass`)),
@@ -13062,135 +6584,6 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -13209,7 +6602,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 }
 
 // ListNodeV1beta1RuntimeClass implements listNodeV1beta1RuntimeClass operation.
-func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
+func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1beta1RuntimeClass`)),
@@ -13228,135 +6621,6 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -13452,7 +6716,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 }
 
 // ListPolicyV1beta1PodSecurityPolicy implements listPolicyV1beta1PodSecurityPolicy operation.
-func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
+func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodSecurityPolicy`)),
@@ -13472,135 +6736,6 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -13619,7 +6754,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 }
 
 // ListRbacAuthorizationV1ClusterRole implements listRbacAuthorizationV1ClusterRole operation.
-func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
+func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRole`)),
@@ -13639,135 +6774,6 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -13786,7 +6792,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 }
 
 // ListRbacAuthorizationV1ClusterRoleBinding implements listRbacAuthorizationV1ClusterRoleBinding operation.
-func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRoleBinding`)),
@@ -13805,135 +6811,6 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -14029,7 +6906,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 }
 
 // ListSchedulingV1PriorityClass implements listSchedulingV1PriorityClass operation.
-func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
+func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context) (res ListSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`listSchedulingV1PriorityClass`)),
@@ -14049,135 +6926,6 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -14196,7 +6944,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 }
 
 // ListStorageV1CSIDriver implements listStorageV1CSIDriver operation.
-func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
+func (c *Client) ListStorageV1CSIDriver(ctx context.Context) (res ListStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSIDriver`)),
@@ -14216,135 +6964,6 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -14363,7 +6982,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 }
 
 // ListStorageV1CSINode implements listStorageV1CSINode operation.
-func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
+func (c *Client) ListStorageV1CSINode(ctx context.Context) (res ListStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSINode`)),
@@ -14383,135 +7002,6 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -14530,7 +7020,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 }
 
 // ListStorageV1StorageClass implements listStorageV1StorageClass operation.
-func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
+func (c *Client) ListStorageV1StorageClass(ctx context.Context) (res ListStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1StorageClass`)),
@@ -14550,135 +7040,6 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
-
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
@@ -14697,7 +7058,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 }
 
 // ListStorageV1VolumeAttachment implements listStorageV1VolumeAttachment operation.
-func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
+func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context) (res ListStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1VolumeAttachment`)),
@@ -14716,135 +7077,6 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
-
-	q := u.Query()
-	{
-		// Encode "allowWatchBookmarks" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.AllowWatchBookmarks))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["allowWatchBookmarks"] = e.Result()
-	}
-	{
-		// Encode "continue" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Continue))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["continue"] = e.Result()
-	}
-	{
-		// Encode "fieldSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.FieldSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["fieldSelector"] = e.Result()
-	}
-	{
-		// Encode "labelSelector" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.LabelSelector))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["labelSelector"] = e.Result()
-	}
-	{
-		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.Limit))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["limit"] = e.Result()
-	}
-	{
-		// Encode "resourceVersion" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersion))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersion"] = e.Result()
-	}
-	{
-		// Encode "resourceVersionMatch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ResourceVersionMatch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["resourceVersionMatch"] = e.Result()
-	}
-	{
-		// Encode "timeoutSeconds" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TimeoutSeconds))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["timeoutSeconds"] = e.Result()
-	}
-	{
-		// Encode "watch" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		if encErr := func() error {
-			return e.Value(conv.BoolToString(params.Watch))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
-		}
-		q["watch"] = e.Result()
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

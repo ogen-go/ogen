@@ -97,7 +97,7 @@
             "name": "x-tags",
             "in": "header",
             "description": "tags of pets",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "array",
               "items": {
