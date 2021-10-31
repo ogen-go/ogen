@@ -77,5 +77,6 @@ func TestGenerate(t *testing.T) {
 		"allOf",
 		"discriminator inference",
 		"sum types with same names",
+		"sum type parameter",
 	))
 }
