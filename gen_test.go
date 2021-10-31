@@ -61,7 +61,7 @@ func TestGenerate(t *testing.T) {
 	t.Run("Pet store expanded", g("petstore-expanded.yaml", "allOf"))
 	t.Run("Firecracker", g("firecracker.json"))
 	t.Run("Sample", g("sample.json"))
-	t.Run("nh", g("nh.json"))
+	t.Run("Manga gallery", g("manga.json"))
 	t.Run("TechEmpower", g("techempower.json"))
 	t.Run("telegram bot api", g("telegram_bot_api.json", "anyOf"))
 	t.Run("gotd botapi", g("gotd_bot_api.json"))

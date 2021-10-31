@@ -1,19 +1,14 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Nhentai.net API",
-    "description": "Swagger description of nhentai.net API.",
+    "title": "Manga",
+    "description": "OpenAPI description of manga gallery.",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://nhentai.net/"
-    }
-  ],
   "tags": [
     {
       "name": "search",
-      "description": "Search books at nhentai.net"
+      "description": "Search books"
     },
     {
       "name": "book",
@@ -36,7 +31,7 @@
           {
             "name": "query",
             "in": "query",
-            "description": "Search query.\n* You can search for multiple terms at the same time, and this will return only galleries that contain both terms. For example, anal tanlines finds all galleries that contain both anal and tanlines.\n* You can exclude terms by prefixing them with -. For example, anal tanlines -yaoi matches all galleries matching anal and tanlines but not yaoi.\n* Exact searches can be performed by wrapping terms in double quotes. For example, \"big breasts\" only matches galleries with \"big breasts\" somewhere in the title or in tags.\n* These can be combined with tag namespaces for finer control over the query: parodies:railgun -tag:\"big breasts\". ",
+            "description": "Search query.\n* You can search for multiple terms at the same time, and this will return only galleries that contain both terms. For example, anal tanlines finds all galleries that contain both anal and tanlines.\n* You can exclude terms by prefixing them with -. For example, anal tanlines -yaoi matches all galleries matching anal and tanlines but not yaoi.\n* Exact searches can be performed by wrapping terms in double quotes. For example, \"big dogs\" only matches galleries with \"big breasts\" somewhere in the title or in tags.\n* These can be combined with tag namespaces for finer control over the query: parodies:railgun -tag:\"big dogs\". ",
             "required": true,
             "schema": {
               "type": "string"
@@ -165,7 +160,7 @@
         "operationId": "getPageImage",
         "servers": [
           {
-            "url": "https://i.nhentai.net",
+            "url": "https://i.example.org",
             "description": "Use CDN host instead of API"
           }
         ],
@@ -228,7 +223,7 @@
         "operationId": "getPageThumbnailImage",
         "servers": [
           {
-            "url": "https://t.nhentai.net",
+            "url": "https://t.example.org",
             "description": "Use CDN host instead of API"
           }
         ],
@@ -291,7 +286,7 @@
         "operationId": "getPageCoverImage",
         "servers": [
           {
-            "url": "https://t.nhentai.net",
+            "url": "https://t.example.org",
             "description": "Use CDN host instead of API"
           }
         ],
