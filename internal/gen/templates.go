@@ -35,7 +35,6 @@ func (e Elem) NextVar() string {
 // templateFunctions returns functions which used in templates.
 func templateFunctions() template.FuncMap {
 	return template.FuncMap{
-		"inc":  func(i int) int { return i + 1 },
 		"trim": strings.TrimSpace,
 		"lower": func(v interface{}) string {
 			switch v := v.(type) {

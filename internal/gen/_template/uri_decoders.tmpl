@@ -15,7 +15,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
             {{- template "decode_uri" dict
                 "type" $f.Type
                 "var" (sprintf "v.%s" $f.Name)
-                "nestedLvl" 0
             }}
         {{- end }}
         {{- end }}
@@ -33,7 +32,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- define "decode_uri" }}
 {{- $t := index . "type" }}
 {{- $var := index . "var" }}
-{{- $nestedLvl := index . "nestedLvl" }}
 {{- if eq $t.Kind "primitive" }}
     s, err := d.Value()
     if err != nil {
@@ -62,57 +60,57 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     return nil
 {{- else if eq $t.Kind "array" }}
     return d.Array(func(d uri.Decoder) error {
-        var {{ sprintf "tmp%d" $nestedLvl }} {{ $t.Item.Go }}
+        {{- $tmpVar := pascalMP (sprintf "%sItem" $var ) }}
+        var {{ $tmpVar }} {{ $t.Item.Go }}
         if err := func() error {
             {{- template "decode_uri" dict
                 "type" $t.Item
-                "var" (sprintf "tmp%d" $nestedLvl)
-                "nestedLvl" (inc $nestedLvl)
+                "var" $tmpVar
             }}
         }(); err != nil {
             return err
         }
-        {{ $var }} = append({{ $var }}, {{ sprintf "tmp%d" $nestedLvl }})
+        {{ $var }} = append({{ $var }}, {{ $tmpVar }})
         return nil
     })
 {{- else if eq $t.Kind "alias" }}
-    var {{ sprintf "tmp%d" $nestedLvl }} {{ $t.AliasTo.Go }}
+    {{- $tmpVar := pascalMP (sprintf "%sUnderlying" $var ) }}
+    var {{ $tmpVar }} {{ $t.AliasTo.Go }}
     if err := func() error {
         {{- template "decode_uri" dict
             "type" $t.AliasTo
-            "var" (sprintf "tmp%d" $nestedLvl)
-            "nestedLvl" (inc $nestedLvl)
+            "var" $tmpVar
         }}
     }(); err != nil {
         return err
     }
-    {{ $var }}.wrap({{ sprintf "tmp%d" $nestedLvl }})
+    {{ $var }}.wrap({{ $tmpVar }})
     return nil
 {{- else if eq $t.Kind "generic" }}
-    var {{ sprintf "tmp%d" $nestedLvl }} {{ $t.GenericOf.Go }}
+    {{- $tmpVar := pascalMP (sprintf "%sValue" $var ) }}
+    var {{ $tmpVar }} {{ $t.GenericOf.Go }}
     if err := func() error {
         {{- template "decode_uri" dict
             "type" $t.GenericOf
-            "var" (sprintf "tmp%d" $nestedLvl)
-            "nestedLvl" (inc $nestedLvl)
+            "var" $tmpVar
         }}
     }(); err != nil {
         return err
     }
-    {{ $var }}.SetTo({{ sprintf "tmp%d" $nestedLvl }})
+    {{ $var }}.SetTo({{ $tmpVar }})
     return nil
 {{- else if eq $t.Kind "pointer" }}
-    var {{ sprintf "tmp%d" $nestedLvl }} {{ $t.PointerTo.Go }}
+    {{- $tmpVar := pascalMP (sprintf "%sValue" $var ) }}
+    var {{ $tmpVar }} {{ $t.PointerTo.Go }}
     if err := func() error {
         {{- template "decode_uri" dict
             "type" $t.PointerTo
-            "var" (sprintf "tmp%d" $nestedLvl)
-            "nestedLvl" (inc $nestedLvl)
+            "var" $tmpVar
         }}
     }(); err != nil {
         return err
     }
-    {{ $var }} = &{{ sprintf "tmp%d" $nestedLvl }}
+    {{ $var }} = &{{ $tmpVar }}
     return nil
 {{- else if eq $t.Kind "struct" }}
     return {{ $var }}.decodeURI(d)

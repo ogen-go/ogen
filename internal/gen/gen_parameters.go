@@ -26,11 +26,6 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			}
 		}
 
-		typ, ok := unwrapPrimitive(typ)
-		if !ok {
-			return nil, &ErrNotImplemented{"complex parameter types"}
-		}
-
 		result = append(result, &ir.Parameter{
 			Name: pascal(p.Name),
 			Type: typ,
@@ -39,32 +34,6 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 	}
 
 	return result, nil
-}
-
-func unwrapPrimitive(typ *ir.Type) (*ir.Type, bool) {
-	switch typ.Kind {
-	case ir.KindPrimitive:
-		return typ, true
-	case ir.KindEnum:
-		return &ir.Type{
-			Kind:      ir.KindPrimitive,
-			Primitive: typ.Primitive,
-		}, true
-	case ir.KindArray:
-		item, ok := unwrapPrimitive(typ.Item)
-		if !ok {
-			return nil, false
-		}
-
-		typ.Item = item
-		return typ, true
-	case ir.KindAlias:
-		return unwrapPrimitive(typ.AliasTo)
-	case ir.KindPointer:
-		return unwrapPrimitive(typ.PointerTo)
-	default:
-		return nil, false
-	}
 }
 
 func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error {
@@ -101,13 +70,15 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	case ir.KindGeneric:
 		return isParamAllowed(t.GenericOf, root, visited)
 	case ir.KindSum:
-		for i, of := range t.SumOf {
-			if err := isParamAllowed(of, root, visited); err != nil {
-				// TODO: Check field.Spec existence.
-				return xerrors.Errorf("sum[%d]: %w", i, err)
-			}
-		}
-		return nil
+		return &ErrNotImplemented{"sum type parameter"}
+
+		// for i, of := range t.SumOf {
+		// 	if err := isParamAllowed(of, root, visited); err != nil {
+		// 		// TODO: Check field.Spec existence.
+		// 		return xerrors.Errorf("sum[%d]: %w", i, err)
+		// 	}
+		// }
+		// return nil
 	default:
 		panic("unreachable")
 	}

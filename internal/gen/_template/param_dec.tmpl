@@ -21,8 +21,14 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 
-			{{ template "decode_param" $p.Type }}
-			params.{{ $p.Name }} = v
+			if err := func() error {
+				{{- template "decode_uri" dict
+					"type" $p.Type
+					"var" (sprintf "params.%s" $p.Name)
+				}}
+			}(); err != nil {
+				return params, err
+			}
 		} {{- if $p.Spec.Required }} else {
 			return params, fmt.Errorf("query parameter '{{ $p.Spec.Name}}' not specified")
 		} {{- end }}
@@ -38,8 +44,14 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 
-			{{ template "decode_param" $p.Type }}
-			params.{{ $p.Name }} = v
+			if err := func() error {
+				{{- template "decode_uri" dict
+					"type" $p.Type
+					"var" (sprintf "params.%s" $p.Name)
+				}}
+			}(); err != nil {
+				return params, err
+			}
 		} {{ if $p.Spec.Required }} else {
 			return params, fmt.Errorf("path parameter '{{ $p.Spec.Name}}' not specified")
 		} {{ end }}

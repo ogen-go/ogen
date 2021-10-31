@@ -13,11 +13,16 @@ u.Path += "{{ $part.Raw }}"
         Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
-    {{- if eq $param.Type.Kind "array" }}
-    u.Path += e.EncodeArray(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
-    {{- else }}
-    u.Path += e.EncodeValue(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
-    {{- end }}
+    if encErr := func() error {
+        {{- template "encode_uri" dict
+            "type" $param.Type
+            "var" (sprintf "params.%s" $param.Name)
+        }}
+    }(); encErr != nil {
+        err = fmt.Errorf("encode path: %w", encErr)
+        return
+    }
+    u.Path += e.Result()
 }
 {{- end }}
 {{- end }}
@@ -31,14 +36,19 @@ q := u.Query()
 {
     // Encode "{{ $param.Spec.Name }}" parameter.
     e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-        Style:uri.QueryStyle{{ pascalMP $param.Spec.Style }},
+        Style: uri.QueryStyle{{ pascalMP $param.Spec.Style }},
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
-    {{- if eq $param.Type.Kind "array" }}
-    q["{{ $param.Spec.Name }}"] = e.EncodeArray(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }}))
-    {{- else }}
-    q.Set("{{ $param.Spec.Name }}", e.EncodeValue(conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})))
-    {{- end }}
+    if encErr := func() error {
+        {{- template "encode_uri" dict
+            "type" $param.Type
+            "var" (sprintf "params.%s" $param.Name)
+        }}
+    }(); encErr != nil {
+        err = fmt.Errorf("encode query: %w", encErr)
+        return
+    }
+    q["{{ $param.Spec.Name }}"] = e.Result()
 }
 {{- end }}{{/* Range over params */}}
 u.RawQuery = q.Encode()

@@ -4,9 +4,6 @@
 {{- range $t, $_ := $.URITypes }}
 {{- if eq $t.Kind "struct" }}
 func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
-    if v == nil {
-        return fmt.Errorf("unable to encode nil {{ $t.Go }}")
-    }
     {{- range $f := $t.Fields }}
     {{- if $f.Spec }}
         if err := e.Field("{{ $f.Spec.Name }}", func(e uri.Encoder) error {

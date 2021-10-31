@@ -86,7 +86,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"cfg",
 	} {
 		// hack
-		if name == "uri_encoders" || name == "uri_decoders" && len(g.uritypes) == 0 {
+		if (name == "uri_encoders" || name == "uri_decoders") && len(g.uritypes) == 0 {
 			continue
 		}
 
