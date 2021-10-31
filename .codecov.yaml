@@ -5,6 +5,7 @@ ignore:
   - "**/*.gen.go"
   # Ignore commands (examples or internal utilities).
   - "cmd/*/*.go"
+  - "**/cmd/*/*.go"
   # Ignore examples
   - "examples/**"
 
