@@ -23,76 +23,54 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 	return err
 }
 
+func testGenerate(t *testing.T, name string, ignore ...string) {
+	t.Helper()
+
+	data, err := testdata.ReadFile(path.Join("_testdata", name))
+	require.NoError(t, err)
+	spec, err := ogen.Parse(data)
+	require.NoError(t, err)
+	opt := gen.Options{
+		IgnoreNotImplemented: ignore,
+	}
+	for _, s := range ignore {
+		if s == "unspecified params" {
+			opt.IgnoreUnspecifiedParams = true
+		}
+	}
+	if len(ignore) > 0 {
+		t.Logf("Ignoring: %s", ignore)
+	}
+	g, err := gen.NewGenerator(spec, opt)
+	require.NoError(t, err)
+
+	require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+}
+
 func TestGenerate(t *testing.T) {
 	t.Parallel()
-
-	for _, tc := range []struct {
-		Name    string
-		Options gen.Options
-	}{
-		{
-			Name: "petstore-expanded.yaml",
-			Options: gen.Options{
-				IgnoreNotImplemented: []string{
-					"allOf",
-				},
-			},
-		},
-		{
-			Name: "firecracker.json",
-		},
-		{
-			Name: "api.github.com.json",
-			Options: gen.Options{
-				IgnoreNotImplemented: []string{
-					"complex parameter types",
-					"anyOf",
-					"allOf",
-					"discriminator inference",
-					"sum types with same names",
-				},
-			},
-		},
-		{
-			Name: "sample.json",
-		},
-		{
-			Name: "nh.json",
-		},
-		{
-			Name: "techempower.json",
-		},
-		{
-			Name: "telegram_bot_api.json",
-			Options: gen.Options{
-				IgnoreNotImplemented: []string{"anyOf"},
-			},
-		},
-		{
-			Name: "gotd_bot_api.json",
-		},
-		{
-			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
-			// Generated from OpenAPI v2 (swagger) spec.
-			Name: "k8s.json",
-			Options: gen.Options{
-				IgnoreUnspecifiedParams: true,
-				IgnoreNotImplemented: []string{
-					"requestBody with primitive type",
-					"response with primitive type",
-				},
-			},
-		},
-	} {
-		t.Run(tc.Name, func(t *testing.T) {
-			data, err := testdata.ReadFile(path.Join("_testdata", tc.Name))
-			require.NoError(t, err)
-			spec, err := ogen.Parse(data)
-			require.NoError(t, err)
-			g, err := gen.NewGenerator(spec, tc.Options)
-			require.NoError(t, err)
-
-			require.NoError(t, g.WriteSource(fmtFs{}, "api"))
-		})
+	g := func(name string, ignore ...string) func(t *testing.T) {
+		return func(t *testing.T) {
+			t.Helper()
+			t.Parallel()
+			testGenerate(t, name, ignore...)
+		}
 	}
+
+	t.Run("Pet store", g("petstore.yaml"))
+	t.Run("Pet store expanded", g("petstore-expanded.yaml", "allOf"))
+	t.Run("Firecracker", g("firecracker.json"))
+	t.Run("Sample", g("sample.json"))
+	t.Run("nh", g("nh.json"))
+	t.Run("TechEmpower", g("techempower.json"))
+	t.Run("telegram bot api", g("telegram_bot_api.json", "anyOf"))
+	t.Run("gotd botapi", g("gotd_bot_api.json"))
+	t.Run("Kubernetes", g("k8s.json", "unspecified params"))
+	t.Run("GitHub", g("api.github.com.json",
+		"complex parameter types",
+		"anyOf",
+		"allOf",
+		"discriminator inference",
+		"sum types with same names",
+	))
 }
