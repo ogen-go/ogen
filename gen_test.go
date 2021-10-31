@@ -31,6 +31,9 @@ func TestGenerate(t *testing.T) {
 		Options gen.Options
 	}{
 		{
+			Name: "petstore-expanded.yaml",
+		},
+		{
 			Name: "firecracker.json",
 		},
 		{
@@ -81,10 +84,9 @@ func TestGenerate(t *testing.T) {
 		t.Run(tc.Name, func(t *testing.T) {
 			t.Parallel()
 
-			f, err := testdata.Open(path.Join("_testdata", tc.Name))
+			data, err := testdata.ReadFile(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
-			defer require.NoError(t, f.Close())
-			spec, err := ogen.Parse(f)
+			spec, err := ogen.Parse(data)
 			require.NoError(t, err)
 			g, err := gen.NewGenerator(spec, tc.Options)
 			require.NoError(t, err)

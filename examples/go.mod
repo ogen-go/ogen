@@ -13,6 +13,14 @@ require (
 	go.opentelemetry.io/otel/trace v1.1.0
 )
 
-require github.com/ogen-go/jx v0.9.0 // indirect
+require (
+	github.com/fatih/color v1.13.0 // indirect
+	github.com/goccy/go-yaml v1.9.4 // indirect
+	github.com/mattn/go-colorable v0.1.11 // indirect
+	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/ogen-go/jx v0.9.0 // indirect
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
+	golang.org/x/sys v0.0.0-20211030160813-b3129d9d1021 // indirect
+)
 
 replace github.com/ogen-go/ogen v0.0.0 => ./..

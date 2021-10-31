@@ -48,13 +48,12 @@ func main() {
 	if *specPath == "" {
 		panic("no spec provided")
 	}
-	f, err := os.Open(*specPath)
+	data, err := os.ReadFile(*specPath)
 	if err != nil {
 		panic(err)
 	}
-	defer func() { _ = f.Close() }()
 
-	spec, err := ogen.Parse(f)
+	spec, err := ogen.Parse(data)
 	if err != nil {
 		panic(err)
 	}
