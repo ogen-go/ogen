@@ -42,7 +42,7 @@ func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
 	}
 }
 
-func (d *QueryDecoder) DecodeValue() (string, error) {
+func (d *QueryDecoder) Value() (string, error) {
 	switch d.style {
 	case QueryStyleForm:
 		if len(d.src) != 1 {
@@ -58,54 +58,82 @@ func (d *QueryDecoder) DecodeValue() (string, error) {
 	}
 }
 
-func (d *QueryDecoder) DecodeArray() ([]string, error) {
+func (d *QueryDecoder) Array(f func(d Decoder) error) error {
 	if len(d.src) < 1 {
-		return nil, fmt.Errorf("empty array")
+		return fmt.Errorf("empty array")
 	}
 
 	switch d.style {
 	case QueryStyleForm:
 		if d.explode {
-			return d.src, nil
+			for _, item := range d.src {
+				if err := f(&constval{item}); err != nil {
+					return err
+				}
+			}
+			return nil
 		}
 
 		if len(d.src) != 1 {
-			return nil, fmt.Errorf("invalid value")
+			return fmt.Errorf("invalid value")
 		}
 
-		return strings.Split(d.src[0], ","), nil
+		for _, item := range strings.Split(d.src[0], ",") {
+			if err := f(&constval{item}); err != nil {
+				return err
+			}
+		}
+
+		return nil
 
 	case QueryStyleSpaceDelimited:
 		if d.explode {
-			return d.src, nil
+			for _, item := range d.src {
+				if err := f(&constval{item}); err != nil {
+					return err
+				}
+			}
+			return nil
 		}
 
 		if len(d.src) != 1 {
-			return nil, fmt.Errorf("invalid value")
+			return fmt.Errorf("invalid value")
 		}
 
-		return nil, fmt.Errorf("spaceDelimited with explode: false not supported")
+		return fmt.Errorf("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if d.explode {
-			return d.src, nil
+			for _, item := range d.src {
+				if err := f(&constval{item}); err != nil {
+					return err
+				}
+			}
+			return nil
 		}
 
 		if len(d.src) != 1 {
-			return nil, fmt.Errorf("invalid value")
+			return fmt.Errorf("invalid value")
 		}
 
-		return strings.Split(d.src[0], "|"), nil
+		for _, item := range strings.Split(d.src[0], "|") {
+			if err := f(&constval{item}); err != nil {
+				return err
+			}
+		}
+
+		return nil
 
 	case QueryStyleDeepObject:
-		return nil, fmt.Errorf("style '%s' cannot be used for arrays", d.style)
+		return fmt.Errorf("style '%s' cannot be used for arrays", d.style)
 
 	default:
 		panic("unreachable")
 	}
 }
 
-func (d *QueryDecoder) DecodeObject(f func(field, value string) error) error {
+func (d *QueryDecoder) Fields(f func(name string, d Decoder) error) error {
+	adapter := func(name, value string) error { return f(name, &constval{value}) }
 	switch d.style {
 	case QueryStyleForm:
 		if d.explode {
@@ -115,7 +143,7 @@ func (d *QueryDecoder) DecodeObject(f func(field, value string) error) error {
 				}
 
 				s := strings.Split(v, "=")
-				if err := f(s[0], s[1]); err != nil {
+				if err := adapter(s[0], s[1]); err != nil {
 					return err
 				}
 			}
@@ -136,7 +164,7 @@ func (d *QueryDecoder) DecodeObject(f func(field, value string) error) error {
 			return fmt.Errorf("invalid param name: '%s'", param)
 		}
 
-		return decodeObject(cur, ',', ',', f)
+		return decodeObject(cur, ',', ',', adapter)
 
 	case QueryStyleSpaceDelimited:
 		panic("object cannot have spaceDelimited style")
@@ -177,7 +205,7 @@ func (d *QueryDecoder) DecodeObject(f func(field, value string) error) error {
 				return err
 			}
 
-			if err := f(key, val); err != nil {
+			if err := adapter(key, val); err != nil {
 				return err
 			}
 		}

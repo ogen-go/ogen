@@ -1,23 +1,16 @@
 package uri
 
-import "fmt"
-
-type PathStyle string
-
-const (
-	PathStyleSimple PathStyle = "simple"
-	PathStyleLabel  PathStyle = "label"
-	PathStyleMatrix PathStyle = "matrix"
+import (
+	"fmt"
+	"io"
 )
-
-func (s PathStyle) String() string { return string(s) }
 
 type PathDecoder struct {
 	cur *cursor
 
-	param   string    // immutable
-	style   PathStyle // immutable
-	explode bool      // immutable
+	param   string
+	style   PathStyle
+	explode bool
 }
 
 type PathDecoderConfig struct {
@@ -27,8 +20,8 @@ type PathDecoderConfig struct {
 	Explode bool
 }
 
-func NewPathDecoder(cfg PathDecoderConfig) PathDecoder {
-	return PathDecoder{
+func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
+	return &PathDecoder{
 		cur:     &cursor{src: []rune(cfg.Value)},
 		param:   cfg.Param,
 		style:   cfg.Style,
@@ -36,7 +29,7 @@ func NewPathDecoder(cfg PathDecoderConfig) PathDecoder {
 	}
 }
 
-func (d PathDecoder) DecodeValue() (string, error) {
+func (d *PathDecoder) Value() (string, error) {
 	switch d.style {
 	case PathStyleSimple:
 		return d.cur.readAll()
@@ -68,90 +61,69 @@ func (d PathDecoder) DecodeValue() (string, error) {
 	}
 }
 
-func (d PathDecoder) DecodeArray() ([]string, error) {
-	var values []string
+func (d *PathDecoder) Array(f func(d Decoder) error) error {
 	switch d.style {
 	case PathStyleSimple:
-		for {
-			v, hasNext, err := d.cur.readValue(',')
-			if err != nil {
-				return nil, err
-			}
-
-			values = append(values, v)
-			if !hasNext {
-				return values, nil
-			}
-		}
+		return parseArray(d.cur, ',', f)
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
-			return nil, fmt.Errorf("value must begin with '.'")
+			return fmt.Errorf("value must begin with '.'")
 		}
 
 		delim := ','
 		if d.explode {
 			delim = '.'
 		}
-
-		for {
-			v, hasNext, err := d.cur.readValue(delim)
-			if err != nil {
-				return nil, err
-			}
-
-			values = append(values, v)
-			if !hasNext {
-				return values, nil
-			}
-		}
+		return parseArray(d.cur, delim, f)
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
-			return nil, fmt.Errorf("value must begin with ';'")
+			return fmt.Errorf("value must begin with '.'")
 		}
 
 		if !d.explode {
-			param, err := d.cur.readAt('=')
+			param, hasNext, err := d.cur.readValue('=')
 			if err != nil {
-				return nil, err
+				return err
 			}
 
 			if param != d.param {
-				return nil, fmt.Errorf("invalid param name: '%s'", param)
+				return fmt.Errorf("unexpected param name: '%s'", param)
 			}
 
-			for {
-				v, hasNext, err := d.cur.readValue(',')
-				if err != nil {
-					return nil, err
-				}
-
-				values = append(values, v)
-				if !hasNext {
-					return values, nil
-				}
+			if !hasNext {
+				return io.EOF
 			}
+
+			return parseArray(d.cur, ',', f)
 		}
 
 		for {
-			param, err := d.cur.readAt('=')
+			param, hasNext, err := d.cur.readValue('=')
 			if err != nil {
-				return nil, err
+				return err
 			}
 
 			if param != d.param {
-				return nil, fmt.Errorf("invalid param name '%s'", param)
+				return fmt.Errorf("unexpected param name: '%s'", param)
 			}
 
-			v, hasNext, err := d.cur.readValue(';')
-			if err != nil {
-				return nil, err
-			}
-
-			values = append(values, v)
 			if !hasNext {
-				return values, nil
+				return io.EOF
+			}
+
+			value, hasNext, err := d.cur.readValue(';')
+			if err != nil {
+				return err
+			}
+
+			if err := f(&constval{v: value}); err != nil {
+				return err
+			}
+
+			if !hasNext {
+				return nil
 			}
 		}
 
@@ -160,16 +132,17 @@ func (d PathDecoder) DecodeArray() ([]string, error) {
 	}
 }
 
-func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
+func (d *PathDecoder) Fields(f func(name string, d Decoder) error) error {
+	adapter := func(k, v string) error { return f(k, &constval{v: v}) }
 	switch d.style {
 	case PathStyleSimple:
 		if d.explode {
 			const kvSep, fieldSep = '=', ','
-			return decodeObject(d.cur, kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, adapter)
 		}
 
 		const kvSep, fieldSep = ',', ','
-		return decodeObject(d.cur, kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, adapter)
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
@@ -178,11 +151,11 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 
 		if d.explode {
 			const kvSep, fieldSep = '=', '.'
-			return decodeObject(d.cur, kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, adapter)
 		}
 
 		const kvSep, fieldSep = ',', ','
-		return decodeObject(d.cur, kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, adapter)
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
@@ -200,15 +173,30 @@ func (d PathDecoder) DecodeObject(f func(field, value string) error) error {
 			}
 
 			const kvSep, fieldSep = ',', ','
-			return decodeObject(d.cur, kvSep, fieldSep, f)
+			return decodeObject(d.cur, kvSep, fieldSep, adapter)
 		}
 
 		const kvSep, fieldSep = '=', ';'
-		return decodeObject(d.cur, kvSep, fieldSep, f)
+		return decodeObject(d.cur, kvSep, fieldSep, adapter)
 
 	default:
 		panic("unreachable")
 	}
 }
 
+func parseArray(cur *cursor, delim rune, f func(d Decoder) error) error {
+	for {
+		value, hasNext, err := cur.readValue(delim)
+		if err != nil {
+			return err
+		}
 
+		if err := f(&constval{v: value}); err != nil {
+			return err
+		}
+
+		if !hasNext {
+			return nil
+		}
+	}
+}

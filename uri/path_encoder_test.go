@@ -61,12 +61,13 @@ func TestPathEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result := NewPathEncoder(PathEncoderConfig{
+			e := NewPathEncoder(PathEncoderConfig{
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeValue(test.Input)
-			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+			})
+			require.NoError(t, e.Value(test.Input))
+			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -123,12 +124,21 @@ func TestPathEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result := NewPathEncoder(PathEncoderConfig{
+			e := NewPathEncoder(PathEncoderConfig{
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeArray(test.Input)
-			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+			})
+			err := e.Array(func(e Encoder) error {
+				for _, item := range test.Input {
+					if err := e.Value(item); err != nil {
+						return err
+					}
+				}
+				return nil
+			})
+			require.NoError(t, err)
+			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -203,12 +213,18 @@ func TestPathEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result := NewPathEncoder(PathEncoderConfig{
+			e := NewPathEncoder(PathEncoderConfig{
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).EncodeObject(test.Input)
-			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+			})
+			for _, field := range test.Input {
+				err := e.Field(field.Name, func(e Encoder) error {
+					return e.Value(field.Value)
+				})
+				require.NoError(t, err)
+			}
+			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }

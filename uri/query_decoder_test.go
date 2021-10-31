@@ -38,7 +38,7 @@ func TestQueryDecoder(t *testing.T) {
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeValue()
+			}).Value()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
@@ -96,14 +96,24 @@ func TestQueryDecoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result, err := NewQueryDecoder(QueryDecoderConfig{
+			d := NewQueryDecoder(QueryDecoderConfig{
 				Param:   test.Param,
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeArray()
+			})
+
+			var items []string
+			err := d.Array(func(d Decoder) error {
+				item, err := d.Value()
+				if err != nil {
+					return err
+				}
+				items = append(items, item)
+				return nil
+			})
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
-			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, items, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -149,13 +159,19 @@ func TestQueryDecoder(t *testing.T) {
 
 		for i, test := range tests {
 			var fields []Field
-			err := NewQueryDecoder(QueryDecoderConfig{
+			d := NewQueryDecoder(QueryDecoderConfig{
 				Param:   test.Param,
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeObject(func(field, value string) error {
-				fields = append(fields, Field{field, value})
+			})
+
+			err := d.Fields(func(name string, d Decoder) error {
+				v, err := d.Value()
+				if err != nil {
+					return err
+				}
+				fields = append(fields, Field{name, v})
 				return nil
 			})
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))

@@ -65,8 +65,7 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeValue()
-
+			}).Value()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))
 		}
@@ -125,27 +124,31 @@ func TestPathDecoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			s, err := NewPathDecoder(PathDecoderConfig{
+			var items []string
+			err := NewPathDecoder(PathDecoderConfig{
 				Param:   test.Param,
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeArray()
+			}).Array(func(d Decoder) error {
+				item, err := d.Value()
+				if err != nil {
+					return err
+				}
+				items = append(items, item)
+				return nil
+			})
 
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
-			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, items, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
 	t.Run("Object", func(t *testing.T) {
-		type field struct {
-			Field string
-			Value string
-		}
 		tests := []struct {
 			Param   string
 			Input   string
-			Expect  []field
+			Expect  []Field
 			Style   PathStyle
 			Explode bool
 		}{
@@ -154,7 +157,7 @@ func TestPathDecoder(t *testing.T) {
 				Input:   "role,admin,firstName,Alex",
 				Style:   PathStyleSimple,
 				Explode: false,
-				Expect: []field{
+				Expect: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -164,7 +167,7 @@ func TestPathDecoder(t *testing.T) {
 				Input:   "role=admin,firstName=Alex",
 				Style:   PathStyleSimple,
 				Explode: true,
-				Expect: []field{
+				Expect: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -212,14 +215,18 @@ func TestPathDecoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			var fields []field
+			var fields []Field
 			err := NewPathDecoder(PathDecoderConfig{
 				Param:   test.Param,
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).DecodeObject(func(fieldName, value string) error {
-				fields = append(fields, field{fieldName, value})
+			}).Fields(func(name string, d Decoder) error {
+				v, err := d.Value()
+				if err != nil {
+					return err
+				}
+				fields = append(fields, Field{name, v})
 				return nil
 			})
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
