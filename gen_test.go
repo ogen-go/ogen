@@ -32,6 +32,11 @@ func TestGenerate(t *testing.T) {
 	}{
 		{
 			Name: "petstore-expanded.yaml",
+			Options: gen.Options{
+				IgnoreNotImplemented: []string{
+					"allOf",
+				},
+			},
 		},
 		{
 			Name: "firecracker.json",
@@ -41,12 +46,10 @@ func TestGenerate(t *testing.T) {
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{
 					"complex parameter types",
-					"oneOf",
 					"anyOf",
 					"allOf",
-					"nullable",
-					"array parameter with complex type",
-					"optional nullable array",
+					"discriminator inference",
+					"sum types with same names",
 				},
 			},
 		},
@@ -82,8 +85,6 @@ func TestGenerate(t *testing.T) {
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
-			t.Parallel()
-
 			data, err := testdata.ReadFile(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
 			spec, err := ogen.Parse(data)
