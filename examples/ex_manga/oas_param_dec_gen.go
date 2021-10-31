@@ -73,16 +73,22 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.BookID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.BookID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'book_id' not specified")
 		}
@@ -103,16 +109,22 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.MediaID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'media_id' not specified")
 		}
@@ -128,16 +140,22 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Format = v
 		} else {
 			return params, fmt.Errorf("path parameter 'format' not specified")
 		}
@@ -158,16 +176,22 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.MediaID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'media_id' not specified")
 		}
@@ -183,16 +207,22 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Page = v
 		} else {
 			return params, fmt.Errorf("path parameter 'page' not specified")
 		}
@@ -208,16 +238,22 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Format = v
 		} else {
 			return params, fmt.Errorf("path parameter 'format' not specified")
 		}
@@ -238,16 +274,22 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.MediaID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'media_id' not specified")
 		}
@@ -263,16 +305,22 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Page = v
 		} else {
 			return params, fmt.Errorf("path parameter 'page' not specified")
 		}
@@ -288,16 +336,22 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Format = v
 		} else {
 			return params, fmt.Errorf("path parameter 'format' not specified")
 		}
@@ -317,16 +371,22 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Query = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Query = v
 		} else {
 			return params, fmt.Errorf("query parameter 'query' not specified")
 		}
@@ -341,16 +401,22 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Page = v
 		}
 	}
 	return params, nil
@@ -368,16 +434,22 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TagID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.TagID = v
 		} else {
 			return params, fmt.Errorf("query parameter 'tag_id' not specified")
 		}
@@ -392,16 +464,22 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Page = v
 		}
 	}
 	return params, nil

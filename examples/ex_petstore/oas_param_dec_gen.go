@@ -72,16 +72,22 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt32(rawParam)
-			if err != nil {
+				c, err := conv.ToInt32(s)
+				if err != nil {
+					return err
+				}
+
+				params.Limit = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Limit = v
 		}
 	}
 	return params, nil
@@ -100,16 +106,22 @@ func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetId = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.PetId = v
 		} else {
 			return params, fmt.Errorf("path parameter 'petId' not specified")
 		}

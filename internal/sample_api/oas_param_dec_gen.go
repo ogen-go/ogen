@@ -72,16 +72,22 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.InlinedParam = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.InlinedParam = v
 		} else {
 			return params, fmt.Errorf("query parameter 'inlinedParam' not specified")
 		}
@@ -96,16 +102,22 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt32(rawParam)
-			if err != nil {
+				c, err := conv.ToInt32(s)
+				if err != nil {
+					return err
+				}
+
+				params.Skip = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Skip = v
 		} else {
 			return params, fmt.Errorf("query parameter 'skip' not specified")
 		}
@@ -126,16 +138,22 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.ID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'id' not specified")
 		}
@@ -155,16 +173,22 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.PetID = v
 		} else {
 			return params, fmt.Errorf("query parameter 'petID' not specified")
 		}
@@ -230,16 +254,22 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Name = v
 		} else {
 			return params, fmt.Errorf("path parameter 'name' not specified")
 		}
@@ -260,16 +290,22 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt(rawParam)
-			if err != nil {
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.ID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'id' not specified")
 		}

@@ -73,16 +73,22 @@ func decodeDeletePetParams(r *http.Request) (DeletePetParams, error) {
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.ID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.ID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'id' not specified")
 		}

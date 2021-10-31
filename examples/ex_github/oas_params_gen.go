@@ -322,7 +322,7 @@ type ActionsListJobsForWorkflowRunParams struct {
 	Owner   string
 	Repo    string
 	RunID   int
-	Filter  string
+	Filter  ActionsListJobsForWorkflowRunFilter
 	PerPage int
 	Page    int
 }
@@ -416,7 +416,7 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	Actor   string
 	Branch  string
 	Event   string
-	Status  string
+	Status  ActionsListWorkflowRunsForRepoStatus
 	PerPage int
 	Page    int
 	Created time.Time
@@ -589,8 +589,8 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 }
 
 type ActivityListReposStarredByAuthenticatedUserParams struct {
-	Sort      string
-	Direction string
+	Sort      ActivityListReposStarredByAuthenticatedUserSort
+	Direction ActivityListReposStarredByAuthenticatedUserDirection
 	PerPage   int
 	Page      int
 }
@@ -664,8 +664,8 @@ type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 
 type AppsListAccountsForPlanStubbedParams struct {
 	PlanID    int
-	Sort      string
-	Direction string
+	Sort      AppsListAccountsForPlanStubbedSort
+	Direction AppsListAccountsForPlanStubbedDirection
 	PerPage   int
 	Page      int
 }
@@ -780,8 +780,8 @@ type ChecksListForRefParams struct {
 	Repo      string
 	Ref       string
 	CheckName string
-	Status    string
-	Filter    string
+	Status    ChecksListForRefStatus
+	Filter    ChecksListForRefFilter
 	PerPage   int
 	Page      int
 	AppID     int
@@ -792,8 +792,8 @@ type ChecksListForSuiteParams struct {
 	Repo         string
 	CheckSuiteID int
 	CheckName    string
-	Status       string
-	Filter       string
+	Status       ChecksListForSuiteStatus
+	Filter       ChecksListForSuiteFilter
 	PerPage      int
 	Page         int
 }
@@ -829,7 +829,7 @@ type CodeScanningDeleteAnalysisParams struct {
 type CodeScanningGetAlertParams struct {
 	Owner       string
 	Repo        string
-	AlertNumber int
+	AlertNumber AlertNumber
 }
 
 type CodeScanningGetAnalysisParams struct {
@@ -847,38 +847,38 @@ type CodeScanningGetSarifParams struct {
 type CodeScanningListAlertInstancesParams struct {
 	Owner       string
 	Repo        string
-	AlertNumber int
+	AlertNumber AlertNumber
 	Page        int
 	PerPage     int
-	Ref         string
+	Ref         CodeScanningRef
 }
 
 type CodeScanningListAlertsForRepoParams struct {
 	Owner    string
 	Repo     string
-	ToolName string
-	ToolGUID string
+	ToolName CodeScanningAnalysisToolName
+	ToolGUID CodeScanningAnalysisToolGUID
 	Page     int
 	PerPage  int
-	Ref      string
-	State    string
+	Ref      CodeScanningRef
+	State    CodeScanningAlertState
 }
 
 type CodeScanningListRecentAnalysesParams struct {
 	Owner    string
 	Repo     string
-	ToolName string
-	ToolGUID string
+	ToolName CodeScanningAnalysisToolName
+	ToolGUID CodeScanningAnalysisToolGUID
 	Page     int
 	PerPage  int
-	Ref      string
-	SarifID  string
+	Ref      CodeScanningRef
+	SarifID  CodeScanningAnalysisSarifID
 }
 
 type CodeScanningUpdateAlertParams struct {
 	Owner       string
 	Repo        string
-	AlertNumber int
+	AlertNumber AlertNumber
 }
 
 type CodeScanningUploadSarifParams struct {
@@ -951,10 +951,10 @@ type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 type EnterpriseAdminGetAuditLogParams struct {
 	Enterprise string
 	Phrase     string
-	Include    string
+	Include    EnterpriseAdminGetAuditLogInclude
 	After      string
 	Before     string
-	Order      string
+	Order      EnterpriseAdminGetAuditLogOrder
 	Page       int
 	PerPage    int
 }
@@ -1306,9 +1306,9 @@ type IssuesListLabelsOnIssueParams struct {
 type IssuesListMilestonesParams struct {
 	Owner     string
 	Repo      string
-	State     string
-	Sort      string
-	Direction string
+	State     IssuesListMilestonesState
+	Sort      IssuesListMilestonesSort
+	Direction IssuesListMilestonesDirection
 	PerPage   int
 	Page      int
 }
@@ -1416,7 +1416,7 @@ type MigrationsGetStatusForAuthenticatedUserParams struct {
 type MigrationsGetStatusForOrgParams struct {
 	Org         string
 	MigrationID int
-	Exclude     []string
+	Exclude     []MigrationsGetStatusForOrgExcludeItem
 }
 
 type MigrationsListForAuthenticatedUserParams struct {
@@ -1428,7 +1428,7 @@ type MigrationsListForOrgParams struct {
 	Org     string
 	PerPage int
 	Page    int
-	Exclude []string
+	Exclude []MigrationsListForOrgExcludeItem
 }
 
 type MigrationsListReposForOrgParams struct {
@@ -1520,10 +1520,10 @@ type OrgsGetParams struct {
 type OrgsGetAuditLogParams struct {
 	Org     string
 	Phrase  string
-	Include string
+	Include OrgsGetAuditLogInclude
 	After   string
 	Before  string
-	Order   string
+	Order   OrgsGetAuditLogOrder
 	PerPage int
 	Page    int
 }
@@ -1582,7 +1582,7 @@ type OrgsListInvitationTeamsParams struct {
 
 type OrgsListOutsideCollaboratorsParams struct {
 	Org     string
-	Filter  string
+	Filter  OrgsListOutsideCollaboratorsFilter
 	PerPage int
 	Page    int
 }
@@ -1655,154 +1655,154 @@ type OrgsUpdateWebhookConfigForOrgParams struct {
 }
 
 type PackagesDeletePackageForAuthenticatedUserParams struct {
-	PackageType string
+	PackageType PackagesDeletePackageForAuthenticatedUserPackageType
 	PackageName string
 }
 
 type PackagesDeletePackageForOrgParams struct {
-	PackageType string
+	PackageType PackagesDeletePackageForOrgPackageType
 	PackageName string
 	Org         string
 }
 
 type PackagesDeletePackageForUserParams struct {
-	PackageType string
+	PackageType PackagesDeletePackageForUserPackageType
 	PackageName string
 	Username    string
 }
 
 type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
-	PackageType      string
+	PackageType      PackagesDeletePackageVersionForAuthenticatedUserPackageType
 	PackageName      string
 	PackageVersionID int
 }
 
 type PackagesDeletePackageVersionForOrgParams struct {
-	PackageType      string
+	PackageType      PackagesDeletePackageVersionForOrgPackageType
 	PackageName      string
 	Org              string
 	PackageVersionID int
 }
 
 type PackagesDeletePackageVersionForUserParams struct {
-	PackageType      string
+	PackageType      PackagesDeletePackageVersionForUserPackageType
 	PackageName      string
 	Username         string
 	PackageVersionID int
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
-	PackageType string
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType
 	PackageName string
 	Page        int
 	PerPage     int
-	State       string
+	State       PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
-	PackageType string
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType
 	PackageName string
 	Org         string
 	Page        int
 	PerPage     int
-	State       string
+	State       PackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
-	PackageType string
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType
 	PackageName string
 	Username    string
 }
 
 type PackagesGetPackageForAuthenticatedUserParams struct {
-	PackageType string
+	PackageType PackagesGetPackageForAuthenticatedUserPackageType
 	PackageName string
 }
 
 type PackagesGetPackageForOrganizationParams struct {
-	PackageType string
+	PackageType PackagesGetPackageForOrganizationPackageType
 	PackageName string
 	Org         string
 }
 
 type PackagesGetPackageForUserParams struct {
-	PackageType string
+	PackageType PackagesGetPackageForUserPackageType
 	PackageName string
 	Username    string
 }
 
 type PackagesGetPackageVersionForAuthenticatedUserParams struct {
-	PackageType      string
+	PackageType      PackagesGetPackageVersionForAuthenticatedUserPackageType
 	PackageName      string
 	PackageVersionID int
 }
 
 type PackagesGetPackageVersionForOrganizationParams struct {
-	PackageType      string
+	PackageType      PackagesGetPackageVersionForOrganizationPackageType
 	PackageName      string
 	Org              string
 	PackageVersionID int
 }
 
 type PackagesGetPackageVersionForUserParams struct {
-	PackageType      string
+	PackageType      PackagesGetPackageVersionForUserPackageType
 	PackageName      string
 	PackageVersionID int
 	Username         string
 }
 
 type PackagesListPackagesForAuthenticatedUserParams struct {
-	PackageType string
-	Visibility  string
+	PackageType PackagesListPackagesForAuthenticatedUserPackageType
+	Visibility  PackagesListPackagesForAuthenticatedUserVisibility
 }
 
 type PackagesListPackagesForOrganizationParams struct {
-	PackageType string
+	PackageType PackagesListPackagesForOrganizationPackageType
 	Org         string
-	Visibility  string
+	Visibility  PackagesListPackagesForOrganizationVisibility
 }
 
 type PackagesListPackagesForUserParams struct {
-	PackageType string
-	Visibility  string
+	PackageType PackagesListPackagesForUserPackageType
+	Visibility  PackagesListPackagesForUserVisibility
 	Username    string
 }
 
 type PackagesRestorePackageForAuthenticatedUserParams struct {
-	PackageType string
+	PackageType PackagesRestorePackageForAuthenticatedUserPackageType
 	PackageName string
 	Token       string
 }
 
 type PackagesRestorePackageForOrgParams struct {
-	PackageType string
+	PackageType PackagesRestorePackageForOrgPackageType
 	PackageName string
 	Org         string
 	Token       string
 }
 
 type PackagesRestorePackageForUserParams struct {
-	PackageType string
+	PackageType PackagesRestorePackageForUserPackageType
 	PackageName string
 	Username    string
 	Token       string
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
-	PackageType      string
+	PackageType      PackagesRestorePackageVersionForAuthenticatedUserPackageType
 	PackageName      string
 	PackageVersionID int
 }
 
 type PackagesRestorePackageVersionForOrgParams struct {
-	PackageType      string
+	PackageType      PackagesRestorePackageVersionForOrgPackageType
 	PackageName      string
 	Org              string
 	PackageVersionID int
 }
 
 type PackagesRestorePackageVersionForUserParams struct {
-	PackageType      string
+	PackageType      PackagesRestorePackageVersionForUserPackageType
 	PackageName      string
 	Username         string
 	PackageVersionID int
@@ -1847,7 +1847,7 @@ type ProjectsGetColumnParams struct {
 
 type ProjectsListCardsParams struct {
 	ColumnID      int
-	ArchivedState string
+	ArchivedState ProjectsListCardsArchivedState
 	PerPage       int
 	Page          int
 }
@@ -1860,7 +1860,7 @@ type ProjectsListColumnsParams struct {
 
 type ProjectsListForOrgParams struct {
 	Org     string
-	State   string
+	State   ProjectsListForOrgState
 	PerPage int
 	Page    int
 }
@@ -1868,7 +1868,7 @@ type ProjectsListForOrgParams struct {
 type ProjectsListForRepoParams struct {
 	Owner   string
 	Repo    string
-	State   string
+	State   ProjectsListForRepoState
 	PerPage int
 	Page    int
 }
@@ -1976,8 +1976,8 @@ type PullsListReviewCommentsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	Sort       string
-	Direction  string
+	Sort       PullsListReviewCommentsSort
+	Direction  PullsListReviewCommentsDirection
 	Since      time.Time
 	PerPage    int
 	Page       int
@@ -1986,8 +1986,8 @@ type PullsListReviewCommentsParams struct {
 type PullsListReviewCommentsForRepoParams struct {
 	Owner     string
 	Repo      string
-	Sort      string
-	Direction string
+	Sort      PullsListReviewCommentsForRepoSort
+	Direction PullsListReviewCommentsForRepoDirection
 	Since     time.Time
 	PerPage   int
 	Page      int
@@ -2096,7 +2096,7 @@ type ReactionsListForCommitCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
-	Content   string
+	Content   ReactionsListForCommitCommentContent
 	PerPage   int
 	Page      int
 }
@@ -2105,7 +2105,7 @@ type ReactionsListForIssueParams struct {
 	Owner       string
 	Repo        string
 	IssueNumber int
-	Content     string
+	Content     ReactionsListForIssueContent
 	PerPage     int
 	Page        int
 }
@@ -2114,7 +2114,7 @@ type ReactionsListForIssueCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
-	Content   string
+	Content   ReactionsListForIssueCommentContent
 	PerPage   int
 	Page      int
 }
@@ -2123,7 +2123,7 @@ type ReactionsListForPullRequestReviewCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
-	Content   string
+	Content   ReactionsListForPullRequestReviewCommentContent
 	PerPage   int
 	Page      int
 }
@@ -2133,7 +2133,7 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
-	Content          string
+	Content          ReactionsListForTeamDiscussionCommentInOrgContent
 	PerPage          int
 	Page             int
 }
@@ -2142,7 +2142,7 @@ type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	CommentNumber    int
-	Content          string
+	Content          ReactionsListForTeamDiscussionCommentLegacyContent
 	PerPage          int
 	Page             int
 }
@@ -2151,7 +2151,7 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 	Org              string
 	TeamSlug         string
 	DiscussionNumber int
-	Content          string
+	Content          ReactionsListForTeamDiscussionInOrgContent
 	PerPage          int
 	Page             int
 }
@@ -2159,7 +2159,7 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 type ReactionsListForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
-	Content          string
+	Content          ReactionsListForTeamDiscussionLegacyContent
 	PerPage          int
 	Page             int
 }
@@ -2396,7 +2396,7 @@ type ReposGetBranchProtectionParams struct {
 type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
-	Per   string
+	Per   ReposGetClonesPer
 }
 
 type ReposGetCodeFrequencyStatsParams struct {
@@ -2549,7 +2549,7 @@ type ReposGetUsersWithAccessToProtectedBranchParams struct {
 type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
-	Per   string
+	Per   ReposGetViewsPer
 }
 
 type ReposGetWebhookParams struct {
@@ -2581,7 +2581,7 @@ type ReposListBranchesParams struct {
 type ReposListCollaboratorsParams struct {
 	Owner       string
 	Repo        string
-	Affiliation string
+	Affiliation ReposListCollaboratorsAffiliation
 	PerPage     int
 	Page        int
 }
@@ -2646,18 +2646,18 @@ type ReposListDeploymentStatusesParams struct {
 
 type ReposListForOrgParams struct {
 	Org       string
-	Type      string
-	Sort      string
-	Direction string
+	Type      ReposListForOrgType
+	Sort      ReposListForOrgSort
+	Direction ReposListForOrgDirection
 	PerPage   int
 	Page      int
 }
 
 type ReposListForUserParams struct {
 	Username  string
-	Type      string
-	Sort      string
-	Direction string
+	Type      ReposListForUserType
+	Sort      ReposListForUserSort
+	Direction ReposListForUserDirection
 	PerPage   int
 	Page      int
 }
@@ -2665,7 +2665,7 @@ type ReposListForUserParams struct {
 type ReposListForksParams struct {
 	Owner   string
 	Repo    string
-	Sort    string
+	Sort    ReposListForksSort
 	PerPage int
 	Page    int
 }
@@ -2839,8 +2839,8 @@ type ScimDeleteUserFromOrgParams struct {
 
 type SearchCommitsParams struct {
 	Q       string
-	Sort    string
-	Order   string
+	Sort    SearchCommitsSort
+	Order   SearchCommitsOrder
 	PerPage int
 	Page    int
 }
@@ -2854,12 +2854,12 @@ type SearchTopicsParams struct {
 type SecretScanningGetAlertParams struct {
 	Owner       string
 	Repo        string
-	AlertNumber int
+	AlertNumber AlertNumber
 }
 
 type SecretScanningListAlertsForOrgParams struct {
 	Org        string
-	State      string
+	State      SecretScanningListAlertsForOrgState
 	SecretType string
 	Page       int
 	PerPage    int
@@ -2868,7 +2868,7 @@ type SecretScanningListAlertsForOrgParams struct {
 type SecretScanningListAlertsForRepoParams struct {
 	Owner      string
 	Repo       string
-	State      string
+	State      SecretScanningListAlertsForRepoState
 	SecretType string
 	Page       int
 	PerPage    int
@@ -2877,7 +2877,7 @@ type SecretScanningListAlertsForRepoParams struct {
 type SecretScanningUpdateAlertParams struct {
 	Owner       string
 	Repo        string
-	AlertNumber int
+	AlertNumber AlertNumber
 }
 
 type TeamsAddMemberLegacyParams struct {
@@ -3053,7 +3053,7 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 	Org              string
 	TeamSlug         string
 	DiscussionNumber int
-	Direction        string
+	Direction        TeamsListDiscussionCommentsInOrgDirection
 	PerPage          int
 	Page             int
 }
@@ -3061,7 +3061,7 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
-	Direction        string
+	Direction        TeamsListDiscussionCommentsLegacyDirection
 	PerPage          int
 	Page             int
 }
@@ -3069,7 +3069,7 @@ type TeamsListDiscussionCommentsLegacyParams struct {
 type TeamsListDiscussionsInOrgParams struct {
 	Org       string
 	TeamSlug  string
-	Direction string
+	Direction TeamsListDiscussionsInOrgDirection
 	PerPage   int
 	Page      int
 	Pinned    string
@@ -3077,7 +3077,7 @@ type TeamsListDiscussionsInOrgParams struct {
 
 type TeamsListDiscussionsLegacyParams struct {
 	TeamID    int
-	Direction string
+	Direction TeamsListDiscussionsLegacyDirection
 	PerPage   int
 	Page      int
 }
@@ -3105,14 +3105,14 @@ type TeamsListIdpGroupsInOrgParams struct {
 type TeamsListMembersInOrgParams struct {
 	Org      string
 	TeamSlug string
-	Role     string
+	Role     TeamsListMembersInOrgRole
 	PerPage  int
 	Page     int
 }
 
 type TeamsListMembersLegacyParams struct {
 	TeamID  int
-	Role    string
+	Role    TeamsListMembersLegacyRole
 	PerPage int
 	Page    int
 }

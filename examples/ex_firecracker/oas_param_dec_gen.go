@@ -73,16 +73,22 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.DriveID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.DriveID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'drive_id' not specified")
 		}
@@ -103,16 +109,22 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.IfaceID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.IfaceID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'iface_id' not specified")
 		}
@@ -133,16 +145,22 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.DriveID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.DriveID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'drive_id' not specified")
 		}
@@ -163,16 +181,22 @@ func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkI
 				Explode: false,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToString(rawParam)
-			if err != nil {
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.IfaceID = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.IfaceID = v
 		} else {
 			return params, fmt.Errorf("path parameter 'iface_id' not specified")
 		}

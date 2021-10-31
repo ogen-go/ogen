@@ -121,7 +121,13 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.BookID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.BookID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -168,7 +174,13 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.MediaID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 	u.Path += "/cover."
 	{
@@ -178,7 +190,13 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.StringToString(params.Format))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Format))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -225,7 +243,13 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.MediaID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 	u.Path += "/"
 	{
@@ -235,7 +259,13 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.Page))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.Page))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 	u.Path += "."
 	{
@@ -245,7 +275,13 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.StringToString(params.Format))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Format))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -292,7 +328,13 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.MediaID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.MediaID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 	u.Path += "/"
 	{
@@ -302,7 +344,13 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.Page))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.Page))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 	u.Path += "t."
 	{
@@ -312,7 +360,13 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.StringToString(params.Format))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Format))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -360,7 +414,13 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("query", e.EncodeValue(conv.StringToString(params.Query)))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Query))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["query"] = e.Result()
 	}
 	{
 		// Encode "page" parameter.
@@ -368,7 +428,13 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.Page))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["page"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -417,7 +483,13 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("tag_id", e.EncodeValue(conv.IntToString(params.TagID)))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.TagID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["tag_id"] = e.Result()
 	}
 	{
 		// Encode "page" parameter.
@@ -425,7 +497,13 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("page", e.EncodeValue(conv.IntToString(params.Page)))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.Page))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["page"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

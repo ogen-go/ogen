@@ -121,7 +121,13 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.Int64ToString(params.ID))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.ID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)

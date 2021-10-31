@@ -160,7 +160,13 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("limit", e.EncodeValue(conv.Int32ToString(params.Limit)))
+		if encErr := func() error {
+			return e.Value(conv.Int32ToString(params.Limit))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["limit"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -208,7 +214,13 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.StringToString(params.PetId))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.PetId))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)

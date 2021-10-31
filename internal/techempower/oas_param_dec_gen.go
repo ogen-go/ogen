@@ -72,16 +72,22 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.Count = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Count = v
 		}
 	}
 	return params, nil
@@ -99,16 +105,22 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.Queries = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Queries = v
 		}
 	}
 	return params, nil
@@ -126,16 +138,22 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 				Explode: true,
 			})
 
-			rawParam, err := d.DecodeValue()
-			if err != nil {
-				return params, err
-			}
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
 
-			v, err := conv.ToInt64(rawParam)
-			if err != nil {
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.Queries = c
+				return nil
+			}(); err != nil {
 				return params, err
 			}
-			params.Queries = v
 		}
 	}
 	return params, nil

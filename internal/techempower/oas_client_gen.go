@@ -122,7 +122,13 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("count", e.EncodeValue(conv.Int64ToString(params.Count)))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.Count))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["count"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -247,7 +253,13 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("queries", e.EncodeValue(conv.Int64ToString(params.Queries)))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.Queries))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["queries"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -296,7 +308,13 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("queries", e.EncodeValue(conv.Int64ToString(params.Queries)))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.Queries))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["queries"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

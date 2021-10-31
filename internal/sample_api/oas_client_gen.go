@@ -122,7 +122,13 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("inlinedParam", e.EncodeValue(conv.Int64ToString(params.InlinedParam)))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.InlinedParam))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["inlinedParam"] = e.Result()
 	}
 	{
 		// Encode "skip" parameter.
@@ -130,7 +136,13 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("skip", e.EncodeValue(conv.Int32ToString(params.Skip)))
+		if encErr := func() error {
+			return e.Value(conv.Int32ToString(params.Skip))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["skip"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -332,7 +344,13 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.ID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.ID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -380,7 +398,13 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		q.Set("petID", e.EncodeValue(conv.Int64ToString(params.PetID)))
+		if encErr := func() error {
+			return e.Value(conv.Int64ToString(params.PetID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["petID"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -450,7 +474,13 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.StringToString(params.Name))
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Name))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -497,7 +527,13 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		u.Path += e.EncodeValue(conv.IntToString(params.ID))
+		if encErr := func() error {
+			return e.Value(conv.IntToString(params.ID))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode path: %w", encErr)
+			return
+		}
+		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
