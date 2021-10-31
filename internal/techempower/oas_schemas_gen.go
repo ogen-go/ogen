@@ -72,3 +72,6 @@ type WorldObject struct {
 }
 
 type WorldObjects []WorldObject
+
+func (a *WorldObjects) wrap(v []WorldObject)  { *a = WorldObjects(v) }
+func (a *WorldObjects) unwrap() []WorldObject { return []WorldObject(*a) }

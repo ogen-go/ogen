@@ -87,6 +87,9 @@ func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
 
 type GetPageCoverImageOKImage string
 
+func (a *GetPageCoverImageOKImage) wrap(v string)  { *a = GetPageCoverImageOKImage(v) }
+func (a *GetPageCoverImageOKImage) unwrap() string { return string(*a) }
+
 func (*GetPageCoverImageOKImage) getPageCoverImageRes() {}
 
 // GetPageImageForbidden is response for GetPageImage operation.
@@ -96,6 +99,9 @@ func (*GetPageImageForbidden) getPageImageRes() {}
 
 type GetPageImageOKImage string
 
+func (a *GetPageImageOKImage) wrap(v string)  { *a = GetPageImageOKImage(v) }
+func (a *GetPageImageOKImage) unwrap() string { return string(*a) }
+
 func (*GetPageImageOKImage) getPageImageRes() {}
 
 // GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
@@ -104,6 +110,9 @@ type GetPageThumbnailImageForbidden struct{}
 func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
 
 type GetPageThumbnailImageOKImage string
+
+func (a *GetPageThumbnailImageOKImage) wrap(v string)  { *a = GetPageThumbnailImageOKImage(v) }
+func (a *GetPageThumbnailImageOKImage) unwrap() string { return string(*a) }
 
 func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
 
@@ -356,6 +365,11 @@ func (*SearchByTagIDForbidden) searchByTagIDRes() {}
 
 type SearchByTagIDOKApplicationJSON []SearchResponse
 
+func (a *SearchByTagIDOKApplicationJSON) wrap(v []SearchResponse) {
+	*a = SearchByTagIDOKApplicationJSON(v)
+}
+func (a *SearchByTagIDOKApplicationJSON) unwrap() []SearchResponse { return []SearchResponse(*a) }
+
 func (*SearchByTagIDOKApplicationJSON) searchByTagIDRes() {}
 
 // SearchForbidden is response for Search operation.
@@ -364,6 +378,9 @@ type SearchForbidden struct{}
 func (*SearchForbidden) searchRes() {}
 
 type SearchOKApplicationJSON []SearchResponse
+
+func (a *SearchOKApplicationJSON) wrap(v []SearchResponse)  { *a = SearchOKApplicationJSON(v) }
+func (a *SearchOKApplicationJSON) unwrap() []SearchResponse { return []SearchResponse(*a) }
 
 func (*SearchOKApplicationJSON) searchRes() {}
 

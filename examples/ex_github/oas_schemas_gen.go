@@ -110,9 +110,21 @@ type ActionsAddSelfHostedRunnerToGroupForOrgNoContent struct{}
 
 type ActionsApproveWorkflowRunApplicationJSONForbidden BasicError
 
+func (a *ActionsApproveWorkflowRunApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActionsApproveWorkflowRunApplicationJSONForbidden(v)
+}
+func (a *ActionsApproveWorkflowRunApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActionsApproveWorkflowRunApplicationJSONForbidden) actionsApproveWorkflowRunRes() {}
 
 type ActionsApproveWorkflowRunApplicationJSONNotFound BasicError
+
+func (a *ActionsApproveWorkflowRunApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ActionsApproveWorkflowRunApplicationJSONNotFound(v)
+}
+func (a *ActionsApproveWorkflowRunApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ActionsApproveWorkflowRunApplicationJSONNotFound) actionsApproveWorkflowRunRes() {}
 
@@ -438,6 +450,9 @@ func NewStringActionsEnableWorkflowWorkflowID(v string) ActionsEnableWorkflowWor
 }
 
 type ActionsEnabled bool
+
+func (a *ActionsEnabled) wrap(v bool)  { *a = ActionsEnabled(v) }
+func (a *ActionsEnabled) unwrap() bool { return bool(*a) }
 
 // Ref: #/components/schemas/actions-enterprise-permissions
 type ActionsEnterprisePermissions struct {
@@ -879,15 +894,36 @@ const (
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
@@ -903,10 +939,24 @@ type ActivityDeleteRepoSubscriptionNoContent struct{}
 
 type ActivityDeleteThreadSubscriptionApplicationJSONForbidden BasicError
 
+func (a *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityDeleteThreadSubscriptionApplicationJSONForbidden(v)
+}
+func (a *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityDeleteThreadSubscriptionApplicationJSONForbidden) activityDeleteThreadSubscriptionRes() {
 }
 
 type ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized BasicError
+
+func (a *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(v)
+}
+func (a *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionRes() {
 }
@@ -923,52 +973,123 @@ func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionRes() {}
 
 type ActivityGetThreadApplicationJSONForbidden BasicError
 
+func (a *ActivityGetThreadApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityGetThreadApplicationJSONForbidden(v)
+}
+func (a *ActivityGetThreadApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ActivityGetThreadApplicationJSONForbidden) activityGetThreadRes() {}
 
 type ActivityGetThreadApplicationJSONUnauthorized BasicError
 
+func (a *ActivityGetThreadApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityGetThreadApplicationJSONUnauthorized(v)
+}
+func (a *ActivityGetThreadApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
+
 func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadRes() {}
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (a *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
+
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden(v)
+}
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) activityListPublicEventsForRepoNetworkRes() {
 }
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently BasicError
 
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) wrap(v BasicError) {
+	*a = ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently(v)
+}
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) activityListPublicEventsForRepoNetworkRes() {
 }
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
+
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound(v)
+}
+func (a *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkRes() {
 }
 
 type ActivityListPublicEventsForRepoNetworkOKApplicationJSON []Event
 
+func (a *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) wrap(v []Event) {
+	*a = ActivityListPublicEventsForRepoNetworkOKApplicationJSON(v)
+}
+func (a *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) unwrap() []Event {
+	return []Event(*a)
+}
+
 func (*ActivityListPublicEventsForRepoNetworkOKApplicationJSON) activityListPublicEventsForRepoNetworkRes() {
 }
 
 type ActivityListPublicEventsOKApplicationJSON []Event
 
+func (a *ActivityListPublicEventsOKApplicationJSON) wrap(v []Event) {
+	*a = ActivityListPublicEventsOKApplicationJSON(v)
+}
+func (a *ActivityListPublicEventsOKApplicationJSON) unwrap() []Event { return []Event(*a) }
+
 func (*ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
 
 type ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 type ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
 }
@@ -982,10 +1103,24 @@ const (
 
 type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
 
+func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) wrap(v []Repository) {
+	*a = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) unwrap() []Repository {
+	return []Repository(*a)
+}
+
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 type ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON []StarredRepository
+
+func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) wrap(v []StarredRepository) {
+	*a = ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON(v)
+}
+func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) unwrap() []StarredRepository {
+	return []StarredRepository(*a)
+}
 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserRes() {
 }
@@ -1013,15 +1148,36 @@ const (
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 type ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON []MinimalRepository
+
+func (a *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) wrap(v []MinimalRepository) {
+	*a = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) unwrap() []MinimalRepository {
+	return []MinimalRepository(*a)
+}
 
 func (*ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) activityListWatchedReposForAuthenticatedUserRes() {
 }
@@ -1034,10 +1190,24 @@ func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadR
 
 type ActivityMarkNotificationsAsReadApplicationJSONForbidden BasicError
 
+func (a *ActivityMarkNotificationsAsReadApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityMarkNotificationsAsReadApplicationJSONForbidden(v)
+}
+func (a *ActivityMarkNotificationsAsReadApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityMarkNotificationsAsReadApplicationJSONForbidden) activityMarkNotificationsAsReadRes() {
 }
 
 type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
+
+func (a *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityMarkNotificationsAsReadApplicationJSONUnauthorized(v)
+}
+func (a *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadRes() {
 }
@@ -1080,9 +1250,23 @@ type ActivitySetRepoSubscriptionReq struct {
 
 type ActivitySetThreadSubscriptionApplicationJSONForbidden BasicError
 
+func (a *ActivitySetThreadSubscriptionApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivitySetThreadSubscriptionApplicationJSONForbidden(v)
+}
+func (a *ActivitySetThreadSubscriptionApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadSubscriptionRes() {}
 
 type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
+
+func (a *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivitySetThreadSubscriptionApplicationJSONUnauthorized(v)
+}
+func (a *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionRes() {}
 
@@ -1092,15 +1276,36 @@ type ActivitySetThreadSubscriptionReq struct {
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) activityStarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) activityStarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserRes() {
 }
@@ -1112,15 +1317,36 @@ func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthent
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
 }
@@ -1142,13 +1368,28 @@ type Actor struct {
 
 type AlertCreatedAt time.Time
 
+func (a *AlertCreatedAt) wrap(v time.Time)  { *a = AlertCreatedAt(v) }
+func (a *AlertCreatedAt) unwrap() time.Time { return time.Time(*a) }
+
 type AlertHTMLURL url.URL
+
+func (a *AlertHTMLURL) wrap(v url.URL)  { *a = AlertHTMLURL(v) }
+func (a *AlertHTMLURL) unwrap() url.URL { return url.URL(*a) }
 
 type AlertInstancesURL url.URL
 
+func (a *AlertInstancesURL) wrap(v url.URL)  { *a = AlertInstancesURL(v) }
+func (a *AlertInstancesURL) unwrap() url.URL { return url.URL(*a) }
+
 type AlertNumber int
 
+func (a *AlertNumber) wrap(v int)  { *a = AlertNumber(v) }
+func (a *AlertNumber) unwrap() int { return int(*a) }
+
 type AlertURL url.URL
+
+func (a *AlertURL) wrap(v url.URL)  { *a = AlertURL(v) }
+func (a *AlertURL) unwrap() url.URL { return url.URL(*a) }
 
 // Ref: #/components/schemas/allowed-actions
 type AllowedActions string
@@ -1431,9 +1672,21 @@ type ApplicationGrantApp struct {
 
 type AppsAddRepoToInstallationApplicationJSONForbidden BasicError
 
+func (a *AppsAddRepoToInstallationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = AppsAddRepoToInstallationApplicationJSONForbidden(v)
+}
+func (a *AppsAddRepoToInstallationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsAddRepoToInstallationApplicationJSONForbidden) appsAddRepoToInstallationRes() {}
 
 type AppsAddRepoToInstallationApplicationJSONNotFound BasicError
+
+func (a *AppsAddRepoToInstallationApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsAddRepoToInstallationApplicationJSONNotFound(v)
+}
+func (a *AppsAddRepoToInstallationApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationRes() {}
 
@@ -1480,18 +1733,42 @@ type AppsDeleteTokenReq struct {
 
 type AppsGetBySlugApplicationJSONForbidden BasicError
 
+func (a *AppsGetBySlugApplicationJSONForbidden) wrap(v BasicError) {
+	*a = AppsGetBySlugApplicationJSONForbidden(v)
+}
+func (a *AppsGetBySlugApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugRes() {}
 
 type AppsGetBySlugApplicationJSONNotFound BasicError
+
+func (a *AppsGetBySlugApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsGetBySlugApplicationJSONNotFound(v)
+}
+func (a *AppsGetBySlugApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugRes() {}
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
 
+func (a *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsGetSubscriptionPlanForAccountApplicationJSONNotFound(v)
+}
+func (a *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) appsGetSubscriptionPlanForAccountRes() {
 }
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized BasicError
+
+func (a *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized(v)
+}
+func (a *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountRes() {
 }
@@ -1525,6 +1802,13 @@ const (
 
 type AppsListAccountsForPlanStubbedOKApplicationJSON []MarketplacePurchase
 
+func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) wrap(v []MarketplacePurchase) {
+	*a = AppsListAccountsForPlanStubbedOKApplicationJSON(v)
+}
+func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) unwrap() []MarketplacePurchase {
+	return []MarketplacePurchase(*a)
+}
+
 func (*AppsListAccountsForPlanStubbedOKApplicationJSON) appsListAccountsForPlanStubbedRes() {}
 
 type AppsListAccountsForPlanStubbedSort string
@@ -1536,10 +1820,24 @@ const (
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (a *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
@@ -1555,26 +1853,64 @@ func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationRepo
 
 type AppsListPlansApplicationJSONNotFound BasicError
 
+func (a *AppsListPlansApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsListPlansApplicationJSONNotFound(v)
+}
+func (a *AppsListPlansApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*AppsListPlansApplicationJSONNotFound) appsListPlansRes() {}
 
 type AppsListPlansApplicationJSONUnauthorized BasicError
+
+func (a *AppsListPlansApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = AppsListPlansApplicationJSONUnauthorized(v)
+}
+func (a *AppsListPlansApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansRes() {}
 
 type AppsListPlansOKApplicationJSON []MarketplaceListingPlan
 
+func (a *AppsListPlansOKApplicationJSON) wrap(v []MarketplaceListingPlan) {
+	*a = AppsListPlansOKApplicationJSON(v)
+}
+func (a *AppsListPlansOKApplicationJSON) unwrap() []MarketplaceListingPlan {
+	return []MarketplaceListingPlan(*a)
+}
+
 func (*AppsListPlansOKApplicationJSON) appsListPlansRes() {}
 
 type AppsListPlansStubbedOKApplicationJSON []MarketplaceListingPlan
+
+func (a *AppsListPlansStubbedOKApplicationJSON) wrap(v []MarketplaceListingPlan) {
+	*a = AppsListPlansStubbedOKApplicationJSON(v)
+}
+func (a *AppsListPlansStubbedOKApplicationJSON) unwrap() []MarketplaceListingPlan {
+	return []MarketplaceListingPlan(*a)
+}
 
 func (*AppsListPlansStubbedOKApplicationJSON) appsListPlansStubbedRes() {}
 
 type AppsListReposAccessibleToInstallationApplicationJSONForbidden BasicError
 
+func (a *AppsListReposAccessibleToInstallationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = AppsListReposAccessibleToInstallationApplicationJSONForbidden(v)
+}
+func (a *AppsListReposAccessibleToInstallationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsListReposAccessibleToInstallationApplicationJSONForbidden) appsListReposAccessibleToInstallationRes() {
 }
 
 type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
+
+func (a *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = AppsListReposAccessibleToInstallationApplicationJSONUnauthorized(v)
+}
+func (a *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
@@ -1589,29 +1925,71 @@ func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstall
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON []UserMarketplacePurchase
 
+func (a *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) wrap(v []UserMarketplacePurchase) {
+	*a = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) unwrap() []UserMarketplacePurchase {
+	return []UserMarketplacePurchase(*a)
+}
+
 func (*AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMarketplacePurchase
+
+func (a *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) wrap(v []UserMarketplacePurchase) {
+	*a = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(v)
+}
+func (a *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) unwrap() []UserMarketplacePurchase {
+	return []UserMarketplacePurchase(*a)
+}
 
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
+func (a *AppsRemoveRepoFromInstallationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = AppsRemoveRepoFromInstallationApplicationJSONForbidden(v)
+}
+func (a *AppsRemoveRepoFromInstallationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationRes() {}
 
 type AppsRemoveRepoFromInstallationApplicationJSONNotFound BasicError
+
+func (a *AppsRemoveRepoFromInstallationApplicationJSONNotFound) wrap(v BasicError) {
+	*a = AppsRemoveRepoFromInstallationApplicationJSONNotFound(v)
+}
+func (a *AppsRemoveRepoFromInstallationApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationRes() {}
 
@@ -2270,9 +2648,19 @@ const (
 
 type ChecksCreateSuiteApplicationJSONCreated CheckSuite
 
+func (a *ChecksCreateSuiteApplicationJSONCreated) wrap(v CheckSuite) {
+	*a = ChecksCreateSuiteApplicationJSONCreated(v)
+}
+func (a *ChecksCreateSuiteApplicationJSONCreated) unwrap() CheckSuite { return CheckSuite(*a) }
+
 func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteRes() {}
 
 type ChecksCreateSuiteApplicationJSONOK CheckSuite
+
+func (a *ChecksCreateSuiteApplicationJSONOK) wrap(v CheckSuite) {
+	*a = ChecksCreateSuiteApplicationJSONOK(v)
+}
+func (a *ChecksCreateSuiteApplicationJSONOK) unwrap() CheckSuite { return CheckSuite(*a) }
 
 func (*ChecksCreateSuiteApplicationJSONOK) checksCreateSuiteRes() {}
 
@@ -2347,6 +2735,9 @@ func (*CloneTraffic) reposGetClonesRes() {}
 
 type CodeFrequencyStat []int
 
+func (a *CodeFrequencyStat) wrap(v []int)  { *a = CodeFrequencyStat(v) }
+func (a *CodeFrequencyStat) unwrap() []int { return []int(*a) }
+
 // Ref: #/components/schemas/code-of-conduct
 type CodeOfConduct struct {
 	Key     string    `json:"key"`
@@ -2398,6 +2789,9 @@ const (
 
 type CodeScanningAlertDismissedAt time.Time
 
+func (a *CodeScanningAlertDismissedAt) wrap(v time.Time)  { *a = CodeScanningAlertDismissedAt(v) }
+func (a *CodeScanningAlertDismissedAt) unwrap() time.Time { return time.Time(*a) }
+
 // Ref: #/components/schemas/code-scanning-alert-dismissed-reason
 type CodeScanningAlertDismissedReason string
 
@@ -2408,6 +2802,9 @@ const (
 )
 
 type CodeScanningAlertEnvironment string
+
+func (a *CodeScanningAlertEnvironment) wrap(v string)  { *a = CodeScanningAlertEnvironment(v) }
+func (a *CodeScanningAlertEnvironment) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/code-scanning-alert-instance
 type CodeScanningAlertInstance struct {
@@ -2541,11 +2938,23 @@ func (*CodeScanningAnalysis) codeScanningGetAnalysisRes() {}
 
 type CodeScanningAnalysisAnalysisKey string
 
+func (a *CodeScanningAnalysisAnalysisKey) wrap(v string)  { *a = CodeScanningAnalysisAnalysisKey(v) }
+func (a *CodeScanningAnalysisAnalysisKey) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisCategory string
+
+func (a *CodeScanningAnalysisCategory) wrap(v string)  { *a = CodeScanningAnalysisCategory(v) }
+func (a *CodeScanningAnalysisCategory) unwrap() string { return string(*a) }
 
 type CodeScanningAnalysisCommitSha string
 
+func (a *CodeScanningAnalysisCommitSha) wrap(v string)  { *a = CodeScanningAnalysisCommitSha(v) }
+func (a *CodeScanningAnalysisCommitSha) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisCreatedAt time.Time
+
+func (a *CodeScanningAnalysisCreatedAt) wrap(v time.Time)  { *a = CodeScanningAnalysisCreatedAt(v) }
+func (a *CodeScanningAnalysisCreatedAt) unwrap() time.Time { return time.Time(*a) }
 
 // Ref: #/components/schemas/code-scanning-analysis-deletion
 type CodeScanningAnalysisDeletion struct {
@@ -2557,9 +2966,18 @@ func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningAnalysisEnvironment string
 
+func (a *CodeScanningAnalysisEnvironment) wrap(v string)  { *a = CodeScanningAnalysisEnvironment(v) }
+func (a *CodeScanningAnalysisEnvironment) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisSarifFile string
 
+func (a *CodeScanningAnalysisSarifFile) wrap(v string)  { *a = CodeScanningAnalysisSarifFile(v) }
+func (a *CodeScanningAnalysisSarifFile) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisSarifID string
+
+func (a *CodeScanningAnalysisSarifID) wrap(v string)  { *a = CodeScanningAnalysisSarifID(v) }
+func (a *CodeScanningAnalysisSarifID) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/code-scanning-analysis-tool
 type CodeScanningAnalysisTool struct {
@@ -2570,41 +2988,99 @@ type CodeScanningAnalysisTool struct {
 
 type CodeScanningAnalysisToolGUID string
 
+func (a *CodeScanningAnalysisToolGUID) wrap(v string)  { *a = CodeScanningAnalysisToolGUID(v) }
+func (a *CodeScanningAnalysisToolGUID) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisToolName string
+
+func (a *CodeScanningAnalysisToolName) wrap(v string)  { *a = CodeScanningAnalysisToolName(v) }
+func (a *CodeScanningAnalysisToolName) unwrap() string { return string(*a) }
 
 type CodeScanningAnalysisToolVersion string
 
+func (a *CodeScanningAnalysisToolVersion) wrap(v string)  { *a = CodeScanningAnalysisToolVersion(v) }
+func (a *CodeScanningAnalysisToolVersion) unwrap() string { return string(*a) }
+
 type CodeScanningAnalysisURL url.URL
 
+func (a *CodeScanningAnalysisURL) wrap(v url.URL)  { *a = CodeScanningAnalysisURL(v) }
+func (a *CodeScanningAnalysisURL) unwrap() url.URL { return url.URL(*a) }
+
 type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
+
+func (a *CodeScanningDeleteAnalysisApplicationJSONBadRequest) wrap(v BasicError) {
+	*a = CodeScanningDeleteAnalysisApplicationJSONBadRequest(v)
+}
+func (a *CodeScanningDeleteAnalysisApplicationJSONBadRequest) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningDeleteAnalysisApplicationJSONForbidden BasicError
 
+func (a *CodeScanningDeleteAnalysisApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningDeleteAnalysisApplicationJSONForbidden(v)
+}
+func (a *CodeScanningDeleteAnalysisApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*CodeScanningDeleteAnalysisApplicationJSONForbidden) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
+
+func (a *CodeScanningDeleteAnalysisApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningDeleteAnalysisApplicationJSONNotFound(v)
+}
+func (a *CodeScanningDeleteAnalysisApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningGetAlertApplicationJSONForbidden BasicError
 
+func (a *CodeScanningGetAlertApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningGetAlertApplicationJSONForbidden(v)
+}
+func (a *CodeScanningGetAlertApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertRes() {}
 
 type CodeScanningGetAlertApplicationJSONNotFound BasicError
+
+func (a *CodeScanningGetAlertApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningGetAlertApplicationJSONNotFound(v)
+}
+func (a *CodeScanningGetAlertApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertRes() {}
 
 type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
 
+func (a *CodeScanningGetAnalysisApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningGetAnalysisApplicationJSONForbidden(v)
+}
+func (a *CodeScanningGetAnalysisApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisRes() {}
 
 type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
 
+func (a *CodeScanningGetAnalysisApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningGetAnalysisApplicationJSONNotFound(v)
+}
+func (a *CodeScanningGetAnalysisApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisRes() {}
 
 type CodeScanningGetAnalysisOKApplicationJSONSarif string
+
+func (a *CodeScanningGetAnalysisOKApplicationJSONSarif) wrap(v string) {
+	*a = CodeScanningGetAnalysisOKApplicationJSONSarif(v)
+}
+func (a *CodeScanningGetAnalysisOKApplicationJSONSarif) unwrap() string { return string(*a) }
 
 func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
 
@@ -2615,41 +3091,107 @@ func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
 
+func (a *CodeScanningListAlertInstancesApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningListAlertInstancesApplicationJSONForbidden(v)
+}
+func (a *CodeScanningListAlertInstancesApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*CodeScanningListAlertInstancesApplicationJSONForbidden) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONNotFound BasicError
+
+func (a *CodeScanningListAlertInstancesApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningListAlertInstancesApplicationJSONNotFound(v)
+}
+func (a *CodeScanningListAlertInstancesApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
+func (a *CodeScanningListAlertInstancesOKApplicationJSON) wrap(v []CodeScanningAlertInstance) {
+	*a = CodeScanningListAlertInstancesOKApplicationJSON(v)
+}
+func (a *CodeScanningListAlertInstancesOKApplicationJSON) unwrap() []CodeScanningAlertInstance {
+	return []CodeScanningAlertInstance(*a)
+}
+
 func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertsForRepoApplicationJSONForbidden BasicError
+
+func (a *CodeScanningListAlertsForRepoApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningListAlertsForRepoApplicationJSONForbidden(v)
+}
+func (a *CodeScanningListAlertsForRepoApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*CodeScanningListAlertsForRepoApplicationJSONForbidden) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListAlertsForRepoApplicationJSONNotFound BasicError
 
+func (a *CodeScanningListAlertsForRepoApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningListAlertsForRepoApplicationJSONNotFound(v)
+}
+func (a *CodeScanningListAlertsForRepoApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*CodeScanningListAlertsForRepoApplicationJSONNotFound) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
+
+func (a *CodeScanningListAlertsForRepoOKApplicationJSON) wrap(v []CodeScanningAlertItems) {
+	*a = CodeScanningListAlertsForRepoOKApplicationJSON(v)
+}
+func (a *CodeScanningListAlertsForRepoOKApplicationJSON) unwrap() []CodeScanningAlertItems {
+	return []CodeScanningAlertItems(*a)
+}
 
 func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
+func (a *CodeScanningListRecentAnalysesApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningListRecentAnalysesApplicationJSONForbidden(v)
+}
+func (a *CodeScanningListRecentAnalysesApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONNotFound BasicError
+
+func (a *CodeScanningListRecentAnalysesApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningListRecentAnalysesApplicationJSONNotFound(v)
+}
+func (a *CodeScanningListRecentAnalysesApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningListRecentAnalysesOKApplicationJSON []CodeScanningAnalysis
 
+func (a *CodeScanningListRecentAnalysesOKApplicationJSON) wrap(v []CodeScanningAnalysis) {
+	*a = CodeScanningListRecentAnalysesOKApplicationJSON(v)
+}
+func (a *CodeScanningListRecentAnalysesOKApplicationJSON) unwrap() []CodeScanningAnalysis {
+	return []CodeScanningAnalysis(*a)
+}
+
 func (*CodeScanningListRecentAnalysesOKApplicationJSON) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningRef string
+
+func (a *CodeScanningRef) wrap(v string)  { *a = CodeScanningRef(v) }
+func (a *CodeScanningRef) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/code-scanning-sarifs-receipt
 type CodeScanningSarifsReceipt struct {
@@ -2676,9 +3218,19 @@ const (
 
 type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
 
+func (a *CodeScanningUpdateAlertApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningUpdateAlertApplicationJSONForbidden(v)
+}
+func (a *CodeScanningUpdateAlertApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*CodeScanningUpdateAlertApplicationJSONForbidden) codeScanningUpdateAlertRes() {}
 
 type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
+
+func (a *CodeScanningUpdateAlertApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningUpdateAlertApplicationJSONNotFound(v)
+}
+func (a *CodeScanningUpdateAlertApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertRes() {}
 
@@ -2689,9 +3241,19 @@ type CodeScanningUpdateAlertReq struct {
 
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
 
+func (a *CodeScanningUploadSarifApplicationJSONForbidden) wrap(v BasicError) {
+	*a = CodeScanningUploadSarifApplicationJSONForbidden(v)
+}
+func (a *CodeScanningUploadSarifApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifRes() {}
 
 type CodeScanningUploadSarifApplicationJSONNotFound BasicError
+
+func (a *CodeScanningUploadSarifApplicationJSONNotFound) wrap(v BasicError) {
+	*a = CodeScanningUploadSarifApplicationJSONNotFound(v)
+}
+func (a *CodeScanningUploadSarifApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifRes() {}
 
@@ -2732,6 +3294,13 @@ type CodeSearchResultItem struct {
 }
 
 type CodesOfConductGetAllCodesOfConductOKApplicationJSON []CodeOfConduct
+
+func (a *CodesOfConductGetAllCodesOfConductOKApplicationJSON) wrap(v []CodeOfConduct) {
+	*a = CodesOfConductGetAllCodesOfConductOKApplicationJSON(v)
+}
+func (a *CodesOfConductGetAllCodesOfConductOKApplicationJSON) unwrap() []CodeOfConduct {
+	return []CodeOfConduct(*a)
+}
 
 func (*CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllCodesOfConductRes() {}
 
@@ -3826,9 +4395,19 @@ func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
+func (a *GistsCreateCommentApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsCreateCommentApplicationJSONForbidden(v)
+}
+func (a *GistsCreateCommentApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
 
 type GistsCreateCommentApplicationJSONNotFound BasicError
+
+func (a *GistsCreateCommentApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsCreateCommentApplicationJSONNotFound(v)
+}
+func (a *GistsCreateCommentApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
 
@@ -3838,17 +4417,37 @@ type GistsCreateCommentReq struct {
 
 type GistsDeleteApplicationJSONForbidden BasicError
 
+func (a *GistsDeleteApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsDeleteApplicationJSONForbidden(v)
+}
+func (a *GistsDeleteApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsDeleteApplicationJSONForbidden) gistsDeleteRes() {}
 
 type GistsDeleteApplicationJSONNotFound BasicError
+
+func (a *GistsDeleteApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsDeleteApplicationJSONNotFound(v)
+}
+func (a *GistsDeleteApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsDeleteApplicationJSONNotFound) gistsDeleteRes() {}
 
 type GistsDeleteCommentApplicationJSONForbidden BasicError
 
+func (a *GistsDeleteCommentApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsDeleteCommentApplicationJSONForbidden(v)
+}
+func (a *GistsDeleteCommentApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsDeleteCommentApplicationJSONForbidden) gistsDeleteCommentRes() {}
 
 type GistsDeleteCommentApplicationJSONNotFound BasicError
+
+func (a *GistsDeleteCommentApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsDeleteCommentApplicationJSONNotFound(v)
+}
+func (a *GistsDeleteCommentApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentRes() {}
 
@@ -3864,61 +4463,134 @@ func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
 type GistsListCommentsApplicationJSONForbidden BasicError
 
+func (a *GistsListCommentsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsListCommentsApplicationJSONForbidden(v)
+}
+func (a *GistsListCommentsApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
 
 type GistsListCommentsApplicationJSONNotFound BasicError
+
+func (a *GistsListCommentsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsListCommentsApplicationJSONNotFound(v)
+}
+func (a *GistsListCommentsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
 
 type GistsListCommentsOKApplicationJSON []GistComment
 
+func (a *GistsListCommentsOKApplicationJSON) wrap(v []GistComment) {
+	*a = GistsListCommentsOKApplicationJSON(v)
+}
+func (a *GistsListCommentsOKApplicationJSON) unwrap() []GistComment { return []GistComment(*a) }
+
 func (*GistsListCommentsOKApplicationJSON) gistsListCommentsRes() {}
 
 type GistsListCommitsApplicationJSONForbidden BasicError
+
+func (a *GistsListCommitsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsListCommitsApplicationJSONForbidden(v)
+}
+func (a *GistsListCommitsApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsListCommitsApplicationJSONForbidden) gistsListCommitsRes() {}
 
 type GistsListCommitsApplicationJSONNotFound BasicError
 
+func (a *GistsListCommitsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsListCommitsApplicationJSONNotFound(v)
+}
+func (a *GistsListCommitsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
 type GistsListCommitsOKApplicationJSON []GistCommit
+
+func (a *GistsListCommitsOKApplicationJSON) wrap(v []GistCommit) {
+	*a = GistsListCommitsOKApplicationJSON(v)
+}
+func (a *GistsListCommitsOKApplicationJSON) unwrap() []GistCommit { return []GistCommit(*a) }
 
 func (*GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
 
 type GistsListForksApplicationJSONForbidden BasicError
 
+func (a *GistsListForksApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsListForksApplicationJSONForbidden(v)
+}
+func (a *GistsListForksApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsListForksApplicationJSONForbidden) gistsListForksRes() {}
 
 type GistsListForksApplicationJSONNotFound BasicError
+
+func (a *GistsListForksApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsListForksApplicationJSONNotFound(v)
+}
+func (a *GistsListForksApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
 
 type GistsListForksOKApplicationJSON []GistSimple
 
+func (a *GistsListForksOKApplicationJSON) wrap(v []GistSimple) {
+	*a = GistsListForksOKApplicationJSON(v)
+}
+func (a *GistsListForksOKApplicationJSON) unwrap() []GistSimple { return []GistSimple(*a) }
+
 func (*GistsListForksOKApplicationJSON) gistsListForksRes() {}
 
 type GistsListOKApplicationJSON []BaseGist
+
+func (a *GistsListOKApplicationJSON) wrap(v []BaseGist)  { *a = GistsListOKApplicationJSON(v) }
+func (a *GistsListOKApplicationJSON) unwrap() []BaseGist { return []BaseGist(*a) }
 
 func (*GistsListOKApplicationJSON) gistsListRes() {}
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
+func (a *GistsListStarredApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsListStarredApplicationJSONForbidden(v)
+}
+func (a *GistsListStarredApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsListStarredApplicationJSONForbidden) gistsListStarredRes() {}
 
 type GistsListStarredApplicationJSONUnauthorized BasicError
+
+func (a *GistsListStarredApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = GistsListStarredApplicationJSONUnauthorized(v)
+}
+func (a *GistsListStarredApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
 
 type GistsListStarredOKApplicationJSON []BaseGist
 
+func (a *GistsListStarredOKApplicationJSON) wrap(v []BaseGist) {
+	*a = GistsListStarredOKApplicationJSON(v)
+}
+func (a *GistsListStarredOKApplicationJSON) unwrap() []BaseGist { return []BaseGist(*a) }
+
 func (*GistsListStarredOKApplicationJSON) gistsListStarredRes() {}
 
 type GistsStarApplicationJSONForbidden BasicError
 
+func (a *GistsStarApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsStarApplicationJSONForbidden(v)
+}
+func (a *GistsStarApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsStarApplicationJSONForbidden) gistsStarRes() {}
 
 type GistsStarApplicationJSONNotFound BasicError
+
+func (a *GistsStarApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsStarApplicationJSONNotFound(v)
+}
+func (a *GistsStarApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsStarApplicationJSONNotFound) gistsStarRes() {}
 
@@ -3929,9 +4601,19 @@ func (*GistsStarNoContent) gistsStarRes() {}
 
 type GistsUnstarApplicationJSONForbidden BasicError
 
+func (a *GistsUnstarApplicationJSONForbidden) wrap(v BasicError) {
+	*a = GistsUnstarApplicationJSONForbidden(v)
+}
+func (a *GistsUnstarApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*GistsUnstarApplicationJSONForbidden) gistsUnstarRes() {}
 
 type GistsUnstarApplicationJSONNotFound BasicError
+
+func (a *GistsUnstarApplicationJSONNotFound) wrap(v BasicError) {
+	*a = GistsUnstarApplicationJSONNotFound(v)
+}
+func (a *GistsUnstarApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*GistsUnstarApplicationJSONNotFound) gistsUnstarRes() {}
 
@@ -4143,6 +4825,11 @@ type GitUpdateRefReq struct {
 }
 
 type GitignoreGetAllTemplatesOKApplicationJSON []string
+
+func (a *GitignoreGetAllTemplatesOKApplicationJSON) wrap(v []string) {
+	*a = GitignoreGetAllTemplatesOKApplicationJSON(v)
+}
+func (a *GitignoreGetAllTemplatesOKApplicationJSON) unwrap() []string { return []string(*a) }
 
 func (*GitignoreGetAllTemplatesOKApplicationJSON) gitignoreGetAllTemplatesRes() {}
 
@@ -4695,25 +5382,55 @@ func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
 
 type IssuesGetEventApplicationJSONForbidden BasicError
 
+func (a *IssuesGetEventApplicationJSONForbidden) wrap(v BasicError) {
+	*a = IssuesGetEventApplicationJSONForbidden(v)
+}
+func (a *IssuesGetEventApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*IssuesGetEventApplicationJSONForbidden) issuesGetEventRes() {}
 
 type IssuesGetEventApplicationJSONGone BasicError
+
+func (a *IssuesGetEventApplicationJSONGone) wrap(v BasicError) {
+	*a = IssuesGetEventApplicationJSONGone(v)
+}
+func (a *IssuesGetEventApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
 
 func (*IssuesGetEventApplicationJSONGone) issuesGetEventRes() {}
 
 type IssuesGetEventApplicationJSONNotFound BasicError
 
+func (a *IssuesGetEventApplicationJSONNotFound) wrap(v BasicError) {
+	*a = IssuesGetEventApplicationJSONNotFound(v)
+}
+func (a *IssuesGetEventApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventRes() {}
 
 type IssuesListAssigneesOKApplicationJSON []SimpleUser
+
+func (a *IssuesListAssigneesOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = IssuesListAssigneesOKApplicationJSON(v)
+}
+func (a *IssuesListAssigneesOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
 
 func (*IssuesListAssigneesOKApplicationJSON) issuesListAssigneesRes() {}
 
 type IssuesListCommentsApplicationJSONGone BasicError
 
+func (a *IssuesListCommentsApplicationJSONGone) wrap(v BasicError) {
+	*a = IssuesListCommentsApplicationJSONGone(v)
+}
+func (a *IssuesListCommentsApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*IssuesListCommentsApplicationJSONGone) issuesListCommentsRes() {}
 
 type IssuesListCommentsApplicationJSONNotFound BasicError
+
+func (a *IssuesListCommentsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = IssuesListCommentsApplicationJSONNotFound(v)
+}
+func (a *IssuesListCommentsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsRes() {}
 
@@ -4732,6 +5449,11 @@ const (
 )
 
 type IssuesListCommentsOKApplicationJSON []IssueComment
+
+func (a *IssuesListCommentsOKApplicationJSON) wrap(v []IssueComment) {
+	*a = IssuesListCommentsOKApplicationJSON(v)
+}
+func (a *IssuesListCommentsOKApplicationJSON) unwrap() []IssueComment { return []IssueComment(*a) }
 
 func (*IssuesListCommentsOKApplicationJSON) issuesListCommentsRes() {}
 
@@ -4846,9 +5568,19 @@ const (
 
 type IssuesListLabelsForRepoOKApplicationJSON []Label
 
+func (a *IssuesListLabelsForRepoOKApplicationJSON) wrap(v []Label) {
+	*a = IssuesListLabelsForRepoOKApplicationJSON(v)
+}
+func (a *IssuesListLabelsForRepoOKApplicationJSON) unwrap() []Label { return []Label(*a) }
+
 func (*IssuesListLabelsForRepoOKApplicationJSON) issuesListLabelsForRepoRes() {}
 
 type IssuesListLabelsOnIssueOKApplicationJSON []Label
+
+func (a *IssuesListLabelsOnIssueOKApplicationJSON) wrap(v []Label) {
+	*a = IssuesListLabelsOnIssueOKApplicationJSON(v)
+}
+func (a *IssuesListLabelsOnIssueOKApplicationJSON) unwrap() []Label { return []Label(*a) }
 
 func (*IssuesListLabelsOnIssueOKApplicationJSON) issuesListLabelsOnIssueRes() {}
 
@@ -4860,6 +5592,11 @@ const (
 )
 
 type IssuesListMilestonesOKApplicationJSON []Milestone
+
+func (a *IssuesListMilestonesOKApplicationJSON) wrap(v []Milestone) {
+	*a = IssuesListMilestonesOKApplicationJSON(v)
+}
+func (a *IssuesListMilestonesOKApplicationJSON) unwrap() []Milestone { return []Milestone(*a) }
 
 func (*IssuesListMilestonesOKApplicationJSON) issuesListMilestonesRes() {}
 
@@ -4921,21 +5658,46 @@ type IssuesRemoveAssigneesReq struct {
 
 type IssuesRemoveLabelApplicationJSONGone BasicError
 
+func (a *IssuesRemoveLabelApplicationJSONGone) wrap(v BasicError) {
+	*a = IssuesRemoveLabelApplicationJSONGone(v)
+}
+func (a *IssuesRemoveLabelApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*IssuesRemoveLabelApplicationJSONGone) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelApplicationJSONNotFound BasicError
+
+func (a *IssuesRemoveLabelApplicationJSONNotFound) wrap(v BasicError) {
+	*a = IssuesRemoveLabelApplicationJSONNotFound(v)
+}
+func (a *IssuesRemoveLabelApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelOKApplicationJSON []Label
 
+func (a *IssuesRemoveLabelOKApplicationJSON) wrap(v []Label) {
+	*a = IssuesRemoveLabelOKApplicationJSON(v)
+}
+func (a *IssuesRemoveLabelOKApplicationJSON) unwrap() []Label { return []Label(*a) }
+
 func (*IssuesRemoveLabelOKApplicationJSON) issuesRemoveLabelRes() {}
 
 type IssuesUnlockApplicationJSONForbidden BasicError
 
+func (a *IssuesUnlockApplicationJSONForbidden) wrap(v BasicError) {
+	*a = IssuesUnlockApplicationJSONForbidden(v)
+}
+func (a *IssuesUnlockApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*IssuesUnlockApplicationJSONForbidden) issuesUnlockRes() {}
 
 type IssuesUnlockApplicationJSONNotFound BasicError
+
+func (a *IssuesUnlockApplicationJSONNotFound) wrap(v BasicError) {
+	*a = IssuesUnlockApplicationJSONNotFound(v)
+}
+func (a *IssuesUnlockApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockRes() {}
 
@@ -5113,13 +5875,30 @@ type LicenseSimple struct {
 
 type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
+func (a *LicensesGetAllCommonlyUsedOKApplicationJSON) wrap(v []LicenseSimple) {
+	*a = LicensesGetAllCommonlyUsedOKApplicationJSON(v)
+}
+func (a *LicensesGetAllCommonlyUsedOKApplicationJSON) unwrap() []LicenseSimple {
+	return []LicenseSimple(*a)
+}
+
 func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
 
 type LicensesGetApplicationJSONForbidden BasicError
 
+func (a *LicensesGetApplicationJSONForbidden) wrap(v BasicError) {
+	*a = LicensesGetApplicationJSONForbidden(v)
+}
+func (a *LicensesGetApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*LicensesGetApplicationJSONForbidden) licensesGetRes() {}
 
 type LicensesGetApplicationJSONNotFound BasicError
+
+func (a *LicensesGetApplicationJSONNotFound) wrap(v BasicError) {
+	*a = LicensesGetApplicationJSONNotFound(v)
+}
+func (a *LicensesGetApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*LicensesGetApplicationJSONNotFound) licensesGetRes() {}
 
@@ -5136,17 +5915,29 @@ type LinkWithType struct {
 
 type MarkdownRenderOKTextHTML string
 
+func (a *MarkdownRenderOKTextHTML) wrap(v string)  { *a = MarkdownRenderOKTextHTML(v) }
+func (a *MarkdownRenderOKTextHTML) unwrap() string { return string(*a) }
+
 func (*MarkdownRenderOKTextHTML) markdownRenderRes() {}
 
 type MarkdownRenderRawOKTextHTML string
+
+func (a *MarkdownRenderRawOKTextHTML) wrap(v string)  { *a = MarkdownRenderRawOKTextHTML(v) }
+func (a *MarkdownRenderRawOKTextHTML) unwrap() string { return string(*a) }
 
 func (*MarkdownRenderRawOKTextHTML) markdownRenderRawRes() {}
 
 type MarkdownRenderRawReqTextPlain string
 
+func (a *MarkdownRenderRawReqTextPlain) wrap(v string)  { *a = MarkdownRenderRawReqTextPlain(v) }
+func (a *MarkdownRenderRawReqTextPlain) unwrap() string { return string(*a) }
+
 func (*MarkdownRenderRawReqTextPlain) markdownRenderRawReq() {}
 
 type MarkdownRenderRawReqTextXMarkdown string
+
+func (a *MarkdownRenderRawReqTextXMarkdown) wrap(v string)  { *a = MarkdownRenderRawReqTextXMarkdown(v) }
+func (a *MarkdownRenderRawReqTextXMarkdown) unwrap() string { return string(*a) }
 
 func (*MarkdownRenderRawReqTextXMarkdown) markdownRenderRawReq() {}
 
@@ -5307,15 +6098,36 @@ type MigrationsCancelImportNoContent struct{}
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
@@ -5338,10 +6150,24 @@ func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgRes(
 
 type MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
 }
@@ -5353,19 +6179,47 @@ func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAut
 
 type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
+func (a *MigrationsGetCommitAuthorsOKApplicationJSON) wrap(v []PorterAuthor) {
+	*a = MigrationsGetCommitAuthorsOKApplicationJSON(v)
+}
+func (a *MigrationsGetCommitAuthorsOKApplicationJSON) unwrap() []PorterAuthor {
+	return []PorterAuthor(*a)
+}
+
 func (*MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
@@ -5378,15 +6232,36 @@ const (
 
 type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *MigrationsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = MigrationsListForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *MigrationsListForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserRes() {
 }
 
 type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
 }
 
 type MigrationsListForAuthenticatedUserOKApplicationJSON []Migration
+
+func (a *MigrationsListForAuthenticatedUserOKApplicationJSON) wrap(v []Migration) {
+	*a = MigrationsListForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *MigrationsListForAuthenticatedUserOKApplicationJSON) unwrap() []Migration {
+	return []Migration(*a)
+}
 
 func (*MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
 
@@ -5398,9 +6273,23 @@ const (
 
 type MigrationsListReposForOrgOKApplicationJSON []MinimalRepository
 
+func (a *MigrationsListReposForOrgOKApplicationJSON) wrap(v []MinimalRepository) {
+	*a = MigrationsListReposForOrgOKApplicationJSON(v)
+}
+func (a *MigrationsListReposForOrgOKApplicationJSON) unwrap() []MinimalRepository {
+	return []MinimalRepository(*a)
+}
+
 func (*MigrationsListReposForOrgOKApplicationJSON) migrationsListReposForOrgRes() {}
 
 type MigrationsListReposForUserOKApplicationJSON []MinimalRepository
+
+func (a *MigrationsListReposForUserOKApplicationJSON) wrap(v []MinimalRepository) {
+	*a = MigrationsListReposForUserOKApplicationJSON(v)
+}
+func (a *MigrationsListReposForUserOKApplicationJSON) unwrap() []MinimalRepository {
+	return []MinimalRepository(*a)
+}
 
 func (*MigrationsListReposForUserOKApplicationJSON) migrationsListReposForUserRes() {}
 
@@ -5469,15 +6358,36 @@ const (
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
@@ -7197,10 +8107,24 @@ type OAuthAuthorizationsCreateAuthorizationReq struct {
 
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized BasicError
+
+func (a *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
@@ -7212,9 +8136,23 @@ func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDelet
 
 type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsDeleteGrantApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantRes() {}
 
 type OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized BasicError
+
+func (a *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantRes() {
 }
@@ -7226,19 +8164,47 @@ func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRe
 
 type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
 type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
+
+func (a *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
 type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsGetGrantApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsGetGrantApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsGetGrantApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantRes() {}
 
 type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
+
+func (a *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsGetGrantApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
@@ -7259,37 +8225,93 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound BasicError
+
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound(v)
+}
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
 
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsOKApplicationJSON []Authorization
+
+func (a *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) wrap(v []Authorization) {
+	*a = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(v)
+}
+func (a *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) unwrap() []Authorization {
+	return []Authorization(*a)
+}
 
 func (*OAuthAuthorizationsListAuthorizationsOKApplicationJSON) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
 
+func (a *OAuthAuthorizationsListGrantsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListGrantsApplicationJSONForbidden(v)
+}
+func (a *OAuthAuthorizationsListGrantsApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsListGrantsApplicationJSONForbidden) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONNotFound BasicError
+
+func (a *OAuthAuthorizationsListGrantsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListGrantsApplicationJSONNotFound(v)
+}
+func (a *OAuthAuthorizationsListGrantsApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
 
+func (a *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(v)
+}
+func (a *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsOKApplicationJSON []ApplicationGrant
+
+func (a *OAuthAuthorizationsListGrantsOKApplicationJSON) wrap(v []ApplicationGrant) {
+	*a = OAuthAuthorizationsListGrantsOKApplicationJSON(v)
+}
+func (a *OAuthAuthorizationsListGrantsOKApplicationJSON) unwrap() []ApplicationGrant {
+	return []ApplicationGrant(*a)
+}
 
 func (*OAuthAuthorizationsListGrantsOKApplicationJSON) oAuthAuthorizationsListGrantsRes() {}
 
@@ -17832,43 +18854,105 @@ const (
 
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) orgsGetMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) orgsGetMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsGetMembershipForUserApplicationJSONForbidden BasicError
 
+func (a *OrgsGetMembershipForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OrgsGetMembershipForUserApplicationJSONForbidden(v)
+}
+func (a *OrgsGetMembershipForUserApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*OrgsGetMembershipForUserApplicationJSONForbidden) orgsGetMembershipForUserRes() {}
 
 type OrgsGetMembershipForUserApplicationJSONNotFound BasicError
+
+func (a *OrgsGetMembershipForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = OrgsGetMembershipForUserApplicationJSONNotFound(v)
+}
+func (a *OrgsGetMembershipForUserApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUserRes() {}
 
 type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
+func (a *OrgsListBlockedUsersOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = OrgsListBlockedUsersOKApplicationJSON(v)
+}
+func (a *OrgsListBlockedUsersOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
+
 func (*OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
 type OrgsListFailedInvitationsOKApplicationJSON []OrganizationInvitation
+
+func (a *OrgsListFailedInvitationsOKApplicationJSON) wrap(v []OrganizationInvitation) {
+	*a = OrgsListFailedInvitationsOKApplicationJSON(v)
+}
+func (a *OrgsListFailedInvitationsOKApplicationJSON) unwrap() []OrganizationInvitation {
+	return []OrganizationInvitation(*a)
+}
 
 func (*OrgsListFailedInvitationsOKApplicationJSON) orgsListFailedInvitationsRes() {}
 
 type OrgsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *OrgsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OrgsListForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *OrgsListForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListForAuthenticatedUserOKApplicationJSON []OrganizationSimple
 
+func (a *OrgsListForAuthenticatedUserOKApplicationJSON) wrap(v []OrganizationSimple) {
+	*a = OrgsListForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *OrgsListForAuthenticatedUserOKApplicationJSON) unwrap() []OrganizationSimple {
+	return []OrganizationSimple(*a)
+}
+
 func (*OrgsListForAuthenticatedUserOKApplicationJSON) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListInvitationTeamsOKApplicationJSON []Team
+
+func (a *OrgsListInvitationTeamsOKApplicationJSON) wrap(v []Team) {
+	*a = OrgsListInvitationTeamsOKApplicationJSON(v)
+}
+func (a *OrgsListInvitationTeamsOKApplicationJSON) unwrap() []Team { return []Team(*a) }
 
 func (*OrgsListInvitationTeamsOKApplicationJSON) orgsListInvitationTeamsRes() {}
 
@@ -17899,6 +18983,9 @@ const (
 
 type OrgsListOKApplicationJSON []OrganizationSimple
 
+func (a *OrgsListOKApplicationJSON) wrap(v []OrganizationSimple)  { *a = OrgsListOKApplicationJSON(v) }
+func (a *OrgsListOKApplicationJSON) unwrap() []OrganizationSimple { return []OrganizationSimple(*a) }
+
 func (*OrgsListOKApplicationJSON) orgsListRes() {}
 
 type OrgsListOutsideCollaboratorsFilter string
@@ -17910,9 +18997,21 @@ const (
 
 type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
 
+func (a *OrgsListPendingInvitationsOKApplicationJSON) wrap(v []OrganizationInvitation) {
+	*a = OrgsListPendingInvitationsOKApplicationJSON(v)
+}
+func (a *OrgsListPendingInvitationsOKApplicationJSON) unwrap() []OrganizationInvitation {
+	return []OrganizationInvitation(*a)
+}
+
 func (*OrgsListPendingInvitationsOKApplicationJSON) orgsListPendingInvitationsRes() {}
 
 type OrgsListWebhooksOKApplicationJSON []OrgHook
+
+func (a *OrgsListWebhooksOKApplicationJSON) wrap(v []OrgHook) {
+	*a = OrgsListWebhooksOKApplicationJSON(v)
+}
+func (a *OrgsListWebhooksOKApplicationJSON) unwrap() []OrgHook { return []OrgHook(*a) }
 
 func (*OrgsListWebhooksOKApplicationJSON) orgsListWebhooksRes() {}
 
@@ -17928,9 +19027,23 @@ func (*OrgsRemoveMemberNoContent) orgsRemoveMemberRes() {}
 
 type OrgsRemoveMembershipForUserApplicationJSONForbidden BasicError
 
+func (a *OrgsRemoveMembershipForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = OrgsRemoveMembershipForUserApplicationJSONForbidden(v)
+}
+func (a *OrgsRemoveMembershipForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*OrgsRemoveMembershipForUserApplicationJSONForbidden) orgsRemoveMembershipForUserRes() {}
 
 type OrgsRemoveMembershipForUserApplicationJSONNotFound BasicError
+
+func (a *OrgsRemoveMembershipForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = OrgsRemoveMembershipForUserApplicationJSONNotFound(v)
+}
+func (a *OrgsRemoveMembershipForUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserRes() {}
 
@@ -18131,15 +19244,36 @@ type PackagesBillingUsage struct {
 
 type PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
 }
@@ -18163,13 +19297,34 @@ const (
 
 type PackagesDeletePackageForOrgApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageForOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageForOrgApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageForOrgApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForOrgApplicationJSONForbidden) packagesDeletePackageForOrgRes() {}
 
 type PackagesDeletePackageForOrgApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageForOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageForOrgApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageForOrgApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForOrgApplicationJSONNotFound) packagesDeletePackageForOrgRes() {}
 
 type PackagesDeletePackageForOrgApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageForOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageForOrgApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageForOrgApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageForOrgApplicationJSONUnauthorized) packagesDeletePackageForOrgRes() {}
 
@@ -18191,13 +19346,34 @@ const (
 
 type PackagesDeletePackageForUserApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageForUserApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForUserApplicationJSONForbidden) packagesDeletePackageForUserRes() {}
 
 type PackagesDeletePackageForUserApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageForUserApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageForUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageForUserApplicationJSONNotFound) packagesDeletePackageForUserRes() {}
 
 type PackagesDeletePackageForUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageForUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageForUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageForUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageForUserApplicationJSONUnauthorized) packagesDeletePackageForUserRes() {}
 
@@ -18219,15 +19395,36 @@ const (
 
 type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
@@ -18251,15 +19448,36 @@ const (
 
 type PackagesDeletePackageVersionForOrgApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForOrgApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForOrgApplicationJSONForbidden) packagesDeletePackageVersionForOrgRes() {
 }
 
 type PackagesDeletePackageVersionForOrgApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForOrgApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForOrgApplicationJSONNotFound) packagesDeletePackageVersionForOrgRes() {
 }
 
 type PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) packagesDeletePackageVersionForOrgRes() {
 }
@@ -18282,15 +19500,36 @@ const (
 
 type PackagesDeletePackageVersionForUserApplicationJSONForbidden BasicError
 
+func (a *PackagesDeletePackageVersionForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForUserApplicationJSONForbidden(v)
+}
+func (a *PackagesDeletePackageVersionForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForUserApplicationJSONForbidden) packagesDeletePackageVersionForUserRes() {
 }
 
 type PackagesDeletePackageVersionForUserApplicationJSONNotFound BasicError
 
+func (a *PackagesDeletePackageVersionForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForUserApplicationJSONNotFound(v)
+}
+func (a *PackagesDeletePackageVersionForUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesDeletePackageVersionForUserApplicationJSONNotFound) packagesDeletePackageVersionForUserRes() {
 }
 
 type PackagesDeletePackageVersionForUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) packagesDeletePackageVersionForUserRes() {
 }
@@ -18313,20 +19552,48 @@ const (
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON []PackageVersion
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) wrap(v []PackageVersion) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) unwrap() []PackageVersion {
+	return []PackageVersion(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
@@ -18351,20 +19618,48 @@ const (
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound BasicError
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON []PackageVersion
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) wrap(v []PackageVersion) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) unwrap() []PackageVersion {
+	return []PackageVersion(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
@@ -18389,20 +19684,48 @@ const (
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound BasicError
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized BasicError
 
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []PackageVersion
+
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) wrap(v []PackageVersion) {
+	*a = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(v)
+}
+func (a *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) unwrap() []PackageVersion {
+	return []PackageVersion(*a)
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
@@ -18505,15 +19828,36 @@ const (
 
 type PackagesListPackagesForOrganizationApplicationJSONForbidden BasicError
 
+func (a *PackagesListPackagesForOrganizationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesListPackagesForOrganizationApplicationJSONForbidden(v)
+}
+func (a *PackagesListPackagesForOrganizationApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesListPackagesForOrganizationApplicationJSONForbidden) packagesListPackagesForOrganizationRes() {
 }
 
 type PackagesListPackagesForOrganizationApplicationJSONUnauthorized BasicError
 
+func (a *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesListPackagesForOrganizationApplicationJSONUnauthorized(v)
+}
+func (a *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesListPackagesForOrganizationApplicationJSONUnauthorized) packagesListPackagesForOrganizationRes() {
 }
 
 type PackagesListPackagesForOrganizationOKApplicationJSON []Package
+
+func (a *PackagesListPackagesForOrganizationOKApplicationJSON) wrap(v []Package) {
+	*a = PackagesListPackagesForOrganizationOKApplicationJSON(v)
+}
+func (a *PackagesListPackagesForOrganizationOKApplicationJSON) unwrap() []Package {
+	return []Package(*a)
+}
 
 func (*PackagesListPackagesForOrganizationOKApplicationJSON) packagesListPackagesForOrganizationRes() {
 }
@@ -18539,13 +19883,32 @@ const (
 
 type PackagesListPackagesForUserApplicationJSONForbidden BasicError
 
+func (a *PackagesListPackagesForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesListPackagesForUserApplicationJSONForbidden(v)
+}
+func (a *PackagesListPackagesForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesListPackagesForUserApplicationJSONForbidden) packagesListPackagesForUserRes() {}
 
 type PackagesListPackagesForUserApplicationJSONUnauthorized BasicError
 
+func (a *PackagesListPackagesForUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesListPackagesForUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesListPackagesForUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesListPackagesForUserApplicationJSONUnauthorized) packagesListPackagesForUserRes() {}
 
 type PackagesListPackagesForUserOKApplicationJSON []Package
+
+func (a *PackagesListPackagesForUserOKApplicationJSON) wrap(v []Package) {
+	*a = PackagesListPackagesForUserOKApplicationJSON(v)
+}
+func (a *PackagesListPackagesForUserOKApplicationJSON) unwrap() []Package { return []Package(*a) }
 
 func (*PackagesListPackagesForUserOKApplicationJSON) packagesListPackagesForUserRes() {}
 
@@ -18570,15 +19933,36 @@ const (
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageForAuthenticatedUserRes() {
 }
@@ -18602,13 +19986,34 @@ const (
 
 type PackagesRestorePackageForOrgApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageForOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageForOrgApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageForOrgApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForOrgApplicationJSONForbidden) packagesRestorePackageForOrgRes() {}
 
 type PackagesRestorePackageForOrgApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageForOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageForOrgApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageForOrgApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForOrgApplicationJSONNotFound) packagesRestorePackageForOrgRes() {}
 
 type PackagesRestorePackageForOrgApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageForOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageForOrgApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageForOrgApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageForOrgApplicationJSONUnauthorized) packagesRestorePackageForOrgRes() {}
 
@@ -18630,13 +20035,34 @@ const (
 
 type PackagesRestorePackageForUserApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageForUserApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForUserApplicationJSONForbidden) packagesRestorePackageForUserRes() {}
 
 type PackagesRestorePackageForUserApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageForUserApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageForUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageForUserApplicationJSONNotFound) packagesRestorePackageForUserRes() {}
 
 type PackagesRestorePackageForUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageForUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageForUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageForUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageForUserApplicationJSONUnauthorized) packagesRestorePackageForUserRes() {}
 
@@ -18658,15 +20084,36 @@ const (
 
 type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
@@ -18690,15 +20137,36 @@ const (
 
 type PackagesRestorePackageVersionForOrgApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForOrgApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForOrgApplicationJSONForbidden) packagesRestorePackageVersionForOrgRes() {
 }
 
 type PackagesRestorePackageVersionForOrgApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForOrgApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForOrgApplicationJSONNotFound) packagesRestorePackageVersionForOrgRes() {
 }
 
 type PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) packagesRestorePackageVersionForOrgRes() {
 }
@@ -18721,15 +20189,36 @@ const (
 
 type PackagesRestorePackageVersionForUserApplicationJSONForbidden BasicError
 
+func (a *PackagesRestorePackageVersionForUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForUserApplicationJSONForbidden(v)
+}
+func (a *PackagesRestorePackageVersionForUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForUserApplicationJSONForbidden) packagesRestorePackageVersionForUserRes() {
 }
 
 type PackagesRestorePackageVersionForUserApplicationJSONNotFound BasicError
 
+func (a *PackagesRestorePackageVersionForUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForUserApplicationJSONNotFound(v)
+}
+func (a *PackagesRestorePackageVersionForUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*PackagesRestorePackageVersionForUserApplicationJSONNotFound) packagesRestorePackageVersionForUserRes() {
 }
 
 type PackagesRestorePackageVersionForUserApplicationJSONUnauthorized BasicError
+
+func (a *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(v)
+}
+func (a *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) packagesRestorePackageVersionForUserRes() {
 }
@@ -19172,9 +20661,19 @@ type ProjectsCreateCardReq1 struct {
 
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
+func (a *ProjectsCreateColumnApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsCreateColumnApplicationJSONForbidden(v)
+}
+func (a *ProjectsCreateColumnApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnRes() {}
 
 type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsCreateColumnApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsCreateColumnApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsCreateColumnApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnRes() {}
 
@@ -19184,10 +20683,24 @@ type ProjectsCreateColumnReq struct {
 
 type ProjectsCreateForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsCreateForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) projectsCreateForAuthenticatedUserRes() {
 }
 
 type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserRes() {
 }
@@ -19199,17 +20712,37 @@ type ProjectsCreateForAuthenticatedUserReq struct {
 
 type ProjectsCreateForOrgApplicationJSONForbidden BasicError
 
+func (a *ProjectsCreateForOrgApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsCreateForOrgApplicationJSONForbidden(v)
+}
+func (a *ProjectsCreateForOrgApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsCreateForOrgApplicationJSONForbidden) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgApplicationJSONGone BasicError
+
+func (a *ProjectsCreateForOrgApplicationJSONGone) wrap(v BasicError) {
+	*a = ProjectsCreateForOrgApplicationJSONGone(v)
+}
+func (a *ProjectsCreateForOrgApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsCreateForOrgApplicationJSONGone) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgApplicationJSONNotFound BasicError
 
+func (a *ProjectsCreateForOrgApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsCreateForOrgApplicationJSONNotFound(v)
+}
+func (a *ProjectsCreateForOrgApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsCreateForOrgApplicationJSONNotFound) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsCreateForOrgApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsCreateForOrgApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsCreateForOrgApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsCreateForOrgApplicationJSONUnauthorized) projectsCreateForOrgRes() {}
 
@@ -19220,17 +20753,37 @@ type ProjectsCreateForOrgReq struct {
 
 type ProjectsCreateForRepoApplicationJSONForbidden BasicError
 
+func (a *ProjectsCreateForRepoApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsCreateForRepoApplicationJSONForbidden(v)
+}
+func (a *ProjectsCreateForRepoApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsCreateForRepoApplicationJSONForbidden) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoApplicationJSONGone BasicError
+
+func (a *ProjectsCreateForRepoApplicationJSONGone) wrap(v BasicError) {
+	*a = ProjectsCreateForRepoApplicationJSONGone(v)
+}
+func (a *ProjectsCreateForRepoApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsCreateForRepoApplicationJSONGone) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoApplicationJSONNotFound BasicError
 
+func (a *ProjectsCreateForRepoApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsCreateForRepoApplicationJSONNotFound(v)
+}
+func (a *ProjectsCreateForRepoApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsCreateForRepoApplicationJSONNotFound) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsCreateForRepoApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsCreateForRepoApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsCreateForRepoApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsCreateForRepoApplicationJSONUnauthorized) projectsCreateForRepoRes() {}
 
@@ -19241,21 +20794,46 @@ type ProjectsCreateForRepoReq struct {
 
 type ProjectsDeleteApplicationJSONGone BasicError
 
+func (a *ProjectsDeleteApplicationJSONGone) wrap(v BasicError) {
+	*a = ProjectsDeleteApplicationJSONGone(v)
+}
+func (a *ProjectsDeleteApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsDeleteApplicationJSONGone) projectsDeleteRes() {}
 
 type ProjectsDeleteApplicationJSONNotFound BasicError
+
+func (a *ProjectsDeleteApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsDeleteApplicationJSONNotFound(v)
+}
+func (a *ProjectsDeleteApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsDeleteApplicationJSONNotFound) projectsDeleteRes() {}
 
 type ProjectsDeleteApplicationJSONUnauthorized BasicError
 
+func (a *ProjectsDeleteApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsDeleteApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsDeleteApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsDeleteApplicationJSONUnauthorized) projectsDeleteRes() {}
 
 type ProjectsDeleteCardApplicationJSONNotFound BasicError
 
+func (a *ProjectsDeleteCardApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsDeleteCardApplicationJSONNotFound(v)
+}
+func (a *ProjectsDeleteCardApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsDeleteCardApplicationJSONNotFound) projectsDeleteCardRes() {}
 
 type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsDeleteCardApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsDeleteCardApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsDeleteCardApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardRes() {}
 
@@ -19274,9 +20852,19 @@ func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
 type ProjectsDeleteColumnApplicationJSONForbidden BasicError
 
+func (a *ProjectsDeleteColumnApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsDeleteColumnApplicationJSONForbidden(v)
+}
+func (a *ProjectsDeleteColumnApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteColumnApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsDeleteColumnApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsDeleteColumnApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsDeleteColumnApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnRes() {}
 
@@ -19300,41 +20888,91 @@ func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
 
 type ProjectsGetApplicationJSONForbidden BasicError
 
+func (a *ProjectsGetApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsGetApplicationJSONForbidden(v)
+}
+func (a *ProjectsGetApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsGetApplicationJSONForbidden) projectsGetRes() {}
 
 type ProjectsGetApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsGetApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsGetApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsGetApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsGetApplicationJSONUnauthorized) projectsGetRes() {}
 
 type ProjectsGetCardApplicationJSONForbidden BasicError
 
+func (a *ProjectsGetCardApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsGetCardApplicationJSONForbidden(v)
+}
+func (a *ProjectsGetCardApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsGetCardApplicationJSONForbidden) projectsGetCardRes() {}
 
 type ProjectsGetCardApplicationJSONNotFound BasicError
+
+func (a *ProjectsGetCardApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsGetCardApplicationJSONNotFound(v)
+}
+func (a *ProjectsGetCardApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsGetCardApplicationJSONNotFound) projectsGetCardRes() {}
 
 type ProjectsGetCardApplicationJSONUnauthorized BasicError
 
+func (a *ProjectsGetCardApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsGetCardApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsGetCardApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardRes() {}
 
 type ProjectsGetColumnApplicationJSONForbidden BasicError
+
+func (a *ProjectsGetColumnApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsGetColumnApplicationJSONForbidden(v)
+}
+func (a *ProjectsGetColumnApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnRes() {}
 
 type ProjectsGetColumnApplicationJSONNotFound BasicError
 
+func (a *ProjectsGetColumnApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsGetColumnApplicationJSONNotFound(v)
+}
+func (a *ProjectsGetColumnApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnRes() {}
 
 type ProjectsGetColumnApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsGetColumnApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsGetColumnApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsGetColumnApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
 
 type ProjectsListCardsApplicationJSONForbidden BasicError
 
+func (a *ProjectsListCardsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsListCardsApplicationJSONForbidden(v)
+}
+func (a *ProjectsListCardsApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsListCardsApplicationJSONForbidden) projectsListCardsRes() {}
 
 type ProjectsListCardsApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsListCardsApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsListCardsApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsListCardsApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsListCardsApplicationJSONUnauthorized) projectsListCardsRes() {}
 
@@ -19348,6 +20986,11 @@ const (
 
 type ProjectsListCardsOKApplicationJSON []ProjectCard
 
+func (a *ProjectsListCardsOKApplicationJSON) wrap(v []ProjectCard) {
+	*a = ProjectsListCardsOKApplicationJSON(v)
+}
+func (a *ProjectsListCardsOKApplicationJSON) unwrap() []ProjectCard { return []ProjectCard(*a) }
+
 func (*ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
 
 type ProjectsListCollaboratorsAffiliation string
@@ -19360,17 +21003,37 @@ const (
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
+func (a *ProjectsListColumnsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsListColumnsApplicationJSONForbidden(v)
+}
+func (a *ProjectsListColumnsApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
 
 type ProjectsListColumnsApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsListColumnsApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsListColumnsApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsListColumnsApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
 
 type ProjectsListColumnsOKApplicationJSON []ProjectColumn
 
+func (a *ProjectsListColumnsOKApplicationJSON) wrap(v []ProjectColumn) {
+	*a = ProjectsListColumnsOKApplicationJSON(v)
+}
+func (a *ProjectsListColumnsOKApplicationJSON) unwrap() []ProjectColumn { return []ProjectColumn(*a) }
+
 func (*ProjectsListColumnsOKApplicationJSON) projectsListColumnsRes() {}
 
 type ProjectsListForOrgOKApplicationJSON []Project
+
+func (a *ProjectsListForOrgOKApplicationJSON) wrap(v []Project) {
+	*a = ProjectsListForOrgOKApplicationJSON(v)
+}
+func (a *ProjectsListForOrgOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForOrgOKApplicationJSON) projectsListForOrgRes() {}
 
@@ -19384,21 +21047,46 @@ const (
 
 type ProjectsListForRepoApplicationJSONForbidden BasicError
 
+func (a *ProjectsListForRepoApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsListForRepoApplicationJSONForbidden(v)
+}
+func (a *ProjectsListForRepoApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsListForRepoApplicationJSONForbidden) projectsListForRepoRes() {}
 
 type ProjectsListForRepoApplicationJSONGone BasicError
+
+func (a *ProjectsListForRepoApplicationJSONGone) wrap(v BasicError) {
+	*a = ProjectsListForRepoApplicationJSONGone(v)
+}
+func (a *ProjectsListForRepoApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsListForRepoApplicationJSONGone) projectsListForRepoRes() {}
 
 type ProjectsListForRepoApplicationJSONNotFound BasicError
 
+func (a *ProjectsListForRepoApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsListForRepoApplicationJSONNotFound(v)
+}
+func (a *ProjectsListForRepoApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsListForRepoApplicationJSONNotFound) projectsListForRepoRes() {}
 
 type ProjectsListForRepoApplicationJSONUnauthorized BasicError
 
+func (a *ProjectsListForRepoApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsListForRepoApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsListForRepoApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsListForRepoApplicationJSONUnauthorized) projectsListForRepoRes() {}
 
 type ProjectsListForRepoOKApplicationJSON []Project
+
+func (a *ProjectsListForRepoOKApplicationJSON) wrap(v []Project) {
+	*a = ProjectsListForRepoOKApplicationJSON(v)
+}
+func (a *ProjectsListForRepoOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForRepoOKApplicationJSON) projectsListForRepoRes() {}
 
@@ -19440,9 +21128,19 @@ type ProjectsMoveCardReq struct {
 
 type ProjectsMoveColumnApplicationJSONForbidden BasicError
 
+func (a *ProjectsMoveColumnApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsMoveColumnApplicationJSONForbidden(v)
+}
+func (a *ProjectsMoveColumnApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsMoveColumnApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsMoveColumnApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsMoveColumnApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
@@ -19459,21 +21157,46 @@ type ProjectsRemoveCollaboratorNoContent struct{}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
+func (a *ProjectsUpdateApplicationJSONGone) wrap(v BasicError) {
+	*a = ProjectsUpdateApplicationJSONGone(v)
+}
+func (a *ProjectsUpdateApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsUpdateApplicationJSONGone) projectsUpdateRes() {}
 
 type ProjectsUpdateApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsUpdateApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsUpdateApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsUpdateApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsUpdateApplicationJSONUnauthorized) projectsUpdateRes() {}
 
 type ProjectsUpdateCardApplicationJSONForbidden BasicError
 
+func (a *ProjectsUpdateCardApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsUpdateCardApplicationJSONForbidden(v)
+}
+func (a *ProjectsUpdateCardApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsUpdateCardApplicationJSONForbidden) projectsUpdateCardRes() {}
 
 type ProjectsUpdateCardApplicationJSONNotFound BasicError
 
+func (a *ProjectsUpdateCardApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ProjectsUpdateCardApplicationJSONNotFound(v)
+}
+func (a *ProjectsUpdateCardApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsUpdateCardApplicationJSONNotFound) projectsUpdateCardRes() {}
 
 type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsUpdateCardApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsUpdateCardApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsUpdateCardApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
 
@@ -19484,9 +21207,19 @@ type ProjectsUpdateCardReq struct {
 
 type ProjectsUpdateColumnApplicationJSONForbidden BasicError
 
+func (a *ProjectsUpdateColumnApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ProjectsUpdateColumnApplicationJSONForbidden(v)
+}
+func (a *ProjectsUpdateColumnApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnRes() {}
 
 type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
+
+func (a *ProjectsUpdateColumnApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ProjectsUpdateColumnApplicationJSONUnauthorized(v)
+}
+func (a *ProjectsUpdateColumnApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnRes() {}
 
@@ -20347,13 +22080,28 @@ type PullsDismissReviewReq struct {
 
 type PullsGetApplicationJSONInternalServerError BasicError
 
+func (a *PullsGetApplicationJSONInternalServerError) wrap(v BasicError) {
+	*a = PullsGetApplicationJSONInternalServerError(v)
+}
+func (a *PullsGetApplicationJSONInternalServerError) unwrap() BasicError { return BasicError(*a) }
+
 func (*PullsGetApplicationJSONInternalServerError) pullsGetRes() {}
 
 type PullsGetApplicationJSONNotFound BasicError
 
+func (a *PullsGetApplicationJSONNotFound) wrap(v BasicError)  { *a = PullsGetApplicationJSONNotFound(v) }
+func (a *PullsGetApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
 
 type PullsListCommentsForReviewOKApplicationJSON []ReviewComment
+
+func (a *PullsListCommentsForReviewOKApplicationJSON) wrap(v []ReviewComment) {
+	*a = PullsListCommentsForReviewOKApplicationJSON(v)
+}
+func (a *PullsListCommentsForReviewOKApplicationJSON) unwrap() []ReviewComment {
+	return []ReviewComment(*a)
+}
 
 func (*PullsListCommentsForReviewOKApplicationJSON) pullsListCommentsForReviewRes() {}
 
@@ -20442,9 +22190,19 @@ type PullsRemoveRequestedReviewersReq struct {
 
 type PullsSubmitReviewApplicationJSONForbidden BasicError
 
+func (a *PullsSubmitReviewApplicationJSONForbidden) wrap(v BasicError) {
+	*a = PullsSubmitReviewApplicationJSONForbidden(v)
+}
+func (a *PullsSubmitReviewApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*PullsSubmitReviewApplicationJSONForbidden) pullsSubmitReviewRes() {}
 
 type PullsSubmitReviewApplicationJSONNotFound BasicError
+
+func (a *PullsSubmitReviewApplicationJSONNotFound) wrap(v BasicError) {
+	*a = PullsSubmitReviewApplicationJSONNotFound(v)
+}
+func (a *PullsSubmitReviewApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewRes() {}
 
@@ -20640,10 +22398,24 @@ const (
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
 
+func (a *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) wrap(v Reaction) {
+	*a = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated(v)
+}
+func (a *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) unwrap() Reaction {
+	return Reaction(*a)
+}
+
 func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK Reaction
+
+func (a *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) wrap(v Reaction) {
+	*a = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK(v)
+}
+func (a *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) unwrap() Reaction {
+	return Reaction(*a)
+}
 
 func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
@@ -20684,10 +22456,24 @@ const (
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated Reaction
 
+func (a *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) wrap(v Reaction) {
+	*a = ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated(v)
+}
+func (a *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) unwrap() Reaction {
+	return Reaction(*a)
+}
+
 func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionInOrgRes() {
 }
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK Reaction
+
+func (a *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) wrap(v Reaction) {
+	*a = ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK(v)
+}
+func (a *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) unwrap() Reaction {
+	return Reaction(*a)
+}
 
 func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionInOrgRes() {
 }
@@ -20746,13 +22532,28 @@ type ReactionsDeleteForTeamDiscussionNoContent struct{}
 
 type ReactionsDeleteLegacyApplicationJSONForbidden BasicError
 
+func (a *ReactionsDeleteLegacyApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReactionsDeleteLegacyApplicationJSONForbidden(v)
+}
+func (a *ReactionsDeleteLegacyApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReactionsDeleteLegacyApplicationJSONForbidden) reactionsDeleteLegacyRes() {}
 
 type ReactionsDeleteLegacyApplicationJSONGone BasicError
 
+func (a *ReactionsDeleteLegacyApplicationJSONGone) wrap(v BasicError) {
+	*a = ReactionsDeleteLegacyApplicationJSONGone(v)
+}
+func (a *ReactionsDeleteLegacyApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReactionsDeleteLegacyApplicationJSONGone) reactionsDeleteLegacyRes() {}
 
 type ReactionsDeleteLegacyApplicationJSONUnauthorized BasicError
+
+func (a *ReactionsDeleteLegacyApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ReactionsDeleteLegacyApplicationJSONUnauthorized(v)
+}
+func (a *ReactionsDeleteLegacyApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyRes() {}
 
@@ -20776,13 +22577,28 @@ const (
 
 type ReactionsListForCommitCommentOKApplicationJSON []Reaction
 
+func (a *ReactionsListForCommitCommentOKApplicationJSON) wrap(v []Reaction) {
+	*a = ReactionsListForCommitCommentOKApplicationJSON(v)
+}
+func (a *ReactionsListForCommitCommentOKApplicationJSON) unwrap() []Reaction { return []Reaction(*a) }
+
 func (*ReactionsListForCommitCommentOKApplicationJSON) reactionsListForCommitCommentRes() {}
 
 type ReactionsListForIssueApplicationJSONGone BasicError
 
+func (a *ReactionsListForIssueApplicationJSONGone) wrap(v BasicError) {
+	*a = ReactionsListForIssueApplicationJSONGone(v)
+}
+func (a *ReactionsListForIssueApplicationJSONGone) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReactionsListForIssueApplicationJSONGone) reactionsListForIssueRes() {}
 
 type ReactionsListForIssueApplicationJSONNotFound BasicError
+
+func (a *ReactionsListForIssueApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReactionsListForIssueApplicationJSONNotFound(v)
+}
+func (a *ReactionsListForIssueApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReactionsListForIssueApplicationJSONNotFound) reactionsListForIssueRes() {}
 
@@ -20801,6 +22617,11 @@ const (
 
 type ReactionsListForIssueCommentOKApplicationJSON []Reaction
 
+func (a *ReactionsListForIssueCommentOKApplicationJSON) wrap(v []Reaction) {
+	*a = ReactionsListForIssueCommentOKApplicationJSON(v)
+}
+func (a *ReactionsListForIssueCommentOKApplicationJSON) unwrap() []Reaction { return []Reaction(*a) }
+
 func (*ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
 
 type ReactionsListForIssueContent string
@@ -20818,6 +22639,11 @@ const (
 
 type ReactionsListForIssueOKApplicationJSON []Reaction
 
+func (a *ReactionsListForIssueOKApplicationJSON) wrap(v []Reaction) {
+	*a = ReactionsListForIssueOKApplicationJSON(v)
+}
+func (a *ReactionsListForIssueOKApplicationJSON) unwrap() []Reaction { return []Reaction(*a) }
+
 func (*ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
 
 type ReactionsListForPullRequestReviewCommentContent string
@@ -20834,6 +22660,13 @@ const (
 )
 
 type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
+
+func (a *ReactionsListForPullRequestReviewCommentOKApplicationJSON) wrap(v []Reaction) {
+	*a = ReactionsListForPullRequestReviewCommentOKApplicationJSON(v)
+}
+func (a *ReactionsListForPullRequestReviewCommentOKApplicationJSON) unwrap() []Reaction {
+	return []Reaction(*a)
+}
 
 func (*ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
 }
@@ -21053,13 +22886,28 @@ type RepoSearchResultItemPermissions struct {
 
 type ReposAcceptInvitationApplicationJSONConflict BasicError
 
+func (a *ReposAcceptInvitationApplicationJSONConflict) wrap(v BasicError) {
+	*a = ReposAcceptInvitationApplicationJSONConflict(v)
+}
+func (a *ReposAcceptInvitationApplicationJSONConflict) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposAcceptInvitationApplicationJSONConflict) reposAcceptInvitationRes() {}
 
 type ReposAcceptInvitationApplicationJSONForbidden BasicError
 
+func (a *ReposAcceptInvitationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposAcceptInvitationApplicationJSONForbidden(v)
+}
+func (a *ReposAcceptInvitationApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposAcceptInvitationApplicationJSONForbidden) reposAcceptInvitationRes() {}
 
 type ReposAcceptInvitationApplicationJSONNotFound BasicError
+
+func (a *ReposAcceptInvitationApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposAcceptInvitationApplicationJSONNotFound(v)
+}
+func (a *ReposAcceptInvitationApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationRes() {}
 
@@ -21108,9 +22956,21 @@ func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsRes()
 
 type ReposCompareCommitsApplicationJSONInternalServerError BasicError
 
+func (a *ReposCompareCommitsApplicationJSONInternalServerError) wrap(v BasicError) {
+	*a = ReposCompareCommitsApplicationJSONInternalServerError(v)
+}
+func (a *ReposCompareCommitsApplicationJSONInternalServerError) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ReposCompareCommitsApplicationJSONInternalServerError) reposCompareCommitsRes() {}
 
 type ReposCompareCommitsApplicationJSONNotFound BasicError
+
+func (a *ReposCompareCommitsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposCompareCommitsApplicationJSONNotFound(v)
+}
+func (a *ReposCompareCommitsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposCompareCommitsApplicationJSONNotFound) reposCompareCommitsRes() {}
 
@@ -21327,13 +23187,28 @@ type ReposCreateWebhookReqConfig struct {
 
 type ReposDeclineInvitationApplicationJSONConflict BasicError
 
+func (a *ReposDeclineInvitationApplicationJSONConflict) wrap(v BasicError) {
+	*a = ReposDeclineInvitationApplicationJSONConflict(v)
+}
+func (a *ReposDeclineInvitationApplicationJSONConflict) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposDeclineInvitationApplicationJSONConflict) reposDeclineInvitationRes() {}
 
 type ReposDeclineInvitationApplicationJSONForbidden BasicError
 
+func (a *ReposDeclineInvitationApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposDeclineInvitationApplicationJSONForbidden(v)
+}
+func (a *ReposDeclineInvitationApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposDeclineInvitationApplicationJSONForbidden) reposDeclineInvitationRes() {}
 
 type ReposDeclineInvitationApplicationJSONNotFound BasicError
+
+func (a *ReposDeclineInvitationApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposDeclineInvitationApplicationJSONNotFound(v)
+}
+func (a *ReposDeclineInvitationApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationRes() {}
 
@@ -21355,9 +23230,19 @@ type ReposDeleteAnEnvironmentNoContent struct{}
 
 type ReposDeleteApplicationJSONNotFound BasicError
 
+func (a *ReposDeleteApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposDeleteApplicationJSONNotFound(v)
+}
+func (a *ReposDeleteApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposDeleteApplicationJSONNotFound) reposDeleteRes() {}
 
 type ReposDeleteApplicationJSONTemporaryRedirect BasicError
+
+func (a *ReposDeleteApplicationJSONTemporaryRedirect) wrap(v BasicError) {
+	*a = ReposDeleteApplicationJSONTemporaryRedirect(v)
+}
+func (a *ReposDeleteApplicationJSONTemporaryRedirect) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteRes() {}
 
@@ -21469,30 +23354,65 @@ type ReposEnableVulnerabilityAlertsNoContent struct{}
 
 type ReposGetAllStatusCheckContextsOKApplicationJSON []string
 
+func (a *ReposGetAllStatusCheckContextsOKApplicationJSON) wrap(v []string) {
+	*a = ReposGetAllStatusCheckContextsOKApplicationJSON(v)
+}
+func (a *ReposGetAllStatusCheckContextsOKApplicationJSON) unwrap() []string { return []string(*a) }
+
 func (*ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
 
 type ReposGetApplicationJSONForbidden BasicError
+
+func (a *ReposGetApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposGetApplicationJSONForbidden(v)
+}
+func (a *ReposGetApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposGetApplicationJSONForbidden) reposGetRes() {}
 
 type ReposGetApplicationJSONMovedPermanently BasicError
 
+func (a *ReposGetApplicationJSONMovedPermanently) wrap(v BasicError) {
+	*a = ReposGetApplicationJSONMovedPermanently(v)
+}
+func (a *ReposGetApplicationJSONMovedPermanently) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposGetApplicationJSONMovedPermanently) reposGetRes() {}
 
 type ReposGetApplicationJSONNotFound BasicError
 
+func (a *ReposGetApplicationJSONNotFound) wrap(v BasicError)  { *a = ReposGetApplicationJSONNotFound(v) }
+func (a *ReposGetApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposGetApplicationJSONNotFound) reposGetRes() {}
 
 type ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON []Integration
+
+func (a *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) wrap(v []Integration) {
+	*a = ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON(v)
+}
+func (a *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) unwrap() []Integration {
+	return []Integration(*a)
+}
 
 func (*ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) reposGetAppsWithAccessToProtectedBranchRes() {
 }
 
 type ReposGetBranchApplicationJSONMovedPermanently BasicError
 
+func (a *ReposGetBranchApplicationJSONMovedPermanently) wrap(v BasicError) {
+	*a = ReposGetBranchApplicationJSONMovedPermanently(v)
+}
+func (a *ReposGetBranchApplicationJSONMovedPermanently) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposGetBranchApplicationJSONMovedPermanently) reposGetBranchRes() {}
 
 type ReposGetBranchApplicationJSONNotFound BasicError
+
+func (a *ReposGetBranchApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposGetBranchApplicationJSONNotFound(v)
+}
+func (a *ReposGetBranchApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
@@ -21506,13 +23426,34 @@ const (
 
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
+func (a *ReposGetCodeFrequencyStatsOKApplicationJSON) wrap(v []CodeFrequencyStat) {
+	*a = ReposGetCodeFrequencyStatsOKApplicationJSON(v)
+}
+func (a *ReposGetCodeFrequencyStatsOKApplicationJSON) unwrap() []CodeFrequencyStat {
+	return []CodeFrequencyStat(*a)
+}
+
 func (*ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
 
 type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
+func (a *ReposGetCommitActivityStatsOKApplicationJSON) wrap(v []CommitActivity) {
+	*a = ReposGetCommitActivityStatsOKApplicationJSON(v)
+}
+func (a *ReposGetCommitActivityStatsOKApplicationJSON) unwrap() []CommitActivity {
+	return []CommitActivity(*a)
+}
+
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
+
+func (a *ReposGetContributorsStatsOKApplicationJSON) wrap(v []ContributorActivity) {
+	*a = ReposGetContributorsStatsOKApplicationJSON(v)
+}
+func (a *ReposGetContributorsStatsOKApplicationJSON) unwrap() []ContributorActivity {
+	return []ContributorActivity(*a)
+}
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
 
@@ -21528,22 +23469,55 @@ func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckRes(
 
 type ReposGetPunchCardStatsOKApplicationJSON []CodeFrequencyStat
 
+func (a *ReposGetPunchCardStatsOKApplicationJSON) wrap(v []CodeFrequencyStat) {
+	*a = ReposGetPunchCardStatsOKApplicationJSON(v)
+}
+func (a *ReposGetPunchCardStatsOKApplicationJSON) unwrap() []CodeFrequencyStat {
+	return []CodeFrequencyStat(*a)
+}
+
 func (*ReposGetPunchCardStatsOKApplicationJSON) reposGetPunchCardStatsRes() {}
 
 type ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON []Team
+
+func (a *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) wrap(v []Team) {
+	*a = ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON(v)
+}
+func (a *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) unwrap() []Team {
+	return []Team(*a)
+}
 
 func (*ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) reposGetTeamsWithAccessToProtectedBranchRes() {
 }
 
 type ReposGetTopPathsOKApplicationJSON []ContentTraffic
 
+func (a *ReposGetTopPathsOKApplicationJSON) wrap(v []ContentTraffic) {
+	*a = ReposGetTopPathsOKApplicationJSON(v)
+}
+func (a *ReposGetTopPathsOKApplicationJSON) unwrap() []ContentTraffic { return []ContentTraffic(*a) }
+
 func (*ReposGetTopPathsOKApplicationJSON) reposGetTopPathsRes() {}
 
 type ReposGetTopReferrersOKApplicationJSON []ReferrerTraffic
 
+func (a *ReposGetTopReferrersOKApplicationJSON) wrap(v []ReferrerTraffic) {
+	*a = ReposGetTopReferrersOKApplicationJSON(v)
+}
+func (a *ReposGetTopReferrersOKApplicationJSON) unwrap() []ReferrerTraffic {
+	return []ReferrerTraffic(*a)
+}
+
 func (*ReposGetTopReferrersOKApplicationJSON) reposGetTopReferrersRes() {}
 
 type ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON []SimpleUser
+
+func (a *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON(v)
+}
+func (a *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) unwrap() []SimpleUser {
+	return []SimpleUser(*a)
+}
 
 func (*ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
 }
@@ -21558,6 +23532,11 @@ const (
 
 type ReposListBranchesOKApplicationJSON []ShortBranch
 
+func (a *ReposListBranchesOKApplicationJSON) wrap(v []ShortBranch) {
+	*a = ReposListBranchesOKApplicationJSON(v)
+}
+func (a *ReposListBranchesOKApplicationJSON) unwrap() []ShortBranch { return []ShortBranch(*a) }
+
 func (*ReposListBranchesOKApplicationJSON) reposListBranchesRes() {}
 
 type ReposListCollaboratorsAffiliation string
@@ -21570,37 +23549,84 @@ const (
 
 type ReposListCollaboratorsOKApplicationJSON []Collaborator
 
+func (a *ReposListCollaboratorsOKApplicationJSON) wrap(v []Collaborator) {
+	*a = ReposListCollaboratorsOKApplicationJSON(v)
+}
+func (a *ReposListCollaboratorsOKApplicationJSON) unwrap() []Collaborator { return []Collaborator(*a) }
+
 func (*ReposListCollaboratorsOKApplicationJSON) reposListCollaboratorsRes() {}
 
 type ReposListCommitStatusesForRefOKApplicationJSON []Status
+
+func (a *ReposListCommitStatusesForRefOKApplicationJSON) wrap(v []Status) {
+	*a = ReposListCommitStatusesForRefOKApplicationJSON(v)
+}
+func (a *ReposListCommitStatusesForRefOKApplicationJSON) unwrap() []Status { return []Status(*a) }
 
 func (*ReposListCommitStatusesForRefOKApplicationJSON) reposListCommitStatusesForRefRes() {}
 
 type ReposListCommitsApplicationJSONBadRequest BasicError
 
+func (a *ReposListCommitsApplicationJSONBadRequest) wrap(v BasicError) {
+	*a = ReposListCommitsApplicationJSONBadRequest(v)
+}
+func (a *ReposListCommitsApplicationJSONBadRequest) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONConflict BasicError
+
+func (a *ReposListCommitsApplicationJSONConflict) wrap(v BasicError) {
+	*a = ReposListCommitsApplicationJSONConflict(v)
+}
+func (a *ReposListCommitsApplicationJSONConflict) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposListCommitsApplicationJSONConflict) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONInternalServerError BasicError
 
+func (a *ReposListCommitsApplicationJSONInternalServerError) wrap(v BasicError) {
+	*a = ReposListCommitsApplicationJSONInternalServerError(v)
+}
+func (a *ReposListCommitsApplicationJSONInternalServerError) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ReposListCommitsApplicationJSONInternalServerError) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONNotFound BasicError
+
+func (a *ReposListCommitsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposListCommitsApplicationJSONNotFound(v)
+}
+func (a *ReposListCommitsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsRes() {}
 
 type ReposListCommitsOKApplicationJSON []Commit
 
+func (a *ReposListCommitsOKApplicationJSON) wrap(v []Commit) {
+	*a = ReposListCommitsOKApplicationJSON(v)
+}
+func (a *ReposListCommitsOKApplicationJSON) unwrap() []Commit { return []Commit(*a) }
+
 func (*ReposListCommitsOKApplicationJSON) reposListCommitsRes() {}
 
 type ReposListContributorsApplicationJSONForbidden BasicError
 
+func (a *ReposListContributorsApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposListContributorsApplicationJSONForbidden(v)
+}
+func (a *ReposListContributorsApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*ReposListContributorsApplicationJSONForbidden) reposListContributorsRes() {}
 
 type ReposListContributorsApplicationJSONNotFound BasicError
+
+func (a *ReposListContributorsApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposListContributorsApplicationJSONNotFound(v)
+}
+func (a *ReposListContributorsApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsRes() {}
 
@@ -21611,9 +23637,21 @@ func (*ReposListContributorsNoContent) reposListContributorsRes() {}
 
 type ReposListContributorsOKApplicationJSON []Contributor
 
+func (a *ReposListContributorsOKApplicationJSON) wrap(v []Contributor) {
+	*a = ReposListContributorsOKApplicationJSON(v)
+}
+func (a *ReposListContributorsOKApplicationJSON) unwrap() []Contributor { return []Contributor(*a) }
+
 func (*ReposListContributorsOKApplicationJSON) reposListContributorsRes() {}
 
 type ReposListDeploymentStatusesOKApplicationJSON []DeploymentStatus
+
+func (a *ReposListDeploymentStatusesOKApplicationJSON) wrap(v []DeploymentStatus) {
+	*a = ReposListDeploymentStatusesOKApplicationJSON(v)
+}
+func (a *ReposListDeploymentStatusesOKApplicationJSON) unwrap() []DeploymentStatus {
+	return []DeploymentStatus(*a)
+}
 
 func (*ReposListDeploymentStatusesOKApplicationJSON) reposListDeploymentStatusesRes() {}
 
@@ -21705,6 +23743,13 @@ const (
 
 type ReposListForksOKApplicationJSON []MinimalRepository
 
+func (a *ReposListForksOKApplicationJSON) wrap(v []MinimalRepository) {
+	*a = ReposListForksOKApplicationJSON(v)
+}
+func (a *ReposListForksOKApplicationJSON) unwrap() []MinimalRepository {
+	return []MinimalRepository(*a)
+}
+
 func (*ReposListForksOKApplicationJSON) reposListForksRes() {}
 
 type ReposListForksSort string
@@ -21718,29 +23763,67 @@ const (
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserOKApplicationJSON []RepositoryInvitation
+
+func (a *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) wrap(v []RepositoryInvitation) {
+	*a = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) unwrap() []RepositoryInvitation {
+	return []RepositoryInvitation(*a)
+}
 
 func (*ReposListInvitationsForAuthenticatedUserOKApplicationJSON) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListReleasesOKApplicationJSON []Release
 
+func (a *ReposListReleasesOKApplicationJSON) wrap(v []Release) {
+	*a = ReposListReleasesOKApplicationJSON(v)
+}
+func (a *ReposListReleasesOKApplicationJSON) unwrap() []Release { return []Release(*a) }
+
 func (*ReposListReleasesOKApplicationJSON) reposListReleasesRes() {}
 
 type ReposListWebhooksOKApplicationJSON []Hook
+
+func (a *ReposListWebhooksOKApplicationJSON) wrap(v []Hook) {
+	*a = ReposListWebhooksOKApplicationJSON(v)
+}
+func (a *ReposListWebhooksOKApplicationJSON) unwrap() []Hook { return []Hook(*a) }
 
 func (*ReposListWebhooksOKApplicationJSON) reposListWebhooksRes() {}
 
@@ -21804,9 +23887,23 @@ type ReposTransferReq struct {
 
 type ReposUpdateBranchProtectionApplicationJSONForbidden BasicError
 
+func (a *ReposUpdateBranchProtectionApplicationJSONForbidden) wrap(v BasicError) {
+	*a = ReposUpdateBranchProtectionApplicationJSONForbidden(v)
+}
+func (a *ReposUpdateBranchProtectionApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*ReposUpdateBranchProtectionApplicationJSONForbidden) reposUpdateBranchProtectionRes() {}
 
 type ReposUpdateBranchProtectionApplicationJSONNotFound BasicError
+
+func (a *ReposUpdateBranchProtectionApplicationJSONNotFound) wrap(v BasicError) {
+	*a = ReposUpdateBranchProtectionApplicationJSONNotFound(v)
+}
+func (a *ReposUpdateBranchProtectionApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionRes() {}
 
@@ -22332,17 +24429,37 @@ const (
 
 type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
 
+func (a *ScimDeleteUserFromOrgApplicationJSONForbidden) wrap(v ScimError) {
+	*a = ScimDeleteUserFromOrgApplicationJSONForbidden(v)
+}
+func (a *ScimDeleteUserFromOrgApplicationJSONForbidden) unwrap() ScimError { return ScimError(*a) }
+
 func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationJSONNotFound ScimError
+
+func (a *ScimDeleteUserFromOrgApplicationJSONNotFound) wrap(v ScimError) {
+	*a = ScimDeleteUserFromOrgApplicationJSONNotFound(v)
+}
+func (a *ScimDeleteUserFromOrgApplicationJSONNotFound) unwrap() ScimError { return ScimError(*a) }
 
 func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationScimJSONForbidden ScimError
 
+func (a *ScimDeleteUserFromOrgApplicationScimJSONForbidden) wrap(v ScimError) {
+	*a = ScimDeleteUserFromOrgApplicationScimJSONForbidden(v)
+}
+func (a *ScimDeleteUserFromOrgApplicationScimJSONForbidden) unwrap() ScimError { return ScimError(*a) }
+
 func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
+
+func (a *ScimDeleteUserFromOrgApplicationScimJSONNotFound) wrap(v ScimError) {
+	*a = ScimDeleteUserFromOrgApplicationScimJSONNotFound(v)
+}
+func (a *ScimDeleteUserFromOrgApplicationScimJSONNotFound) unwrap() ScimError { return ScimError(*a) }
 
 func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgRes() {}
 
@@ -22657,6 +24774,13 @@ const (
 
 type SearchResultTextMatches []SearchResultTextMatchesItem
 
+func (a *SearchResultTextMatches) wrap(v []SearchResultTextMatchesItem) {
+	*a = SearchResultTextMatches(v)
+}
+func (a *SearchResultTextMatches) unwrap() []SearchResultTextMatchesItem {
+	return []SearchResultTextMatchesItem(*a)
+}
+
 type SearchResultTextMatchesItem struct {
 	ObjectURL  OptString                                `json:"object_url"`
 	ObjectType OptNilString                             `json:"object_type"`
@@ -22742,6 +24866,13 @@ func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
 type SecretScanningListAlertsForOrgOKApplicationJSON []OrganizationSecretScanningAlert
 
+func (a *SecretScanningListAlertsForOrgOKApplicationJSON) wrap(v []OrganizationSecretScanningAlert) {
+	*a = SecretScanningListAlertsForOrgOKApplicationJSON(v)
+}
+func (a *SecretScanningListAlertsForOrgOKApplicationJSON) unwrap() []OrganizationSecretScanningAlert {
+	return []OrganizationSecretScanningAlert(*a)
+}
+
 func (*SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
 
 type SecretScanningListAlertsForOrgState string
@@ -22757,6 +24888,13 @@ type SecretScanningListAlertsForRepoNotFound struct{}
 func (*SecretScanningListAlertsForRepoNotFound) secretScanningListAlertsForRepoRes() {}
 
 type SecretScanningListAlertsForRepoOKApplicationJSON []SecretScanningAlert
+
+func (a *SecretScanningListAlertsForRepoOKApplicationJSON) wrap(v []SecretScanningAlert) {
+	*a = SecretScanningListAlertsForRepoOKApplicationJSON(v)
+}
+func (a *SecretScanningListAlertsForRepoOKApplicationJSON) unwrap() []SecretScanningAlert {
+	return []SecretScanningAlert(*a)
+}
 
 func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
 
@@ -22790,6 +24928,9 @@ type SelectedActions struct {
 }
 
 type SelectedActionsURL string
+
+func (a *SelectedActionsURL) wrap(v string)  { *a = SelectedActionsURL(v) }
+func (a *SelectedActionsURL) unwrap() string { return string(*a) }
 
 type ServiceUnavailable struct {
 	Code             OptString `json:"code"`
@@ -23507,21 +25648,54 @@ const (
 
 type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
+func (a *TeamsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = TeamsListForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *TeamsListForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*TeamsListForAuthenticatedUserApplicationJSONForbidden) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (a *TeamsListForAuthenticatedUserApplicationJSONNotFound) wrap(v BasicError) {
+	*a = TeamsListForAuthenticatedUserApplicationJSONNotFound(v)
+}
+func (a *TeamsListForAuthenticatedUserApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListForAuthenticatedUserOKApplicationJSON []TeamFull
 
+func (a *TeamsListForAuthenticatedUserOKApplicationJSON) wrap(v []TeamFull) {
+	*a = TeamsListForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *TeamsListForAuthenticatedUserOKApplicationJSON) unwrap() []TeamFull { return []TeamFull(*a) }
+
 func (*TeamsListForAuthenticatedUserOKApplicationJSON) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
 
+func (a *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) wrap(v BasicError) {
+	*a = TeamsListIdpGroupsForLegacyApplicationJSONForbidden(v)
+}
+func (a *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*TeamsListIdpGroupsForLegacyApplicationJSONForbidden) teamsListIdpGroupsForLegacyRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONNotFound BasicError
+
+func (a *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) wrap(v BasicError) {
+	*a = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(v)
+}
+func (a *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
 
@@ -23535,6 +25709,11 @@ const (
 
 type TeamsListMembersLegacyOKApplicationJSON []SimpleUser
 
+func (a *TeamsListMembersLegacyOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = TeamsListMembersLegacyOKApplicationJSON(v)
+}
+func (a *TeamsListMembersLegacyOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
+
 func (*TeamsListMembersLegacyOKApplicationJSON) teamsListMembersLegacyRes() {}
 
 type TeamsListMembersLegacyRole string
@@ -23547,13 +25726,28 @@ const (
 
 type TeamsListOKApplicationJSON []Team
 
+func (a *TeamsListOKApplicationJSON) wrap(v []Team)  { *a = TeamsListOKApplicationJSON(v) }
+func (a *TeamsListOKApplicationJSON) unwrap() []Team { return []Team(*a) }
+
 func (*TeamsListOKApplicationJSON) teamsListRes() {}
 
 type TeamsListProjectsLegacyOKApplicationJSON []TeamProject
 
+func (a *TeamsListProjectsLegacyOKApplicationJSON) wrap(v []TeamProject) {
+	*a = TeamsListProjectsLegacyOKApplicationJSON(v)
+}
+func (a *TeamsListProjectsLegacyOKApplicationJSON) unwrap() []TeamProject { return []TeamProject(*a) }
+
 func (*TeamsListProjectsLegacyOKApplicationJSON) teamsListProjectsLegacyRes() {}
 
 type TeamsListReposLegacyOKApplicationJSON []MinimalRepository
+
+func (a *TeamsListReposLegacyOKApplicationJSON) wrap(v []MinimalRepository) {
+	*a = TeamsListReposLegacyOKApplicationJSON(v)
+}
+func (a *TeamsListReposLegacyOKApplicationJSON) unwrap() []MinimalRepository {
+	return []MinimalRepository(*a)
+}
 
 func (*TeamsListReposLegacyOKApplicationJSON) teamsListReposLegacyRes() {}
 
@@ -23811,13 +26005,28 @@ type UsersBlockNoContent struct{}
 
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
+func (a *UsersCheckBlockedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersCheckBlockedApplicationJSONForbidden(v)
+}
+func (a *UsersCheckBlockedApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedRes() {}
 
 type UsersCheckBlockedApplicationJSONNotFound BasicError
 
+func (a *UsersCheckBlockedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersCheckBlockedApplicationJSONNotFound(v)
+}
+func (a *UsersCheckBlockedApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersCheckBlockedApplicationJSONNotFound) usersCheckBlockedRes() {}
 
 type UsersCheckBlockedApplicationJSONUnauthorized BasicError
+
+func (a *UsersCheckBlockedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersCheckBlockedApplicationJSONUnauthorized(v)
+}
+func (a *UsersCheckBlockedApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedRes() {}
 
@@ -23838,15 +26047,36 @@ func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserRes() {}
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
@@ -23871,15 +26101,36 @@ type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
@@ -23892,13 +26143,28 @@ func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKey
 
 type UsersFollowApplicationJSONForbidden BasicError
 
+func (a *UsersFollowApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersFollowApplicationJSONForbidden(v)
+}
+func (a *UsersFollowApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersFollowApplicationJSONForbidden) usersFollowRes() {}
 
 type UsersFollowApplicationJSONNotFound BasicError
 
+func (a *UsersFollowApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersFollowApplicationJSONNotFound(v)
+}
+func (a *UsersFollowApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersFollowApplicationJSONNotFound) usersFollowRes() {}
 
 type UsersFollowApplicationJSONUnauthorized BasicError
+
+func (a *UsersFollowApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersFollowApplicationJSONUnauthorized(v)
+}
+func (a *UsersFollowApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
 
@@ -23909,9 +26175,19 @@ func (*UsersFollowNoContent) usersFollowRes() {}
 
 type UsersGetAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersGetAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersGetAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersGetAuthenticatedApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersGetAuthenticatedApplicationJSONForbidden) usersGetAuthenticatedRes() {}
 
 type UsersGetAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersGetAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersGetAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersGetAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*UsersGetAuthenticatedApplicationJSONUnauthorized) usersGetAuthenticatedRes() {}
 
@@ -24062,156 +26338,375 @@ const (
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedRes() {}
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedRes() {}
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
+
+func (a *UsersListBlockedByAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListBlockedByAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListBlockedByAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersListBlockedByAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersListBlockedByAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersListBlockedByAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListBlockedByAuthenticatedApplicationJSONNotFound) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListBlockedByAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
+func (a *UsersListBlockedByAuthenticatedOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = UsersListBlockedByAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListBlockedByAuthenticatedOKApplicationJSON) unwrap() []SimpleUser {
+	return []SimpleUser(*a)
+}
+
 func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
+
+func (a *UsersListEmailsForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListEmailsForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListEmailsForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListEmailsForAuthenticatedApplicationJSONForbidden) usersListEmailsForAuthenticatedRes() {
 }
 
 type UsersListEmailsForAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersListEmailsForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersListEmailsForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersListEmailsForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListEmailsForAuthenticatedApplicationJSONNotFound) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListEmailsForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
 }
 
 type UsersListEmailsForAuthenticatedOKApplicationJSON []Email
 
+func (a *UsersListEmailsForAuthenticatedOKApplicationJSON) wrap(v []Email) {
+	*a = UsersListEmailsForAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListEmailsForAuthenticatedOKApplicationJSON) unwrap() []Email { return []Email(*a) }
+
 func (*UsersListEmailsForAuthenticatedOKApplicationJSON) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
+
+func (a *UsersListFollowedByAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListFollowedByAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListFollowedByAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListFollowedByAuthenticatedApplicationJSONForbidden) usersListFollowedByAuthenticatedRes() {
 }
 
 type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 
+func (a *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListFollowedByAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
 }
 
 type UsersListFollowedByAuthenticatedOKApplicationJSON []SimpleUser
 
+func (a *UsersListFollowedByAuthenticatedOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = UsersListFollowedByAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListFollowedByAuthenticatedOKApplicationJSON) unwrap() []SimpleUser {
+	return []SimpleUser(*a)
+}
+
 func (*UsersListFollowedByAuthenticatedOKApplicationJSON) usersListFollowedByAuthenticatedRes() {}
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (a *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListFollowersForAuthenticatedUserApplicationJSONForbidden(v)
+}
+func (a *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
+func (a *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(v)
+}
+func (a *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListFollowersForAuthenticatedUserOKApplicationJSON []SimpleUser
+
+func (a *UsersListFollowersForAuthenticatedUserOKApplicationJSON) wrap(v []SimpleUser) {
+	*a = UsersListFollowersForAuthenticatedUserOKApplicationJSON(v)
+}
+func (a *UsersListFollowersForAuthenticatedUserOKApplicationJSON) unwrap() []SimpleUser {
+	return []SimpleUser(*a)
+}
 
 func (*UsersListFollowersForAuthenticatedUserOKApplicationJSON) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
 
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONNotFound BasicError
+
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedOKApplicationJSON []GpgKey
 
+func (a *UsersListGpgKeysForAuthenticatedOKApplicationJSON) wrap(v []GpgKey) {
+	*a = UsersListGpgKeysForAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListGpgKeysForAuthenticatedOKApplicationJSON) unwrap() []GpgKey { return []GpgKey(*a) }
+
 func (*UsersListGpgKeysForAuthenticatedOKApplicationJSON) usersListGpgKeysForAuthenticatedRes() {}
 
 type UsersListOKApplicationJSON []SimpleUser
 
+func (a *UsersListOKApplicationJSON) wrap(v []SimpleUser)  { *a = UsersListOKApplicationJSON(v) }
+func (a *UsersListOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
+
 func (*UsersListOKApplicationJSON) usersListRes() {}
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden BasicError
+
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedOKApplicationJSON []Email
 
+func (a *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) wrap(v []Email) {
+	*a = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) unwrap() []Email { return []Email(*a) }
+
 func (*UsersListPublicEmailsForAuthenticatedOKApplicationJSON) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
+
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden(v)
+}
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) unwrap() BasicError {
+	return BasicError(*a)
+}
 
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound BasicError
 
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound(v)
+}
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(v)
+}
+func (a *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) unwrap() BasicError {
+	return BasicError(*a)
+}
+
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON []Key
+
+func (a *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) wrap(v []Key) {
+	*a = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(v)
+}
+func (a *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) unwrap() []Key { return []Key(*a) }
 
 func (*UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) usersListPublicSSHKeysForAuthenticatedRes() {
 }
@@ -24229,13 +26724,28 @@ const (
 
 type UsersUnblockApplicationJSONForbidden BasicError
 
+func (a *UsersUnblockApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersUnblockApplicationJSONForbidden(v)
+}
+func (a *UsersUnblockApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersUnblockApplicationJSONForbidden) usersUnblockRes() {}
 
 type UsersUnblockApplicationJSONNotFound BasicError
 
+func (a *UsersUnblockApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersUnblockApplicationJSONNotFound(v)
+}
+func (a *UsersUnblockApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersUnblockApplicationJSONNotFound) usersUnblockRes() {}
 
 type UsersUnblockApplicationJSONUnauthorized BasicError
+
+func (a *UsersUnblockApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersUnblockApplicationJSONUnauthorized(v)
+}
+func (a *UsersUnblockApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockRes() {}
 
@@ -24246,13 +26756,28 @@ func (*UsersUnblockNoContent) usersUnblockRes() {}
 
 type UsersUnfollowApplicationJSONForbidden BasicError
 
+func (a *UsersUnfollowApplicationJSONForbidden) wrap(v BasicError) {
+	*a = UsersUnfollowApplicationJSONForbidden(v)
+}
+func (a *UsersUnfollowApplicationJSONForbidden) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowRes() {}
 
 type UsersUnfollowApplicationJSONNotFound BasicError
 
+func (a *UsersUnfollowApplicationJSONNotFound) wrap(v BasicError) {
+	*a = UsersUnfollowApplicationJSONNotFound(v)
+}
+func (a *UsersUnfollowApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
+
 func (*UsersUnfollowApplicationJSONNotFound) usersUnfollowRes() {}
 
 type UsersUnfollowApplicationJSONUnauthorized BasicError
+
+func (a *UsersUnfollowApplicationJSONUnauthorized) wrap(v BasicError) {
+	*a = UsersUnfollowApplicationJSONUnauthorized(v)
+}
+func (a *UsersUnfollowApplicationJSONUnauthorized) unwrap() BasicError { return BasicError(*a) }
 
 func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowRes() {}
 
@@ -24316,6 +26841,9 @@ func (*ViewTraffic) reposGetViewsRes() {}
 
 type WaitTimer int
 
+func (a *WaitTimer) wrap(v int)  { *a = WaitTimer(v) }
+func (a *WaitTimer) unwrap() int { return int(*a) }
+
 // Ref: #/components/schemas/webhook-config
 type WebhookConfig struct {
 	URL         OptWebhookConfigURL         `json:"url"`
@@ -24325,6 +26853,9 @@ type WebhookConfig struct {
 }
 
 type WebhookConfigContentType string
+
+func (a *WebhookConfigContentType) wrap(v string)  { *a = WebhookConfigContentType(v) }
+func (a *WebhookConfigContentType) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/webhook-config-insecure-ssl
 // WebhookConfigInsecureSsl represents sum type.
@@ -24393,7 +26924,13 @@ func NewFloat64WebhookConfigInsecureSsl(v float64) WebhookConfigInsecureSsl {
 
 type WebhookConfigSecret string
 
+func (a *WebhookConfigSecret) wrap(v string)  { *a = WebhookConfigSecret(v) }
+func (a *WebhookConfigSecret) unwrap() string { return string(*a) }
+
 type WebhookConfigURL url.URL
+
+func (a *WebhookConfigURL) wrap(v url.URL)  { *a = WebhookConfigURL(v) }
+func (a *WebhookConfigURL) unwrap() url.URL { return url.URL(*a) }
 
 // Ref: #/components/schemas/workflow
 type Workflow struct {

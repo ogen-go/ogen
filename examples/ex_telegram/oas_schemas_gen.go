@@ -196,6 +196,9 @@ type BotCommand struct {
 
 type CallbackGame string
 
+func (a *CallbackGame) wrap(v string)  { *a = CallbackGame(v) }
+func (a *CallbackGame) unwrap() string { return string(*a) }
+
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
 	ID              string     `json:"id"`
@@ -651,6 +654,9 @@ type InlineQuery struct {
 }
 
 type InputFile string
+
+func (a *InputFile) wrap(v string)  { *a = InputFile(v) }
+func (a *InputFile) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
