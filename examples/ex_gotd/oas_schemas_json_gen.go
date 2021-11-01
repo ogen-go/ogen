@@ -752,19 +752,355 @@ func (s *BotCommand) ReadJSON(d *json.Decoder) error {
 
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScope) WriteJSON(e *json.Encoder) {
-	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	e.ObjEnd()
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.WriteJSON(e)
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.WriteJSON(e)
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.WriteJSON(e)
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.WriteJSON(e)
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.WriteJSON(e)
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.WriteJSON(e)
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.WriteJSON(e)
+	}
 }
 
-// ReadJSON reads BotCommandScope from json stream.
+// ReadJSON reads value from json reader.
 func (s *BotCommandScope) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode BotCommandScope to nil`)
 	}
+	// Sum type discriminator.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "type":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "all_chat_administrators":
+					s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
+					found = true
+				case "all_group_chats":
+					s.Type = BotCommandScopeAllGroupChatsBotCommandScope
+					found = true
+				case "all_private_chats":
+					s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
+					found = true
+				case "chat":
+					s.Type = BotCommandScopeChatBotCommandScope
+					found = true
+				case "chat_administrators":
+					s.Type = BotCommandScopeChatAdministratorsBotCommandScope
+					found = true
+				case "chat_member":
+					s.Type = BotCommandScopeChatMemberBotCommandScope
+					found = true
+				case "default":
+					s.Type = BotCommandScopeDefaultBotCommandScope
+					found = true
+				default:
+					return fmt.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		if err := s.BotCommandScopeDefault.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		if err := s.BotCommandScopeAllPrivateChats.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		if err := s.BotCommandScopeAllGroupChats.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		if err := s.BotCommandScopeAllChatAdministrators.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeChatBotCommandScope:
+		if err := s.BotCommandScopeChat.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		if err := s.BotCommandScopeChatAdministrators.ReadJSON(d); err != nil {
+			return err
+		}
+	case BotCommandScopeChatMemberBotCommandScope:
+		if err := s.BotCommandScopeChatMember.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeAllChatAdministrators) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeAllChatAdministrators from json stream.
+func (s *BotCommandScopeAllChatAdministrators) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeAllChatAdministrators to nil`)
+	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeAllGroupChats) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeAllGroupChats from json stream.
+func (s *BotCommandScopeAllGroupChats) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeAllGroupChats to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeAllPrivateChats) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeAllPrivateChats from json stream.
+func (s *BotCommandScopeAllPrivateChats) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeAllPrivateChats to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeChat) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("chat_id")
+	s.ChatID.WriteJSON(e)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeChat from json stream.
+func (s *BotCommandScopeChat) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeChat to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.ReadJSON(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeChatAdministrators) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("chat_id")
+	s.ChatID.WriteJSON(e)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeChatAdministrators from json stream.
+func (s *BotCommandScopeChatAdministrators) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeChatAdministrators to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.ReadJSON(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeChatMember) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("chat_id")
+	s.ChatID.WriteJSON(e)
+	more.More()
+	e.ObjField("user_id")
+	e.Int(s.UserID)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeChatMember from json stream.
+func (s *BotCommandScopeChatMember) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeChatMember to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.ReadJSON(d); err != nil {
+				return err
+			}
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BotCommandScopeDefault) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	e.ObjEnd()
+}
+
+// ReadJSON reads BotCommandScopeDefault from json stream.
+func (s *BotCommandScopeDefault) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode BotCommandScopeDefault to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -3623,19 +3959,214 @@ func (InlineQueryResult) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s InputMedia) WriteJSON(e *json.Encoder) {
-	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	e.ObjEnd()
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.WriteJSON(e)
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.WriteJSON(e)
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.WriteJSON(e)
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.WriteJSON(e)
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.WriteJSON(e)
+	}
 }
 
-// ReadJSON reads InputMedia from json stream.
+// ReadJSON reads value from json reader.
 func (s *InputMedia) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode InputMedia to nil`)
 	}
+	// Sum type discriminator.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "type":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "animation":
+					s.Type = InputMediaAnimationInputMedia
+					found = true
+				case "audio":
+					s.Type = InputMediaAudioInputMedia
+					found = true
+				case "document":
+					s.Type = InputMediaDocumentInputMedia
+					found = true
+				case "photo":
+					s.Type = InputMediaPhotoInputMedia
+					found = true
+				case "video":
+					s.Type = InputMediaVideoInputMedia
+					found = true
+				default:
+					return fmt.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		if err := s.InputMediaAnimation.ReadJSON(d); err != nil {
+			return err
+		}
+	case InputMediaDocumentInputMedia:
+		if err := s.InputMediaDocument.ReadJSON(d); err != nil {
+			return err
+		}
+	case InputMediaAudioInputMedia:
+		if err := s.InputMediaAudio.ReadJSON(d); err != nil {
+			return err
+		}
+	case InputMediaPhotoInputMedia:
+		if err := s.InputMediaPhoto.ReadJSON(d); err != nil {
+			return err
+		}
+	case InputMediaVideoInputMedia:
+		if err := s.InputMediaVideo.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InputMediaAnimation) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("media")
+	e.Str(s.Media)
+	if s.Thumb.Set {
+		more.More()
+		e.ObjField("thumb")
+		s.Thumb.WriteJSON(e)
+	}
+	if s.Caption.Set {
+		more.More()
+		e.ObjField("caption")
+		s.Caption.WriteJSON(e)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		e.ObjField("parse_mode")
+		s.ParseMode.WriteJSON(e)
+	}
+	if s.CaptionEntities != nil {
+		more.More()
+		e.ObjField("caption_entities")
+		more.Down()
+		e.ArrStart()
+		for _, elem := range s.CaptionEntities {
+			more.More()
+			elem.WriteJSON(e)
+		}
+		e.ArrEnd()
+		more.Up()
+	}
+	if s.Width.Set {
+		more.More()
+		e.ObjField("width")
+		s.Width.WriteJSON(e)
+	}
+	if s.Height.Set {
+		more.More()
+		e.ObjField("height")
+		s.Height.WriteJSON(e)
+	}
+	if s.Duration.Set {
+		more.More()
+		e.ObjField("duration")
+		s.Duration.WriteJSON(e)
+	}
+	e.ObjEnd()
+}
+
+// ReadJSON reads InputMediaAnimation from json stream.
+func (s *InputMediaAnimation) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode InputMediaAnimation to nil`)
+	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.ReadJSON(d); err != nil {
+				return err
+			}
+		case "caption":
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(d); err != nil {
+				return err
+			}
+		case "caption_entities":
+			s.CaptionEntities = nil
+			if err := d.Arr(func(d *json.Decoder) error {
+				var elem MessageEntity
+				if err := elem.ReadJSON(d); err != nil {
+					return err
+				}
+				s.CaptionEntities = append(s.CaptionEntities, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "width":
+			s.Width.Reset()
+			if err := s.Width.ReadJSON(d); err != nil {
+				return err
+			}
+		case "height":
+			s.Height.Reset()
+			if err := s.Height.ReadJSON(d); err != nil {
+				return err
+			}
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -6318,19 +6849,687 @@ func (s *PassportData) ReadJSON(d *json.Decoder) error {
 
 // WriteJSON implements json.Marshaler.
 func (s PassportElementError) WriteJSON(e *json.Encoder) {
-	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	e.ObjEnd()
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.WriteJSON(e)
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.WriteJSON(e)
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.WriteJSON(e)
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.WriteJSON(e)
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.WriteJSON(e)
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.WriteJSON(e)
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.WriteJSON(e)
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.WriteJSON(e)
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.WriteJSON(e)
+	}
 }
 
-// ReadJSON reads PassportElementError from json stream.
+// ReadJSON reads value from json reader.
 func (s *PassportElementError) ReadJSON(d *json.Decoder) error {
 	if s == nil {
 		return fmt.Errorf(`invalid: unable to decode PassportElementError to nil`)
 	}
+	// Sum type discriminator.
+	if d.Next() != json.Object {
+		return fmt.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "source":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "data":
+					s.Type = PassportElementErrorDataFieldPassportElementError
+					found = true
+				case "file":
+					s.Type = PassportElementErrorFilePassportElementError
+					found = true
+				case "files":
+					s.Type = PassportElementErrorFilesPassportElementError
+					found = true
+				case "front_side":
+					s.Type = PassportElementErrorFrontSidePassportElementError
+					found = true
+				case "reverse_side":
+					s.Type = PassportElementErrorReverseSidePassportElementError
+					found = true
+				case "selfie":
+					s.Type = PassportElementErrorSelfiePassportElementError
+					found = true
+				case "translation_file":
+					s.Type = PassportElementErrorTranslationFilePassportElementError
+					found = true
+				case "translation_files":
+					s.Type = PassportElementErrorTranslationFilesPassportElementError
+					found = true
+				case "unspecified":
+					s.Type = PassportElementErrorUnspecifiedPassportElementError
+					found = true
+				default:
+					return fmt.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return fmt.Errorf("capture: %w", err)
+	}
+	if !found {
+		return fmt.Errorf("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		if err := s.PassportElementErrorDataField.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorFrontSidePassportElementError:
+		if err := s.PassportElementErrorFrontSide.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorReverseSidePassportElementError:
+		if err := s.PassportElementErrorReverseSide.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorSelfiePassportElementError:
+		if err := s.PassportElementErrorSelfie.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorFilePassportElementError:
+		if err := s.PassportElementErrorFile.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorFilesPassportElementError:
+		if err := s.PassportElementErrorFiles.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorTranslationFilePassportElementError:
+		if err := s.PassportElementErrorTranslationFile.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorTranslationFilesPassportElementError:
+		if err := s.PassportElementErrorTranslationFiles.ReadJSON(d); err != nil {
+			return err
+		}
+	case PassportElementErrorUnspecifiedPassportElementError:
+		if err := s.PassportElementErrorUnspecified.ReadJSON(d); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorDataField) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("field_name")
+	e.Str(s.FieldName)
+	more.More()
+	e.ObjField("data_hash")
+	e.Str(s.DataHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorDataField from json stream.
+func (s *PassportElementErrorDataField) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorDataField to nil`)
+	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "field_name":
+			v, err := d.Str()
+			s.FieldName = string(v)
+			if err != nil {
+				return err
+			}
+		case "data_hash":
+			v, err := d.Str()
+			s.DataHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorFile) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hash")
+	e.Str(s.FileHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorFile from json stream.
+func (s *PassportElementErrorFile) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorFile to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorFiles) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hashes")
+	more.Down()
+	e.ArrStart()
+	for _, elem := range s.FileHashes {
+		more.More()
+		e.Str(elem)
+	}
+	e.ArrEnd()
+	more.Up()
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorFiles from json stream.
+func (s *PassportElementErrorFiles) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorFiles to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hashes":
+			s.FileHashes = nil
+			if err := d.Arr(func(d *json.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.FileHashes = append(s.FileHashes, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorFrontSide) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hash")
+	e.Str(s.FileHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorFrontSide from json stream.
+func (s *PassportElementErrorFrontSide) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorFrontSide to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorReverseSide) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hash")
+	e.Str(s.FileHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorReverseSide from json stream.
+func (s *PassportElementErrorReverseSide) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorReverseSide to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorSelfie) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hash")
+	e.Str(s.FileHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorSelfie from json stream.
+func (s *PassportElementErrorSelfie) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorSelfie to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorTranslationFile) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hash")
+	e.Str(s.FileHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorTranslationFile from json stream.
+func (s *PassportElementErrorTranslationFile) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorTranslationFile to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorTranslationFiles) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("file_hashes")
+	more.Down()
+	e.ArrStart()
+	for _, elem := range s.FileHashes {
+		more.More()
+		e.Str(elem)
+	}
+	e.ArrEnd()
+	more.Up()
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorTranslationFiles from json stream.
+func (s *PassportElementErrorTranslationFiles) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorTranslationFiles to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hashes":
+			s.FileHashes = nil
+			if err := d.Arr(func(d *json.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.FileHashes = append(s.FileHashes, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PassportElementErrorUnspecified) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	e.ObjField("source")
+	e.Str(s.Source)
+	more.More()
+	e.ObjField("type")
+	e.Str(s.Type)
+	more.More()
+	e.ObjField("element_hash")
+	e.Str(s.ElementHash)
+	more.More()
+	e.ObjField("message")
+	e.Str(s.Message)
+	e.ObjEnd()
+}
+
+// ReadJSON reads PassportElementErrorUnspecified from json stream.
+func (s *PassportElementErrorUnspecified) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return fmt.Errorf(`invalid: unable to decode PassportElementErrorUnspecified to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "element_hash":
+			v, err := d.Str()
+			s.ElementHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
+			if err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}

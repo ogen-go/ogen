@@ -466,6 +466,15 @@ func (s EditMessageLiveLocation) Validate() error {
 func (s EditMessageMedia) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		_ = s.Media // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "media",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -659,6 +668,49 @@ func (s InlineKeyboardMarkup) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inline_keyboard",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s InputMediaAnimation) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Width // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Height // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Duration // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
 			Error: err,
 		})
 	}
@@ -1009,6 +1061,44 @@ func (s PassportData) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "data",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PassportElementErrorFiles) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.FileHashes == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.FileHashes // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "file_hashes",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PassportElementErrorTranslationFiles) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.FileHashes == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		_ = s.FileHashes // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "file_hashes",
 			Error: err,
 		})
 	}
@@ -1870,7 +1960,21 @@ func (s SetPassportDataErrors) Validate() error {
 		if s.Errors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		_ = s.Errors // validation expected, but not supported
+		var failures []validate.FieldError
+		for i, elem := range s.Errors {
+			if err := func() error {
+				_ = elem // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

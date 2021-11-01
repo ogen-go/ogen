@@ -146,7 +146,252 @@ type BotCommand struct {
 }
 
 // Ref: #/components/schemas/BotCommandScope
-type BotCommandScope struct{}
+// BotCommandScope represents sum type.
+type BotCommandScope struct {
+	Type                                 BotCommandScopeType // switch on this field
+	BotCommandScopeDefault               BotCommandScopeDefault
+	BotCommandScopeAllPrivateChats       BotCommandScopeAllPrivateChats
+	BotCommandScopeAllGroupChats         BotCommandScopeAllGroupChats
+	BotCommandScopeAllChatAdministrators BotCommandScopeAllChatAdministrators
+	BotCommandScopeChat                  BotCommandScopeChat
+	BotCommandScopeChatAdministrators    BotCommandScopeChatAdministrators
+	BotCommandScopeChatMember            BotCommandScopeChatMember
+}
+
+// BotCommandScopeType is oneOf type of BotCommandScope.
+type BotCommandScopeType string
+
+// Possible values for BotCommandScopeType.
+const (
+	BotCommandScopeDefaultBotCommandScope               BotCommandScopeType = "BotCommandScopeDefault"
+	BotCommandScopeAllPrivateChatsBotCommandScope       BotCommandScopeType = "BotCommandScopeAllPrivateChats"
+	BotCommandScopeAllGroupChatsBotCommandScope         BotCommandScopeType = "BotCommandScopeAllGroupChats"
+	BotCommandScopeAllChatAdministratorsBotCommandScope BotCommandScopeType = "BotCommandScopeAllChatAdministrators"
+	BotCommandScopeChatBotCommandScope                  BotCommandScopeType = "BotCommandScopeChat"
+	BotCommandScopeChatAdministratorsBotCommandScope    BotCommandScopeType = "BotCommandScopeChatAdministrators"
+	BotCommandScopeChatMemberBotCommandScope            BotCommandScopeType = "BotCommandScopeChatMember"
+)
+
+// IsBotCommandScopeDefault reports whether BotCommandScope is BotCommandScopeDefault.
+func (s BotCommandScope) IsBotCommandScopeDefault() bool {
+	return s.Type == BotCommandScopeDefaultBotCommandScope
+}
+
+// IsBotCommandScopeAllPrivateChats reports whether BotCommandScope is BotCommandScopeAllPrivateChats.
+func (s BotCommandScope) IsBotCommandScopeAllPrivateChats() bool {
+	return s.Type == BotCommandScopeAllPrivateChatsBotCommandScope
+}
+
+// IsBotCommandScopeAllGroupChats reports whether BotCommandScope is BotCommandScopeAllGroupChats.
+func (s BotCommandScope) IsBotCommandScopeAllGroupChats() bool {
+	return s.Type == BotCommandScopeAllGroupChatsBotCommandScope
+}
+
+// IsBotCommandScopeAllChatAdministrators reports whether BotCommandScope is BotCommandScopeAllChatAdministrators.
+func (s BotCommandScope) IsBotCommandScopeAllChatAdministrators() bool {
+	return s.Type == BotCommandScopeAllChatAdministratorsBotCommandScope
+}
+
+// IsBotCommandScopeChat reports whether BotCommandScope is BotCommandScopeChat.
+func (s BotCommandScope) IsBotCommandScopeChat() bool {
+	return s.Type == BotCommandScopeChatBotCommandScope
+}
+
+// IsBotCommandScopeChatAdministrators reports whether BotCommandScope is BotCommandScopeChatAdministrators.
+func (s BotCommandScope) IsBotCommandScopeChatAdministrators() bool {
+	return s.Type == BotCommandScopeChatAdministratorsBotCommandScope
+}
+
+// IsBotCommandScopeChatMember reports whether BotCommandScope is BotCommandScopeChatMember.
+func (s BotCommandScope) IsBotCommandScopeChatMember() bool {
+	return s.Type == BotCommandScopeChatMemberBotCommandScope
+}
+
+// SetBotCommandScopeDefault sets BotCommandScope to BotCommandScopeDefault.
+func (s *BotCommandScope) SetBotCommandScopeDefault(v BotCommandScopeDefault) {
+	s.Type = BotCommandScopeDefaultBotCommandScope
+	s.BotCommandScopeDefault = v
+}
+
+// GetBotCommandScopeDefault returns BotCommandScopeDefault and true boolean if BotCommandScope is BotCommandScopeDefault.
+func (s BotCommandScope) GetBotCommandScopeDefault() (v BotCommandScopeDefault, ok bool) {
+	if !s.IsBotCommandScopeDefault() {
+		return v, false
+	}
+	return s.BotCommandScopeDefault, true
+}
+
+// NewBotCommandScopeDefaultBotCommandScope returns new BotCommandScope from BotCommandScopeDefault.
+func NewBotCommandScopeDefaultBotCommandScope(v BotCommandScopeDefault) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeDefault(v)
+	return s
+}
+
+// SetBotCommandScopeAllPrivateChats sets BotCommandScope to BotCommandScopeAllPrivateChats.
+func (s *BotCommandScope) SetBotCommandScopeAllPrivateChats(v BotCommandScopeAllPrivateChats) {
+	s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
+	s.BotCommandScopeAllPrivateChats = v
+}
+
+// GetBotCommandScopeAllPrivateChats returns BotCommandScopeAllPrivateChats and true boolean if BotCommandScope is BotCommandScopeAllPrivateChats.
+func (s BotCommandScope) GetBotCommandScopeAllPrivateChats() (v BotCommandScopeAllPrivateChats, ok bool) {
+	if !s.IsBotCommandScopeAllPrivateChats() {
+		return v, false
+	}
+	return s.BotCommandScopeAllPrivateChats, true
+}
+
+// NewBotCommandScopeAllPrivateChatsBotCommandScope returns new BotCommandScope from BotCommandScopeAllPrivateChats.
+func NewBotCommandScopeAllPrivateChatsBotCommandScope(v BotCommandScopeAllPrivateChats) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllPrivateChats(v)
+	return s
+}
+
+// SetBotCommandScopeAllGroupChats sets BotCommandScope to BotCommandScopeAllGroupChats.
+func (s *BotCommandScope) SetBotCommandScopeAllGroupChats(v BotCommandScopeAllGroupChats) {
+	s.Type = BotCommandScopeAllGroupChatsBotCommandScope
+	s.BotCommandScopeAllGroupChats = v
+}
+
+// GetBotCommandScopeAllGroupChats returns BotCommandScopeAllGroupChats and true boolean if BotCommandScope is BotCommandScopeAllGroupChats.
+func (s BotCommandScope) GetBotCommandScopeAllGroupChats() (v BotCommandScopeAllGroupChats, ok bool) {
+	if !s.IsBotCommandScopeAllGroupChats() {
+		return v, false
+	}
+	return s.BotCommandScopeAllGroupChats, true
+}
+
+// NewBotCommandScopeAllGroupChatsBotCommandScope returns new BotCommandScope from BotCommandScopeAllGroupChats.
+func NewBotCommandScopeAllGroupChatsBotCommandScope(v BotCommandScopeAllGroupChats) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllGroupChats(v)
+	return s
+}
+
+// SetBotCommandScopeAllChatAdministrators sets BotCommandScope to BotCommandScopeAllChatAdministrators.
+func (s *BotCommandScope) SetBotCommandScopeAllChatAdministrators(v BotCommandScopeAllChatAdministrators) {
+	s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
+	s.BotCommandScopeAllChatAdministrators = v
+}
+
+// GetBotCommandScopeAllChatAdministrators returns BotCommandScopeAllChatAdministrators and true boolean if BotCommandScope is BotCommandScopeAllChatAdministrators.
+func (s BotCommandScope) GetBotCommandScopeAllChatAdministrators() (v BotCommandScopeAllChatAdministrators, ok bool) {
+	if !s.IsBotCommandScopeAllChatAdministrators() {
+		return v, false
+	}
+	return s.BotCommandScopeAllChatAdministrators, true
+}
+
+// NewBotCommandScopeAllChatAdministratorsBotCommandScope returns new BotCommandScope from BotCommandScopeAllChatAdministrators.
+func NewBotCommandScopeAllChatAdministratorsBotCommandScope(v BotCommandScopeAllChatAdministrators) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllChatAdministrators(v)
+	return s
+}
+
+// SetBotCommandScopeChat sets BotCommandScope to BotCommandScopeChat.
+func (s *BotCommandScope) SetBotCommandScopeChat(v BotCommandScopeChat) {
+	s.Type = BotCommandScopeChatBotCommandScope
+	s.BotCommandScopeChat = v
+}
+
+// GetBotCommandScopeChat returns BotCommandScopeChat and true boolean if BotCommandScope is BotCommandScopeChat.
+func (s BotCommandScope) GetBotCommandScopeChat() (v BotCommandScopeChat, ok bool) {
+	if !s.IsBotCommandScopeChat() {
+		return v, false
+	}
+	return s.BotCommandScopeChat, true
+}
+
+// NewBotCommandScopeChatBotCommandScope returns new BotCommandScope from BotCommandScopeChat.
+func NewBotCommandScopeChatBotCommandScope(v BotCommandScopeChat) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChat(v)
+	return s
+}
+
+// SetBotCommandScopeChatAdministrators sets BotCommandScope to BotCommandScopeChatAdministrators.
+func (s *BotCommandScope) SetBotCommandScopeChatAdministrators(v BotCommandScopeChatAdministrators) {
+	s.Type = BotCommandScopeChatAdministratorsBotCommandScope
+	s.BotCommandScopeChatAdministrators = v
+}
+
+// GetBotCommandScopeChatAdministrators returns BotCommandScopeChatAdministrators and true boolean if BotCommandScope is BotCommandScopeChatAdministrators.
+func (s BotCommandScope) GetBotCommandScopeChatAdministrators() (v BotCommandScopeChatAdministrators, ok bool) {
+	if !s.IsBotCommandScopeChatAdministrators() {
+		return v, false
+	}
+	return s.BotCommandScopeChatAdministrators, true
+}
+
+// NewBotCommandScopeChatAdministratorsBotCommandScope returns new BotCommandScope from BotCommandScopeChatAdministrators.
+func NewBotCommandScopeChatAdministratorsBotCommandScope(v BotCommandScopeChatAdministrators) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChatAdministrators(v)
+	return s
+}
+
+// SetBotCommandScopeChatMember sets BotCommandScope to BotCommandScopeChatMember.
+func (s *BotCommandScope) SetBotCommandScopeChatMember(v BotCommandScopeChatMember) {
+	s.Type = BotCommandScopeChatMemberBotCommandScope
+	s.BotCommandScopeChatMember = v
+}
+
+// GetBotCommandScopeChatMember returns BotCommandScopeChatMember and true boolean if BotCommandScope is BotCommandScopeChatMember.
+func (s BotCommandScope) GetBotCommandScopeChatMember() (v BotCommandScopeChatMember, ok bool) {
+	if !s.IsBotCommandScopeChatMember() {
+		return v, false
+	}
+	return s.BotCommandScopeChatMember, true
+}
+
+// NewBotCommandScopeChatMemberBotCommandScope returns new BotCommandScope from BotCommandScopeChatMember.
+func NewBotCommandScopeChatMemberBotCommandScope(v BotCommandScopeChatMember) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChatMember(v)
+	return s
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllChatAdministrators
+type BotCommandScopeAllChatAdministrators struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllGroupChats
+type BotCommandScopeAllGroupChats struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllPrivateChats
+type BotCommandScopeAllPrivateChats struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChat
+type BotCommandScopeChat struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChatAdministrators
+type BotCommandScopeChatAdministrators struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChatMember
+type BotCommandScopeChatMember struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+	UserID int    `json:"user_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeDefault
+type BotCommandScopeDefault struct {
+	Type string `json:"type"`
+}
 
 // Ref: #/components/schemas/CallbackGame
 type CallbackGame struct{}
@@ -763,7 +1008,160 @@ func (a *InlineQueryResult) wrap(v string)  { *a = InlineQueryResult(v) }
 func (a *InlineQueryResult) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/InputMedia
-type InputMedia struct{}
+// InputMedia represents sum type.
+type InputMedia struct {
+	Type                InputMediaType // switch on this field
+	InputMediaAnimation InputMediaAnimation
+	InputMediaDocument  InputMediaDocument
+	InputMediaAudio     InputMediaAudio
+	InputMediaPhoto     InputMediaPhoto
+	InputMediaVideo     InputMediaVideo
+}
+
+// InputMediaType is oneOf type of InputMedia.
+type InputMediaType string
+
+// Possible values for InputMediaType.
+const (
+	InputMediaAnimationInputMedia InputMediaType = "InputMediaAnimation"
+	InputMediaDocumentInputMedia  InputMediaType = "InputMediaDocument"
+	InputMediaAudioInputMedia     InputMediaType = "InputMediaAudio"
+	InputMediaPhotoInputMedia     InputMediaType = "InputMediaPhoto"
+	InputMediaVideoInputMedia     InputMediaType = "InputMediaVideo"
+)
+
+// IsInputMediaAnimation reports whether InputMedia is InputMediaAnimation.
+func (s InputMedia) IsInputMediaAnimation() bool { return s.Type == InputMediaAnimationInputMedia }
+
+// IsInputMediaDocument reports whether InputMedia is InputMediaDocument.
+func (s InputMedia) IsInputMediaDocument() bool { return s.Type == InputMediaDocumentInputMedia }
+
+// IsInputMediaAudio reports whether InputMedia is InputMediaAudio.
+func (s InputMedia) IsInputMediaAudio() bool { return s.Type == InputMediaAudioInputMedia }
+
+// IsInputMediaPhoto reports whether InputMedia is InputMediaPhoto.
+func (s InputMedia) IsInputMediaPhoto() bool { return s.Type == InputMediaPhotoInputMedia }
+
+// IsInputMediaVideo reports whether InputMedia is InputMediaVideo.
+func (s InputMedia) IsInputMediaVideo() bool { return s.Type == InputMediaVideoInputMedia }
+
+// SetInputMediaAnimation sets InputMedia to InputMediaAnimation.
+func (s *InputMedia) SetInputMediaAnimation(v InputMediaAnimation) {
+	s.Type = InputMediaAnimationInputMedia
+	s.InputMediaAnimation = v
+}
+
+// GetInputMediaAnimation returns InputMediaAnimation and true boolean if InputMedia is InputMediaAnimation.
+func (s InputMedia) GetInputMediaAnimation() (v InputMediaAnimation, ok bool) {
+	if !s.IsInputMediaAnimation() {
+		return v, false
+	}
+	return s.InputMediaAnimation, true
+}
+
+// NewInputMediaAnimationInputMedia returns new InputMedia from InputMediaAnimation.
+func NewInputMediaAnimationInputMedia(v InputMediaAnimation) InputMedia {
+	var s InputMedia
+	s.SetInputMediaAnimation(v)
+	return s
+}
+
+// SetInputMediaDocument sets InputMedia to InputMediaDocument.
+func (s *InputMedia) SetInputMediaDocument(v InputMediaDocument) {
+	s.Type = InputMediaDocumentInputMedia
+	s.InputMediaDocument = v
+}
+
+// GetInputMediaDocument returns InputMediaDocument and true boolean if InputMedia is InputMediaDocument.
+func (s InputMedia) GetInputMediaDocument() (v InputMediaDocument, ok bool) {
+	if !s.IsInputMediaDocument() {
+		return v, false
+	}
+	return s.InputMediaDocument, true
+}
+
+// NewInputMediaDocumentInputMedia returns new InputMedia from InputMediaDocument.
+func NewInputMediaDocumentInputMedia(v InputMediaDocument) InputMedia {
+	var s InputMedia
+	s.SetInputMediaDocument(v)
+	return s
+}
+
+// SetInputMediaAudio sets InputMedia to InputMediaAudio.
+func (s *InputMedia) SetInputMediaAudio(v InputMediaAudio) {
+	s.Type = InputMediaAudioInputMedia
+	s.InputMediaAudio = v
+}
+
+// GetInputMediaAudio returns InputMediaAudio and true boolean if InputMedia is InputMediaAudio.
+func (s InputMedia) GetInputMediaAudio() (v InputMediaAudio, ok bool) {
+	if !s.IsInputMediaAudio() {
+		return v, false
+	}
+	return s.InputMediaAudio, true
+}
+
+// NewInputMediaAudioInputMedia returns new InputMedia from InputMediaAudio.
+func NewInputMediaAudioInputMedia(v InputMediaAudio) InputMedia {
+	var s InputMedia
+	s.SetInputMediaAudio(v)
+	return s
+}
+
+// SetInputMediaPhoto sets InputMedia to InputMediaPhoto.
+func (s *InputMedia) SetInputMediaPhoto(v InputMediaPhoto) {
+	s.Type = InputMediaPhotoInputMedia
+	s.InputMediaPhoto = v
+}
+
+// GetInputMediaPhoto returns InputMediaPhoto and true boolean if InputMedia is InputMediaPhoto.
+func (s InputMedia) GetInputMediaPhoto() (v InputMediaPhoto, ok bool) {
+	if !s.IsInputMediaPhoto() {
+		return v, false
+	}
+	return s.InputMediaPhoto, true
+}
+
+// NewInputMediaPhotoInputMedia returns new InputMedia from InputMediaPhoto.
+func NewInputMediaPhotoInputMedia(v InputMediaPhoto) InputMedia {
+	var s InputMedia
+	s.SetInputMediaPhoto(v)
+	return s
+}
+
+// SetInputMediaVideo sets InputMedia to InputMediaVideo.
+func (s *InputMedia) SetInputMediaVideo(v InputMediaVideo) {
+	s.Type = InputMediaVideoInputMedia
+	s.InputMediaVideo = v
+}
+
+// GetInputMediaVideo returns InputMediaVideo and true boolean if InputMedia is InputMediaVideo.
+func (s InputMedia) GetInputMediaVideo() (v InputMediaVideo, ok bool) {
+	if !s.IsInputMediaVideo() {
+		return v, false
+	}
+	return s.InputMediaVideo, true
+}
+
+// NewInputMediaVideoInputMedia returns new InputMedia from InputMediaVideo.
+func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
+	var s InputMedia
+	s.SetInputMediaVideo(v)
+	return s
+}
+
+// Ref: #/components/schemas/InputMediaAnimation
+type InputMediaAnimation struct {
+	Type            string          `json:"type"`
+	Media           string          `json:"media"`
+	Thumb           OptString       `json:"thumb"`
+	Caption         OptString       `json:"caption"`
+	ParseMode       OptString       `json:"parse_mode"`
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	Width           OptInt          `json:"width"`
+	Height          OptInt          `json:"height"`
+	Duration        OptInt          `json:"duration"`
+}
 
 // Ref: #/components/schemas/InputMediaAudio
 type InputMediaAudio struct {
@@ -2519,7 +2917,342 @@ type PassportData struct {
 }
 
 // Ref: #/components/schemas/PassportElementError
-type PassportElementError struct{}
+// PassportElementError represents sum type.
+type PassportElementError struct {
+	Type                                 PassportElementErrorType // switch on this field
+	PassportElementErrorDataField        PassportElementErrorDataField
+	PassportElementErrorFrontSide        PassportElementErrorFrontSide
+	PassportElementErrorReverseSide      PassportElementErrorReverseSide
+	PassportElementErrorSelfie           PassportElementErrorSelfie
+	PassportElementErrorFile             PassportElementErrorFile
+	PassportElementErrorFiles            PassportElementErrorFiles
+	PassportElementErrorTranslationFile  PassportElementErrorTranslationFile
+	PassportElementErrorTranslationFiles PassportElementErrorTranslationFiles
+	PassportElementErrorUnspecified      PassportElementErrorUnspecified
+}
+
+// PassportElementErrorType is oneOf type of PassportElementError.
+type PassportElementErrorType string
+
+// Possible values for PassportElementErrorType.
+const (
+	PassportElementErrorDataFieldPassportElementError        PassportElementErrorType = "PassportElementErrorDataField"
+	PassportElementErrorFrontSidePassportElementError        PassportElementErrorType = "PassportElementErrorFrontSide"
+	PassportElementErrorReverseSidePassportElementError      PassportElementErrorType = "PassportElementErrorReverseSide"
+	PassportElementErrorSelfiePassportElementError           PassportElementErrorType = "PassportElementErrorSelfie"
+	PassportElementErrorFilePassportElementError             PassportElementErrorType = "PassportElementErrorFile"
+	PassportElementErrorFilesPassportElementError            PassportElementErrorType = "PassportElementErrorFiles"
+	PassportElementErrorTranslationFilePassportElementError  PassportElementErrorType = "PassportElementErrorTranslationFile"
+	PassportElementErrorTranslationFilesPassportElementError PassportElementErrorType = "PassportElementErrorTranslationFiles"
+	PassportElementErrorUnspecifiedPassportElementError      PassportElementErrorType = "PassportElementErrorUnspecified"
+)
+
+// IsPassportElementErrorDataField reports whether PassportElementError is PassportElementErrorDataField.
+func (s PassportElementError) IsPassportElementErrorDataField() bool {
+	return s.Type == PassportElementErrorDataFieldPassportElementError
+}
+
+// IsPassportElementErrorFrontSide reports whether PassportElementError is PassportElementErrorFrontSide.
+func (s PassportElementError) IsPassportElementErrorFrontSide() bool {
+	return s.Type == PassportElementErrorFrontSidePassportElementError
+}
+
+// IsPassportElementErrorReverseSide reports whether PassportElementError is PassportElementErrorReverseSide.
+func (s PassportElementError) IsPassportElementErrorReverseSide() bool {
+	return s.Type == PassportElementErrorReverseSidePassportElementError
+}
+
+// IsPassportElementErrorSelfie reports whether PassportElementError is PassportElementErrorSelfie.
+func (s PassportElementError) IsPassportElementErrorSelfie() bool {
+	return s.Type == PassportElementErrorSelfiePassportElementError
+}
+
+// IsPassportElementErrorFile reports whether PassportElementError is PassportElementErrorFile.
+func (s PassportElementError) IsPassportElementErrorFile() bool {
+	return s.Type == PassportElementErrorFilePassportElementError
+}
+
+// IsPassportElementErrorFiles reports whether PassportElementError is PassportElementErrorFiles.
+func (s PassportElementError) IsPassportElementErrorFiles() bool {
+	return s.Type == PassportElementErrorFilesPassportElementError
+}
+
+// IsPassportElementErrorTranslationFile reports whether PassportElementError is PassportElementErrorTranslationFile.
+func (s PassportElementError) IsPassportElementErrorTranslationFile() bool {
+	return s.Type == PassportElementErrorTranslationFilePassportElementError
+}
+
+// IsPassportElementErrorTranslationFiles reports whether PassportElementError is PassportElementErrorTranslationFiles.
+func (s PassportElementError) IsPassportElementErrorTranslationFiles() bool {
+	return s.Type == PassportElementErrorTranslationFilesPassportElementError
+}
+
+// IsPassportElementErrorUnspecified reports whether PassportElementError is PassportElementErrorUnspecified.
+func (s PassportElementError) IsPassportElementErrorUnspecified() bool {
+	return s.Type == PassportElementErrorUnspecifiedPassportElementError
+}
+
+// SetPassportElementErrorDataField sets PassportElementError to PassportElementErrorDataField.
+func (s *PassportElementError) SetPassportElementErrorDataField(v PassportElementErrorDataField) {
+	s.Type = PassportElementErrorDataFieldPassportElementError
+	s.PassportElementErrorDataField = v
+}
+
+// GetPassportElementErrorDataField returns PassportElementErrorDataField and true boolean if PassportElementError is PassportElementErrorDataField.
+func (s PassportElementError) GetPassportElementErrorDataField() (v PassportElementErrorDataField, ok bool) {
+	if !s.IsPassportElementErrorDataField() {
+		return v, false
+	}
+	return s.PassportElementErrorDataField, true
+}
+
+// NewPassportElementErrorDataFieldPassportElementError returns new PassportElementError from PassportElementErrorDataField.
+func NewPassportElementErrorDataFieldPassportElementError(v PassportElementErrorDataField) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorDataField(v)
+	return s
+}
+
+// SetPassportElementErrorFrontSide sets PassportElementError to PassportElementErrorFrontSide.
+func (s *PassportElementError) SetPassportElementErrorFrontSide(v PassportElementErrorFrontSide) {
+	s.Type = PassportElementErrorFrontSidePassportElementError
+	s.PassportElementErrorFrontSide = v
+}
+
+// GetPassportElementErrorFrontSide returns PassportElementErrorFrontSide and true boolean if PassportElementError is PassportElementErrorFrontSide.
+func (s PassportElementError) GetPassportElementErrorFrontSide() (v PassportElementErrorFrontSide, ok bool) {
+	if !s.IsPassportElementErrorFrontSide() {
+		return v, false
+	}
+	return s.PassportElementErrorFrontSide, true
+}
+
+// NewPassportElementErrorFrontSidePassportElementError returns new PassportElementError from PassportElementErrorFrontSide.
+func NewPassportElementErrorFrontSidePassportElementError(v PassportElementErrorFrontSide) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFrontSide(v)
+	return s
+}
+
+// SetPassportElementErrorReverseSide sets PassportElementError to PassportElementErrorReverseSide.
+func (s *PassportElementError) SetPassportElementErrorReverseSide(v PassportElementErrorReverseSide) {
+	s.Type = PassportElementErrorReverseSidePassportElementError
+	s.PassportElementErrorReverseSide = v
+}
+
+// GetPassportElementErrorReverseSide returns PassportElementErrorReverseSide and true boolean if PassportElementError is PassportElementErrorReverseSide.
+func (s PassportElementError) GetPassportElementErrorReverseSide() (v PassportElementErrorReverseSide, ok bool) {
+	if !s.IsPassportElementErrorReverseSide() {
+		return v, false
+	}
+	return s.PassportElementErrorReverseSide, true
+}
+
+// NewPassportElementErrorReverseSidePassportElementError returns new PassportElementError from PassportElementErrorReverseSide.
+func NewPassportElementErrorReverseSidePassportElementError(v PassportElementErrorReverseSide) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorReverseSide(v)
+	return s
+}
+
+// SetPassportElementErrorSelfie sets PassportElementError to PassportElementErrorSelfie.
+func (s *PassportElementError) SetPassportElementErrorSelfie(v PassportElementErrorSelfie) {
+	s.Type = PassportElementErrorSelfiePassportElementError
+	s.PassportElementErrorSelfie = v
+}
+
+// GetPassportElementErrorSelfie returns PassportElementErrorSelfie and true boolean if PassportElementError is PassportElementErrorSelfie.
+func (s PassportElementError) GetPassportElementErrorSelfie() (v PassportElementErrorSelfie, ok bool) {
+	if !s.IsPassportElementErrorSelfie() {
+		return v, false
+	}
+	return s.PassportElementErrorSelfie, true
+}
+
+// NewPassportElementErrorSelfiePassportElementError returns new PassportElementError from PassportElementErrorSelfie.
+func NewPassportElementErrorSelfiePassportElementError(v PassportElementErrorSelfie) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorSelfie(v)
+	return s
+}
+
+// SetPassportElementErrorFile sets PassportElementError to PassportElementErrorFile.
+func (s *PassportElementError) SetPassportElementErrorFile(v PassportElementErrorFile) {
+	s.Type = PassportElementErrorFilePassportElementError
+	s.PassportElementErrorFile = v
+}
+
+// GetPassportElementErrorFile returns PassportElementErrorFile and true boolean if PassportElementError is PassportElementErrorFile.
+func (s PassportElementError) GetPassportElementErrorFile() (v PassportElementErrorFile, ok bool) {
+	if !s.IsPassportElementErrorFile() {
+		return v, false
+	}
+	return s.PassportElementErrorFile, true
+}
+
+// NewPassportElementErrorFilePassportElementError returns new PassportElementError from PassportElementErrorFile.
+func NewPassportElementErrorFilePassportElementError(v PassportElementErrorFile) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFile(v)
+	return s
+}
+
+// SetPassportElementErrorFiles sets PassportElementError to PassportElementErrorFiles.
+func (s *PassportElementError) SetPassportElementErrorFiles(v PassportElementErrorFiles) {
+	s.Type = PassportElementErrorFilesPassportElementError
+	s.PassportElementErrorFiles = v
+}
+
+// GetPassportElementErrorFiles returns PassportElementErrorFiles and true boolean if PassportElementError is PassportElementErrorFiles.
+func (s PassportElementError) GetPassportElementErrorFiles() (v PassportElementErrorFiles, ok bool) {
+	if !s.IsPassportElementErrorFiles() {
+		return v, false
+	}
+	return s.PassportElementErrorFiles, true
+}
+
+// NewPassportElementErrorFilesPassportElementError returns new PassportElementError from PassportElementErrorFiles.
+func NewPassportElementErrorFilesPassportElementError(v PassportElementErrorFiles) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFiles(v)
+	return s
+}
+
+// SetPassportElementErrorTranslationFile sets PassportElementError to PassportElementErrorTranslationFile.
+func (s *PassportElementError) SetPassportElementErrorTranslationFile(v PassportElementErrorTranslationFile) {
+	s.Type = PassportElementErrorTranslationFilePassportElementError
+	s.PassportElementErrorTranslationFile = v
+}
+
+// GetPassportElementErrorTranslationFile returns PassportElementErrorTranslationFile and true boolean if PassportElementError is PassportElementErrorTranslationFile.
+func (s PassportElementError) GetPassportElementErrorTranslationFile() (v PassportElementErrorTranslationFile, ok bool) {
+	if !s.IsPassportElementErrorTranslationFile() {
+		return v, false
+	}
+	return s.PassportElementErrorTranslationFile, true
+}
+
+// NewPassportElementErrorTranslationFilePassportElementError returns new PassportElementError from PassportElementErrorTranslationFile.
+func NewPassportElementErrorTranslationFilePassportElementError(v PassportElementErrorTranslationFile) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorTranslationFile(v)
+	return s
+}
+
+// SetPassportElementErrorTranslationFiles sets PassportElementError to PassportElementErrorTranslationFiles.
+func (s *PassportElementError) SetPassportElementErrorTranslationFiles(v PassportElementErrorTranslationFiles) {
+	s.Type = PassportElementErrorTranslationFilesPassportElementError
+	s.PassportElementErrorTranslationFiles = v
+}
+
+// GetPassportElementErrorTranslationFiles returns PassportElementErrorTranslationFiles and true boolean if PassportElementError is PassportElementErrorTranslationFiles.
+func (s PassportElementError) GetPassportElementErrorTranslationFiles() (v PassportElementErrorTranslationFiles, ok bool) {
+	if !s.IsPassportElementErrorTranslationFiles() {
+		return v, false
+	}
+	return s.PassportElementErrorTranslationFiles, true
+}
+
+// NewPassportElementErrorTranslationFilesPassportElementError returns new PassportElementError from PassportElementErrorTranslationFiles.
+func NewPassportElementErrorTranslationFilesPassportElementError(v PassportElementErrorTranslationFiles) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorTranslationFiles(v)
+	return s
+}
+
+// SetPassportElementErrorUnspecified sets PassportElementError to PassportElementErrorUnspecified.
+func (s *PassportElementError) SetPassportElementErrorUnspecified(v PassportElementErrorUnspecified) {
+	s.Type = PassportElementErrorUnspecifiedPassportElementError
+	s.PassportElementErrorUnspecified = v
+}
+
+// GetPassportElementErrorUnspecified returns PassportElementErrorUnspecified and true boolean if PassportElementError is PassportElementErrorUnspecified.
+func (s PassportElementError) GetPassportElementErrorUnspecified() (v PassportElementErrorUnspecified, ok bool) {
+	if !s.IsPassportElementErrorUnspecified() {
+		return v, false
+	}
+	return s.PassportElementErrorUnspecified, true
+}
+
+// NewPassportElementErrorUnspecifiedPassportElementError returns new PassportElementError from PassportElementErrorUnspecified.
+func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErrorUnspecified) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorUnspecified(v)
+	return s
+}
+
+// Ref: #/components/schemas/PassportElementErrorDataField
+type PassportElementErrorDataField struct {
+	Source    string `json:"source"`
+	Type      string `json:"type"`
+	FieldName string `json:"field_name"`
+	DataHash  string `json:"data_hash"`
+	Message   string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorFile
+type PassportElementErrorFile struct {
+	Source   string `json:"source"`
+	Type     string `json:"type"`
+	FileHash string `json:"file_hash"`
+	Message  string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorFiles
+type PassportElementErrorFiles struct {
+	Source     string   `json:"source"`
+	Type       string   `json:"type"`
+	FileHashes []string `json:"file_hashes"`
+	Message    string   `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorFrontSide
+type PassportElementErrorFrontSide struct {
+	Source   string `json:"source"`
+	Type     string `json:"type"`
+	FileHash string `json:"file_hash"`
+	Message  string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorReverseSide
+type PassportElementErrorReverseSide struct {
+	Source   string `json:"source"`
+	Type     string `json:"type"`
+	FileHash string `json:"file_hash"`
+	Message  string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorSelfie
+type PassportElementErrorSelfie struct {
+	Source   string `json:"source"`
+	Type     string `json:"type"`
+	FileHash string `json:"file_hash"`
+	Message  string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorTranslationFile
+type PassportElementErrorTranslationFile struct {
+	Source   string `json:"source"`
+	Type     string `json:"type"`
+	FileHash string `json:"file_hash"`
+	Message  string `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorTranslationFiles
+type PassportElementErrorTranslationFiles struct {
+	Source     string   `json:"source"`
+	Type       string   `json:"type"`
+	FileHashes []string `json:"file_hashes"`
+	Message    string   `json:"message"`
+}
+
+// Ref: #/components/schemas/PassportElementErrorUnspecified
+type PassportElementErrorUnspecified struct {
+	Source      string `json:"source"`
+	Type        string `json:"type"`
+	ElementHash string `json:"element_hash"`
+	Message     string `json:"message"`
+}
 
 // Ref: #/components/schemas/PassportFile
 type PassportFile struct {
