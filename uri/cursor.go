@@ -8,7 +8,7 @@ type cursor struct {
 }
 
 func (c *cursor) readAt(at rune) (string, error) {
-	var data []rune
+	var from, to = c.pos, c.pos
 	for {
 		r, ok := c.read()
 		if !ok {
@@ -16,29 +16,28 @@ func (c *cursor) readAt(at rune) (string, error) {
 		}
 
 		if r == at {
-			return string(data), nil
+			return string(c.src[from:to]), nil
 		}
-
-		data = append(data, r)
+		to++
 	}
 }
 
 func (c *cursor) readValue(until rune) (v string, hasNext bool, err error) {
-	var data []rune
+	var from, to = c.pos, c.pos
 	for {
 		r, ok := c.read()
 		if !ok {
-			if len(data) == 0 {
+			if to-from == 0 {
 				return "", false, io.EOF
 			}
-			return string(data), false, nil
+			return string(c.src[from:to]), false, nil
 		}
 
 		if r == until {
-			return string(data), len(c.src) != c.pos, nil
+			return string(c.src[from:to]), len(c.src) != c.pos, nil
 		}
 
-		data = append(data, r)
+		to++
 	}
 }
 
