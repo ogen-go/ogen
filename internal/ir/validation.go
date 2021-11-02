@@ -9,19 +9,19 @@ type Validators struct {
 }
 
 func (t *Type) NeedValidation() bool {
-	return t.needValidation(map[*Type]struct{}{})
+	return t.needValidation(&walkpath{})
 }
 
-func (t *Type) needValidation(visited map[*Type]struct{}) (result bool) {
+func (t *Type) needValidation(path *walkpath) (result bool) {
 	if t == nil {
 		return false
 	}
 
-	if _, ok := visited[t]; ok {
+	if path.has(t) {
 		return false
 	}
 
-	visited[t] = struct{}{}
+	path = path.append(t)
 
 	switch t.Kind {
 	case KindPrimitive:
@@ -36,20 +36,20 @@ func (t *Type) needValidation(visited map[*Type]struct{}) (result bool) {
 		return true
 	case KindSum:
 		for _, s := range t.SumOf {
-			if s.needValidation(visited) {
+			if s.needValidation(path) {
 				return true
 			}
 		}
 		return false
 	case KindAlias:
-		return t.AliasTo.needValidation(visited)
+		return t.AliasTo.needValidation(path)
 	case KindPointer:
 		if t.NilSemantic == NilInvalid {
 			return true
 		}
-		return t.PointerTo.needValidation(visited)
+		return t.PointerTo.needValidation(path)
 	case KindGeneric:
-		return t.GenericOf.needValidation(visited)
+		return t.GenericOf.needValidation(path)
 	case KindArray:
 		if t.NilSemantic == NilInvalid {
 			return true
@@ -57,14 +57,10 @@ func (t *Type) needValidation(visited map[*Type]struct{}) (result bool) {
 		if t.Validators.Array.Set() {
 			return true
 		}
-		// Prevent infinite recursion.
-		if t.Item == t {
-			return false
-		}
-		return t.Item.needValidation(visited)
+		return t.Item.needValidation(path)
 	case KindStruct:
 		for _, f := range t.Fields {
-			if f.Type.needValidation(visited) {
+			if f.Type.needValidation(path) {
 				return true
 			}
 		}
