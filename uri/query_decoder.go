@@ -42,7 +42,7 @@ func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
 	}
 }
 
-func (d *QueryDecoder) Value() (string, error) {
+func (d *QueryDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case QueryStyleForm:
 		if len(d.src) != 1 {
@@ -58,7 +58,7 @@ func (d *QueryDecoder) Value() (string, error) {
 	}
 }
 
-func (d *QueryDecoder) Array(f func(d Decoder) error) error {
+func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 	if len(d.src) < 1 {
 		return fmt.Errorf("empty array")
 	}
@@ -132,7 +132,7 @@ func (d *QueryDecoder) Array(f func(d Decoder) error) error {
 	}
 }
 
-func (d *QueryDecoder) Fields(f func(name string, d Decoder) error) error {
+func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 	adapter := func(name, value string) error { return f(name, &constval{value}) }
 	switch d.style {
 	case QueryStyleForm:

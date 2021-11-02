@@ -4,14 +4,14 @@ type constval struct {
 	v string
 }
 
-func (v constval) Value() (string, error) {
+func (v constval) DecodeValue() (string, error) {
 	return v.v, nil
 }
 
-func (d constval) Array(f func(Decoder) error) error {
+func (d constval) DecodeArray(f func(Decoder) error) error {
 	panic("its a value, not an array")
 }
 
-func (d constval) Fields(f func(string, Decoder) error) error {
+func (d constval) DecodeFields(f func(string, Decoder) error) error {
 	panic("its a value, not an object")
 }

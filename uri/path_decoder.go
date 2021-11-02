@@ -29,7 +29,7 @@ func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
 	}
 }
 
-func (d *PathDecoder) Value() (string, error) {
+func (d *PathDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case PathStyleSimple:
 		return d.cur.readAll()
@@ -61,7 +61,7 @@ func (d *PathDecoder) Value() (string, error) {
 	}
 }
 
-func (d *PathDecoder) Array(f func(d Decoder) error) error {
+func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 	switch d.style {
 	case PathStyleSimple:
 		return parseArray(d.cur, ',', f)
@@ -132,7 +132,7 @@ func (d *PathDecoder) Array(f func(d Decoder) error) error {
 	}
 }
 
-func (d *PathDecoder) Fields(f func(name string, d Decoder) error) error {
+func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 	adapter := func(k, v string) error { return f(k, &constval{v: v}) }
 	switch d.style {
 	case PathStyleSimple:

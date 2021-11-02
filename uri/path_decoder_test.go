@@ -65,7 +65,7 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).Value()
+			}).DecodeValue()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, s, fmt.Sprintf("Test %d", i+1))
 		}
@@ -130,8 +130,8 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).Array(func(d Decoder) error {
-				item, err := d.Value()
+			}).DecodeArray(func(d Decoder) error {
+				item, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -221,8 +221,8 @@ func TestPathDecoder(t *testing.T) {
 				Value:   test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).Fields(func(name string, d Decoder) error {
-				v, err := d.Value()
+			}).DecodeFields(func(name string, d Decoder) error {
+				v, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

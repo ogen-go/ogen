@@ -38,7 +38,7 @@ func TestQueryDecoder(t *testing.T) {
 				Values:  test.Input,
 				Style:   test.Style,
 				Explode: test.Explode,
-			}).Value()
+			}).DecodeValue()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
@@ -104,8 +104,8 @@ func TestQueryDecoder(t *testing.T) {
 			})
 
 			var items []string
-			err := d.Array(func(d Decoder) error {
-				item, err := d.Value()
+			err := d.DecodeArray(func(d Decoder) error {
+				item, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -166,8 +166,8 @@ func TestQueryDecoder(t *testing.T) {
 				Explode: test.Explode,
 			})
 
-			err := d.Fields(func(name string, d Decoder) error {
-				v, err := d.Value()
+			err := d.DecodeFields(func(name string, d Decoder) error {
+				v, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

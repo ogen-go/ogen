@@ -29,7 +29,7 @@ func newScraper() *scraper {
 	}
 }
 
-func (s *scraper) Value(v string) error {
+func (s *scraper) EncodeValue(v string) error {
 	if s.typ == typeValue {
 		return fmt.Errorf("multiple Value calls")
 	}
@@ -42,7 +42,7 @@ func (s *scraper) Value(v string) error {
 	return nil
 }
 
-func (s *scraper) Array(f func(Encoder) error) error {
+func (s *scraper) EncodeArray(f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeArray {
 		return fmt.Errorf("encode array: already encoded as %s", s.typ)
 	}
@@ -57,20 +57,24 @@ func (s *scraper) Array(f func(Encoder) error) error {
 	return nil
 }
 
-func (s *scraper) Field(field string, f func(Encoder) error) error {
+func (s *scraper) EncodeField(field string, f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeObject {
 		return fmt.Errorf("encode object: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeObject
-	fenc := &fieldScraper{}
-	if err := f(fenc); err != nil {
+	vs := &valueScraper{}
+	if err := f(vs); err != nil {
 		return err
+	}
+
+	if !vs.set {
+		return nil
 	}
 
 	s.fields = append(s.fields, Field{
 		Name:  field,
-		Value: fenc.value,
+		Value: vs.value,
 	})
 	return nil
 }
@@ -80,26 +84,26 @@ type arrayScraper struct {
 	items []string
 }
 
-func (e *arrayScraper) Value(v string) error {
+func (e *arrayScraper) EncodeValue(v string) error {
 	e.set = true
 	e.items = append(e.items, v)
 	return nil
 }
 
-func (e *arrayScraper) Array(_ func(Encoder) error) error {
+func (e *arrayScraper) EncodeArray(_ func(Encoder) error) error {
 	panic("nested arrays not allowed in path parameters")
 }
 
-func (e *arrayScraper) Field(_ string, _ func(Encoder) error) error {
+func (e *arrayScraper) EncodeField(_ string, _ func(Encoder) error) error {
 	panic("nested objects not allowed in path parameters")
 }
 
-type fieldScraper struct {
+type valueScraper struct {
 	set   bool
 	value string
 }
 
-func (e *fieldScraper) Value(v string) error {
+func (e *valueScraper) EncodeValue(v string) error {
 	if e.set {
 		panic("value already set")
 	}
@@ -108,10 +112,10 @@ func (e *fieldScraper) Value(v string) error {
 	return nil
 }
 
-func (e *fieldScraper) Array(_ func(Encoder) error) error {
-	panic("nested arrays not allowed in path parameters")
+func (e *valueScraper) EncodeArray(_ func(Encoder) error) error {
+	panic("nested arrays not allowed")
 }
 
-func (e *fieldScraper) Field(_ string, _ func(Encoder) error) error {
-	panic("nested objects not allowed in path parameters")
+func (e *valueScraper) EncodeField(_ string, _ func(Encoder) error) error {
+	panic("nested objects not allowed")
 }

@@ -7,7 +7,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     if v == nil {
         return fmt.Errorf("unable to decode {{ $t.Go }} to nil")
     }
-    return d.Fields(func(name string, d uri.Decoder) error {
+    return d.DecodeFields(func(name string, d uri.Decoder) error {
         switch name {
         {{- range $f := $t.Fields }}
         {{- if $f.Spec }}
@@ -33,7 +33,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- $t := index . "type" }}
 {{- $var := index . "var" }}
 {{- if eq $t.Kind "primitive" }}
-    s, err := d.Value()
+    s, err := d.DecodeValue()
     if err != nil {
         return err
     }
@@ -46,7 +46,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     {{ $var }} = c
     return nil
 {{- else if eq $t.Kind "enum" }}
-    s, err := d.Value()
+    s, err := d.DecodeValue()
     if err != nil {
         return err
     }
@@ -59,7 +59,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     {{ $var }} = {{ $t.Go }}(c)
     return nil
 {{- else if eq $t.Kind "array" }}
-    return d.Array(func(d uri.Decoder) error {
+    return d.DecodeArray(func(d uri.Decoder) error {
         {{- $tmpVar := pascalMP (sprintf "%sItem" $var ) }}
         var {{ $tmpVar }} {{ $t.Item.Go }}
         if err := func() error {

@@ -38,7 +38,7 @@ func TestQueryEncoder(t *testing.T) {
 				Style:   test.Style,
 				Explode: test.Explode,
 			})
-			require.NoError(t, e.Value(test.Input))
+			require.NoError(t, e.EncodeValue(test.Input))
 			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
@@ -100,9 +100,9 @@ func TestQueryEncoder(t *testing.T) {
 				Style:   test.Style,
 				Explode: test.Explode,
 			})
-			err := e.Array(func(e Encoder) error {
+			err := e.EncodeArray(func(e Encoder) error {
 				for _, item := range test.Input {
-					if err := e.Value(item); err != nil {
+					if err := e.EncodeValue(item); err != nil {
 						return err
 					}
 				}
@@ -160,8 +160,8 @@ func TestQueryEncoder(t *testing.T) {
 				Explode: test.Explode,
 			})
 			for _, field := range test.Input {
-				err := e.Field(field.Name, func(e Encoder) error {
-					return e.Value(field.Value)
+				err := e.EncodeField(field.Name, func(e Encoder) error {
+					return e.EncodeValue(field.Value)
 				})
 				require.NoError(t, err)
 			}

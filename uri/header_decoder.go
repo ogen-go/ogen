@@ -19,11 +19,11 @@ func NewHeaderDecoder(cfg HeaderDecoderConfig) *HeaderDecoder {
 	}
 }
 
-func (d *HeaderDecoder) Value() (string, error) {
+func (d *HeaderDecoder) DecodeValue() (string, error) {
 	return d.value, nil
 }
 
-func (d *HeaderDecoder) Array(f func(Decoder) error) error {
+func (d *HeaderDecoder) DecodeArray(f func(Decoder) error) error {
 	for _, v := range strings.Split(d.value, ",") {
 		if err := f(constval{v}); err != nil {
 			return err
@@ -32,7 +32,7 @@ func (d *HeaderDecoder) Array(f func(Decoder) error) error {
 	return nil
 }
 
-func (d *HeaderDecoder) Fields(f func(field string, d Decoder) error) error {
+func (d *HeaderDecoder) DecodeFields(f func(field string, d Decoder) error) error {
 	adapter := func(field, value string) error {
 		return f(field, constval{value})
 	}
