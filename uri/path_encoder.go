@@ -19,11 +19,7 @@ type PathEncoder struct {
 	param   string    // immutable
 	style   PathStyle // immutable
 	explode bool      // immutable
-
-	t      vtyp
-	val    string
-	items  []string
-	fields []Field
+	*scraper
 }
 
 type PathEncoderConfig struct {
@@ -34,71 +30,25 @@ type PathEncoderConfig struct {
 
 func NewPathEncoder(cfg PathEncoderConfig) *PathEncoder {
 	return &PathEncoder{
-		t:       vtNotSet,
+		scraper: newScraper(),
 		param:   cfg.Param,
 		style:   cfg.Style,
 		explode: cfg.Explode,
 	}
 }
 
-func (e *PathEncoder) Value(v string) error {
-	if e.t != vtNotSet && e.t != vtValue {
-		return fmt.Errorf("encode value: already encoded as %s", e.t)
-	}
-	e.t = vtValue
-	e.val = v
-	return nil
-}
-
-func (e *PathEncoder) Array(f func(e Encoder) error) error {
-	if e.t != vtNotSet && e.t != vtArray {
-		return fmt.Errorf("encode array: already encoded as %s", e.t)
-	}
-
-	e.t = vtArray
-	arr := &arrayEncoder{}
-	if err := f(arr); err != nil {
-		return err
-	}
-
-	e.items = arr.items
-	return nil
-}
-
-func (e *PathEncoder) Field(name string, f func(e Encoder) error) error {
-	if e.t != vtNotSet && e.t != vtObject {
-		return fmt.Errorf("encode object: already encoded as %s", e.t)
-	}
-
-	e.t = vtObject
-	fenc := &fieldEncoder{}
-	if err := f(fenc); err != nil {
-		return err
-	}
-
-	if !fenc.set {
-		return nil
-	}
-
-	e.fields = append(e.fields, Field{
-		Name:  name,
-		Value: fenc.value,
-	})
-	return nil
-}
-
 func (e *PathEncoder) Result() string {
-	switch e.t {
-	case vtNotSet:
+	switch e.typ {
+	case typeNotSet:
 		panic("encoder was not called, no value")
-	case vtValue:
+	case typeValue:
 		return e.value()
-	case vtArray:
+	case typeArray:
 		return e.array()
-	case vtObject:
+	case typeObject:
 		return e.object()
 	default:
-		panic(fmt.Sprintf("unexpected value type: %T", e.t))
+		panic(fmt.Sprintf("unexpected value type: %T", e.typ))
 	}
 }
 
