@@ -81,7 +81,7 @@ func (e *QueryEncoder) Field(name string, f func(Encoder) error) error {
 func (e *QueryEncoder) Result() []string {
 	switch e.t {
 	case vtNotSet:
-		panic("encoder was not called, no value")
+		return nil
 	case vtValue:
 		return e.value()
 	case vtArray:

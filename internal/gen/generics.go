@@ -13,6 +13,19 @@ func (g *Generator) wrapGenerics() {
 			g.boxStructFields(typ)
 		}
 	}
+
+	for _, op := range g.operations {
+		for _, param := range op.Params {
+			v := ir.GenericVariant{
+				Nullable: param.Spec.Schema.Nullable,
+				Optional: !param.Spec.Required,
+			}
+
+			if v.Nullable || v.Optional {
+				param.Type = g.boxType(v, param.Type)
+			}
+		}
+	}
 }
 
 func (g *Generator) boxStructFields(s *ir.Type) {
