@@ -172,46 +172,46 @@ func TestPathDecoder(t *testing.T) {
 					{"firstName", "Alex"},
 				},
 			},
-			// {
-			// 	Param:   "id",
-			// 	Input:   ".role,admin,firstName,Alex",
-			// 	Style:   PathStyleLabel,
-			// 	Explode: false,
-			// 	Expect: []field{
-			// 		{"role", "admin"},
-			// 		{"firstName", "Alex"},
-			// 	},
-			// },
-			// {
-			// 	Param:   "id",
-			// 	Input:   ".role=admin.firstName=Alex",
-			// 	Style:   PathStyleLabel,
-			// 	Explode: true,
-			// 	Expect: []field{
-			// 		{"role", "admin"},
-			// 		{"firstName", "Alex"},
-			// 	},
-			// },
-			// {
-			// 	Param:   "id",
-			// 	Input:   ";id=role,admin,firstName,Alex",
-			// 	Style:   PathStyleMatrix,
-			// 	Explode: false,
-			// 	Expect: []field{
-			// 		{"role", "admin"},
-			// 		{"firstName", "Alex"},
-			// 	},
-			// },
-			// {
-			// 	Param:   "id",
-			// 	Input:   ";role=admin;firstName=Alex",
-			// 	Style:   PathStyleMatrix,
-			// 	Explode: true,
-			// 	Expect: []field{
-			// 		{"role", "admin"},
-			// 		{"firstName", "Alex"},
-			// 	},
-			// },
+			{
+				Param:   "id",
+				Input:   ".role,admin,firstName,Alex",
+				Style:   PathStyleLabel,
+				Explode: false,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   ".role=admin.firstName=Alex",
+				Style:   PathStyleLabel,
+				Explode: true,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   ";id=role,admin,firstName,Alex",
+				Style:   PathStyleMatrix,
+				Explode: false,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
+			{
+				Param:   "id",
+				Input:   ";role=admin;firstName=Alex",
+				Style:   PathStyleMatrix,
+				Explode: true,
+				Expect: []Field{
+					{"role", "admin"},
+					{"firstName", "Alex"},
+				},
+			},
 		}
 
 		for i, test := range tests {
