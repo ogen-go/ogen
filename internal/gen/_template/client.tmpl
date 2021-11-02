@@ -152,16 +152,23 @@ r.AddCookie(&http.Cookie{
 
 
 {{ define "encode_header_params" }}
-{{- range $param := $.HeaderParams }}{{/* Range over params */}}
+{{- range $p := $.HeaderParams }}{{/* Range over params */}}
 {
-value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
-{{- if eq $param.Type.Kind "array" }}
-for _, v := range value {
-    r.Header.Add("{{ $param.Spec.Name }}", v)
-}
-{{- else }}
-r.Header.Set("{{ $param.Spec.Name }}", value)
-{{- end }}
+    e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+        Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+    })
+    if encErr := func() error {
+        {{- template "encode_uri" dict
+            "type" $p.Type
+            "var" (sprintf "params.%s" $p.Name)
+        }}
+    }(); encErr != nil {
+        err = fmt.Errorf("encode header param '{{ $p.Spec.Name }}': %w", encErr)
+        return
+    }
+    if v, ok := e.Result(); ok {
+        r.Header.Set("{{ $p.Spec.Name }}", v)
+    }
 }
 {{- end }}{{/* Range over params */}}
 {{ end }}

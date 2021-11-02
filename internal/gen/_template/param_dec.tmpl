@@ -66,18 +66,20 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 	}
 	{{- else if eq $p.Spec.In "Header" }}
 	{
-		{{- if eq $p.Type.Kind "array" }}
-		param := r.Header.Values("{{ $p.Spec.Name }}")
-		{{- else }}
 		param := r.Header.Get("{{ $p.Spec.Name }}")
-		{{- end }}
 		if len(param) > 0 {
-			v, err := conv.{{ $p.Type.FromString }}(param)
-			if err != nil {
+			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+			})
+
+			if err := func() error {
+				{{- template "decode_uri" dict
+					"type" $p.Type
+					"var" (sprintf "params.%s" $p.Name)
+				}}
+			}(); err != nil {
 				return params, fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
 			}
-
-			params.{{ $p.Name }} = v
 		} {{ if $p.Spec.Required }} else {
 			return params, fmt.Errorf("header parameter '{{ $p.Spec.Name}}' not specified")
 		} {{ end }}
