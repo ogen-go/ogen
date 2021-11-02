@@ -124,6 +124,12 @@ func templateFunctions() template.FuncMap {
 				Var:  fmt.Sprintf("s.%s", t.Name),
 			}
 		},
+		"var_elem": func(varname string, t *ir.Type) Elem {
+			return Elem{
+				Var:  varname,
+				Type: t,
+			}
+		},
 	}
 }
 
