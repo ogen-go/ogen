@@ -27,7 +27,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 					"var" (sprintf "params.%s" $p.Name)
 				}}
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter '{{ $p.Spec.Name }}' located in '{{ lower $p.Spec.In }}': %w", err)
 			}
 
 			{{- if $p.Type.NeedValidation }}
